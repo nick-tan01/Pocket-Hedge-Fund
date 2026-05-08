@@ -22,7 +22,7 @@ from core.alpaca_client import AlpacaClient
 from core.data_fetcher import DataFetcher
 from core.journal import (
     log_run, log_snapshot, log_debate,
-    log_trade_open, get_open_trades,
+    log_trade_open, get_open_trades, push_to_github,
 )
 from agents.screener import Screener
 import agents.technical        as technical_agent
@@ -283,6 +283,9 @@ def run_pipeline(dry_run: bool = False):
 
     logger.info("══ Pipeline complete | portfolio=$%.2f | trades=%d ══",
                 account["portfolio_value"], trades_executed)
+
+    # Auto-push updated dashboard data to GitHub → triggers Vercel redeploy
+    push_to_github(f"Auto: {run_type} run — {trades_executed} trade(s) executed")
 
 
 # ── Scheduler ─────────────────────────────────────────────────────────────────

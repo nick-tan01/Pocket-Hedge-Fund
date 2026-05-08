@@ -165,3 +165,48 @@ def get_all_trades() -> list[dict]:
 
 def get_snapshots() -> list[dict]:
     return _load().get("snapshots", [])
+
+
+# ── GitHub auto-push ──────────────────────────────────────────────────────────
+
+def push_to_github(commit_message: str = None):
+    """
+    Commit and push the updated data.json to GitHub after every run.
+    Requires the repo to already have a remote origin configured (git push -u origin main).
+    Called automatically at the end of each pipeline run.
+    """
+    import subprocess
+    import os
+
+    repo_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    journal   = os.path.join(repo_root, config.JOURNAL_PATH)
+    msg       = commit_message or f"Auto: pipeline run {datetime.utcnow().strftime('%Y-%m-%d %H:%M')} UTC"
+
+    try:
+        # Stage only the dashboard data file — nothing else
+        subprocess.run(
+            ["git", "add", journal],
+            cwd=repo_root, check=True, capture_output=True,
+        )
+        # Check if there's actually anything to commit
+        result = subprocess.run(
+            ["git", "diff", "--cached", "--quiet"],
+            cwd=repo_root, capture_output=True,
+        )
+        if result.returncode == 0:
+            logger.info("GitHub push: no changes to data.json, skipping")
+            return
+
+        subprocess.run(
+            ["git", "commit", "-m", msg],
+            cwd=repo_root, check=True, capture_output=True,
+        )
+        subprocess.run(
+            ["git", "push"],
+            cwd=repo_root, check=True, capture_output=True,
+        )
+        logger.info("GitHub push: data.json pushed — Vercel will redeploy shortly")
+    except subprocess.CalledProcessError as e:
+        logger.warning("GitHub push failed: %s", e.stderr.decode() if e.stderr else str(e))
+    except Exception as e:
+        logger.warning("GitHub push failed: %s", e)

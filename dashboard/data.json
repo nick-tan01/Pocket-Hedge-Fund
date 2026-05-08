@@ -46,6 +46,12 @@
       "portfolio_value": 100000.0,
       "cash": 100000.0,
       "spy_price": 737.62
+    },
+    {
+      "ts": "2026-05-08T23:47:31.329171",
+      "portfolio_value": 100000.0,
+      "cash": 100000.0,
+      "spy_price": 737.62
     }
   ],
   "trades": [
@@ -100,6 +106,22 @@
     },
     {
       "ts": "2026-05-08T23:03:12.137003",
+      "run_type": "midday",
+      "candidates": [
+        "RKLB",
+        "NET",
+        "NVDA",
+        "JPM",
+        "AAPL",
+        "GOOGL",
+        "ORCL",
+        "AMD"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": ""
+    },
+    {
+      "ts": "2026-05-08T23:47:31.329876",
       "run_type": "midday",
       "candidates": [
         "RKLB",
@@ -224,6 +246,94 @@
       "bull_score": 4,
       "bear_score": 8,
       "final_conviction": 5,
+      "decision": "watch"
+    },
+    {
+      "id": "debate_RKLB_20260508234216",
+      "symbol": "RKLB",
+      "ts": "2026-05-08T23:42:16.644617",
+      "bull_case": "R1 Bull(8): RKLB represents a compelling momentum play with exceptional technical strength following a significant earnings beat and accelerating growth in the high-demand space sector. | R1 Bear(6): RKLB's extreme overvaluation following a 34% surge creates unsustainable momentum driven by hype rather than fundamentals, with massive profitability challenges and technical overbought conditions setting up for a sharp correction. | R2 Bull(6): RKLB remains a compelling growth story in the expanding space economy, but elevated leverage and overbought technicals suggest waiting for a pullback to the $85-90 range offers better risk-adjusted entry points | R2 Bear(7): RKLB's technical overbought conditions combined with extreme leverage create a high-probability correction scenario, especially when even bulls are advocating waiting for lower entry points.",
+      "bear_case": "Primary risk: Momentum reversal from technically overbought levels combined with profit-taking could trigger a sharp 20-30% correction back toward fundamental support levels, especially if any guidance disappointment occurs | Unresolved: [\"The bull's comparison to typical aerospace leverage ignores that RKLB's 15.4 debt-to-equity is extreme even by sector standards and creates existential risk if the space economy growth story falters\", \"Market timing risk remains acute as the bull's own $85-90 target implies 15-20% downside from current levels\"]",
+      "bull_score": 6,
+      "bear_score": 7,
+      "final_conviction": 6,
+      "decision": "watch"
+    },
+    {
+      "id": "debate_NET_20260508234259",
+      "symbol": "NET",
+      "ts": "2026-05-08T23:42:59.429579",
+      "bull_case": "R1 Bull(4): Despite recent selling pressure, NET's exceptional 33.6% revenue growth combined with renewed analyst confidence and oversold technical conditions create a tactical buying opportunity for risk-tolerant investors. | R1 Bear(7): NET's extreme 136x forward P/E valuation leaves no room for error while negative profitability, high debt levels, and recent 4x volume selling surge signal institutional distribution despite superficial analyst optimism. | R2 Bull(2): NET remains a tactical opportunity for risk-tolerant investors with long-term horizons, but the extreme 136x forward P/E creates substantial downside risk that significantly outweighs the oversold technical setup. | R2 Bear(8): NET's 136x forward P/E creates extreme downside risk that even the bull acknowledges with their 2/10 conviction, while institutional selling and financial vulnerability make this a clear avoid despite long-term market potential",
+      "bear_case": "Primary risk: Valuation compression from 136x forward P/E as unprofitable high-multiple growth stocks face severe multiple compression in any market stress, amplified by high debt levels creating financial vulnerability. | Unresolved: ['136x forward P/E multiple compression risk in any market stress', 'High debt levels with negative profitability creating financial vulnerability', 'Recent 4x volume institutional selling surge indicating smart money distribution']",
+      "bull_score": 2,
+      "bear_score": 8,
+      "final_conviction": 2,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_NVDA_20260508234345",
+      "symbol": "NVDA",
+      "ts": "2026-05-08T23:43:45.514197",
+      "bull_case": "R1 Bull(8): NVDA presents a compelling buy opportunity with exceptional 95.6% EPS growth and 73.2% revenue growth trading at a discounted PEG ratio of 0.7, supported by strong technical momentum and continued AI sector tailwinds. | R1 Bear(4): NVDA's exceptional momentum has created dangerous overbought conditions at resistance levels with unsustainable debt leverage, making it vulnerable to sharp corrections despite strong fundamentals. | R2 Bull(6): NVDA remains a compelling long-term AI infrastructure play trading at reasonable valuations despite near-term technical headwinds that may provide better entry opportunities | R2 Bear(3): While NVDA's long-term AI fundamentals are strong, the combination of overbought technical conditions and extreme leverage creates near-term downside risk that could overwhelm patient capital through forced selling dynamics.",
+      "bear_case": "Primary risk: Sharp correction from overbought levels near resistance could trigger leveraged selling due to the extreme 7.3 debt/equity ratio, amplifying downside momentum | Unresolved: [\"The 7.3 debt/equity ratio creating amplified volatility during corrections remains unaddressed, and the bull's long-term thesis doesn't mitigate the immediate risk of leveraged selling cascades if technical support breaks\"]",
+      "bull_score": 6,
+      "bear_score": 3,
+      "final_conviction": 6,
+      "decision": "watch"
+    },
+    {
+      "id": "debate_JPM_20260508234431",
+      "symbol": "JPM",
+      "ts": "2026-05-08T23:44:31.787259",
+      "bull_case": "R1 Bull(6): JPM's exceptional profitability metrics and attractive valuation at current support levels create a compelling buying opportunity despite near-term headwinds. | R1 Bear(6): JPM faces a confluence of technical breakdown, regulatory headwinds, and valuation concerns that outweigh its operational strengths, making this an inopportune time to establish positions. | R2 Bull(4): JPM remains a quality franchise trading at reasonable valuations, but regulatory overhang and technical weakness warrant a more cautious approach with smaller position sizing near current levels | R2 Bear(4): While JPM's fundamental quality is undeniable, the combination of technical deterioration and regulatory uncertainty creates asymmetric downside risk that outweighs the modest valuation appeal at current levels.",
+      "bear_case": "Primary risk: Deteriorating technical setup combined with escalating regulatory costs could trigger institutional selling pressure, breaking key support levels and leading to further significant downside. | Unresolved: ['Technical breakdown below key support levels could trigger momentum-driven institutional selling that fundamentals cannot immediately counter', 'Regulatory settlement timing and magnitude remain unpredictable wild cards that could exceed the earnings buffer']",
+      "bull_score": 4,
+      "bear_score": 4,
+      "final_conviction": 4,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_AAPL_20260508234518",
+      "symbol": "AAPL",
+      "ts": "2026-05-08T23:45:18.791013",
+      "bull_case": "R1 Bull(6): Apple's strategic positioning as a 'sleeping tech giant' entering the AI era, combined with the Intel chip partnership reducing foreign manufacturing dependence, creates compelling upside despite current valuation concerns. | R1 Bear(7): Apple's extreme valuation metrics (PEG 2.5, P/E 35.6x) combined with overbought technical conditions (RSI 73.3) create significant downside risk as the market has already priced in AI optimism while fundamental catalysts remain speculative. | R2 Bull(4): Apple remains a strategic AI play with strong fundamentals, but current valuation requires flawless execution making it a lower-conviction opportunity until a better entry point emerges | R2 Bear(6): Apple's valuation requires perfect AI execution while technical indicators and stretched metrics suggest significant downside risk outweighs the cash-cushioned downside protection.",
+      "bear_case": "Primary risk: Multiple compression from current 35.6x P/E as growth expectations embedded in the 2.5 PEG ratio prove unrealistic, potentially leading to 20-30% downside even with stable fundamentals | Unresolved: [\"Multiple compression risk from 35.6x P/E remains inadequately addressed as cash position doesn't prevent valuation reset if AI monetization disappoints\", 'Services growth of 23% may not sustain without hardware refresh cycles driving user engagement']",
+      "bull_score": 4,
+      "bear_score": 6,
+      "final_conviction": 5,
+      "decision": "watch"
+    },
+    {
+      "id": "debate_GOOGL_20260508234600",
+      "symbol": "GOOGL",
+      "ts": "2026-05-08T23:46:00.457892",
+      "bull_case": "R1 Bull(6): Despite technical overbought conditions, GOOGL's exceptional fundamentals with 82% EPS growth and dominant AI positioning through Isomorphic Labs' $2B funding create a compelling medium-term opportunity. | R1 Bear(4): GOOGL's extreme technical overbought conditions (RSI 84.5) combined with weakening momentum (0.78x volume) and elevated debt levels signal an imminent pullback despite strong fundamentals. | R2 Bull(4): GOOGL remains fundamentally compelling with exceptional AI positioning and earnings growth, but extreme overbought technicals suggest waiting for a better entry point after likely correction | R2 Bear(2): GOOGL faces imminent 15-25% technical correction with risk of momentum overshoot beyond fundamental support levels despite strong AI positioning.",
+      "bear_case": "Primary risk: Immediate 15-25% correction as extreme overbought technical conditions (RSI 84.5) normalize, regardless of fundamental strength | Unresolved: [\"Bull assumes correction will be orderly and create 'better entry points' but ignores potential for momentum-driven selling to overshoot fundamentals, creating deeper correction than expected\"]",
+      "bull_score": 4,
+      "bear_score": 2,
+      "final_conviction": 4,
+      "decision": "watch"
+    },
+    {
+      "id": "debate_ORCL_20260508234643",
+      "symbol": "ORCL",
+      "ts": "2026-05-08T23:46:43.319117",
+      "bull_case": "R1 Bull(6): Oracle presents a compelling momentum trade opportunity with strong technical signals and robust earnings growth, despite elevated debt concerns that appear priced in after the 43% decline from highs. | R1 Bear(7): Oracle presents a dangerous momentum trap with RSI at 69.9 approaching overbought levels, catastrophic debt-to-equity ratio of 415.3 creating financial fragility, and below-average volume at 0.61x indicating weak conviction behind the recent rally. | R2 Bull(4): Oracle remains a cautious momentum play with strong earnings growth and technical signals, but the extreme leverage significantly elevates risk and requires tight risk management | R2 Bear(6): Oracle remains a high-risk momentum trap where overbought technicals and extreme leverage create asymmetric downside risk despite strong cash flows.",
+      "bear_case": "Primary risk: Debt-to-equity ratio of 415.3 creates potential for catastrophic losses if Oracle faces any earnings disappointment or credit tightening, as this leverage level leaves no margin for error | Unresolved: ['RSI at 69.9 combined with below-average volume of 0.61x creates a dangerous momentum trap where retail investors are chasing institutional selling', 'The extreme 415.3 debt-to-equity ratio still leaves zero margin for error if enterprise software demand contracts or interest rates spike further']",
+      "bull_score": 4,
+      "bear_score": 6,
+      "final_conviction": 4,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_AMD_20260508234731",
+      "symbol": "AMD",
+      "ts": "2026-05-08T23:47:31.076619",
+      "bull_case": "R1 Bull(6): AMD's exceptional fundamental momentum with 37.8% revenue growth and 91.2% EPS growth, combined with increasing AI market share opportunity as signaled by CoreWeave's comments about Nvidia capacity constraints, outweighs near-term technical overbought conditions. | R1 Bear(7): AMD's extreme technical overbought conditions (RSI 81.0) after a 26% five-day surge, combined with concerning fundamental red flags including 6.0x debt-to-equity ratio and weak 8.1% ROE, signal an imminent correction despite strong revenue growth. | R2 Bull(4): AMD's AI opportunity remains compelling with concrete evidence of Nvidia constraints, but the high leverage profile requires careful monitoring and limits upside until capital efficiency improves | R2 Bear(5): AMD faces an immediate 15-20% technical correction from extreme overbought levels that could be amplified by high leverage, even if the underlying AI thesis eventually proves correct.",
+      "bear_case": "Primary risk: Immediate 15-20% correction from severely overbought technical levels could trigger broader semiconductor sector rotation, amplified by AMD's high debt leverage during any growth deceleration. | Unresolved: [\"The bull didn't address the immediate timing mismatch between current 81.0 RSI overbought conditions and the long-term AI revenue scaling thesis, creating significant near-term correction risk regardless of fundamental improvements\"]",
+      "bull_score": 4,
+      "bear_score": 5,
+      "final_conviction": 4,
       "decision": "watch"
     }
   ]

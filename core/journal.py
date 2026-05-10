@@ -167,6 +167,111 @@ def get_snapshots() -> list[dict]:
     return _load().get("snapshots", [])
 
 
+def get_debate_by_id(debate_id: str) -> dict | None:
+    """Return a stored debate log by its id, or None."""
+    if not debate_id:
+        return None
+    return next(
+        (d for d in _load().get("debate_logs", []) if d.get("id") == debate_id),
+        None,
+    )
+
+
+def log_position_review(
+    trade_id: str,
+    symbol: str,
+    action: str,
+    conviction: int,
+    thesis_status: str,
+    rationale: str,
+    original_thesis_check: str,
+    key_risk_to_monitor: str,
+    **extra,
+):
+    """Append a position review record; creates position_reviews array if absent."""
+    data = _load()
+    data.setdefault("position_reviews", [])
+    entry = {
+        "trade_id":             trade_id,
+        "symbol":               symbol,
+        "ts":                   datetime.utcnow().isoformat(),
+        "action":               action,
+        "conviction":           conviction,
+        "thesis_status":        thesis_status,
+        "rationale":            rationale,
+        "original_thesis_check": original_thesis_check,
+        "key_risk_to_monitor":  key_risk_to_monitor,
+    }
+    entry.update({k: v for k, v in extra.items() if v is not None})
+    data["position_reviews"].append(entry)
+    _save(data)
+    logger.info("Position review logged: %s → %s (%s)", symbol, action, thesis_status)
+
+
+def update_open_trade(trade_id: str, updates: dict):
+    """Apply a dict of field updates to an open trade in-place."""
+    data = _load()
+    for trade in data["open_trades"]:
+        if trade["id"] == trade_id:
+            trade.update(updates)
+            break
+    _save(data)
+
+
+def log_trade_trim(
+    trade_id: str,
+    trim_qty: float,
+    new_qty: float,
+    price: float,
+    reason: str,
+):
+    """Record a partial sell on an open trade and update its qty."""
+    data = _load()
+    for trade in data["open_trades"]:
+        if trade["id"] == trade_id:
+            trade.setdefault("trim_history", [])
+            trade["trim_history"].append({
+                "ts":       datetime.utcnow().isoformat(),
+                "trim_qty": round(trim_qty, 4),
+                "new_qty":  round(new_qty, 4),
+                "price":    round(price, 2),
+                "reason":   reason,
+            })
+            trade["qty"] = round(new_qty, 4)
+            break
+    _save(data)
+    logger.info("Trim logged: trade=%s sold=%.4f remaining=%.4f @ $%.2f",
+                trade_id, trim_qty, new_qty, price)
+
+
+def set_queued_action(trade_id: str, action: str, reason: str):
+    """
+    Record that a trim/exit was recommended but market was closed.
+    The next run re-reviews fresh — this is for audit purposes only.
+    """
+    data = _load()
+    for trade in data["open_trades"]:
+        if trade["id"] == trade_id:
+            trade["queued_action"] = {
+                "action":    action,
+                "reason":    reason,
+                "queued_ts": datetime.utcnow().isoformat(),
+            }
+            break
+    _save(data)
+    logger.info("Queued action: trade=%s action=%s (market closed)", trade_id, action)
+
+
+def clear_queued_action(trade_id: str):
+    """Remove any stale queued action from an open trade."""
+    data = _load()
+    for trade in data["open_trades"]:
+        if trade["id"] == trade_id:
+            trade.pop("queued_action", None)
+            break
+    _save(data)
+
+
 # ── GitHub auto-push ──────────────────────────────────────────────────────────
 
 def push_to_github(commit_message: str = None):

@@ -22,7 +22,9 @@ from core.alpaca_client import AlpacaClient
 from core.data_fetcher import DataFetcher
 from core.journal import (
     log_run, log_snapshot, log_debate,
-    log_trade_open, get_open_trades, push_to_github,
+    log_trade_open, log_trade_close, get_open_trades, push_to_github,
+    get_debate_by_id, log_position_review, update_open_trade,
+    log_trade_trim, set_queued_action, clear_queued_action,
 )
 from agents.screener import Screener
 import agents.technical        as technical_agent
@@ -32,6 +34,7 @@ import agents.bull_researcher  as bull_agent
 import agents.bear_researcher  as bear_agent
 import agents.portfolio_manager as pm_agent
 import agents.risk_manager      as risk_agent
+import agents.position_reviewer as reviewer_agent
 
 logging.basicConfig(
     level=logging.INFO,
@@ -89,7 +92,6 @@ def check_open_positions(alpaca: AlpacaClient):
                            symbol, current_price, stop_price)
             order = alpaca.close_position(symbol, reason="stop_loss")
             if order:
-                from core.journal import log_trade_close
                 log_trade_close(trade["id"], current_price, "stop_loss")
 
         pnl_pct = pos["unrealized_plpc"]
@@ -99,6 +101,249 @@ def check_open_positions(alpaca: AlpacaClient):
             if new_stop > stop_price:
                 trade["stop_price"] = new_stop
                 logger.info("Trailing stop → %s $%.2f", symbol, new_stop)
+
+
+# ── Position review (thesis-driven hold / trim / exit) ───────────────────────
+
+def _safe_review_decision(review: dict, fallback_conviction) -> tuple[str, int]:
+    """Normalize LLM review output before it can affect execution."""
+    action = str(review.get("action", "hold")).strip().lower()
+    if action not in {"hold", "trim", "exit"}:
+        logger.warning("Unknown review action '%s' — defaulting to HOLD", action)
+        action = "hold"
+
+    try:
+        conviction = int(review.get("conviction", fallback_conviction))
+    except (TypeError, ValueError):
+        logger.warning("Invalid review conviction '%s' — using previous conviction",
+                       review.get("conviction"))
+        try:
+            conviction = int(fallback_conviction)
+        except (TypeError, ValueError):
+            conviction = 5
+    conviction = max(1, min(10, conviction))
+
+    if action == "trim" and conviction < 3:
+        logger.info("Review trim with conviction=%d converted to EXIT", conviction)
+        action = "exit"
+
+    return action, conviction
+
+
+def _review_target_pct(conviction: int) -> float:
+    """
+    Convert a review conviction into target exposure.
+    Existing buy sizing only maps 7-10; review trims need lower-conviction
+    targets so weakened-but-not-broken theses can become smaller holdings.
+    """
+    if conviction >= config.MIN_CONVICTION_SCORE:
+        size_map = config.CONVICTION_SIZE_MAP
+        capped   = min(conviction, max(size_map.keys()))
+        floored  = max(capped, min(size_map.keys()))
+        return size_map.get(floored, 0.03)
+    if conviction >= 5:
+        return 0.02
+    if conviction >= 3:
+        return 0.01
+    return 0.0
+
+def review_open_positions(alpaca: AlpacaClient, fetcher: DataFetcher, dry_run: bool):
+    """
+    Re-analyse every open position and decide hold / trim / exit based on whether
+    the original entry thesis is still intact. Runs before the screener each pipeline.
+    Market-closed trim/exit actions are queued for audit but NOT executed; the next
+    run re-reviews from scratch rather than blindly executing stale queues.
+    """
+    open_trades = get_open_trades()
+    if not open_trades:
+        return
+
+    logger.info("── Position Review: %d open trade(s) ──", len(open_trades))
+
+    market_open      = alpaca.is_market_open()
+    ok_to_trade      = market_open and alpaca.minutes_to_close() >= config.MARKET_CLOSE_BUFFER
+    account          = alpaca.get_account()
+    portfolio_value  = account["portfolio_value"]
+    alpaca_positions = {p["symbol"]: p for p in alpaca.get_positions()}
+
+    for trade in open_trades:
+        symbol   = trade["symbol"]
+        trade_id = trade["id"]
+
+        # ── Fetch current data (same path as analyse_symbol) ──────────────────
+        bars  = fetcher.get_ohlcv(symbol, days=60)
+        news  = fetcher.get_news(symbol, days=3)
+        quote = fetcher.get_quote(symbol)
+
+        if not bars or not quote:
+            logger.warning("Position review: no data for %s — skipping", symbol)
+            continue
+
+        current_price = quote["price"]
+        live_pos      = alpaca_positions.get(symbol)
+        unrealized_plpc = live_pos["unrealized_plpc"] if live_pos else None
+
+        # ── Re-run full analyst + debate pipeline ──────────────────────────────
+        tech = technical_agent.analyse(symbol, bars)
+        fund = fundamental_agent.analyse(symbol)
+        sent = sentiment_agent.analyse(symbol, news)
+
+        bull_r1 = bull_agent.opening_argument(symbol, tech, fund, sent)
+        bear_r1 = bear_agent.opening_argument(symbol, tech, fund, sent, bull_r1)
+        bull_r2 = bull_agent.rebuttal(symbol, bull_r1, bear_r1)
+        bear_r2 = bear_agent.rebuttal(symbol, bear_r1, bull_r2)
+
+        original_debate = get_debate_by_id(trade.get("debate_id", ""))
+
+        # ── Call position reviewer ─────────────────────────────────────────────
+        review = reviewer_agent.review(
+            symbol=symbol,
+            trade=trade,
+            original_debate=original_debate,
+            tech=tech, fund=fund, sent=sent,
+            bull_r1=bull_r1, bear_r1=bear_r1,
+            bull_r2=bull_r2, bear_r2=bear_r2,
+            current_price=current_price,
+            unrealized_plpc=unrealized_plpc,
+        )
+
+        action, conviction = _safe_review_decision(
+            review, trade.get("conviction", 5)
+        )
+
+        logger.info(
+            "Position Review | %s → %s | conviction=%d | thesis=%s | %s",
+            symbol, action.upper(), conviction,
+            review.get("thesis_status"), review.get("rationale", "")[:80],
+        )
+
+        # ── Log review record ──────────────────────────────────────────────────
+        log_position_review(
+            trade_id=trade_id,
+            symbol=symbol,
+            action=action,
+            conviction=conviction,
+            thesis_status=review.get("thesis_status"),
+            rationale=review.get("rationale"),
+            original_thesis_check=review.get("original_thesis_check"),
+            key_risk_to_monitor=review.get("key_risk_to_monitor"),
+            trim_reason=review.get("trim_reason"),
+            exit_reason=review.get("exit_reason"),
+            current_bull_case=(
+                f"R1 Bull({bull_r1.get('conviction')}): {bull_r1.get('thesis', '')} | "
+                f"R2 Bull({bull_r2.get('conviction')}): {bull_r2.get('final_thesis', '')}"
+            ),
+            current_bear_case=(
+                f"R1 Bear({bear_r1.get('conviction')}): {bear_r1.get('thesis', '')} | "
+                f"R2 Bear({bear_r2.get('conviction')}): {bear_r2.get('final_thesis', '')}"
+            ),
+        )
+
+        # ── Execute decision ───────────────────────────────────────────────────
+        if action == "hold":
+            update_open_trade(trade_id, {
+                "last_review_ts":         datetime.now(ET).isoformat(),
+                "last_review_conviction": conviction,
+                "thesis_status":          review.get("thesis_status"),
+                "key_risk":               review.get("key_risk_to_monitor"),
+                "queued_action":           None,
+            })
+            clear_queued_action(trade_id)
+
+        elif action == "exit":
+            if dry_run:
+                logger.info("DRY RUN — would EXIT %s | %s",
+                            symbol, review.get("exit_reason", "thesis broken"))
+                continue
+
+            if not ok_to_trade:
+                logger.info("Market closed — EXIT queued for %s (will re-review next run)", symbol)
+                set_queued_action(trade_id, "exit", review.get("exit_reason", "thesis_broken"))
+                update_open_trade(trade_id, {
+                    "last_review_ts": datetime.now(ET).isoformat(),
+                    "thesis_status":  review.get("thesis_status"),
+                })
+                continue
+
+            order = alpaca.close_position(symbol, reason="thesis_broken")
+            if order:
+                log_trade_close(trade_id, current_price, "thesis_broken")
+                logger.info("EXIT executed | %s @ $%.2f", symbol, current_price)
+
+        elif action == "trim":
+            if dry_run:
+                logger.info("DRY RUN — would TRIM %s | %s",
+                            symbol, review.get("trim_reason", "conviction reduced"))
+                continue
+
+            if not ok_to_trade:
+                logger.info("Market closed — TRIM queued for %s (will re-review next run)", symbol)
+                set_queued_action(trade_id, "trim", review.get("trim_reason", "conviction_reduced"))
+                update_open_trade(trade_id, {
+                    "last_review_ts":         datetime.now(ET).isoformat(),
+                    "last_review_conviction": conviction,
+                    "thesis_status":          review.get("thesis_status"),
+                })
+                continue
+
+            # Conviction-resize: map new conviction to target position %
+            target_pct = _review_target_pct(conviction)
+
+            target_mkt_val  = portfolio_value * target_pct
+            current_qty_act = live_pos["qty"]         if live_pos else trade["qty"]
+            current_mkt_val = live_pos["market_value"] if live_pos else (current_qty_act * current_price)
+
+            excess_value = current_mkt_val - target_mkt_val
+            if excess_value <= 0:
+                logger.info("TRIM %s — position already at or below target size, treating as hold",
+                            symbol)
+                update_open_trade(trade_id, {
+                    "last_review_ts":         datetime.now(ET).isoformat(),
+                    "last_review_conviction": conviction,
+                    "thesis_status":          review.get("thesis_status"),
+                    "key_risk":               review.get("key_risk_to_monitor"),
+                    "queued_action":           None,
+                })
+                clear_queued_action(trade_id)
+                continue
+
+            trim_qty = round(excess_value / current_price, 4)
+            new_qty  = round(current_qty_act - trim_qty, 4)
+
+            if trim_qty < 0.01:
+                logger.info("TRIM %s — trim qty %.4f below minimum, treating as hold",
+                            symbol, trim_qty)
+                update_open_trade(trade_id, {
+                    "last_review_ts":         datetime.now(ET).isoformat(),
+                    "last_review_conviction": conviction,
+                    "thesis_status":          review.get("thesis_status"),
+                    "key_risk":               review.get("key_risk_to_monitor"),
+                    "queued_action":           None,
+                })
+                clear_queued_action(trade_id)
+                continue
+
+            order = alpaca.submit_market_order(
+                symbol=symbol, qty=trim_qty, side="sell",
+                reason=(f"review_trim | conviction={conviction} | "
+                        f"{review.get('trim_reason', '')}"),
+            )
+            if order:
+                log_trade_trim(trade_id, trim_qty, new_qty, current_price,
+                               review.get("trim_reason", ""))
+                update_open_trade(trade_id, {
+                    "qty":                    new_qty,
+                    "last_review_ts":         datetime.now(ET).isoformat(),
+                    "last_review_conviction": conviction,
+                    "thesis_status":          review.get("thesis_status"),
+                    "key_risk":               review.get("key_risk_to_monitor"),
+                    "queued_action":           None,
+                })
+                clear_queued_action(trade_id)
+                logger.info(
+                    "TRIM executed | %s sold %.4f shares @ $%.2f | remaining qty=%.4f",
+                    symbol, trim_qty, current_price, new_qty,
+                )
 
 
 # ── Per-symbol analysis ───────────────────────────────────────────────────────
@@ -239,6 +484,7 @@ def run_pipeline(dry_run: bool = False):
         return
 
     check_open_positions(alpaca)
+    review_open_positions(alpaca, fetcher, dry_run=dry_run)
 
     screener   = Screener(fetcher)
     candidates = screener.run()
@@ -285,7 +531,10 @@ def run_pipeline(dry_run: bool = False):
                 account["portfolio_value"], trades_executed)
 
     # Auto-push updated dashboard data to GitHub → triggers Vercel redeploy
-    push_to_github(f"Auto: {run_type} run — {trades_executed} trade(s) executed")
+    if dry_run:
+        logger.info("DRY RUN — skipping GitHub push")
+    else:
+        push_to_github(f"Auto: {run_type} run — {trades_executed} trade(s) executed")
 
 
 # ── Scheduler ─────────────────────────────────────────────────────────────────

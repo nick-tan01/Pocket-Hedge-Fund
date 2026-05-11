@@ -58,6 +58,12 @@
       "portfolio_value": 100000.0,
       "cash": 100000.0,
       "spy_price": 740.17
+    },
+    {
+      "ts": "2026-05-11T19:02:20.164183",
+      "portfolio_value": 100000.0,
+      "cash": 100000.0,
+      "spy_price": 738.67
     }
   ],
   "trades": [
@@ -155,6 +161,22 @@
         "QCOM",
         "AMAT",
         "META",
+        "AMZN",
+        "GOOGL"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": ""
+    },
+    {
+      "ts": "2026-05-11T19:02:20.165341",
+      "run_type": "midday",
+      "candidates": [
+        "META",
+        "NVDA",
+        "AAPL",
+        "AMD",
+        "QCOM",
+        "AMAT",
         "AMZN",
         "GOOGL"
       ],
@@ -447,6 +469,94 @@
       "bull_score": 5,
       "bear_score": 4,
       "final_conviction": 5,
+      "decision": "watch"
+    },
+    {
+      "id": "debate_META_20260511185659",
+      "symbol": "META",
+      "ts": "2026-05-11T18:56:59.156531",
+      "bull_case": "R1 Bull(6): META's exceptional fundamental performance with 62% EPS growth and attractive 0.9 PEG valuation creates a compelling contrarian opportunity as technical oversold conditions at RSI 39.3 suggest the recent decline has created an attractive entry point. | R1 Bear(4): Despite strong fundamentals, META faces a dangerous combination of deteriorating technical momentum with MACD below signal line, weak institutional interest evidenced by 0.68x volume ratio, and mounting regulatory/legal headwinds that threaten the core advertising business model. | R2 Bull(4): META remains a structural winner in digital advertising with exceptional fundamentals, but weak technical volume patterns suggest waiting for stronger accumulation signals before entry despite attractive valuation metrics | R2 Bear(5): META's technical deterioration combined with institutional selling pressure creates downside risk that outweighs strong fundamentals, especially as regulatory template risks threaten the high-margin advertising model that justifies current valuations.",
+      "bear_case": "Primary risk: Regulatory cascade where the California 'scam ad' lawsuit becomes a template for other jurisdictions, potentially requiring expensive compliance changes or revenue model modifications that destroy the 32.8% profit margins | Unresolved: [\"The bull underestimated how regulatory precedents cascade - if California's 'scam ad' lawsuit succeeds, it creates a legal framework that other states and international jurisdictions will rapidly adopt, potentially forcing expensive compliance infrastructure that could compress META's industry-leading 32.8% profit margins\"]",
+      "bull_score": 4,
+      "bear_score": 5,
+      "final_conviction": 4,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_NVDA_20260511185746",
+      "symbol": "NVDA",
+      "ts": "2026-05-11T18:57:46.795957",
+      "bull_case": "R1 Bull(8): NVDA's exceptional fundamental execution with 96% EPS growth and 73% revenue growth at a reasonable 19.6 forward P/E creates a compelling opportunity despite short-term sentiment headwinds. | R1 Bear(6): NVDA's extreme technical overbought conditions (RSI 69.5, Bollinger %B above upper band) combined with deteriorating geopolitical risks and partnership concerns signal an imminent pullback from unsustainable momentum. | R2 Bull(6): NVDA remains a compelling long-term opportunity driven by unmatched AI fundamentals and reasonable valuation, but near-term technical headwinds suggest waiting for a better entry point below current resistance levels | R2 Bear(7): NVDA's acknowledged overbought technical setup combined with institutional hesitation evidenced by declining volume creates high probability for 10-15% pullback despite strong fundamentals.",
+      "bear_case": "Primary risk: Buying at technical resistance with overbought conditions and declining volume participation risks a sharp pullback of 10-15% as momentum traders exit and geopolitical uncertainties weigh on sentiment | Unresolved: [\"The bull's assumption that NVDA will work off overbought conditions through time ignores that declining volume participation suggests institutional distribution has already begun, making a sharp price correction more likely than a sideways consolidation\"]",
+      "bull_score": 6,
+      "bear_score": 7,
+      "final_conviction": 6,
+      "decision": "watch"
+    },
+    {
+      "id": "debate_AAPL_20260511185830",
+      "symbol": "AAPL",
+      "ts": "2026-05-11T18:58:30.563625",
+      "bull_case": "R1 Bull(6): Apple's strategic Intel partnership and product innovation initiatives position the company for near-term momentum despite valuation concerns, supported by exceptional operational fundamentals. | R1 Bear(7): Apple's stretched valuation metrics and technical warning signs create an unfavorable risk-reward profile that outweighs strategic partnership benefits. | R2 Bull(4): Apple's operational excellence and strategic positioning warrant a premium but current valuation leaves limited upside unless AI and partnership initiatives deliver exceptional results | R2 Bear(6): Apple's 35.2 P/E creates significant downside risk if speculative AI and partnership initiatives fail to deliver the exceptional growth needed to justify current stretched multiples.",
+      "bear_case": "Primary risk: Valuation compression from current stretched multiples combined with technical breakdown from overbought levels could trigger significant price decline | Unresolved: [\"The bull's argument for AI and Intel partnership driving exceptional results relies on speculative future execution rather than concrete evidence, while the immediate risk of multiple compression from 35.2 P/E remains if these initiatives fail to deliver transformational growth\"]",
+      "bull_score": 4,
+      "bear_score": 6,
+      "final_conviction": 4,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_AMD_20260511185914",
+      "symbol": "AMD",
+      "ts": "2026-05-11T18:59:14.108541",
+      "bull_case": "R1 Bull(7): AMD presents a compelling growth opportunity with exceptional 91.2% EPS growth and 37.8% revenue growth, trading at a reasonable forward P/E of 36x while riding the AI chip momentum that has driven it to 52-week highs. | R1 Bear(6): AMD's extreme technical overbought condition with RSI at 81.8, concerning capital structure with 6.0 debt/equity ratio, and weak operational efficiency at 8.1% ROE create significant downside risks despite strong growth metrics. | R2 Bull(5): AMD remains a compelling AI play with strong fundamental growth, but elevated technical and leverage risks warrant a more cautious approach with better entry points likely ahead | R2 Bear(7): AMD faces imminent technical correction from extreme overbought levels while high leverage and poor ROE create amplified downside risks that the AI narrative cannot indefinitely postpone.",
+      "bear_case": "Primary risk: Technical correction from extremely overbought levels combined with high leverage could trigger rapid multiple compression if AI semiconductor momentum reverses | Unresolved: [\"The bull failed to address how AMD's high leverage combined with cyclical semiconductor industry dynamics could create a severe downward spiral if AI momentum stalls, particularly given the company's poor capital efficiency\"]",
+      "bull_score": 5,
+      "bear_score": 7,
+      "final_conviction": 6,
+      "decision": "watch"
+    },
+    {
+      "id": "debate_QCOM_20260511190000",
+      "symbol": "QCOM",
+      "ts": "2026-05-11T19:00:00.080371",
+      "bull_case": "R1 Bull(7): QCOM is positioned at the forefront of the next computing platform revolution with AI wearables while maintaining exceptional profitability metrics and attractive growth valuation despite near-term overbought conditions. | R1 Bear(6): QCOM's extreme technical overbought conditions at RSI 88.4 combined with fundamental headwinds of revenue decline and high debt create significant downside risk despite speculative AI wearables hype. | R2 Bull(5): QCOM remains a compelling long-term AI wearables platform play with strong competitive moats, but current technical overbought conditions and speculative pricing suggest waiting for a healthier entry point around $160-170 levels. | R2 Bear(7): QCOM faces a probable 15-25% technical correction from extreme overbought levels while carrying high debt through revenue declines, with AI wearables partnerships too speculative and distant to justify current valuations.",
+      "bear_case": "Primary risk: Immediate technical correction from severely overbought levels could trigger 15-25% pullback before any fundamental AI wearables thesis can be validated | Unresolved: [\"The bull's 2-3 year AI adoption timeline doesn't address the immediate fundamental reality of declining revenues with $13B debt burden creating potential liquidity pressure during any prolonged correction\", 'Partnership announcements with OpenAI and Meta lack concrete monetization frameworks, making them speculative catalysts rather than actionable investment drivers']",
+      "bull_score": 5,
+      "bear_score": 7,
+      "final_conviction": 5,
+      "decision": "watch"
+    },
+    {
+      "id": "debate_AMAT_20260511190048",
+      "symbol": "AMAT",
+      "ts": "2026-05-11T19:00:48.800425",
+      "bull_case": "R1 Bull(7): AMAT presents a compelling buy opportunity driven by exceptional operational performance with 75% EPS growth despite revenue headwinds, strategic AI semiconductor positioning through the Taiwan Semi partnership, and strong technical momentum with multiple analyst upgrades targeting $517-$550. | R1 Bear(6): AMAT faces fundamental revenue decline headwinds and dangerous technical overbought conditions, with valuation stretched beyond reasonable metrics despite cyclical semiconductor exposure. | R2 Bull(5): AMAT remains a strong long-term buy due to AI positioning and operational excellence, but current overbought conditions suggest waiting for a better entry point around $200-210 support levels | R2 Bear(4): While AMAT shows operational strength, the combination of cyclical revenue headwinds and premium valuation creates poor risk/reward at current levels despite long-term AI positioning.",
+      "bear_case": "Primary risk: Buying at technical resistance after a 13.6% rally with overbought RSI and declining volume during a fundamental revenue downturn cycle. | Unresolved: ['Valuation remains stretched at current levels even with EPS growth, as 75% earnings increase may not be sustainable through a prolonged semiconductor downcycle', 'Timing of semiconductor cycle recovery is uncertain and could extend longer than markets expect, making current premium valuation unjustified']",
+      "bull_score": 5,
+      "bear_score": 4,
+      "final_conviction": 5,
+      "decision": "watch"
+    },
+    {
+      "id": "debate_AMZN_20260511190134",
+      "symbol": "AMZN",
+      "ts": "2026-05-11T19:01:34.608695",
+      "bull_case": "R1 Bull(6): Amazon's exceptional 74.8% EPS growth and 24.3% ROE demonstrate that operational efficiency improvements are driving substantial earnings acceleration, justifying current valuations despite technical headwinds. | R1 Bear(4): AMZN faces deteriorating momentum with overbought technical conditions, high debt concerns, and emerging AI competition, while exceptional earnings growth may be unsustainable at current elevated levels. | R2 Bull(4): Amazon's exceptional operational metrics remain compelling long-term, but elevated debt levels and technical weakness create legitimate near-term risks that warrant reduced conviction until momentum stabilizes. | R2 Bear(6): AMZN's technical breakdown and unsustainable earnings growth rate create significant downside risk as momentum-driven selling could overwhelm fundamental strengths in the near term.",
+      "bear_case": "Primary risk: Momentum reversal from overbought levels combined with high debt burden during rising rate environment could trigger significant multiple compression despite strong fundamentals | Unresolved: ['Technical momentum breakdown indicates institutional selling that could accelerate regardless of fundamental strength', 'Unsustainable 74.8% EPS growth rate creates setup for major disappointment and multiple compression when growth normalizes']",
+      "bull_score": 4,
+      "bear_score": 6,
+      "final_conviction": 4,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_GOOGL_20260511190219",
+      "symbol": "GOOGL",
+      "ts": "2026-05-11T19:02:19.771645",
+      "bull_case": "R1 Bull(7): GOOGL presents a compelling buy opportunity driven by exceptional fundamental performance with 82% EPS growth and strong AI-powered growth catalysts, despite short-term technical headwinds. | R1 Bear(4): GOOGL faces immediate technical headwinds with overbought conditions at RSI 74 and critically low volume conviction at 0.58x average, suggesting the recent rally lacks institutional support despite strong fundamentals. | R2 Bull(6): GOOGL remains fundamentally compelling with 82% EPS growth and AI leadership positioning, but current overbought levels suggest waiting for a technical pullback to the $350-365 range offers better risk-adjusted entry points | R2 Bear(3): GOOGL's overbought technical position with RSI 74 and persistently weak volume suggests distribution by informed investors who recognize current levels have priced in AI optimism ahead of execution risk.",
+      "bear_case": "Primary risk: Buying at technically overbought levels with RSI at 74 and weak volume conviction creates high probability of 10-15% pullback to technical support levels regardless of strong fundamentals | Unresolved: [\"The bull's claim that institutional money moves slowly doesn't explain why volume remains critically low during a 15%+ rally, suggesting smart money may already be distributing rather than accumulating\"]",
+      "bull_score": 6,
+      "bear_score": 3,
+      "final_conviction": 6,
       "decision": "watch"
     }
   ]

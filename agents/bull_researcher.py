@@ -59,7 +59,7 @@ Return ONLY this JSON:
     try:
         r = client.messages.create(
             model=config.DEBATE_MODEL,
-            max_tokens=config.MAX_TOKENS,
+            max_tokens=config.DEBATE_MAX_TOKENS,
             messages=[{"role": "user", "content": prompt}],
         )
         raw = _clean(r.content[0].text)
@@ -101,6 +101,8 @@ Respond to the bear's strongest points. Where they raise valid concerns, acknowl
 and adjust your conviction accordingly. Where their arguments are weak or speculative,
 explain why. Be intellectually honest — if the bear has changed your mind, say so.
 
+MOMENTUM DEFENSE: If the bear's case rests primarily on high RSI (>70), you are permitted to argue momentum continuation — cite the ADX reading and volume ratio as evidence. In trending markets (ADX > 25), RSI staying above 70 for extended periods is normal and bullish. Only concede on RSI if volume is declining or ADX is weakening below 20.
+
 Return ONLY this JSON:
 {{
   "symbol": "{symbol}",
@@ -116,7 +118,7 @@ Return ONLY this JSON:
     try:
         r = client.messages.create(
             model=config.DEBATE_MODEL,
-            max_tokens=config.MAX_TOKENS,
+            max_tokens=config.DEBATE_MAX_TOKENS,
             messages=[{"role": "user", "content": prompt}],
         )
         raw = _clean(r.content[0].text)

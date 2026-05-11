@@ -250,12 +250,12 @@ class Screener:
         rsi = _rsi(closes)
         if rsi is not None:
             signals["rsi"] = rsi
-            if rsi < 35:
-                score_components.append(0.8)
-            elif rsi > 65:
-                score_components.append(0.6)
+            if rsi > 65:
+                score_components.append(0.8)   # strong momentum — confirmation signal
+            elif rsi < 35:
+                score_components.append(0.6)   # oversold bounce opportunity
             else:
-                score_components.append(0.2)
+                score_components.append(0.2)   # neutral — lowest priority
 
         if len(closes) >= 35:
             crossover = _macd_crossover(closes)

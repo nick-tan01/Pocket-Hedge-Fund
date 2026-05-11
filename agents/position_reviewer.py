@@ -125,7 +125,7 @@ Return ONLY this JSON:
     try:
         r = client.messages.create(
             model=config.DEBATE_MODEL,
-            max_tokens=config.MAX_TOKENS,
+            max_tokens=config.DEBATE_MAX_TOKENS,
             messages=[{"role": "user", "content": prompt}],
         )
         raw = _clean(r.content[0].text)

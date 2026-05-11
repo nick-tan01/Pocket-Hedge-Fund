@@ -649,7 +649,11 @@ function renderStats() {
 
 // ── Equity Chart ───────────────────────────────────────────────────────────
 function renderChart() {
-  const snaps = filterByPeriod(DATA.snapshots || []);
+  const startDate = DATA.meta.start_date ? new Date(DATA.meta.start_date) : null;
+  const allSnaps  = filterByPeriod(DATA.snapshots || []);
+  const snaps     = startDate
+      ? allSnaps.filter(s => new Date(s.ts) >= startDate)
+      : allSnaps;
   if (!snaps.length) return;
 
   const start     = DATA.meta.starting_capital;

@@ -12,7 +12,7 @@ import argparse
 import logging
 import sys
 import time
-from datetime import datetime
+from datetime import datetime, timezone
 
 import pytz
 import schedule
@@ -81,7 +81,25 @@ def check_open_positions(alpaca: AlpacaClient):
     for trade in journal_trades:
         symbol = trade["symbol"]
         if symbol not in positions:
-            log_trade_close(trade["id"], trade["entry_price"], "unknown_close")
+            try:
+                entry_dt = datetime.fromisoformat(trade.get("entry_ts", ""))
+                if entry_dt.tzinfo is None:
+                    entry_dt = entry_dt.replace(tzinfo=timezone.utc)
+                age_hours = (datetime.now(timezone.utc) - entry_dt).total_seconds() / 3600
+            except (ValueError, TypeError):
+                age_hours = 999
+            if age_hours < 24:
+                logger.warning(
+                    "ORPHAN CHECK | %s in journal but not in Alpaca — "
+                    "opened %.1fh ago, may be fill delay. Will re-check next run.",
+                    symbol, age_hours,
+                )
+                continue
+            logger.warning(
+                "ORPHAN CLOSE | %s not in Alpaca after %.1fh — closing at entry price.",
+                symbol, age_hours,
+            )
+            log_trade_close(trade["id"], trade["entry_price"], "orphan_close")
             continue
         pos           = positions[symbol]
         current_price = pos["current_price"]

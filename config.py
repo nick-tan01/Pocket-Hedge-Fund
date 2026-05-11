@@ -65,7 +65,8 @@ RUN_TIMES_ET = ["08:30", "13:00"]
 # ── AI Model ─────────────────────────────────────────────────────────────────
 ANALYST_MODEL   = "claude-sonnet-4-20250514"   # Fast, cheap — analysts
 DEBATE_MODEL    = "claude-sonnet-4-20250514"   # Debate agents
-MAX_TOKENS      = 500                           # Hard cap per agent call
+MAX_TOKENS         = 500    # Screener / analyst agents (structured JSON, short output)
+DEBATE_MAX_TOKENS  = 1000   # Bull, Bear, PM, position reviewer (need nuanced reasoning)
 
 # ── Benchmark ────────────────────────────────────────────────────────────────
 BENCHMARK_TICKER = "SPY"

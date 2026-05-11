@@ -74,6 +74,10 @@ BEAR updated (conviction {bear_r2.get('conviction')}/10): {bear_r2.get('final_th
 - Weight unresolved risks heavily — a strong unresolved bear risk should lower conviction
 - If both sides made meaningful concessions, that is a sign of a nuanced situation
 
+MOMENTUM REGIME RULE:
+RSI above 70 is NOT automatically bearish. In a confirmed uptrend (ADX > 25, price above key EMAs), overbought RSI signals momentum continuation, not exhaustion. Apply the "overbought = bearish" interpretation ONLY when: (a) ADX is declining below 20, indicating trend weakness, OR (b) volume is declining as price rises (divergence), OR (c) there are genuine fundamental deterioration signals.
+A bear argument that rests SOLELY on elevated RSI — without structural breakdown, volume divergence, or fundamental deterioration — should be discounted significantly in a strong trending market. If ADX > 25 and volume is above average, a BUY with conviction 7-8 is appropriate for fundamentally sound stocks showing momentum continuation.
+
 Return ONLY this JSON:
 {{
   "symbol": "{symbol}",
@@ -87,7 +91,7 @@ Return ONLY this JSON:
     try:
         r = client.messages.create(
             model=config.DEBATE_MODEL,
-            max_tokens=config.MAX_TOKENS,
+            max_tokens=config.DEBATE_MAX_TOKENS,
             messages=[{"role": "user", "content": prompt}],
         )
         raw = r.content[0].text.strip()

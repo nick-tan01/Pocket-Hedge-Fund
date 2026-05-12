@@ -63,22 +63,26 @@ def log_snapshot(portfolio_value: float, cash: float, spy_price: float):
 def log_trade_open(
     symbol: str, side: str, qty: float, entry_price: float,
     stop_price: float, conviction: int, debate_id: str,
-    key_risk: str = ""
+    key_risk: str = "", portfolio_value: float = 0.0,
 ):
     """Record when a new position is opened."""
     data = _load()
+    position_usd = round(entry_price * qty, 2)
+    position_pct = round(position_usd / portfolio_value, 4) if portfolio_value > 0 else 0.0
     trade = {
-        "id":          f"{symbol}_{datetime.utcnow().strftime('%Y%m%d%H%M%S')}",
-        "symbol":      symbol,
-        "side":        side,
-        "qty":         qty,
-        "entry_price": round(entry_price, 2),
-        "entry_ts":    datetime.utcnow().isoformat(),
-        "stop_price":  round(stop_price, 2),
-        "conviction":  conviction,
-        "debate_id":   debate_id,
-        "status":      "open",
-        "key_risk":    key_risk,
+        "id":            f"{symbol}_{datetime.utcnow().strftime('%Y%m%d%H%M%S')}",
+        "symbol":        symbol,
+        "side":          side,
+        "qty":           qty,
+        "entry_price":   round(entry_price, 2),
+        "entry_ts":      datetime.utcnow().isoformat(),
+        "stop_price":    round(stop_price, 2),
+        "conviction":    conviction,
+        "debate_id":     debate_id,
+        "status":        "open",
+        "key_risk":      key_risk,
+        "position_usd":  position_usd,
+        "position_pct":  position_pct,
     }
     data["open_trades"].append(trade)
     _save(data)
@@ -141,17 +145,22 @@ def log_debate(
 
 def log_run(
     run_type: str, candidates: list[str], trades_executed: int,
-    skipped_reason: str = ""
+    skipped_reason: str = "", regime: str = "", vix_regime: str = ""
 ):
     """Log a summary of each pipeline run."""
     data = _load()
-    data["runs"].append({
+    entry = {
         "ts":               datetime.utcnow().isoformat(),
         "run_type":         run_type,
         "candidates":       candidates,
         "trades_executed":  trades_executed,
         "skipped_reason":   skipped_reason,
-    })
+    }
+    if regime:
+        entry["regime"] = regime
+    if vix_regime:
+        entry["vix_regime"] = vix_regime
+    data["runs"].append(entry)
     _save(data)
 
 

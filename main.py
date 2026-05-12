@@ -48,22 +48,38 @@ logger = logging.getLogger(__name__)
 ET = pytz.timezone("America/New_York")
 
 
-# ── Circuit breakers ──────────────────────────────────────────────────────────
+# ── Circuit breakers / regime ─────────────────────────────────────────────────
 
-def check_hard_stops(alpaca: AlpacaClient, fetcher: DataFetcher) -> tuple[bool, str]:
+def check_hard_stops(alpaca: AlpacaClient, fetcher: DataFetcher) -> tuple[bool, str, str, str]:
+    vix_regime = "normal"
     vix = fetcher.get_vix()
-    if vix and vix > config.VIX_PAUSE_THRESHOLD:
-        return False, f"VIX={vix:.1f} exceeds threshold {config.VIX_PAUSE_THRESHOLD}"
+    if vix and vix > config.VIX_HIGH_THRESHOLD:
+        vix_regime = "high_vix"
+    elif vix and vix > config.VIX_ELEVATED_THRESHOLD:
+        vix_regime = "elevated_vix"
+
+    regime = "bull"
+    spy_bars = fetcher.get_ohlcv("SPY", days=220)
+    if spy_bars and len(spy_bars) >= 200:
+        spy_200d_ma = sum(b["close"] for b in spy_bars[-200:]) / 200
+        spy_current = spy_bars[-1]["close"]
+        if spy_current < spy_200d_ma * 0.97:
+            regime = "bear"
+        elif spy_current < spy_200d_ma:
+            regime = "caution"
+
     account  = alpaca.get_account()
     drawdown = (config.STARTING_CAPITAL - account["portfolio_value"]) / config.STARTING_CAPITAL
     if drawdown > config.MAX_PORTFOLIO_DD:
-        return False, f"Portfolio drawdown {drawdown*100:.1f}% exceeds limit"
-    return True, ""
+        return False, f"Portfolio drawdown {drawdown*100:.1f}% exceeds limit", regime, vix_regime
+    return True, "", regime, vix_regime
 
 
 def can_execute_trades(alpaca: AlpacaClient) -> tuple[bool, str]:
     if not alpaca.is_market_open():
         return False, "Market closed — analysis complete, no orders submitted"
+    if alpaca.minutes_since_open() < config.MARKET_OPEN_BUFFER:
+        return False, "Too close to market open — waiting for price discovery"
     if alpaca.minutes_to_close() < config.MARKET_CLOSE_BUFFER:
         return False, "Too close to market close — orders held"
     return True, ""
@@ -374,6 +390,8 @@ def analyse_symbol(
     dry_run: bool,
     ok_to_trade: bool,
     alpaca: AlpacaClient,
+    regime: str,
+    vix_regime: str,
 ) -> bool:
     logger.info("── Analysing %s ──", symbol)
 
@@ -431,6 +449,8 @@ def analyse_symbol(
         bars=bars,
         portfolio_value=portfolio_value,
         open_positions=open_positions,
+        regime=regime,
+        vix_regime=vix_regime,
     )
 
     # ── Log full debate to journal ────────────────────────────────────────────
@@ -476,7 +496,7 @@ def analyse_symbol(
             symbol=symbol, side="buy", qty=proposal.shares,
             entry_price=current_price, stop_price=proposal.stop_price,
             conviction=proposal.conviction, debate_id=debate_id,
-            key_risk=proposal.key_risk,
+            key_risk=proposal.key_risk, portfolio_value=portfolio_value,
         )
         logger.info("✅ ORDER FILLED | %s %.4f @ $%.2f stop=$%.2f",
                     symbol, proposal.shares, current_price, proposal.stop_price)
@@ -495,21 +515,29 @@ def run_pipeline(dry_run: bool = False):
     alpaca  = AlpacaClient()
     fetcher = DataFetcher()
 
-    ok, reason = check_hard_stops(alpaca, fetcher)
+    ok, reason, regime, vix_regime = check_hard_stops(alpaca, fetcher)
+    logger.info("Regime | SPY=%s | VIX=%s", regime, vix_regime)
     if not ok:
         logger.info("Hard stop: %s", reason)
-        log_run(run_type, [], 0, skipped_reason=reason)
+        log_run(run_type, [], 0, skipped_reason=reason, regime=regime, vix_regime=vix_regime)
         return
 
     check_open_positions(alpaca)
     review_open_positions(alpaca, fetcher, dry_run=dry_run)
 
+    open_count  = len(get_open_trades())
+    available   = config.MAX_POSITIONS - open_count
+    dynamic_max = max(
+        config.SCREENER_MIN_CANDIDATES,
+        min(available + 2, config.SCREENER_MAX_CANDIDATES),
+    )
     screener   = Screener(fetcher)
-    candidates = screener.run()
+    candidates = screener.run(max_candidates=dynamic_max)
 
     if not candidates:
         logger.info("No screener candidates")
-        log_run(run_type, [], 0, skipped_reason="no_candidates")
+        log_run(run_type, [], 0, skipped_reason="no_candidates",
+                regime=regime, vix_regime=vix_regime)
         return
 
     logger.info(screener.format_for_log(candidates))
@@ -536,6 +564,8 @@ def run_pipeline(dry_run: bool = False):
             dry_run=dry_run,
             ok_to_trade=ok_to_trade,
             alpaca=alpaca,
+            regime=regime,
+            vix_regime=vix_regime,
         )
         if executed:
             trades_executed += 1
@@ -543,7 +573,8 @@ def run_pipeline(dry_run: bool = False):
     spy_bars  = fetcher.get_ohlcv("SPY", days=2)
     spy_price = spy_bars[-1]["close"] if spy_bars else 0.0
     log_snapshot(account["portfolio_value"], account["cash"], spy_price)
-    log_run(run_type, [c.symbol for c in candidates], trades_executed)
+    log_run(run_type, [c.symbol for c in candidates], trades_executed,
+            regime=regime, vix_regime=vix_regime)
 
     logger.info("══ Pipeline complete | portfolio=$%.2f | trades=%d ══",
                 account["portfolio_value"], trades_executed)

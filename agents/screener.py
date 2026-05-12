@@ -10,12 +10,45 @@ no hardcoded ticker pairs needed.
 import logging
 import pandas as pd
 from dataclasses import dataclass, field
+from datetime import date, datetime
 import yfinance as yf
 
 from core.data_fetcher import DataFetcher
 import config
 
 logger = logging.getLogger(__name__)
+
+SECTOR_ETFS = {
+    "Technology": "XLK",
+    "Health Care": "XLV",
+    "Healthcare": "XLV",
+    "Financial Services": "XLF",
+    "Financials": "XLF",
+    "Consumer Cyclical": "XLY",
+    "Consumer Discretionary": "XLY",
+    "Consumer Defensive": "XLP",
+    "Consumer Staples": "XLP",
+    "Energy": "XLE",
+    "Industrials": "XLI",
+    "Communication Services": "XLC",
+    "Real Estate": "XLRE",
+    "Basic Materials": "XLB",
+    "Materials": "XLB",
+    "Utilities": "XLU",
+}
+
+BULLISH_KEYWORDS = [
+    "beat", "beats", "raised", "raise", "guidance", "upgrade", "upgraded",
+    "acquisition", "buyback", "dividend", "contract", "approval", "fda",
+    "deal", "record", "exceeded", "upside", "outperform", "strong",
+    "accelerating", "top", "breakout", "partnership", "wins",
+]
+
+BEARISH_KEYWORDS = [
+    "miss", "missed", "cut", "lowered", "downgrade", "downgraded", "recall",
+    "investigation", "lawsuit", "fine", "disappoints", "below", "warns",
+    "guidance cut", "layoffs", "delayed", "cancelled",
+]
 
 
 @dataclass
@@ -158,12 +191,16 @@ class Screener:
         # High-growth / emerging
         "RKLB", "PLTR", "SOFI", "COIN", "SNOW", "DDOG", "CRWD",
         "ZS", "NET", "MDB", "AFRM", "HOOD",
+        # Mid-cap momentum / slower information diffusion
+        "SMCI", "MSTR", "IONQ", "GTLB", "TTD", "HIMS", "DUOL",
+        "SOUN", "APLD", "ARM", "ACLS", "COHR", "ONTO", "RXRX",
+        "CELH", "DOCS", "BILL", "TMDX", "WING",
     ]
 
     def __init__(self, data_fetcher: DataFetcher):
         self.fetcher = data_fetcher
 
-    def run(self) -> list[ScreenerCandidate]:
+    def run(self, max_candidates: int | None = None) -> list[ScreenerCandidate]:
         logger.info("Screener starting — universe: %d symbols", len(self.WATCHLIST))
         candidates = []
 
@@ -178,7 +215,8 @@ class Screener:
         # Sort by score descending, then deduplicate same-company tickers
         candidates.sort(key=lambda c: c.composite_score, reverse=True)
         candidates = _deduplicate(candidates)
-        top = candidates[:config.SCREENER_MAX_CANDIDATES]
+        limit = max_candidates or config.SCREENER_MAX_CANDIDATES
+        top = candidates[:limit]
 
         logger.info(
             "Screener complete — %d passed filters, returning top %d: %s",
@@ -199,26 +237,44 @@ class Screener:
         if len(bars) < 30:
             return None
 
-        signals = {}
-        vol_score,  vol_sig  = self._score_volume(bars)
-        ta_score,   ta_sig   = self._score_technical(bars)
-        news_score, news_sig = self._score_news(symbol)
-        val_score,  val_sig  = self._score_valuation(symbol)
+        info = self._get_info(symbol)
+        if self._earnings_within_days(info, days=3):
+            logger.info("Screener: %s skipped — earnings within 3 days", symbol)
+            return None
 
+        signals = {}
+        earnings_score, earnings_sig = self._score_earnings_catalyst(symbol, info)
+        rs_score,       rs_sig       = self._score_relative_strength(symbol, bars, info)
+        high52_score,   high52_sig   = self._score_52wk_high(symbol, info)
+        vol_score,      vol_sig      = self._score_volume(bars)
+        ta_score,       ta_sig       = self._score_technical(bars)
+        news_score,     news_sig     = self._score_news(symbol)
+        val_score,      val_sig      = self._score_valuation(symbol, info)
+
+        signals.update(earnings_sig)
+        signals.update(rs_sig)
+        signals.update(high52_sig)
         signals.update(vol_sig)
         signals.update(ta_sig)
         signals.update(news_sig)
         signals.update(val_sig)
 
-        if vol_score == 0 and ta_score == 0 and news_score == 0 and val_score == 0:
+        if (
+            earnings_score == 0 and rs_score == 0 and vol_score == 0 and
+            ta_score == 0 and high52_score == 0 and news_score == 0 and
+            val_score == 0
+        ):
             return None
 
         w = config.SCREENER_WEIGHTS
+        technical_score = (ta_score + high52_score) / 2
         composite = (
-            news_score * w["news_catalyst"] +
-            vol_score  * w["volume_spike"]  +
-            ta_score   * w["technical"]     +
-            val_score  * w["valuation"]
+            earnings_score * w["earnings_catalyst"] +
+            rs_score       * w["relative_strength"] +
+            technical_score * w["technical"]        +
+            vol_score      * w["volume_spike"]      +
+            news_score     * w["news_quality"]      +
+            val_score      * w["valuation"]
         )
 
         return ScreenerCandidate(
@@ -273,15 +329,25 @@ class Screener:
 
     def _score_news(self, symbol):
         news  = self.fetcher.get_news(symbol, days=2)
-        count = len(news)
-        return min(1.0, count / 5.0) if count > 0 else 0.0, {
-            "recent_news_count": count,
-            "top_headline": news[0]["headline"] if news else "",
+        if not news:
+            return 0.0, {"news_count": 0, "top_headline": "", "news_quality": 0.0}
+        quality = 0.0
+        for article in news[:5]:
+            headline = article.get("headline", "").lower()
+            if any(k in headline for k in BULLISH_KEYWORDS):
+                quality += 0.25
+            if any(k in headline for k in BEARISH_KEYWORDS):
+                quality -= 0.20
+        quality = max(0.0, min(1.0, quality))
+        return quality, {
+            "news_count": len(news),
+            "top_headline": news[0].get("headline", ""),
+            "news_quality": round(quality, 2),
         }
 
-    def _score_valuation(self, symbol):
+    def _score_valuation(self, symbol, info=None):
         try:
-            info  = yf.Ticker(symbol).info
+            info  = info or self._get_info(symbol)
             pe    = info.get("trailingPE")
             fwd   = info.get("forwardPE")
             pgr   = info.get("earningsGrowth")
@@ -303,6 +369,115 @@ class Screener:
         except Exception:
             return 0.0, {}
 
+    def _score_relative_strength(self, symbol: str, bars: list[dict], info=None) -> tuple[float, dict]:
+        try:
+            info = info or self._get_info(symbol)
+            sector = info.get("sector", "")
+            etf = SECTOR_ETFS.get(sector)
+            if not etf or len(bars) < 21:
+                return 0.4, {"rs_sector": None, "sector": sector}
+            stock_ret = (bars[-1]["close"] - bars[-21]["close"]) / bars[-21]["close"]
+            etf_bars = self.fetcher.get_ohlcv(etf, days=25)
+            if not etf_bars or len(etf_bars) < 21:
+                return 0.4, {"rs_sector": None, "sector": sector, "sector_etf": etf}
+            etf_ret = (etf_bars[-1]["close"] - etf_bars[-21]["close"]) / etf_bars[-21]["close"]
+            spread = stock_ret - etf_ret
+            if spread > 0.05:
+                score = 0.9
+            elif spread > 0.02:
+                score = 0.7
+            elif spread > 0:
+                score = 0.5
+            elif spread > -0.02:
+                score = 0.3
+            else:
+                score = 0.1
+            return score, {
+                "rs_vs_sector_pct": round(spread * 100, 1),
+                "sector": sector,
+                "sector_etf": etf,
+            }
+        except Exception:
+            return 0.4, {"rs_sector": None}
+
+    def _score_52wk_high(self, symbol: str, info=None) -> tuple[float, dict]:
+        try:
+            info = info or self._get_info(symbol)
+            hi52 = info.get("fiftyTwoWeekHigh")
+            lo52 = info.get("fiftyTwoWeekLow")
+            price = info.get("currentPrice") or info.get("regularMarketPrice")
+            if not all([hi52, lo52, price]) or hi52 == lo52:
+                return 0.3, {}
+            pct_of_range = (price - lo52) / (hi52 - lo52)
+            score = (
+                0.9 if pct_of_range >= 0.90 else
+                0.75 if pct_of_range >= 0.80 else
+                0.5 if pct_of_range >= 0.60 else
+                0.3
+            )
+            return score, {
+                "pct_of_52wk_range": round(pct_of_range, 2),
+                "52wk_high": round(float(hi52), 2),
+            }
+        except Exception:
+            return 0.3, {}
+
+    def _score_earnings_catalyst(self, symbol: str, info=None) -> tuple[float, dict]:
+        try:
+            info = info or self._get_info(symbol)
+            eps_growth = info.get("earningsGrowth")
+            rev_growth = info.get("revenueGrowth")
+            if eps_growth is not None and rev_growth is not None:
+                signals = {
+                    "eps_growth": round(eps_growth * 100, 1),
+                    "rev_growth": round(rev_growth * 100, 1),
+                }
+                if eps_growth > 0.5 and rev_growth > 0.2:
+                    signals["catalyst"] = "strong_beat"
+                    return 0.9, signals
+                if eps_growth > 0.2:
+                    signals["catalyst"] = "moderate_beat"
+                    return 0.6, signals
+                if eps_growth < 0:
+                    signals["catalyst"] = "miss"
+                    return 0.1, signals
+            return 0.3, {"catalyst": "unknown"}
+        except Exception:
+            return 0.3, {"catalyst": "unknown"}
+
+    def _get_info(self, symbol: str) -> dict:
+        try:
+            return yf.Ticker(symbol).info
+        except Exception:
+            return {}
+
+    def _earnings_within_days(self, info: dict, days: int = 3) -> bool:
+        earnings_date = self._parse_earnings_date(
+            info.get("earningsDate") or info.get("earningsTimestamp")
+        )
+        if not earnings_date:
+            return False
+        days_to_earnings = (earnings_date - date.today()).days
+        return 0 < days_to_earnings <= days
+
+    def _parse_earnings_date(self, raw) -> date | None:
+        try:
+            if raw is None:
+                return None
+            if isinstance(raw, (list, tuple)) and raw:
+                raw = raw[0]
+            if hasattr(raw, "iloc"):
+                raw = raw.iloc[0]
+            if isinstance(raw, (int, float)):
+                return datetime.utcfromtimestamp(raw).date()
+            if isinstance(raw, datetime):
+                return raw.date()
+            if isinstance(raw, date):
+                return raw
+            return date.fromisoformat(str(raw)[:10])
+        except Exception:
+            return None
+
     def format_for_log(self, candidates: list[ScreenerCandidate]) -> str:
         lines = ["── Screener results ──"]
         for i, c in enumerate(candidates, 1):
@@ -311,6 +486,8 @@ class Screener:
                 f"price=${c.price:.2f} "
                 f"vol_spike={c.signals.get('volume_spike', False)} "
                 f"rsi={c.signals.get('rsi', '—')} "
-                f"news={c.signals.get('recent_news_count', 0)}"
+                f"rs={c.signals.get('rs_vs_sector_pct', '—')} "
+                f"52w={c.signals.get('pct_of_52wk_range', '—')} "
+                f"news_q={c.signals.get('news_quality', 0)}"
             )
         return "\n".join(lines)

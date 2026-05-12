@@ -217,3 +217,15 @@ class AlpacaClient:
             return 0
         delta = clock.next_close - datetime.now(ET)
         return max(0, int(delta.total_seconds() / 60))
+
+    def minutes_since_open(self) -> int:
+        """Return minutes elapsed since today's market open, or 0 if closed."""
+        clock = self.trading.get_clock()
+        if not clock.is_open:
+            return 0
+        delta = datetime.now(ET) - clock.next_open
+        if delta.total_seconds() < 0:
+            # Some Alpaca clock implementations expose the next session's open.
+            market_open = datetime.now(ET).replace(hour=9, minute=30, second=0, microsecond=0)
+            delta = datetime.now(ET) - market_open
+        return max(0, int(delta.total_seconds() / 60))

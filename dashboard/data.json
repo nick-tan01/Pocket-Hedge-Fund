@@ -35,10 +35,33 @@
       "portfolio_value": 100000.0,
       "cash": 100000.0,
       "spy_price": 733.36
+    },
+    {
+      "ts": "2026-05-12T16:08:29.980106",
+      "portfolio_value": 100000.0,
+      "cash": 100000.0,
+      "spy_price": 732.93
     }
   ],
   "trades": [],
-  "open_trades": [],
+  "open_trades": [
+    {
+      "id": "DDOG_20260512160556",
+      "symbol": "DDOG",
+      "side": "buy",
+      "qty": 30.2893,
+      "entry_price": 198.09,
+      "entry_ts": "2026-05-12T16:05:56.476771",
+      "stop_price": 182.24,
+      "conviction": 7,
+      "debate_id": "debate_DDOG_20260512160556",
+      "status": "open",
+      "key_risk": "Any sequential deceleration in margin expansion or guidance disappointment, as the forward P/E of 69.8 leaves no room for execution errors in the operational leverage thesis.",
+      "position_usd": 6000.01,
+      "position_pct": 0.06,
+      "sector": "Technology"
+    }
+  ],
   "runs": [
     {
       "ts": "2026-05-08T23:03:12.137003",
@@ -118,6 +141,23 @@
       "trades_executed": 0,
       "skipped_reason": "",
       "reason": "sentinel_trigger",
+      "regime": "bull",
+      "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-05-12T16:08:29.981394",
+      "run_type": "midday",
+      "candidates": [
+        "AMD",
+        "GOOGL",
+        "DDOG",
+        "LLY",
+        "CVS",
+        "AFRM"
+      ],
+      "trades_executed": 1,
+      "skipped_reason": "",
+      "reason": "scheduled",
       "regime": "bull",
       "vix_regime": "normal"
     }
@@ -539,6 +579,72 @@
       "bull_score": 6,
       "bear_score": 7,
       "final_conviction": 5,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_AMD_20260512160413",
+      "symbol": "AMD",
+      "ts": "2026-05-12T16:04:13.960832",
+      "bull_case": "R1 Bull(8): AMD is executing a perfect AI infrastructure capture with 91.2% EPS growth and dominant technical momentum (ADX>57) that will drive continuation beyond current resistance levels. | R1 Bear(6): AMD's massive 22% 5-day rally occurred on critically low volume (0.42x normal), creating a technical house of cards where institutional distribution is masked by momentum-chasing retail flow that will reverse violently on any disappointment. | R2 Bull(6): AMD's AI infrastructure dominance with 91.2% EPS growth remains intact despite concerning volume patterns, but the low-volume rally creates near-term vulnerability that requires careful position sizing | R2 Bear(7): AMD's parabolic rally on anemic visible volume combined with hidden institutional dark pool activity creates a dangerous retail trap where any AI disappointment will trigger violent liquidation without visible buying support.",
+      "bear_case": "Primary risk: Low-volume parabolic advance creates liquidity mirage where any negative catalyst triggers cascading stop-losses with insufficient buying support, potentially erasing weeks of gains in days | Unresolved: ['Dark pool institutional positioning creates asymmetric information where retail momentum-chasers are buying into potential institutional distribution without knowing true supply/demand dynamics']",
+      "bull_score": 6,
+      "bear_score": 7,
+      "final_conviction": 6,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_GOOGL_20260512160504",
+      "symbol": "GOOGL",
+      "ts": "2026-05-12T16:05:04.172683",
+      "bull_case": "R1 Bull(8): GOOGL is breaking out on exceptional operational performance with 82% EPS growth and 21.8% revenue growth while trading at only 1.6 PEG, creating a rare momentum + value convergence that institutional flows will chase. | R1 Bear(6): GOOGL's technical breakout is built on dangerously low volume (0.35x average) while the company faces existential AI competition that could rapidly erode its search monopoly margins before the market recognizes the threat. | R2 Bull(6): GOOGL remains attractive at 1.6 PEG despite AI transition risks, but volume divergence suggests waiting for institutional confirmation above $405 with stronger participation before adding aggressively | R2 Bear(7): GOOGL's technical breakout on anemic volume masks a fundamental repricing lag where the market hasn't yet recognized that AI-driven search disruption will compress Google's industry-leading margins faster than their AI investments can offset the revenue cliff.",
+      "bear_case": "Primary risk: AI disruption could trigger a rapid shift in user behavior away from traditional search, causing Google's high-margin search revenue to cliff-dive before the market has time to reprice the stock gradually | Unresolved: [\"The bull overestimates Google's ability to monetize AI transition at current margin levels - leading disruption doesn't guarantee preserving 80%+ gross margins when AI responses reduce ad inventory and click-through rates\"]",
+      "bull_score": 6,
+      "bear_score": 7,
+      "final_conviction": 6,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_DDOG_20260512160556",
+      "symbol": "DDOG",
+      "ts": "2026-05-12T16:05:56.318168",
+      "bull_case": "R1 Bull(9): DDOG is experiencing a rare combination of explosive earnings momentum (104% EPS growth) meeting dominant technical breakout conditions (ADX 35.2, +DI 48.4 vs 8.3) that creates a self-reinforcing acceleration phase where institutional momentum buyers chase performance. | R1 Bear(8): DDOG's 104% EPS growth is artificially inflated from an extremely low base (TTM P/E of 521 reveals minuscule prior earnings), creating a momentum trap where unsustainable valuation expansion meets inevitable deceleration in a company still barely profitable at 3.7% margins. | R2 Bull(7): DDOG represents a legitimate operational inflection point where early-stage profit generation meets strong institutional momentum (ADX 35.2), though execution risk around margin expansion creates moderate uncertainty | R2 Bear(7): While DDOG may represent a legitimate SaaS inflection point, the combination of extreme technical overbought conditions and a forward P/E of 69.8 creates asymmetric downside risk where any stumble in rapid margin expansion will trigger violent momentum reversal.",
+      "bear_case": "Primary risk: Parabolic price action at RSI 82.2 with 36% gains in 5 days creates maximum vulnerability to violent reversal when momentum buyers realize 104% EPS growth was merely going from zero to barely profitable, leaving no fundamental support for current valuation | Unresolved: ['RSI 82.2 with 36% gains in 5 days creates extreme technical vulnerability regardless of fundamental inflection potential', 'Forward P/E of 69.8 leaves zero margin for error if the margin expansion thesis fails to execute quickly']",
+      "bull_score": 7,
+      "bear_score": 7,
+      "final_conviction": 7,
+      "decision": "buy"
+    },
+    {
+      "id": "debate_LLY_20260512160649",
+      "symbol": "LLY",
+      "ts": "2026-05-12T16:06:49.154500",
+      "bull_case": "R1 Bull(8): LLY's explosive 169.9% EPS growth and breakthrough Alzheimer's blood test approval create a rare combination of exceptional current execution and transformative future revenue expansion that justifies breaking through $996.83 resistance. | R1 Bear(6): LLY's technical weakness at critical $996.83 resistance combined with unsustainable 169.9% EPS growth and dangerous debt levels creates a perfect storm for a momentum-driven collapse when reality hits the overvalued fundamentals. | R2 Bull(6): LLY remains attractive despite unsustainable EPS growth because the underlying obesity/diabetes mega-trend and early-stage Alzheimer's diagnostic platform provide durable secular growth drivers that can support premium valuations even as growth normalizes. | R2 Bear(7): LLY's institutional distribution pattern at resistance combined with inevitable growth deceleration from unsustainable levels will trigger a valuation reset that the company's high debt structure cannot absorb, regardless of long-term TAM potential.",
+      "bear_case": "Primary risk: Momentum-driven collapse when the market realizes 169.9% EPS growth is unsustainable, triggering algorithmic selling through the $996.83 breakdown level with weak hands and low volume providing no support. | Unresolved: ['Technical breakdown through $996.83 with institutional distribution already evident in weak volume patterns', \"Market's inability to maintain premium valuations once growth normalizes to 20-30%, triggering algorithmic selling cascade\", 'High debt leverage creating amplified downside risk if the growth normalization disappoints even modest expectations']",
+      "bull_score": 6,
+      "bear_score": 7,
+      "final_conviction": 5,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_CVS_20260512160742",
+      "symbol": "CVS",
+      "ts": "2026-05-12T16:07:42.008530",
+      "bull_case": "R1 Bull(8): CVS represents a rare momentum breakout play where fundamental earnings normalization (41.2x TTM to 11.3x forward P/E compression) is finally being recognized by institutional money, creating sustained buying pressure that will drive the stock through $100 despite temporary regulatory noise. | R1 Bear(8): CVS is a debt-laden, margin-compressed value trap disguised as a momentum play, where the bull's 'temporary regulatory noise' is actually existential Medicaid fraud liability that could trigger covenant breaches and forced deleveraging at the worst possible technical moment. | R2 Bull(5): CVS remains a viable momentum play on P/E normalization, but reduced conviction reflects real regulatory overhang and debt service risks that require careful position sizing rather than aggressive accumulation | R2 Bear(7): CVS remains a leveraged bet against regulatory settlement timing, where even 'moderate' Medicaid penalties could force dilutive capital raises into a deteriorating technical picture that screams institutional distribution.",
+      "bear_case": "Primary risk: Medicaid fraud penalties combined with extremely high debt ratios could force emergency equity dilution or asset sales at fire-sale prices, making this a potential 30-50% drawdown trap disguised as a value play. | Unresolved: ['The bull underestimates how Medicaid fraud settlements still typically run $100M-1B+ even without criminal charges, which combined with 4.2x debt/EBITDA could trigger covenant stress during the worst possible technical setup']",
+      "bull_score": 5,
+      "bear_score": 7,
+      "final_conviction": 4,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_AFRM_20260512160829",
+      "symbol": "AFRM",
+      "ts": "2026-05-12T16:08:29.860811",
+      "bull_case": "R1 Bull(8): AFRM's Google integration represents a transformational distribution catalyst that will accelerate user acquisition while the company trades at attractive forward metrics despite exceptional growth execution. | R1 Bear(7): AFRM's 240.3% debt-to-equity ratio creates a catastrophic refinancing risk in a rising rate environment that will crush margins and destroy the equity story regardless of Google integration success. | R2 Bull(6): AFRM's Google integration provides significant growth acceleration potential, but execution must focus on deleveraging while scaling to mitigate refinancing risks in the current rate environment | R2 Bear(6): AFRM's 240% debt-to-equity ratio creates an immediate refinancing crisis that will require massive dilution before any Google integration benefits can materialize to offset rising debt service costs.",
+      "bear_case": "Primary risk: Refinancing crisis that forces massive equity dilution or covenant violations as rising rates make AFRM's 240% leveraged business model financially unviable | Unresolved: ['The bull assumes Google integration revenue growth will exceed debt service cost increases without providing timing analysis - refinancing needs are immediate while Google revenue scaling takes quarters', '240% leverage remains fundamentally unsustainable regardless of cash flow predictability when refinancing costs could double']",
+      "bull_score": 6,
+      "bear_score": 6,
+      "final_conviction": 6,
       "decision": "skip"
     }
   ]

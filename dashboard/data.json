@@ -41,6 +41,12 @@
       "portfolio_value": 100000.0,
       "cash": 100000.0,
       "spy_price": 732.93
+    },
+    {
+      "ts": "2026-05-12T17:58:44.545792",
+      "portfolio_value": 99988.04,
+      "cash": 97990.55,
+      "spy_price": 734.86
     }
   ],
   "trades": [],
@@ -49,17 +55,30 @@
       "id": "DDOG_20260512160556",
       "symbol": "DDOG",
       "side": "buy",
-      "qty": 30.2893,
+      "qty": 10.0998,
       "entry_price": 198.09,
       "entry_ts": "2026-05-12T16:05:56.476771",
       "stop_price": 182.24,
       "conviction": 7,
       "debate_id": "debate_DDOG_20260512160556",
       "status": "open",
-      "key_risk": "Any sequential deceleration in margin expansion or guidance disappointment, as the forward P/E of 69.8 leaves no room for execution errors in the operational leverage thesis.",
-      "position_usd": 6000.01,
-      "position_pct": 0.06,
-      "sector": "Technology"
+      "key_risk": "Volume patterns and institutional participation - any continuation of light volume during rallies would signal the momentum acceleration thesis is failing to attract the institutional buying needed for sustainability.",
+      "position_usd": 1998.65,
+      "position_pct": 0.02,
+      "sector": "Technology",
+      "trim_history": [
+        {
+          "ts": "2026-05-12T17:51:47.728030",
+          "trim_qty": 20.1895,
+          "new_qty": 10.0998,
+          "price": 197.89,
+          "reason": "The self-reinforcing institutional momentum chase that was core to our thesis is not materializing as evidenced by the 0.41x volume ratio, though the fundamental and technical components remain strong enough to warrant partial position retention."
+        }
+      ],
+      "last_review_ts": "2026-05-12T13:51:47.729263-04:00",
+      "last_review_conviction": 6,
+      "thesis_status": "weakened",
+      "time_stop_flagged": false
     }
   ],
   "runs": [
@@ -158,6 +177,23 @@
       "trades_executed": 1,
       "skipped_reason": "",
       "reason": "scheduled",
+      "regime": "bull",
+      "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-05-12T17:58:44.547199",
+      "run_type": "midday",
+      "candidates": [
+        "AMD",
+        "GOOGL",
+        "DDOG",
+        "LLY",
+        "CVS",
+        "AFRM"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "sentinel_trigger",
       "regime": "bull",
       "vix_regime": "normal"
     }
@@ -646,6 +682,88 @@
       "bear_score": 6,
       "final_conviction": 6,
       "decision": "skip"
+    },
+    {
+      "id": "debate_AMD_20260512175427",
+      "symbol": "AMD",
+      "ts": "2026-05-12T17:54:27.636396",
+      "bull_case": "R1 Bull(8): AMD is in a powerful momentum breakout driven by explosive earnings growth that has compressed valuations to reasonable levels while riding the AI data center wave at maximum technical strength. | R1 Bear(6): AMD's explosive momentum is built on unsustainable debt-fueled growth hitting peak valuations just as technical momentum reaches exhaustion levels, creating a perfect storm for violent reversal. | R2 Bull(6): AMD remains a compelling momentum play with strong AI positioning and improving debt metrics, but elevated technical levels and execution risk around maintaining AI market share justify a more measured bullish stance | R2 Bear(4): While AMD's balance sheet concerns were overstated, the stock remains vulnerable to AI spending cyclicality and multiple compression from extreme valuations that leave no room for execution errors.",
+      "bear_case": "Primary risk: Debt-fueled growth model becomes unsustainable if AI spending normalizes or competition intensifies, triggering forced deleveraging and earnings collapse from current elevated expectations. | Unresolved: [\"AI spending cyclicality risk remains unaddressed - if enterprise AI capex normalizes in 2024-2025, AMD's revenue concentration in this segment could trigger sharp multiple compression from current 33.8x forward P/E\"]",
+      "bull_score": 6,
+      "bear_score": 4,
+      "final_conviction": 6,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_GOOGL_20260512175517",
+      "symbol": "GOOGL",
+      "ts": "2026-05-12T17:55:17.263014",
+      "bull_case": "R1 Bull(9): GOOGL is experiencing explosive operational execution with 82% EPS growth while trading at only 26.6x forward P/E, creating a rare combination of momentum acceleration and reasonable valuation that the market hasn't fully recognized. | R1 Bear(8): GOOGL's 20.0 debt/equity ratio creates dangerous leverage exposure in a potential rate environment shift that could rapidly compress the 26.6x P/E multiple despite strong current metrics. | R2 Bull(7): GOOGL's 82% EPS growth at 26.6x forward P/E still represents compelling value despite elevated leverage risks, as the company's market-leading positions provide sufficient cash flow stability to manage debt while capitalizing on AI-driven growth opportunities | R2 Bear(6): GOOGL's 20.0 debt/equity ratio amplifies downside risk through potential multiple compression from 26.6x to sector median levels, creating 30-40% downside despite strong operational metrics if rate environment shifts trigger systematic derating of leveraged growth stories.",
+      "bear_case": "Primary risk: Debt-amplified earnings volatility could trigger rapid multiple compression from 26.6x P/E to sector median, creating 30-40% downside if the leveraged growth story falters even temporarily. | Unresolved: ['Multiple compression risk remains unaddressed - even with stable cash flows, the 26.6x P/E is vulnerable to rapid derating in a rising rate environment where leveraged growth stories face systematic multiple compression regardless of operational strength']",
+      "bull_score": 7,
+      "bear_score": 6,
+      "final_conviction": 7,
+      "decision": "buy"
+    },
+    {
+      "id": "debate_DDOG_20260512175612",
+      "symbol": "DDOG",
+      "ts": "2026-05-12T17:56:12.344634",
+      "bull_case": "R1 Bull(8): DDOG is experiencing a rare convergence of explosive earnings acceleration (104% EPS growth) with powerful technical momentum (ADX 35.2, 35% 5-day gain) that typically precedes extended breakouts in high-growth SaaS names. | R1 Bear(7): DDOG's 104% EPS growth is artificially inflated by an unsustainably low base (3.7% profit margins, TTM P/E of 519.8), creating a momentum trap where any normalization in growth rates will trigger violent multiple compression at these extended valuations. | R2 Bull(6): DDOG's technical momentum (ADX 35.2 with strong volume) reflects genuine institutional recognition of accelerating margin expansion, though the sustainability depends on continued execution rather than mathematical base effects | R2 Bear(6): While DDOG shows genuine operational leverage, the forward P/E of 69.6 creates a momentum trap where any execution misstep or macro headwinds will cause violent multiple compression as stretched valuations offer no margin of safety.",
+      "bear_case": "Primary risk: Momentum reversal at extreme valuations - any disappointment in margin expansion or growth deceleration will trigger 30-40% drawdowns as both technical and fundamental buyers exit simultaneously | Unresolved: ['Forward P/E of 69.6 still requires perfect execution in a macro environment where enterprise spending is under pressure, creating asymmetric downside risk where any growth disappointment triggers severe multiple compression']",
+      "bull_score": 6,
+      "bear_score": 6,
+      "final_conviction": 6,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_LLY_20260512175704",
+      "symbol": "LLY",
+      "ts": "2026-05-12T17:57:04.515556",
+      "bull_case": "R1 Bull(8): LLY is positioned for a breakout above resistance as exceptional fundamentals (170% EPS growth, 56% revenue growth) combine with the breakthrough Alzheimer's blood test approval in Europe to unlock massive untapped market value that the current 22.4 forward P/E severely undervalues. | R1 Bear(7): LLY's 139% debt-to-equity ratio creates a ticking time bomb that transforms any earnings disappointment or pipeline setback into a liquidity crisis, while the stock sits at resistance with weak conviction and an Alzheimer's test that generates minimal revenue compared to the company's massive scale. | R2 Bull(6): LLY remains a compelling breakout candidate above $997 resistance driven by the durability of its GLP-1 franchise and Alzheimer's optionality, though elevated leverage requires monitoring for any signs of revenue deceleration | R2 Bear(6): LLY's 139% debt-to-equity ratio creates amplified downside risk at $1000 resistance where weak institutional conviction could trigger cascading technical damage if the GLP-1 growth narrative faces any headwinds.",
+      "bear_case": "Primary risk: Debt refinancing crisis if diabetes/obesity revenue growth slows even modestly, forcing asset sales and destroying shareholder value at precisely $1000 resistance where technical damage would be maximum | Unresolved: ['The bull underestimates how quickly sentiment can shift in leveraged pharma stocks - even with strong GLP-1 cash flows, any growth deceleration or competitive pressure could trigger refinancing concerns that amplify selling pressure at this critical technical resistance level']",
+      "bull_score": 6,
+      "bear_score": 6,
+      "final_conviction": 5,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_CVS_20260512175755",
+      "symbol": "CVS",
+      "ts": "2026-05-12T17:57:55.344750",
+      "bull_case": "R1 Bull(8): CVS is experiencing a rare convergence of extreme valuation compression (PEG ratio 0.3) with confirmed technical breakout momentum (ADX 41.3, +DI 49.1) that creates asymmetric upside as the market reprices 63% EPS growth. | R1 Bear(7): CVS faces an imminent regulatory enforcement action with Medicaid fraud exposure that could trigger multi-billion dollar penalties, making this technical breakout a classic bull trap at the worst possible time. | R2 Bull(5): CVS remains undervalued with strong technical momentum, but regulatory overhang creates meaningful downside protection requirements that reduce the asymmetric upside opportunity until settlement clarity emerges | R2 Bear(6): While CVS may survive a regulatory settlement financially, the combination of high leverage and market panic during enforcement announcements creates asymmetric downside risk that outweighs any technical upside momentum.",
+      "bear_case": "Primary risk: Medicaid fraud enforcement action resulting in $2B+ settlement that forces dividend cut and triggers debt covenant breaches, causing immediate 30-50% price collapse regardless of technical levels | Unresolved: [\"The bull underestimates that CVS's current debt-to-EBITDA ratio near covenant limits means even a structured $2B+ settlement could trigger technical defaults and force asset sales at distressed valuations\", 'Market reaction to healthcare fraud settlements often precedes and exceeds the actual financial impact, creating immediate liquidity crises regardless of payment structure']",
+      "bull_score": 5,
+      "bear_score": 6,
+      "final_conviction": 4,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_AFRM_20260512175844",
+      "symbol": "AFRM",
+      "ts": "2026-05-12T17:58:44.414242",
+      "bull_case": "R1 Bull(8): AFRM's explosive 3529% EPS growth combined with Google's strategic partnership creates a rare inflection point where profitability momentum meets massive distribution expansion. | R1 Bear(7): AFRM's 240.3% debt/equity ratio creates a liquidity time bomb in a rising rate environment where credit losses in BNPL typically spike 18-24 months after origination, making current profitability metrics misleading. | R2 Bull(6): AFRM's Google partnership creates a transformational distribution opportunity, but execution must focus on credit discipline and deleveraging to avoid the solvency trap that high leverage creates in cyclical credit businesses | R2 Bear(6): AFRM's excessive leverage creates a structural vulnerability that even improved underwriting and Google partnerships cannot fully mitigate when the credit cycle inevitably turns.",
+      "bear_case": "Primary risk: Credit loss explosion in 2025-2026 from current originations combined with 240.3% leverage creates potential solvency crisis when the inevitable BNPL credit cycle turns. | Unresolved: ['240.3% leverage ratio remains structurally dangerous regardless of underwriting improvements', 'Real-time underwriting is unproven in preventing losses during macro credit deterioration', 'Google partnership dependency creates single-point-of-failure risk for the turnaround story']",
+      "bull_score": 6,
+      "bear_score": 6,
+      "final_conviction": 5,
+      "decision": "skip"
+    }
+  ],
+  "position_reviews": [
+    {
+      "trade_id": "DDOG_20260512160556",
+      "symbol": "DDOG",
+      "ts": "2026-05-12T17:51:47.713807",
+      "action": "trim",
+      "conviction": 6,
+      "thesis_status": "weakened",
+      "rationale": "The core earnings momentum and technical breakout thesis remains intact, but the volume-starved rally (0.41x ratio) indicates weaker institutional participation than originally anticipated, reducing the self-reinforcing acceleration dynamic that was central to our thesis.",
+      "original_thesis_check": "The explosive earnings momentum (104% EPS growth) and technical breakout conditions (ADX>25) are still present, but the institutional momentum chase component has materially weakened due to low volume participation.",
+      "key_risk_to_monitor": "Volume patterns and institutional participation - any continuation of light volume during rallies would signal the momentum acceleration thesis is failing to attract the institutional buying needed for sustainability.",
+      "trim_reason": "The self-reinforcing institutional momentum chase that was core to our thesis is not materializing as evidenced by the 0.41x volume ratio, though the fundamental and technical components remain strong enough to warrant partial position retention.",
+      "current_bull_case": "R1 Bull(9): DDOG is exhibiting rare fundamental acceleration (104% EPS growth, 32.2% revenue growth) paired with technical breakout momentum (ADX>25, RSI 82 confirming trend strength) that creates a compounding rally opportunity before the Street fully prices in this growth inflection. | R2 Bull(7): DDOG's fundamental acceleration remains compelling with 104% EPS growth, but the volume-light technical setup reduces the margin of safety and requires closer monitoring of institutional participation to confirm breakout sustainability",
+      "current_bear_case": "R1 Bear(8): DDOG's extraordinary fundamental metrics are masking an unsustainable execution phase that's creating a dangerous momentum trap, where 104% EPS growth paired with extremely low profit margins and 0.41x volume ratio signals institutional distribution disguised as retail FOMO buying. | R2 Bear(7): DDOG's volume-starved rally on unsustainable fundamentals creates a high-risk momentum trap where institutional distribution will trigger violent P/E multiple compression once the growth narrative falters."
     }
   ]
 }

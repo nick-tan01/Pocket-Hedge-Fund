@@ -29,6 +29,12 @@
       "portfolio_value": 100000.0,
       "cash": 100000.0,
       "spy_price": 738.67
+    },
+    {
+      "ts": "2026-05-12T15:49:59.761008",
+      "portfolio_value": 100000.0,
+      "cash": 100000.0,
+      "spy_price": 733.36
     }
   ],
   "trades": [],
@@ -97,6 +103,23 @@
       ],
       "trades_executed": 0,
       "skipped_reason": ""
+    },
+    {
+      "ts": "2026-05-12T15:49:59.762070",
+      "run_type": "pre_market",
+      "candidates": [
+        "AMD",
+        "GOOGL",
+        "DDOG",
+        "LLY",
+        "CVS",
+        "AFRM"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "sentinel_trigger",
+      "regime": "bull",
+      "vix_regime": "normal"
     }
   ],
   "debate_logs": [
@@ -451,6 +474,72 @@
       "bear_score": 3,
       "final_conviction": 6,
       "decision": "watch"
+    },
+    {
+      "id": "debate_AMD_20260512154547",
+      "symbol": "AMD",
+      "ts": "2026-05-12T15:45:47.578994",
+      "bull_case": "R1 Bull(8): AMD is riding a rare confluence of explosive AI-driven fundamentals (91% EPS growth) and confirmed technical breakout momentum (ADX 58.1) that creates a compounding acceleration setup into resistance at $469. | R1 Bear(6): AMD is a momentum trap where 0.39x volume ratio signals institutional distribution disguised as retail breakout buying, creating a classic fake-out setup at resistance. | R2 Bull(6): AMD's AI fundamentals (91% EPS growth) combined with strong trend strength (ADX 58.1) still support upside to $469, but execution risk is elevated due to below-average institutional participation that could amplify any disappointment | R2 Bear(7): AMD represents a textbook institutional distribution pattern where strong ADX readings mask coordinated selling behind retail momentum, creating an amplified downside risk when the 0.39x volume ratio inevitably triggers cascade selling.",
+      "bear_case": "Primary risk: Institutional distribution disguised as momentum will trigger cascading selling when retail buyers exhaust at resistance, causing rapid multiple compression on the elevated valuation. | Unresolved: [\"The bull fails to explain why institutional volume would drop 61% during a genuine breakout - ADX measures trend strength but doesn't distinguish between accumulation and distribution phases, and professional distribution often maintains strong directional momentum until the final capitulation\"]",
+      "bull_score": 6,
+      "bear_score": 7,
+      "final_conviction": 5,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_GOOGL_20260512154640",
+      "symbol": "GOOGL",
+      "ts": "2026-05-12T15:46:40.081157",
+      "bull_case": "R1 Bull(8): GOOGL's exceptional fundamental momentum (82% EPS growth, 37.9% margins) is driving confirmed technical breakout strength that will accelerate as institutional investors chase performance in this bullish regime. | R1 Bear(7): GOOGL's AI dominance narrative is cracking under intensifying competition from Claude's 10x faster growth than ChatGPT, creating a Google Search disruption scenario that the market's 82% EPS growth expectations cannot survive. | R2 Bull(6): GOOGL's exceptional margins and technical breakout remain intact as defensive moats and AI counter-investments provide time to adapt, though AI competition risk requires monitoring for signs of actual search volume erosion. | R2 Bear(6): GOOGL faces a paradigm shift where AI agents may eliminate search queries altogether rather than just redirect them, creating revenue cliff risk that current valuations don't reflect despite ecosystem defensibility.",
+      "bear_case": "Primary risk: Google Search revenue collapse as AI agents like Claude capture query volume, destroying the advertising moat that generates 37.9% margins and making current 29.6x P/E unsustainable. | Unresolved: ['The bull underestimates how quickly AI agents could bypass traditional search entirely through direct task completion, making ecosystem stickiness irrelevant if users stop needing to search']",
+      "bull_score": 6,
+      "bear_score": 6,
+      "final_conviction": 6,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_DDOG_20260512154729",
+      "symbol": "DDOG",
+      "ts": "2026-05-12T15:47:29.365009",
+      "bull_case": "R1 Bull(8): DDOG is breaking out on explosive EPS growth of 104% combined with 32% revenue growth while riding the AI infrastructure wave, creating a rare convergence of fundamental acceleration and technical momentum that typically drives 20-30% moves. | R1 Bear(7): DDOG's explosive EPS growth is masking deteriorating fundamentals with extremely low profit margins and unsustainable valuation metrics that create massive downside risk when the AI hype cycle reverses. | R2 Bull(6): DDOG remains compelling on strong momentum (ADX>25 supports continued RSI>80) and AI infrastructure positioning, but valuation risk from unsustainable EPS base effects requires more selective entry points | R2 Bear(6): DDOG's extreme valuation multiples create asymmetric downside risk despite legitimate AI tailwinds, as any growth disappointment or sentiment shift will trigger violent multiple compression from unsustainable levels.",
+      "bear_case": "Primary risk: Violent multiple compression when AI momentum reverses, amplified by extreme technical over-extension that turns 20-30% upside potential into 40-50% downside reality | Unresolved: ['Multiple compression risk remains unaddressed - even with improved fundamentals, current valuation multiples are pricing in perfection and vulnerable to any growth deceleration or market sentiment shift']",
+      "bull_score": 6,
+      "bear_score": 6,
+      "final_conviction": 5,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_LLY_20260512154821",
+      "symbol": "LLY",
+      "ts": "2026-05-12T15:48:21.643423",
+      "bull_case": "R1 Bull(9): LLY's exceptional 169.9% EPS growth driven by its Alzheimer's franchise is about to accelerate further with the CE Mark approval for breakthrough blood-based diagnostics that will dramatically expand the addressable patient population. | R1 Bear(7): LLY's 139% debt-to-equity ratio creates a leveraged bet on unproven market expansion assumptions, while technical weakness and anemic volume signal institutional distribution at resistance. | R2 Bull(7): LLY's Alzheimer's diagnostic breakthrough creates a massive market expansion opportunity that justifies the leverage risk, but investors must accept meaningful downside if therapeutic adoption disappoints | R2 Bear(6): LLY's leveraged bet on Alzheimer's market expansion remains fundamentally flawed because diagnostic breakthroughs without therapeutic efficacy create stranded costs, while the current valuation assumes successful execution of an unproven treatment paradigm.",
+      "bear_case": "Primary risk: Debt-fueled growth model creates asymmetric downside where any disappointment in Alzheimer's market expansion triggers forced deleveraging, potentially wiping out equity value despite strong current fundamentals. | Unresolved: [\"The multi-decade demographic tailwind assumption ignores that Alzheimer's therapeutic efficacy remains largely unproven at scale, and early diagnostic capability without corresponding treatment success creates a costly infrastructure investment with limited monetization potential\"]",
+      "bull_score": 7,
+      "bear_score": 6,
+      "final_conviction": 6,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_CVS_20260512154907",
+      "symbol": "CVS",
+      "ts": "2026-05-12T15:49:07.838961",
+      "bull_case": "R1 Bull(8): CVS is experiencing a violent fundamental re-rating with P/E compression from 41.2x to 11.3x creating massive upside as 63% EPS growth forces multiple expansion in a bullish regime. | R1 Bear(7): CVS faces existential regulatory risk from Texas AG's Medicaid fraud investigation that could trigger massive financial penalties and operational disruptions, making the apparent valuation discount a value trap. | R2 Bull(6): CVS remains attractively valued with strong momentum (ADX 41.2) despite regulatory headwinds, but position sizing must account for binary Medicaid fraud risk that could derail the re-rating thesis | R2 Bear(6): CVS faces asymmetric downside risk from the Medicaid fraud investigation where diversification provides limited protection if government program exclusion occurs, making current valuation metrics irrelevant in the tail risk scenario.",
+      "bear_case": "Primary risk: Medicaid fraud investigation escalates to federal level with DOJ involvement, triggering exclusion from government healthcare programs and multi-billion dollar penalties that destroy the equity. | Unresolved: ['The bull underestimated the scale difference between past regulatory issues and potential Medicaid fraud exclusion, which would be catastrophic for a company deriving significant revenue from government programs']",
+      "bull_score": 6,
+      "bear_score": 6,
+      "final_conviction": 6,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_AFRM_20260512154959",
+      "symbol": "AFRM",
+      "ts": "2026-05-12T15:49:59.654185",
+      "bull_case": "R1 Bull(8): AFRM is experiencing explosive earnings acceleration (3529% EPS growth) while trading at a discount to growth (PEG 0.8), with the Google integration catalyst creating a massive distribution channel that hasn't been priced in yet. | R1 Bear(8): AFRM's 240% debt-to-equity ratio creates a debt spiral risk that could obliterate equity value faster than their earnings growth can compensate, making this a leveraged bet on consumer credit quality at cycle peak. | R2 Bull(6): AFRM's explosive earnings recovery and Google distribution catalyst offer significant upside, but the extreme leverage creates binary outcomes where credit performance will determine if this becomes a massive winner or catastrophic loss | R2 Bear(7): Despite asset-backed debt being less toxic than corporate debt, AFRM's 240% debt-to-equity still creates existential risk where any meaningful deterioration in their loan portfolio triggers a liquidity crisis that could wipe out equity holders before their growth story can play out.",
+      "bear_case": "Primary risk: Debt-to-equity of 240% creates existential leverage risk where any credit cycle downturn or funding cost spike could trigger insolvency before earnings growth matters. | Unresolved: ['Asset-backed debt still creates pro-cyclical leverage where deteriorating loan performance simultaneously reduces asset values while maintaining debt obligations, creating a potential death spiral in a credit downturn']",
+      "bull_score": 6,
+      "bear_score": 7,
+      "final_conviction": 5,
+      "decision": "skip"
     }
   ]
 }

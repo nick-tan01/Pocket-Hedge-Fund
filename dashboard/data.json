@@ -47,6 +47,12 @@
       "portfolio_value": 99988.04,
       "cash": 97990.55,
       "spy_price": 734.86
+    },
+    {
+      "ts": "2026-05-12T19:01:16.781929",
+      "portfolio_value": 99995.46,
+      "cash": 97990.55,
+      "spy_price": 736.21
     }
   ],
   "trades": [],
@@ -194,6 +200,23 @@
       "trades_executed": 0,
       "skipped_reason": "",
       "reason": "sentinel_trigger",
+      "regime": "bull",
+      "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-05-12T19:01:16.783412",
+      "run_type": "midday",
+      "candidates": [
+        "AMD",
+        "DDOG",
+        "GOOGL",
+        "LLY",
+        "CVS",
+        "CAT"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "scheduled",
       "regime": "bull",
       "vix_regime": "normal"
     }
@@ -747,6 +770,72 @@
       "bull_score": 6,
       "bear_score": 6,
       "final_conviction": 5,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_AMD_20260512185657",
+      "symbol": "AMD",
+      "ts": "2026-05-12T18:56:57.078416",
+      "bull_case": "R1 Bull(8): AMD's explosive 91.2% EPS growth driven by AI infrastructure demand creates a rare momentum breakout where technical strength (ADX 57.6) validates fundamental acceleration, making this a classic growth-at-speed play before consensus catches up. | R1 Bear(7): AMD's debt/equity ratio of 6.0x creates catastrophic downside vulnerability when AI infrastructure spending inevitably normalizes, turning today's momentum into tomorrow's liquidity crisis. | R2 Bull(6): AMD's AI-driven growth momentum justified by strong technicals (ADX 57.6) offers asymmetric upside if AI capex continues, but high leverage creates meaningful binary risk requiring tight position sizing | R2 Bear(8): AMD's 6.0x leverage amplifies downside risk in an AI infrastructure cycle that shows early signs of spending optimization, creating asymmetric risk that the bull's own concessions validate.",
+      "bear_case": "Primary risk: Debt/equity ratio of 6.0x creates binary outcome exposure where any AI infrastructure spending deceleration triggers forced deleveraging and potential financial distress, making this a 'heads you win small, tails you lose everything' trade | Unresolved: ['The bull assumes AI infrastructure spending robustness through 2024-2025 without addressing leading indicators showing enterprise AI capex optimization and hyperscaler guidance suggesting moderation', 'Historical navigation of high leverage occurred during a secular CPU recovery cycle, not a potentially cyclical AI infrastructure boom that could reverse quickly']",
+      "bull_score": 6,
+      "bear_score": 8,
+      "final_conviction": 5,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_DDOG_20260512185754",
+      "symbol": "DDOG",
+      "ts": "2026-05-12T18:57:54.021733",
+      "bull_case": "R1 Bull(8): DDOG's explosive 104% EPS growth combined with dominant technical momentum (ADX >35, 36% gain in 5 days) signals a fundamental inflection point that's driving sustained institutional accumulation in a bullish market regime. | R1 Bear(8): DDOG's 104% EPS growth is artificially inflated from an unsustainably low base (3.7% profit margins), while the extreme technical extension (RSI 82.8, 36% in 5 days) creates asymmetric downside risk that no fundamental improvement can justify at current levels. | R2 Bull(6): DDOG's operating leverage inflection is real but valuation leaves minimal room for error, making this a momentum play dependent on flawless execution and continued AI tailwinds. | R2 Bear(7): While DDOG's land-and-expand model has margin expansion potential, the extreme technical extension and 70x P/E create catastrophic downside risk that far outweighs the incremental upside at these levels.",
+      "bear_case": "Primary risk: Momentum reversal at extreme technical levels (RSI 82.8) combined with no fundamental margin of safety (3.7% margins, 70x forward P/E) creates potential for 30-40% drawdown on any disappointment or broad market weakness. | Unresolved: ['Extreme technical extension (RSI 82.8, 36% in 5 days) creating asymmetric downside risk that no fundamental improvement can justify at 70x forward P/E', 'Momentum-dependent valuation with no margin of safety leaves investors vulnerable to 30-40% drawdown on any execution miss or AI sentiment shift']",
+      "bull_score": 6,
+      "bear_score": 7,
+      "final_conviction": 6,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_GOOGL_20260512185842",
+      "symbol": "GOOGL",
+      "ts": "2026-05-12T18:58:42.549522",
+      "bull_case": "R1 Bull(9): GOOGL is breaking out on exceptional fundamentals (82% EPS growth, 37.9% profit margins) with strong technical momentum (ADX>25, +DI>-DI) while positioning aggressively for the AI infrastructure revolution through major hiring and orbital data center partnerships. | R1 Bear(6): GOOGL's speculative AI infrastructure bets and leveraged balance sheet create massive execution risk just as the company trades near all-time highs with 82% EPS growth that's unsustainable and priced for perfection. | R2 Bull(7): GOOGL remains a strong buy on exceptional current fundamentals and AI positioning, though investors should monitor debt levels and capital allocation closely as speculative infrastructure bets create meaningful downside risk | R2 Bear(4): GOOGL faces significant valuation compression risk as 82% EPS growth normalizes and AI infrastructure investments may disappoint, despite strong underlying cash generation providing downside protection.",
+      "bear_case": "Primary risk: Leveraged balance sheet funding speculative space infrastructure bets creates catastrophic downside if orbital data center partnership fails to deliver, leaving GOOGL with massive debt and stranded assets while trading at peak valuations. | Unresolved: ['Valuation remains stretched at all-time highs with unsustainable growth rates creating inevitable expectations reset risk', 'AI infrastructure spending may not generate proportional returns even if partnerships are structured favorably']",
+      "bull_score": 7,
+      "bear_score": 4,
+      "final_conviction": 7,
+      "decision": "buy"
+    },
+    {
+      "id": "debate_LLY_20260512185934",
+      "symbol": "LLY",
+      "ts": "2026-05-12T18:59:34.316487",
+      "bull_case": "R1 Bull(8): LLY is executing a historic growth acceleration with 170% EPS growth that justifies breaking through resistance at $997, as the Alzheimer's diagnostic breakthrough creates a massive new revenue stream beyond their already dominant diabetes franchise. | R1 Bear(7): LLY's 139% debt/equity ratio creates catastrophic refinancing risk that will crush earnings when borrowing costs reset, while the technical setup shows exhaustion with weak trend strength and anemic volume at resistance. | R2 Bull(6): LLY's historic 170% EPS growth and Alzheimer's diagnostic breakthrough justify continued upside despite elevated debt levels, as dominant diabetes franchise cash flows provide adequate debt service coverage in most rate scenarios | R2 Bear(6): Despite strong diabetes franchise cash flows, LLY's elevated leverage combined with technical weakness creates meaningful downside risk if refinancing costs surge or growth momentum falters.",
+      "bear_case": "Primary risk: Debt refinancing crisis that transforms the growth story into a liquidity nightmare, causing violent multiple compression and potential dividend cuts or asset sales | Unresolved: ['Interest rate sensitivity on debt refinancing could overwhelm cash flows if rates spike further', 'Technical exhaustion at resistance with weak trend strength signals potential momentum breakdown']",
+      "bull_score": 6,
+      "bear_score": 6,
+      "final_conviction": 5,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_CVS_20260512190026",
+      "symbol": "CVS",
+      "ts": "2026-05-12T19:00:26.447203",
+      "bull_case": "R1 Bull(8): CVS is experiencing a powerful momentum breakout driven by extreme undervaluation (PEG 0.3) and explosive earnings growth (63.1%) that creates a rare technical-fundamental convergence before consensus recognizes the earnings normalization story. | R1 Bear(8): CVS is a debt-laden, low-margin business facing severe regulatory risk that could trigger massive Medicaid fraud penalties, with technical momentum masking fundamental deterioration in a sector where regulatory compliance failures can destroy decades of earnings. | R2 Bull(6): CVS offers compelling risk-adjusted upside as the momentum breakout (ADX>41, strong volume) reflects emerging recognition of earnings normalization, though position sizing must account for binary regulatory outcome risk | R2 Bear(6): CVS remains overvalued as regulatory uncertainty will suppress multiples for years even if cash flows can absorb settlement costs, making the technical breakout unsustainable.",
+      "bear_case": "Primary risk: Medicaid fraud investigation escalates to federal level with multi-billion dollar penalties that trigger debt covenant breaches and force massive dilutive equity raises, wiping out all technical gains | Unresolved: ['Multi-year regulatory overhang will compress valuation multiples regardless of settlement structure, negating technical momentum gains', 'Healthcare regulatory environment is deteriorating with increased scrutiny across all major players, creating sector-wide headwinds']",
+      "bull_score": 6,
+      "bear_score": 6,
+      "final_conviction": 5,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_CAT_20260512190116",
+      "symbol": "CAT",
+      "ts": "2026-05-12T19:01:16.644554",
+      "bull_case": "R1 Bull(8): CAT's exceptional operational execution (30% EPS growth, 51% ROE) combined with confirmed technical momentum (ADX>25, RSI 65.4) creates a powerful breakout setup that the market is undervaluing despite premium metrics. | R1 Bear(7): CAT's unsustainable debt-fueled growth at cyclical peak valuations creates a capital destruction trap disguised as operational excellence. | R2 Bull(6): CAT's structural position in infrastructure renewal and mining automation provides defensive growth characteristics that justify premium valuations, though execution risk is elevated given debt levels and volume patterns | R2 Bear(6): CAT's debt-amplified operating leverage remains dangerous despite infrastructure tailwinds, as any margin compression will trigger disproportionate cash flow deterioration given fixed debt service costs.",
+      "bear_case": "Primary risk: Cyclical earnings collapse combined with high debt service will create negative operating leverage that destroys 50%+ of capital when construction demand inevitably contracts. | Unresolved: ['Debt service obligations of $1.2B+ annually will create severe cash flow stress when margins compress during any demand downturn, regardless of cycle duration', 'PEG ratio assumes sustained 20%+ earnings growth which is historically unsustainable for cyclical industrials beyond 2-3 year periods']",
+      "bull_score": 6,
+      "bear_score": 6,
+      "final_conviction": 6,
       "decision": "skip"
     }
   ],

@@ -136,6 +136,21 @@ def check_open_positions(alpaca: AlpacaClient):
                 trade["stop_price"] = new_stop
                 logger.info("Trailing stop → %s $%.2f", symbol, new_stop)
 
+        try:
+            entry_dt = datetime.fromisoformat(trade.get("entry_ts", ""))
+            if entry_dt.tzinfo is None:
+                entry_dt = entry_dt.replace(tzinfo=timezone.utc)
+            calendar_days = (datetime.now(timezone.utc) - entry_dt).days
+            trading_days = int(calendar_days * 5 / 7)
+        except (TypeError, ValueError):
+            trading_days = 0
+        if trading_days > 20 and pnl_pct < 0.03 and not trade.get("time_stop_flagged"):
+            logger.warning(
+                "TIME STOP FLAG | %s held %d trading days, P&L=%.1f%% — forcing thesis review",
+                symbol, trading_days, pnl_pct * 100,
+            )
+            update_open_trade(trade["id"], {"time_stop_flagged": True})
+
 
 # ── Position review (thesis-driven hold / trim / exit) ───────────────────────
 
@@ -281,6 +296,7 @@ def review_open_positions(alpaca: AlpacaClient, fetcher: DataFetcher, dry_run: b
                 "thesis_status":          review.get("thesis_status"),
                 "key_risk":               review.get("key_risk_to_monitor"),
                 "queued_action":           None,
+                "time_stop_flagged":       False,
             })
             clear_queued_action(trade_id)
 
@@ -296,6 +312,7 @@ def review_open_positions(alpaca: AlpacaClient, fetcher: DataFetcher, dry_run: b
                 update_open_trade(trade_id, {
                     "last_review_ts": datetime.now(ET).isoformat(),
                     "thesis_status":  review.get("thesis_status"),
+                    "time_stop_flagged": False,
                 })
                 continue
 
@@ -317,6 +334,7 @@ def review_open_positions(alpaca: AlpacaClient, fetcher: DataFetcher, dry_run: b
                     "last_review_ts":         datetime.now(ET).isoformat(),
                     "last_review_conviction": conviction,
                     "thesis_status":          review.get("thesis_status"),
+                    "time_stop_flagged":      False,
                 })
                 continue
 
@@ -337,6 +355,7 @@ def review_open_positions(alpaca: AlpacaClient, fetcher: DataFetcher, dry_run: b
                     "thesis_status":          review.get("thesis_status"),
                     "key_risk":               review.get("key_risk_to_monitor"),
                     "queued_action":           None,
+                    "time_stop_flagged":       False,
                 })
                 clear_queued_action(trade_id)
                 continue
@@ -353,6 +372,7 @@ def review_open_positions(alpaca: AlpacaClient, fetcher: DataFetcher, dry_run: b
                     "thesis_status":          review.get("thesis_status"),
                     "key_risk":               review.get("key_risk_to_monitor"),
                     "queued_action":           None,
+                    "time_stop_flagged":       False,
                 })
                 clear_queued_action(trade_id)
                 continue
@@ -372,6 +392,7 @@ def review_open_positions(alpaca: AlpacaClient, fetcher: DataFetcher, dry_run: b
                     "thesis_status":          review.get("thesis_status"),
                     "key_risk":               review.get("key_risk_to_monitor"),
                     "queued_action":           None,
+                    "time_stop_flagged":       False,
                 })
                 clear_queued_action(trade_id)
                 logger.info(
@@ -451,6 +472,7 @@ def analyse_symbol(
         open_positions=open_positions,
         regime=regime,
         vix_regime=vix_regime,
+        fetcher=fetcher,
     )
 
     # ── Log full debate to journal ────────────────────────────────────────────
@@ -497,6 +519,7 @@ def analyse_symbol(
             entry_price=current_price, stop_price=proposal.stop_price,
             conviction=proposal.conviction, debate_id=debate_id,
             key_risk=proposal.key_risk, portfolio_value=portfolio_value,
+            sector=proposal.sector,
         )
         logger.info("✅ ORDER FILLED | %s %.4f @ $%.2f stop=$%.2f",
                     symbol, proposal.shares, current_price, proposal.stop_price)
@@ -511,26 +534,31 @@ def _should_run_thesis_review(run_start: datetime, reason: str) -> bool:
     """Full LLM thesis review runs Mondays or when event-triggered by sentinel."""
     if reason == "sentinel_trigger":
         return True
+    if any(t.get("time_stop_flagged") for t in get_open_trades()):
+        return True
     return run_start.weekday() == 0   # 0 = Monday
 
 
 def run_pipeline(dry_run: bool = False, reason: str = "scheduled"):
     run_start = datetime.now(ET)
     run_type  = "pre_market" if run_start.hour < 12 else "midday"
-    logger.info("══ Pipeline starting | %s | dry_run=%s ══", run_type, dry_run)
+    trigger_reason = reason
+    logger.info("══ Pipeline starting | %s | dry_run=%s | reason=%s ══",
+                run_type, dry_run, trigger_reason)
 
     alpaca  = AlpacaClient()
     fetcher = DataFetcher()
 
-    ok, reason, regime, vix_regime = check_hard_stops(alpaca, fetcher)
+    ok, skipped_reason, regime, vix_regime = check_hard_stops(alpaca, fetcher)
     logger.info("Regime | SPY=%s | VIX=%s", regime, vix_regime)
     if not ok:
-        logger.info("Hard stop: %s", reason)
-        log_run(run_type, [], 0, skipped_reason=reason, regime=regime, vix_regime=vix_regime)
+        logger.info("Hard stop: %s", skipped_reason)
+        log_run(run_type, [], 0, skipped_reason=skipped_reason,
+                regime=regime, vix_regime=vix_regime, reason=trigger_reason)
         return
 
     check_open_positions(alpaca)
-    if _should_run_thesis_review(run_start, reason):
+    if _should_run_thesis_review(run_start, trigger_reason):
         review_open_positions(alpaca, fetcher, dry_run=dry_run)
     else:
         logger.info("Skipping full thesis review (not Monday) — mechanical stops only")
@@ -547,7 +575,7 @@ def run_pipeline(dry_run: bool = False, reason: str = "scheduled"):
     if not candidates:
         logger.info("No screener candidates")
         log_run(run_type, [], 0, skipped_reason="no_candidates",
-                regime=regime, vix_regime=vix_regime)
+                regime=regime, vix_regime=vix_regime, reason=trigger_reason)
         return
 
     logger.info(screener.format_for_log(candidates))
@@ -584,7 +612,7 @@ def run_pipeline(dry_run: bool = False, reason: str = "scheduled"):
     spy_price = spy_bars[-1]["close"] if spy_bars else 0.0
     log_snapshot(account["portfolio_value"], account["cash"], spy_price)
     log_run(run_type, [c.symbol for c in candidates], trades_executed,
-            regime=regime, vix_regime=vix_regime)
+            regime=regime, vix_regime=vix_regime, reason=trigger_reason)
 
     logger.info("══ Pipeline complete | portfolio=$%.2f | trades=%d ══",
                 account["portfolio_value"], trades_executed)

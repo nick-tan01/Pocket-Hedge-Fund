@@ -5,6 +5,11 @@ on:
     - cron: '30 13 * * 1-5'   # 8:30am ET (EDT)
     - cron: '0 17 * * 1-5'    # 1:00pm ET (EDT)
   workflow_dispatch:
+    inputs:
+      reason:
+        description: "Run trigger reason"
+        required: false
+        default: "manual"
 
 permissions:
   contents: write
@@ -35,7 +40,8 @@ jobs:
           ALPACA_API_KEY:    ${{ secrets.ALPACA_API_KEY }}
           ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-        run: python main.py --now
+          RUN_REASON:        ${{ github.event.inputs.reason || 'scheduled' }}
+        run: python main.py --now --reason "$RUN_REASON"
 
       - name: Push updated dashboard data
         run: |

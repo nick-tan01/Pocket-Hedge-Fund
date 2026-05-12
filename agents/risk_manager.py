@@ -23,6 +23,7 @@ class TradeProposal:
     stop_pct:        float
     reason:          str
     key_risk:        str       # from PM — what to monitor post-entry
+    sector:          str = ""
 
 
 def evaluate(
@@ -34,6 +35,7 @@ def evaluate(
     open_positions:  list[dict],
     regime:          str = "bull",
     vix_regime:      str = "normal",
+    fetcher = None,
 ) -> TradeProposal:
 
     action    = pm_verdict.get("action", "skip")
@@ -114,6 +116,32 @@ def evaluate(
     vix_mult    = {"normal": 1.0, "elevated_vix": 0.75, "high_vix": 0.5}.get(vix_regime, 1.0)
     size_pct    = min(size_pct * regime_mult * vix_mult, remaining_exposure)
 
+    sector = _get_sector(symbol)
+    sector_deployed = sum(
+        p.get("position_pct", 0)
+        for p in open_positions
+        if p.get("sector", "") == sector
+    )
+    if sector and sector_deployed + size_pct > config.MAX_SECTOR_PCT:
+        return TradeProposal(
+            symbol=symbol, action="skip", conviction=conviction,
+            position_usd=0, shares=0, entry_price=current_price,
+            stop_price=0, stop_pct=0,
+            reason=(f"Sector cap: {sector} already at {sector_deployed*100:.1f}% "
+                    f"(max {config.MAX_SECTOR_PCT*100:.0f}%)"),
+            key_risk=key_risk,
+        )
+
+    corr_ok, corr_reason = _check_correlation(symbol, open_positions, fetcher)
+    if not corr_ok:
+        return TradeProposal(
+            symbol=symbol, action="skip", conviction=conviction,
+            position_usd=0, shares=0, entry_price=current_price,
+            stop_price=0, stop_pct=0,
+            reason=corr_reason,
+            key_risk=key_risk,
+        )
+
     position_usd = round(portfolio_value * size_pct, 2)
     shares       = round(position_usd / current_price, 4) if current_price > 0 else 0
 
@@ -141,6 +169,7 @@ def evaluate(
         position_usd=position_usd, shares=shares,
         entry_price=current_price, stop_price=stop_price,
         stop_pct=stop_pct, reason=reason, key_risk=key_risk,
+        sector=sector,
     )
 
 
@@ -164,3 +193,39 @@ def _get_beta(symbol: str) -> float:
         return float(yf.Ticker(symbol).info.get("beta") or 1.0)
     except Exception:
         return 1.0
+
+
+def _get_sector(symbol: str) -> str:
+    try:
+        import yfinance as yf
+        return yf.Ticker(symbol).info.get("sector", "Unknown") or "Unknown"
+    except Exception:
+        return "Unknown"
+
+
+def _check_correlation(symbol: str, open_positions: list[dict], fetcher) -> tuple[bool, str]:
+    """Return (ok_to_trade, reason). Blocks if corr > 0.75 with any open position."""
+    if not open_positions or fetcher is None:
+        return True, ""
+    try:
+        import pandas as pd
+        symbols = [p["symbol"] for p in open_positions] + [symbol]
+        closes = {}
+        for sym in symbols:
+            bars = fetcher.get_ohlcv(sym, days=30)
+            if bars:
+                closes[sym] = [b["close"] for b in bars]
+        if len(closes) < 2 or symbol not in closes:
+            return True, ""
+        min_len = min(len(v) for v in closes.values())
+        df = pd.DataFrame({k: v[-min_len:] for k, v in closes.items()})
+        corr = df.corr()
+        for existing in open_positions:
+            existing_sym = existing["symbol"]
+            if existing_sym in corr.columns and symbol in corr.index:
+                r = corr.loc[symbol, existing_sym]
+                if r > 0.75:
+                    return False, f"High correlation with existing {existing_sym} (r={r:.2f})"
+    except Exception as e:
+        logger.debug("Correlation check failed for %s: %s", symbol, e)
+    return True, ""

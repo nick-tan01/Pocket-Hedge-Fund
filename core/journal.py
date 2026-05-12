@@ -63,7 +63,7 @@ def log_snapshot(portfolio_value: float, cash: float, spy_price: float):
 def log_trade_open(
     symbol: str, side: str, qty: float, entry_price: float,
     stop_price: float, conviction: int, debate_id: str,
-    key_risk: str = "", portfolio_value: float = 0.0,
+    key_risk: str = "", portfolio_value: float = 0.0, sector: str = "",
 ):
     """Record when a new position is opened."""
     data = _load()
@@ -83,6 +83,7 @@ def log_trade_open(
         "key_risk":      key_risk,
         "position_usd":  position_usd,
         "position_pct":  position_pct,
+        "sector":        sector,
     }
     data["open_trades"].append(trade)
     _save(data)
@@ -145,7 +146,8 @@ def log_debate(
 
 def log_run(
     run_type: str, candidates: list[str], trades_executed: int,
-    skipped_reason: str = "", regime: str = "", vix_regime: str = ""
+    skipped_reason: str = "", regime: str = "", vix_regime: str = "",
+    reason: str = "scheduled",
 ):
     """Log a summary of each pipeline run."""
     data = _load()
@@ -155,6 +157,7 @@ def log_run(
         "candidates":       candidates,
         "trades_executed":  trades_executed,
         "skipped_reason":   skipped_reason,
+        "reason":           reason,
     }
     if regime:
         entry["regime"] = regime
@@ -238,6 +241,8 @@ def log_trade_trim(
     data = _load()
     for trade in data["open_trades"]:
         if trade["id"] == trade_id:
+            old_qty = float(trade.get("qty", 0) or 0)
+            old_pct = float(trade.get("position_pct", 0) or 0)
             trade.setdefault("trim_history", [])
             trade["trim_history"].append({
                 "ts":       datetime.utcnow().isoformat(),
@@ -247,6 +252,9 @@ def log_trade_trim(
                 "reason":   reason,
             })
             trade["qty"] = round(new_qty, 4)
+            trade["position_usd"] = round(price * new_qty, 2)
+            if old_qty > 0:
+                trade["position_pct"] = round(old_pct * (new_qty / old_qty), 4)
             break
     _save(data)
     logger.info("Trim logged: trade=%s sold=%.4f remaining=%.4f @ $%.2f",

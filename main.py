@@ -507,7 +507,14 @@ def analyse_symbol(
 
 # ── Main pipeline ─────────────────────────────────────────────────────────────
 
-def run_pipeline(dry_run: bool = False):
+def _should_run_thesis_review(run_start: datetime, reason: str) -> bool:
+    """Full LLM thesis review runs Mondays or when event-triggered by sentinel."""
+    if reason == "sentinel_trigger":
+        return True
+    return run_start.weekday() == 0   # 0 = Monday
+
+
+def run_pipeline(dry_run: bool = False, reason: str = "scheduled"):
     run_start = datetime.now(ET)
     run_type  = "pre_market" if run_start.hour < 12 else "midday"
     logger.info("══ Pipeline starting | %s | dry_run=%s ══", run_type, dry_run)
@@ -523,7 +530,10 @@ def run_pipeline(dry_run: bool = False):
         return
 
     check_open_positions(alpaca)
-    review_open_positions(alpaca, fetcher, dry_run=dry_run)
+    if _should_run_thesis_review(run_start, reason):
+        review_open_positions(alpaca, fetcher, dry_run=dry_run)
+    else:
+        logger.info("Skipping full thesis review (not Monday) — mechanical stops only")
 
     open_count  = len(get_open_trades())
     available   = config.MAX_POSITIONS - open_count
@@ -600,10 +610,12 @@ def run_scheduled(dry_run: bool = False):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--now",  action="store_true")
-    parser.add_argument("--test", action="store_true")
+    parser.add_argument("--now",    action="store_true")
+    parser.add_argument("--test",   action="store_true")
+    parser.add_argument("--reason", default="scheduled",
+                        help="Run trigger reason (scheduled / sentinel_trigger)")
     args = parser.parse_args()
     if args.now or args.test:
-        run_pipeline(dry_run=args.test)
+        run_pipeline(dry_run=args.test, reason=args.reason)
     else:
         run_scheduled()

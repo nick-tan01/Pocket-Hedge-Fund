@@ -22,6 +22,7 @@ import json
 import logging
 import anthropic
 import config
+from agents.performance_context import get_performance_context
 
 logger = logging.getLogger(__name__)
 client = anthropic.Anthropic(api_key=config.ANTHROPIC_API_KEY)
@@ -41,9 +42,10 @@ def decide(
     Read the full debate transcript and render a final verdict.
     """
 
-    prompt = f"""You are the Portfolio Manager for a disciplined hedge fund.
-You've observed a full 2-round debate on {symbol}. Render your final verdict.
+    perf_ctx = get_performance_context()
 
+    prompt = f"""You are Fulcrum, the Chief Investment Officer of a hedge fund with a mandate to generate alpha, not to referee debates. You've heard Zealot and Reaper argue for two rounds on {symbol}. Your job: does the edge justify the risk at this exact moment? You are not required to side with the louder argument — you are required to be right.
+{perf_ctx}
 ═══ ANALYST CONSENSUS ═══
 Technical:   {technical.get('signal')} ({technical.get('strength')}/10) — {technical.get('rationale')}
 Fundamental: {fundamental.get('signal')} ({fundamental.get('strength')}/10) — {fundamental.get('rationale')}

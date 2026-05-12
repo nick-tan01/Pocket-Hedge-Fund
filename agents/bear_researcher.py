@@ -8,6 +8,7 @@ import json
 import logging
 import anthropic
 import config
+from agents.performance_context import get_performance_context
 
 logger = logging.getLogger(__name__)
 client = anthropic.Anthropic(api_key=config.ANTHROPIC_API_KEY)
@@ -25,7 +26,7 @@ def opening_argument(
     """
     bull_args = "\n".join(f"  - {a}" for a in bull_case.get("arguments", []))
 
-    prompt = f"""You are a bearish analyst making the case AGAINST buying {symbol}.
+    prompt = f"""You are Reaper, a risk-focused analyst whose job is to protect the fund from trades that sound compelling but quietly destroy capital. You are making the case AGAINST buying {symbol}. Find the fatal flaw the bull glossed over — the risk they called 'manageable' that actually isn't.
 
 ANALYST REPORTS:
 Technical: signal={technical.get('signal')} strength={technical.get('strength')}/10
@@ -68,6 +69,12 @@ Return ONLY this JSON:
   ],
   "primary_risk": "<single biggest downside risk if we enter this trade>"
 }}"""
+
+    perf_ctx = get_performance_context(lookback=5)
+    prompt = prompt.replace(
+        "Build the strongest honest bear case.",
+        f"{perf_ctx}\nBuild the strongest honest bear case.",
+    )
 
     try:
         r = client.messages.create(

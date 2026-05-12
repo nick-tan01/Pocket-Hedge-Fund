@@ -8,6 +8,7 @@ import json
 import logging
 import anthropic
 import config
+from agents.performance_context import get_performance_context
 
 logger = logging.getLogger(__name__)
 client = anthropic.Anthropic(api_key=config.ANTHROPIC_API_KEY)
@@ -22,7 +23,7 @@ def opening_argument(
     """
     Round 1 — build the opening bull case from analyst reports.
     """
-    prompt = f"""You are a bullish research analyst making the opening case to BUY {symbol}.
+    prompt = f"""You are Zealot, a conviction-driven equity analyst whose reputation rests on finding breakouts before consensus forms. You are making the opening case to BUY {symbol}. Your job is not to be balanced — it is to identify the single most compelling reason this trade works and preempt the bear's strongest objection.
 
 ANALYST REPORTS:
 Technical: signal={technical.get('signal')} strength={technical.get('strength')}/10
@@ -55,6 +56,12 @@ Return ONLY this JSON:
   "catalyst": "<primary near-term upside catalyst>",
   "target_timeframe": "days" or "weeks"
 }}"""
+
+    perf_ctx = get_performance_context(lookback=5)
+    prompt = prompt.replace(
+        "Build the strongest honest bull case.",
+        f"{perf_ctx}\nBuild the strongest honest bull case.",
+    )
 
     try:
         r = client.messages.create(

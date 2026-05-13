@@ -83,6 +83,12 @@
       "portfolio_value": 100096.77,
       "cash": 91988.72,
       "spy_price": 742.79
+    },
+    {
+      "ts": "2026-05-13T19:02:20.535744",
+      "portfolio_value": 100096.17,
+      "cash": 91988.72,
+      "spy_price": 742.92
     }
   ],
   "trades": [],
@@ -135,6 +141,22 @@
       "last_review_conviction": 7,
       "thesis_status": "intact",
       "time_stop_flagged": false
+    },
+    {
+      "id": "AMZN_20260513190220",
+      "symbol": "AMZN",
+      "side": "buy",
+      "qty": 22.284,
+      "entry_price": 269.51,
+      "entry_ts": "2026-05-13T19:02:20.336454",
+      "stop_price": 251.1,
+      "conviction": 7,
+      "debate_id": "debate_AMZN_20260513190220",
+      "status": "open",
+      "key_risk": "AWS growth deceleration combined with margin compression that could create cash flow pressure amplified by the 53.3% debt ratio",
+      "position_usd": 6005.76,
+      "position_pct": 0.06,
+      "sector": "Consumer Cyclical"
     }
   ],
   "runs": [
@@ -375,6 +397,23 @@
         "TSLA",
         "TTD"
       ],
+      "regime": "bull",
+      "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-05-13T19:02:20.538224",
+      "run_type": "midday",
+      "candidates": [
+        "AMD",
+        "DDOG",
+        "GOOGL",
+        "CVS",
+        "TXN",
+        "AMZN"
+      ],
+      "trades_executed": 1,
+      "skipped_reason": "",
+      "reason": "scheduled",
       "regime": "bull",
       "vix_regime": "normal"
     }
@@ -1281,6 +1320,72 @@
       "bear_score": 6,
       "final_conviction": 4,
       "decision": "skip"
+    },
+    {
+      "id": "debate_AMD_20260513185809",
+      "symbol": "AMD",
+      "ts": "2026-05-13T18:58:09.113003",
+      "bull_case": "R1 Bull(8): AMD is experiencing explosive earnings momentum with 91.2% EPS growth while trading at a reasonable PEG of 1.1, supported by dominant technical momentum that historically signals further upside. | R1 Bear(8): AMD's debt-to-equity ratio of 6.0 combined with only 8.1% ROE creates a catastrophic leverage trap where any earnings deceleration will trigger cascading margin calls and institutional selling in an already overbought technical setup. | R2 Bull(6): AMD's explosive AI-driven growth and technical momentum still justify upside potential, but the excessive leverage significantly increases downside risk if execution falters. | R2 Bear(7): AMD's 6.0 debt-to-equity ratio creates a binary outcome where current AI growth can service debt temporarily, but inevitable growth deceleration will trigger catastrophic deleveraging in an already technically compromised setup.",
+      "bear_case": "Primary risk: Earnings miss or guidance cut triggers immediate margin calls on the 6.0 debt-to-equity structure, forcing fire sales that cascade through the overbought technical setup and destroy 40-60% of capital in days. | Unresolved: ['The bull fails to address that 37.8% growth rates are unsustainable and any deceleration with 6.0 leverage will create forced selling regardless of AI market position', 'Low volume breakout at 0.44x still indicates institutional distribution that will accelerate during any earnings disappointment']",
+      "bull_score": 6,
+      "bear_score": 7,
+      "final_conviction": 6,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_DDOG_20260513185900",
+      "symbol": "DDOG",
+      "ts": "2026-05-13T18:59:00.845123",
+      "bull_case": "R1 Bull(9): DDOG is hitting the SaaS profitability inflection point with 104% EPS growth while maintaining 32% revenue growth, creating a rare momentum breakout opportunity as the stock tests resistance at $204.5 with dominant trend strength. | R1 Bear(7): DDOG is exhibiting classic late-cycle SaaS euphoria with RSI at 84.7, volume ratio of just 0.35x signaling institutional distribution, and a forward P/E of 71.5x that's still astronomically expensive despite the 'compression' narrative. | R2 Bull(7): DDOG's profitability inflection remains compelling with 104% EPS growth, but execution in the next 2 quarters is critical to justify the 71.5x forward P/E and overcome concerning volume distribution patterns that suggest institutional caution | R2 Bear(8): DDOG's institutional distribution patterns, fragile expense-timing-driven profitability, and extreme 71.5x valuation create a perfect storm for catastrophic multiple compression when growth inevitably decelerates.",
+      "bear_case": "Primary risk: Catastrophic multiple compression when growth inevitably decelerates - at 71.5x forward P/E, even a modest slowdown from 32% revenue growth could trigger a 40-50% drawdown as valuation support evaporates in a risk-off environment. | Unresolved: ['The bull failed to address how DDOG can sustain 71.5x forward P/E when peer SaaS companies are trading at 20-40x despite similar growth profiles', 'No explanation for how the company maintains 32% revenue growth as enterprise software budgets contract in 2024', \"The ADX argument ignores that trend strength indicators are lagging and don't predict institutional behavior reversals\"]",
+      "bull_score": 7,
+      "bear_score": 8,
+      "final_conviction": 4,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_GOOGL_20260513185950",
+      "symbol": "GOOGL",
+      "ts": "2026-05-13T18:59:50.892525",
+      "bull_case": "R1 Bull(9): GOOGL is breaking out on exceptional fundamental momentum (82% EPS growth, 38.9% ROE) with technical confirmation via ADX>50 and RSI 75.7 signaling strength continuation, not exhaustion. | R1 Bear(7): GOOGL's 82% EPS growth is masking a dangerous deceleration in core revenue growth while regulatory pressure on AI infrastructure creates an asymmetric risk-reward at current technical extremes. | R2 Bull(7): GOOGL remains a strong momentum play with ADX>50 confirming trend strength despite earnings quality concerns, as AI infrastructure investments position the company for accelerating revenue growth in 2024-2025 | R2 Bear(6): While GOOGL's AI investment cycle may justify current margin expansion, regulatory interference with data center infrastructure creates an asymmetric downside risk that could simultaneously crush both the capex-dependent growth story and current elevated margins.",
+      "bear_case": "Primary risk: Regulatory crackdown on AI data center infrastructure forces Google to curtail the very investments driving current margin expansion, causing earnings to collapse back toward revenue growth rates of ~22% while the stock trades at momentum multiples. | Unresolved: ['Regulatory crackdown on AI data center infrastructure could force Google to curtail the $13B quarterly capex investments that the bull admits are essential for future revenue growth, creating a catch-22 where compliance kills the growth thesis']",
+      "bull_score": 7,
+      "bear_score": 6,
+      "final_conviction": 7,
+      "decision": "buy"
+    },
+    {
+      "id": "debate_CVS_20260513190041",
+      "symbol": "CVS",
+      "ts": "2026-05-13T19:00:41.437090",
+      "bull_case": "R1 Bull(8): CVS is experiencing earnings acceleration that the market hasn't fully recognized, evidenced by a PEG ratio of 0.3 while trading in a confirmed technical breakout with RSI 81.6 momentum continuation. | R1 Bear(7): CVS is a debt-laden, margin-compressed retailer masquerading as a growth story while facing existential regulatory risk that could trigger massive Medicaid clawbacks. | R2 Bull(6): CVS offers asymmetric upside with earnings acceleration and technical momentum, but Medicaid fraud liability creates meaningful near-term risk that caps conviction until regulatory clarity emerges | R2 Bear(6): CVS remains overvalued relative to deteriorating fundamentals, with Medicaid fraud liability representing an asymmetric downside risk that current valuation multiples fail to adequately capture despite available liquidity.",
+      "bear_case": "Primary risk: Medicaid fraud penalties could trigger immediate debt covenant violations in a highly leveraged company with razor-thin margins, forcing emergency asset sales and equity dilution at fire-sale prices. | Unresolved: [\"The bull dismisses that 'market is already pricing in regulatory risk' but CVS trades at only 9x forward earnings - if Medicaid penalties reach the billions as seen in similar cases, even investment-grade liquidity won't prevent severe equity dilution\"]",
+      "bull_score": 6,
+      "bear_score": 6,
+      "final_conviction": 6,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_TXN_20260513190128",
+      "symbol": "TXN",
+      "ts": "2026-05-13T19:01:28.366308",
+      "bull_case": "R1 Bull(8): TXN is positioned for an imminent breakout above $309.32 resistance, driven by exceptional momentum strength (ADX 58.1) in a quality semiconductor franchise trading at reasonable growth-adjusted valuations. | R1 Bear(7): TXN's 83.7% debt-to-equity ratio creates severe vulnerability to semiconductor cycle downturns, while extreme technical momentum at RSI 80.4 with only 0.52x volume suggests institutional distribution disguised as retail-driven momentum. | R2 Bull(6): TXN remains positioned for breakout above $309.32 driven by exceptional ADX momentum strength, though reduced volume participation creates execution risk that requires tighter risk management | R2 Bear(8): TXN's acknowledged 83.7% debt vulnerability combined with confirmed weak volume momentum creates a ticking time bomb for equity dilution when the inevitable semiconductor downturn hits.",
+      "bear_case": "Primary risk: Semiconductor cycle downturn will compress margins while high debt service obligations force emergency equity raises at depressed valuations, diluting shareholders into oblivion. | Unresolved: ['Semiconductor cycle downturn will compress margins while high debt service obligations force emergency equity raises at depressed valuations, diluting shareholders into oblivion']",
+      "bull_score": 6,
+      "bear_score": 8,
+      "final_conviction": 5,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_AMZN_20260513190220",
+      "symbol": "AMZN",
+      "ts": "2026-05-13T19:02:20.227553",
+      "bull_case": "R1 Bull(9): Amazon's explosive 74.8% EPS growth acceleration is creating a powerful fundamental revaluation catalyst that the strong technical momentum (ADX 43.2, RSI 67.3) confirms is just beginning to be recognized by the market. | R1 Bear(7): Amazon's explosive 74.8% EPS growth is masking a dangerous debt-fueled expansion that makes the company extremely vulnerable to rising rates and economic deceleration, with the 53.3% debt/equity ratio creating hidden leverage risk that will amplify any margin compression. | R2 Bull(7): Amazon's 74.8% EPS growth and operational leverage gains are driving a fundamental revaluation supported by strong technical momentum (ADX 43.2), though elevated debt levels require careful monitoring of margin sustainability | R2 Bear(6): Despite strong current cash flows, Amazon's leveraged structure remains vulnerable to a scenario where AWS growth decelerates while the company must maintain heavy infrastructure spending, potentially creating a liquidity crunch amplified by the 53.3% debt ratio.",
+      "bear_case": "Primary risk: Debt-equity ratio of 53.3% will amplify any earnings disappointment or margin compression into catastrophic equity losses, especially vulnerable if rising rates increase borrowing costs while economic slowdown pressures AWS growth | Unresolved: ['Economic slowdown could simultaneously pressure AWS growth rates while margin compression forces Amazon to maintain high capex levels, creating a cash flow squeeze that their current free cash flow generation may not withstand']",
+      "bull_score": 7,
+      "bear_score": 6,
+      "final_conviction": 7,
+      "decision": "buy"
     }
   ],
   "position_reviews": [
@@ -1462,6 +1567,54 @@
       "action": "skip",
       "reason": "PM decision: skip \u2014 Both analysts independently identified and conceded the same core vulnerability - RKLB's negative margins and capital constraints make it structurally unable to compete, creating a fundamental ceiling that technical momentum cannot overcome.",
       "conviction": 4,
+      "rotate_from": ""
+    },
+    {
+      "ts": "2026-05-13T18:58:09.110621",
+      "symbol": "AMD",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 The bull's meaningful concession on leverage risk combined with unresolved concerns about growth sustainability creates a risk-reward profile that doesn't justify conviction above 7/10 threshold",
+      "conviction": 6,
+      "rotate_from": ""
+    },
+    {
+      "ts": "2026-05-13T18:59:00.842772",
+      "symbol": "DDOG",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 The bull's significant conviction drop from 9 to 7 and meaningful concessions on institutional distribution, execution fragility, and expense-driven profitability validate the bear's core thesis about precarious positioning.",
+      "conviction": 4,
+      "rotate_from": ""
+    },
+    {
+      "ts": "2026-05-13T18:59:50.890148",
+      "symbol": "GOOGL",
+      "action": "hold",
+      "reason": "Already holding GOOGL",
+      "conviction": 7,
+      "rotate_from": ""
+    },
+    {
+      "ts": "2026-05-13T19:00:41.434658",
+      "symbol": "CVS",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 The bear's unresolved risk about billion-dollar Medicaid penalties potentially forcing equity dilution represents a binary outcome that current 9x forward P/E valuation doesn't adequately reflect",
+      "conviction": 6,
+      "rotate_from": ""
+    },
+    {
+      "ts": "2026-05-13T19:01:28.363885",
+      "symbol": "TXN",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 The bear's unresolved risk of debt-induced equity dilution during semiconductor downturns remains unaddressed, while both sides conceded material concerns about volume and debt structure.",
+      "conviction": 5,
+      "rotate_from": ""
+    },
+    {
+      "ts": "2026-05-13T19:02:20.225164",
+      "symbol": "AMZN",
+      "action": "buy",
+      "reason": "PM conviction=7 | size=6% ($6,006) | regime=bull/normal | ATR=7.36 x2.5 | stop=$251.1 (-6.83%)",
+      "conviction": 7,
       "rotate_from": ""
     }
   ]

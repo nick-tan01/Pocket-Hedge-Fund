@@ -65,6 +65,12 @@
       "portfolio_value": 100007.18,
       "cash": 97990.55,
       "spy_price": 738.18
+    },
+    {
+      "ts": "2026-05-13T15:51:12.794224",
+      "portfolio_value": 100037.06,
+      "cash": 97990.54,
+      "spy_price": 739.81
     }
   ],
   "trades": [],
@@ -80,7 +86,7 @@
       "conviction": 7,
       "debate_id": "debate_DDOG_20260512160556",
       "status": "open",
-      "key_risk": "Volume patterns during any pullbacks - light volume would signal the institutional momentum acceleration thesis is failing to attract sustainable buying interest, plus emerging margin compression risks that could undermine the earnings growth sustainability.",
+      "key_risk": "Volume patterns during any pullbacks to assess whether institutional momentum acceleration thesis continues attracting sustainable buying interest, and any signs of margin compression given the thin 3.7% profit margins.",
       "position_usd": 1998.65,
       "position_pct": 0.02,
       "sector": "Technology",
@@ -93,7 +99,7 @@
           "reason": "The self-reinforcing institutional momentum chase that was core to our thesis is not materializing as evidenced by the 0.41x volume ratio, though the fundamental and technical components remain strong enough to warrant partial position retention."
         }
       ],
-      "last_review_ts": "2026-05-12T17:38:40.237810-04:00",
+      "last_review_ts": "2026-05-13T11:47:34.756680-04:00",
       "last_review_conviction": 7,
       "thesis_status": "intact",
       "time_stop_flagged": false
@@ -263,6 +269,33 @@
       "trades_executed": 0,
       "skipped_reason": "",
       "reason": "sentinel_trigger",
+      "regime": "bull",
+      "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-05-13T15:51:12.796149",
+      "run_type": "pre_market",
+      "candidates": [
+        "DDOG",
+        "COHR",
+        "ARM",
+        "RKLB"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "sentinel_trigger",
+      "event_symbols": [
+        "ARM",
+        "COHR",
+        "DDOG",
+        "DOCS",
+        "HIMS",
+        "PLTR",
+        "RKLB",
+        "SNOW",
+        "TSLA",
+        "TTD"
+      ],
       "regime": "bull",
       "vix_regime": "normal"
     }
@@ -1015,6 +1048,50 @@
       "bear_score": 7,
       "final_conviction": 5,
       "decision": "skip"
+    },
+    {
+      "id": "debate_DDOG_20260513154844",
+      "symbol": "DDOG",
+      "ts": "2026-05-13T15:48:44.367264",
+      "bull_case": "R1 Bull(8): DDOG is experiencing explosive earnings acceleration (104% EPS growth vs 32% revenue growth) that signals margin expansion is finally materializing, creating a fundamental inflection point that's driving massive technical momentum continuation. | R1 Bear(7): DDOG's 'earnings acceleration' is a mathematical mirage from an absurdly low base (3.7% margins, 507x P/E) creating unsustainable technical momentum that's primed for violent reversal at resistance. | R2 Bull(6): DDOG's technical momentum continuation is supported by strong ADX at 38.2 indicating persistent trending conditions, while the company's transition toward profitability in a high-growth cloud monitoring market creates asymmetric upside despite valuation concerns | R2 Bear(8): DDOG's retail-driven momentum rally into extreme overbought territory creates an asymmetric risk/reward scenario heavily favoring bears, as the combination of limited institutional support and technically extended levels sets up for a violent correction regardless of fundamental 'direction'.",
+      "bear_case": "Primary risk: Violent momentum reversal from technically extended levels (84.6 RSI, 0.94 Bollinger %B) at resistance with fundamentally unsustainable valuation metrics creating 30%+ downside risk as profit-taking accelerates. | Unresolved: [\"Bull ignored the critical technical reversal setup with 84.6 RSI and 0.94 Bollinger %B at resistance - ADX trending strength doesn't negate overbought conditions that historically lead to corrections\", \"The 'direction matters more than magnitude' argument fails when current valuation requires perfect execution for years, leaving zero margin for error in a cyclical market\"]",
+      "bull_score": 6,
+      "bear_score": 8,
+      "final_conviction": 4,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_COHR_20260513154935",
+      "symbol": "COHR",
+      "ts": "2026-05-13T15:49:35.771003",
+      "bull_case": "R1 Bull(8): COHR is riding an explosive photonics sector wave with powerful technical momentum (16.3% in 5 days) that's just beginning, as the RSI at 70.9 with ADX>25 signals continuation rather than exhaustion in this confirmed uptrend. | R1 Bear(8): COHR's catastrophic P/E ratio of 191.8x combined with anemic ROE of 4.7% signals a company burning capital to fake growth, making this a textbook value trap disguised as a momentum play. | R2 Bull(6): COHR remains a high-risk, high-reward photonics momentum play where strong technical indicators suggest continued upside, but position sizing must account for the elevated P/E multiple creating significant earnings-driven downside risk. | R2 Bear(7): While technical momentum may drive short-term gains, COHR's 191.8x P/E and 4.7% ROE create an asymmetric risk profile where any earnings miss will trigger violent derating regardless of sector tailwinds.",
+      "bear_case": "Primary risk: Earnings disappointment or guidance cut will cause immediate 30-50% gap down as the P/E of 191.8x unwinds violently when growth narrative breaks | Unresolved: ['The bull cited forward metrics justification but provided no actual forward P/E data to prove current valuation is reasonable', 'ROE of 4.7% remains a fundamental red flag that technical momentum cannot fix', \"No explanation for how a 'photonics boom' translates to COHR-specific earnings growth given their capital inefficiency\"]",
+      "bull_score": 6,
+      "bear_score": 7,
+      "final_conviction": 6,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_ARM_20260513155021",
+      "symbol": "ARM",
+      "ts": "2026-05-13T15:50:21.881483",
+      "bull_case": "R1 Bull(8): ARM is positioned for explosive growth as the AI infrastructure boom drives unprecedented demand for power-efficient CPU architectures in data centers, while the company's aggressive M&A positioning signals management's confidence in capturing this massive market shift. | R1 Bear(7): ARM's catastrophic debt/equity ratio of 5.2x creates existential leverage risk that makes the stock uninvestable regardless of AI growth potential, while deteriorating technicals signal institutional distribution during the recent 8% decline. | R2 Bull(6): ARM remains positioned for substantial AI-driven growth, but the overleveraged balance sheet creates meaningful downside risk that requires careful monitoring of debt service coverage and refinancing timelines | R2 Bear(6): ARM's 5.2x leverage creates a binary outcome where any hiccup in AI growth or refinancing markets could trigger financial distress, making it uninvestable despite the bull's valid points about royalty stability.",
+      "bear_case": "Primary risk: Financial distress from 5.2x debt/equity ratio could trigger covenant breaches or forced deleveraging, causing equity value to approach zero regardless of business fundamentals | Unresolved: ['Refinancing risk remains acute with $3.5B debt maturities in challenging credit environment', 'Any AI growth slowdown could trigger covenant breaches given razor-thin debt service margins', 'Institutional distribution pattern suggests smart money is already positioning for leverage-driven volatility']",
+      "bull_score": 6,
+      "bear_score": 6,
+      "final_conviction": 5,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_RKLB_20260513155112",
+      "symbol": "RKLB",
+      "ts": "2026-05-13T15:51:12.552452",
+      "bull_case": "R1 Bull(9): RKLB is breaking out on game-changing demand from Google's orbital data center initiative while demonstrating 63.5% revenue growth execution that positions it as the viable SpaceX alternative in a structurally expanding launch market. | R1 Bear(8): RKLB's 47% rally in 5 days has created extreme valuation multiples on speculative Google partnership hopes while the company burns cash with negative profitability and high debt burden in a capital-intensive industry where execution risk remains massive. | R2 Bull(7): RKLB remains the prime SpaceX alternative in an expanding launch market with strong execution momentum, but elevated valuations require flawless near-term execution to justify current levels | R2 Bear(7): RKLB's strong operational execution is overshadowed by extreme post-rally valuations that offer no cushion for disappointment in a capital-intensive business still burning cash and carrying high debt.",
+      "bear_case": "Primary risk: Catastrophic derating when speculative Google partnership fails to materialize or company faces launch failure/operational setback while trading at extreme valuations with no profit cushion to absorb disappointment | Unresolved: ['Current 47% rally has pushed valuation multiples to extreme levels that require perfect execution with zero margin for error, creating asymmetric downside risk where any disappointment triggers severe derating']",
+      "bull_score": 7,
+      "bear_score": 7,
+      "final_conviction": 6,
+      "decision": "skip"
     }
   ],
   "position_reviews": [
@@ -1057,6 +1134,53 @@
       "key_risk_to_monitor": "Volume patterns during any pullbacks - light volume would signal the institutional momentum acceleration thesis is failing to attract sustainable buying interest, plus emerging margin compression risks that could undermine the earnings growth sustainability.",
       "current_bull_case": "R1 Bull(8): DDOG is experiencing explosive earnings acceleration (104% EPS growth) that's driving powerful momentum continuation in a bullish regime, with technical dominance (ADX 35.2, +DI 47.8 vs 8.2) confirming this is early-stage institutional recognition rather than overbought exhaustion. | R2 Bull(6): DDOG remains a momentum continuation play with 104% EPS growth and strong technical dominance, but margin compression creates execution risk that reduces conviction until operational leverage improves.",
       "current_bear_case": "R1 Bear(7): DDOG's extreme momentum surge represents unsustainable AI hype meeting deteriorating operational efficiency, creating a dangerous trap where exceptional EPS growth masks collapsing profit margins that will force painful earnings reset. | R2 Bear(6): DDOG's margin compression during AI infrastructure buildout may be justified short-term, but 70x P/E valuation creates catastrophic downside risk if the secular growth thesis falters before operational leverage recovers profitability."
+    },
+    {
+      "trade_id": "DDOG_20260512160556",
+      "symbol": "DDOG",
+      "ts": "2026-05-13T15:47:34.755088",
+      "action": "hold",
+      "conviction": 7,
+      "thesis_status": "intact",
+      "rationale": "The original thesis of explosive earnings momentum meeting dominant technical breakout conditions remains fully intact with 104% EPS growth continuing and strong technical signals (ADX>25, RSI momentum continuation) still present.",
+      "original_thesis_check": "The specific combination of 104% EPS growth and institutional momentum acceleration (evidenced by continued strong technical indicators and bullish analyst signals across all three dimensions) that drove our original buy decision is still true.",
+      "key_risk_to_monitor": "Volume patterns during any pullbacks to assess whether institutional momentum acceleration thesis continues attracting sustainable buying interest, and any signs of margin compression given the thin 3.7% profit margins.",
+      "current_bull_case": "R1 Bull(8): DDOG's explosive 104% EPS growth combined with RSI 84.6 momentum continuation signals and strong ADX>25 trend confirmation creates a rare technical-fundamental convergence that drives institutional accumulation above resistance. | R2 Bull(6): DDOG's momentum-driven rally above resistance with ADX>25 trend strength remains technically valid despite valuation concerns, but execution risk from thin margins requires closer monitoring of competitive dynamics.",
+      "current_bear_case": "R1 Bear(7): DDOG's 3.7% profit margin combined with extreme valuation distortion (TTM P/E of 507.2) creates unsustainable expectations where any growth deceleration triggers catastrophic multiple compression from technically overbought levels. | R2 Bear(6): Despite defensive customer retention characteristics, DDOG's 507.2x TTM P/E creates mathematically unsustainable expectations where even modest growth deceleration triggers severe multiple compression from current technically overbought levels."
+    }
+  ],
+  "risk_decisions": [
+    {
+      "ts": "2026-05-13T15:48:44.365233",
+      "symbol": "DDOG",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 Bull's concession that institutional participation is limited during this 41% rally fundamentally undermines the sustainability of the momentum continuation argument",
+      "conviction": 4,
+      "rotate_from": ""
+    },
+    {
+      "ts": "2026-05-13T15:49:35.768993",
+      "symbol": "COHR",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 The bear's unresolved fundamental concerns about capital efficiency (4.7% ROE) and extreme valuation multiples create downside risks that exceed the probability-adjusted upside from momentum continuation.",
+      "conviction": 6,
+      "rotate_from": ""
+    },
+    {
+      "ts": "2026-05-13T15:50:21.879029",
+      "symbol": "ARM",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 Both analysts made meaningful concessions on their core theses, signaling this is a nuanced situation where leverage risk could nullify fundamental strength",
+      "conviction": 5,
+      "rotate_from": ""
+    },
+    {
+      "ts": "2026-05-13T15:51:12.550321",
+      "symbol": "RKLB",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 Both analysts made meaningful concessions acknowledging execution risk at stretched valuations - the bull dropped to 7/10 citing valuation concerns while the bear acknowledged operational competence, indicating a genuinely nuanced situation where risk/reward is unfavorable.",
+      "conviction": 6,
+      "rotate_from": ""
     }
   ]
 }

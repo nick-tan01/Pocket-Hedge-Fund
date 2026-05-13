@@ -71,6 +71,12 @@
       "portfolio_value": 100037.06,
       "cash": 97990.54,
       "spy_price": 739.81
+    },
+    {
+      "ts": "2026-05-13T16:08:54.264484",
+      "portfolio_value": 100026.66,
+      "cash": 97990.54,
+      "spy_price": 740.26
     }
   ],
   "trades": [],
@@ -103,6 +109,22 @@
       "last_review_conviction": 7,
       "thesis_status": "intact",
       "time_stop_flagged": false
+    },
+    {
+      "id": "GOOGL_20260513160622",
+      "symbol": "GOOGL",
+      "side": "buy",
+      "qty": 15.0635,
+      "entry_price": 398.42,
+      "entry_ts": "2026-05-13T16:06:22.532783",
+      "stop_price": 370.7,
+      "conviction": 7,
+      "debate_id": "debate_GOOGL_20260513160622",
+      "status": "open",
+      "key_risk": "Profit margins falling below 30% as AI competition intensifies or concrete regulatory action targeting search bundling",
+      "position_usd": 6001.6,
+      "position_pct": 0.06,
+      "sector": "Communication Services"
     }
   ],
   "runs": [
@@ -296,6 +318,23 @@
         "TSLA",
         "TTD"
       ],
+      "regime": "bull",
+      "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-05-13T16:08:54.266755",
+      "run_type": "midday",
+      "candidates": [
+        "AMD",
+        "DDOG",
+        "GOOGL",
+        "CVS",
+        "GS",
+        "LLY"
+      ],
+      "trades_executed": 1,
+      "skipped_reason": "",
+      "reason": "scheduled",
       "regime": "bull",
       "vix_regime": "normal"
     }
@@ -1092,6 +1131,72 @@
       "bear_score": 7,
       "final_conviction": 6,
       "decision": "skip"
+    },
+    {
+      "id": "debate_AMD_20260513160442",
+      "symbol": "AMD",
+      "ts": "2026-05-13T16:04:42.510809",
+      "bull_case": "R1 Bull(8): AMD is delivering explosive earnings acceleration in the AI datacenter boom with 91.2% EPS growth driving massive forward P/E compression from 149x to 34.6x, while strong technical momentum (ADX>25, bullish RSI) confirms institutional accumulation ahead of consensus recognition. | R1 Bear(7): AMD's explosive earnings growth is masking dangerously thin execution margins in the AI datacenter race, where volume collapse to 0.32x normal signals institutional exhaustion just as the stock approaches critical resistance at extreme RSI levels. | R2 Bull(6): AMD's AI datacenter transformation driving 91.2% EPS growth creates compelling value as forward P/E compresses to 34.6x, though volume divergence suggests tactical caution on entry timing. | R2 Bear(6): Despite strong ADX momentum, AMD's approach to critical resistance with extreme RSI and persistent volume weakness creates asymmetric downside risk that outweighs the AI transformation upside at current valuations.",
+      "bear_case": "Primary risk: Volume collapse during the rally signals institutional distribution at resistance levels, creating high probability of sharp reversal that will trap momentum buyers at peak valuations | Unresolved: ['The critical resistance level confluence with extreme RSI creates a high-probability reversal setup that momentum alone cannot overcome', \"Forward P/E of 34.6x still represents significant valuation risk if AI datacenter growth expectations aren't met\"]",
+      "bull_score": 6,
+      "bear_score": 6,
+      "final_conviction": 6,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_DDOG_20260513160531",
+      "symbol": "DDOG",
+      "ts": "2026-05-13T16:05:31.530752",
+      "bull_case": "R1 Bull(8): DDOG's exceptional 104% EPS growth validates its premium valuation while technical momentum (ADX>25, RSI 84.4) confirms institutional accumulation in a high-conviction growth story that's just breaking into mainstream analyst attention. | R1 Bear(7): DDOG's extremely high debt/equity ratio creates catastrophic refinancing risk in a rising rate environment, while the 40% rally in 5 days has created unsustainable technical conditions with RSI at 84.4 and Bollinger %B at 0.94. | R2 Bull(6): DDOG's explosive growth and strong technical momentum (ADX>25 confirming trend strength despite elevated RSI) remain compelling, but balance sheet leverage creates meaningful downside risk that tempers conviction. | R2 Bear(8): DDOG faces a liquidity crisis as extreme leverage meets rising refinancing costs while technically overextended conditions at RSI 84.4 offer no downside protection when the debt-fueled growth model breaks.",
+      "bear_case": "Primary risk: Debt-fueled growth model collapses under refinancing pressure while overleveraged balance sheet provides zero downside protection in a 40%+ technical reversal from current parabolic levels | Unresolved: ['Bull fails to address that SaaS recurring revenue provides false comfort when debt refinancing costs could spike 200-300bps in next 12-18 months, making current cash flows inadequate for servicing refinanced debt at much higher rates']",
+      "bull_score": 6,
+      "bear_score": 8,
+      "final_conviction": 4,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_GOOGL_20260513160622",
+      "symbol": "GOOGL",
+      "ts": "2026-05-13T16:06:22.438265",
+      "bull_case": "R1 Bull(9): GOOGL is breaking out on exceptional operational execution with 82% EPS growth and 37.9% profit margins, supported by powerful technical momentum that RSI 74.7 confirms rather than contradicts in this ADX 50.4 trending environment. | R1 Bear(7): GOOGL's exceptional margins and growth are masking a critical AI arms race that will compress profitability as hyperscalers flood the market with competing services while regulatory pressure mounts on their core search monopoly. | R2 Bull(7): GOOGL remains a strong buy as search dominance provides defensive cash flows to fund AI leadership while technical momentum with ADX 50.4 confirms the trend despite elevated RSI, though regulatory and margin compression risks warrant closer monitoring | R2 Bear(6): While Google's search moat provides near-term defensive cash flows, the company faces an unprecedented perfect storm of AI-driven user behavior shifts, regulatory breakup risks, and mandatory AI investment costs that will compress the 37.9% margins that justify current valuations.",
+      "bear_case": "Primary risk: Google's search monopoly faces simultaneous threats from AI chatbots reducing search queries and regulatory action, while their AI investments face margin compression from hyperscaler competition - a perfect storm for profit margin collapse from current 37.9% levels. | Unresolved: ['AI chatbots fundamentally changing user behavior away from traditional search-and-click patterns', 'Regulatory breakup risk specifically targeting search bundling with other Google services', 'Microsoft and OpenAI partnership creating the first credible search alternative in decades']",
+      "bull_score": 7,
+      "bear_score": 6,
+      "final_conviction": 7,
+      "decision": "buy"
+    },
+    {
+      "id": "debate_CVS_20260513160711",
+      "symbol": "CVS",
+      "ts": "2026-05-13T16:07:11.238096",
+      "bull_case": "R1 Bull(8): CVS is experiencing a massive earnings acceleration that has compressed valuation from 42.4x TTM P/E to 11.6x forward P/E with a 0.3 PEG ratio, creating an explosive value opportunity as the market catches up to 63% EPS growth. | R1 Bear(8): CVS faces imminent regulatory catastrophe with Texas AG threatening Medicaid fraud penalties that could dwarf any earnings gains, while extreme overbought technicals on pathetic 0.65x volume signal institutional distribution masquerading as accumulation. | R2 Bull(6): CVS remains compelling with 63% EPS growth and 0.3 PEG ratio, though regulatory uncertainty may delay the valuation re-rating timeline despite strong momentum (ADX 43.8 supporting RSI 81.1 in a trending market). | R2 Bear(6): CVS faces near-term downside from regulatory overhang timing coinciding with technically overbought levels, though fundamental destruction risk is lower than initially assessed given diversified operations.",
+      "bear_case": "Primary risk: Medicaid fraud penalties could trigger immediate multi-billion dollar losses and operational restrictions that would make the current debt load unsustainable, potentially forcing asset sales or covenant breaches. | Unresolved: ['Bull fails to address that Texas AG investigations specifically target Medicaid fraud with accelerated timeline and potential operational restrictions beyond financial penalties', 'Extreme technical overbought conditions on weak volume still suggest institutional distribution despite fundamental improvements']",
+      "bull_score": 6,
+      "bear_score": 6,
+      "final_conviction": 5,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_GS_20260513160802",
+      "symbol": "GS",
+      "ts": "2026-05-13T16:08:02.229965",
+      "bull_case": "R1 Bull(8): Goldman Sachs is breaking out on exceptional profit margins of 29.4% and 24.2% earnings growth while trading at only 14.6x forward P/E, creating a rare combination of momentum and value that precedes major institutional accumulation. | R1 Bear(8): Goldman's 678.6% debt-to-equity ratio creates catastrophic leverage that transforms any market downturn from manageable headwind into existential threat, making this a prime candidate for wealth destruction despite attractive surface metrics. | R2 Bull(6): Goldman Sachs offers asymmetric upside as exceptional margins and earnings growth at 14.6x forward P/E create compelling value despite legitimate concerns about volume conviction and leverage sensitivity to rate changes | R2 Bear(7): Goldman's extreme 678.6% debt-to-equity ratio creates systemic deleveraging risk that no amount of revenue diversification can offset when credit markets seize up, making this a leveraged bet on perpetual market stability.",
+      "bear_case": "Primary risk: Forced deleveraging scenario where Goldman's 678.6% debt-to-equity ratio creates a liquidity death spiral, requiring asset sales at fire-sale prices to meet margin calls and regulatory capital requirements, turning a 20% market correction into a 60%+ stock collapse. | Unresolved: [\"The bull failed to address the core liquidity death spiral risk where Goldman's 678.6% leverage forces catastrophic deleveraging during market stress, as diversified revenues still contract simultaneously in financial crises\"]",
+      "bull_score": 6,
+      "bear_score": 7,
+      "final_conviction": 6,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_LLY_20260513160854",
+      "symbol": "LLY",
+      "ts": "2026-05-13T16:08:54.042908",
+      "bull_case": "R1 Bull(8): LLY is capturing a generational obesity market opportunity with proven efficacy data while trading at only 22.7x forward P/E despite 170% EPS growth, creating a rare combination of hypergrowth at reasonable valuation in large-cap pharma. | R1 Bear(7): LLY's 139% debt/equity ratio combined with technical exhaustion signals creates dangerous downside asymmetry despite obesity franchise momentum, as any growth deceleration will trigger severe deleveraging pressure. | R2 Bull(6): LLY remains positioned to dominate the generational obesity opportunity with proven drugs and strong cash generation, though elevated debt levels reduce margin of safety and require monitoring of competitive dynamics | R2 Bear(5): While LLY's cash generation provides debt service cushion, the combination of peak valuation multiples, elevated leverage, and inevitable competitive pressure in obesity creates asymmetric downside risk with limited upside from current levels.",
+      "bear_case": "Primary risk: Debt-fueled growth model becomes a death spiral if obesity franchise faces any competitive pressure or regulatory headwinds, forcing asset sales or dilutive equity raises at the worst possible time. | Unresolved: [\"The bull assumes obesity franchise momentum is permanent, but any competitive threats from Novo Nordisk's pipeline or new entrants could trigger rapid multiple compression on a highly leveraged balance sheet\", 'Technical exhaustion signals suggest institutional distribution is already occurring, indicating smart money may be positioning for franchise maturation ahead of fundamentals']",
+      "bull_score": 6,
+      "bear_score": 5,
+      "final_conviction": 6,
+      "decision": "skip"
     }
   ],
   "position_reviews": [
@@ -1179,6 +1284,54 @@
       "symbol": "RKLB",
       "action": "skip",
       "reason": "PM decision: skip \u2014 Both analysts made meaningful concessions acknowledging execution risk at stretched valuations - the bull dropped to 7/10 citing valuation concerns while the bear acknowledged operational competence, indicating a genuinely nuanced situation where risk/reward is unfavorable.",
+      "conviction": 6,
+      "rotate_from": ""
+    },
+    {
+      "ts": "2026-05-13T16:04:42.508638",
+      "symbol": "AMD",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 Volume divergence during the rally suggests institutional distribution rather than accumulation, undermining the momentum continuation thesis despite strong ADX readings",
+      "conviction": 6,
+      "rotate_from": ""
+    },
+    {
+      "ts": "2026-05-13T16:05:31.528657",
+      "symbol": "DDOG",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 The bear's unresolved refinancing risk in a rising rate environment represents a fundamental structural threat that could undermine the entire growth thesis regardless of current momentum",
+      "conviction": 4,
+      "rotate_from": ""
+    },
+    {
+      "ts": "2026-05-13T16:06:22.436027",
+      "symbol": "GOOGL",
+      "action": "buy",
+      "reason": "PM conviction=7 | size=6% ($6,002) | regime=bull/normal | ATR=11.09 x2.5 | stop=$370.7 (-6.96%)",
+      "conviction": 7,
+      "rotate_from": ""
+    },
+    {
+      "ts": "2026-05-13T16:07:11.235882",
+      "symbol": "CVS",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 Both bull and bear dropped from 8/10 to 6/10 conviction after meaningful concessions, indicating this is a nuanced situation without clear edge at this moment despite strong fundamentals.",
+      "conviction": 5,
+      "rotate_from": ""
+    },
+    {
+      "ts": "2026-05-13T16:08:02.227763",
+      "symbol": "GS",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 The bear's unresolved liquidity death spiral risk from 678.6% leverage outweighs the bull's valuation argument when technical momentum lacks conviction",
+      "conviction": 6,
+      "rotate_from": ""
+    },
+    {
+      "ts": "2026-05-13T16:08:54.040743",
+      "symbol": "LLY",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 Both analysts significantly reduced conviction after hearing counterarguments, with the bull dropping from 8 to 6 and bear from 7 to 5, indicating the edge is not as compelling as either initially believed.",
       "conviction": 6,
       "rotate_from": ""
     }

@@ -89,6 +89,12 @@
       "portfolio_value": 100096.17,
       "cash": 91988.72,
       "spy_price": 742.92
+    },
+    {
+      "ts": "2026-05-13T20:21:29.184674",
+      "portfolio_value": 100134.28,
+      "cash": 85983.3,
+      "spy_price": 742.31
     }
   ],
   "trades": [],
@@ -104,7 +110,7 @@
       "conviction": 7,
       "debate_id": "debate_DDOG_20260512160556",
       "status": "open",
-      "key_risk": "Volume patterns during any pullbacks to assess whether institutional momentum acceleration thesis continues attracting sustainable buying interest, and any signs of margin compression given the thin 3.7% profit margins.",
+      "key_risk": "Volume patterns on any pullbacks and early signs of margin compression from the thin 3.7% base, as margin sustainability has become the critical factor that could break the thesis if competitive pressure emerges.",
       "position_usd": 1998.65,
       "position_pct": 0.02,
       "sector": "Technology",
@@ -117,7 +123,7 @@
           "reason": "The self-reinforcing institutional momentum chase that was core to our thesis is not materializing as evidenced by the 0.41x volume ratio, though the fundamental and technical components remain strong enough to warrant partial position retention."
         }
       ],
-      "last_review_ts": "2026-05-13T11:47:34.756680-04:00",
+      "last_review_ts": "2026-05-13T16:16:54.119705-04:00",
       "last_review_conviction": 7,
       "thesis_status": "intact",
       "time_stop_flagged": false
@@ -133,11 +139,11 @@
       "conviction": 7,
       "debate_id": "debate_GOOGL_20260513160622",
       "status": "open",
-      "key_risk": "Concrete regulatory action targeting search bundling or any quarterly report showing profit margins approaching 30%",
+      "key_risk": "Profit margins approaching 30% threshold or any concrete regulatory action targeting search bundling, plus the unsustainable EPS-revenue growth divergence that could signal future margin compression.",
       "position_usd": 6001.6,
       "position_pct": 0.06,
       "sector": "Communication Services",
-      "last_review_ts": "2026-05-13T14:07:30.301345-04:00",
+      "last_review_ts": "2026-05-13T16:17:43.185789-04:00",
       "last_review_conviction": 7,
       "thesis_status": "intact",
       "time_stop_flagged": false
@@ -414,6 +420,33 @@
       "trades_executed": 1,
       "skipped_reason": "",
       "reason": "scheduled",
+      "regime": "bull",
+      "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-05-13T20:21:29.187237",
+      "run_type": "midday",
+      "candidates": [
+        "GOOGL",
+        "DDOG",
+        "COHR",
+        "ARM"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "sentinel_trigger",
+      "event_symbols": [
+        "ARM",
+        "CELH",
+        "COHR",
+        "DDOG",
+        "DOCS",
+        "GOOGL",
+        "GTLB",
+        "HIMS",
+        "PLTR",
+        "RKLB"
+      ],
       "regime": "bull",
       "vix_regime": "normal"
     }
@@ -1386,6 +1419,50 @@
       "bear_score": 6,
       "final_conviction": 7,
       "decision": "buy"
+    },
+    {
+      "id": "debate_GOOGL_20260513201851",
+      "symbol": "GOOGL",
+      "ts": "2026-05-13T20:18:51.898000",
+      "bull_case": "R1 Bull(9): GOOGL is breaking into a new valuation regime as its autonomous vehicle moonshot transitions from R&D expense to revenue generator, with Waymo's massive 1,400+ square mile expansion across 11 cities signaling the early commercialization of a potentially trillion-dollar TAM. | R1 Bear(7): GOOGL's valuation has detached from reality as investors price in Waymo revenue that may never materialize at scale, while the high debt-equity ratio creates financial vulnerability just as the company burns massive capital on unproven moonshots. | R2 Bull(7): GOOGL remains a compelling autonomous vehicle play with unmatched technical moats and financial resources to weather the capital-intensive commercialization phase, though Waymo execution risk is real and requires monitoring unit economics as geographic expansion continues | R2 Bear(6): While GOOGL's balance sheet provides runway, Waymo's massive capital requirements and unproven unit economics at scale still pose significant valuation risk as the market may be overestimating autonomous vehicle monetization timelines.",
+      "bear_case": "Primary risk: Waymo burns through billions more in capital while failing to achieve profitable unit economics, forcing GOOGL to either abandon the investment (massive write-off) or continue funding it through debt that constrains the core profitable business | Unresolved: [\"The bull didn't address that even with $93B cash, Waymo's capital intensity could drain resources for years without clear path to profitability, and premium market targeting doesn't guarantee unit economics work at scale\"]",
+      "bull_score": 7,
+      "bear_score": 6,
+      "final_conviction": 7,
+      "decision": "buy"
+    },
+    {
+      "id": "debate_DDOG_20260513201943",
+      "symbol": "DDOG",
+      "ts": "2026-05-13T20:19:43.864497",
+      "bull_case": "R1 Bull(8): DDOG is experiencing a rare convergence of explosive operational leverage with 104% EPS growth and validated technical breakout momentum (ADX 38.2) that creates a high-probability continuation play before consensus catches up. | R1 Bear(7): DDOG's 43% five-day surge has created a dangerous momentum trap where RSI at 85.1 and Bollinger %B at 0.96 signal extreme overextension that even strong fundamentals cannot sustain, especially with Goldman maintaining sell ratings and volume ratio at only 0.65x indicating weak institutional participation. | R2 Bull(6): DDOG's operational leverage breakthrough with 104% EPS growth creates a compelling momentum continuation opportunity despite overextended technicals, though reduced conviction reflects legitimate concerns about institutional participation and execution risk at current valuations | R2 Bear(8): DDOG's parabolic technical setup with RSI at 85.1 after a 43% surge creates an imminent mean reversion risk that even strong ADX trends cannot sustain, especially with minimal institutional validation and no valuation cushion at 72.3x forward P/E.",
+      "bear_case": "Primary risk: Violent mean reversion from extreme technical overextension (RSI 85.1, 43% in 5 days) that could erase weeks of gains in days, amplified by low volume conviction and a forward P/E of 72.3 that offers no valuation cushion for any disappointment. | Unresolved: ['RSI at 85.1 represents extreme overbought conditions that historically lead to sharp corrections regardless of trend strength', '43% five-day surge creates technical setup for violent snapback that ADX cannot prevent', 'Forward P/E of 72.3 offers zero valuation support during any momentum reversal']",
+      "bull_score": 6,
+      "bear_score": 8,
+      "final_conviction": 6,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_COHR_20260513202036",
+      "symbol": "COHR",
+      "ts": "2026-05-13T20:20:36.232611",
+      "bull_case": "R1 Bull(8): COHR is riding a perfect storm of AI hardware demand and photonics sector rotation with explosive technical momentum that's just beginning. | R1 Bear(8): COHR's catastrophic debt/equity ratio of 31.1 makes this a leveraged bet on a cyclical sector that will implode when AI hardware demand normalizes, turning 'manageable' leverage into a capital destroyer. | R2 Bull(5): COHR offers asymmetric upside in the AI photonics boom, but the high leverage means position sizing must account for binary outcomes in this momentum trade | R2 Bear(7): COHR's 31.1 debt/equity ratio creates a fragile capital structure that could face covenant stress if the AI photonics cycle turns even modestly, making this a leveraged bet with asymmetric downside risk.",
+      "bear_case": "Primary risk: Debt/equity of 31.1 creates existential risk during any revenue slowdown - a 20% demand drop typical in photonics cycles would trigger covenant breaches and potential equity wipeout | Unresolved: ['AI cycles can turn faster than 12-18 months as we saw with crypto mining equipment, and covenant breaches could trigger before meaningful deleveraging occurs']",
+      "bull_score": 5,
+      "bear_score": 7,
+      "final_conviction": 4,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_ARM_20260513202128",
+      "symbol": "ARM",
+      "ts": "2026-05-13T20:21:28.927837",
+      "bull_case": "R1 Bull(8): ARM is capturing explosive AI infrastructure demand with 45.7% EPS growth acceleration while trading at a compressing forward P/E of 73.2, creating a rare momentum breakout opportunity before consensus recognizes the earnings inflection. | R1 Bear(7): ARM's debt/equity ratio of 5.2x combined with a TTM P/E of 260.2 creates catastrophic downside risk if AI infrastructure demand normalizes, making this a leveraged bet on perfect execution in an overvalued market. | R2 Bull(6): ARM remains positioned to capture AI infrastructure growth with strong earnings acceleration, but the leveraged balance sheet requires careful monitoring of AI demand sustainability and creates asymmetric downside risk. | R2 Bear(6): ARM's 260.2x P/E creates catastrophic downside risk if AI infrastructure spending moderates even slightly, with 5.2x leverage amplifying any earnings disappointment despite the asset-light business model advantages.",
+      "bear_case": "Primary risk: Leveraged balance sheet (5.2x debt/equity) amplifies any AI demand normalization into potential distressed situation, while extreme valuation (260.2x TTM P/E) offers no downside protection | Unresolved: ['Extreme 260.2x P/E valuation assumes flawless AI demand trajectory with zero margin for error, creating asymmetric downside risk even if debt is serviceable', 'Multi-year AI infrastructure visibility claim is unproven given nascent technology adoption cycles and potential demand volatility']",
+      "bull_score": 6,
+      "bear_score": 6,
+      "final_conviction": 5,
+      "decision": "skip"
     }
   ],
   "position_reviews": [
@@ -1454,6 +1531,32 @@
       "key_risk_to_monitor": "Concrete regulatory action targeting search bundling or any quarterly report showing profit margins approaching 30%",
       "current_bull_case": "R1 Bull(8): GOOGL is experiencing a rare convergence of exceptional operational execution (82% EPS growth, 37.9% margins) with confirmed technical momentum breakout (ADX>50, +DI 43.5 vs -DI 13.3) that typically drives sustained uptrends beyond current resistance levels. | R2 Bull(6): GOOGL's AI-driven margin expansion and technical breakout remain intact despite volume concerns, as regulatory risks are priced in while the company's unassailable search moat ensures it captures the largest share of AI monetization.",
       "current_bear_case": "R1 Bear(7): GOOGL faces an imminent regulatory reckoning that could fundamentally restructure its business model just as the stock reaches extreme technical overbought levels with deteriorating volume participation. | R2 Bear(8): GOOGL's regulatory exemption assumption is flawed as antitrust enforcement specifically targets dominant market positions, making the company's AI integration a liability rather than protection when forced restructuring meets technically overbought levels."
+    },
+    {
+      "trade_id": "DDOG_20260512160556",
+      "symbol": "DDOG",
+      "ts": "2026-05-13T20:16:54.117648",
+      "action": "hold",
+      "conviction": 7,
+      "thesis_status": "intact",
+      "rationale": "The original thesis of explosive earnings momentum meeting technical breakout conditions remains fully intact with 104% EPS growth and strong technical momentum (ADX>25, RSI continuation pattern) still driving institutional buying interest.",
+      "original_thesis_check": "Yes - the rare combination of 104% EPS growth and dominant technical breakout (ADX 35.2+) creating institutional momentum acceleration is still present and functioning as anticipated.",
+      "key_risk_to_monitor": "Volume patterns on any pullbacks and early signs of margin compression from the thin 3.7% base, as margin sustainability has become the critical factor that could break the thesis if competitive pressure emerges.",
+      "current_bull_case": "R1 Bull(9): DDOG is experiencing a fundamental inflection point where explosive 104% EPS growth and 32% revenue acceleration are driving sustained momentum breakout that RSI 85.1 confirms as continuation, not exhaustion, in this ADX>25 trending environment. | R2 Bull(7): DDOG's explosive growth momentum and technical breakout remain intact despite valuation vulnerability, but margin sustainability becomes the critical watch point that could determine whether this momentum continues or faces violent correction",
+      "current_bear_case": "R1 Bear(8): DDOG's explosive EPS growth is built on unsustainable margin expansion from a razor-thin 3.7% base, creating a profitability mirage that will collapse when growth normalizes or competition intensifies, while the 513x trailing P/E leaves zero room for execution stumbles. | R2 Bear(7): DDOG's 513x P/E requires perfect execution indefinitely, making it a asymmetric risk where even modest growth deceleration or margin normalization triggers violent derating that overwhelms any operational progress."
+    },
+    {
+      "trade_id": "GOOGL_20260513160622",
+      "symbol": "GOOGL",
+      "ts": "2026-05-13T20:17:43.183738",
+      "action": "hold",
+      "conviction": 7,
+      "thesis_status": "intact",
+      "rationale": "The original thesis of exceptional operational execution with strong margins and technical momentum remains fully supported by current 37.9% profit margins (well above the 30% risk threshold) and continued strong technical indicators (ADX 50.7, +DI dominance).",
+      "original_thesis_check": "The specific breakout on exceptional operational execution with 82% EPS growth and 37.9% profit margins supported by technical momentum is still true - margins remain strong and technical momentum continues with ADX 50.7.",
+      "key_risk_to_monitor": "Profit margins approaching 30% threshold or any concrete regulatory action targeting search bundling, plus the unsustainable EPS-revenue growth divergence that could signal future margin compression.",
+      "current_bull_case": "R1 Bull(9): GOOGL is experiencing a rare alignment of explosive fundamental acceleration (82% EPS growth) with dominant technical momentum (ADX 50.7, +DI 43.7) that creates a powerful breakout above $400 resistance in a company finally monetizing its AI and autonomous vehicle investments. | R2 Bull(7): GOOGL remains a strong momentum play with ADX 50.7 confirming the uptrend, but the unsustainable EPS-revenue divergence creates medium-term headwinds that reduce conviction in the breakout sustainability",
+      "current_bear_case": "R1 Bear(7): GOOGL's massive EPS growth is masking a dangerous fundamental deterioration where revenue growth is decelerating to just 21.8% while the company carries high debt levels, creating a profit mirage that will collapse when AI/Waymo investments fail to generate sufficient returns. | R2 Bear(6): While GOOGL's search cash flows provide near-term stability, the unsustainable EPS-revenue divergence combined with massive unproven capital deployments creates a high-risk scenario where current valuations cannot be justified by deteriorating fundamental growth metrics."
     }
   ],
   "risk_decisions": [
@@ -1615,6 +1718,38 @@
       "action": "buy",
       "reason": "PM conviction=7 | size=6% ($6,006) | regime=bull/normal | ATR=7.36 x2.5 | stop=$251.1 (-6.83%)",
       "conviction": 7,
+      "rotate_from": ""
+    },
+    {
+      "ts": "2026-05-13T20:18:51.895487",
+      "symbol": "GOOGL",
+      "action": "hold",
+      "reason": "Already holding GOOGL",
+      "conviction": 7,
+      "rotate_from": ""
+    },
+    {
+      "ts": "2026-05-13T20:19:43.861928",
+      "symbol": "DDOG",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 Low volume ratio of 0.65x during parabolic price action suggests retail-driven momentum without institutional validation, making the move unsustainable despite strong fundamentals",
+      "conviction": 6,
+      "rotate_from": ""
+    },
+    {
+      "ts": "2026-05-13T20:20:36.229920",
+      "symbol": "COHR",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 The 31.1 debt/equity ratio transforms what could be a solid momentum play into a binary outcome trade where covenant breaches could wipe out equity holders faster than the AI cycle can deliver profits",
+      "conviction": 4,
+      "rotate_from": ""
+    },
+    {
+      "ts": "2026-05-13T20:21:28.924738",
+      "symbol": "ARM",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 Both analysts converged to 6/10 conviction after recognizing the asymmetric risk profile - when bull and bear both retreat significantly from initial positions due to genuine risk recognition (not politeness), the edge has evaporated.",
+      "conviction": 5,
       "rotate_from": ""
     }
   ]

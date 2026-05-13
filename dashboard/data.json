@@ -77,6 +77,12 @@
       "portfolio_value": 100026.66,
       "cash": 97990.54,
       "spy_price": 740.26
+    },
+    {
+      "ts": "2026-05-13T18:11:19.651752",
+      "portfolio_value": 100096.77,
+      "cash": 91988.72,
+      "spy_price": 742.79
     }
   ],
   "trades": [],
@@ -121,10 +127,14 @@
       "conviction": 7,
       "debate_id": "debate_GOOGL_20260513160622",
       "status": "open",
-      "key_risk": "Profit margins falling below 30% as AI competition intensifies or concrete regulatory action targeting search bundling",
+      "key_risk": "Concrete regulatory action targeting search bundling or any quarterly report showing profit margins approaching 30%",
       "position_usd": 6001.6,
       "position_pct": 0.06,
-      "sector": "Communication Services"
+      "sector": "Communication Services",
+      "last_review_ts": "2026-05-13T14:07:30.301345-04:00",
+      "last_review_conviction": 7,
+      "thesis_status": "intact",
+      "time_stop_flagged": false
     }
   ],
   "runs": [
@@ -335,6 +345,36 @@
       "trades_executed": 1,
       "skipped_reason": "",
       "reason": "scheduled",
+      "regime": "bull",
+      "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-05-13T18:11:19.653984",
+      "run_type": "midday",
+      "candidates": [
+        "GOOGL",
+        "COHR",
+        "ARM",
+        "RKLB"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "sentinel_trigger",
+      "event_symbols": [
+        "ARM",
+        "BILL",
+        "CELH",
+        "COHR",
+        "DOCS",
+        "GOOGL",
+        "GTLB",
+        "HIMS",
+        "ONTO",
+        "PLTR",
+        "RKLB",
+        "TSLA",
+        "TTD"
+      ],
       "regime": "bull",
       "vix_regime": "normal"
     }
@@ -1197,6 +1237,50 @@
       "bear_score": 5,
       "final_conviction": 6,
       "decision": "skip"
+    },
+    {
+      "id": "debate_GOOGL_20260513180839",
+      "symbol": "GOOGL",
+      "ts": "2026-05-13T18:08:39.957884",
+      "bull_case": "R1 Bull(8): GOOGL is breaking out of consolidation with exceptional fundamental strength (82% EPS growth, 38.9% ROE) while technical momentum accelerates through key resistance at $403. | R1 Bear(7): GOOGL's 20.0x debt/equity ratio creates massive financial instability risk that will amplify any regulatory or competitive pressures, turning the current momentum into a catastrophic reversal. | R2 Bull(6): GOOGL's technical breakout with strong ADX momentum remains valid despite elevated leverage risks, but regulatory threats to AI infrastructure create meaningful downside scenarios that warrant reduced conviction. | R2 Bear(6): GOOGL's extreme 20.0x leverage creates asymmetric downside risk where regulatory disruption to AI infrastructure could rapidly transform growth investments into stranded assets, overwhelming even Google's strong cash generation capabilities.",
+      "bear_case": "Primary risk: Regulatory action forcing AI infrastructure changes triggers a debt spiral - with 20.0x leverage, even a 10% revenue hit becomes a 200% earnings destruction that forces emergency capital raising at the worst possible time | Unresolved: [\"The bull underestimates how quickly AI infrastructure debt could become stranded assets if regulatory action forces architectural changes, making the 'durable competitive moats' argument potentially obsolete\"]",
+      "bull_score": 6,
+      "bear_score": 6,
+      "final_conviction": 6,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_COHR_20260513180930",
+      "symbol": "COHR",
+      "ts": "2026-05-13T18:09:30.862438",
+      "bull_case": "R1 Bull(8): COHR is breaking out on exceptional technical momentum (ADX>25, RSI 72.4 with MACD above signal) at the perfect intersection of AI-driven photonics demand and sector rotation into triple-digit semiconductor gainers. | R1 Bear(8): COHR's catastrophic 31.1 debt-to-equity ratio combined with 4.7% ROE creates a leverage death trap where any AI cycle deceleration will trigger margin compression and potential liquidity crisis despite technical momentum. | R2 Bull(6): COHR remains a compelling AI photonics play with strong technical momentum, but the leverage profile requires closer monitoring of demand sustainability and debt service capacity | R2 Bear(6): COHR's 4.7% ROE despite 20.5% revenue growth reveals fundamental capital allocation problems that make it a poor way to play AI photonics regardless of technical momentum.",
+      "bear_case": "Primary risk: Debt-to-equity of 31.1 creates immediate bankruptcy risk if photonics demand softens or interest rates rise, making this a potential 80-90% loss scenario disguised as an AI momentum play. | Unresolved: ['The fundamental disconnect between 20.5% revenue growth and only 4.7% ROE still indicates severe capital allocation inefficiency that technical momentum cannot fix', 'Rising interest rates will still pressure margins and debt service capacity even with corrected leverage understanding', 'AI infrastructure buildout timing remains speculative while current capital inefficiency is measurable and concerning']",
+      "bull_score": 6,
+      "bear_score": 6,
+      "final_conviction": 5,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_ARM_20260513181026",
+      "symbol": "ARM",
+      "ts": "2026-05-13T18:10:26.983592",
+      "bull_case": "R1 Bull(8): ARM's explosive 45.7% EPS acceleration combined with aggressive AI infrastructure expansion through the Cerebras acquisition attempt positions the company at the epicenter of the data center CPU revolution, making the current 7% pullback a premium entry point into a secular growth story. | R1 Bear(7): ARM's catastrophic 5.2x debt-to-equity ratio combined with a desperate 11th-hour acquisition attempt creates a liquidity time bomb that will detonate when the AI bubble deflates and funding costs spike. | R2 Bull(6): ARM's structural position in the AI data center transition remains compelling, but execution risk is heightened by leverage, making this a higher-risk/higher-reward play requiring careful monitoring of debt metrics alongside growth acceleration | R2 Bear(6): ARM's extreme valuation requires flawless execution of unsustainable growth rates while managing dangerous leverage levels, creating asymmetric downside risk despite its strong market position.",
+      "bear_case": "Primary risk: Debt covenant breach forcing immediate deleveraging and equity dilution when ARM inevitably misses earnings expectations built on unsustainable 45.7% growth rates | Unresolved: ['The 45.7% growth rate required to justify current valuation is unsustainable even in AI boom scenarios', 'Interest rate stabilization assumption ignores potential credit spread widening when growth disappoints', \"Asset-light model doesn't prevent cash flow volatility from cyclical licensing revenue that could trigger covenants\"]",
+      "bull_score": 6,
+      "bear_score": 6,
+      "final_conviction": 5,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_RKLB_20260513181119",
+      "symbol": "RKLB",
+      "ts": "2026-05-13T18:11:19.394978",
+      "bull_case": "R1 Bull(8): RKLB is breaking out on exceptional technical momentum (ADX>25, +DI dominance at 44.1 vs 9.2) backed by 63.5% revenue growth in the rapidly expanding commercial space sector, positioning it to capture disproportionate gains before fundamentals fully catch up to the technical surge. | R1 Bear(7): RKLB's 47% surge in 5 days has created an unsustainable speculative bubble fueled by SpaceX IPO rotation, while the company's -26.9% profit margins and high debt make it structurally unable to compete when SpaceX actually goes public and attracts all institutional capital. | R2 Bull(6): RKLB's technical breakout with ADX>25 and strong trending conditions offers near-term upside opportunity, but position sizing must account for SpaceX IPO risk that could eliminate the space scarcity premium driving current valuations. | R2 Bear(6): While SpaceX IPO timing uncertainty provides tactical opportunity, RKLB's structural disadvantages in margins and capital efficiency make current valuations unsustainable regardless of timing, as the company lacks the fundamental strength to justify speculative premiums.",
+      "bear_case": "Primary risk: SpaceX IPO announcement would instantly collapse the speculative premium as all institutional space investment redirects to the sector leader, leaving RKLB stranded at inflated valuations with no fundamental moat to justify current prices. | Unresolved: [\"The fundamental valuation disconnect remains unaddressed - even with 12-18 months, RKLB's negative margins and capital constraints make it unlikely to build sustainable competitive moats against SpaceX's proven cost advantages and scale\"]",
+      "bull_score": 6,
+      "bear_score": 6,
+      "final_conviction": 4,
+      "decision": "skip"
     }
   ],
   "position_reviews": [
@@ -1252,6 +1336,19 @@
       "key_risk_to_monitor": "Volume patterns during any pullbacks to assess whether institutional momentum acceleration thesis continues attracting sustainable buying interest, and any signs of margin compression given the thin 3.7% profit margins.",
       "current_bull_case": "R1 Bull(8): DDOG's explosive 104% EPS growth combined with RSI 84.6 momentum continuation signals and strong ADX>25 trend confirmation creates a rare technical-fundamental convergence that drives institutional accumulation above resistance. | R2 Bull(6): DDOG's momentum-driven rally above resistance with ADX>25 trend strength remains technically valid despite valuation concerns, but execution risk from thin margins requires closer monitoring of competitive dynamics.",
       "current_bear_case": "R1 Bear(7): DDOG's 3.7% profit margin combined with extreme valuation distortion (TTM P/E of 507.2) creates unsustainable expectations where any growth deceleration triggers catastrophic multiple compression from technically overbought levels. | R2 Bear(6): Despite defensive customer retention characteristics, DDOG's 507.2x TTM P/E creates mathematically unsustainable expectations where even modest growth deceleration triggers severe multiple compression from current technically overbought levels."
+    },
+    {
+      "trade_id": "GOOGL_20260513160622",
+      "symbol": "GOOGL",
+      "ts": "2026-05-13T18:07:30.299592",
+      "action": "hold",
+      "conviction": 7,
+      "thesis_status": "intact",
+      "rationale": "The core thesis of exceptional operational execution (82% EPS growth, 37.9% margins) with strong technical momentum remains fully intact, as profit margins are well above the 30% threshold and regulatory risks remain speculative without concrete action.",
+      "original_thesis_check": "Yes - the breakout driven by exceptional operational execution with 82% EPS growth and 37.9% profit margins combined with strong technical momentum (ADX>50) is still valid",
+      "key_risk_to_monitor": "Concrete regulatory action targeting search bundling or any quarterly report showing profit margins approaching 30%",
+      "current_bull_case": "R1 Bull(8): GOOGL is experiencing a rare convergence of exceptional operational execution (82% EPS growth, 37.9% margins) with confirmed technical momentum breakout (ADX>50, +DI 43.5 vs -DI 13.3) that typically drives sustained uptrends beyond current resistance levels. | R2 Bull(6): GOOGL's AI-driven margin expansion and technical breakout remain intact despite volume concerns, as regulatory risks are priced in while the company's unassailable search moat ensures it captures the largest share of AI monetization.",
+      "current_bear_case": "R1 Bear(7): GOOGL faces an imminent regulatory reckoning that could fundamentally restructure its business model just as the stock reaches extreme technical overbought levels with deteriorating volume participation. | R2 Bear(8): GOOGL's regulatory exemption assumption is flawed as antitrust enforcement specifically targets dominant market positions, making the company's AI integration a liability rather than protection when forced restructuring meets technically overbought levels."
     }
   ],
   "risk_decisions": [
@@ -1333,6 +1430,38 @@
       "action": "skip",
       "reason": "PM decision: skip \u2014 Both analysts significantly reduced conviction after hearing counterarguments, with the bull dropping from 8 to 6 and bear from 7 to 5, indicating the edge is not as compelling as either initially believed.",
       "conviction": 6,
+      "rotate_from": ""
+    },
+    {
+      "ts": "2026-05-13T18:08:39.955601",
+      "symbol": "GOOGL",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 Both bull and bear reduced conviction to 6/10 after acknowledging each other's core risks - the leverage vulnerability is real enough that even the bull conceded it creates 'amplified risk to any business disruption'",
+      "conviction": 6,
+      "rotate_from": ""
+    },
+    {
+      "ts": "2026-05-13T18:09:30.860100",
+      "symbol": "COHR",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 The 4.7% ROE despite strong revenue growth indicates structural operational problems that make this a poor risk-adjusted way to play the AI photonics theme, especially when both analysts conceded this fundamental weakness.",
+      "conviction": 5,
+      "rotate_from": ""
+    },
+    {
+      "ts": "2026-05-13T18:10:26.981347",
+      "symbol": "ARM",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 Both bull and bear reduced conviction to 6/10 after acknowledging legitimate counterarguments, with unresolved risks around debt covenant breaches and unsustainable growth expectations creating asymmetric downside",
+      "conviction": 5,
+      "rotate_from": ""
+    },
+    {
+      "ts": "2026-05-13T18:11:19.392157",
+      "symbol": "RKLB",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 Both analysts independently identified and conceded the same core vulnerability - RKLB's negative margins and capital constraints make it structurally unable to compete, creating a fundamental ceiling that technical momentum cannot overcome.",
+      "conviction": 4,
       "rotate_from": ""
     }
   ]

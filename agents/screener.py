@@ -200,11 +200,16 @@ class Screener:
     def __init__(self, data_fetcher: DataFetcher):
         self.fetcher = data_fetcher
 
-    def run(self, max_candidates: int | None = None) -> list[ScreenerCandidate]:
-        logger.info("Screener starting — universe: %d symbols", len(self.WATCHLIST))
+    def run(
+        self,
+        max_candidates: int | None = None,
+        symbols: list[str] | None = None,
+    ) -> list[ScreenerCandidate]:
+        universe = symbols or self.WATCHLIST
+        logger.info("Screener starting — universe: %d symbols", len(universe))
         candidates = []
 
-        for symbol in self.WATCHLIST:
+        for symbol in universe:
             try:
                 candidate = self._score_symbol(symbol)
                 if candidate:

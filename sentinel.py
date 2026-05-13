@@ -26,6 +26,7 @@ WATCHLIST = [
     "SMCI", "MSTR", "IONQ", "GTLB", "TTD", "HIMS", "DUOL", "ARM",
     "ACLS", "COHR", "ONTO", "CELH", "DOCS", "BILL",
 ]
+MARKET_SENTINELS = ["SPY", "QQQ", "IWM"]
 
 INTRADAY_MOVE_THRESHOLD = 0.035
 POSITION_MOVE_THRESHOLD = 0.025
@@ -50,18 +51,37 @@ def check_intraday_moves(symbols: list[str]) -> list[str]:
     if not symbols:
         return triggers
     try:
-        data = yf.download(symbols, period="2d", interval="1d", progress=False, group_by="ticker")
+        data = yf.download(
+            symbols, period="5d", interval="15m",
+            progress=False, group_by="ticker", auto_adjust=False,
+        )
         for sym in symbols:
             try:
                 if len(symbols) == 1:
                     prices = data["Close"].dropna()
                 else:
                     prices = data[sym]["Close"].dropna()
-                if len(prices) >= 2:
-                    move = abs((prices.iloc[-1] - prices.iloc[-2]) / prices.iloc[-2])
-                    if move >= INTRADAY_MOVE_THRESHOLD:
-                        logger.info("TRIGGER: %s moved %.1f%%", sym, move * 100)
-                        triggers.append(sym)
+                if len(prices) < 2:
+                    continue
+                latest_day = prices.index[-1].date()
+                today_prices = prices[prices.index.date == latest_day]
+                previous_prices = prices[prices.index.date < latest_day]
+                if today_prices.empty or previous_prices.empty:
+                    continue
+                previous_close = float(previous_prices.iloc[-1])
+                latest = float(today_prices.iloc[-1])
+                intraday_low = float(today_prices.min())
+                from_prev_close = abs((latest - previous_close) / previous_close)
+                rebound_from_low = (latest - intraday_low) / intraday_low if intraday_low else 0
+                if (
+                    from_prev_close >= INTRADAY_MOVE_THRESHOLD or
+                    rebound_from_low >= INTRADAY_MOVE_THRESHOLD
+                ):
+                    logger.info(
+                        "TRIGGER: %s event move %.1f%%, rebound %.1f%%",
+                        sym, from_prev_close * 100, rebound_from_low * 100,
+                    )
+                    triggers.append(sym)
             except Exception:
                 pass
     except Exception as e:
@@ -115,7 +135,7 @@ def check_position_proximity_to_stop(open_trades: list[dict]) -> list[str]:
         quotes = client.get_stock_latest_quote(StockLatestQuoteRequest(symbol_or_symbols=symbols))
         for trade in open_trades:
             sym = trade["symbol"]
-            quote = quotes.get(sym)
+            quote = quotes.get(sym) if hasattr(quotes, "get") else quotes[sym]
             if not quote:
                 continue
             current = float(quote.ask_price or quote.bid_price or 0)
@@ -176,7 +196,7 @@ def set_github_output(key: str, value: str):
 def main():
     open_trades = load_open_trades()
     open_symbols = [t["symbol"] for t in open_trades]
-    all_symbols = sorted(set(WATCHLIST + open_symbols))
+    all_symbols = sorted(set(WATCHLIST + MARKET_SENTINELS + open_symbols))
 
     triggers = []
     triggers.extend(check_intraday_moves(all_symbols))

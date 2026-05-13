@@ -41,6 +41,8 @@ MAX_POSITION_PCT       = 0.10      # 10% of portfolio hard ceiling per position
 MAX_PORTFOLIO_EXPOSURE = 0.60      # Total equity exposure cap (60% deployed, 40% reserve)
 MIN_CONVICTION_SCORE   = 7         # Out of 10 — below this, hold cash
 MAX_SECTOR_PCT         = 0.20      # No single sector > 20% of deployed capital
+CORRELATION_THRESHOLD  = 0.75      # Return-correlation threshold for overlap checks
+ROTATION_SCORE_MARGIN  = 1.0       # Candidate must beat current holding by this much
 
 # Conviction → position size mapping
 CONVICTION_SIZE_MAP = {
@@ -66,6 +68,8 @@ MARKET_CLOSE_BUFFER  = 30         # Minutes before close to stop trading
 
 # ── Schedule (ET times) ──────────────────────────────────────────────────────
 RUN_TIMES_ET = ["08:30", "13:00"]
+SENTINEL_MARKET_SYMBOLS = ["SPY", "QQQ", "IWM"]  # Broad event symbols
+SENTINEL_EVENT_MAX_CANDIDATES = 4                 # Narrow reruns after symbol events
 
 # ── AI Model ─────────────────────────────────────────────────────────────────
 ANALYST_MODEL   = "claude-sonnet-4-20250514"   # Fast, cheap — analysts

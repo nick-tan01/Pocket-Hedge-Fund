@@ -147,7 +147,7 @@ def log_debate(
 def log_run(
     run_type: str, candidates: list[str], trades_executed: int,
     skipped_reason: str = "", regime: str = "", vix_regime: str = "",
-    reason: str = "scheduled",
+    reason: str = "scheduled", event_symbols: list[str] | None = None,
 ):
     """Log a summary of each pipeline run."""
     data = _load()
@@ -159,11 +159,34 @@ def log_run(
         "skipped_reason":   skipped_reason,
         "reason":           reason,
     }
+    if event_symbols:
+        entry["event_symbols"] = event_symbols
     if regime:
         entry["regime"] = regime
     if vix_regime:
         entry["vix_regime"] = vix_regime
     data["runs"].append(entry)
+    _save(data)
+
+
+def log_risk_decision(
+    symbol: str,
+    action: str,
+    reason: str,
+    conviction: int,
+    rotate_from: str = "",
+):
+    """Append a deterministic risk-manager decision for audit/debugging."""
+    data = _load()
+    data.setdefault("risk_decisions", [])
+    data["risk_decisions"].append({
+        "ts":          datetime.utcnow().isoformat(),
+        "symbol":      symbol,
+        "action":      action,
+        "reason":      reason,
+        "conviction":  conviction,
+        "rotate_from": rotate_from,
+    })
     _save(data)
 
 

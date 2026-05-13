@@ -24,6 +24,9 @@ class TradeProposal:
     reason:          str
     key_risk:        str       # from PM — what to monitor post-entry
     sector:          str = ""
+    rotate_from:     str = ""
+    rotation_reason: str = ""
+    correlation:     float = 0.0
 
 
 def evaluate(
@@ -74,15 +77,6 @@ def evaluate(
             key_risk=key_risk,
         )
 
-    if len(open_positions) >= config.MAX_POSITIONS:
-        return TradeProposal(
-            symbol=symbol, action="skip", conviction=conviction,
-            position_usd=0, shares=0, entry_price=current_price,
-            stop_price=0, stop_pct=0,
-            reason=f"Max positions ({config.MAX_POSITIONS}) already open",
-            key_risk=key_risk,
-        )
-
     if any(p["symbol"] == symbol for p in open_positions):
         return TradeProposal(
             symbol=symbol, action="hold", conviction=conviction,
@@ -92,19 +86,8 @@ def evaluate(
             key_risk=key_risk,
         )
 
-    # ── Portfolio exposure cap ─────────────────────────────────────────────────
+    # ── Current exposure baseline ───────────────────────────────────────────────
     deployed_pct = sum(p.get("position_pct", 0) for p in open_positions)
-    remaining_exposure = config.MAX_PORTFOLIO_EXPOSURE - deployed_pct
-    if remaining_exposure < 0.04:   # less than 4% headroom — too tight to add
-        return TradeProposal(
-            symbol=symbol, action="skip", conviction=conviction,
-            position_usd=0, shares=0, entry_price=current_price,
-            stop_price=0, stop_pct=0,
-            reason=(f"Portfolio exposure cap reached "
-                    f"({deployed_pct*100:.1f}% deployed, "
-                    f"cap={config.MAX_PORTFOLIO_EXPOSURE*100:.0f}%)"),
-            key_risk=key_risk,
-        )
 
     # ── Position sizing ───────────────────────────────────────────────────────
     size_map  = config.CONVICTION_SIZE_MAP
@@ -114,7 +97,55 @@ def evaluate(
 
     regime_mult = {"bull": 1.0, "caution": 0.8, "bear": 0.6}.get(regime, 1.0)
     vix_mult    = {"normal": 1.0, "elevated_vix": 0.75, "high_vix": 0.5}.get(vix_regime, 1.0)
-    size_pct    = min(size_pct * regime_mult * vix_mult, remaining_exposure)
+    size_pct    = size_pct * regime_mult * vix_mult
+
+    corr_decision = _correlation_tournament(
+        symbol=symbol,
+        pm_verdict=pm_verdict,
+        bars=bars,
+        open_positions=open_positions,
+        fetcher=fetcher,
+    )
+    if corr_decision["action"] == "skip":
+        return TradeProposal(
+            symbol=symbol, action="skip", conviction=conviction,
+            position_usd=0, shares=0, entry_price=current_price,
+            stop_price=0, stop_pct=0,
+            reason=corr_decision["reason"],
+            key_risk=key_risk,
+            correlation=corr_decision.get("correlation", 0.0),
+        )
+    if len(open_positions) >= config.MAX_POSITIONS and corr_decision["action"] != "rotate":
+        return TradeProposal(
+            symbol=symbol, action="skip", conviction=conviction,
+            position_usd=0, shares=0, entry_price=current_price,
+            stop_price=0, stop_pct=0,
+            reason=f"Max positions ({config.MAX_POSITIONS}) already open",
+            key_risk=key_risk,
+        )
+
+    rotation_credit = 0.0
+    if corr_decision["action"] == "rotate":
+        rotate_from = corr_decision.get("rotate_from")
+        rotation_credit = sum(
+            p.get("position_pct", 0)
+            for p in open_positions
+            if p.get("symbol") == rotate_from
+        )
+
+    effective_deployed = max(0, deployed_pct - rotation_credit)
+    remaining_exposure = config.MAX_PORTFOLIO_EXPOSURE - effective_deployed
+    if remaining_exposure < 0.04:   # less than 4% headroom — too tight to add
+        return TradeProposal(
+            symbol=symbol, action="skip", conviction=conviction,
+            position_usd=0, shares=0, entry_price=current_price,
+            stop_price=0, stop_pct=0,
+            reason=(f"Portfolio exposure cap reached "
+                    f"({effective_deployed*100:.1f}% deployed after rotation credit, "
+                    f"cap={config.MAX_PORTFOLIO_EXPOSURE*100:.0f}%)"),
+            key_risk=key_risk,
+        )
+    size_pct = min(size_pct, remaining_exposure)
 
     sector = _get_sector(symbol)
     sector_deployed = sum(
@@ -122,6 +153,15 @@ def evaluate(
         for p in open_positions
         if p.get("sector", "") == sector
     )
+    if corr_decision["action"] == "rotate":
+        rotate_from = corr_decision.get("rotate_from")
+        sector_deployed -= sum(
+            p.get("position_pct", 0)
+            for p in open_positions
+            if p.get("symbol") == rotate_from and p.get("sector", "") == sector
+        )
+        sector_deployed = max(0, sector_deployed)
+
     if sector and sector_deployed + size_pct > config.MAX_SECTOR_PCT:
         return TradeProposal(
             symbol=symbol, action="skip", conviction=conviction,
@@ -129,16 +169,6 @@ def evaluate(
             stop_price=0, stop_pct=0,
             reason=(f"Sector cap: {sector} already at {sector_deployed*100:.1f}% "
                     f"(max {config.MAX_SECTOR_PCT*100:.0f}%)"),
-            key_risk=key_risk,
-        )
-
-    corr_ok, corr_reason = _check_correlation(symbol, open_positions, fetcher)
-    if not corr_ok:
-        return TradeProposal(
-            symbol=symbol, action="skip", conviction=conviction,
-            position_usd=0, shares=0, entry_price=current_price,
-            stop_price=0, stop_pct=0,
-            reason=corr_reason,
             key_risk=key_risk,
         )
 
@@ -160,6 +190,8 @@ def evaluate(
         f"| ATR={round(atr,2) if atr else 'N/A'} x{atr_mult:.1f} "
         f"| stop=${stop_price} (-{stop_pct}%)"
     )
+    if corr_decision["action"] == "rotate":
+        reason += f" | rotate_from={corr_decision['rotate_from']}"
 
     logger.info("Risk | %s | BUY conviction=%d size=$%.0f stop=$%.2f",
                 symbol, conviction, position_usd, stop_price)
@@ -170,6 +202,9 @@ def evaluate(
         entry_price=current_price, stop_price=stop_price,
         stop_pct=stop_pct, reason=reason, key_risk=key_risk,
         sector=sector,
+        rotate_from=corr_decision.get("rotate_from", ""),
+        rotation_reason=corr_decision.get("reason", ""),
+        correlation=corr_decision.get("correlation", 0.0),
     )
 
 
@@ -203,29 +238,111 @@ def _get_sector(symbol: str) -> str:
         return "Unknown"
 
 
-def _check_correlation(symbol: str, open_positions: list[dict], fetcher) -> tuple[bool, str]:
-    """Return (ok_to_trade, reason). Blocks if corr > 0.75 with any open position."""
+def _correlation_tournament(
+    symbol: str,
+    pm_verdict: dict,
+    bars: list[dict],
+    open_positions: list[dict],
+    fetcher,
+) -> dict:
+    """
+    Treat high return-correlation as a slot competition, not an automatic block.
+    If the new candidate clearly beats the overlapping holding, allow a rotation.
+    """
     if not open_positions or fetcher is None:
-        return True, ""
+        return {"action": "allow", "reason": ""}
     try:
         import pandas as pd
-        symbols = [p["symbol"] for p in open_positions] + [symbol]
-        closes = {}
-        for sym in symbols:
-            bars = fetcher.get_ohlcv(sym, days=30)
-            if bars:
-                closes[sym] = [b["close"] for b in bars]
-        if len(closes) < 2 or symbol not in closes:
-            return True, ""
-        min_len = min(len(v) for v in closes.values())
-        df = pd.DataFrame({k: v[-min_len:] for k, v in closes.items()})
-        corr = df.corr()
+
+        candidate_returns = _daily_returns([b["close"] for b in bars])
+        if len(candidate_returns) < 10:
+            return {"action": "allow", "reason": ""}
+
+        candidate_score = _rotation_score(
+            conviction=int(pm_verdict.get("final_conviction", 1)),
+            bars=bars,
+            thesis_status="intact",
+        )
+        conflicts = []
         for existing in open_positions:
             existing_sym = existing["symbol"]
-            if existing_sym in corr.columns and symbol in corr.index:
-                r = corr.loc[symbol, existing_sym]
-                if r > 0.75:
-                    return False, f"High correlation with existing {existing_sym} (r={r:.2f})"
+            existing_bars = fetcher.get_ohlcv(existing_sym, days=60)
+            existing_returns = _daily_returns([b["close"] for b in existing_bars])
+            min_len = min(len(candidate_returns), len(existing_returns))
+            if min_len < 10:
+                continue
+
+            corr = pd.Series(candidate_returns[-min_len:]).corr(
+                pd.Series(existing_returns[-min_len:])
+            )
+            if corr is None or pd.isna(corr) or corr < config.CORRELATION_THRESHOLD:
+                continue
+
+            existing_score = _rotation_score(
+                conviction=int(
+                    existing.get("last_review_conviction")
+                    or existing.get("conviction")
+                    or 1
+                ),
+                bars=existing_bars,
+                thesis_status=existing.get("thesis_status", "intact"),
+            )
+            conflicts.append({
+                "symbol": existing_sym,
+                "correlation": float(corr),
+                "existing_score": existing_score,
+            })
+
+        if not conflicts:
+            return {"action": "allow", "reason": ""}
+
+        hardest = max(conflicts, key=lambda c: c["correlation"])
+        weakest = min(conflicts, key=lambda c: c["existing_score"])
+        if candidate_score >= hardest["existing_score"] + config.ROTATION_SCORE_MARGIN:
+            return {
+                "action": "rotate",
+                "rotate_from": weakest["symbol"],
+                "correlation": round(hardest["correlation"], 2),
+                "reason": (
+                    f"Correlation tournament: {symbol} score {candidate_score:.1f} "
+                    f"beats {hardest['symbol']} score {hardest['existing_score']:.1f} "
+                    f"(r={hardest['correlation']:.2f}); rotate out of {weakest['symbol']}"
+                ),
+            }
+
+        return {
+            "action": "skip",
+            "correlation": round(hardest["correlation"], 2),
+            "reason": (
+                f"Correlation tournament: {symbol} score {candidate_score:.1f} "
+                f"does not beat {hardest['symbol']} score {hardest['existing_score']:.1f} "
+                f"by {config.ROTATION_SCORE_MARGIN:.1f} (r={hardest['correlation']:.2f})"
+            ),
+        }
     except Exception as e:
-        logger.debug("Correlation check failed for %s: %s", symbol, e)
-    return True, ""
+        logger.debug("Correlation tournament failed for %s: %s", symbol, e)
+    return {"action": "allow", "reason": ""}
+
+
+def _daily_returns(closes: list[float]) -> list[float]:
+    returns = []
+    for prev, current in zip(closes, closes[1:]):
+        if prev:
+            returns.append((current - prev) / prev)
+    return returns
+
+
+def _rotation_score(conviction: int, bars: list[dict], thesis_status: str) -> float:
+    score = float(conviction)
+    closes = [float(b["close"]) for b in bars if b.get("close")]
+    if len(closes) >= 21 and closes[-21]:
+        score += max(-1.0, min(1.0, ((closes[-1] / closes[-21]) - 1) * 5))
+    if len(closes) >= 6 and closes[-6]:
+        score += max(-0.5, min(0.5, ((closes[-1] / closes[-6]) - 1) * 3))
+
+    status = str(thesis_status or "").lower()
+    if status in {"weakened", "deteriorating"}:
+        score -= 0.75
+    elif status in {"broken", "invalidated"}:
+        score -= 2.0
+    return round(score, 2)

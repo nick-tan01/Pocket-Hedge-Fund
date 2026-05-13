@@ -10,6 +10,10 @@ on:
         description: "Run trigger reason"
         required: false
         default: "manual"
+      symbols:
+        description: "Comma-separated event symbols for sentinel-triggered runs"
+        required: false
+        default: ""
 
 permissions:
   contents: write
@@ -41,7 +45,8 @@ jobs:
           ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           RUN_REASON:        ${{ github.event.inputs.reason || 'scheduled' }}
-        run: python main.py --now --reason "$RUN_REASON"
+          EVENT_SYMBOLS:     ${{ github.event.inputs.symbols || '' }}
+        run: python main.py --now --reason "$RUN_REASON" --symbols "$EVENT_SYMBOLS"
 
       - name: Push updated dashboard data
         run: |

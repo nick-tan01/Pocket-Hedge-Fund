@@ -25,6 +25,7 @@ from core.journal import (
     log_trade_open, log_trade_close, get_open_trades, push_to_github,
     get_debate_by_id, log_position_review, update_open_trade,
     log_trade_trim, set_queued_action, clear_queued_action,
+    log_risk_decision,
 )
 from agents.screener import Screener
 import agents.technical        as technical_agent
@@ -196,7 +197,12 @@ def _review_target_pct(conviction: int) -> float:
         return 0.01
     return 0.0
 
-def review_open_positions(alpaca: AlpacaClient, fetcher: DataFetcher, dry_run: bool):
+def review_open_positions(
+    alpaca: AlpacaClient,
+    fetcher: DataFetcher,
+    dry_run: bool,
+    symbols: set[str] | None = None,
+):
     """
     Re-analyse every open position and decide hold / trim / exit based on whether
     the original entry thesis is still intact. Runs before the screener each pipeline.
@@ -204,6 +210,8 @@ def review_open_positions(alpaca: AlpacaClient, fetcher: DataFetcher, dry_run: b
     run re-reviews from scratch rather than blindly executing stale queues.
     """
     open_trades = get_open_trades()
+    if symbols:
+        open_trades = [t for t in open_trades if t.get("symbol") in symbols]
     if not open_trades:
         return
 
@@ -474,6 +482,13 @@ def analyse_symbol(
         vix_regime=vix_regime,
         fetcher=fetcher,
     )
+    log_risk_decision(
+        symbol=symbol,
+        action=proposal.action,
+        reason=proposal.reason,
+        conviction=proposal.conviction,
+        rotate_from=proposal.rotate_from,
+    )
 
     # ── Log full debate to journal ────────────────────────────────────────────
     debate_summary = (
@@ -508,6 +523,45 @@ def analyse_symbol(
         logger.info("MARKET CLOSED — %s queued for next open", symbol)
         return False
 
+    if proposal.rotate_from:
+        rotate_trade = next(
+            (t for t in open_positions if t.get("symbol") == proposal.rotate_from),
+            None,
+        )
+        if not rotate_trade:
+            logger.warning(
+                "Rotation target %s not found — skipping %s to avoid stacking correlated exposure",
+                proposal.rotate_from, symbol,
+            )
+            return False
+
+        rotate_pos = alpaca.get_position(proposal.rotate_from)
+        rotate_price = (
+            rotate_pos["current_price"]
+            if rotate_pos else rotate_trade.get("entry_price", current_price)
+        )
+        if dry_run:
+            logger.info(
+                "DRY RUN — would ROTATE %s → %s | %s",
+                proposal.rotate_from, symbol, proposal.rotation_reason,
+            )
+            return False
+
+        close_order = alpaca.close_position(
+            proposal.rotate_from,
+            reason=f"correlation_rotation_to_{symbol}",
+        )
+        if not close_order:
+            logger.warning("Rotation close failed for %s — skipping %s",
+                           proposal.rotate_from, symbol)
+            return False
+        log_trade_close(
+            rotate_trade["id"], rotate_price,
+            f"correlation_rotation_to_{symbol}",
+        )
+        logger.info("ROTATION | closed %s before buying %s | %s",
+                    proposal.rotate_from, symbol, proposal.rotation_reason)
+
     order = alpaca.submit_market_order(
         symbol=symbol, qty=proposal.shares, side="buy",
         reason=f"conviction={proposal.conviction} | {pm.get('verdict','')}",
@@ -539,12 +593,30 @@ def _should_run_thesis_review(run_start: datetime, reason: str) -> bool:
     return run_start.weekday() == 0   # 0 = Monday
 
 
-def run_pipeline(dry_run: bool = False, reason: str = "scheduled"):
+def _parse_event_symbols(raw: str = "") -> set[str]:
+    return {
+        s.strip().upper()
+        for s in (raw or "").replace(";", ",").split(",")
+        if s.strip()
+    }
+
+
+def _is_broad_market_event(event_symbols: set[str]) -> bool:
+    market_symbols = set(getattr(config, "SENTINEL_MARKET_SYMBOLS", []))
+    return bool(event_symbols & market_symbols)
+
+
+def run_pipeline(
+    dry_run: bool = False,
+    reason: str = "scheduled",
+    event_symbols: set[str] | None = None,
+):
     run_start = datetime.now(ET)
     run_type  = "pre_market" if run_start.hour < 12 else "midday"
     trigger_reason = reason
-    logger.info("══ Pipeline starting | %s | dry_run=%s | reason=%s ══",
-                run_type, dry_run, trigger_reason)
+    event_symbols = event_symbols or set()
+    logger.info("══ Pipeline starting | %s | dry_run=%s | reason=%s | symbols=%s ══",
+                run_type, dry_run, trigger_reason, sorted(event_symbols))
 
     alpaca  = AlpacaClient()
     fetcher = DataFetcher()
@@ -554,12 +626,18 @@ def run_pipeline(dry_run: bool = False, reason: str = "scheduled"):
     if not ok:
         logger.info("Hard stop: %s", skipped_reason)
         log_run(run_type, [], 0, skipped_reason=skipped_reason,
-                regime=regime, vix_regime=vix_regime, reason=trigger_reason)
+                regime=regime, vix_regime=vix_regime, reason=trigger_reason,
+                event_symbols=sorted(event_symbols))
         return
 
     check_open_positions(alpaca)
+    broad_event = trigger_reason == "sentinel_trigger" and _is_broad_market_event(event_symbols)
+    review_symbols = None
+    if trigger_reason == "sentinel_trigger" and event_symbols and not broad_event:
+        review_symbols = event_symbols
+
     if _should_run_thesis_review(run_start, trigger_reason):
-        review_open_positions(alpaca, fetcher, dry_run=dry_run)
+        review_open_positions(alpaca, fetcher, dry_run=dry_run, symbols=review_symbols)
     else:
         logger.info("Skipping full thesis review (not Monday) — mechanical stops only")
 
@@ -569,13 +647,23 @@ def run_pipeline(dry_run: bool = False, reason: str = "scheduled"):
         config.SCREENER_MIN_CANDIDATES,
         min(available + 2, config.SCREENER_MAX_CANDIDATES),
     )
-    screener   = Screener(fetcher)
-    candidates = screener.run(max_candidates=dynamic_max)
+    screener = Screener(fetcher)
+    event_universe = None
+    if trigger_reason == "sentinel_trigger" and event_symbols and not broad_event:
+        event_universe = sorted(
+            s for s in event_symbols
+            if s not in set(getattr(config, "SENTINEL_MARKET_SYMBOLS", []))
+        )
+        dynamic_max = min(dynamic_max, config.SENTINEL_EVENT_MAX_CANDIDATES)
+        logger.info("Sentinel event mode — narrowed screener to %s", event_universe)
+
+    candidates = screener.run(max_candidates=dynamic_max, symbols=event_universe)
 
     if not candidates:
         logger.info("No screener candidates")
         log_run(run_type, [], 0, skipped_reason="no_candidates",
-                regime=regime, vix_regime=vix_regime, reason=trigger_reason)
+                regime=regime, vix_regime=vix_regime, reason=trigger_reason,
+                event_symbols=sorted(event_symbols))
         return
 
     logger.info(screener.format_for_log(candidates))
@@ -612,7 +700,8 @@ def run_pipeline(dry_run: bool = False, reason: str = "scheduled"):
     spy_price = spy_bars[-1]["close"] if spy_bars else 0.0
     log_snapshot(account["portfolio_value"], account["cash"], spy_price)
     log_run(run_type, [c.symbol for c in candidates], trades_executed,
-            regime=regime, vix_regime=vix_regime, reason=trigger_reason)
+            regime=regime, vix_regime=vix_regime, reason=trigger_reason,
+            event_symbols=sorted(event_symbols))
 
     logger.info("══ Pipeline complete | portfolio=$%.2f | trades=%d ══",
                 account["portfolio_value"], trades_executed)
@@ -642,8 +731,14 @@ if __name__ == "__main__":
     parser.add_argument("--test",   action="store_true")
     parser.add_argument("--reason", default="scheduled",
                         help="Run trigger reason (scheduled / sentinel_trigger)")
+    parser.add_argument("--symbols", default="",
+                        help="Comma-separated symbols that triggered this run")
     args = parser.parse_args()
     if args.now or args.test:
-        run_pipeline(dry_run=args.test, reason=args.reason)
+        run_pipeline(
+            dry_run=args.test,
+            reason=args.reason,
+            event_symbols=_parse_event_symbols(args.symbols),
+        )
     else:
         run_scheduled()

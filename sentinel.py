@@ -7,7 +7,7 @@ Writes trigger=true/false to $GITHUB_OUTPUT for GitHub Actions.
 import json
 import logging
 import os
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 from pathlib import Path
 
 import yfinance as yf
@@ -32,6 +32,11 @@ INTRADAY_MOVE_THRESHOLD = 0.035
 POSITION_MOVE_THRESHOLD = 0.025
 VOLUME_SPIKE_THRESHOLD = 4.0
 STOP_PROXIMITY_PCT = 0.85
+COOLDOWN_MINUTES = 180
+SEVERE_INTRADAY_MOVE = 0.06
+SEVERE_POSITION_MOVE = 0.05
+SEVERE_VOLUME_SPIKE = 8.0
+SEVERE_STOP_PROXIMITY = 0.95
 
 
 def load_open_trades() -> list[dict]:
@@ -46,7 +51,37 @@ def load_open_trades() -> list[dict]:
         return []
 
 
-def check_intraday_moves(symbols: list[str]) -> list[str]:
+def load_recent_runs() -> list[dict]:
+    path = Path("dashboard/data.json")
+    if not path.exists():
+        return []
+    try:
+        with open(path) as f:
+            return json.load(f).get("runs", [])
+    except Exception as e:
+        logger.warning("Could not read recent runs: %s", e)
+        return []
+
+
+def event(symbol: str, trigger_type: str, value: float, threshold: float, **extra) -> dict:
+    severity = "high" if (
+        trigger_type in {"earnings_today", "near_stop"} or
+        (trigger_type in {"intraday_move", "intraday_rebound"} and value >= SEVERE_INTRADAY_MOVE) or
+        (trigger_type == "position_move" and value >= SEVERE_POSITION_MOVE) or
+        (trigger_type == "volume_spike" and value >= SEVERE_VOLUME_SPIKE)
+    ) else "normal"
+    out = {
+        "symbol":       symbol,
+        "trigger_type": trigger_type,
+        "value":        round(value, 4),
+        "threshold":    threshold,
+        "severity":     severity,
+    }
+    out.update(extra)
+    return out
+
+
+def check_intraday_moves(symbols: list[str]) -> list[dict]:
     triggers = []
     if not symbols:
         return triggers
@@ -71,17 +106,28 @@ def check_intraday_moves(symbols: list[str]) -> list[str]:
                 previous_close = float(previous_prices.iloc[-1])
                 latest = float(today_prices.iloc[-1])
                 intraday_low = float(today_prices.min())
-                from_prev_close = abs((latest - previous_close) / previous_close)
+                raw_move = (latest - previous_close) / previous_close
+                from_prev_close = abs(raw_move)
                 rebound_from_low = (latest - intraday_low) / intraday_low if intraday_low else 0
-                if (
-                    from_prev_close >= INTRADAY_MOVE_THRESHOLD or
-                    rebound_from_low >= INTRADAY_MOVE_THRESHOLD
-                ):
+                if from_prev_close >= INTRADAY_MOVE_THRESHOLD:
                     logger.info(
-                        "TRIGGER: %s event move %.1f%%, rebound %.1f%%",
-                        sym, from_prev_close * 100, rebound_from_low * 100,
+                        "TRIGGER: %s intraday move %.1f%%",
+                        sym, raw_move * 100,
                     )
-                    triggers.append(sym)
+                    triggers.append(event(
+                        sym, "intraday_move", from_prev_close, INTRADAY_MOVE_THRESHOLD,
+                        signed_move=round(raw_move, 4),
+                        latest=round(latest, 2),
+                        previous_close=round(previous_close, 2),
+                    ))
+                if rebound_from_low >= INTRADAY_MOVE_THRESHOLD:
+                    logger.info("TRIGGER: %s rebound %.1f%% from intraday low",
+                                sym, rebound_from_low * 100)
+                    triggers.append(event(
+                        sym, "intraday_rebound", rebound_from_low, INTRADAY_MOVE_THRESHOLD,
+                        latest=round(latest, 2),
+                        intraday_low=round(intraday_low, 2),
+                    ))
             except Exception:
                 pass
     except Exception as e:
@@ -89,7 +135,7 @@ def check_intraday_moves(symbols: list[str]) -> list[str]:
     return triggers
 
 
-def check_position_moves(open_trades: list[dict]) -> list[str]:
+def check_position_moves(open_trades: list[dict]) -> list[dict]:
     triggers = []
     for trade in open_trades:
         try:
@@ -101,13 +147,16 @@ def check_position_moves(open_trades: list[dict]) -> list[str]:
             move = abs((price - entry) / entry)
             if move >= POSITION_MOVE_THRESHOLD:
                 logger.info("TRIGGER: %s position moved %.1f%% from entry", symbol, move * 100)
-                triggers.append(symbol)
+                triggers.append(event(
+                    symbol, "position_move", move, POSITION_MOVE_THRESHOLD,
+                    price=round(price, 2), entry=round(entry, 2),
+                ))
         except Exception:
             pass
     return triggers
 
 
-def check_volume_spikes(open_trades: list[dict]) -> list[str]:
+def check_volume_spikes(open_trades: list[dict]) -> list[dict]:
     triggers = []
     for trade in open_trades:
         try:
@@ -117,15 +166,19 @@ def check_volume_spikes(open_trades: list[dict]) -> list[str]:
                 continue
             avg_vol = hist["Volume"].iloc[-21:-1].mean()
             today_vol = hist["Volume"].iloc[-1]
-            if avg_vol and today_vol / avg_vol >= VOLUME_SPIKE_THRESHOLD:
-                logger.info("TRIGGER: %s volume spike %.1fx", symbol, today_vol / avg_vol)
-                triggers.append(symbol)
+            ratio = today_vol / avg_vol if avg_vol else 0
+            if ratio >= VOLUME_SPIKE_THRESHOLD:
+                logger.info("TRIGGER: %s volume spike %.1fx", symbol, ratio)
+                triggers.append(event(
+                    symbol, "volume_spike", ratio, VOLUME_SPIKE_THRESHOLD,
+                    today_volume=int(today_vol), avg_volume=int(avg_vol),
+                ))
         except Exception:
             pass
     return triggers
 
 
-def check_position_proximity_to_stop(open_trades: list[dict]) -> list[str]:
+def check_position_proximity_to_stop(open_trades: list[dict]) -> list[dict]:
     triggers = []
     if not open_trades or not ALPACA_API_KEY or not ALPACA_SECRET_KEY:
         return triggers
@@ -145,13 +198,18 @@ def check_position_proximity_to_stop(open_trades: list[dict]) -> list[str]:
                 pct_to_stop = (entry - current) / (entry - stop)
                 if pct_to_stop >= STOP_PROXIMITY_PCT:
                     logger.info("TRIGGER: %s at %.1f%% of stop distance", sym, pct_to_stop * 100)
-                    triggers.append(sym)
+                    triggers.append(event(
+                        sym, "near_stop", pct_to_stop, STOP_PROXIMITY_PCT,
+                        current=round(current, 2),
+                        entry=round(entry, 2),
+                        stop=round(stop, 2),
+                    ))
     except Exception as e:
         logger.warning("Stop proximity check failed: %s", e)
     return triggers
 
 
-def check_earnings_today(symbols: list[str]) -> list[str]:
+def check_earnings_today(symbols: list[str]) -> list[dict]:
     triggers = []
     today = date.today()
     for sym in symbols:
@@ -161,7 +219,7 @@ def check_earnings_today(symbols: list[str]) -> list[str]:
             ed = parse_earnings_date(raw)
             if ed == today:
                 logger.info("TRIGGER: %s has earnings today", sym)
-                triggers.append(sym)
+                triggers.append(event(sym, "earnings_today", 1.0, 1.0))
         except Exception:
             pass
     return triggers
@@ -193,27 +251,75 @@ def set_github_output(key: str, value: str):
             f.write(f"{key}={value}\n")
 
 
+def is_recent_duplicate(evt: dict, runs: list[dict]) -> bool:
+    if evt.get("severity") == "high":
+        return False
+    cutoff = datetime.utcnow() - timedelta(minutes=COOLDOWN_MINUTES)
+    symbol = evt.get("symbol")
+    trigger_type = evt.get("trigger_type")
+
+    for run in reversed(runs):
+        try:
+            ts = datetime.fromisoformat(str(run.get("ts", "")))
+        except ValueError:
+            continue
+        if ts < cutoff:
+            break
+
+        details = run.get("event_details") or []
+        if any(
+            d.get("symbol") == symbol and d.get("trigger_type") == trigger_type
+            for d in details if isinstance(d, dict)
+        ):
+            return True
+
+        # Backward compatibility for runs before event_details existed.
+        if not details and symbol in run.get("event_symbols", []):
+            return True
+    return False
+
+
+def apply_cooldown(events: list[dict], runs: list[dict]) -> list[dict]:
+    kept = []
+    for evt in events:
+        if is_recent_duplicate(evt, runs):
+            logger.info(
+                "COOLDOWN: suppressing %s %s for %d minutes",
+                evt.get("symbol"), evt.get("trigger_type"), COOLDOWN_MINUTES,
+            )
+            continue
+        kept.append(evt)
+    return kept
+
+
 def main():
     open_trades = load_open_trades()
+    recent_runs = load_recent_runs()
     open_symbols = [t["symbol"] for t in open_trades]
     all_symbols = sorted(set(WATCHLIST + MARKET_SENTINELS + open_symbols))
 
-    triggers = []
-    triggers.extend(check_intraday_moves(all_symbols))
-    triggers.extend(check_position_moves(open_trades))
-    triggers.extend(check_volume_spikes(open_trades))
-    triggers.extend(check_position_proximity_to_stop(open_trades))
-    triggers.extend(check_earnings_today(all_symbols))
+    events = []
+    events.extend(check_intraday_moves(all_symbols))
+    events.extend(check_position_moves(open_trades))
+    events.extend(check_volume_spikes(open_trades))
+    events.extend(check_position_proximity_to_stop(open_trades))
+    events.extend(check_earnings_today(all_symbols))
+    events = apply_cooldown(events, recent_runs)
 
-    unique = sorted(set(triggers))
+    unique = sorted({evt["symbol"] for evt in events})
     if unique:
-        logger.info("EVENT DETECTED — triggering pipeline. Symbols: %s", unique)
+        logger.info("EVENT DETECTED — triggering pipeline. Events: %s", events)
         set_github_output("trigger", "true")
         set_github_output("trigger_symbols", ",".join(unique))
+        set_github_output(
+            "trigger_details",
+            json.dumps(events, separators=(",", ":")),
+        )
     else:
         logger.info("No events detected — no pipeline trigger")
         set_github_output("trigger", "false")
         set_github_output("trigger_symbols", "")
+        set_github_output("trigger_details", "[]")
 
 
 if __name__ == "__main__":

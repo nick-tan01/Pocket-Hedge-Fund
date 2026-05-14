@@ -9,6 +9,7 @@ Usage:
 """
 
 import argparse
+import json
 import logging
 import sys
 import time
@@ -411,6 +412,27 @@ def review_open_positions(
 
 # ── Per-symbol analysis ───────────────────────────────────────────────────────
 
+def _risk_category(proposal) -> str:
+    reason = (proposal.reason or "").lower()
+    if proposal.action == "buy":
+        return "approved"
+    if proposal.action == "hold":
+        return "already_holding"
+    if "conviction" in reason:
+        return "conviction"
+    if "correlation tournament" in reason:
+        return "correlation"
+    if "sector cap" in reason:
+        return "sector_cap"
+    if "portfolio exposure" in reason:
+        return "portfolio_exposure"
+    if "max positions" in reason:
+        return "max_positions"
+    if proposal.action in {"skip", "watch"}:
+        return "pm_decision"
+    return "other"
+
+
 def analyse_symbol(
     symbol: str,
     fetcher: DataFetcher,
@@ -488,6 +510,17 @@ def analyse_symbol(
         reason=proposal.reason,
         conviction=proposal.conviction,
         rotate_from=proposal.rotate_from,
+        position_usd=proposal.position_usd,
+        shares=proposal.shares,
+        entry_price=proposal.entry_price,
+        stop_price=proposal.stop_price,
+        stop_pct=proposal.stop_pct,
+        sector=proposal.sector,
+        correlation=proposal.correlation,
+        rotation_reason=proposal.rotation_reason,
+        pm_action=pm.get("action"),
+        pm_verdict=pm.get("verdict"),
+        risk_category=_risk_category(proposal),
     )
 
     # ── Log full debate to journal ────────────────────────────────────────────
@@ -601,6 +634,17 @@ def _parse_event_symbols(raw: str = "") -> set[str]:
     }
 
 
+def _parse_event_details(raw: str = "") -> list[dict]:
+    try:
+        parsed = json.loads(raw or "[]")
+        if not isinstance(parsed, list):
+            return []
+        return [item for item in parsed if isinstance(item, dict)]
+    except json.JSONDecodeError:
+        logger.warning("Could not parse event details JSON: %s", raw[:200])
+        return []
+
+
 def _is_broad_market_event(event_symbols: set[str]) -> bool:
     market_symbols = set(getattr(config, "SENTINEL_MARKET_SYMBOLS", []))
     return bool(event_symbols & market_symbols)
@@ -610,13 +654,22 @@ def run_pipeline(
     dry_run: bool = False,
     reason: str = "scheduled",
     event_symbols: set[str] | None = None,
+    event_details: list[dict] | None = None,
 ):
     run_start = datetime.now(ET)
     run_type  = "pre_market" if run_start.hour < 12 else "midday"
     trigger_reason = reason
     event_symbols = event_symbols or set()
-    logger.info("══ Pipeline starting | %s | dry_run=%s | reason=%s | symbols=%s ══",
-                run_type, dry_run, trigger_reason, sorted(event_symbols))
+    event_details = event_details or []
+    if not event_symbols and event_details:
+        event_symbols = {
+            str(evt.get("symbol", "")).upper()
+            for evt in event_details if evt.get("symbol")
+        }
+    logger.info(
+        "══ Pipeline starting | %s | dry_run=%s | reason=%s | symbols=%s | events=%s ══",
+        run_type, dry_run, trigger_reason, sorted(event_symbols), event_details,
+    )
 
     alpaca  = AlpacaClient()
     fetcher = DataFetcher()
@@ -627,7 +680,7 @@ def run_pipeline(
         logger.info("Hard stop: %s", skipped_reason)
         log_run(run_type, [], 0, skipped_reason=skipped_reason,
                 regime=regime, vix_regime=vix_regime, reason=trigger_reason,
-                event_symbols=sorted(event_symbols))
+                event_symbols=sorted(event_symbols), event_details=event_details)
         return
 
     check_open_positions(alpaca)
@@ -663,7 +716,7 @@ def run_pipeline(
         logger.info("No screener candidates")
         log_run(run_type, [], 0, skipped_reason="no_candidates",
                 regime=regime, vix_regime=vix_regime, reason=trigger_reason,
-                event_symbols=sorted(event_symbols))
+                event_symbols=sorted(event_symbols), event_details=event_details)
         return
 
     logger.info(screener.format_for_log(candidates))
@@ -701,7 +754,7 @@ def run_pipeline(
     log_snapshot(account["portfolio_value"], account["cash"], spy_price)
     log_run(run_type, [c.symbol for c in candidates], trades_executed,
             regime=regime, vix_regime=vix_regime, reason=trigger_reason,
-            event_symbols=sorted(event_symbols))
+            event_symbols=sorted(event_symbols), event_details=event_details)
 
     logger.info("══ Pipeline complete | portfolio=$%.2f | trades=%d ══",
                 account["portfolio_value"], trades_executed)
@@ -733,12 +786,15 @@ if __name__ == "__main__":
                         help="Run trigger reason (scheduled / sentinel_trigger)")
     parser.add_argument("--symbols", default="",
                         help="Comma-separated symbols that triggered this run")
+    parser.add_argument("--event-details", default="[]",
+                        help="JSON event metadata from sentinel")
     args = parser.parse_args()
     if args.now or args.test:
         run_pipeline(
             dry_run=args.test,
             reason=args.reason,
             event_symbols=_parse_event_symbols(args.symbols),
+            event_details=_parse_event_details(args.event_details),
         )
     else:
         run_scheduled()

@@ -148,6 +148,7 @@ def log_run(
     run_type: str, candidates: list[str], trades_executed: int,
     skipped_reason: str = "", regime: str = "", vix_regime: str = "",
     reason: str = "scheduled", event_symbols: list[str] | None = None,
+    event_details: list[dict] | None = None,
 ):
     """Log a summary of each pipeline run."""
     data = _load()
@@ -161,6 +162,8 @@ def log_run(
     }
     if event_symbols:
         entry["event_symbols"] = event_symbols
+    if event_details:
+        entry["event_details"] = event_details
     if regime:
         entry["regime"] = regime
     if vix_regime:
@@ -175,18 +178,21 @@ def log_risk_decision(
     reason: str,
     conviction: int,
     rotate_from: str = "",
+    **extra,
 ):
     """Append a deterministic risk-manager decision for audit/debugging."""
     data = _load()
     data.setdefault("risk_decisions", [])
-    data["risk_decisions"].append({
+    entry = {
         "ts":          datetime.utcnow().isoformat(),
         "symbol":      symbol,
         "action":      action,
         "reason":      reason,
         "conviction":  conviction,
         "rotate_from": rotate_from,
-    })
+    }
+    entry.update({k: v for k, v in extra.items() if v not in (None, "")})
+    data["risk_decisions"].append(entry)
     _save(data)
 
 

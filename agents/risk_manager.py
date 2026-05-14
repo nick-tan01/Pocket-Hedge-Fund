@@ -46,6 +46,15 @@ def evaluate(
     key_risk  = pm_verdict.get("key_risk_to_monitor", "")
 
     # ── No-go conditions ──────────────────────────────────────────────────────
+    if any(p["symbol"] == symbol for p in open_positions):
+        return TradeProposal(
+            symbol=symbol, action="hold", conviction=conviction,
+            position_usd=0, shares=0, entry_price=current_price,
+            stop_price=0, stop_pct=0,
+            reason=f"Already holding {symbol}",
+            key_risk=key_risk,
+        )
+
     if action != "buy":
         return TradeProposal(
             symbol=symbol, action=action, conviction=conviction,
@@ -74,15 +83,6 @@ def evaluate(
             stop_price=0, stop_pct=0,
             reason=(f"Conviction {conviction} below regime-adjusted minimum "
                     f"{required_conviction} ({regime}, {vix_regime})"),
-            key_risk=key_risk,
-        )
-
-    if any(p["symbol"] == symbol for p in open_positions):
-        return TradeProposal(
-            symbol=symbol, action="hold", conviction=conviction,
-            position_usd=0, shares=0, entry_price=current_price,
-            stop_price=0, stop_pct=0,
-            reason=f"Already holding {symbol}",
             key_risk=key_risk,
         )
 

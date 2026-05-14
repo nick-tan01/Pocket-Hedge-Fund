@@ -14,6 +14,10 @@ on:
         description: "Comma-separated event symbols for sentinel-triggered runs"
         required: false
         default: ""
+      event_details:
+        description: "Compact JSON event metadata from sentinel"
+        required: false
+        default: "[]"
 
 permissions:
   contents: write
@@ -46,7 +50,8 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           RUN_REASON:        ${{ github.event.inputs.reason || 'scheduled' }}
           EVENT_SYMBOLS:     ${{ github.event.inputs.symbols || '' }}
-        run: python main.py --now --reason "$RUN_REASON" --symbols "$EVENT_SYMBOLS"
+          EVENT_DETAILS:     ${{ github.event.inputs.event_details || '[]' }}
+        run: python main.py --now --reason "$RUN_REASON" --symbols "$EVENT_SYMBOLS" --event-details "$EVENT_DETAILS"
 
       - name: Push updated dashboard data
         run: |

@@ -43,4 +43,5 @@ jobs:
           gh workflow run "Pocket Hedge Fund — Trading Pipeline" \
             --ref main \
             --field reason="sentinel_trigger" \
-            --field symbols="${{ steps.check.outputs.trigger_symbols }}"
+            --field symbols="${{ steps.check.outputs.trigger_symbols }}" \
+            --field event_details='${{ steps.check.outputs.trigger_details }}'

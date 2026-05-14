@@ -811,6 +811,7 @@ function renderChart() {
           data: portVals,
           borderColor: '#00d4a0',
           backgroundColor: portGrad,
+          tooltipColor: '#00d4a0',
           borderWidth: 1.5,
           pointRadius: 0,
           pointHoverRadius: 4,
@@ -822,6 +823,7 @@ function renderChart() {
           data: spyVals,
           borderColor: '#5b8dee',
           backgroundColor: spyGrad,
+          tooltipColor: '#5b8dee',
           borderWidth: 1,
           pointRadius: 0,
           pointHoverRadius: 4,
@@ -858,6 +860,10 @@ function renderChart() {
           bodyFont:  { family: 'DM Mono', size: 11 },
           padding: 10,
           callbacks: {
+            labelColor: ctx => ({
+              borderColor: ctx.dataset.tooltipColor || ctx.dataset.borderColor,
+              backgroundColor: ctx.dataset.tooltipColor || ctx.dataset.borderColor,
+            }),
             label: ctx => ' ' + ctx.dataset.label + ': ' +
               (ctx.parsed.y >= 0 ? '+' : '') + ctx.parsed.y.toFixed(2) + '%'
           }

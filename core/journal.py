@@ -383,12 +383,6 @@ def push_to_github(commit_message: str = None):
             ["git", "commit", "-m", msg],
             cwd=repo_root, check=True, capture_output=True,
         )
-        # Pull-rebase before pushing to avoid rejection if another run
-        # already pushed between our checkout and now
-        subprocess.run(
-            ["git", "pull", "--rebase", "origin", "main"],
-            cwd=repo_root, check=True, capture_output=True,
-        )
         subprocess.run(
             ["git", "push"],
             cwd=repo_root, check=True, capture_output=True,

@@ -421,6 +421,48 @@
   .run-type { color: var(--amber); min-width: 80px; }
   .run-candidates { color: var(--text); flex: 1; }
 
+  /* ── Watchlist ── */
+  .watchlist-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 10px;
+  }
+
+  .watch-card {
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 10px 12px;
+    background: var(--bg3);
+    min-height: 116px;
+  }
+
+  .watch-card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .watch-meta {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--muted);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+
+  .watch-reason {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    line-height: 1.55;
+    color: var(--text);
+  }
+
+  .watch-warning { color: var(--amber); }
+
   /* ── Empty state ── */
   .empty {
     text-align: center;
@@ -530,7 +572,7 @@
     <div class="stat-card">
       <div class="stat-label">Open Positions</div>
       <div class="stat-value amber" id="stat-open">—</div>
-      <div class="stat-sub" id="stat-open-sub">of 5 max</div>
+      <div class="stat-sub" id="stat-open-sub">of 8 max</div>
     </div>
     <div class="stat-card">
       <div class="stat-label">Win Rate</div>
@@ -610,6 +652,16 @@
   <!-- Run log -->
   <div class="panel">
     <div class="panel-header">
+      <div class="panel-title">After-Close Market Memory</div>
+      <div class="panel-badge blue" id="watchlist-count-badge">0 WATCH</div>
+    </div>
+    <div class="panel-body" id="watchlist-body">
+      <div class="empty">No after-close watchlist yet</div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-header">
       <div class="panel-title">Pipeline Run Log</div>
     </div>
     <div class="panel-body" id="runs-body">
@@ -655,6 +707,7 @@ function render() {
   renderOpenPositions();
   renderTrades();
   renderDebates();
+  renderWatchlist();
   renderRuns();
   document.getElementById('footer-updated').textContent =
     'UPDATED ' + new Date().toLocaleTimeString('en-US', {hour12: false});
@@ -1045,6 +1098,62 @@ function renderTrades() {
 	  if (el) el.classList.toggle('open');
 	}
 
+// ── After-Close Watchlist ─────────────────────────────────────────────────
+function renderWatchlist() {
+  const records = DATA.watchlists || [];
+  const el = document.getElementById('watchlist-body');
+  const badge = document.getElementById('watchlist-count-badge');
+  if (!records.length) {
+    badge.textContent = '0 WATCH';
+    el.innerHTML = '<div class="empty">No after-close watchlist yet</div>';
+    return;
+  }
+
+  const latest = [...records].sort((a,b) => parseTs(b.generated_at) - parseTs(a.generated_at))[0];
+  const entries = latest.entries || [];
+  badge.textContent = entries.length + ' WATCH';
+  if (!entries.length) {
+    el.innerHTML = '<div class="empty">Latest watchlist had no qualified signals</div>';
+    return;
+  }
+
+  const visible = entries.slice(0, 12);
+  el.innerHTML = `
+    <div class="debate-summary">
+      GENERATED ${fmtPacificTime(latest.generated_at)} · EXPIRES ${fmtPacificTime(latest.expires_at)} ·
+      ${latest.long_candidate_count || 0} long · ${latest.weakness_count || 0} weakness · ${latest.position_alert_count || 0} alerts
+    </div>
+    <div class="watchlist-grid">
+      ${visible.map(entry => {
+        const side = entry.side || '';
+        const badgeClass = side === 'long_watch' ? 'green' : side === 'position_alert' ? 'amber' : 'red';
+        const sig = entry.stable_signals || {};
+        const flags = entry.risk_flags || {};
+        const flagText = [
+          flags.close_near_day_low ? 'close near low' : '',
+          flags.failed_breakout ? 'failed breakout' : '',
+          flags.earnings_within_3d ? 'earnings soon' : '',
+        ].filter(Boolean).join(' · ');
+        return `
+          <div class="watch-card">
+            <div class="watch-card-head">
+              <span class="symbol-pill">${escapeHtml(entry.symbol)}</span>
+              <span class="panel-badge ${badgeClass}">${escapeHtml(entry.tier || 'C')} ${Number(entry.score || 0).toFixed(2)}</span>
+            </div>
+            <div class="watch-meta">
+              <span>${escapeHtml((entry.setup_type || '').replace(/_/g, ' '))}</span>
+              <span>${fmtSignedPct(sig.day_return_pct)}</span>
+              <span>${sig.volume_ratio_20d ?? '—'}x vol</span>
+              <span>RS ${fmtSignedPct(sig.rs_vs_spy_20d_pct)}</span>
+            </div>
+            <div class="watch-reason">${escapeHtml(entry.reason || '')}</div>
+            ${flagText ? `<div class="watch-meta watch-warning">${escapeHtml(flagText)}</div>` : ''}
+          </div>`;
+      }).join('')}
+    </div>
+  `;
+}
+
 // ── Run Log ────────────────────────────────────────────────────────────────
 function renderRuns() {
   const runs = DATA.runs || [];
@@ -1074,6 +1183,12 @@ function set(id, val) {
 
 function fmt(n) {
   return Number(n).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+}
+
+function fmtSignedPct(value) {
+  if (value === null || value === undefined || Number.isNaN(Number(value))) return '—';
+  const n = Number(value);
+  return (n >= 0 ? '+' : '') + n.toFixed(2) + '%';
 }
 
 	function parseTs(ts) {

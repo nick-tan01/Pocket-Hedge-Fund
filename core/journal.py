@@ -35,6 +35,7 @@ def _load() -> dict:
         "open_trades":[],   # currently open positions
         "runs":       [],   # each pipeline run summary
         "debate_logs":[],   # full bull/bear transcripts
+        "watchlists": [],   # after-close market memory records
     }
 
 
@@ -216,6 +217,30 @@ def get_debate_by_id(debate_id: str) -> dict | None:
         (d for d in _load().get("debate_logs", []) if d.get("id") == debate_id),
         None,
     )
+
+
+def log_watchlist(record: dict) -> str:
+    """Append an after-close watchlist record and return its id."""
+    data = _load()
+    data.setdefault("watchlists", [])
+    generated = record.get("generated_at") or datetime.utcnow().isoformat()
+    watchlist_id = record.get("id") or f"watchlist_{generated[:19].replace('-', '').replace(':', '').replace('T', '_')}"
+    record["id"] = watchlist_id
+    data["watchlists"].append(record)
+    _save(data)
+    logger.info("Watchlist logged: %s entries=%s", watchlist_id, record.get("entry_count", 0))
+    return watchlist_id
+
+
+def get_latest_watchlist(source: str = "after_close") -> dict | None:
+    """Return the most recent watchlist record for a source."""
+    records = [
+        w for w in _load().get("watchlists", [])
+        if w.get("source") == source
+    ]
+    if not records:
+        return None
+    return max(records, key=lambda w: w.get("generated_at", ""))
 
 
 def log_position_review(

@@ -35,6 +35,12 @@ SCREENER_WEIGHTS = {
     "valuation":         0.05,
 }
 
+# ── After-close market memory ────────────────────────────────────────────────
+AFTER_CLOSE_WATCHLIST_MAX = 20     # Logged evidence cards; not all become candidates
+WATCHLIST_MEMORY_BONUS    = 0.06   # Small tie-breaker after next-run revalidation
+WATCHLIST_EXPIRE_HOUR_ET  = 10     # Expire next trading morning after early price discovery
+WATCHLIST_EXPIRE_MINUTE_ET= 15
+
 # ── Portfolio rules ───────────────────────────────────────────────────────────
 MAX_POSITIONS          = 8         # Max concurrent open positions
 MAX_POSITION_PCT       = 0.10      # 10% of portfolio hard ceiling per position

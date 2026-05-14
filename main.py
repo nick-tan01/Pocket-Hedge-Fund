@@ -26,9 +26,10 @@ from core.journal import (
     log_trade_open, log_trade_close, get_open_trades, push_to_github,
     get_debate_by_id, log_position_review, update_open_trade,
     log_trade_trim, set_queued_action, clear_queued_action,
-    log_risk_decision,
+    log_risk_decision, get_latest_watchlist,
 )
 from agents.screener import Screener
+from agents.after_close_watchlist import LONG_SETUP_TYPES
 import agents.technical        as technical_agent
 import agents.fundamental      as fundamental_agent
 import agents.sentiment        as sentiment_agent
@@ -650,6 +651,103 @@ def _is_broad_market_event(event_symbols: set[str]) -> bool:
     return bool(event_symbols & market_symbols)
 
 
+def _parse_iso_utc(raw: str = "") -> datetime | None:
+    if not raw:
+        return None
+    try:
+        value = str(raw).replace("Z", "+00:00")
+        dt = datetime.fromisoformat(value)
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+        return dt.astimezone(timezone.utc)
+    except (TypeError, ValueError):
+        return None
+
+
+def _active_watchlist_entries() -> list[dict]:
+    latest = get_latest_watchlist("after_close")
+    if not latest:
+        return []
+
+    expires_at = _parse_iso_utc(latest.get("expires_at", ""))
+    if expires_at and expires_at < datetime.now(timezone.utc):
+        logger.info("After-close watchlist expired at %s", latest.get("expires_at"))
+        return []
+
+    entries = latest.get("entries", [])
+    eligible = []
+    for entry in entries:
+        if entry.get("side") != "long_watch":
+            continue
+        if entry.get("setup_type") not in LONG_SETUP_TYPES:
+            continue
+        flags = entry.get("risk_flags", {})
+        if flags.get("earnings_within_3d"):
+            continue
+        eligible.append(entry)
+    return eligible
+
+
+def _memory_bonus(entry: dict) -> float:
+    tier = str(entry.get("tier", "")).upper()
+    base = getattr(config, "WATCHLIST_MEMORY_BONUS", 0.06)
+    if tier == "A":
+        return base
+    if tier == "B":
+        return base * 0.6
+    return base * 0.25
+
+
+def _select_candidates(
+    screener: Screener,
+    dynamic_max: int,
+    trigger_reason: str,
+    event_universe: list[str] | None = None,
+) -> list:
+    if event_universe is not None:
+        return screener.run(max_candidates=dynamic_max, symbols=event_universe)
+
+    candidates = screener.run(max_candidates=dynamic_max)
+    if trigger_reason == "sentinel_trigger":
+        return candidates
+
+    watch_entries = _active_watchlist_entries()
+    if not watch_entries:
+        return candidates
+
+    watch_by_symbol = {e["symbol"]: e for e in watch_entries if e.get("symbol")}
+    watch_symbols = sorted(watch_by_symbol)
+    revalidated = screener.run(max_candidates=len(watch_symbols), symbols=watch_symbols)
+    if not revalidated:
+        logger.info("After-close watchlist had no symbols pass next-run revalidation")
+        return candidates
+
+    merged = {c.symbol: c for c in candidates}
+    for candidate in revalidated:
+        entry = watch_by_symbol.get(candidate.symbol)
+        if not entry:
+            continue
+        bonus = _memory_bonus(entry)
+        candidate.signals.update({
+            "watchlist_memory": True,
+            "watchlist_setup_type": entry.get("setup_type"),
+            "watchlist_tier": entry.get("tier"),
+            "watchlist_score": entry.get("score"),
+            "watchlist_reason": entry.get("reason"),
+            "watchlist_memory_bonus": round(bonus, 4),
+        })
+        candidate.composite_score = round(candidate.composite_score + bonus, 4)
+        if candidate.symbol not in merged or candidate.composite_score > merged[candidate.symbol].composite_score:
+            merged[candidate.symbol] = candidate
+
+    selected = sorted(merged.values(), key=lambda c: c.composite_score, reverse=True)[:dynamic_max]
+    logger.info(
+        "After-close memory revalidated %d/%d symbols; selected candidates=%s",
+        len(revalidated), len(watch_symbols), [c.symbol for c in selected],
+    )
+    return selected
+
+
 def run_pipeline(
     dry_run: bool = False,
     reason: str = "scheduled",
@@ -710,7 +808,12 @@ def run_pipeline(
         dynamic_max = min(dynamic_max, config.SENTINEL_EVENT_MAX_CANDIDATES)
         logger.info("Sentinel event mode — narrowed screener to %s", event_universe)
 
-    candidates = screener.run(max_candidates=dynamic_max, symbols=event_universe)
+    candidates = _select_candidates(
+        screener=screener,
+        dynamic_max=dynamic_max,
+        trigger_reason=trigger_reason,
+        event_universe=event_universe,
+    )
 
     if not candidates:
         logger.info("No screener candidates")

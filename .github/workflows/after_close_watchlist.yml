@@ -1,0 +1,43 @@
+name: Pocket Hedge Fund — After-Close Watchlist
+
+on:
+  schedule:
+    - cron: '30 21 * * 1-5'   # After regular close in both EDT and EST
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-watchlist:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Build after-close watchlist
+        env:
+          ALPACA_API_KEY:    ${{ secrets.ALPACA_API_KEY }}
+          ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
+        run: python scripts/build_after_close_watchlist.py
+
+      - name: Push updated dashboard data
+        run: |
+          git config user.name "nick-tan01"
+          git config user.email "${{ secrets.GIT_EMAIL }}"
+          git add dashboard/data.json
+          git diff --cached --quiet && echo "No changes to push" || git commit -m "Auto: after-close watchlist $(date -u +'%Y-%m-%d')" && git push

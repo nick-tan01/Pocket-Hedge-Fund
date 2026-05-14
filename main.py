@@ -688,6 +688,54 @@ def _active_watchlist_entries() -> list[dict]:
     return eligible
 
 
+def _watchlist_position_alerts() -> set[str]:
+    """
+    Read overnight position alerts and weakness signals for open positions.
+    Returns symbols that had a red flag overnight — these get an early thesis
+    review even on non-Monday runs, closing the overnight feedback loop.
+    """
+    latest = get_latest_watchlist("after_close")
+    if not latest:
+        return set()
+
+    expires_at = _parse_iso_utc(latest.get("expires_at", ""))
+    if expires_at and expires_at < datetime.now(timezone.utc):
+        return set()
+
+    open_symbols = {t.get("symbol") for t in get_open_trades() if t.get("symbol")}
+    if not open_symbols:
+        return set()
+
+    alert_symbols = set()
+    for entry in latest.get("entries", []):
+        sym = entry.get("symbol")
+        if sym not in open_symbols:
+            continue
+        side = entry.get("side", "")
+        setup = entry.get("setup_type", "")
+        flags = entry.get("risk_flags", {})
+        score = entry.get("score", 0)
+        # Trigger early review if:
+        #   - Explicit position alert (existing_position_alert)
+        #   - Weakness/hedge watch on an open position
+        #   - Failed breakout flag on an open position
+        #   - Bearish news overnight with score >= 0.50
+        if side == "position_alert":
+            alert_symbols.add(sym)
+            logger.info("Overnight alert | %s: position_alert (score=%.3f)", sym, score)
+        elif side == "weakness_or_hedge_watch":
+            alert_symbols.add(sym)
+            logger.info("Overnight alert | %s: weakness_watch/%s (score=%.3f)", sym, setup, score)
+        elif flags.get("failed_breakout") and sym in open_symbols:
+            alert_symbols.add(sym)
+            logger.info("Overnight alert | %s: failed_breakout detected (score=%.3f)", sym, score)
+        elif flags.get("bearish_news") and score >= 0.50:
+            alert_symbols.add(sym)
+            logger.info("Overnight alert | %s: bearish_news flag (score=%.3f)", sym, score)
+
+    return alert_symbols
+
+
 def _memory_bonus(entry: dict) -> float:
     tier = str(entry.get("tier", "")).upper()
     base = getattr(config, "WATCHLIST_MEMORY_BONUS", 0.06)
@@ -787,8 +835,20 @@ def run_pipeline(
     if trigger_reason == "sentinel_trigger" and event_symbols and not broad_event:
         review_symbols = event_symbols
 
+    # Check overnight watchlist for position alerts — close the after-hours feedback loop
+    overnight_alerts = _watchlist_position_alerts()
+    if overnight_alerts:
+        logger.info("Overnight position alerts for: %s — forcing targeted thesis review",
+                    sorted(overnight_alerts))
+
     if _should_run_thesis_review(run_start, trigger_reason):
         review_open_positions(alpaca, fetcher, dry_run=dry_run, symbols=review_symbols)
+    elif overnight_alerts:
+        # Not Monday and not sentinel, but overnight weakness detected on open positions
+        # Run a targeted review only on the flagged symbols — don't review the whole book
+        logger.info("Non-Monday early review triggered by overnight alerts: %s",
+                    sorted(overnight_alerts))
+        review_open_positions(alpaca, fetcher, dry_run=dry_run, symbols=overnight_alerts)
     else:
         logger.info("Skipping full thesis review (not Monday) — mechanical stops only")
 

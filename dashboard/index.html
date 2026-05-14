@@ -298,11 +298,13 @@
     font-size: 10px;
   }
 
-  .debate-body {
-    display: none;
-    padding: 14px;
-    border-top: 1px solid var(--border);
-  }
+	  .debate-body {
+	    display: none;
+	    padding: 14px;
+	    border-top: 1px solid var(--border);
+	    max-height: 360px;
+	    overflow: auto;
+	  }
 
   .debate-body.open { display: block; }
 
@@ -325,8 +327,59 @@
     margin-bottom: 5px;
   }
 
-  .debate-side.bull .debate-side-label { color: var(--green); }
-  .debate-side.bear .debate-side-label { color: var(--red); }
+	  .debate-side.bull .debate-side-label { color: var(--green); }
+	  .debate-side.bear .debate-side-label { color: var(--red); }
+
+	  .debate-controls {
+	    display: grid;
+	    grid-template-columns: 1fr auto;
+	    gap: 10px;
+	    margin-bottom: 12px;
+	  }
+
+	  .debate-search {
+	    width: 100%;
+	    background: var(--bg);
+	    color: var(--text);
+	    border: 1px solid var(--border);
+	    border-radius: 3px;
+	    padding: 7px 9px;
+	    font-family: var(--font-mono);
+	    font-size: 10px;
+	    outline: none;
+	  }
+
+	  .debate-search:focus { border-color: var(--accent); }
+
+	  .debate-filter-row {
+	    display: flex;
+	    flex-wrap: wrap;
+	    gap: 5px;
+	    margin-bottom: 10px;
+	  }
+
+	  .debate-summary {
+	    font-family: var(--font-mono);
+	    font-size: 10px;
+	    color: var(--muted);
+	    margin-bottom: 10px;
+	  }
+
+	  .pager {
+	    display: flex;
+	    align-items: center;
+	    justify-content: space-between;
+	    gap: 10px;
+	    padding-top: 8px;
+	    font-family: var(--font-mono);
+	    font-size: 10px;
+	    color: var(--muted);
+	  }
+
+	  .pager button:disabled {
+	    cursor: default;
+	    opacity: 0.35;
+	  }
 
   /* ── Trade history ── */
   .trade-row {
@@ -364,7 +417,7 @@
   }
 
   .run-item:last-child { border-bottom: none; }
-  .run-ts { color: var(--muted); min-width: 120px; }
+	  .run-ts { color: var(--muted); min-width: 160px; }
   .run-type { color: var(--amber); min-width: 80px; }
   .run-candidates { color: var(--text); flex: 1; }
 
@@ -529,15 +582,29 @@
       </div>
     </div>
 
-    <div class="panel">
-      <div class="panel-header">
-        <div class="panel-title">Debate Log</div>
-        <div class="panel-badge amber" id="debates-count-badge">0 DEBATES</div>
-      </div>
-      <div class="panel-body" id="debates-body">
-        <div class="empty">No debates logged yet</div>
-      </div>
-    </div>
+	    <div class="panel">
+	      <div class="panel-header">
+	        <div class="panel-title">Debate Log</div>
+	        <div class="panel-badge amber" id="debates-count-badge">0 DEBATES</div>
+	      </div>
+	      <div class="panel-body">
+	        <div class="debate-controls">
+	          <input class="debate-search" id="debate-search" type="search" placeholder="SEARCH SYMBOL OR THESIS" oninput="setDebateSearch(this.value)">
+	          <button class="refresh-btn" onclick="resetDebateFilters()">RESET</button>
+	        </div>
+	        <div class="debate-filter-row">
+	          <button class="tab active" data-debate-filter="all" onclick="setDebateFilter('all')">ALL</button>
+	          <button class="tab" data-debate-filter="buy" onclick="setDebateFilter('buy')">BUY</button>
+	          <button class="tab" data-debate-filter="skip" onclick="setDebateFilter('skip')">SKIP</button>
+	          <button class="tab" data-debate-filter="watch" onclick="setDebateFilter('watch')">WATCH</button>
+	        </div>
+	        <div class="debate-summary" id="debate-summary">—</div>
+	        <div id="debates-body">
+	          <div class="empty">No debates logged yet</div>
+	        </div>
+	        <div class="pager" id="debate-pager"></div>
+	      </div>
+	    </div>
   </div>
 
   <!-- Run log -->
@@ -562,6 +629,12 @@
 let DATA = null;
 let chart = null;
 let chartPeriod = 'all';
+const debateState = {
+  filter: 'all',
+  search: '',
+  page: 1,
+  pageSize: 10,
+};
 
 // ── Load data ──────────────────────────────────────────────────────────────
 async function loadData() {
@@ -643,7 +716,7 @@ function renderStats() {
   const runs = DATA.runs || [];
   if (runs.length) {
     const last_run = runs[runs.length - 1];
-    set('hdr-last-run', fmtTime(last_run.ts));
+	    set('hdr-last-run', fmtPacificTime(last_run.ts));
   }
 }
 
@@ -652,14 +725,14 @@ function renderChart() {
   const startDate = DATA.meta.start_date ? new Date(DATA.meta.start_date) : null;
   const allSnaps  = filterByPeriod(DATA.snapshots || []);
   const snaps     = startDate
-      ? allSnaps.filter(s => new Date(s.ts) >= startDate)
+	      ? allSnaps.filter(s => parseTs(s.ts) >= startDate)
       : allSnaps;
   if (!snaps.length) return;
 
   const start     = DATA.meta.starting_capital;
   const firstSpy  = snaps[0].spy_price;
 
-  const labels    = snaps.map(s => fmtDate(s.ts));
+	  const labels    = snaps.map(s => fmtPacificDate(s.ts));
   const portVals  = snaps.map(s => +((((s.portfolio_value - start) / start) * 100).toFixed(3)));
   const spyVals   = snaps.map(s => +((((s.spy_price - firstSpy) / firstSpy) * 100).toFixed(3)));
 
@@ -762,18 +835,18 @@ function renderChart() {
   });
 }
 
-function setChartPeriod(period, el) {
-  chartPeriod = period;
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  el.classList.add('active');
-  renderChart();
-}
+	function setChartPeriod(period, el) {
+	  chartPeriod = period;
+	  el.parentElement.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+	  el.classList.add('active');
+	  renderChart();
+	}
 
 function filterByPeriod(snaps) {
   if (chartPeriod === 'all' || !snaps.length) return snaps;
   const days = chartPeriod === '30d' ? 30 : 7;
   const cutoff = new Date(Date.now() - days * 86400000);
-  return snaps.filter(s => new Date(s.ts) >= cutoff);
+	  return snaps.filter(s => parseTs(s.ts) >= cutoff);
 }
 
 // ── Open Positions ─────────────────────────────────────────────────────────
@@ -832,7 +905,7 @@ function renderTrades() {
     return;
   }
 
-  const sorted = [...trades].sort((a,b) => new Date(b.exit_ts) - new Date(a.exit_ts));
+	  const sorted = [...trades].sort((a,b) => parseTs(b.exit_ts) - parseTs(a.exit_ts));
 
   el.innerHTML = `
     <div class="trade-row trade-row-header">
@@ -844,7 +917,7 @@ function renderTrades() {
       const pnlStr = (t.pnl >= 0 ? '+$' : '-$') + Math.abs(t.pnl).toFixed(2);
       const pctStr = (t.pnl_pct >= 0 ? '+' : '') + t.pnl_pct.toFixed(2) + '%';
       return `<div class="trade-row">
-        <div style="color:var(--muted)">${fmtDate(t.exit_ts)}</div>
+	        <div style="color:var(--muted)">${fmtPacificDate(t.exit_ts)}</div>
         <div><span class="symbol-pill">${t.symbol}</span></div>
         <div>$${t.entry_price.toFixed(2)}</div>
         <div>$${t.exit_price.toFixed(2)}</div>
@@ -856,54 +929,121 @@ function renderTrades() {
 }
 
 // ── Debate Log ─────────────────────────────────────────────────────────────
-function renderDebates() {
-  const debates = DATA.debate_logs || [];
-  const el = document.getElementById('debates-body');
-  document.getElementById('debates-count-badge').textContent = debates.length + ' DEBATES';
+	function renderDebates() {
+	  const debates = DATA.debate_logs || [];
+	  const el = document.getElementById('debates-body');
+	  const pager = document.getElementById('debate-pager');
+	  const summary = document.getElementById('debate-summary');
+	  document.getElementById('debates-count-badge').textContent = debates.length + ' DEBATES';
 
-  if (!debates.length) {
-    el.innerHTML = '<div class="empty">No debates logged yet</div>';
-    return;
-  }
+	  if (!debates.length) {
+	    el.innerHTML = '<div class="empty">No debates logged yet</div>';
+	    pager.innerHTML = '';
+	    summary.textContent = 'No debate history yet';
+	    return;
+	  }
 
-  const sorted = [...debates].sort((a,b) => new Date(b.ts) - new Date(a.ts));
+	  const sorted = [...debates].sort((a,b) => parseTs(b.ts) - parseTs(a.ts));
+	  const counts = sorted.reduce((acc, d) => {
+	    const key = (d.decision || 'unknown').toLowerCase();
+	    acc[key] = (acc[key] || 0) + 1;
+	    return acc;
+	  }, {});
+	  const q = debateState.search.trim().toLowerCase();
+	  const filtered = sorted.filter(d => {
+	    const action = (d.decision || '').toLowerCase();
+	    const actionMatch = debateState.filter === 'all' || action === debateState.filter;
+	    const haystack = [
+	      d.symbol, d.decision, d.bull_case, d.bear_case,
+	      String(d.final_conviction || ''),
+	    ].join(' ').toLowerCase();
+	    return actionMatch && (!q || haystack.includes(q));
+	  });
+	  const pageCount = Math.max(1, Math.ceil(filtered.length / debateState.pageSize));
+	  debateState.page = Math.min(Math.max(1, debateState.page), pageCount);
+	  const start = (debateState.page - 1) * debateState.pageSize;
+	  const pageItems = filtered.slice(start, start + debateState.pageSize);
+	  const countText = `${debates.length} total · ${counts.buy || 0} buy · ${counts.watch || 0} watch · ${counts.skip || 0} skip`;
+	  summary.textContent = `${countText} · showing ${filtered.length ? start + 1 : 0}-${Math.min(start + debateState.pageSize, filtered.length)} of ${filtered.length}`;
 
-  el.innerHTML = sorted.map((d,i) => {
-    const action = d.decision;
-    const badgeClass = action === 'buy' ? 'green' : action === 'skip' ? 'red' : 'amber';
-    return `
-      <div class="debate-item">
-        <div class="debate-header" onclick="toggleDebate(${i})">
-          <div class="debate-meta">
-            <span class="symbol-pill">${d.symbol}</span>
-            <span style="color:var(--muted)">${fmtDate(d.ts)}</span>
-          </div>
-          <div class="debate-scores">
-            <span style="color:var(--green)">▲${d.bull_score}</span>
-            <span style="color:var(--muted)">·</span>
-            <span style="color:var(--red)">▼${d.bear_score}</span>
-            <span style="color:var(--muted)">·</span>
-            <span class="panel-badge ${badgeClass}">${action.toUpperCase()} ${d.final_conviction}</span>
-          </div>
-        </div>
-        <div class="debate-body" id="debate-body-${i}">
-          <div class="debate-side bull">
-            <div class="debate-side-label">▲ Bull Case</div>
-            ${d.bull_case}
-          </div>
-          <div class="debate-side bear">
-            <div class="debate-side-label">▼ Bear Case</div>
-            ${d.bear_case}
-          </div>
-        </div>
-      </div>`;
-  }).join('');
-}
+	  if (!pageItems.length) {
+	    el.innerHTML = '<div class="empty">No debates match the current filters</div>';
+	  } else {
+	    el.innerHTML = pageItems.map((d) => {
+	      const action = d.decision;
+	      const badgeClass = action === 'buy' ? 'green' : action === 'skip' ? 'red' : 'amber';
+	      const debateId = safeId(d.id || `${d.symbol}-${d.ts}`);
+	      return `
+	        <div class="debate-item">
+	          <div class="debate-header" onclick="toggleDebate('${debateId}')">
+	            <div class="debate-meta">
+	              <span class="symbol-pill">${escapeHtml(d.symbol)}</span>
+	              <span style="color:var(--muted)">${fmtPacificTime(d.ts)}</span>
+	            </div>
+	            <div class="debate-scores">
+	              <span style="color:var(--green)">▲${d.bull_score}</span>
+	              <span style="color:var(--muted)">·</span>
+	              <span style="color:var(--red)">▼${d.bear_score}</span>
+	              <span style="color:var(--muted)">·</span>
+	              <span class="panel-badge ${badgeClass}">${action.toUpperCase()} ${d.final_conviction}</span>
+	            </div>
+	          </div>
+	          <div class="debate-body" id="debate-body-${debateId}">
+	            <div class="debate-side bull">
+	              <div class="debate-side-label">▲ Bull Case</div>
+	              ${escapeHtml(d.bull_case || '')}
+	            </div>
+	            <div class="debate-side bear">
+	              <div class="debate-side-label">▼ Bear Case</div>
+	              ${escapeHtml(d.bear_case || '')}
+	            </div>
+	          </div>
+	        </div>`;
+	    }).join('');
+	  }
 
-function toggleDebate(i) {
-  const el = document.getElementById('debate-body-' + i);
-  el.classList.toggle('open');
-}
+	  pager.innerHTML = `
+	    <button class="refresh-btn" ${debateState.page <= 1 ? 'disabled' : ''} onclick="setDebatePage(${debateState.page - 1})">PREV</button>
+	    <span>PAGE ${debateState.page} / ${pageCount}</span>
+	    <button class="refresh-btn" ${debateState.page >= pageCount ? 'disabled' : ''} onclick="setDebatePage(${debateState.page + 1})">NEXT</button>
+	  `;
+	}
+
+	function setDebateFilter(filter) {
+	  debateState.filter = filter;
+	  debateState.page = 1;
+	  document.querySelectorAll('[data-debate-filter]').forEach(btn => {
+	    btn.classList.toggle('active', btn.dataset.debateFilter === filter);
+	  });
+	  renderDebates();
+	}
+
+	function setDebateSearch(value) {
+	  debateState.search = value;
+	  debateState.page = 1;
+	  renderDebates();
+	}
+
+	function setDebatePage(page) {
+	  debateState.page = page;
+	  renderDebates();
+	}
+
+	function resetDebateFilters() {
+	  debateState.filter = 'all';
+	  debateState.search = '';
+	  debateState.page = 1;
+	  document.getElementById('debate-search').value = '';
+	  document.querySelectorAll('[data-debate-filter]').forEach(btn => {
+	    btn.classList.toggle('active', btn.dataset.debateFilter === 'all');
+	  });
+	  renderDebates();
+	}
+
+	function toggleDebate(id) {
+	  const el = document.getElementById('debate-body-' + id);
+	  if (el) el.classList.toggle('open');
+	}
 
 // ── Run Log ────────────────────────────────────────────────────────────────
 function renderRuns() {
@@ -915,11 +1055,11 @@ function renderRuns() {
     return;
   }
 
-  const sorted = [...runs].sort((a,b) => new Date(b.ts) - new Date(a.ts)).slice(0, 10);
+	  const sorted = [...runs].sort((a,b) => parseTs(b.ts) - parseTs(a.ts)).slice(0, 10);
 
   el.innerHTML = sorted.map(r => `
     <div class="run-item">
-      <span class="run-ts">${fmtTime(r.ts)}</span>
+	      <span class="run-ts">${fmtPacificTime(r.ts)}</span>
       <span class="run-type">${r.run_type.toUpperCase()}</span>
       <span class="run-candidates">${r.candidates.join(' · ') || (r.skipped_reason || '—')}</span>
       <span style="color:var(--green);font-family:var(--font-mono);font-size:10px">${r.trades_executed ? r.trades_executed + ' traded' : ''}</span>
@@ -936,16 +1076,44 @@ function fmt(n) {
   return Number(n).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
 }
 
-function fmtDate(ts) {
-  return new Date(ts).toLocaleDateString('en-US', {month: 'short', day: 'numeric'});
-}
+	function parseTs(ts) {
+	  if (!ts) return new Date(0);
+	  const raw = String(ts);
+	  const hasZone = /z$/i.test(raw) || /[+-]\d{2}:\d{2}$/.test(raw);
+	  return new Date(hasZone ? raw : raw + 'Z');
+	}
 
-function fmtTime(ts) {
-  return new Date(ts).toLocaleString('en-US', {
-    month: 'short', day: 'numeric',
-    hour: '2-digit', minute: '2-digit', hour12: false
-  });
-}
+	function fmtPacificDate(ts) {
+	  return parseTs(ts).toLocaleDateString('en-US', {
+	    month: 'short',
+	    day: 'numeric',
+	    timeZone: 'America/Los_Angeles',
+	  });
+	}
+
+	function fmtPacificTime(ts) {
+	  return parseTs(ts).toLocaleString('en-US', {
+	    month: 'short', day: 'numeric',
+	    hour: '2-digit', minute: '2-digit',
+	    hour12: false,
+	    timeZone: 'America/Los_Angeles',
+	    timeZoneName: 'short',
+	  });
+	}
+
+	function escapeHtml(value) {
+	  return String(value ?? '').replace(/[&<>"']/g, ch => ({
+	    '&': '&amp;',
+	    '<': '&lt;',
+	    '>': '&gt;',
+	    '"': '&quot;',
+	    "'": '&#39;',
+	  }[ch]));
+	}
+
+	function safeId(value) {
+	  return String(value ?? '').replace(/[^a-zA-Z0-9_-]/g, '-');
+	}
 
 function convBar(score) {
   const pips = Array.from({length: 10}, (_,i) =>

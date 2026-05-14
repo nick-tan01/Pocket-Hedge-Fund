@@ -113,6 +113,12 @@
       "portfolio_value": 99997.51,
       "cash": 85983.3,
       "spy_price": 748.62
+    },
+    {
+      "ts": "2026-05-14T15:46:43.708373",
+      "portfolio_value": 99981.37,
+      "cash": 67978.07,
+      "spy_price": 748.71
     }
   ],
   "trades": [],
@@ -769,6 +775,21 @@
           "severity": "high"
         }
       ],
+      "regime": "bull",
+      "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-05-14T15:46:43.712996",
+      "run_type": "pre_market",
+      "candidates": [
+        "DDOG",
+        "GOOGL",
+        "AMD",
+        "SBUX"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "scheduled",
       "regime": "bull",
       "vix_regime": "normal"
     }
@@ -1939,6 +1960,50 @@
       "bear_score": 5,
       "final_conviction": 7,
       "decision": "buy"
+    },
+    {
+      "id": "debate_DDOG_20260514154411",
+      "symbol": "DDOG",
+      "ts": "2026-05-14T15:44:11.424085",
+      "bull_case": "R1 Bull(8): DDOG is executing a textbook profitability inflection with 104% EPS growth while maintaining 32% revenue expansion, creating unstoppable technical momentum confirmed by ADX>40 that will force institutional repositioning. | R1 Bear(7): DDOG's margin structure remains fundamentally broken with only 3.7% profit margins despite 32% revenue growth, creating a profitability mirage where any growth deceleration will expose the unsustainable cost base and trigger violent multiple compression from stratospheric valuation levels. | R2 Bull(7): DDOG's profitability inflection with 104% EPS growth creates compelling institutional catch-up opportunity despite current volume concerns, as ADX>40 trend strength typically forces institutional repositioning in January. | R2 Bear(8): DDOG's 3.7% profit margins create an inevitable profitability collapse when revenue growth normalizes, making technical momentum irrelevant against the fundamental reality of an unsustainable cost structure at extreme valuations",
+      "bear_case": "Primary risk: Margin structure collapse - if revenue growth decelerates even modestly, the 3.7% profit margins will evaporate entirely, triggering simultaneous earnings misses and violent multiple compression from unsustainable valuation levels | Unresolved: ['Margin structure collapse with 3.7% profit margins becoming negative if revenue growth decelerates', 'Unsustainable cost base that has not been addressed despite revenue scale', 'Stratospheric valuation multiple compression risk when profitability mirage is exposed']",
+      "bull_score": 7,
+      "bear_score": 8,
+      "final_conviction": 4,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_GOOGL_20260514154459",
+      "symbol": "GOOGL",
+      "ts": "2026-05-14T15:44:59.936893",
+      "bull_case": "R1 Bull(8): GOOGL presents a rare combination of dominant momentum (ADX 51.0) and exceptional profitability (37.9% margins, 82% EPS growth) trading at reasonable valuations for a franchise positioned at the epicenter of the AI revolution. | R1 Bear(6): GOOGL's technical momentum is built on dangerously low volume (0.32x ratio) signaling institutional distribution, while the company faces its greatest existential threat as AI disrupts its search monopoly that generates the majority of profits. | R2 Bull(6): GOOGL remains a dominant AI beneficiary with exceptional profitability, though near-term momentum risks from volume divergence warrant closer monitoring of technical support levels | R2 Bear(5): GOOGL faces dual risks of AI cannibalizing its core search revenue model while technical momentum shows dangerous volume divergence that could accelerate any fundamental-driven selling.",
+      "bear_case": "Primary risk: Momentum collapse on volume divergence combined with AI disruption of search business model creates potential for 20%+ decline if technical support breaks and growth narrative shifts | Unresolved: ['AI disruption of search business model remains inadequately addressed - SGE integration may cannibalize high-margin search ads without equivalent revenue replacement', 'Technical momentum built on declining participation creates fragile foundation susceptible to rapid unwinding']",
+      "bull_score": 6,
+      "bear_score": 5,
+      "final_conviction": 7,
+      "decision": "buy"
+    },
+    {
+      "id": "debate_AMD_20260514154555",
+      "symbol": "AMD",
+      "ts": "2026-05-14T15:45:55.302112",
+      "bull_case": "R1 Bull(8): AMD's exceptional 91% EPS growth combined with robust technical momentum (ADX 57.4) creates a rare alignment of fundamental acceleration and technical breakout power that typically drives multi-week advances. | R1 Bear(7): AMD's spectacular 91% EPS growth has created a valuation trap where even minor execution stumbles will trigger violent derating, while the technical setup screams distribution at $469 resistance with dangerously low volume confirmation. | R2 Bull(6): AMD's 91% EPS growth and ADX 57.4 momentum create breakout potential, but execution on AI positioning must materialize within weeks to overcome institutional distribution signals and validate the growth premium before momentum buyers exit | R2 Bear(8): AMD's 91% EPS growth premium sits on a knife's edge where the bull's own admission of execution urgency and reliance on momentum indicators confirms the violent downside when growth metrics normalize.",
+      "bear_case": "Primary risk: Growth deceleration revaluation shock - any quarterly result showing EPS growth below 60% will trigger algorithmic selling from momentum funds, potentially dropping shares 25-40% in days as the growth premium evaporates | Unresolved: ['Growth deceleration revaluation shock remains unaddressed - ADX momentum amplifies rather than mitigates the algorithmic selling risk when EPS growth inevitably decelerates', \"The bull's timeline dependency ('must materialize within weeks') actually validates the precarious nature of the current premium\"]",
+      "bull_score": 6,
+      "bear_score": 8,
+      "final_conviction": 7,
+      "decision": "buy"
+    },
+    {
+      "id": "debate_SBUX_20260514154643",
+      "symbol": "SBUX",
+      "ts": "2026-05-14T15:46:43.467975",
+      "bull_case": "R1 Bull(8): SBUX is breaking out of a strong technical uptrend with institutional validation from TD Cowen's $120 target, as 32.6% EPS growth confirms the operational turnaround is gaining momentum despite temporary margin compression. | R1 Bear(7): SBUX's 3.9% profit margin reveals a structurally broken business model where even 32.6% EPS growth can't generate meaningful cash flow, making the 82.5x TTM valuation a value trap disguised as a turnaround. | R2 Bull(6): SBUX maintains technical upside potential through TD Cowen's $120 target, but low volume execution requires careful position sizing given earnings-driven volatility risk. | R2 Bear(8): SBUX's fundamental deterioration to 3.9% margins makes the 82.5x valuation a dangerous value trap where technical momentum will reverse violently once earnings expose that EPS growth was artificial cost-cutting rather than sustainable operational improvement.",
+      "bear_case": "Primary risk: Earnings disappointment will expose that 32.6% EPS growth was built on unsustainable cost-cutting rather than operational improvement, causing the 82.5x valuation multiple to collapse and turning technical momentum bearish overnight | Unresolved: ['The bull completely failed to address the core issue that 3.9% profit margins indicate structural business model problems that make 32.6% EPS growth unsustainable, especially when built on cost-cutting rather than revenue growth']",
+      "bull_score": 6,
+      "bear_score": 8,
+      "final_conviction": 4,
+      "decision": "skip"
     }
   ],
   "position_reviews": [
@@ -2471,6 +2536,74 @@
       "pm_action": "buy",
       "pm_verdict": "QCOM's 173% earnings growth at 0.9 PEG ratio creates a compelling value-momentum setup confirmed by strong technicals (ADX>25, RSI 63.9), while the bear's earnings quality concerns are legitimate but represent cyclical headwinds rather than structural breakdown.",
       "risk_category": "approved"
+    },
+    {
+      "ts": "2026-05-14T15:44:11.419524",
+      "symbol": "DDOG",
+      "action": "hold",
+      "reason": "Already holding DDOG",
+      "conviction": 4,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 204.03,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "The volume divergence (0.23x ratio) with ADX>40 indicates retail-driven momentum that's vulnerable to reversal, while the bear's core margin structure thesis (3.7% profit margins) represents genuine collapse risk if growth decelerates.",
+      "risk_category": "already_holding"
+    },
+    {
+      "ts": "2026-05-14T15:44:59.932352",
+      "symbol": "GOOGL",
+      "action": "hold",
+      "reason": "Already holding GOOGL",
+      "conviction": 7,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 399.58,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "buy",
+      "pm_verdict": "GOOGL presents a compelling momentum continuation play with ADX 51.0 confirming strong trend persistence and exceptional fundamentals (37.9% margins, 82% EPS growth) at reasonable 27.6x forward P/E, while volume divergence creates only near-term volatility risk rather than structural breakdown.",
+      "risk_category": "already_holding"
+    },
+    {
+      "ts": "2026-05-14T15:45:55.297499",
+      "symbol": "AMD",
+      "action": "skip",
+      "reason": "Sector cap: Technology already at 20.0% (max 20%)",
+      "conviction": 7,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 450.99,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "buy",
+      "pm_verdict": "The bear's growth deceleration risk is systemic to all high-growth stocks and already reflected in the 34.9x forward P/E, while the technical momentum (ADX 57.4) in a bullish regime strongly favors continuation despite RSI 77.1. The bull's fundamental-technical alignment creates a favorable risk-reward setup.",
+      "risk_category": "sector_cap"
+    },
+    {
+      "ts": "2026-05-14T15:46:43.463388",
+      "symbol": "SBUX",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 Low volume breakout combined with structural margin compression creates high probability that any earnings disappointment will trigger violent reversal from current stretched valuation levels",
+      "conviction": 4,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 108.08,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "The bear's structural margin deterioration argument (3.9% profit margins) creates genuine trade-specific risk that EPS growth is unsustainable cost-cutting, while low volume (0.33x) undermines the technical breakout thesis that was the bull's primary edge.",
+      "risk_category": "pm_decision"
     }
   ],
   "watchlists": [

@@ -227,6 +227,12 @@ def log_watchlist(record: dict) -> str:
     watchlist_id = record.get("id") or f"watchlist_{generated[:19].replace('-', '').replace(':', '').replace('T', '_')}"
     record["id"] = watchlist_id
     data["watchlists"].append(record)
+    history_limit = getattr(config, "WATCHLIST_HISTORY_LIMIT", 30)
+    if history_limit and len(data["watchlists"]) > history_limit:
+        data["watchlists"] = sorted(
+            data["watchlists"],
+            key=lambda w: w.get("generated_at", ""),
+        )[-history_limit:]
     _save(data)
     logger.info("Watchlist logged: %s entries=%s", watchlist_id, record.get("entry_count", 0))
     return watchlist_id

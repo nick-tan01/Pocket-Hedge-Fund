@@ -37,6 +37,7 @@ SCREENER_WEIGHTS = {
 
 # ── After-close market memory ────────────────────────────────────────────────
 AFTER_CLOSE_WATCHLIST_MAX = 20     # Logged evidence cards; not all become candidates
+WATCHLIST_HISTORY_LIMIT   = 30     # Keep recent lists for audit without bloating data.json
 WATCHLIST_MEMORY_BONUS    = 0.06   # Small tie-breaker after next-run revalidation
 WATCHLIST_EXPIRE_HOUR_ET  = 10     # Expire next trading morning after early price discovery
 WATCHLIST_EXPIRE_MINUTE_ET= 15

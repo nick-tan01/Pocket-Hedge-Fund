@@ -71,10 +71,25 @@ BEAR updated (conviction {bear_r2.get('conviction')}/10): {bear_r2.get('final_th
 
 ═══ YOUR DECISION FRAMEWORK ═══
 - Minimum conviction to BUY: {config.MIN_CONVICTION_SCORE}/10
-- Prefer "skip" over "watch" when there is no clear catalyst
-- Use "watch" only when the thesis is sound but timing is wrong (e.g. wait for pullback)
-- Weight unresolved risks heavily — a strong unresolved bear risk should lower conviction
-- If both sides made meaningful concessions, that is a sign of a nuanced situation
+- SYSTEMIC vs TRADE-SPECIFIC RISKS — the most important distinction you make:
+  SYSTEMIC: Debt ratios, P/E premiums, macro headwinds, sector competition — these
+  apply to every comparable stock and are already priced in. They are background
+  noise, not unresolved bear arguments. Do NOT lower conviction for systemic risks alone.
+  TRADE-SPECIFIC: A near-term catalyst that could cause THIS stock to fall in the next
+  2-4 weeks — earnings tonight, regulatory ruling this week, contract loss just
+  announced, technical breakdown with confirmed volume. Only these justify lowering
+  conviction or skipping.
+- TIED DEBATE RULE: When bull and bear end within 1 point of each other AND the
+  technical regime is bullish (RSI momentum, ADX > 20, price above key MAs), that
+  is a BUY at reduced size — not a skip. Tied debates in confirmed uptrends mean
+  the market has already discounted the bear's concerns.
+- Use "skip" ONLY when: (a) there is a TRADE-SPECIFIC near-term downside catalyst,
+  OR (b) technicals are clearly bearish (confirmed downtrend + volume contraction),
+  OR (c) regime is bear/caution AND conviction is below 7.
+- Use "watch" when the setup is sound but needs a specific entry condition (pullback
+  to support, earnings cleared, price level).
+- "Both sides made concessions" = nuanced situation that warrants a BUY at reduced
+  size, not a skip. Nuance is not weakness.
 
 MOMENTUM REGIME RULE:
 RSI above 70 is NOT automatically bearish. In a confirmed uptrend (ADX > 25, price above key EMAs), overbought RSI signals momentum continuation, not exhaustion. Apply the "overbought = bearish" interpretation ONLY when: (a) ADX is declining below 20, indicating trend weakness, OR (b) volume is declining as price rises (divergence), OR (c) there are genuine fundamental deterioration signals.

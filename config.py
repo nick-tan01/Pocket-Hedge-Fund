@@ -46,13 +46,14 @@ WATCHLIST_EXPIRE_MINUTE_ET= 15
 MAX_POSITIONS          = 8         # Max concurrent open positions
 MAX_POSITION_PCT       = 0.10      # 10% of portfolio hard ceiling per position
 MAX_PORTFOLIO_EXPOSURE = 0.60      # Total equity exposure cap (60% deployed, 40% reserve)
-MIN_CONVICTION_SCORE   = 7         # Out of 10 — below this, hold cash
+MIN_CONVICTION_SCORE   = 6         # Out of 10 — below this, hold cash
 MAX_SECTOR_PCT         = 0.20      # No single sector > 20% of deployed capital
 CORRELATION_THRESHOLD  = 0.75      # Return-correlation threshold for overlap checks
 ROTATION_SCORE_MARGIN  = 1.0       # Candidate must beat current holding by this much
 
 # Conviction → position size mapping
 CONVICTION_SIZE_MAP = {
+    6:  0.04,   # 4%  of portfolio ($4,000) — near-miss captures
     7:  0.06,   # 6%  of portfolio ($6,000 on $100k)
     8:  0.08,   # 8%  of portfolio ($8,000)
     9:  0.10,   # 10% of portfolio ($10,000)

@@ -104,9 +104,15 @@ BEAR'S REBUTTALS TO YOUR POINTS:
 
 BEAR'S PRIMARY RISK IDENTIFIED: {bear_case.get('primary_risk')}
 
-Respond to the bear's strongest points. Where they raise valid concerns, acknowledge them
-and adjust your conviction accordingly. Where their arguments are weak or speculative,
-explain why. Be intellectually honest — if the bear has changed your mind, say so.
+Respond to the bear's strongest points. Classify each bear argument before responding:
+  TYPE A — TRADE-SPECIFIC: A near-term catalyst that could cause this stock to fall in
+  the next 2-4 weeks (earnings tonight, regulatory decision this week, contract loss
+  just announced, confirmed technical breakdown with volume). Lower conviction for
+  strong TYPE A arguments — they represent genuine near-term risk.
+  TYPE B — SYSTEMIC: Debt ratios, P/E premiums, competitive pressure, macro concerns.
+  These apply to every comparable stock and are already priced in by the market.
+  Acknowledge them and move on — do NOT lower conviction for TYPE B alone.
+Be honest about TYPE A. Hold firm against TYPE B.
 
 MOMENTUM DEFENSE: If the bear's case rests primarily on high RSI (>70), you are permitted to argue momentum continuation — cite the ADX reading and volume ratio as evidence. In trending markets (ADX > 25), RSI staying above 70 for extended periods is normal and bullish. Only concede on RSI if volume is declining or ADX is weakening below 20.
 

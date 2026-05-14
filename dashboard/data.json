@@ -119,6 +119,12 @@
       "portfolio_value": 99981.37,
       "cash": 67978.07,
       "spy_price": 748.71
+    },
+    {
+      "ts": "2026-05-14T17:24:10.780194",
+      "portfolio_value": 99885.68,
+      "cash": 67978.07,
+      "spy_price": 746.65
     }
   ],
   "trades": [],
@@ -235,6 +241,38 @@
       "position_usd": 5999.85,
       "position_pct": 0.06,
       "sector": "Technology"
+    },
+    {
+      "id": "RKLB_20260514172318",
+      "symbol": "RKLB",
+      "side": "buy",
+      "qty": 45.7771,
+      "entry_price": 130.92,
+      "entry_ts": "2026-05-14T17:23:18.323783",
+      "stop_price": 120.45,
+      "conviction": 7,
+      "debate_id": "debate_RKLB_20260514172318",
+      "status": "open",
+      "key_risk": "Volume declining below 0.5x average on any momentum pause, which would confirm institutional distribution and potential forced deleveraging given the high debt load",
+      "position_usd": 5993.14,
+      "position_pct": 0.06,
+      "sector": "Industrials"
+    },
+    {
+      "id": "DOCS_20260514172410",
+      "symbol": "DOCS",
+      "side": "buy",
+      "qty": 337.072,
+      "entry_price": 17.78,
+      "entry_ts": "2026-05-14T17:24:10.596135",
+      "stop_price": 16.36,
+      "conviction": 7,
+      "debate_id": "debate_DOCS_20260514172410",
+      "status": "open",
+      "key_risk": "Further margin compression in next quarter that would confirm permanent pricing power deterioration rather than temporary pharma advertising cyclicality",
+      "position_usd": 5993.14,
+      "position_pct": 0.06,
+      "sector": "Healthcare"
     }
   ],
   "runs": [
@@ -790,6 +828,84 @@
       "trades_executed": 0,
       "skipped_reason": "",
       "reason": "scheduled",
+      "regime": "bull",
+      "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-05-14T17:24:10.785347",
+      "run_type": "midday",
+      "candidates": [
+        "RKLB",
+        "DOCS",
+        "AMAT",
+        "MSTR"
+      ],
+      "trades_executed": 2,
+      "skipped_reason": "",
+      "reason": "sentinel_trigger",
+      "event_symbols": [
+        "AMAT",
+        "DOCS",
+        "HIMS",
+        "MSTR",
+        "RKLB"
+      ],
+      "event_details": [
+        {
+          "symbol": "DOCS",
+          "trigger_type": "intraday_move",
+          "value": 0.2353,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": -0.2353,
+          "latest": 17.83,
+          "previous_close": 23.31
+        },
+        {
+          "symbol": "HIMS",
+          "trigger_type": "intraday_rebound",
+          "value": 0.0438,
+          "threshold": 0.035,
+          "severity": "normal",
+          "latest": 24.56,
+          "intraday_low": 23.53
+        },
+        {
+          "symbol": "MSTR",
+          "trigger_type": "intraday_move",
+          "value": 0.0668,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": 0.0668,
+          "latest": 189.94,
+          "previous_close": 178.04
+        },
+        {
+          "symbol": "MSTR",
+          "trigger_type": "intraday_rebound",
+          "value": 0.0862,
+          "threshold": 0.035,
+          "severity": "high",
+          "latest": 189.94,
+          "intraday_low": 174.87
+        },
+        {
+          "symbol": "RKLB",
+          "trigger_type": "intraday_rebound",
+          "value": 0.0702,
+          "threshold": 0.035,
+          "severity": "high",
+          "latest": 130.76,
+          "intraday_low": 122.19
+        },
+        {
+          "symbol": "AMAT",
+          "trigger_type": "earnings_today",
+          "value": 1.0,
+          "threshold": 1.0,
+          "severity": "high"
+        }
+      ],
       "regime": "bull",
       "vix_regime": "normal"
     }
@@ -2004,6 +2120,28 @@
       "bear_score": 8,
       "final_conviction": 4,
       "decision": "skip"
+    },
+    {
+      "id": "debate_RKLB_20260514172318",
+      "symbol": "RKLB",
+      "ts": "2026-05-14T17:23:18.296022",
+      "bull_case": "R1 Bull(8): RKLB is experiencing a powerful momentum breakout driven by 63.5% revenue growth in an expanding market, with technical indicators showing strong trend continuation rather than exhaustion despite the 66% 5-day surge. | R1 Bear(8): RKLB's 66% five-day surge has created an unsustainable technical setup where extreme positioning (+DI 44.7 vs -DI 8.3) and Bollinger %B above 1.0 indicate imminent mean reversion, while the fundamental reality of high debt loads and negative profitability makes any momentum pause potentially catastrophic. | R2 Bull(7): RKLB remains a strong momentum play with genuine fundamental acceleration in revenue growth, though execution risk is elevated given the rapid price appreciation and mixed volume signals | R2 Bear(7): While RKLB shows genuine trend strength, the combination of extreme technical positioning, low institutional participation, and fundamental cash burn creates a liquidity crisis risk that revenue growth cannot immediately solve.",
+      "bear_case": "Primary risk: Forced deleveraging cascade if momentum breaks, where extreme technical positioning meets fundamental weakness (high debt, no profits) in a company that needs continuous market access to fund operations. | Unresolved: ['The bull did not address the core fundamental weakness - how a company burning cash with high debt loads survives a momentum reversal when it needs continuous market access for funding', \"Revenue growth alone doesn't solve the liquidity risk when technical positioning is this extreme and institutional participation remains questionable\"]",
+      "bull_score": 7,
+      "bear_score": 7,
+      "final_conviction": 7,
+      "decision": "buy"
+    },
+    {
+      "id": "debate_DOCS_20260514172410",
+      "symbol": "DOCS",
+      "ts": "2026-05-14T17:24:10.574121",
+      "bull_case": "R1 Bull(8): DOCS presents an exceptional contrarian opportunity with a 0.7 PEG ratio and 37.5% margins trading at extreme technical oversold levels (RSI 23.9) after a panic selloff that has disconnected price from fundamentals. | R1 Bear(8): DOCS is experiencing fundamental business model breakdown where revenue growth can't translate to profits, indicating structural headwinds that make this a value trap disguised as a contrarian opportunity. | R2 Bull(6): DOCS remains a contrarian opportunity trading at trough valuations where the market has overreacted to cyclical pharma advertising weakness, with 37.5% margins providing a cushion for recovery when competitive dynamics stabilize | R2 Bear(6): While DOCS trades at trough valuations, the structural shift in pharma advertising toward digital channels and away from traditional medical publication advertising creates permanent headwinds that cheap metrics alone cannot overcome.",
+      "bear_case": "Primary risk: Catching a falling knife in a structurally impaired business where apparent value metrics mask permanent competitive position deterioration in the pharma advertising space. | Unresolved: [\"The bull hasn't proven this is temporary Type B competitive pressure rather than permanent market share erosion to digital platforms and direct pharma marketing channels\"]",
+      "bull_score": 6,
+      "bear_score": 6,
+      "final_conviction": 7,
+      "decision": "buy"
     }
   ],
   "position_reviews": [
@@ -2604,6 +2742,42 @@
       "pm_action": "skip",
       "pm_verdict": "The bear's structural margin deterioration argument (3.9% profit margins) creates genuine trade-specific risk that EPS growth is unsustainable cost-cutting, while low volume (0.33x) undermines the technical breakout thesis that was the bull's primary edge.",
       "risk_category": "pm_decision"
+    },
+    {
+      "ts": "2026-05-14T17:23:18.291096",
+      "symbol": "RKLB",
+      "action": "buy",
+      "reason": "PM conviction=7 | size=6% ($5,993) | regime=bull/normal | ATR=9.27 x3.0 | stop=$120.45 (-8.0%)",
+      "conviction": 7,
+      "rotate_from": "",
+      "position_usd": 5993.14,
+      "shares": 45.7771,
+      "entry_price": 130.92,
+      "stop_price": 120.45,
+      "stop_pct": 8.0,
+      "sector": "Industrials",
+      "correlation": 0.0,
+      "pm_action": "buy",
+      "pm_verdict": "Strong momentum continuation play with genuine fundamental acceleration (63.5% revenue growth) in a confirmed uptrend where technical strength outweighs liquidity concerns. The ADX>25 with extreme directional bias confirms this is real trend momentum, not just noise.",
+      "risk_category": "approved"
+    },
+    {
+      "ts": "2026-05-14T17:24:10.569108",
+      "symbol": "DOCS",
+      "action": "buy",
+      "reason": "PM conviction=7 | size=6% ($5,993) | regime=bull/normal | ATR=1.5 x2.5 | stop=$16.36 (-7.99%)",
+      "conviction": 7,
+      "rotate_from": "",
+      "position_usd": 5993.14,
+      "shares": 337.072,
+      "entry_price": 17.78,
+      "stop_price": 16.36,
+      "stop_pct": 7.99,
+      "sector": "Healthcare",
+      "correlation": 0.0,
+      "pm_action": "buy",
+      "pm_verdict": "DOCS presents a compelling contrarian opportunity where extreme technical oversold conditions (RSI 23.9) meet genuine valuation dislocation (0.7 PEG ratio) after panic selling has disconnected price from a business model that remains structurally intact. The bear's concerns about pharma advertising headwinds are valid but appear already priced into current trough valuations.",
+      "risk_category": "approved"
     }
   ],
   "watchlists": [

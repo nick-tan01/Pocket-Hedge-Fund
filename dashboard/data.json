@@ -107,6 +107,12 @@
       "portfolio_value": 100191.41,
       "cash": 85983.3,
       "spy_price": 742.31
+    },
+    {
+      "ts": "2026-05-14T15:29:36.055308",
+      "portfolio_value": 99997.51,
+      "cash": 85983.3,
+      "spy_price": 748.62
     }
   ],
   "trades": [],
@@ -122,7 +128,7 @@
       "conviction": 7,
       "debate_id": "debate_DDOG_20260512160556",
       "status": "open",
-      "key_risk": "Volume patterns during any pullbacks and early signs of margin compression, as the thin 3.7% margin base remains the critical vulnerability that could break the thesis if competitive pressure emerges or execution falters.",
+      "key_risk": "Volume patterns during any pullbacks from current resistance levels, as the 0.21x volume ratio creates genuine downside acceleration risk if the momentum machine stalls, which could quickly expose the underlying margin compression vulnerability.",
       "position_usd": 1998.65,
       "position_pct": 0.02,
       "sector": "Technology",
@@ -135,7 +141,7 @@
           "reason": "The self-reinforcing institutional momentum chase that was core to our thesis is not materializing as evidenced by the 0.41x volume ratio, though the fundamental and technical components remain strong enough to warrant partial position retention."
         }
       ],
-      "last_review_ts": "2026-05-13T17:50:38.356847-04:00",
+      "last_review_ts": "2026-05-14T11:25:46.406100-04:00",
       "last_review_conviction": 7,
       "thesis_status": "intact",
       "time_stop_flagged": false
@@ -175,6 +181,54 @@
       "position_usd": 6005.76,
       "position_pct": 0.06,
       "sector": "Consumer Cyclical"
+    },
+    {
+      "id": "NVDA_20260514152756",
+      "symbol": "NVDA",
+      "side": "buy",
+      "qty": 25.5063,
+      "entry_price": 235.23,
+      "entry_ts": "2026-05-14T15:27:56.053799",
+      "stop_price": 216.41,
+      "conviction": 7,
+      "debate_id": "debate_NVDA_20260514152755",
+      "status": "open",
+      "key_risk": "Any escalation in US-China trade tensions or reversal of chip export approvals would eliminate the primary catalyst and reintroduce geopolitical volatility",
+      "position_usd": 5999.85,
+      "position_pct": 0.06,
+      "sector": "Technology"
+    },
+    {
+      "id": "ARM_20260514152848",
+      "symbol": "ARM",
+      "side": "buy",
+      "qty": 27.0264,
+      "entry_price": 222.0,
+      "entry_ts": "2026-05-14T15:28:48.214246",
+      "stop_price": 204.24,
+      "conviction": 7,
+      "debate_id": "debate_ARM_20260514152848",
+      "status": "open",
+      "key_risk": "Volume breakdown below recent lows coupled with ADX declining below 25 would signal momentum exhaustion and justify exit",
+      "position_usd": 5999.86,
+      "position_pct": 0.06,
+      "sector": "Technology"
+    },
+    {
+      "id": "QCOM_20260514152935",
+      "symbol": "QCOM",
+      "side": "buy",
+      "qty": 29.4587,
+      "entry_price": 203.67,
+      "entry_ts": "2026-05-14T15:29:35.921444",
+      "stop_price": 187.38,
+      "conviction": 7,
+      "debate_id": "debate_QCOM_20260514152935",
+      "status": "open",
+      "key_risk": "Sequential margin compression indicating cost-cutting benefits are reversing while revenue remains weak",
+      "position_usd": 5999.85,
+      "position_pct": 0.06,
+      "sector": "Technology"
     }
   ],
   "runs": [
@@ -503,6 +557,218 @@
       "trades_executed": 0,
       "skipped_reason": "",
       "reason": "scheduled",
+      "regime": "bull",
+      "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-05-14T15:29:36.059698",
+      "run_type": "pre_market",
+      "candidates": [
+        "DDOG",
+        "NVDA",
+        "ARM",
+        "QCOM"
+      ],
+      "trades_executed": 3,
+      "skipped_reason": "",
+      "reason": "sentinel_trigger",
+      "event_symbols": [
+        "AMAT",
+        "ARM",
+        "CELH",
+        "DDOG",
+        "DOCS",
+        "DUOL",
+        "GTLB",
+        "IONQ",
+        "MSTR",
+        "NET",
+        "NVDA",
+        "QCOM",
+        "RKLB",
+        "SMCI"
+      ],
+      "event_details": [
+        {
+          "symbol": "ARM",
+          "trigger_type": "intraday_rebound",
+          "value": 0.0351,
+          "threshold": 0.035,
+          "severity": "normal",
+          "latest": 221.99,
+          "intraday_low": 214.46
+        },
+        {
+          "symbol": "CELH",
+          "trigger_type": "intraday_move",
+          "value": 0.0585,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": 0.0585,
+          "latest": 29.5,
+          "previous_close": 27.87
+        },
+        {
+          "symbol": "DOCS",
+          "trigger_type": "intraday_move",
+          "value": 0.2387,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": -0.2387,
+          "latest": 17.75,
+          "previous_close": 23.31
+        },
+        {
+          "symbol": "DUOL",
+          "trigger_type": "intraday_move",
+          "value": 0.05,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": 0.05,
+          "latest": 110.17,
+          "previous_close": 104.92
+        },
+        {
+          "symbol": "GTLB",
+          "trigger_type": "intraday_move",
+          "value": 0.0365,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": 0.0365,
+          "latest": 22.83,
+          "previous_close": 22.02
+        },
+        {
+          "symbol": "GTLB",
+          "trigger_type": "intraday_rebound",
+          "value": 0.0504,
+          "threshold": 0.035,
+          "severity": "normal",
+          "latest": 22.83,
+          "intraday_low": 21.74
+        },
+        {
+          "symbol": "IONQ",
+          "trigger_type": "intraday_rebound",
+          "value": 0.0478,
+          "threshold": 0.035,
+          "severity": "normal",
+          "latest": 56.94,
+          "intraday_low": 54.34
+        },
+        {
+          "symbol": "MSTR",
+          "trigger_type": "intraday_move",
+          "value": 0.0425,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": 0.0425,
+          "latest": 185.62,
+          "previous_close": 178.04
+        },
+        {
+          "symbol": "MSTR",
+          "trigger_type": "intraday_rebound",
+          "value": 0.0614,
+          "threshold": 0.035,
+          "severity": "high",
+          "latest": 185.62,
+          "intraday_low": 174.87
+        },
+        {
+          "symbol": "NET",
+          "trigger_type": "intraday_move",
+          "value": 0.0421,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": 0.0421,
+          "latest": 200.8,
+          "previous_close": 192.69
+        },
+        {
+          "symbol": "NET",
+          "trigger_type": "intraday_rebound",
+          "value": 0.048,
+          "threshold": 0.035,
+          "severity": "normal",
+          "latest": 200.8,
+          "intraday_low": 191.6
+        },
+        {
+          "symbol": "NVDA",
+          "trigger_type": "intraday_move",
+          "value": 0.0414,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": 0.0414,
+          "latest": 235.22,
+          "previous_close": 225.87
+        },
+        {
+          "symbol": "QCOM",
+          "trigger_type": "intraday_move",
+          "value": 0.0476,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": -0.0476,
+          "latest": 203.04,
+          "previous_close": 213.18
+        },
+        {
+          "symbol": "RKLB",
+          "trigger_type": "intraday_move",
+          "value": 0.0426,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": 0.0426,
+          "latest": 129.44,
+          "previous_close": 124.15
+        },
+        {
+          "symbol": "RKLB",
+          "trigger_type": "intraday_rebound",
+          "value": 0.0593,
+          "threshold": 0.035,
+          "severity": "normal",
+          "latest": 129.44,
+          "intraday_low": 122.19
+        },
+        {
+          "symbol": "SMCI",
+          "trigger_type": "intraday_move",
+          "value": 0.0505,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": 0.0505,
+          "latest": 33.6,
+          "previous_close": 31.99
+        },
+        {
+          "symbol": "SMCI",
+          "trigger_type": "intraday_rebound",
+          "value": 0.0528,
+          "threshold": 0.035,
+          "severity": "normal",
+          "latest": 33.6,
+          "intraday_low": 31.92
+        },
+        {
+          "symbol": "DDOG",
+          "trigger_type": "position_move",
+          "value": 0.0293,
+          "threshold": 0.025,
+          "severity": "normal",
+          "price": 203.9,
+          "entry": 198.09
+        },
+        {
+          "symbol": "AMAT",
+          "trigger_type": "earnings_today",
+          "value": 1.0,
+          "threshold": 1.0,
+          "severity": "high"
+        }
+      ],
       "regime": "bull",
       "vix_regime": "normal"
     }
@@ -1629,6 +1895,50 @@
       "bear_score": 1,
       "final_conviction": 1,
       "decision": "skip"
+    },
+    {
+      "id": "debate_DDOG_20260514152701",
+      "symbol": "DDOG",
+      "ts": "2026-05-14T15:27:01.227864",
+      "bull_case": "R1 Bull(8): DDOG is experiencing explosive fundamental acceleration with 104% EPS growth that perfectly validates its premium valuation while powerful technical momentum (ADX>40, RSI 83.6) signals institutional accumulation driving price toward breakout above resistance. | R1 Bear(8): DDOG's extreme valuation compression risk is masked by misleading EPS growth metrics, as the company operates with razor-thin 3.7% profit margins that make it catastrophically vulnerable to any growth deceleration or competitive pressure. | R2 Bull(6): DDOG's explosive EPS acceleration demonstrates successful operational leverage execution despite margin concerns, with strong technical momentum (ADX>40) confirming institutional confidence in the growth trajectory toward resistance breakout. | R2 Bear(6): While DDOG shows promising operational leverage, the extreme 523x P/E valuation creates asymmetric downside risk where even minor growth disappointments could trigger severe multiple compression regardless of margin improvements.",
+      "bear_case": "Primary risk: Margin collapse risk - with only 3.7% profit margins, any competitive pricing pressure or growth slowdown will cause earnings to crater, triggering violent multiple compression from the extreme 523x TTM P/E baseline. | Unresolved: ['Valuation multiple compression risk remains extreme with 523x P/E creating catastrophic downside if growth slows even modestly', \"Current technical momentum doesn't eliminate fundamental overvaluation risk when any earnings miss could trigger violent selloff\"]",
+      "bull_score": 6,
+      "bear_score": 6,
+      "final_conviction": 7,
+      "decision": "buy"
+    },
+    {
+      "id": "debate_NVDA_20260514152755",
+      "symbol": "NVDA",
+      "ts": "2026-05-14T15:27:55.800964",
+      "bull_case": "R1 Bull(8): NVDA is breaking out on the perfect storm of regulatory relief removing China overhang, exceptional AI-driven fundamentals with 95.6% EPS growth trading at only 0.7 PEG, and confirmed technical momentum in a bullish regime. | R1 Bear(6): NVDA's 7.3 debt/equity ratio creates catastrophic downside vulnerability when AI spending inevitably cycles down, while the China regulatory 'win' is actually a geopolitical timebomb that could detonate without warning. | R2 Bull(7): NVDA remains a compelling breakout play on AI fundamentals and regulatory relief, but position sizing must account for leverage-amplified volatility if geopolitical winds shift quickly | R2 Bear(4): While NVDA's balance sheet risks are less severe than initially assessed, the China revenue dependence remains a binary geopolitical risk that Trump's unpredictability and Xi's long-term tech independence strategy make unavoidable.",
+      "bear_case": "Primary risk: Leveraged balance sheet (7.3 D/E) turns any AI spending slowdown or China trade disruption into an earnings catastrophe that destroys years of gains in months | Unresolved: [\"China regulatory approval is tactical not strategic - Beijing's semiconductor self-sufficiency goals mean any 'stabilization' is temporary positioning before inevitable decoupling\"]",
+      "bull_score": 7,
+      "bear_score": 4,
+      "final_conviction": 7,
+      "decision": "buy"
+    },
+    {
+      "id": "debate_ARM_20260514152848",
+      "symbol": "ARM",
+      "ts": "2026-05-14T15:28:48.119730",
+      "bull_case": "R1 Bull(8): ARM is hitting the perfect momentum inflection where explosive 45.7% EPS growth meets technical breakout confirmation, creating a rare high-conviction setup before the market fully prices in the AI infrastructure supercycle. | R1 Bear(8): ARM's explosive growth is built on unsustainable AI hype while trading at nosebleed valuations with elevated debt levels, creating a perfect setup for devastating multiple compression when reality hits. | R2 Bull(7): ARM's 45.7% EPS growth trajectory into the AI infrastructure supercycle creates a compelling risk-reward setup where strong trending technicals (ADX 36) can drive continued momentum expansion despite current premium valuations. | R2 Bear(9): ARM's reliance on technical momentum and ADX trends to justify a 264.5x P/E proves this is a dangerous momentum bubble where 70-85% downside remains inevitable once the AI hype cycle peaks.",
+      "bear_case": "Primary risk: Multiple compression death spiral when AI infrastructure spending normalizes - current 264.5x P/E can collapse to realistic levels (20-40x) within quarters, creating 70-85% downside regardless of business fundamentals. | Unresolved: ['264.5x P/E multiple compression risk when AI spending normalizes - no amount of technical analysis can justify valuations requiring decades of perfect execution', 'Debt-fueled growth model vulnerability during potential credit tightening cycle', 'AI infrastructure spending cyclicality creating inevitable demand normalization']",
+      "bull_score": 7,
+      "bear_score": 9,
+      "final_conviction": 7,
+      "decision": "buy"
+    },
+    {
+      "id": "debate_QCOM_20260514152935",
+      "symbol": "QCOM",
+      "ts": "2026-05-14T15:29:35.837893",
+      "bull_case": "R1 Bull(8): QCOM is experiencing massive earnings acceleration with 173% EPS growth while trading at only 0.9 PEG ratio, creating a rare value-momentum convergence that technical breakout signals confirm is ready to reprice higher. | R1 Bear(7): QCOM's 173% earnings spike is masking fundamental deterioration as revenue contraction combined with high debt levels creates a fragile structure vulnerable to semiconductor cycle downturns and China trade disruptions. | R2 Bull(7): QCOM's operational improvements during a cyclical downturn position it for explosive earnings growth when semiconductor demand recovers, trading at a discount that doesn't reflect this operating leverage. | R2 Bear(5): While QCOM may benefit from cyclical recovery, the current earnings spike relies heavily on unsustainable cost-cutting that masks underlying revenue weakness and creates downside risk when operational investments resume.",
+      "bear_case": "Primary risk: Earnings normalization as temporary cost-cutting benefits fade while revenue decline continues, causing massive multiple compression when the market realizes the 173% growth was artificial. | Unresolved: ['Artificial earnings inflation from temporary cost-cutting will reverse when revenue recovery forces reinvestment, causing multiple compression when margins normalize']",
+      "bull_score": 7,
+      "bear_score": 5,
+      "final_conviction": 7,
+      "decision": "buy"
     }
   ],
   "position_reviews": [
@@ -1749,6 +2059,19 @@
       "key_risk_to_monitor": "Any concrete evidence that AI search competition is actually impacting Google's search advertising revenue, not just theoretical competitive threats",
       "current_bull_case": "R1 Bull(9): GOOGL is breaking out on exceptional fundamental momentum (82% EPS growth, 37.9% margins) with technical confirmation showing this is early-stage momentum continuation, not exhaustion. | R2 Bull(7): GOOGL remains in early-stage AI monetization with ADX>50 confirming institutional momentum continuation, but peak growth rate concerns warrant reduced conviction until we see sustainable 20-30% growth rates rather than unsustainable 80%+ spikes",
       "current_bear_case": "R1 Bear(7): GOOGL's exceptional fundamentals are being obliterated by existential AI competition that the market hasn't priced in, while technical momentum masks unsustainable growth rates hitting a brick wall. | R2 Bear(6): While GOOGL's AI integration across products may extend the earnings cycle, the existential threat of AI-native search competitors bypassing Google's ad-supported model entirely creates asymmetric downside risk at current valuations."
+    },
+    {
+      "trade_id": "DDOG_20260512160556",
+      "symbol": "DDOG",
+      "ts": "2026-05-14T15:25:46.402642",
+      "action": "hold",
+      "conviction": 7,
+      "thesis_status": "intact",
+      "rationale": "The original thesis of explosive earnings momentum meeting dominant technical breakout conditions remains fully intact, with EPS growth still at 104% and ADX strengthening to 40.8 from 35.2. The self-reinforcing acceleration phase continues as evidenced by institutional momentum buying.",
+      "original_thesis_check": "The specific combination of 104% EPS growth and dominant technical breakout (ADX now 40.8 vs original 35.2) that creates institutional momentum acceleration is still fully present and actually strengthening.",
+      "key_risk_to_monitor": "Volume patterns during any pullbacks from current resistance levels, as the 0.21x volume ratio creates genuine downside acceleration risk if the momentum machine stalls, which could quickly expose the underlying margin compression vulnerability.",
+      "current_bull_case": "R1 Bull(8): DDOG's explosive 104% EPS growth demonstrates the company has reached operational leverage inflection point, creating a compounding momentum machine that's accelerating into resistance breakout territory with ADX 40.8 confirming trend dominance. | R2 Bull(7): DDOG's 104% EPS growth validates operational leverage despite volume concerns, with ADX 40.8 trend dominance suggesting the breakout momentum continues even as thin liquidity creates higher volatility risk.",
+      "current_bear_case": "R1 Bear(7): DDOG's explosive EPS growth is masking fundamental margin weakness and extreme valuation vulnerability, with RSI 83.4 and volume ratio 0.21x revealing unsustainable momentum built on thin liquidity that creates catastrophic downside risk at resistance. | R2 Bear(6): While ADX confirms strong trend momentum, the combination of extreme RSI overbought conditions and questionable EPS growth quality creates dangerous downside asymmetry that outweighs breakout potential."
     }
   ],
   "risk_decisions": [
@@ -2077,6 +2400,77 @@
       "pm_action": "skip",
       "pm_verdict": "PM decision unavailable \u2014 defaulting to skip",
       "risk_category": "pm_decision"
+    },
+    {
+      "ts": "2026-05-14T15:27:01.223713",
+      "symbol": "DDOG",
+      "action": "hold",
+      "reason": "Already holding DDOG",
+      "conviction": 7,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 203.87,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "buy",
+      "pm_verdict": "DDOG's 104% EPS growth demonstrates successful operational leverage execution that justifies the premium, while ADX>40 confirms institutional momentum continuation rather than valuation exhaustion in this bull regime.",
+      "risk_category": "already_holding"
+    },
+    {
+      "ts": "2026-05-14T15:27:55.796770",
+      "symbol": "NVDA",
+      "action": "buy",
+      "reason": "PM conviction=7 | size=6% ($6,000) | regime=bull/normal | ATR=8.03 x3.0 | stop=$216.41 (-8.0%)",
+      "conviction": 7,
+      "rotate_from": "",
+      "position_usd": 5999.85,
+      "shares": 25.5063,
+      "entry_price": 235.23,
+      "stop_price": 216.41,
+      "stop_pct": 8.0,
+      "sector": "Technology",
+      "correlation": 0.0,
+      "pm_action": "buy",
+      "pm_verdict": "The China H200 approval creates immediate revenue upside while exceptional AI fundamentals (95.6% EPS growth at 0.7 PEG) remain intact, with technical momentum confirming the breakout despite leverage concerns that are mitigated by convertible structure and massive FCF generation.",
+      "risk_category": "approved"
+    },
+    {
+      "ts": "2026-05-14T15:28:48.115504",
+      "symbol": "ARM",
+      "action": "buy",
+      "reason": "PM conviction=7 | size=6% ($6,000) | regime=bull/normal | ATR=16.14 x3.0 | stop=$204.24 (-8.0%)",
+      "conviction": 7,
+      "rotate_from": "",
+      "position_usd": 5999.85,
+      "shares": 27.0264,
+      "entry_price": 222.0,
+      "stop_price": 204.24,
+      "stop_pct": 8.0,
+      "sector": "Technology",
+      "correlation": 0.0,
+      "pm_action": "buy",
+      "pm_verdict": "ARM's 45.7% EPS growth momentum combined with strong trending technicals (ADX 36, RSI 62) creates a compelling momentum continuation setup where the bear's valuation concerns are systemic to the semiconductor sector, not trade-specific catalysts.",
+      "risk_category": "approved"
+    },
+    {
+      "ts": "2026-05-14T15:29:35.833640",
+      "symbol": "QCOM",
+      "action": "buy",
+      "reason": "PM conviction=7 | size=6% ($6,000) | regime=bull/normal | ATR=18.98 x2.5 | stop=$187.38 (-8.0%)",
+      "conviction": 7,
+      "rotate_from": "",
+      "position_usd": 5999.85,
+      "shares": 29.4587,
+      "entry_price": 203.67,
+      "stop_price": 187.38,
+      "stop_pct": 8.0,
+      "sector": "Technology",
+      "correlation": 0.0,
+      "pm_action": "buy",
+      "pm_verdict": "QCOM's 173% earnings growth at 0.9 PEG ratio creates a compelling value-momentum setup confirmed by strong technicals (ADX>25, RSI 63.9), while the bear's earnings quality concerns are legitimate but represent cyclical headwinds rather than structural breakdown.",
+      "risk_category": "approved"
     }
   ],
   "watchlists": [

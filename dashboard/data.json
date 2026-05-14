@@ -137,6 +137,12 @@
       "portfolio_value": 100139.83,
       "cash": 59969.16,
       "spy_price": 748.41
+    },
+    {
+      "ts": "2026-05-14T20:58:37.759283",
+      "portfolio_value": 100090.44,
+      "cash": 59969.16,
+      "spy_price": 748.17
     }
   ],
   "trades": [],
@@ -237,11 +243,11 @@
       "conviction": 7,
       "debate_id": "debate_ARM_20260514152848",
       "status": "open",
-      "key_risk": "Debt refinancing pressures from 5.2x debt/equity ratio, which has emerged as a more material structural risk than originally assessed",
+      "key_risk": "Any signs of AI chip demand moderation that could expose the 5.2x debt/equity leverage risk and trigger refinancing pressures",
       "position_usd": 5999.86,
       "position_pct": 0.06,
       "sector": "Technology",
-      "last_review_ts": "2026-05-14T15:22:40.865189-04:00",
+      "last_review_ts": "2026-05-14T16:55:50.247394-04:00",
       "last_review_conviction": 7,
       "thesis_status": "intact",
       "time_stop_flagged": false
@@ -261,7 +267,7 @@
       "position_usd": 5999.85,
       "position_pct": 0.06,
       "sector": "Technology",
-      "last_review_ts": "2026-05-14T15:23:34.281041-04:00",
+      "last_review_ts": "2026-05-14T16:56:42.099105-04:00",
       "last_review_conviction": 7,
       "thesis_status": "intact",
       "time_stop_flagged": false
@@ -277,11 +283,11 @@
       "conviction": 7,
       "debate_id": "debate_RKLB_20260514172318",
       "status": "open",
-      "key_risk": "Volume declining below 0.5x average during any momentum pause, which would signal the institutional distribution scenario from our original risk assessment and trigger potential exit consideration.",
+      "key_risk": "Volume levels during any momentum pause - declining below 0.5x average would signal potential institutional distribution and trigger exit consideration per original risk assessment",
       "position_usd": 5993.14,
       "position_pct": 0.06,
       "sector": "Industrials",
-      "last_review_ts": "2026-05-14T15:24:26.982366-04:00",
+      "last_review_ts": "2026-05-14T16:57:39.296824-04:00",
       "last_review_conviction": 7,
       "thesis_status": "intact",
       "time_stop_flagged": false
@@ -310,10 +316,15 @@
           "reason": "Q4 results showed significant pharma advertising market weakness that blurs the line between temporary cyclicality and structural headwinds, while elevated debt limits financial flexibility during this uncertain transition period"
         }
       ],
-      "last_review_ts": "2026-05-14T15:25:20.122070-04:00",
+      "last_review_ts": "2026-05-14T16:58:27.196653-04:00",
       "last_review_conviction": 5,
       "thesis_status": "weakened",
-      "time_stop_flagged": false
+      "time_stop_flagged": false,
+      "queued_action": {
+        "action": "trim",
+        "reason": "The thesis has materially weakened as Q4 results suggest pharma advertising headwinds may be more structural than the temporary reallocation we originally positioned for, warranting reduced position size while maintaining exposure to potential recovery",
+        "queued_ts": "2026-05-14T20:58:27.192021"
+      }
     }
   ],
   "runs": [
@@ -1152,6 +1163,112 @@
           "severity": "normal",
           "today_volume": 20072203,
           "avg_volume": 3504680
+        },
+        {
+          "symbol": "AMAT",
+          "trigger_type": "earnings_today",
+          "value": 1.0,
+          "threshold": 1.0,
+          "severity": "high"
+        }
+      ],
+      "regime": "bull",
+      "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-05-14T20:58:37.764968",
+      "run_type": "midday",
+      "candidates": [
+        "ARM",
+        "QCOM",
+        "RKLB"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "sentinel_trigger",
+      "event_symbols": [
+        "AMAT",
+        "ARM",
+        "DOCS",
+        "MSTR",
+        "QCOM",
+        "RKLB"
+      ],
+      "event_details": [
+        {
+          "symbol": "ARM",
+          "trigger_type": "intraday_rebound",
+          "value": 0.0657,
+          "threshold": 0.035,
+          "severity": "high",
+          "latest": 228.55,
+          "intraday_low": 214.46
+        },
+        {
+          "symbol": "DOCS",
+          "trigger_type": "intraday_move",
+          "value": 0.2278,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": -0.2278,
+          "latest": 18.0,
+          "previous_close": 23.31
+        },
+        {
+          "symbol": "DOCS",
+          "trigger_type": "intraday_rebound",
+          "value": 0.0435,
+          "threshold": 0.035,
+          "severity": "normal",
+          "latest": 18.0,
+          "intraday_low": 17.25
+        },
+        {
+          "symbol": "MSTR",
+          "trigger_type": "intraday_rebound",
+          "value": 0.069,
+          "threshold": 0.035,
+          "severity": "high",
+          "latest": 186.93,
+          "intraday_low": 174.87
+        },
+        {
+          "symbol": "QCOM",
+          "trigger_type": "intraday_move",
+          "value": 0.0626,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": -0.0626,
+          "latest": 199.84,
+          "previous_close": 213.18
+        },
+        {
+          "symbol": "RKLB",
+          "trigger_type": "intraday_move",
+          "value": 0.0677,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": 0.0677,
+          "latest": 132.56,
+          "previous_close": 124.15
+        },
+        {
+          "symbol": "RKLB",
+          "trigger_type": "intraday_rebound",
+          "value": 0.0849,
+          "threshold": 0.035,
+          "severity": "high",
+          "latest": 132.56,
+          "intraday_low": 122.19
+        },
+        {
+          "symbol": "ARM",
+          "trigger_type": "position_move",
+          "value": 0.0293,
+          "threshold": 0.025,
+          "severity": "normal",
+          "price": 228.5,
+          "entry": 222.0
         },
         {
           "symbol": "AMAT",
@@ -2596,6 +2713,59 @@
       "trim_reason": "Q4 results showed significant pharma advertising market weakness that blurs the line between temporary cyclicality and structural headwinds, while elevated debt limits financial flexibility during this uncertain transition period",
       "current_bull_case": "R1 Bull(8): DOCS presents an exceptional contrarian opportunity with a quality healthcare business trading at deep value (0.7 PEG, 11.3 forward P/E) after panic selling drove RSI to 24.1 oversold levels, creating prime conditions for a violent short squeeze. | R2 Bull(6): DOCS remains a contrarian value play where temporary pharma advertising reallocation creates oversold conditions in a quality healthcare business that's positioned to capture the digital shift in medical marketing spend.",
       "current_bear_case": "R1 Bear(9): DOCS faces a structural headwind in pharma advertising weakness that valuation metrics can't overcome, with declining EPS growth and elevated debt creating a value trap disguised as a bargain. | R2 Bear(7): While pharma ad spending may eventually shift to digital rather than disappear, DOCS' leveraged balance sheet leaves little room for error during an uncertain multi-year transition where they must compete against better-capitalized tech incumbents."
+    },
+    {
+      "trade_id": "ARM_20260514152848",
+      "symbol": "ARM",
+      "ts": "2026-05-14T20:55:50.241957",
+      "action": "hold",
+      "conviction": 7,
+      "thesis_status": "intact",
+      "rationale": "The original thesis of explosive EPS growth meeting technical breakout confirmation remains fully intact with 45.7% EPS growth continuing and technical signals still bullish at 7/10. The AI infrastructure supercycle catalyst is strengthening, not weakening.",
+      "original_thesis_check": "Yes - ARM is still hitting the momentum inflection with explosive 45.7% EPS growth and confirmed technical breakout, exactly as thesis predicted",
+      "key_risk_to_monitor": "Any signs of AI chip demand moderation that could expose the 5.2x debt/equity leverage risk and trigger refinancing pressures",
+      "current_bull_case": "R1 Bull(8): ARM is breaking out on explosive fundamental growth (45.7% EPS, 20.1% revenue) with massive multiple compression ahead (forward P/E 74.8 vs TTM 272x) as the AI chip boom validates its licensing moat. | R2 Bull(7): ARM remains a compelling AI infrastructure play with explosive fundamentals and multiple compression potential, though the leveraged balance sheet requires monitoring for any signs of business deceleration that could trigger refinancing pressure",
+      "current_bear_case": "R1 Bear(7): ARM's debt/equity ratio of 5.2 combined with a TTM P/E of 272x creates catastrophic downside risk if AI chip demand moderates even slightly, as the company lacks financial flexibility to weather any slowdown. | R2 Bear(6): ARM's extreme valuation multiple combined with high leverage creates a dangerous setup where even minor AI demand moderation could trigger a severe correction, despite the asset-light business model providing some downside protection"
+    },
+    {
+      "trade_id": "QCOM_20260514152935",
+      "symbol": "QCOM",
+      "ts": "2026-05-14T20:56:42.094398",
+      "action": "hold",
+      "conviction": 7,
+      "thesis_status": "intact",
+      "rationale": "The original thesis remains fully intact - QCOM still shows massive earnings acceleration (173% EPS growth) at an attractive 0.9 PEG ratio with technical breakout confirmation. The value-momentum convergence that drove our entry decision is unchanged.",
+      "original_thesis_check": "The specific reason we bought - rare value-momentum convergence with 173% EPS growth at 0.9 PEG ratio confirmed by technical breakout - is still true and supported by current analyst signals showing bullish technical (7/10) and fundamental (7/10) ratings.",
+      "key_risk_to_monitor": "Sequential margin compression indicating cost-cutting benefits are reversing - watch for any signs that the earnings-revenue divergence is widening or that margin expansion is proving temporary rather than strategic.",
+      "current_bull_case": "R1 Bull(8): QCOM is positioned for explosive earnings expansion as AI smartphone adoption accelerates into its dominant mobile chip franchise, with 173% YoY EPS growth demonstrating massive operational leverage that revenue declines completely obscure. | R2 Bull(7): QCOM's margin expansion reflects strategic operational efficiency rather than desperate cost-cutting, positioning them to capitalize on AI smartphone adoption from a stronger competitive and financial foundation than revenue volatility suggests",
+      "current_bear_case": "R1 Bear(7): QCOM's 173% EPS growth is a deceptive mirage built on contracting revenue foundations, creating unsustainable margin expansion that will violently reverse when competitive pressures intensify in the commoditizing smartphone chip market. | R2 Bear(6): QCOM's margin expansion may be more strategic than desperate, but the company remains dangerously exposed to competitive pressure in AI smartphones where technical leadership claims are unproven and revenue contraction limits their ability to sustain both margins and market share simultaneously."
+    },
+    {
+      "trade_id": "RKLB_20260514172318",
+      "symbol": "RKLB",
+      "ts": "2026-05-14T20:57:39.292233",
+      "action": "hold",
+      "conviction": 7,
+      "thesis_status": "intact",
+      "rationale": "The original momentum breakout thesis driven by 63.5% revenue growth remains fully intact, with technical indicators continuing to show trend continuation (ADX>25, RSI>70) rather than exhaustion despite the extended rally.",
+      "original_thesis_check": "Yes - the powerful momentum breakout driven by strong revenue growth in an expanding market continues, with technical indicators still showing trend continuation rather than exhaustion",
+      "key_risk_to_monitor": "Volume levels during any momentum pause - declining below 0.5x average would signal potential institutional distribution and trigger exit consideration per original risk assessment",
+      "current_bull_case": "R1 Bull(8): RKLB is experiencing explosive momentum with 68% gains in 5 days on 63.5% revenue growth, positioning it to capitalize on space market expansion before consensus fully recognizes the commercial launch opportunity. | R2 Bull(6): RKLB's 68% momentum surge reflects early recognition of its positioning in the expanding commercial launch market, with technical breakout above $133 resistance supported by revenue acceleration that outweighs temporary financing concerns in a capital-intensive growth industry.",
+      "current_bear_case": "R1 Bear(7): RKLB's fundamentally broken balance sheet with 6.1 debt-to-equity ratio and -26.9% profit margins creates existential refinancing risk in a rising rate environment, while SpaceX's looming IPO threat represents an insurmountable competitive moat that will crush smaller players. | R2 Bear(6): Despite recent operational momentum, RKLB's 6.1 debt-to-equity ratio combined with SpaceX's inevitable market dominance creates a refinancing gauntlet that will likely result in severe equity dilution even in the best-case scenario."
+    },
+    {
+      "trade_id": "DOCS_20260514172410",
+      "symbol": "DOCS",
+      "ts": "2026-05-14T20:58:27.185975",
+      "action": "trim",
+      "conviction": 5,
+      "thesis_status": "weakened",
+      "rationale": "The original thesis of a temporary pharma advertising reallocation has been materially challenged by Q4 results showing deeper structural weakness than anticipated, though the contrarian value opportunity remains partially intact.",
+      "original_thesis_check": "The core contrarian value thesis with 0.7 PEG ratio remains true, but the key assumption that pharma advertising weakness was temporary versus structural has been significantly undermined by recent earnings results.",
+      "key_risk_to_monitor": "Next quarter's margin performance and management commentary on pharma advertising recovery timeline to determine if this represents a permanent structural shift",
+      "trim_reason": "The thesis has materially weakened as Q4 results suggest pharma advertising headwinds may be more structural than the temporary reallocation we originally positioned for, warranting reduced position size while maintaining exposure to potential recovery",
+      "current_bull_case": "R1 Bull(8): DOCS is experiencing textbook capitulation selling with 7.23x volume and RSI at 24.3, creating an asymmetric risk-reward opportunity in a quality business trading at fire-sale valuations. | R2 Bull(7): DOCS represents a high-quality recurring revenue business trading at deep discount due to temporary margin compression, with technical capitulation creating entry opportunity before pharma advertising cycle recovery.",
+      "current_bear_case": "R1 Bear(8): DOCS faces a structural deterioration in its core pharma advertising market with negative EPS growth and moderate debt levels creating a value trap where attractive metrics mask a business in fundamental decline. | R2 Bear(6): While DOCS has more defensive characteristics than initially assessed, the uncertain timing of pharma advertising recovery combined with potential permanent market share loss to larger digital platforms creates a prolonged value trap scenario."
     }
   ],
   "risk_decisions": [

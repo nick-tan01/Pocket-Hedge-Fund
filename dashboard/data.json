@@ -155,6 +155,12 @@
       "portfolio_value": 99302.6,
       "cash": 63715.5,
       "spy_price": 741.51
+    },
+    {
+      "ts": "2026-05-15T17:17:00.423827",
+      "portfolio_value": 99268.49,
+      "cash": 63715.5,
+      "spy_price": 741.34
     }
   ],
   "trades": [],
@@ -170,7 +176,7 @@
       "conviction": 7,
       "debate_id": "debate_DDOG_20260512160556",
       "status": "open",
-      "key_risk": "Volume confirmation on any breakout above $208 resistance, as the current 0.25x average volume remains dangerously low and could signal institutional distribution rather than accumulation",
+      "key_risk": "Volume confirmation on any breakout above $209.25 resistance - we need to see meaningful volume expansion to validate institutional accumulation rather than distribution, as originally flagged in our key risk assessment.",
       "position_usd": 1998.65,
       "position_pct": 0.02,
       "sector": "Technology",
@@ -183,7 +189,7 @@
           "reason": "The self-reinforcing institutional momentum chase that was core to our thesis is not materializing as evidenced by the 0.41x volume ratio, though the fundamental and technical components remain strong enough to warrant partial position retention."
         }
       ],
-      "last_review_ts": "2026-05-15T11:22:11.226860-04:00",
+      "last_review_ts": "2026-05-15T13:12:25.672001-04:00",
       "last_review_conviction": 7,
       "thesis_status": "intact",
       "time_stop_flagged": false
@@ -219,10 +225,14 @@
       "conviction": 7,
       "debate_id": "debate_AMZN_20260513190220",
       "status": "open",
-      "key_risk": "AWS growth deceleration combined with margin compression that could create cash flow pressure amplified by the 53.3% debt ratio",
+      "key_risk": "Multiple compression from rising rates and institutional rotation from high-multiple growth plays, as this could overwhelm the fundamental revaluation catalyst despite strong earnings execution",
       "position_usd": 6005.76,
       "position_pct": 0.06,
-      "sector": "Consumer Cyclical"
+      "sector": "Consumer Cyclical",
+      "last_review_ts": "2026-05-15T13:13:16.946846-04:00",
+      "last_review_conviction": 7,
+      "thesis_status": "intact",
+      "time_stop_flagged": false
     },
     {
       "id": "NVDA_20260514152756",
@@ -264,11 +274,11 @@
       "conviction": 7,
       "debate_id": "debate_ARM_20260514152848",
       "status": "open",
-      "key_risk": "Any signs of AI chip demand moderation in upcoming earnings guidance or commentary that could expose the leverage risk and trigger the original bear case",
+      "key_risk": "Any earnings guidance disappointment or AI chip demand moderation commentary that could trigger valuation multiple compression at 249x P/E",
       "position_usd": 5999.86,
       "position_pct": 0.06,
       "sector": "Technology",
-      "last_review_ts": "2026-05-15T11:23:56.554538-04:00",
+      "last_review_ts": "2026-05-15T13:15:04.204854-04:00",
       "last_review_conviction": 6,
       "thesis_status": "intact",
       "time_stop_flagged": false
@@ -304,13 +314,13 @@
       "conviction": 7,
       "debate_id": "debate_RKLB_20260514172318",
       "status": "open",
-      "key_risk": "Volume levels dropping below 0.5x average during any momentum pause, and any signs of forced dilutive equity raises due to liquidity constraints",
+      "key_risk": "Cash burn trajectory with -26.9% margins and potential covenant breach risk if the company cannot achieve profitability within 12-18 months, especially with SpaceX competitive pressure emerging.",
       "position_usd": 3973.4,
       "position_pct": 0.0421,
       "sector": "Industrials",
-      "last_review_ts": "2026-05-15T11:24:46.775300-04:00",
-      "last_review_conviction": 6,
-      "thesis_status": "weakened",
+      "last_review_ts": "2026-05-15T13:15:57.169725-04:00",
+      "last_review_conviction": 7,
+      "thesis_status": "intact",
       "time_stop_flagged": false,
       "trim_history": [
         {
@@ -333,7 +343,7 @@
       "conviction": 7,
       "debate_id": "debate_DOCS_20260514172410",
       "status": "open",
-      "key_risk": "Next quarter's margin performance and management commentary on pharma advertising trends to determine if this represents structural decline versus temporary reallocation",
+      "key_risk": "Debt service capability and potential dilutive financing needs over next 2 quarters as earnings decline continues",
       "position_usd": 1968.36,
       "position_pct": 0.0183,
       "sector": "Healthcare",
@@ -353,7 +363,7 @@
           "reason": "Management's admission of failed AI strategy execution combined with 67.7% EPS decline materially weakens the thesis recovery timeline and catalyst strength, though core value proposition remains intact"
         }
       ],
-      "last_review_ts": "2026-05-15T11:25:39.618168-04:00",
+      "last_review_ts": "2026-05-15T13:16:48.828670-04:00",
       "last_review_conviction": 5,
       "thesis_status": "weakened",
       "time_stop_flagged": false
@@ -1590,6 +1600,136 @@
       "trades_executed": 0,
       "skipped_reason": "",
       "reason": "scheduled",
+      "regime": "bull",
+      "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-05-15T17:17:00.430895",
+      "run_type": "midday",
+      "candidates": [
+        "DDOG",
+        "AMZN",
+        "ARM"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "sentinel_trigger",
+      "event_symbols": [
+        "AMZN",
+        "ARM",
+        "COHR",
+        "DDOG",
+        "DOCS",
+        "IONQ",
+        "MSTR",
+        "RKLB"
+      ],
+      "event_details": [
+        {
+          "symbol": "ARM",
+          "trigger_type": "intraday_move",
+          "value": 0.0724,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": -0.0724,
+          "latest": 212.0,
+          "previous_close": 228.55
+        },
+        {
+          "symbol": "COHR",
+          "trigger_type": "intraday_rebound",
+          "value": 0.0443,
+          "threshold": 0.035,
+          "severity": "normal",
+          "latest": 389.9,
+          "intraday_low": 373.36
+        },
+        {
+          "symbol": "DDOG",
+          "trigger_type": "intraday_rebound",
+          "value": 0.0429,
+          "threshold": 0.035,
+          "severity": "normal",
+          "latest": 209.22,
+          "intraday_low": 200.61
+        },
+        {
+          "symbol": "DOCS",
+          "trigger_type": "intraday_move",
+          "value": 0.0622,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": 0.0622,
+          "latest": 19.12,
+          "previous_close": 18.0
+        },
+        {
+          "symbol": "IONQ",
+          "trigger_type": "intraday_move",
+          "value": 0.0919,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": -0.0919,
+          "latest": 52.21,
+          "previous_close": 57.49
+        },
+        {
+          "symbol": "MSTR",
+          "trigger_type": "intraday_move",
+          "value": 0.0614,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": -0.0614,
+          "latest": 175.46,
+          "previous_close": 186.93
+        },
+        {
+          "symbol": "RKLB",
+          "trigger_type": "intraday_move",
+          "value": 0.064,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": -0.064,
+          "latest": 124.08,
+          "previous_close": 132.56
+        },
+        {
+          "symbol": "DDOG",
+          "trigger_type": "position_move",
+          "value": 0.0562,
+          "threshold": 0.025,
+          "severity": "high",
+          "price": 209.22,
+          "entry": 198.09
+        },
+        {
+          "symbol": "AMZN",
+          "trigger_type": "position_move",
+          "value": 0.0262,
+          "threshold": 0.025,
+          "severity": "normal",
+          "price": 262.44,
+          "entry": 269.51
+        },
+        {
+          "symbol": "RKLB",
+          "trigger_type": "position_move",
+          "value": 0.0527,
+          "threshold": 0.025,
+          "severity": "high",
+          "price": 124.02,
+          "entry": 130.92
+        },
+        {
+          "symbol": "DOCS",
+          "trigger_type": "position_move",
+          "value": 0.0754,
+          "threshold": 0.025,
+          "severity": "high",
+          "price": 19.12,
+          "entry": 17.78
+        }
+      ],
       "regime": "bull",
       "vix_regime": "normal"
     }
@@ -3146,6 +3286,72 @@
       "trim_reason": "Management's admission of failed AI strategy execution combined with 67.7% EPS decline materially weakens the thesis recovery timeline and catalyst strength, though core value proposition remains intact",
       "current_bull_case": "R1 Bull(7): DOCS represents a classic oversold recovery play where fundamentally strong margins (30.4%) and ROE (19.3%) are being priced for permanent impairment despite trading at a compelling PEG of 0.5 with RSI at extreme oversold levels of 30.8. | R2 Bull(5): DOCS remains an oversold recovery play where temporary AI strategy execution issues and cyclical pharma ad weakness have created an attractive entry point for a fundamentally profitable business with strong margins trading at 0.5 PEG",
       "current_bear_case": "R1 Bear(8): DOCS faces secular decline in pharma advertising demand that their failed AI strategy cannot offset, making the 67.7% EPS collapse a structural reset rather than cyclical weakness worth catching. | R2 Bear(7): DOCS faces permanent revenue base erosion from structural shifts in pharma marketing spend toward digital platforms, while their failed AI strategy leaves them without differentiation in an increasingly commoditized healthcare marketing landscape."
+    },
+    {
+      "trade_id": "DDOG_20260512160556",
+      "symbol": "DDOG",
+      "ts": "2026-05-15T17:12:25.666019",
+      "action": "hold",
+      "conviction": 7,
+      "thesis_status": "intact",
+      "rationale": "The original thesis of explosive earnings momentum (104% EPS growth maintained) meeting dominant technical breakout conditions (ADX strengthened to 43.5 from 35.2) remains fully intact and is actually strengthening as price approaches the critical $209.25 breakout level.",
+      "original_thesis_check": "Yes, both components of our original thesis are still true: explosive earnings momentum continues at 104% EPS growth, and technical breakout conditions have strengthened with ADX improving to 43.5 and price now at the critical resistance level we identified for breakout confirmation.",
+      "key_risk_to_monitor": "Volume confirmation on any breakout above $209.25 resistance - we need to see meaningful volume expansion to validate institutional accumulation rather than distribution, as originally flagged in our key risk assessment.",
+      "current_bull_case": "R1 Bull(8): DDOG is poised for an imminent technical breakout above $209.25 resistance with explosive fundamental momentum (104% EPS growth, 32.2% revenue growth) driving the stock toward consensus targets near $221. | R2 Bull(7): DDOG's technical breakout above $209.25 remains imminent with ADX at 43.5 confirming strong trending conditions, while the fundamental acceleration story is supported by expanding customer metrics and SaaS economics that will drive margin expansion as growth investments mature",
+      "current_bear_case": "R1 Bear(7): DDOG is a profitability mirage trading at unsustainable multiples with 536.2x TTM P/E and razor-thin 3.7% margins that make it extremely vulnerable to any growth deceleration or margin compression in a risk-off environment. | R2 Bear(6): DDOG's extreme valuation multiple creates asymmetric downside risk where any growth slowdown or investment inefficiency will trigger severe multiple compression regardless of the SaaS model's long-term merit."
+    },
+    {
+      "trade_id": "AMZN_20260513190220",
+      "symbol": "AMZN",
+      "ts": "2026-05-15T17:13:16.940934",
+      "action": "hold",
+      "conviction": 7,
+      "thesis_status": "intact",
+      "rationale": "The core thesis of explosive 74.8% EPS growth creating a fundamental revaluation catalyst remains fully intact with current analyst confirmation of the same growth rate and strong operational metrics. Technical momentum concerns were part of the original bear case and don't invalidate the fundamental catalyst driving our position.",
+      "original_thesis_check": "Yes, the explosive 74.8% EPS growth acceleration creating a powerful fundamental revaluation catalyst is still true and confirmed by current fundamentals showing the same growth rate with strong ROE.",
+      "key_risk_to_monitor": "Multiple compression from rising rates and institutional rotation from high-multiple growth plays, as this could overwhelm the fundamental revaluation catalyst despite strong earnings execution",
+      "current_bull_case": "R1 Bull(8): Amazon's 74.8% EPS growth and 24.3% ROE demonstrate the operational leverage inflection point has arrived as AWS and advertising scale, while the forward P/E of 26.6 creates a rare value entry into a compounding machine. | R2 Bull(7): Amazon's proven 74.8% EPS growth with 24.3% ROE validates the operational leverage thesis is executing now, and while technical weakness may create near-term pressure, it enhances the risk-reward for a structural compounder trading at reasonable multiples",
+      "current_bear_case": "R1 Bear(6): Amazon's 'inflection point' narrative ignores that 74.8% EPS growth is being delivered into deteriorating technical momentum and rising macro headwinds that will compress the very cloud/advertising multiples driving this valuation thesis. | R2 Bear(5): Despite strong operational metrics, Amazon faces a structural multiple reset in rising rate environment where institutional rotation from high-multiple growth plays will create sustained selling pressure that fundamentals alone cannot offset."
+    },
+    {
+      "trade_id": "ARM_20260514152848",
+      "symbol": "ARM",
+      "ts": "2026-05-15T17:15:04.198931",
+      "action": "hold",
+      "conviction": 6,
+      "thesis_status": "intact",
+      "rationale": "The original momentum inflection thesis remains valid with 45.7% EPS growth and confirmed technical breakout (ADX>25, EMA alignment), though extreme valuation creates heightened execution risk.",
+      "original_thesis_check": "The perfect momentum inflection combining explosive EPS growth with technical breakout confirmation is still present and functioning as anticipated",
+      "key_risk_to_monitor": "Any earnings guidance disappointment or AI chip demand moderation commentary that could trigger valuation multiple compression at 249x P/E",
+      "current_bull_case": "R1 Bull(8): ARM's explosive 45.7% EPS acceleration amid AI infrastructure buildout creates a momentum breakout opportunity as technical uptrend (ADX>25, EMA alignment) coincides with RSI at 55.9 providing ample room for continuation. | R2 Bull(7): ARM's AI infrastructure positioning and technical momentum (ADX>25, EMA alignment) create upside potential despite valuation concerns, though lower volume suggests managing position size for liquidity risk.",
+      "current_bear_case": "R1 Bear(8): ARM's 249x P/E ratio creates catastrophic downside risk where even minor earnings disappointments or AI spending normalization will trigger valuation collapse that technical momentum cannot cushion. | R2 Bear(8): ARM's 249x P/E ratio creates inevitable valuation collapse risk that technical momentum and AI positioning cannot mitigate when fundamentals inevitably disappoint this impossibly high bar."
+    },
+    {
+      "trade_id": "RKLB_20260514172318",
+      "symbol": "RKLB",
+      "ts": "2026-05-15T17:15:57.163841",
+      "action": "hold",
+      "conviction": 7,
+      "thesis_status": "intact",
+      "rationale": "The original momentum breakout thesis remains valid with technical indicators still showing strong trend continuation (ADX>25, bullish MACD) and the fundamental driver of 63.5% revenue growth in an expanding market unchanged.",
+      "original_thesis_check": "The powerful momentum breakout driven by 63.5% revenue growth and technical trend continuation indicators are still present and supporting the original bull case.",
+      "key_risk_to_monitor": "Cash burn trajectory with -26.9% margins and potential covenant breach risk if the company cannot achieve profitability within 12-18 months, especially with SpaceX competitive pressure emerging.",
+      "current_bull_case": "R1 Bull(9): RKLB is breaking out on exceptional 63.5% revenue growth in the exploding space launch sector, with technical momentum (ADX>25, RSI 70.3) confirming institutional accumulation ahead of mainstream recognition. | R2 Bull(7): RKLB's exceptional 63.5% revenue growth and technical breakout reflect a company successfully scaling through the critical inflection point in space launch, where leverage risk is offset by accelerating business momentum that should drive multiple expansion before debt concerns become material",
+      "current_bear_case": "R1 Bear(8): RKLB's 6.1 debt-to-equity ratio creates an existential liquidity crisis in a capital-intensive business burning cash at -26.9% margins, making it fatally vulnerable to any funding disruption or market downturn. | R2 Bear(7): While RKLB's leverage may be developmentally appropriate, the narrow path to profitability required to avoid covenant issues leaves zero margin for execution missteps or competitive pressure from SpaceX."
+    },
+    {
+      "trade_id": "DOCS_20260514172410",
+      "symbol": "DOCS",
+      "ts": "2026-05-15T17:16:48.822643",
+      "action": "trim",
+      "conviction": 5,
+      "thesis_status": "weakened",
+      "rationale": "The contrarian opportunity thesis remains valid with intact margins and oversold conditions, but new debt service risks during earnings decline create legitimate dilution catalyst that materially weakens the asymmetric risk-reward profile.",
+      "original_thesis_check": "The core contrarian opportunity with strong margins and oversold technicals still exists, but the risk profile has materially deteriorated with debt concerns adding execution risk to the value thesis.",
+      "key_risk_to_monitor": "Debt service capability and potential dilutive financing needs over next 2 quarters as earnings decline continues",
+      "trim_reason": "High debt levels combined with steep earnings decline introduces new dilution risk that wasn't part of original thesis, materially weakening the asymmetric risk-reward despite intact core fundamentals",
+      "current_bull_case": "R1 Bull(8): DOCS presents a classic oversold value trap reversal with PEG of 0.5 and 30.4% margins intact, where technical capitulation creates asymmetric risk-reward as AI pessimism has already been brutally priced in. | R2 Bull(6): DOCS remains an oversold value reversal with intact cash generation capabilities, though debt service monitoring becomes critical catalyst watch for next 2 quarters until earnings stabilize",
+      "current_bear_case": "R1 Bear(8): DOCS exhibits classic value trap characteristics where deteriorating fundamentals (steep earnings decline, high debt levels) combine with failed AI strategy to create a structurally impaired business that cheap metrics cannot fix. | R2 Bear(7): DOCS faces structural competitive displacement in AI-driven healthcare tech where high margins provide temporary cushion but cannot prevent eventual value destruction from failed strategic positioning."
     }
   ],
   "risk_decisions": [

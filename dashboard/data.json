@@ -143,6 +143,12 @@
       "portfolio_value": 100090.44,
       "cash": 59969.16,
       "spy_price": 748.17
+    },
+    {
+      "ts": "2026-05-15T15:26:13.867772",
+      "portfolio_value": 99281.84,
+      "cash": 63715.5,
+      "spy_price": 741.11
     }
   ],
   "trades": [],
@@ -158,7 +164,7 @@
       "conviction": 7,
       "debate_id": "debate_DDOG_20260512160556",
       "status": "open",
-      "key_risk": "Volume patterns during any pullbacks from current resistance levels, as the 0.21x volume ratio creates genuine downside acceleration risk if the momentum machine stalls, which could quickly expose the underlying margin compression vulnerability.",
+      "key_risk": "Volume confirmation on any breakout above $208 resistance, as the current 0.25x average volume remains dangerously low and could signal institutional distribution rather than accumulation",
       "position_usd": 1998.65,
       "position_pct": 0.02,
       "sector": "Technology",
@@ -171,7 +177,7 @@
           "reason": "The self-reinforcing institutional momentum chase that was core to our thesis is not materializing as evidenced by the 0.41x volume ratio, though the fundamental and technical components remain strong enough to warrant partial position retention."
         }
       ],
-      "last_review_ts": "2026-05-14T11:25:46.406100-04:00",
+      "last_review_ts": "2026-05-15T11:22:11.226860-04:00",
       "last_review_conviction": 7,
       "thesis_status": "intact",
       "time_stop_flagged": false
@@ -216,21 +222,30 @@
       "id": "NVDA_20260514152756",
       "symbol": "NVDA",
       "side": "buy",
-      "qty": 25.5063,
+      "qty": 17.4689,
       "entry_price": 235.23,
       "entry_ts": "2026-05-14T15:27:56.053799",
       "stop_price": 216.41,
       "conviction": 7,
       "debate_id": "debate_NVDA_20260514152755",
       "status": "open",
-      "key_risk": "Any signs of AI demand cyclicality or margin compression that could expose the 7.3 debt/equity leverage vulnerability highlighted in the bear case.",
-      "position_usd": 5999.85,
-      "position_pct": 0.06,
+      "key_risk": "Any acceleration in China market share losses or signs of broader AI chip pricing pressure that could trigger the debt leverage vulnerability",
+      "position_usd": 3980.29,
+      "position_pct": 0.0411,
       "sector": "Technology",
-      "last_review_ts": "2026-05-14T15:21:49.389515-04:00",
-      "last_review_conviction": 8,
-      "thesis_status": "intact",
-      "time_stop_flagged": false
+      "last_review_ts": "2026-05-15T11:23:06.002220-04:00",
+      "last_review_conviction": 6,
+      "thesis_status": "weakened",
+      "time_stop_flagged": false,
+      "trim_history": [
+        {
+          "ts": "2026-05-15T15:23:05.996629",
+          "trim_qty": 8.0374,
+          "new_qty": 17.4689,
+          "price": 227.85,
+          "reason": "China regulatory relief thesis has materially deteriorated from potential upside catalyst to confirmed market share losses, reducing one pillar of our three-part bull case"
+        }
+      ]
     },
     {
       "id": "ARM_20260514152848",
@@ -243,12 +258,12 @@
       "conviction": 7,
       "debate_id": "debate_ARM_20260514152848",
       "status": "open",
-      "key_risk": "Any signs of AI chip demand moderation that could expose the 5.2x debt/equity leverage risk and trigger refinancing pressures",
+      "key_risk": "Any signs of AI chip demand moderation in upcoming earnings guidance or commentary that could expose the leverage risk and trigger the original bear case",
       "position_usd": 5999.86,
       "position_pct": 0.06,
       "sector": "Technology",
-      "last_review_ts": "2026-05-14T16:55:50.247394-04:00",
-      "last_review_conviction": 7,
+      "last_review_ts": "2026-05-15T11:23:56.554538-04:00",
+      "last_review_conviction": 6,
       "thesis_status": "intact",
       "time_stop_flagged": false
     },
@@ -276,36 +291,45 @@
       "id": "RKLB_20260514172318",
       "symbol": "RKLB",
       "side": "buy",
-      "qty": 45.7771,
+      "qty": 32.0953,
       "entry_price": 130.92,
       "entry_ts": "2026-05-14T17:23:18.323783",
       "stop_price": 120.45,
       "conviction": 7,
       "debate_id": "debate_RKLB_20260514172318",
       "status": "open",
-      "key_risk": "Volume levels during any momentum pause - declining below 0.5x average would signal potential institutional distribution and trigger exit consideration per original risk assessment",
-      "position_usd": 5993.14,
-      "position_pct": 0.06,
+      "key_risk": "Volume levels dropping below 0.5x average during any momentum pause, and any signs of forced dilutive equity raises due to liquidity constraints",
+      "position_usd": 3973.4,
+      "position_pct": 0.0421,
       "sector": "Industrials",
-      "last_review_ts": "2026-05-14T16:57:39.296824-04:00",
-      "last_review_conviction": 7,
-      "thesis_status": "intact",
-      "time_stop_flagged": false
+      "last_review_ts": "2026-05-15T11:24:46.775300-04:00",
+      "last_review_conviction": 6,
+      "thesis_status": "weakened",
+      "time_stop_flagged": false,
+      "trim_history": [
+        {
+          "ts": "2026-05-15T15:24:46.769497",
+          "trim_qty": 13.6818,
+          "new_qty": 32.0953,
+          "price": 123.8,
+          "reason": "While the technical momentum breakout thesis remains valid, the liquidity crisis risk from negative cash flow and debt service requirements has elevated to a primary concern that materially weakens the risk/reward profile despite intact momentum"
+        }
+      ]
     },
     {
       "id": "DOCS_20260514172410",
       "symbol": "DOCS",
       "side": "buy",
-      "qty": 114.6268,
+      "qty": 102.7864,
       "entry_price": 17.78,
       "entry_ts": "2026-05-14T17:24:10.596135",
       "stop_price": 16.36,
       "conviction": 7,
       "debate_id": "debate_DOCS_20260514172410",
       "status": "open",
-      "key_risk": "Next quarter's margin performance and management commentary on pharma advertising trends to determine if this is structural decline versus temporary reallocation",
-      "position_usd": 2049.53,
-      "position_pct": 0.0204,
+      "key_risk": "Next quarter's margin performance and management commentary on pharma advertising trends to determine if this represents structural decline versus temporary reallocation",
+      "position_usd": 1968.36,
+      "position_pct": 0.0183,
       "sector": "Healthcare",
       "trim_history": [
         {
@@ -314,17 +338,19 @@
           "new_qty": 114.6268,
           "price": 17.88,
           "reason": "Q4 results showed significant pharma advertising market weakness that blurs the line between temporary cyclicality and structural headwinds, while elevated debt limits financial flexibility during this uncertain transition period"
+        },
+        {
+          "ts": "2026-05-15T15:25:39.612443",
+          "trim_qty": 11.8404,
+          "new_qty": 102.7864,
+          "price": 19.15,
+          "reason": "Management's admission of failed AI strategy execution combined with 67.7% EPS decline materially weakens the thesis recovery timeline and catalyst strength, though core value proposition remains intact"
         }
       ],
-      "last_review_ts": "2026-05-14T16:58:27.196653-04:00",
+      "last_review_ts": "2026-05-15T11:25:39.618168-04:00",
       "last_review_conviction": 5,
       "thesis_status": "weakened",
-      "time_stop_flagged": false,
-      "queued_action": {
-        "action": "trim",
-        "reason": "The thesis has materially weakened as Q4 results suggest pharma advertising headwinds may be more structural than the temporary reallocation we originally positioned for, warranting reduced position size while maintaining exposure to potential recovery",
-        "queued_ts": "2026-05-14T20:58:27.192021"
-      }
+      "time_stop_flagged": false
     }
   ],
   "runs": [
@@ -1276,6 +1302,272 @@
           "value": 1.0,
           "threshold": 1.0,
           "severity": "high"
+        }
+      ],
+      "regime": "bull",
+      "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-05-15T15:26:13.874971",
+      "run_type": "pre_market",
+      "candidates": [
+        "DDOG",
+        "AMD",
+        "CRWD"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "sentinel_trigger",
+      "event_symbols": [
+        "ACLS",
+        "AMD",
+        "ARM",
+        "COHR",
+        "CRWD",
+        "DDOG",
+        "DOCS",
+        "GTLB",
+        "HIMS",
+        "IONQ",
+        "MSFT",
+        "MSTR",
+        "NVDA",
+        "RKLB",
+        "SMCI",
+        "SNOW",
+        "TSLA"
+      ],
+      "event_details": [
+        {
+          "symbol": "ACLS",
+          "trigger_type": "intraday_move",
+          "value": 0.0487,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": -0.0487,
+          "latest": 153.88,
+          "previous_close": 161.76
+        },
+        {
+          "symbol": "AMD",
+          "trigger_type": "intraday_move",
+          "value": 0.0361,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": -0.0361,
+          "latest": 433.42,
+          "previous_close": 449.63
+        },
+        {
+          "symbol": "ARM",
+          "trigger_type": "intraday_move",
+          "value": 0.0723,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": -0.0723,
+          "latest": 212.03,
+          "previous_close": 228.55
+        },
+        {
+          "symbol": "COHR",
+          "trigger_type": "intraday_move",
+          "value": 0.0589,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": -0.0589,
+          "latest": 381.06,
+          "previous_close": 404.92
+        },
+        {
+          "symbol": "CRWD",
+          "trigger_type": "intraday_rebound",
+          "value": 0.0356,
+          "threshold": 0.035,
+          "severity": "normal",
+          "latest": 588.73,
+          "intraday_low": 568.51
+        },
+        {
+          "symbol": "DOCS",
+          "trigger_type": "intraday_move",
+          "value": 0.0717,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": 0.0717,
+          "latest": 19.29,
+          "previous_close": 18.0
+        },
+        {
+          "symbol": "GTLB",
+          "trigger_type": "intraday_move",
+          "value": 0.04,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": 0.04,
+          "latest": 23.51,
+          "previous_close": 22.6
+        },
+        {
+          "symbol": "GTLB",
+          "trigger_type": "intraday_rebound",
+          "value": 0.0393,
+          "threshold": 0.035,
+          "severity": "normal",
+          "latest": 23.51,
+          "intraday_low": 22.62
+        },
+        {
+          "symbol": "HIMS",
+          "trigger_type": "intraday_move",
+          "value": 0.0357,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": 0.0357,
+          "latest": 25.11,
+          "previous_close": 24.25
+        },
+        {
+          "symbol": "HIMS",
+          "trigger_type": "intraday_rebound",
+          "value": 0.0615,
+          "threshold": 0.035,
+          "severity": "high",
+          "latest": 25.11,
+          "intraday_low": 23.66
+        },
+        {
+          "symbol": "IONQ",
+          "trigger_type": "intraday_move",
+          "value": 0.0983,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": -0.0983,
+          "latest": 51.84,
+          "previous_close": 57.49
+        },
+        {
+          "symbol": "MSFT",
+          "trigger_type": "intraday_move",
+          "value": 0.0362,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": 0.0362,
+          "latest": 424.3,
+          "previous_close": 409.47
+        },
+        {
+          "symbol": "MSTR",
+          "trigger_type": "intraday_move",
+          "value": 0.0628,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": -0.0628,
+          "latest": 175.2,
+          "previous_close": 186.93
+        },
+        {
+          "symbol": "NVDA",
+          "trigger_type": "intraday_move",
+          "value": 0.0352,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": -0.0352,
+          "latest": 227.45,
+          "previous_close": 235.74
+        },
+        {
+          "symbol": "RKLB",
+          "trigger_type": "intraday_move",
+          "value": 0.0653,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": -0.0653,
+          "latest": 123.9,
+          "previous_close": 132.56
+        },
+        {
+          "symbol": "SMCI",
+          "trigger_type": "intraday_move",
+          "value": 0.0557,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": -0.0557,
+          "latest": 31.19,
+          "previous_close": 33.03
+        },
+        {
+          "symbol": "SNOW",
+          "trigger_type": "intraday_move",
+          "value": 0.049,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": 0.049,
+          "latest": 158.18,
+          "previous_close": 150.79
+        },
+        {
+          "symbol": "SNOW",
+          "trigger_type": "intraday_rebound",
+          "value": 0.0527,
+          "threshold": 0.035,
+          "severity": "normal",
+          "latest": 158.18,
+          "intraday_low": 150.26
+        },
+        {
+          "symbol": "TSLA",
+          "trigger_type": "intraday_move",
+          "value": 0.0368,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": -0.0368,
+          "latest": 426.89,
+          "previous_close": 443.18
+        },
+        {
+          "symbol": "DDOG",
+          "trigger_type": "position_move",
+          "value": 0.0462,
+          "threshold": 0.025,
+          "severity": "normal",
+          "price": 207.25,
+          "entry": 198.09
+        },
+        {
+          "symbol": "NVDA",
+          "trigger_type": "position_move",
+          "value": 0.033,
+          "threshold": 0.025,
+          "severity": "normal",
+          "price": 227.47,
+          "entry": 235.23
+        },
+        {
+          "symbol": "ARM",
+          "trigger_type": "position_move",
+          "value": 0.0448,
+          "threshold": 0.025,
+          "severity": "normal",
+          "price": 212.05,
+          "entry": 222.0
+        },
+        {
+          "symbol": "RKLB",
+          "trigger_type": "position_move",
+          "value": 0.0536,
+          "threshold": 0.025,
+          "severity": "high",
+          "price": 123.9,
+          "entry": 130.92
+        },
+        {
+          "symbol": "DOCS",
+          "trigger_type": "position_move",
+          "value": 0.0839,
+          "threshold": 0.025,
+          "severity": "high",
+          "price": 19.27,
+          "entry": 17.78
         }
       ],
       "regime": "bull",
@@ -2766,6 +3058,74 @@
       "trim_reason": "The thesis has materially weakened as Q4 results suggest pharma advertising headwinds may be more structural than the temporary reallocation we originally positioned for, warranting reduced position size while maintaining exposure to potential recovery",
       "current_bull_case": "R1 Bull(8): DOCS is experiencing textbook capitulation selling with 7.23x volume and RSI at 24.3, creating an asymmetric risk-reward opportunity in a quality business trading at fire-sale valuations. | R2 Bull(7): DOCS represents a high-quality recurring revenue business trading at deep discount due to temporary margin compression, with technical capitulation creating entry opportunity before pharma advertising cycle recovery.",
       "current_bear_case": "R1 Bear(8): DOCS faces a structural deterioration in its core pharma advertising market with negative EPS growth and moderate debt levels creating a value trap where attractive metrics mask a business in fundamental decline. | R2 Bear(6): While DOCS has more defensive characteristics than initially assessed, the uncertain timing of pharma advertising recovery combined with potential permanent market share loss to larger digital platforms creates a prolonged value trap scenario."
+    },
+    {
+      "trade_id": "DDOG_20260512160556",
+      "symbol": "DDOG",
+      "ts": "2026-05-15T15:22:11.221240",
+      "action": "hold",
+      "conviction": 7,
+      "thesis_status": "intact",
+      "rationale": "The original thesis of explosive earnings momentum (104% EPS growth) meeting dominant technical breakout conditions remains fully intact with ADX strengthening to 43.5 and price approaching the $208 resistance breakout level.",
+      "original_thesis_check": "Yes, both core elements persist: 104% EPS growth continues with 32.2% revenue growth, and technical momentum has actually strengthened with ADX improving from 35.2 to 43.5",
+      "key_risk_to_monitor": "Volume confirmation on any breakout above $208 resistance, as the current 0.25x average volume remains dangerously low and could signal institutional distribution rather than accumulation",
+      "current_bull_case": "R1 Bull(8): DDOG is demonstrating explosive earnings acceleration (104% EPS growth) while trading at a reasonable growth multiple (PEG 1.3) with strong technical momentum (ADX 43.5) that's primed to break resistance at $208. | R2 Bull(7): DDOG's technical breakout above $208 resistance is supported by strong ADX momentum and structural profitability improvements in a rapidly expanding observability market, despite elevated valuation risks from unsustainable EPS growth rates",
+      "current_bear_case": "R1 Bear(7): DDOG's explosive EPS growth is built on unsustainable margin expansion from an artificially low base, while the technical breakout setup is a trap supported by anemic volume (0.25x average) that signals institutional distribution rather than accumulation. | R2 Bear(6): DDOG remains overvalued as the bull's structural profitability thesis doesn't address that both market growth rates and customer expansion metrics are cyclical headwinds disguised as secular tailwinds."
+    },
+    {
+      "trade_id": "NVDA_20260514152756",
+      "symbol": "NVDA",
+      "ts": "2026-05-15T15:23:05.830776",
+      "action": "trim",
+      "conviction": 6,
+      "thesis_status": "weakened",
+      "rationale": "The original thesis of regulatory relief removing China overhang has been materially weakened by confirmed China market share losses, while the debt leverage vulnerability we identified as key risk is becoming more pronounced with intensifying competition.",
+      "original_thesis_check": "The regulatory relief component of our thesis has weakened significantly with NVDA losing dominance in China's AI market, though AI fundamentals and technical momentum remain supportive",
+      "key_risk_to_monitor": "Any acceleration in China market share losses or signs of broader AI chip pricing pressure that could trigger the debt leverage vulnerability",
+      "trim_reason": "China regulatory relief thesis has materially deteriorated from potential upside catalyst to confirmed market share losses, reducing one pillar of our three-part bull case",
+      "current_bull_case": "R1 Bull(8): NVDA's exceptional fundamental growth with 95.6% EPS growth and 73.2% revenue growth at only 0.8 PEG ratio creates a massive valuation arbitrage that technical momentum confirms is being recognized. | R2 Bull(7): Despite near-term China headwinds, NVDA's 0.8 PEG reflects undervaluation of sustained AI infrastructure buildout across diversified global markets with technical momentum confirming institutional accumulation.",
+      "current_bear_case": "R1 Bear(7): NVDA's 7.3 debt/equity ratio creates catastrophic vulnerability to margin compression when AI chip competition intensifies and China geopolitical losses accelerate, making this a leveraged bet on unsustainable dominance. | R2 Bear(6): NVDA's extreme leverage creates systematic risk when inevitable AI capex cycle turns down across all major customers simultaneously, making geographic diversification irrelevant to debt service obligations."
+    },
+    {
+      "trade_id": "ARM_20260514152848",
+      "symbol": "ARM",
+      "ts": "2026-05-15T15:23:56.548623",
+      "action": "hold",
+      "conviction": 6,
+      "thesis_status": "intact",
+      "rationale": "The original thesis remains valid with ARM still delivering explosive 45.7% EPS growth and 20.1% revenue growth, confirming we're in the AI infrastructure supercycle momentum inflection. Current sentiment weakness and technical consolidation don't negate the fundamental growth catalyst that drove our entry.",
+      "original_thesis_check": "Yes - ARM is still hitting the momentum inflection with explosive EPS growth meeting the AI infrastructure supercycle, though technical breakout confirmation has temporarily stalled",
+      "key_risk_to_monitor": "Any signs of AI chip demand moderation in upcoming earnings guidance or commentary that could expose the leverage risk and trigger the original bear case",
+      "current_bull_case": "R1 Bull(7): ARM's explosive 45.7% EPS growth and 20.1% revenue growth in a consolidating technical setup creates a coiled spring ready to break higher once the current AI sentiment reset completes. | R2 Bull(6): ARM's structural shift to higher-margin royalty revenue model with 45.7% EPS growth creates compelling value despite technical headwinds that should resolve as AI infrastructure spending accelerates",
+      "current_bear_case": "R1 Bear(8): ARM's 250.3x TTM P/E represents a valuation bubble that even accelerating earnings cannot justify, while weakening technical momentum and persistent AI sentiment headwinds create an asymmetric risk/reward profile favoring significant downside. | R2 Bear(7): While ARM's royalty model transition shows promise, the 250.3x P/E creates an asymmetric risk profile where even strong fundamental progress cannot overcome the mathematical reality that current valuations require flawless execution."
+    },
+    {
+      "trade_id": "RKLB_20260514172318",
+      "symbol": "RKLB",
+      "ts": "2026-05-15T15:24:46.595190",
+      "action": "trim",
+      "conviction": 6,
+      "thesis_status": "weakened",
+      "rationale": "The momentum breakout thesis remains intact with strong technical confirmation (ADX 33.6, continued directional movement), but the fundamental backdrop has materially weakened as the liquidity crisis risk from -26.9% margins and high debt levels has become more prominent in the debate structure.",
+      "original_thesis_check": "The momentum breakout driven by revenue growth is still true - technical indicators still show trend continuation and revenue growth remains at 63.5%, but the risk/reward profile has deteriorated",
+      "key_risk_to_monitor": "Volume levels dropping below 0.5x average during any momentum pause, and any signs of forced dilutive equity raises due to liquidity constraints",
+      "trim_reason": "While the technical momentum breakout thesis remains valid, the liquidity crisis risk from negative cash flow and debt service requirements has elevated to a primary concern that materially weakens the risk/reward profile despite intact momentum",
+      "current_bull_case": "R1 Bull(8): RKLB is capturing explosive momentum in a confirmed technical breakout supported by 63.5% revenue growth and sector-wide tailwinds, positioning for continued upside as institutional money chases space infrastructure exposure. | R2 Bull(7): RKLB maintains strong momentum with 63.5% revenue growth and institutional accumulation supporting the technical breakout, though execution on cash flow improvement becomes critical to sustain the rally.",
+      "current_bear_case": "R1 Bear(7): RKLB's catastrophic financial structure with -26.9% margins and extreme debt levels creates a liquidity death trap that momentum buying will only delay, not prevent. | R2 Bear(6): RKLB's negative cash flow and debt service requirements create a dangerous liquidity timeline that contract backlogs may not resolve quickly enough to prevent forced dilutive financing."
+    },
+    {
+      "trade_id": "DOCS_20260514172410",
+      "symbol": "DOCS",
+      "ts": "2026-05-15T15:25:39.555261",
+      "action": "trim",
+      "conviction": 5,
+      "thesis_status": "weakened",
+      "rationale": "The original contrarian opportunity thesis remains partially intact with strong margins (30.4%) and attractive valuation (0.5 PEG), but the 67.7% EPS decline and management's admission that AI strategy failed to offset headwinds materially weakens the recovery case.",
+      "original_thesis_check": "The contrarian value opportunity still exists with oversold technicals and strong fundamentals, but the catalyst strength has diminished significantly with failed AI strategy execution and deeper pharma advertising weakness than originally anticipated.",
+      "key_risk_to_monitor": "Next quarter's margin performance and management commentary on pharma advertising trends to determine if this represents structural decline versus temporary reallocation",
+      "trim_reason": "Management's admission of failed AI strategy execution combined with 67.7% EPS decline materially weakens the thesis recovery timeline and catalyst strength, though core value proposition remains intact",
+      "current_bull_case": "R1 Bull(7): DOCS represents a classic oversold recovery play where fundamentally strong margins (30.4%) and ROE (19.3%) are being priced for permanent impairment despite trading at a compelling PEG of 0.5 with RSI at extreme oversold levels of 30.8. | R2 Bull(5): DOCS remains an oversold recovery play where temporary AI strategy execution issues and cyclical pharma ad weakness have created an attractive entry point for a fundamentally profitable business with strong margins trading at 0.5 PEG",
+      "current_bear_case": "R1 Bear(8): DOCS faces secular decline in pharma advertising demand that their failed AI strategy cannot offset, making the 67.7% EPS collapse a structural reset rather than cyclical weakness worth catching. | R2 Bear(7): DOCS faces permanent revenue base erosion from structural shifts in pharma marketing spend toward digital platforms, while their failed AI strategy leaves them without differentiation in an increasingly commoditized healthcare marketing landscape."
     }
   ],
   "risk_decisions": [

@@ -179,6 +179,12 @@
       "portfolio_value": 99053.89,
       "cash": 63715.5,
       "spy_price": 739.17
+    },
+    {
+      "ts": "2026-05-15T21:37:49.477872",
+      "portfolio_value": 99020.89,
+      "cash": 63715.5,
+      "spy_price": 739.17
     }
   ],
   "trades": [],
@@ -296,10 +302,15 @@
       "position_usd": 5999.86,
       "position_pct": 0.06,
       "sector": "Technology",
-      "last_review_ts": "2026-05-15T16:23:18.002593-04:00",
-      "last_review_conviction": 6,
-      "thesis_status": "intact",
-      "time_stop_flagged": false
+      "last_review_ts": "2026-05-15T17:36:48.313805-04:00",
+      "last_review_conviction": 5,
+      "thesis_status": "weakened",
+      "time_stop_flagged": false,
+      "queued_action": {
+        "action": "trim",
+        "reason": "Technical momentum component of our original thesis has materially weakened while the extreme valuation vulnerability to our original key risk has intensified, warranting size reduction despite intact growth fundamentals.",
+        "queued_ts": "2026-05-15T21:36:48.307008"
+      }
     },
     {
       "id": "QCOM_20260514152935",
@@ -381,14 +392,14 @@
           "reason": "Management's admission of failed AI strategy execution combined with 67.7% EPS decline materially weakens the thesis recovery timeline and catalyst strength, though core value proposition remains intact"
         }
       ],
-      "last_review_ts": "2026-05-15T16:25:00.092097-04:00",
+      "last_review_ts": "2026-05-15T17:37:43.931635-04:00",
       "last_review_conviction": 5,
-      "thesis_status": "weakened",
+      "thesis_status": "broken",
       "time_stop_flagged": false,
       "queued_action": {
-        "action": "trim",
-        "reason": "The coordinated nature and timing of downgrades from Barclays, Jefferies, Goldman Sachs, and JP Morgan suggests material negative developments that materially increase the probability of our original key risk - further earnings estimate revisions and cash flow instability",
-        "queued_ts": "2026-05-15T20:25:00.085409"
+        "action": "exit",
+        "reason": "Our original key risk of 'further earnings estimate revisions and whether the business can stabilize cash flows to avoid debt service and dilutive financing risks' has materialized with the 67.7% EPS decline, breaking the contrarian thesis that assumed fundamentals were temporarily disconnected from price.",
+        "queued_ts": "2026-05-15T21:37:43.924614"
       }
     }
   ],
@@ -2125,6 +2136,76 @@
           "severity": "normal",
           "price": 124.77,
           "entry": 130.92
+        },
+        {
+          "symbol": "DOCS",
+          "trigger_type": "position_move",
+          "value": 0.0669,
+          "threshold": 0.025,
+          "severity": "high",
+          "price": 18.97,
+          "entry": 17.78
+        }
+      ],
+      "regime": "bull",
+      "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-05-15T21:37:49.486149",
+      "run_type": "midday",
+      "candidates": [
+        "ARM",
+        "SMCI",
+        "DOCS"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "sentinel_trigger",
+      "event_symbols": [
+        "ARM",
+        "DOCS",
+        "IONQ",
+        "SMCI"
+      ],
+      "event_details": [
+        {
+          "symbol": "ARM",
+          "trigger_type": "intraday_move",
+          "value": 0.0844,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": -0.0844,
+          "latest": 209.26,
+          "previous_close": 228.55
+        },
+        {
+          "symbol": "IONQ",
+          "trigger_type": "intraday_move",
+          "value": 0.0965,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": -0.0965,
+          "latest": 51.94,
+          "previous_close": 57.49
+        },
+        {
+          "symbol": "SMCI",
+          "trigger_type": "intraday_move",
+          "value": 0.0604,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": -0.0604,
+          "latest": 31.03,
+          "previous_close": 33.03
+        },
+        {
+          "symbol": "ARM",
+          "trigger_type": "position_move",
+          "value": 0.0578,
+          "threshold": 0.025,
+          "severity": "high",
+          "price": 209.16,
+          "entry": 222.0
         },
         {
           "symbol": "DOCS",
@@ -3877,6 +3958,34 @@
       "trim_reason": "The coordinated nature and timing of downgrades from Barclays, Jefferies, Goldman Sachs, and JP Morgan suggests material negative developments that materially increase the probability of our original key risk - further earnings estimate revisions and cash flow instability",
       "current_bull_case": "R1 Bull(8): DOCS presents a classic capitulation setup where coordinated analyst panic has created extreme technical oversold conditions (RSI 29.9) in a fundamentally sound healthcare company trading at a 0.5 PEG ratio with 30.4% margins. | R2 Bull(6): DOCS remains an asymmetric risk-reward setup where extreme valuation compression from coordinated downgrades has overcorrected relative to the company's defensive healthcare margins and pricing power, despite legitimate near-term earnings revision risk",
       "current_bear_case": "R1 Bear(9): The coordinated analyst downgrades from four major firms within 24 hours signal a fundamental business model breakdown that the bull's valuation metrics can't capture, creating a falling knife scenario where 'cheap' becomes worthless. | R2 Bear(8): While valuation appears compressed, coordinated downgrades from four major firms signal fundamental business deterioration that will likely require 2-3 quarters to fully manifest, making current levels a value trap rather than asymmetric opportunity."
+    },
+    {
+      "trade_id": "ARM_20260514152848",
+      "symbol": "ARM",
+      "ts": "2026-05-15T21:36:48.298516",
+      "action": "trim",
+      "conviction": 5,
+      "thesis_status": "weakened",
+      "rationale": "The original momentum inflection thesis remains partially intact with 45.7% EPS growth continuing, but the extreme 246.1x P/E valuation risk has intensified with mixed technical signals and neutral sentiment creating heightened vulnerability to the original key risk of multiple compression.",
+      "original_thesis_check": "The explosive EPS growth component of our momentum inflection thesis is still true, but the technical breakout confirmation has weakened with MACD below signal and recent 5-day decline, partially undermining the 'perfect momentum inflection' premise.",
+      "key_risk_to_monitor": "Any signs of growth deceleration in quarterly results or macro headwinds that could trigger the feared multiple compression from the extreme 246.1x P/E ratio.",
+      "trim_reason": "Technical momentum component of our original thesis has materially weakened while the extreme valuation vulnerability to our original key risk has intensified, warranting size reduction despite intact growth fundamentals.",
+      "current_bull_case": "R1 Bull(7): ARM is positioned for explosive momentum as M&A speculation and AI infrastructure positioning create a perfect storm for multiple expansion beyond already-elevated levels. | R2 Bull(6): ARM remains positioned for upside despite valuation concerns, as AI infrastructure tailwinds and potential M&A activity can drive multiple expansion even from current levels, though technical distribution signs require careful monitoring",
+      "current_bear_case": "R1 Bear(8): ARM's 246.1x TTM P/E ratio creates catastrophic downside risk where any growth deceleration or macro shift triggers violent multiple compression that M&A speculation cannot cushion. | R2 Bear(7): ARM's 246.1x P/E creates a valuation death trap where any growth disappointment triggers unavoidable multiple compression to 40-80x levels, representing 60-70% downside that technical momentum cannot prevent."
+    },
+    {
+      "trade_id": "DOCS_20260514172410",
+      "symbol": "DOCS",
+      "ts": "2026-05-15T21:37:43.915921",
+      "action": "exit",
+      "conviction": 2,
+      "thesis_status": "broken",
+      "rationale": "The original contrarian thesis was predicated on a temporary disconnect between fundamentals and price, but the 67.7% EPS decline combined with high debt/equity ratios represents the fundamental business model breakdown we specifically identified as our key risk materializing.",
+      "original_thesis_check": "The original thesis of an 'exceptional contrarian opportunity' with fundamentals disconnected from price is no longer valid - the severe earnings contraction and debt service risks we flagged have materialized, confirming this was a value trap rather than a contrarian opportunity.",
+      "key_risk_to_monitor": "Further deterioration in cash flows and potential dilutive financing or bankruptcy proceedings",
+      "exit_reason": "Our original key risk of 'further earnings estimate revisions and whether the business can stabilize cash flows to avoid debt service and dilutive financing risks' has materialized with the 67.7% EPS decline, breaking the contrarian thesis that assumed fundamentals were temporarily disconnected from price.",
+      "current_bull_case": "R1 Bull(8): DOCS represents a classic oversold washout where coordinated analyst downgrades have created a technical capitulation moment at 75% below highs, while the 0.5 PEG ratio and forward P/E of 11.9 signal the market is pricing in a recovery that smart money will front-run. | R2 Bull(6): DOCS represents a high-risk, high-reward contrarian play where severe debt concerns have created 75% downside washout pricing that will reverse explosively on any signs of cash flow stabilization or debt refinancing",
+      "current_bear_case": "R1 Bear(9): The 'high debt/equity ratio' flag combined with 67.7% EPS decline creates a liquidity trap where any recovery attempt gets choked off by debt service costs, making the forward P/E of 11.9 a dangerous mirage built on unsustainable assumptions. | R2 Bear(8): While DOCS shows extreme technical oversold conditions, the fundamental debt trap remains unresolved as refinancing a deteriorating business in today's credit market is fantasy, making any bounce a dead cat bounce before ultimate insolvency."
     }
   ],
   "risk_decisions": [

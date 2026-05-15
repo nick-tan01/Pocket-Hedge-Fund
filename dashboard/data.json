@@ -167,6 +167,12 @@
       "portfolio_value": 99379.52,
       "cash": 63715.5,
       "spy_price": 742.12
+    },
+    {
+      "ts": "2026-05-15T19:01:16.189993",
+      "portfolio_value": 99375.24,
+      "cash": 63715.5,
+      "spy_price": 741.4
     }
   ],
   "trades": [],
@@ -182,7 +188,7 @@
       "conviction": 7,
       "debate_id": "debate_DDOG_20260512160556",
       "status": "open",
-      "key_risk": "Volume confirmation on any breakout above $209.25 resistance - we need to see meaningful volume expansion to validate institutional accumulation rather than distribution, as originally flagged in our key risk assessment.",
+      "key_risk": "Volume confirmation on breakout above $211.28 resistance - need meaningful volume expansion to validate continued institutional accumulation rather than distribution at these elevated levels",
       "position_usd": 1998.65,
       "position_pct": 0.02,
       "sector": "Technology",
@@ -195,8 +201,8 @@
           "reason": "The self-reinforcing institutional momentum chase that was core to our thesis is not materializing as evidenced by the 0.41x volume ratio, though the fundamental and technical components remain strong enough to warrant partial position retention."
         }
       ],
-      "last_review_ts": "2026-05-15T13:12:25.672001-04:00",
-      "last_review_conviction": 7,
+      "last_review_ts": "2026-05-15T14:58:18.011321-04:00",
+      "last_review_conviction": 8,
       "thesis_status": "intact",
       "time_stop_flagged": false
     },
@@ -251,13 +257,13 @@
       "conviction": 7,
       "debate_id": "debate_NVDA_20260514152755",
       "status": "open",
-      "key_risk": "Any acceleration in China market share losses or signs of broader AI chip pricing pressure that could trigger the debt leverage vulnerability",
+      "key_risk": "Any signs of AI capex spending cycle peaking or competitive threats that could expose the 7.3x debt/equity leverage vulnerability",
       "position_usd": 3980.29,
       "position_pct": 0.0411,
       "sector": "Technology",
-      "last_review_ts": "2026-05-15T11:23:06.002220-04:00",
-      "last_review_conviction": 6,
-      "thesis_status": "weakened",
+      "last_review_ts": "2026-05-15T14:59:05.178349-04:00",
+      "last_review_conviction": 7,
+      "thesis_status": "intact",
       "time_stop_flagged": false,
       "trim_history": [
         {
@@ -280,11 +286,11 @@
       "conviction": 7,
       "debate_id": "debate_ARM_20260514152848",
       "status": "open",
-      "key_risk": "Any earnings guidance disappointment or AI chip demand moderation commentary that could trigger valuation multiple compression at 249x P/E",
+      "key_risk": "Debt service coverage and any signs of growth deceleration that could trigger liquidity pressure given the 5.2x leverage ratio",
       "position_usd": 5999.86,
       "position_pct": 0.06,
       "sector": "Technology",
-      "last_review_ts": "2026-05-15T13:15:04.204854-04:00",
+      "last_review_ts": "2026-05-15T14:59:55.411801-04:00",
       "last_review_conviction": 6,
       "thesis_status": "intact",
       "time_stop_flagged": false
@@ -349,7 +355,7 @@
       "conviction": 7,
       "debate_id": "debate_DOCS_20260514172410",
       "status": "open",
-      "key_risk": "Debt service capability and potential dilutive financing needs over next 2 quarters as earnings decline continues",
+      "key_risk": "Further earnings estimate revisions and whether the business can stabilize cash flows to avoid the originally identified debt service and dilutive financing risks",
       "position_usd": 1968.36,
       "position_pct": 0.0183,
       "sector": "Healthcare",
@@ -369,7 +375,7 @@
           "reason": "Management's admission of failed AI strategy execution combined with 67.7% EPS decline materially weakens the thesis recovery timeline and catalyst strength, though core value proposition remains intact"
         }
       ],
-      "last_review_ts": "2026-05-15T13:16:48.828670-04:00",
+      "last_review_ts": "2026-05-15T15:00:52.275780-04:00",
       "last_review_conviction": 5,
       "thesis_status": "weakened",
       "time_stop_flagged": false
@@ -1750,6 +1756,210 @@
       "trades_executed": 0,
       "skipped_reason": "",
       "reason": "scheduled",
+      "regime": "bull",
+      "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-05-15T19:01:16.197604",
+      "run_type": "midday",
+      "candidates": [
+        "DDOG",
+        "AMD",
+        "CRWD"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "sentinel_trigger",
+      "event_symbols": [
+        "AMD",
+        "ARM",
+        "CELH",
+        "CRWD",
+        "DDOG",
+        "DOCS",
+        "DUOL",
+        "GTLB",
+        "HIMS",
+        "IONQ",
+        "MSFT",
+        "NVDA",
+        "SMCI",
+        "SNOW",
+        "TSLA"
+      ],
+      "event_details": [
+        {
+          "symbol": "AMD",
+          "trigger_type": "intraday_move",
+          "value": 0.0367,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": -0.0367,
+          "latest": 433.11,
+          "previous_close": 449.63
+        },
+        {
+          "symbol": "ARM",
+          "trigger_type": "intraday_move",
+          "value": 0.0775,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": -0.0775,
+          "latest": 210.84,
+          "previous_close": 228.55
+        },
+        {
+          "symbol": "CELH",
+          "trigger_type": "intraday_move",
+          "value": 0.0352,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": 0.0352,
+          "latest": 30.04,
+          "previous_close": 29.02
+        },
+        {
+          "symbol": "CRWD",
+          "trigger_type": "intraday_rebound",
+          "value": 0.0462,
+          "threshold": 0.035,
+          "severity": "normal",
+          "latest": 594.79,
+          "intraday_low": 568.51
+        },
+        {
+          "symbol": "DUOL",
+          "trigger_type": "intraday_rebound",
+          "value": 0.0375,
+          "threshold": 0.035,
+          "severity": "normal",
+          "latest": 112.3,
+          "intraday_low": 108.24
+        },
+        {
+          "symbol": "GTLB",
+          "trigger_type": "intraday_move",
+          "value": 0.0555,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": 0.0555,
+          "latest": 23.86,
+          "previous_close": 22.6
+        },
+        {
+          "symbol": "GTLB",
+          "trigger_type": "intraday_rebound",
+          "value": 0.0548,
+          "threshold": 0.035,
+          "severity": "normal",
+          "latest": 23.86,
+          "intraday_low": 22.62
+        },
+        {
+          "symbol": "HIMS",
+          "trigger_type": "intraday_rebound",
+          "value": 0.0522,
+          "threshold": 0.035,
+          "severity": "normal",
+          "latest": 24.9,
+          "intraday_low": 23.66
+        },
+        {
+          "symbol": "IONQ",
+          "trigger_type": "intraday_move",
+          "value": 0.0803,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": -0.0803,
+          "latest": 52.88,
+          "previous_close": 57.49
+        },
+        {
+          "symbol": "MSFT",
+          "trigger_type": "intraday_move",
+          "value": 0.0382,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": 0.0382,
+          "latest": 425.11,
+          "previous_close": 409.47
+        },
+        {
+          "symbol": "SMCI",
+          "trigger_type": "intraday_move",
+          "value": 0.055,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": -0.055,
+          "latest": 31.22,
+          "previous_close": 33.03
+        },
+        {
+          "symbol": "SNOW",
+          "trigger_type": "intraday_move",
+          "value": 0.054,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": 0.054,
+          "latest": 158.94,
+          "previous_close": 150.79
+        },
+        {
+          "symbol": "SNOW",
+          "trigger_type": "intraday_rebound",
+          "value": 0.0578,
+          "threshold": 0.035,
+          "severity": "normal",
+          "latest": 158.94,
+          "intraday_low": 150.26
+        },
+        {
+          "symbol": "TSLA",
+          "trigger_type": "intraday_move",
+          "value": 0.038,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": -0.038,
+          "latest": 426.35,
+          "previous_close": 443.18
+        },
+        {
+          "symbol": "DDOG",
+          "trigger_type": "position_move",
+          "value": 0.0522,
+          "threshold": 0.025,
+          "severity": "high",
+          "price": 208.44,
+          "entry": 198.09
+        },
+        {
+          "symbol": "NVDA",
+          "trigger_type": "position_move",
+          "value": 0.0269,
+          "threshold": 0.025,
+          "severity": "normal",
+          "price": 228.91,
+          "entry": 235.23
+        },
+        {
+          "symbol": "ARM",
+          "trigger_type": "position_move",
+          "value": 0.0502,
+          "threshold": 0.025,
+          "severity": "high",
+          "price": 210.85,
+          "entry": 222.0
+        },
+        {
+          "symbol": "DOCS",
+          "trigger_type": "position_move",
+          "value": 0.056,
+          "threshold": 0.025,
+          "severity": "high",
+          "price": 18.77,
+          "entry": 17.78
+        }
+      ],
       "regime": "bull",
       "vix_regime": "normal"
     }
@@ -3372,6 +3582,59 @@
       "trim_reason": "High debt levels combined with steep earnings decline introduces new dilution risk that wasn't part of original thesis, materially weakening the asymmetric risk-reward despite intact core fundamentals",
       "current_bull_case": "R1 Bull(8): DOCS presents a classic oversold value trap reversal with PEG of 0.5 and 30.4% margins intact, where technical capitulation creates asymmetric risk-reward as AI pessimism has already been brutally priced in. | R2 Bull(6): DOCS remains an oversold value reversal with intact cash generation capabilities, though debt service monitoring becomes critical catalyst watch for next 2 quarters until earnings stabilize",
       "current_bear_case": "R1 Bear(8): DOCS exhibits classic value trap characteristics where deteriorating fundamentals (steep earnings decline, high debt levels) combine with failed AI strategy to create a structurally impaired business that cheap metrics cannot fix. | R2 Bear(7): DOCS faces structural competitive displacement in AI-driven healthcare tech where high margins provide temporary cushion but cannot prevent eventual value destruction from failed strategic positioning."
+    },
+    {
+      "trade_id": "DDOG_20260512160556",
+      "symbol": "DDOG",
+      "ts": "2026-05-15T18:58:18.004987",
+      "action": "hold",
+      "conviction": 8,
+      "thesis_status": "intact",
+      "rationale": "The original thesis of explosive earnings momentum (104% EPS growth) meeting dominant technical breakout conditions remains fully intact with even stronger technical confirmation (ADX increased from 35.2 to 43.6, +DI at 44.6).",
+      "original_thesis_check": "Yes - the specific combination of 104% EPS growth with dominant technical momentum (ADX 43.6, +DI 44.6) that creates institutional momentum acceleration is still true and has actually strengthened",
+      "key_risk_to_monitor": "Volume confirmation on breakout above $211.28 resistance - need meaningful volume expansion to validate continued institutional accumulation rather than distribution at these elevated levels",
+      "current_bull_case": "R1 Bull(8): DDOG is executing a rare high-growth SaaS breakout with 104% EPS explosion proving the business model is hitting inflection while dominant technical momentum (ADX 43.6, +DI 44.6) signals institutional accumulation driving price toward immediate resistance break. | R2 Bull(7): DDOG's proven ability to generate profitable growth with 27% revenue expansion creates sustainable competitive advantages that justify premium valuation, while ADX 43.6 confirms institutional conviction despite temporary margin normalization ahead",
+      "current_bear_case": "R1 Bear(7): DDOG's 104% EPS growth is built on unsustainable margin expansion from an artificially depressed 3.7% base, creating a profitability mirage that will collapse when growth investments resume, while the extreme technical setup (RSI 83.7, TTM P/E 533.9) leaves zero room for execution stumbles in a momentum-dependent stock. | R2 Bear(6): While DDOG has achieved a more sustainable growth model, the extreme valuation metrics create asymmetric downside risk where any execution stumble will trigger violent multiple contraction from momentum-driven selling."
+    },
+    {
+      "trade_id": "NVDA_20260514152756",
+      "symbol": "NVDA",
+      "ts": "2026-05-15T18:59:05.171910",
+      "action": "hold",
+      "conviction": 7,
+      "thesis_status": "intact",
+      "rationale": "The original thesis remains fully intact: regulatory relief removing China overhang is confirmed by 'China Comeback' headlines, AI fundamentals remain exceptional with 95.6% EPS growth at 20x forward P/E, and technical momentum continues with ADX>25 confirming the bullish regime.",
+      "original_thesis_check": "All three pillars of our original bull thesis are still true: China regulatory relief is materializing, AI-driven fundamentals remain exceptional, and technical momentum is confirmed bullish.",
+      "key_risk_to_monitor": "Any signs of AI capex spending cycle peaking or competitive threats that could expose the 7.3x debt/equity leverage vulnerability",
+      "current_bull_case": "R1 Bull(8): NVDA is breaking out on exceptional AI-driven fundamentals with 95.6% EPS growth at only 20x forward P/E, supported by smart money accumulation and China market re-entry momentum. | R2 Bull(7): NVDA remains a compelling AI infrastructure play with exceptional fundamentals, though current breakout requires volume confirmation for maximum conviction",
+      "current_bear_case": "R1 Bear(7): NVDA's 7.3x debt/equity ratio creates catastrophic leverage risk in a company whose AI dominance faces imminent competitive threats and cyclical datacenter spending normalization. | R2 Bear(7): NVDA's catastrophic 7.3x debt/equity leverage will amplify inevitable losses when the AI capex cycle peaks, while the bull's technical focus on volume patterns completely ignores this fundamental balance sheet vulnerability."
+    },
+    {
+      "trade_id": "ARM_20260514152848",
+      "symbol": "ARM",
+      "ts": "2026-05-15T18:59:55.405232",
+      "action": "hold",
+      "conviction": 6,
+      "thesis_status": "intact",
+      "rationale": "The core momentum inflection thesis remains valid with 45.7% EPS growth continuing and technical uptrend confirmed by ADX>25, though the newly highlighted 5.2x debt/equity ratio adds material risk not fully appreciated in original analysis.",
+      "original_thesis_check": "The explosive EPS growth meeting technical breakout confirmation is still intact, with earnings growth at 45.7% and bullish technical signals persisting",
+      "key_risk_to_monitor": "Debt service coverage and any signs of growth deceleration that could trigger liquidity pressure given the 5.2x leverage ratio",
+      "current_bull_case": "R1 Bull(8): ARM's explosive 45.7% earnings growth acceleration in a confirmed technical uptrend (ADX>25) creates a momentum breakout opportunity where fundamental execution is overwhelming valuation concerns. | R2 Bull(7): ARM's 45.7% earnings growth in a technical uptrend creates a high-reward momentum play where current execution trajectory supports the leverage structure, though position sizing must account for amplified volatility from debt levels",
+      "current_bear_case": "R1 Bear(8): ARM's catastrophic debt/equity ratio of 5.2x combined with extreme valuation multiples creates a liquidity death trap if growth stumbles even slightly from these unsustainable levels. | R2 Bear(6): While ARM's convertible debt structure provides some flexibility, the combination of unsustainable 45%+ growth expectations and 5.2x leverage creates asymmetric downside risk when the inevitable semiconductor cycle downturn hits."
+    },
+    {
+      "trade_id": "DOCS_20260514172410",
+      "symbol": "DOCS",
+      "ts": "2026-05-15T19:00:52.269142",
+      "action": "trim",
+      "conviction": 5,
+      "thesis_status": "weakened",
+      "rationale": "The original contrarian value thesis based on 0.7 PEG ratio remains valid with current PEG of 0.5, but the -67.7% EPS decline represents more severe fundamental deterioration than anticipated, materially weakening the core assumption about disconnected fundamentals.",
+      "original_thesis_check": "The contrarian opportunity with attractive valuation metrics still exists, but the magnitude of earnings collapse suggests the original assessment of fundamental strength was overly optimistic",
+      "key_risk_to_monitor": "Further earnings estimate revisions and whether the business can stabilize cash flows to avoid the originally identified debt service and dilutive financing risks",
+      "trim_reason": "The -67.7% EPS decline indicates more severe business model stress than originally assessed, though the extreme valuation compression (PEG 0.5) keeps the contrarian thesis partially intact",
+      "current_bull_case": "R1 Bull(8): DOCS presents a classic capitulation setup where extreme oversold technicals (RSI 28.3) combine with forward valuations screaming quality-at-discount (PEG 0.5, Forward P/E 11.8) after the stock has purged 75.6% from highs, creating asymmetric risk-reward as selling exhaustion meets compressed valuation. | R2 Bull(6): DOCS remains a contrarian value play where extreme technical oversold conditions and institutional capitulation have created asymmetric upside potential, though estimate revision risk requires smaller initial position sizing and staged entry approach",
+      "current_bear_case": "R1 Bear(8): The -67.7% EPS decline signals a fundamental business breakdown that forward metrics can't capture, making this a falling knife disguised as a value opportunity where earnings volatility will continue destroying any valuation-based thesis. | R2 Bear(7): While extreme oversold conditions create theoretical upside, the magnitude of earnings deterioration suggests permanent impairment that makes current analyst targets and recovery expectations fundamentally flawed regardless of technical positioning."
     }
   ],
   "risk_decisions": [

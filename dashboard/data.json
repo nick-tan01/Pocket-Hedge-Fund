@@ -185,6 +185,12 @@
       "portfolio_value": 99020.89,
       "cash": 63715.5,
       "spy_price": 739.17
+    },
+    {
+      "ts": "2026-05-18T16:35:58.217430",
+      "portfolio_value": 99099.11,
+      "cash": 69174.23,
+      "spy_price": 735.83
     }
   ],
   "trades": [],
@@ -200,7 +206,7 @@
       "conviction": 7,
       "debate_id": "debate_DDOG_20260512160556",
       "status": "open",
-      "key_risk": "Volume confirmation on the breakout above $211.28 resistance - need meaningful volume expansion to validate continued institutional accumulation at these extreme RSI levels (83.7)",
+      "key_risk": "Any signs of margin compression or normalization that could expose the unsustainable 517.9 P/E valuation, particularly quarterly guidance on cost structure and competitive pricing pressure that could eliminate the EPS growth story.",
       "position_usd": 1998.65,
       "position_pct": 0.02,
       "sector": "Technology",
@@ -213,8 +219,8 @@
           "reason": "The self-reinforcing institutional momentum chase that was core to our thesis is not materializing as evidenced by the 0.41x volume ratio, though the fundamental and technical components remain strong enough to warrant partial position retention."
         }
       ],
-      "last_review_ts": "2026-05-15T16:21:34.989381-04:00",
-      "last_review_conviction": 8,
+      "last_review_ts": "2026-05-18T12:31:15.055886-04:00",
+      "last_review_conviction": 7,
       "thesis_status": "intact",
       "time_stop_flagged": false
     },
@@ -269,12 +275,12 @@
       "conviction": 7,
       "debate_id": "debate_NVDA_20260514152755",
       "status": "open",
-      "key_risk": "Any concrete signs of AI capex spending cycle peaking or deceleration, which would trigger the 7.3x leverage vulnerability that remains the core risk to our thesis.",
+      "key_risk": "Any concrete evidence of AI capex spending deceleration or quarterly data center growth slowdown that could trigger the 7.3x leverage vulnerability",
       "position_usd": 3980.29,
       "position_pct": 0.0411,
       "sector": "Technology",
-      "last_review_ts": "2026-05-15T16:22:24.624158-04:00",
-      "last_review_conviction": 8,
+      "last_review_ts": "2026-05-18T12:32:07.833865-04:00",
+      "last_review_conviction": 7,
       "thesis_status": "intact",
       "time_stop_flagged": false,
       "trim_history": [
@@ -291,46 +297,59 @@
       "id": "ARM_20260514152848",
       "symbol": "ARM",
       "side": "buy",
-      "qty": 27.0264,
+      "qty": 9.5859,
       "entry_price": 222.0,
       "entry_ts": "2026-05-14T15:28:48.214246",
       "stop_price": 204.24,
       "conviction": 7,
       "debate_id": "debate_ARM_20260514152848",
       "status": "open",
-      "key_risk": "Any signs of growth deceleration in quarterly results that could trigger multiple compression from the extreme 246x P/E, particularly given the 5.2x leverage amplifying financial stress",
-      "position_usd": 5999.86,
-      "position_pct": 0.06,
+      "key_risk": "Any signs of earnings guidance disappointment that could trigger forced deleveraging dynamics from the 5.2x debt/equity ratio",
+      "position_usd": 1987.16,
+      "position_pct": 0.0213,
       "sector": "Technology",
-      "last_review_ts": "2026-05-15T17:36:48.313805-04:00",
+      "last_review_ts": "2026-05-18T12:33:00.882056-04:00",
       "last_review_conviction": 5,
       "thesis_status": "weakened",
       "time_stop_flagged": false,
-      "queued_action": {
-        "action": "trim",
-        "reason": "Technical momentum component of our original thesis has materially weakened while the extreme valuation vulnerability to our original key risk has intensified, warranting size reduction despite intact growth fundamentals.",
-        "queued_ts": "2026-05-15T21:36:48.307008"
-      }
+      "trim_history": [
+        {
+          "ts": "2026-05-18T16:33:00.875303",
+          "trim_qty": 17.4405,
+          "new_qty": 9.5859,
+          "price": 207.3,
+          "reason": "The leverage risk creates a structural vulnerability that materially weakens the risk/reward profile despite intact growth fundamentals"
+        }
+      ]
     },
     {
       "id": "QCOM_20260514152935",
       "symbol": "QCOM",
       "side": "buy",
-      "qty": 29.4587,
+      "qty": 20.1353,
       "entry_price": 203.67,
       "entry_ts": "2026-05-14T15:29:35.921444",
       "stop_price": 187.38,
       "conviction": 7,
       "debate_id": "debate_QCOM_20260514152935",
       "status": "open",
-      "key_risk": "Sequential margin compression indicating cost-cutting benefits are reversing - watch for any signs that the earnings-revenue divergence is widening or that margin expansion is proving temporary rather than strategic.",
-      "position_usd": 5999.85,
-      "position_pct": 0.06,
+      "key_risk": "Revenue trajectory and debt service coverage - any continued revenue decline combined with margin compression would indicate the operational leverage is reversing as bears predict.",
+      "position_usd": 3978.33,
+      "position_pct": 0.041,
       "sector": "Technology",
-      "last_review_ts": "2026-05-14T16:56:42.099105-04:00",
-      "last_review_conviction": 7,
-      "thesis_status": "intact",
-      "time_stop_flagged": false
+      "last_review_ts": "2026-05-18T12:33:49.514213-04:00",
+      "last_review_conviction": 6,
+      "thesis_status": "weakened",
+      "time_stop_flagged": false,
+      "trim_history": [
+        {
+          "ts": "2026-05-18T16:33:49.507431",
+          "trim_qty": 9.3234,
+          "new_qty": 20.1353,
+          "price": 197.58,
+          "reason": "While the fundamental value-momentum thesis persists, the combination of institutional selling (Appaloosa exit), weak volume participation, and unresolved revenue headwinds has materially increased downside risk without breaking the core investment case."
+        }
+      ]
     },
     {
       "id": "RKLB_20260514172318",
@@ -343,13 +362,13 @@
       "conviction": 7,
       "debate_id": "debate_RKLB_20260514172318",
       "status": "open",
-      "key_risk": "Any signs of growth deceleration or credit market tightening that could trigger the debt-driven death spiral scenario with 6.1 D/E ratio",
+      "key_risk": "Any signs of revenue growth deceleration in upcoming quarters that could trigger the debt-driven death spiral scenario given the 6.1 D/E ratio",
       "position_usd": 3973.4,
       "position_pct": 0.0421,
       "sector": "Industrials",
-      "last_review_ts": "2026-05-15T16:24:08.440831-04:00",
-      "last_review_conviction": 6,
-      "thesis_status": "weakened",
+      "last_review_ts": "2026-05-18T12:34:42.983175-04:00",
+      "last_review_conviction": 7,
+      "thesis_status": "intact",
       "time_stop_flagged": false,
       "trim_history": [
         {
@@ -372,7 +391,7 @@
       "conviction": 7,
       "debate_id": "debate_DOCS_20260514172410",
       "status": "open",
-      "key_risk": "Further earnings estimate revisions and whether the business can stabilize cash flows to avoid the originally identified debt service and dilutive financing risks",
+      "key_risk": "Whether earnings deterioration continues to accelerate and threatens debt service capacity, which could transform this from a contrarian opportunity into a genuine value trap",
       "position_usd": 1968.36,
       "position_pct": 0.0183,
       "sector": "Healthcare",
@@ -392,15 +411,10 @@
           "reason": "Management's admission of failed AI strategy execution combined with 67.7% EPS decline materially weakens the thesis recovery timeline and catalyst strength, though core value proposition remains intact"
         }
       ],
-      "last_review_ts": "2026-05-15T17:37:43.931635-04:00",
+      "last_review_ts": "2026-05-18T12:35:34.224730-04:00",
       "last_review_conviction": 5,
-      "thesis_status": "broken",
-      "time_stop_flagged": false,
-      "queued_action": {
-        "action": "exit",
-        "reason": "Our original key risk of 'further earnings estimate revisions and whether the business can stabilize cash flows to avoid debt service and dilutive financing risks' has materialized with the 67.7% EPS decline, breaking the contrarian thesis that assumed fundamentals were temporarily disconnected from price.",
-        "queued_ts": "2026-05-15T21:37:43.924614"
-      }
+      "thesis_status": "weakened",
+      "time_stop_flagged": false
     }
   ],
   "runs": [
@@ -2219,6 +2233,205 @@
       ],
       "regime": "bull",
       "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-05-18T16:35:58.225130",
+      "run_type": "midday",
+      "candidates": [
+        "DDOG",
+        "ARM",
+        "QCOM"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "sentinel_trigger",
+      "event_symbols": [
+        "ACLS",
+        "AMAT",
+        "ARM",
+        "CELH",
+        "COHR",
+        "DDOG",
+        "DOCS",
+        "GTLB",
+        "HIMS",
+        "IONQ",
+        "MSTR",
+        "NVDA",
+        "ONTO",
+        "QCOM",
+        "RKLB",
+        "SMCI",
+        "TTD"
+      ],
+      "event_details": [
+        {
+          "symbol": "ACLS",
+          "trigger_type": "intraday_move",
+          "value": 0.0613,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": -0.0613,
+          "latest": 145.64,
+          "previous_close": 155.15
+        },
+        {
+          "symbol": "AMAT",
+          "trigger_type": "intraday_move",
+          "value": 0.0601,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": -0.0601,
+          "latest": 410.1,
+          "previous_close": 436.33
+        },
+        {
+          "symbol": "CELH",
+          "trigger_type": "intraday_move",
+          "value": 0.0388,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": -0.0388,
+          "latest": 28.99,
+          "previous_close": 30.16
+        },
+        {
+          "symbol": "COHR",
+          "trigger_type": "intraday_move",
+          "value": 0.0717,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": -0.0717,
+          "latest": 355.23,
+          "previous_close": 382.68
+        },
+        {
+          "symbol": "GTLB",
+          "trigger_type": "intraday_move",
+          "value": 0.0531,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": 0.0531,
+          "latest": 24.9,
+          "previous_close": 23.65
+        },
+        {
+          "symbol": "HIMS",
+          "trigger_type": "intraday_move",
+          "value": 0.0986,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": -0.0986,
+          "latest": 22.58,
+          "previous_close": 25.05
+        },
+        {
+          "symbol": "IONQ",
+          "trigger_type": "intraday_move",
+          "value": 0.0818,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": -0.0818,
+          "latest": 47.69,
+          "previous_close": 51.94
+        },
+        {
+          "symbol": "MSTR",
+          "trigger_type": "intraday_move",
+          "value": 0.0824,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": -0.0824,
+          "latest": 162.8,
+          "previous_close": 177.41
+        },
+        {
+          "symbol": "ONTO",
+          "trigger_type": "intraday_move",
+          "value": 0.0656,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": -0.0656,
+          "latest": 254.08,
+          "previous_close": 271.91
+        },
+        {
+          "symbol": "SMCI",
+          "trigger_type": "intraday_move",
+          "value": 0.0374,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": -0.0374,
+          "latest": 29.88,
+          "previous_close": 31.03
+        },
+        {
+          "symbol": "TTD",
+          "trigger_type": "intraday_move",
+          "value": 0.0376,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": 0.0376,
+          "latest": 21.95,
+          "previous_close": 21.16
+        },
+        {
+          "symbol": "DDOG",
+          "trigger_type": "position_move",
+          "value": 0.0453,
+          "threshold": 0.025,
+          "severity": "normal",
+          "price": 207.06,
+          "entry": 198.09
+        },
+        {
+          "symbol": "NVDA",
+          "trigger_type": "position_move",
+          "value": 0.0625,
+          "threshold": 0.025,
+          "severity": "high",
+          "price": 220.54,
+          "entry": 235.23
+        },
+        {
+          "symbol": "ARM",
+          "trigger_type": "position_move",
+          "value": 0.0644,
+          "threshold": 0.025,
+          "severity": "high",
+          "price": 207.71,
+          "entry": 222.0
+        },
+        {
+          "symbol": "QCOM",
+          "trigger_type": "position_move",
+          "value": 0.0327,
+          "threshold": 0.025,
+          "severity": "normal",
+          "price": 197.0,
+          "entry": 203.67
+        },
+        {
+          "symbol": "RKLB",
+          "trigger_type": "position_move",
+          "value": 0.0349,
+          "threshold": 0.025,
+          "severity": "normal",
+          "price": 126.35,
+          "entry": 130.92
+        },
+        {
+          "symbol": "DOCS",
+          "trigger_type": "position_move",
+          "value": 0.0827,
+          "threshold": 0.025,
+          "severity": "high",
+          "price": 19.25,
+          "entry": 17.78
+        }
+      ],
+      "regime": "bull",
+      "vix_regime": "normal"
     }
   ],
   "debate_logs": [
@@ -3986,6 +4199,87 @@
       "exit_reason": "Our original key risk of 'further earnings estimate revisions and whether the business can stabilize cash flows to avoid debt service and dilutive financing risks' has materialized with the 67.7% EPS decline, breaking the contrarian thesis that assumed fundamentals were temporarily disconnected from price.",
       "current_bull_case": "R1 Bull(8): DOCS represents a classic oversold washout where coordinated analyst downgrades have created a technical capitulation moment at 75% below highs, while the 0.5 PEG ratio and forward P/E of 11.9 signal the market is pricing in a recovery that smart money will front-run. | R2 Bull(6): DOCS represents a high-risk, high-reward contrarian play where severe debt concerns have created 75% downside washout pricing that will reverse explosively on any signs of cash flow stabilization or debt refinancing",
       "current_bear_case": "R1 Bear(9): The 'high debt/equity ratio' flag combined with 67.7% EPS decline creates a liquidity trap where any recovery attempt gets choked off by debt service costs, making the forward P/E of 11.9 a dangerous mirage built on unsustainable assumptions. | R2 Bear(8): While DOCS shows extreme technical oversold conditions, the fundamental debt trap remains unresolved as refinancing a deteriorating business in today's credit market is fantasy, making any bounce a dead cat bounce before ultimate insolvency."
+    },
+    {
+      "trade_id": "DDOG_20260512160556",
+      "symbol": "DDOG",
+      "ts": "2026-05-18T16:31:15.049280",
+      "action": "hold",
+      "conviction": 7,
+      "thesis_status": "intact",
+      "rationale": "The original thesis of explosive earnings momentum (104% EPS growth) meeting dominant technical breakout conditions remains fully intact with ADX strengthening to 46.7 and sustained +DI dominance at 42.2 vs 6.1. The fundamental acceleration story continues with 32% revenue growth supporting the EPS expansion narrative.",
+      "original_thesis_check": "Yes - the rare combination of explosive earnings momentum meeting dominant technical breakout conditions that creates institutional momentum chasing is still present and actually strengthened since entry.",
+      "key_risk_to_monitor": "Any signs of margin compression or normalization that could expose the unsustainable 517.9 P/E valuation, particularly quarterly guidance on cost structure and competitive pricing pressure that could eliminate the EPS growth story.",
+      "current_bull_case": "R1 Bull(8): DDOG's explosive 104% EPS growth combined with dominant technical momentum (ADX 46.7, +DI 42.2) creates a powerful breakout setup where fundamental acceleration meets technical strength at resistance. | R2 Bull(7): DDOG's margin expansion story carries execution risk but the combination of sustained revenue growth leadership and powerful institutional momentum creates asymmetric upside if margins hold at current levels",
+      "current_bear_case": "R1 Bear(7): The explosive 104% EPS growth masks a profitability mirage built on unsustainable cost optimization rather than true pricing power, creating a valuation trap with TTM P/E of 517.9 that will collapse when margins normalize. | R2 Bear(6): While DDOG shows genuine revenue growth strength, the 517.9 P/E combined with razor-thin 3.7% margins creates a valuation powder keg where any execution stumble triggers simultaneous EPS collapse and multiple compression for devastating losses."
+    },
+    {
+      "trade_id": "NVDA_20260514152756",
+      "symbol": "NVDA",
+      "ts": "2026-05-18T16:32:07.779173",
+      "action": "hold",
+      "conviction": 7,
+      "thesis_status": "intact",
+      "rationale": "The original thesis remains fully intact with 95.6% EPS growth and 0.7 PEG ratio confirming exceptional AI-driven fundamentals, while technical momentum persists despite lower volume consolidation.",
+      "original_thesis_check": "Yes - the perfect storm of regulatory relief, exceptional AI fundamentals (95.6% EPS growth at 0.7 PEG), and technical momentum all remain true with no concrete signs of AI capex spending cycle peaking",
+      "key_risk_to_monitor": "Any concrete evidence of AI capex spending deceleration or quarterly data center growth slowdown that could trigger the 7.3x leverage vulnerability",
+      "current_bull_case": "R1 Bull(9): NVDA's extraordinary fundamental momentum with 95.6% EPS growth and 0.7 PEG ratio creates a rare asymmetric opportunity where bearish sentiment from high-profile skeptics has created entry value in a breakout-ready technical setup. | R2 Bull(8): NVDA's 95.6% EPS growth with 0.7 PEG ratio creates asymmetric upside despite volume distribution patterns that may delay but not prevent the next leg higher as AI infrastructure demand remains structurally intact",
+      "current_bear_case": "R1 Bear(8): NVDA's catastrophic debt-to-equity ratio of 7.3x creates an overleveraged capital structure that transforms any AI demand hiccup into an existential liquidity crisis, making this a leveraged bet on perfect execution rather than a defensive moat play. | R2 Bear(8): NVDA's 7.3x debt-to-equity ratio remains an unaddressed systemic risk that transforms any AI momentum pause into a leveraged death spiral, regardless of current earnings growth or technical patterns."
+    },
+    {
+      "trade_id": "ARM_20260514152848",
+      "symbol": "ARM",
+      "ts": "2026-05-18T16:33:00.378785",
+      "action": "trim",
+      "conviction": 5,
+      "thesis_status": "weakened",
+      "rationale": "The core AI infrastructure supercycle thesis remains intact with strong 45.7% EPS growth, but the extreme 5.2x leverage creates material forced deleveraging risk that wasn't fully appreciated in the original thesis. The momentum inflection component is stalling with declining volume and MACD below signal.",
+      "original_thesis_check": "The explosive EPS growth and AI infrastructure opportunity remain true, but the 'perfect momentum inflection' aspect is deteriorating with technical momentum stalling",
+      "key_risk_to_monitor": "Any signs of earnings guidance disappointment that could trigger forced deleveraging dynamics from the 5.2x debt/equity ratio",
+      "trim_reason": "The leverage risk creates a structural vulnerability that materially weakens the risk/reward profile despite intact growth fundamentals",
+      "current_bull_case": "R1 Bull(7): ARM's explosive 45.7% EPS growth and major institutional validation through Bernstein's $300 price target creates a breakout setup where the forward P/E compression story will overwhelm current valuation concerns. | R2 Bull(6): ARM's explosive earnings growth and institutional validation create a compelling long-term opportunity despite near-term technical headwinds and leverage ratios that are manageable given the company's growth trajectory in AI semiconductors",
+      "current_bear_case": "R1 Bear(8): ARM's catastrophic 5.2x debt/equity ratio combined with 241x P/E creates a death spiral scenario where any earnings disappointment triggers margin calls and forces deleveraging into a collapsing stock price. | R2 Bear(7): ARM's extreme 5.2x leverage creates a structural vulnerability where any earnings disappointment triggers forced deleveraging that overwhelms fundamental support, making the 241x P/E unsustainable despite AI growth potential."
+    },
+    {
+      "trade_id": "QCOM_20260514152935",
+      "symbol": "QCOM",
+      "ts": "2026-05-18T16:33:49.415937",
+      "action": "trim",
+      "conviction": 6,
+      "thesis_status": "weakened",
+      "rationale": "The original thesis of value-momentum convergence remains valid with 173% EPS growth and 0.9 PEG ratio intact, but institutional selling on weak volume and persistent revenue decline concerns have materially increased the probability of the bear case scenario.",
+      "original_thesis_check": "The core thesis of massive earnings acceleration at attractive valuation is still true, but the supporting technical confirmation has weakened significantly with bearish volume patterns.",
+      "key_risk_to_monitor": "Revenue trajectory and debt service coverage - any continued revenue decline combined with margin compression would indicate the operational leverage is reversing as bears predict.",
+      "trim_reason": "While the fundamental value-momentum thesis persists, the combination of institutional selling (Appaloosa exit), weak volume participation, and unresolved revenue headwinds has materially increased downside risk without breaking the core investment case.",
+      "current_bull_case": "R1 Bull(8): QCOM's 173% EPS growth and exceptional 36.1% ROE demonstrate massive operational leverage hitting as the company trades at a compelling 0.9 PEG ratio, creating a textbook value-growth inflection play. | R2 Bull(7): Despite institutional selling concerns, QCOM's 173% EPS growth reflects operational efficiency gains positioning the company to capitalize massively on the 5G upgrade cycle recovery at an attractive 0.9 PEG entry point",
+      "current_bear_case": "R1 Bear(8): QCOM's spectacular 173% EPS growth is masking deteriorating fundamentals with declining revenue and high debt levels, creating a value trap where operational leverage works in reverse once the accounting smoke clears. | R2 Bear(7): QCOM's 173% EPS growth masks unsustainable operational leverage that will reverse violently as patent licensing faces structural headwinds and debt service costs compound revenue declines."
+    },
+    {
+      "trade_id": "RKLB_20260514172318",
+      "symbol": "RKLB",
+      "ts": "2026-05-18T16:34:42.976529",
+      "action": "hold",
+      "conviction": 7,
+      "thesis_status": "intact",
+      "rationale": "The original momentum breakout thesis remains fully intact with strong technical confirmation (ADX 36.7, +DI 42.8 vs -DI 6.8) and the fundamental driver of 63.5% revenue growth in an expanding market continues unchanged.",
+      "original_thesis_check": "The powerful momentum breakout driven by 63.5% revenue growth with technical indicators showing trend continuation is still fully true - all key metrics remain supportive.",
+      "key_risk_to_monitor": "Any signs of revenue growth deceleration in upcoming quarters that could trigger the debt-driven death spiral scenario given the 6.1 D/E ratio",
+      "current_bull_case": "R1 Bull(8): RKLB is executing a rare combination of explosive 63.5% revenue growth in the high-barrier commercial space launch market while riding exceptionally strong technical momentum (ADX 36.7, +DI 42.8 vs -DI 6.8) that signals institutional recognition of its competitive positioning before consensus catches up. | R2 Bull(7): RKLB's explosive 63.5% revenue growth in a high-barrier market with strong technical momentum (ADX 36.7) outweighs debt concerns that are manageable given the clear path to profitability through operating leverage in aerospace manufacturing",
+      "current_bear_case": "R1 Bear(7): RKLB's 6.1 debt-to-equity ratio combined with -26.9% margins creates a potentially fatal cash burn trajectory that could force catastrophic dilution or bankruptcy before the company reaches profitability in this capital-intensive aerospace sector. | R2 Bear(6): Despite strong revenue growth, RKLB's undefined path to cash flow breakeven combined with 6.1x leverage creates a binary outcome where any growth deceleration triggers immediate financial distress."
+    },
+    {
+      "trade_id": "DOCS_20260514172410",
+      "symbol": "DOCS",
+      "ts": "2026-05-18T16:35:34.217323",
+      "action": "trim",
+      "conviction": 5,
+      "thesis_status": "weakened",
+      "rationale": "The contrarian opportunity thesis remains valid with strong fundamentals (30.4% margins, 0.6 PEG) still intact, but the original key risk of 'further earnings estimate revisions' appears to be materializing with accelerating earnings deterioration creating material headwinds.",
+      "original_thesis_check": "The core contrarian opportunity with strong margins and attractive valuation remains true, but the business stabilization component is increasingly questionable given accelerating earnings decline.",
+      "key_risk_to_monitor": "Whether earnings deterioration continues to accelerate and threatens debt service capacity, which could transform this from a contrarian opportunity into a genuine value trap",
+      "trim_reason": "The original identified risk of further earnings revisions appears to be materializing with accelerating earnings deterioration, materially weakening the business stabilization aspect of our thesis while the valuation opportunity remains intact",
+      "current_bull_case": "R1 Bull(8): DOCS presents a rare asymmetric opportunity where exceptional fundamentals (30.4% margins, 0.6 PEG) are temporarily divorced from price due to technical panic selling, creating a coiled spring setup for violent mean reversion. | R2 Bull(6): DOCS remains attractively valued at 12.1 forward P/E with industry-leading margins providing earnings recovery optionality, though the institutional selling pattern suggests patience is required for mean reversion",
+      "current_bear_case": "R1 Bear(8): The bull's 'temporary earnings decline' is actually accelerating earnings deterioration combined with high debt creating a value trap disguised as a bargain. | R2 Bear(7): Despite the compressed valuation, DOCS remains a leveraged bet on margin sustainability where high debt amplifies any further earnings deterioration beyond what's already priced in."
     }
   ],
   "risk_decisions": [

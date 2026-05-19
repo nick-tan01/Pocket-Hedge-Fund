@@ -227,6 +227,12 @@
       "portfolio_value": 98836.27,
       "cash": 71263.39,
       "spy_price": 734.54
+    },
+    {
+      "ts": "2026-05-19T16:44:51.142098",
+      "portfolio_value": 98866.29,
+      "cash": 65318.83,
+      "spy_price": 735.39
     }
   ],
   "trades": [],
@@ -3261,6 +3267,22 @@
       ],
       "regime": "bull",
       "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-05-19T16:44:51.155272",
+      "run_type": "midday",
+      "candidates": [
+        "DDOG",
+        "AMD",
+        "GOOGL",
+        "TXN",
+        "CRWD"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "scheduled",
+      "regime": "bull",
+      "vix_regime": "normal"
     }
   ],
   "debate_logs": [
@@ -4535,6 +4557,61 @@
       "ts": "2026-05-19T16:36:50.454036",
       "bull_case": "R1 Bull(8): ARM is experiencing explosive earnings acceleration from AI chip demand with 45.7% EPS growth while trading into a massive valuation compression opportunity as the forward P/E of 72.6x represents a 72% discount to current multiples. | R1 Bear(8): ARM's extreme financial leverage (5.2x debt/equity) combined with astronomical current valuation (258x P/E) creates a catastrophic risk profile where any earnings disappointment or interest rate pressure triggers a liquidity crisis disguised as a 'valuation compression opportunity.' | R2 Bull(7): ARM remains a compelling AI infrastructure play with 45.7% EPS growth and strong cash generation capability to service debt, though execution risk is elevated requiring careful monitoring of debt covenant metrics. | R2 Bear(6): ARM's valuation compression risk at 258x P/E remains the primary threat, as even stable licensing cash flows cannot justify current multiples if AI infrastructure spending moderates faster than expected.",
       "bear_case": "Primary risk: Debt-to-equity ratio of 5.2x transforms any AI cycle moderation from a normal growth slowdown into a potential solvency crisis, where leveraged shareholders face total loss rather than temporary drawdown. | Unresolved: ['The 258x P/E still requires perfection in AI cycle timing - even with stable licensing revenue, any growth deceleration at these multiples creates violent equity destruction that high-margin cash flows cannot prevent']",
+      "bull_score": 7,
+      "bear_score": 6,
+      "final_conviction": 7,
+      "decision": "buy"
+    },
+    {
+      "id": "debate_DDOG_20260519164120",
+      "symbol": "DDOG",
+      "ts": "2026-05-19T16:41:20.381527",
+      "bull_case": "R1 Bull(8): DDOG is breaking out on accelerating earnings momentum with 104% EPS growth creating a powerful technical-fundamental convergence that institutions will chase into year-end. | R1 Bear(7): DDOG's 104% EPS growth is a mirage built on unsustainable margin expansion while the company still burns cash operationally, creating a dangerous trap at RSI 84.5 where any growth deceleration will trigger violent multiple compression. | R2 Bull(7): DDOG's breakout above $215 resistance with 49.2 ADX trend strength and legitimate operating leverage from SaaS margin expansion creates a momentum play despite volume concerns, but position sizing should reflect the distribution risk. | R2 Bear(6): While DDOG's margin expansion may be legitimate SaaS evolution, paying 74x earnings at technical extremes with declining volume creates asymmetric downside risk that far exceeds the momentum upside potential.",
+      "bear_case": "Primary risk: Buying a structurally unprofitable company at RSI 84.5 with 74x forward P/E creates maximum downside exposure to any growth disappointment in a market regime that's already rotating away from expensive growth names. | Unresolved: ['74x forward P/E at RSI 84.5 creates catastrophic downside if growth decelerates', 'Operational cash flow burn remains unaddressed despite margin expansion narrative', 'Market rotation away from expensive growth stocks makes timing particularly dangerous']",
+      "bull_score": 7,
+      "bear_score": 6,
+      "final_conviction": 7,
+      "decision": "buy"
+    },
+    {
+      "id": "debate_AMD_20260519164213",
+      "symbol": "AMD",
+      "ts": "2026-05-19T16:42:13.412691",
+      "bull_case": "R1 Bull(8): AMD's explosive 91.2% EPS growth and 37.8% revenue growth demonstrate genuine AI compute monetization that justifies premium valuation, while the 6.5% pullback creates an entry point before institutional sentiment catches up to fundamental reality. | R1 Bear(7): AMD's catastrophic debt-to-equity ratio of 6.0 combined with pathetic 8.1% ROE reveals a company burning through capital to manufacture growth that cannot sustain itself once AI competition intensifies or demand normalizes. | R2 Bull(7): AMD's AI compute dominance position generates sufficient cash flow visibility to service current debt levels while the 6.5% pullback offers entry before Q4 earnings demonstrate sustainable deleveraging through genuine AI monetization. | R2 Bear(6): AMD's extreme leverage creates asymmetric downside risk where any deviation from the bull's optimistic AI demand timeline could trigger a liquidity crisis that current cash flows cannot prevent.",
+      "bear_case": "Primary risk: Debt-to-equity of 6.0 creates existential vulnerability where any AI demand slowdown or competitive pressure triggers a liquidity crisis that could wipe out equity holders completely. | Unresolved: [\"The 18-24 month AI infrastructure cycle timeline assumes linear demand growth when semiconductor cycles historically show sharp demand cliffs, and AMD's 6.0 debt-to-equity leaves zero margin for error if AI capex suddenly stops or competition from NVIDIA's next-gen chips or custom silicon accelerates\"]",
+      "bull_score": 7,
+      "bear_score": 6,
+      "final_conviction": 7,
+      "decision": "buy"
+    },
+    {
+      "id": "debate_GOOGL_20260519164305",
+      "symbol": "GOOGL",
+      "ts": "2026-05-19T16:43:05.028310",
+      "bull_case": "R1 Bull(9): Google's AI monetization advantage is creating a breakout moment where exceptional fundamental performance (37.9% margins, 82% EPS growth) meets powerful technical momentum (ADX>50, RSI 62.3) in a market that hasn't yet recognized the durability of their competitive moat. | R1 Bear(8): Google's AI monetization advantage is a media narrative masking the fundamental threat that AI disrupts their core search advertising monopoly while requiring massive capital investments that compress margins. | R2 Bull(8): Google's controlled AI integration into search creates a new competitive advantage where they monetize AI answers while competitors struggle to match their data scale and ecosystem integration, supported by exceptional fundamentals and strong technical momentum (ADX>50). | R2 Bear(6): While Google can strategically control AI integration timing, the fundamental economics shift from high-margin search monopoly to capital-intensive AI competition still threatens long-term profitability despite tactical advantages.",
+      "bear_case": "Primary risk: AI disruption eliminates the search advertising moat that generates 57% of revenue, turning Google from a monopolistic toll-booth into a high-cost competitor in a commoditizing market. | Unresolved: [\"AI commoditizes search query resolution reducing user dependency on Google's specific platform\", 'Massive AI infrastructure costs permanently compress the 57% operating margins that justified premium valuation', \"Regulatory pressure intensifies as AI-enhanced search further consolidates Google's market dominance\"]",
+      "bull_score": 8,
+      "bear_score": 6,
+      "final_conviction": 7,
+      "decision": "buy"
+    },
+    {
+      "id": "debate_TXN_20260519164357",
+      "symbol": "TXN",
+      "ts": "2026-05-19T16:43:57.331986",
+      "bull_case": "R1 Bull(8): TXN is a momentum breakout with dominant trend strength (ADX 59.3) backed by exceptional fundamental execution (32.3% ROE, 31.3% EPS growth) that's fairly valued at 1.4 PEG despite premium multiples. | R1 Bear(7): TXN's 83.7% debt-to-equity ratio creates leveraged exposure to semiconductor cyclicality just as AI euphoria peaks and sentiment turns neutral, making this a dangerous chase of momentum near $310 resistance. | R2 Bull(7): TXN remains a momentum breakout with exceptional execution metrics and sustainable analog semiconductor exposure, though elevated leverage requires monitoring for early cycle turn signals. | R2 Bear(6): TXN's high leverage creates asymmetric downside risk as analog demand across automotive, industrial, and communications can still contract simultaneously during broader economic weakness, making the current momentum chase at technical resistance particularly risky.",
+      "bear_case": "Primary risk: Semiconductor downcycle hitting a highly leveraged company (83.7% debt/equity) just as AI euphoria fades, creating a double-whammy of margin compression and elevated financial risk that could destroy years of gains in quarters. | Unresolved: ['The 32.3% ROE justification ignores that high leverage amplifies losses during downturns regardless of current profitability, and analog demand still contracts meaningfully in recessions across all end markets simultaneously']",
+      "bull_score": 7,
+      "bear_score": 6,
+      "final_conviction": 7,
+      "decision": "buy"
+    },
+    {
+      "id": "debate_CRWD_20260519164450",
+      "symbol": "CRWD",
+      "ts": "2026-05-19T16:44:50.982017",
+      "bull_case": "R1 Bull(8): CRWD is breaking out to all-time highs on explosive AI security momentum with confirmed technical strength (ADX>25, RSI 85.2) that signals continuation rather than exhaustion in this emerging secular theme. | R1 Bear(7): CRWD represents a classic valuation trap where extreme multiples (100+ forward P/E, 5.1 PEG) combined with negative margins create asymmetric downside risk that technical momentum cannot overcome once AI hype cycle turns. | R2 Bull(7): CRWD remains a momentum continuation play on confirmed AI security leadership with technical strength supporting the breakout, though execution risk on monetization timeline creates some near-term vulnerability that warrants slightly reduced position sizing | R2 Bear(6): CRWD's extreme valuation leaves no room for execution stumbles on AI monetization timeline, creating 30-40% downside risk that technical momentum cannot fully offset when fundamentals inevitably disappoint relative to perfection already priced in.",
+      "bear_case": "Primary risk: Valuation multiple compression risk - any disappointment in growth, AI monetization timeline, or broader market rotation away from unprofitable growth stories could trigger 30-50% decline given extreme multiples and negative margin structure. | Unresolved: ['Extreme valuation multiples (100+ P/E, 5.1 PEG) create asymmetric risk where any growth deceleration or margin disappointment triggers disproportionate selloff regardless of market position']",
       "bull_score": 7,
       "bear_score": 6,
       "final_conviction": 7,
@@ -6218,6 +6295,91 @@
       "pm_action": "buy",
       "pm_verdict": "ARM's 45.7% EPS growth acceleration in AI architecture combined with strong technical momentum (ADX>25, RSI 59.1) creates a compelling buy opportunity, while the debt concerns are manageable given stable IP licensing cash flows and forward P/E compression to 72.6x.",
       "risk_category": "already_holding"
+    },
+    {
+      "ts": "2026-05-19T16:41:20.369016",
+      "symbol": "DDOG",
+      "action": "hold",
+      "reason": "Already holding DDOG",
+      "conviction": 7,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 210.71,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "buy",
+      "pm_verdict": "Strong technical momentum (ADX 49.2) combined with legitimate SaaS operating leverage creating 104% EPS growth justifies buying despite elevated valuation, though declining volume warrants reduced position size.",
+      "risk_category": "already_holding"
+    },
+    {
+      "ts": "2026-05-19T16:42:13.400231",
+      "symbol": "AMD",
+      "action": "hold",
+      "reason": "Already holding AMD",
+      "conviction": 7,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 419.04,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "buy",
+      "pm_verdict": "The 91.2% EPS growth with operating leverage justifies entry despite debt concerns, as current cash flows adequately service obligations and the 6.5% pullback offers attractive risk/reward with strong trend intact (ADX>52).",
+      "risk_category": "already_holding"
+    },
+    {
+      "ts": "2026-05-19T16:43:05.015946",
+      "symbol": "GOOGL",
+      "action": "hold",
+      "reason": "Already holding GOOGL",
+      "conviction": 7,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 387.67,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "buy",
+      "pm_verdict": "Google's defensive control over AI integration timing combined with exceptional fundamentals (82% EPS growth, 37.9% margins) and strong technical momentum (ADX>50) creates a compelling risk-adjusted opportunity despite genuine revenue transition risks.",
+      "risk_category": "already_holding"
+    },
+    {
+      "ts": "2026-05-19T16:43:57.319434",
+      "symbol": "TXN",
+      "action": "skip",
+      "reason": "Sector cap: Technology already at 16.2% (max 20%)",
+      "conviction": 7,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 302.4,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "buy",
+      "pm_verdict": "Strong technical momentum (ADX 59.3) combined with exceptional fundamental execution (32.3% ROE, 31.3% EPS growth) creates a compelling momentum continuation play despite elevated leverage concerns. The bear's debt-to-equity worry is systemic to leveraged semis, not a trade-specific catalyst.",
+      "risk_category": "sector_cap"
+    },
+    {
+      "ts": "2026-05-19T16:44:50.969622",
+      "symbol": "CRWD",
+      "action": "skip",
+      "reason": "Sector cap: Technology already at 16.2% (max 20%)",
+      "conviction": 7,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 618.15,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "buy",
+      "pm_verdict": "Strong technical momentum with ADX>25 and confirmed AI security leadership justifies buying the breakout despite elevated valuation, as the bear's concerns are largely systemic sector risks rather than CRWD-specific catalysts.",
+      "risk_category": "sector_cap"
     }
   ],
   "watchlists": [

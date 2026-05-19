@@ -239,6 +239,12 @@
       "portfolio_value": 99115.77,
       "cash": 65318.83,
       "spy_price": 736.08
+    },
+    {
+      "ts": "2026-05-19T19:04:56.093346",
+      "portfolio_value": 99034.12,
+      "cash": 65318.83,
+      "spy_price": 734.54
     }
   ],
   "trades": [],
@@ -529,6 +535,22 @@
       "position_usd": 5930.18,
       "position_pct": 0.06,
       "sector": "Technology"
+    },
+    {
+      "id": "LLY_20260519190455",
+      "symbol": "LLY",
+      "side": "buy",
+      "qty": 5.8504,
+      "entry_price": 1015.67,
+      "entry_ts": "2026-05-19T19:04:55.850350",
+      "stop_price": 934.42,
+      "conviction": 7,
+      "debate_id": "debate_LLY_20260519190455",
+      "status": "open",
+      "key_risk": "Any signs that Medicare pricing reforms are hitting LLY's specific therapeutic areas harder than expected, which would threaten the earnings growth that justifies the leverage",
+      "position_usd": 5942.08,
+      "position_pct": 0.06,
+      "sector": "Healthcare"
     }
   ],
   "runs": [
@@ -3429,6 +3451,22 @@
       ],
       "regime": "bull",
       "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-05-19T19:04:56.109141",
+      "run_type": "midday",
+      "candidates": [
+        "DDOG",
+        "AMD",
+        "GOOGL",
+        "TXN",
+        "LLY"
+      ],
+      "trades_executed": 1,
+      "skipped_reason": "",
+      "reason": "scheduled",
+      "regime": "bull",
+      "vix_regime": "normal"
     }
   ],
   "debate_logs": [
@@ -4802,6 +4840,61 @@
       "ts": "2026-05-19T18:32:50.082690",
       "bull_case": "R1 Bull(8): RKLB is breaking out on exceptional 63.5% revenue growth with confirmed technical momentum (ADX>25, RSI 69.6) in the explosive space sector, creating a rare alignment of fundamental acceleration and technical strength. | R1 Bear(7): RKLB's catastrophic 6.1 debt-to-equity ratio creates an unsustainable capital structure where any growth slowdown or market disruption could trigger a liquidity crisis, making this a leveraged bet on perfection in an inherently volatile sector. | R2 Bull(7): RKLB's exceptional 63.5% revenue growth with technical momentum (ADX>25) creates a high-conviction opportunity where operational excellence is de-risking the balance sheet faster than debt service costs are rising | R2 Bear(6): Despite strong current growth, RKLB's 6.1x debt-to-equity ratio creates a binary outcome scenario where any growth deceleration or operational setback could trigger a balance sheet crisis that wipes out equity holders.",
       "bear_case": "Primary risk: Balance sheet implosion - any growth deceleration, mission failure, or credit market stress could trigger covenant breaches with the 6.1x leverage, leading to dilutive equity raises or bankruptcy in a capital-intensive sector where funding can disappear overnight. | Unresolved: ['Balance sheet remains structurally fragile - 6.1x leverage still creates existential risk if the 63.5% growth rate decelerates even modestly, as aerospace contracts are lumpy and any major mission failure could instantly trigger liquidity crisis']",
+      "bull_score": 7,
+      "bear_score": 6,
+      "final_conviction": 7,
+      "decision": "buy"
+    },
+    {
+      "id": "debate_DDOG_20260519190118",
+      "symbol": "DDOG",
+      "ts": "2026-05-19T19:01:18.405093",
+      "bull_case": "R1 Bull(8): DDOG is experiencing explosive operational leverage as evidenced by 104% EPS growth against 32.2% revenue growth, creating a momentum breakout supported by exceptional trend strength (ADX 49.2) that positions it to lead the AI-driven software sector rotation. | R1 Bear(7): DDOG's margin expansion is a one-time catch-up story masquerading as sustainable growth, with profit margins at only 3.7% revealing the underlying economics remain broken despite the temporary EPS surge. | R2 Bull(7): DDOG's genuine operational leverage (104% EPS growth on 32% revenue growth) creates a compelling fundamental story that can withstand technical consolidation, though the low-volume breakout requires patience for institutional confirmation. | R2 Bear(8): DDOG's 104% EPS growth on unsustainably thin 3.7% margins creates a dangerous setup where any competitive pressure from hyperscalers will expose the underlying unit economics weakness and collapse the multiple expansion story.",
+      "bear_case": "Primary risk: Margin compression acceleration if hyperscale cloud providers (AWS/Azure/GCP) aggressively expand native monitoring capabilities, destroying DDOG's pricing power just as the market realizes the EPS growth was a one-time catch-up story rather than sustainable operational leverage. | Unresolved: [\"Hyperscale cloud providers (AWS/Azure/GCP) aggressively expanding native monitoring capabilities and destroying DDOG's pricing power\", 'The 3.7% profit margin reveals broken underlying unit economics that make the company vulnerable to competitive pressure', 'Margin expansion being a one-time catch-up story rather than sustainable operational leverage']",
+      "bull_score": 7,
+      "bear_score": 8,
+      "final_conviction": 7,
+      "decision": "buy"
+    },
+    {
+      "id": "debate_AMD_20260519190212",
+      "symbol": "AMD",
+      "ts": "2026-05-19T19:02:12.182660",
+      "bull_case": "R1 Bull(8): AMD's explosive 91% EPS growth with fair 1.0 PEG valuation creates a compelling dislocation as institutional selling provides entry opportunity before momentum resumes in confirmed uptrend. | R1 Bear(8): AMD's 6.0 debt-to-equity ratio creates a liquidity time bomb in rising rate environment where 30-year yields hit 19-year highs, making the 'manageable' leverage actually fatal for a capital-intensive semiconductor company facing cyclical downturn risk. | R2 Bull(6): AMD's 91% EPS growth with 1.0 PEG remains compelling despite debt concerns, as AI datacenter dominance provides cash flow visibility to manage leverage while technical uptrend stays intact with 52.5 ADX confirming momentum continuation. | R2 Bear(6): AMD's 6.0 D/E ratio becomes catastrophic if AI demand cyclically reverses before meaningful deleveraging occurs, as semiconductor downturns destroy pricing power and cash generation needed to service debt.",
+      "bear_case": "Primary risk: Debt refinancing crisis as 19-year high yields make AMD's 6.0 D/E ratio unsustainable, forcing equity dilution or asset sales that destroy shareholder value regardless of operational performance | Unresolved: ['Cyclical semiconductor downturn risk remains unaddressed - AI demand could collapse faster than debt reduction, leaving AMD overleveraged during industry trough when pricing power evaporates']",
+      "bull_score": 6,
+      "bear_score": 6,
+      "final_conviction": 6,
+      "decision": "buy"
+    },
+    {
+      "id": "debate_GOOGL_20260519190307",
+      "symbol": "GOOGL",
+      "ts": "2026-05-19T19:03:07.024520",
+      "bull_case": "R1 Bull(9): GOOGL is accelerating away from competitors in the AI race with Gemini 3.5's aggressive pricing strategy while trading at a discount to recent highs despite delivering exceptional 82% EPS growth. | R1 Bear(7): Google's aggressive AI pricing strategy signals margin compression desperation while the 20.0% debt/equity ratio creates dangerous leverage exposure in a sideways market regime where momentum can reverse quickly. | R2 Bull(8): GOOGL's infrastructure scale allows sustainable aggressive AI pricing that will eliminate weaker competitors while maintaining profitability through operational leverage, creating a winner-take-most scenario | R2 Bear(6): While Google's scale advantage is real, the combination of leveraged balance sheet and uncertain timeline for competitor elimination creates asymmetric downside risk if the AI pricing war proves more protracted than anticipated.",
+      "bear_case": "Primary risk: Margin collapse from pricing war combined with high debt service costs creating a profit squeeze that turns 82% EPS growth into negative earnings surprise within 2-3 quarters | Unresolved: ['20% debt/equity ratio amplifies downside risk if the pricing war extends longer than expected', \"No guarantee that aggressive pricing will successfully eliminate all competitors before Google's own margins become unsustainable\"]",
+      "bull_score": 8,
+      "bear_score": 6,
+      "final_conviction": 7,
+      "decision": "buy"
+    },
+    {
+      "id": "debate_TXN_20260519190359",
+      "symbol": "TXN",
+      "ts": "2026-05-19T19:03:59.749737",
+      "bull_case": "R1 Bull(8): TXN exhibits the rare combination of explosive fundamental execution (31.3% EPS growth, 32.3% ROE) perfectly aligned with confirmed technical momentum (ADX 59.3, RSI 74 in strong trend), creating a high-probability breakout above $310.29 resistance. | R1 Bear(7): TXN's 83.7% debt-to-equity ratio creates devastating leverage risk that will amplify any downturn in the notoriously cyclical semiconductor market, while RSI at 74 with only 0.47x volume ratio signals weak institutional conviction behind this momentum-chasing retail rally. | R2 Bull(7): TXN's exceptional fundamental execution (31.3% EPS growth, 32.3% ROE) combined with extreme trend strength (ADX 59.3) creates a high-probability momentum continuation play, though lower volume requires careful position sizing until institutional participation confirms. | R2 Bear(8): TXN's dangerous 83.7% debt leverage combined with retail-momentum driven technicals creates a perfect storm for amplified losses when the inevitable semiconductor cycle downturn hits this overvalued momentum chase.",
+      "bear_case": "Primary risk: High debt-to-equity ratio (83.7%) will turn TXN into a leveraged bet on continued AI semiconductor boom - any demand slowdown or margin compression will be amplified into devastating losses through fixed debt service obligations. | Unresolved: ['83.7% debt-to-equity ratio creating amplified downside risk during semiconductor cycle downturns', 'Retail-driven momentum without institutional backing creating vulnerability to sharp reversals when cycle turns']",
+      "bull_score": 7,
+      "bear_score": 8,
+      "final_conviction": 7,
+      "decision": "buy"
+    },
+    {
+      "id": "debate_LLY_20260519190455",
+      "symbol": "LLY",
+      "ts": "2026-05-19T19:04:55.667203",
+      "bull_case": "R1 Bull(8): LLY's explosive 169.9% EPS growth and 55.5% revenue growth with exceptional 35% margins create unstoppable earnings momentum that will overwhelm temporary regulatory noise. | R1 Bear(8): LLY's explosive growth metrics mask unsustainable fundamentals with 139% debt-to-equity ratio creating financial fragility just as regulatory pressures from Medicare pricing reforms and $194M legal liabilities begin compounding. | R2 Bull(7): LLY's exceptional 169.9% EPS growth driven by breakthrough therapies in massive addressable markets creates earnings power sufficient to manage leverage concerns, while forward P/E of 22.9 offers compelling value for a company dominating high-growth pharmaceutical segments | R2 Bear(6): While LLY's current earnings can service debt, the company faces a perfect storm of Medicare pricing reforms hitting all therapeutic segments simultaneously just as refinancing needs emerge in a higher-rate environment.",
+      "bear_case": "Primary risk: Regulatory pricing pressure combined with 139% debt-to-equity ratio creates a leverage death spiral where margin compression forces emergency capital raising at the worst possible time, destroying shareholder value through dilution or distressed asset sales. | Unresolved: ['Medicare pricing reforms creating systematic margin compression across all therapeutic areas simultaneously, making the diversified pipeline argument less protective than bull assumes', 'Debt refinancing risk in rising rate environment when current low-cost debt matures']",
       "bull_score": 7,
       "bear_score": 6,
       "final_conviction": 7,
@@ -6718,6 +6811,92 @@
       "pm_action": "buy",
       "pm_verdict": "The 63.5% revenue growth with confirmed technical momentum (ADX>25, RSI 69.6) creates a high-conviction opportunity where operational excellence is rapidly de-risking the balance sheet despite elevated leverage ratios.",
       "risk_category": "already_holding"
+    },
+    {
+      "ts": "2026-05-19T19:01:18.391263",
+      "symbol": "DDOG",
+      "action": "hold",
+      "reason": "Already holding DDOG",
+      "conviction": 7,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 212.15,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "buy",
+      "pm_verdict": "The explosive operational leverage (104% EPS growth vs 32% revenue growth) combined with strong technical momentum (ADX 49.2) creates a compelling setup where the fundamental inflection story can drive continued outperformance despite elevated valuation metrics. The bear's hyperscaler competition thesis, while structurally valid, represents a longer-term industry risk rather than an immediate trade-specific catalyst.",
+      "risk_category": "already_holding"
+    },
+    {
+      "ts": "2026-05-19T19:02:12.168395",
+      "symbol": "AMD",
+      "action": "hold",
+      "reason": "Already holding AMD",
+      "conviction": 6,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 417.6,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "buy",
+      "pm_verdict": "AMD's 91% EPS growth at 1.0 PEG creates a compelling dislocation, while the debt concerns are systemic semiconductor risks already priced in rather than trade-specific catalysts that would justify skipping a confirmed uptrend.",
+      "risk_category": "already_holding"
+    },
+    {
+      "ts": "2026-05-19T19:03:07.008362",
+      "symbol": "GOOGL",
+      "action": "hold",
+      "reason": "Already holding GOOGL",
+      "conviction": 7,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 388.59,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "buy",
+      "pm_verdict": "GOOGL's exceptional 82% EPS growth combined with strong technical momentum (ADX>50) outweighs the margin compression risk from AI pricing competition, especially given Google's infrastructure scale advantage in a confirmed uptrend.",
+      "risk_category": "already_holding"
+    },
+    {
+      "ts": "2026-05-19T19:03:59.735747",
+      "symbol": "TXN",
+      "action": "skip",
+      "reason": "Sector cap: Technology already at 16.2% (max 20%)",
+      "conviction": 7,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 303.81,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "buy",
+      "pm_verdict": "TXN's exceptional fundamental execution (31.3% EPS growth, 32.3% ROE) combined with textbook momentum continuation signals (ADX 59.3, RSI 74 in confirmed uptrend) creates a high-probability breakout play despite lower volume. The bear's debt concerns are systemic to the semiconductor sector and already priced in, not trade-specific catalysts.",
+      "risk_category": "sector_cap"
+    },
+    {
+      "ts": "2026-05-19T19:04:55.652822",
+      "symbol": "LLY",
+      "action": "buy",
+      "reason": "PM conviction=7 | size=6% ($5,942) | regime=bull/normal | ATR=34.22 x2.5 | stop=$934.42 (-8.0%)",
+      "conviction": 7,
+      "rotate_from": "",
+      "position_usd": 5942.05,
+      "shares": 5.8504,
+      "entry_price": 1015.67,
+      "stop_price": 934.42,
+      "stop_pct": 8.0,
+      "sector": "Healthcare",
+      "correlation": 0.0,
+      "pm_action": "buy",
+      "pm_verdict": "The 169.9% EPS growth with forward P/E of 22.9 creates a compelling momentum story that outweighs leverage concerns, especially with technical confirmation from bullish MACD and RSI at 61.9 showing room to run. Regulatory risks are systemic to pharma and already discounted.",
+      "risk_category": "approved"
     }
   ],
   "watchlists": [

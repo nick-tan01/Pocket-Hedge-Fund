@@ -270,6 +270,30 @@ def review_open_positions(
             review, trade.get("conviction", 5)
         )
 
+        # Fix 2: Trim cascade exit rule.
+        # If a position has been trimmed 3+ times while conviction stays ≤5 and the
+        # thesis is "weakened" or "broken", the LLM reviewer is stuck in a loop —
+        # it keeps trimming without ever deciding to exit. Override to EXIT.
+        # This is purely deterministic: the LLM still decided; we just add a floor.
+        trim_count = len(trade.get("trim_history", []))
+        thesis_status_raw = review.get("thesis_status", "intact")
+        if (
+            action in ("trim", "hold")
+            and conviction <= 5
+            and thesis_status_raw in ("weakened", "broken")
+            and trim_count >= 3
+        ):
+            logger.warning(
+                "TRIM CASCADE EXIT | %s conviction=%d thesis=%s trims=%d → forcing EXIT",
+                symbol, conviction, thesis_status_raw, trim_count,
+            )
+            action = "exit"
+            review = dict(review)
+            review["exit_reason"] = (
+                f"trim_cascade_exit: conviction={conviction} after {trim_count} trims "
+                f"on {thesis_status_raw} thesis"
+            )
+
         logger.info(
             "Position Review | %s → %s | conviction=%d | thesis=%s | %s",
             symbol, action.upper(), conviction,
@@ -493,6 +517,12 @@ def analyse_symbol(
     logger.info("%s PM verdict → action=%s conviction=%d | %s",
                 symbol, pm["action"], pm["final_conviction"], pm["verdict"])
 
+    # Enrich pm_verdict with R2 debate scores so the risk manager can apply
+    # bear spread shading (Fix 4): a contested debate (high bear R2 vs low bull R2)
+    # warrants a smaller initial position even at the same final conviction.
+    pm["bull_r2_conviction"] = bull_r2.get("conviction", pm.get("final_conviction", 7))
+    pm["bear_r2_conviction"] = bear_r2.get("conviction", 0)
+
     # ── Risk manager ──────────────────────────────────────────────────────────
     proposal = risk_agent.evaluate(
         symbol=symbol,
@@ -677,11 +707,21 @@ def _active_watchlist_entries() -> list[dict]:
     entries = latest.get("entries", [])
     eligible = []
     for entry in entries:
-        if entry.get("side") != "long_watch":
-            continue
-        if entry.get("setup_type") not in LONG_SETUP_TYPES:
-            continue
+        side = entry.get("side", "")
+        tier = str(entry.get("tier", "")).upper()
         flags = entry.get("risk_flags", {})
+
+        # Original: explicit long_watch entries with a known setup type
+        if side == "long_watch" and entry.get("setup_type") in LONG_SETUP_TYPES:
+            pass
+        # New: also promote tier-A/B "long" entries — these are overnight top candidates
+        # that the after-close agent rated highly but flagged as "long" (not "long_watch").
+        # Without this they never reach the screener even though they passed nightly analysis.
+        elif side == "long" and tier in ("A", "B"):
+            pass
+        else:
+            continue
+
         if flags.get("earnings_within_3d"):
             continue
         eligible.append(entry)
@@ -835,13 +875,33 @@ def run_pipeline(
     if trigger_reason == "sentinel_trigger" and event_symbols and not broad_event:
         review_symbols = event_symbols
 
+    # Fix 1: Sentinel stop-proximity feedback loop guard.
+    # When the sentinel fires because existing positions are near their stops (stop_proximity),
+    # the trigger symbols are ALL open positions. Running a full LLM thesis review in that case
+    # creates a feedback loop: review → trim → still near stop → sentinel fires again → repeat.
+    # Mechanical check_open_positions() above is sufficient for stop-proximity events.
+    # Only run LLM review when the sentinel fired on a WATCHLIST move or earnings event
+    # (i.e., at least one trigger symbol is NOT an open position).
+    skip_llm_review_for_sentinel = False
+    if trigger_reason == "sentinel_trigger" and event_symbols and not broad_event:
+        open_syms = {t["symbol"] for t in get_open_trades()}
+        if all(s in open_syms for s in event_symbols):
+            skip_llm_review_for_sentinel = True
+            logger.info(
+                "Sentinel: all trigger symbols %s are existing positions — "
+                "stop-proximity-only event, skipping LLM review to prevent feedback loop",
+                sorted(event_symbols),
+            )
+
     # Check overnight watchlist for position alerts — close the after-hours feedback loop
     overnight_alerts = _watchlist_position_alerts()
     if overnight_alerts:
         logger.info("Overnight position alerts for: %s — forcing targeted thesis review",
                     sorted(overnight_alerts))
 
-    if _should_run_thesis_review(run_start, trigger_reason):
+    if skip_llm_review_for_sentinel:
+        logger.info("Sentinel stop-proximity run — mechanical checks only, no LLM review")
+    elif _should_run_thesis_review(run_start, trigger_reason):
         review_open_positions(alpaca, fetcher, dry_run=dry_run, symbols=review_symbols)
     elif overnight_alerts:
         # Not Monday and not sentinel, but overnight weakness detected on open positions

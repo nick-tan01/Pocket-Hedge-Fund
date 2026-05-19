@@ -99,6 +99,31 @@ def evaluate(
     vix_mult    = {"normal": 1.0, "elevated_vix": 0.75, "high_vix": 0.5}.get(vix_regime, 1.0)
     size_pct    = size_pct * regime_mult * vix_mult
 
+    # Fix 4: Bear spread shading.
+    # When the bear debate scored significantly higher than the bull in Round 2,
+    # the PM still bought (perhaps tied-debate rule or strong technicals), but the
+    # high disagreement signals genuine uncertainty. Shade the position size down
+    # to reflect that uncertainty at entry rather than letting the reviewer trim
+    # it repeatedly post-entry.
+    bull_r2_conv = int(pm_verdict.get("bull_r2_conviction") or conviction)
+    bear_r2_conv = int(pm_verdict.get("bear_r2_conviction") or 0)
+    debate_spread = bear_r2_conv - bull_r2_conv   # positive = bear outscored bull
+
+    if debate_spread >= 4:
+        # Bear much stronger (e.g. bear=9, bull=5) — half size
+        size_pct = round(size_pct * 0.50, 4)
+        logger.info(
+            "Bear spread shading | %s bear_r2=%d bull_r2=%d spread=%d → size -50%%",
+            symbol, bear_r2_conv, bull_r2_conv, debate_spread,
+        )
+    elif debate_spread >= 2:
+        # Bear moderately stronger (e.g. bear=8, bull=6) — two-thirds size
+        size_pct = round(size_pct * 0.67, 4)
+        logger.info(
+            "Bear spread shading | %s bear_r2=%d bull_r2=%d spread=%d → size -33%%",
+            symbol, bear_r2_conv, bull_r2_conv, debate_spread,
+        )
+
     corr_decision = _correlation_tournament(
         symbol=symbol,
         pm_verdict=pm_verdict,
@@ -184,11 +209,17 @@ def evaluate(
     stop_price = round(max(atr_stop or 0, hard_stop), 2)
     stop_pct   = round((current_price - stop_price) / current_price * 100, 2)
 
+    spread_tag = ""
+    if debate_spread >= 4:
+        spread_tag = f" | bear_spread={debate_spread} (50% shade)"
+    elif debate_spread >= 2:
+        spread_tag = f" | bear_spread={debate_spread} (33% shade)"
+
     reason = (
         f"PM conviction={conviction} | size={size_pct*100:.0f}% "
         f"(${position_usd:,.0f}) | regime={regime}/{vix_regime} "
         f"| ATR={round(atr,2) if atr else 'N/A'} x{atr_mult:.1f} "
-        f"| stop=${stop_price} (-{stop_pct}%)"
+        f"| stop=${stop_price} (-{stop_pct}%){spread_tag}"
     )
     if corr_decision["action"] == "rotate":
         reason += f" | rotate_from={corr_decision['rotate_from']}"

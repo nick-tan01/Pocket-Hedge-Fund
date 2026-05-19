@@ -140,12 +140,20 @@ def evaluate(
             key_risk=key_risk,
             correlation=corr_decision.get("correlation", 0.0),
         )
-    if len(open_positions) >= config.MAX_POSITIONS and corr_decision["action"] != "rotate":
+    # Positions trimmed below MIN_SLOT_PCT are remnants — they don't block new entries.
+    # This prevents DOCS/ARM-type positions (trimmed to 2%) from occupying MAX_POSITIONS
+    # slots that full-size new entries ($4k-$10k) should be able to fill.
+    min_slot_pct = getattr(config, "MIN_SLOT_PCT", 0.03)
+    meaningful_positions = [p for p in open_positions if p.get("position_pct", 0) >= min_slot_pct]
+    if len(meaningful_positions) >= config.MAX_POSITIONS and corr_decision["action"] != "rotate":
         return TradeProposal(
             symbol=symbol, action="skip", conviction=conviction,
             position_usd=0, shares=0, entry_price=current_price,
             stop_price=0, stop_pct=0,
-            reason=f"Max positions ({config.MAX_POSITIONS}) already open",
+            reason=(
+                f"Max positions ({config.MAX_POSITIONS}) already open "
+                f"({len(open_positions) - len(meaningful_positions)} sub-slot remnants excluded)"
+            ),
             key_risk=key_risk,
         )
 

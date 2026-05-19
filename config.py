@@ -50,6 +50,8 @@ MIN_CONVICTION_SCORE   = 6         # Out of 10 — below this, hold cash
 MAX_SECTOR_PCT         = 0.20      # No single sector > 20% of deployed capital
 CORRELATION_THRESHOLD  = 0.75      # Return-correlation threshold for overlap checks
 ROTATION_SCORE_MARGIN  = 1.0       # Candidate must beat current holding by this much
+MIN_SLOT_PCT           = 0.03      # Positions below 3% don't count against MAX_POSITIONS —
+                                   # trimmed remnants can't block new full-size entries
 
 # Conviction → position size mapping
 CONVICTION_SIZE_MAP = {

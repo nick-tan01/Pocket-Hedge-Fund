@@ -270,28 +270,28 @@ def review_open_positions(
             review, trade.get("conviction", 5)
         )
 
-        # Fix 2: Trim cascade exit rule.
-        # If a position has been trimmed 3+ times while conviction stays ≤5 and the
-        # thesis is "weakened" or "broken", the LLM reviewer is stuck in a loop —
-        # it keeps trimming without ever deciding to exit. Override to EXIT.
-        # This is purely deterministic: the LLM still decided; we just add a floor.
-        trim_count = len(trade.get("trim_history", []))
+        # Fix 2 (proper): Consecutive weakened exit.
+        # Track how many consecutive reviews return weakened/broken thesis — reset to 0
+        # the moment thesis recovers to intact. Force exit at 3 consecutive.
+        # This is more precise than counting total trims: a position that recovered once
+        # and then weakened again starts its counter fresh, not from historical trims.
         thesis_status_raw = review.get("thesis_status", "intact")
-        if (
-            action in ("trim", "hold")
-            and conviction <= 5
-            and thesis_status_raw in ("weakened", "broken")
-            and trim_count >= 3
-        ):
+        consec_weakened = int(trade.get("consecutive_weakened_count", 0))
+        if thesis_status_raw in ("weakened", "broken"):
+            consec_weakened += 1
+        else:
+            consec_weakened = 0  # thesis recovered — counter resets
+
+        if consec_weakened >= 3 and action in ("trim", "hold"):
             logger.warning(
-                "TRIM CASCADE EXIT | %s conviction=%d thesis=%s trims=%d → forcing EXIT",
-                symbol, conviction, thesis_status_raw, trim_count,
+                "CONSECUTIVE WEAKENED EXIT | %s thesis=%s for %d consecutive reviews → EXIT",
+                symbol, thesis_status_raw, consec_weakened,
             )
             action = "exit"
             review = dict(review)
             review["exit_reason"] = (
-                f"trim_cascade_exit: conviction={conviction} after {trim_count} trims "
-                f"on {thesis_status_raw} thesis"
+                f"consecutive_weakened_exit: thesis={thesis_status_raw} for "
+                f"{consec_weakened} consecutive reviews without recovery"
             )
 
         logger.info(
@@ -323,37 +323,40 @@ def review_open_positions(
         )
 
         # ── Execute decision ───────────────────────────────────────────────────
+        exit_reason_str = review.get("exit_reason", "thesis_broken")
+
         if action == "hold":
             update_open_trade(trade_id, {
-                "last_review_ts":         datetime.now(ET).isoformat(),
-                "last_review_conviction": conviction,
-                "thesis_status":          review.get("thesis_status"),
-                "key_risk":               review.get("key_risk_to_monitor"),
-                "queued_action":           None,
-                "time_stop_flagged":       False,
+                "last_review_ts":            datetime.now(ET).isoformat(),
+                "last_review_conviction":    conviction,
+                "thesis_status":             review.get("thesis_status"),
+                "key_risk":                  review.get("key_risk_to_monitor"),
+                "queued_action":             None,
+                "time_stop_flagged":         False,
+                "consecutive_weakened_count": consec_weakened,
             })
             clear_queued_action(trade_id)
 
         elif action == "exit":
             if dry_run:
-                logger.info("DRY RUN — would EXIT %s | %s",
-                            symbol, review.get("exit_reason", "thesis broken"))
+                logger.info("DRY RUN — would EXIT %s | %s", symbol, exit_reason_str)
                 continue
 
             if not ok_to_trade:
                 logger.info("Market closed — EXIT queued for %s (will re-review next run)", symbol)
-                set_queued_action(trade_id, "exit", review.get("exit_reason", "thesis_broken"))
+                set_queued_action(trade_id, "exit", exit_reason_str)
                 update_open_trade(trade_id, {
-                    "last_review_ts": datetime.now(ET).isoformat(),
-                    "thesis_status":  review.get("thesis_status"),
-                    "time_stop_flagged": False,
+                    "last_review_ts":            datetime.now(ET).isoformat(),
+                    "thesis_status":             review.get("thesis_status"),
+                    "time_stop_flagged":         False,
+                    "consecutive_weakened_count": consec_weakened,
                 })
                 continue
 
-            order = alpaca.close_position(symbol, reason="thesis_broken")
+            order = alpaca.close_position(symbol, reason=exit_reason_str)
             if order:
-                log_trade_close(trade_id, current_price, "thesis_broken")
-                logger.info("EXIT executed | %s @ $%.2f", symbol, current_price)
+                log_trade_close(trade_id, current_price, exit_reason_str)
+                logger.info("EXIT executed | %s @ $%.2f | %s", symbol, current_price, exit_reason_str)
 
         elif action == "trim":
             if dry_run:
@@ -365,10 +368,11 @@ def review_open_positions(
                 logger.info("Market closed — TRIM queued for %s (will re-review next run)", symbol)
                 set_queued_action(trade_id, "trim", review.get("trim_reason", "conviction_reduced"))
                 update_open_trade(trade_id, {
-                    "last_review_ts":         datetime.now(ET).isoformat(),
-                    "last_review_conviction": conviction,
-                    "thesis_status":          review.get("thesis_status"),
-                    "time_stop_flagged":      False,
+                    "last_review_ts":            datetime.now(ET).isoformat(),
+                    "last_review_conviction":    conviction,
+                    "thesis_status":             review.get("thesis_status"),
+                    "time_stop_flagged":         False,
+                    "consecutive_weakened_count": consec_weakened,
                 })
                 continue
 
@@ -384,12 +388,13 @@ def review_open_positions(
                 logger.info("TRIM %s — position already at or below target size, treating as hold",
                             symbol)
                 update_open_trade(trade_id, {
-                    "last_review_ts":         datetime.now(ET).isoformat(),
-                    "last_review_conviction": conviction,
-                    "thesis_status":          review.get("thesis_status"),
-                    "key_risk":               review.get("key_risk_to_monitor"),
-                    "queued_action":           None,
-                    "time_stop_flagged":       False,
+                    "last_review_ts":            datetime.now(ET).isoformat(),
+                    "last_review_conviction":    conviction,
+                    "thesis_status":             review.get("thesis_status"),
+                    "key_risk":                  review.get("key_risk_to_monitor"),
+                    "queued_action":             None,
+                    "time_stop_flagged":         False,
+                    "consecutive_weakened_count": consec_weakened,
                 })
                 clear_queued_action(trade_id)
                 continue
@@ -401,12 +406,13 @@ def review_open_positions(
                 logger.info("TRIM %s — trim qty %.4f below minimum, treating as hold",
                             symbol, trim_qty)
                 update_open_trade(trade_id, {
-                    "last_review_ts":         datetime.now(ET).isoformat(),
-                    "last_review_conviction": conviction,
-                    "thesis_status":          review.get("thesis_status"),
-                    "key_risk":               review.get("key_risk_to_monitor"),
-                    "queued_action":           None,
-                    "time_stop_flagged":       False,
+                    "last_review_ts":            datetime.now(ET).isoformat(),
+                    "last_review_conviction":    conviction,
+                    "thesis_status":             review.get("thesis_status"),
+                    "key_risk":                  review.get("key_risk_to_monitor"),
+                    "queued_action":             None,
+                    "time_stop_flagged":         False,
+                    "consecutive_weakened_count": consec_weakened,
                 })
                 clear_queued_action(trade_id)
                 continue
@@ -420,13 +426,14 @@ def review_open_positions(
                 log_trade_trim(trade_id, trim_qty, new_qty, current_price,
                                review.get("trim_reason", ""))
                 update_open_trade(trade_id, {
-                    "qty":                    new_qty,
-                    "last_review_ts":         datetime.now(ET).isoformat(),
-                    "last_review_conviction": conviction,
-                    "thesis_status":          review.get("thesis_status"),
-                    "key_risk":               review.get("key_risk_to_monitor"),
-                    "queued_action":           None,
-                    "time_stop_flagged":       False,
+                    "qty":                       new_qty,
+                    "last_review_ts":            datetime.now(ET).isoformat(),
+                    "last_review_conviction":    conviction,
+                    "thesis_status":             review.get("thesis_status"),
+                    "key_risk":                  review.get("key_risk_to_monitor"),
+                    "queued_action":             None,
+                    "time_stop_flagged":         False,
+                    "consecutive_weakened_count": consec_weakened,
                 })
                 clear_queued_action(trade_id)
                 logger.info(
@@ -875,22 +882,29 @@ def run_pipeline(
     if trigger_reason == "sentinel_trigger" and event_symbols and not broad_event:
         review_symbols = event_symbols
 
-    # Fix 1: Sentinel stop-proximity feedback loop guard.
-    # When the sentinel fires because existing positions are near their stops (stop_proximity),
-    # the trigger symbols are ALL open positions. Running a full LLM thesis review in that case
-    # creates a feedback loop: review → trim → still near stop → sentinel fires again → repeat.
-    # Mechanical check_open_positions() above is sufficient for stop-proximity events.
-    # Only run LLM review when the sentinel fired on a WATCHLIST move or earnings event
-    # (i.e., at least one trigger symbol is NOT an open position).
+    # Fix 1 (precise): Sentinel stop-proximity feedback loop guard.
+    # The sentinel emits trigger_type per event in event_details:
+    #   "near_stop"      → position is within 85% of its stop distance
+    #   "intraday_move"  → watchlist or position moved >3.5% from prev close
+    #   "earnings_today" → earnings event on a watched symbol
+    #   "volume_spike"   → unusual volume on an open position
+    #   "position_move"  → position moved >2.5% from entry
+    # "near_stop" is a mechanical condition — check_open_positions() already handles
+    # it. Running a full LLM thesis review on near_stop creates the feedback loop:
+    # review → trim → still near stop → sentinel fires again → repeat.
+    # Any other trigger type is a genuine signal change warranting LLM review.
     skip_llm_review_for_sentinel = False
-    if trigger_reason == "sentinel_trigger" and event_symbols and not broad_event:
-        open_syms = {t["symbol"] for t in get_open_trades()}
-        if all(s in open_syms for s in event_symbols):
+    if trigger_reason == "sentinel_trigger" and event_details and not broad_event:
+        near_stop_only = all(
+            isinstance(evt, dict) and evt.get("trigger_type") == "near_stop"
+            for evt in event_details
+        )
+        if near_stop_only:
             skip_llm_review_for_sentinel = True
             logger.info(
-                "Sentinel: all trigger symbols %s are existing positions — "
-                "stop-proximity-only event, skipping LLM review to prevent feedback loop",
-                sorted(event_symbols),
+                "Sentinel: all %d event(s) are near_stop — "
+                "mechanical check sufficient, skipping LLM review",
+                len(event_details),
             )
 
     # Check overnight watchlist for position alerts — close the after-hours feedback loop
@@ -912,8 +926,12 @@ def run_pipeline(
     else:
         logger.info("Skipping full thesis review (not Monday) — mechanical stops only")
 
-    open_count  = len(get_open_trades())
-    available   = config.MAX_POSITIONS - open_count
+    all_open     = get_open_trades()
+    min_slot_pct = getattr(config, "MIN_SLOT_PCT", 0.03)
+    # Meaningful positions are above MIN_SLOT_PCT — these count against MAX_POSITIONS.
+    # Remnants (trimmed below 3%) don't block new full-size entries.
+    meaningful_count = sum(1 for p in all_open if p.get("position_pct", 0) >= min_slot_pct)
+    available   = config.MAX_POSITIONS - meaningful_count
     dynamic_max = max(
         config.SCREENER_MIN_CANDIDATES,
         min(available + 2, config.SCREENER_MAX_CANDIDATES),
@@ -954,7 +972,8 @@ def run_pipeline(
 
     trades_executed = 0
     for candidate in candidates:
-        if len(open_positions) + trades_executed >= config.MAX_POSITIONS:
+        meaningful_open = sum(1 for p in open_positions if p.get("position_pct", 0) >= min_slot_pct)
+        if meaningful_open + trades_executed >= config.MAX_POSITIONS:
             logger.info("Max positions reached — stopping analysis")
             break
 

@@ -263,6 +263,12 @@
       "portfolio_value": 99940.94,
       "cash": 59377.74,
       "spy_price": 739.32
+    },
+    {
+      "ts": "2026-05-20T19:06:05.699102",
+      "portfolio_value": 100133.64,
+      "cash": 59377.74,
+      "spy_price": 740.1
     }
   ],
   "trades": [],
@@ -278,7 +284,7 @@
       "conviction": 7,
       "debate_id": "debate_DDOG_20260512160556",
       "status": "open",
-      "key_risk": "Q4 earnings execution remains the critical catalyst given the extreme 545x P/E multiple leaves zero room for disappointment - any earnings miss or guidance reduction will trigger violent multiple compression regardless of technical momentum.",
+      "key_risk": "Q4 earnings execution and guidance - any disappointment will trigger violent multiple compression given the extreme valuation leaves zero room for error",
       "position_usd": 1998.65,
       "position_pct": 0.02,
       "sector": "Technology",
@@ -291,8 +297,8 @@
           "reason": "The self-reinforcing institutional momentum chase that was core to our thesis is not materializing as evidenced by the 0.41x volume ratio, though the fundamental and technical components remain strong enough to warrant partial position retention."
         }
       ],
-      "last_review_ts": "2026-05-20T12:32:35.843003-04:00",
-      "last_review_conviction": 8,
+      "last_review_ts": "2026-05-20T15:04:06.203521-04:00",
+      "last_review_conviction": 7,
       "thesis_status": "intact",
       "time_stop_flagged": false,
       "consecutive_weakened_count": 0
@@ -350,13 +356,13 @@
       "conviction": 7,
       "debate_id": "debate_NVDA_20260514152755",
       "status": "open",
-      "key_risk": "Any signs of AI demand normalization or treasury yield spikes that could stress the 7.3x debt/equity ratio and trigger liquidity concerns",
+      "key_risk": "Any signs of AI demand normalization or broader market deleveraging events that could overwhelm NVDA's liquidity buffers despite their $26B cash position",
       "position_usd": 3980.29,
       "position_pct": 0.0411,
       "sector": "Technology",
-      "last_review_ts": "2026-05-20T12:34:22.353133-04:00",
-      "last_review_conviction": 8,
-      "thesis_status": "intact",
+      "last_review_ts": "2026-05-20T15:04:58.147281-04:00",
+      "last_review_conviction": 6,
+      "thesis_status": "weakened",
       "time_stop_flagged": false,
       "trim_history": [
         {
@@ -367,7 +373,7 @@
           "reason": "China regulatory relief thesis has materially deteriorated from potential upside catalyst to confirmed market share losses, reducing one pillar of our three-part bull case"
         }
       ],
-      "consecutive_weakened_count": 0
+      "consecutive_weakened_count": 1
     },
     {
       "id": "ARM_20260514152848",
@@ -380,12 +386,12 @@
       "conviction": 7,
       "debate_id": "debate_ARM_20260514152848",
       "status": "open",
-      "key_risk": "Any signs of quarterly growth deceleration or earnings guidance disappointment, as the 300x P/E multiple amplifies execution risk even more than the original 5.2 debt-to-equity concern",
+      "key_risk": "manual review recommended",
       "position_usd": 1981.21,
       "position_pct": 0.0212,
       "sector": "Technology",
-      "last_review_ts": "2026-05-20T12:35:13.318379-04:00",
-      "last_review_conviction": 7,
+      "last_review_ts": "2026-05-20T15:05:37.473776-04:00",
+      "last_review_conviction": 5,
       "thesis_status": "intact",
       "time_stop_flagged": false,
       "trim_history": [
@@ -491,7 +497,7 @@
       "conviction": 7,
       "debate_id": "debate_DOCS_20260514172410",
       "status": "open",
-      "key_risk": "Next earnings report to confirm whether the EPS decline represents a cyclical trough or permanent structural deterioration in business execution.",
+      "key_risk": "manual review recommended",
       "position_usd": 1956.27,
       "position_pct": 0.0179,
       "sector": "Healthcare",
@@ -532,11 +538,11 @@
           "reason": "The massive EPS decline materially increases the probability that earnings deterioration is structural rather than cyclical, which was our original key risk"
         }
       ],
-      "last_review_ts": "2026-05-20T12:36:53.176166-04:00",
-      "last_review_conviction": 6,
-      "thesis_status": "weakened",
+      "last_review_ts": "2026-05-20T15:05:39.853127-04:00",
+      "last_review_conviction": 5,
+      "thesis_status": "intact",
       "time_stop_flagged": false,
-      "consecutive_weakened_count": 1
+      "consecutive_weakened_count": 0
     },
     {
       "id": "AMD_20260519163507",
@@ -549,12 +555,12 @@
       "conviction": 7,
       "debate_id": "debate_AMD_20260519163507",
       "status": "open",
-      "key_risk": "Any signs of EPS growth trajectory slowing or forward guidance being reduced, as this would directly challenge our core growth-at-reasonable-price thesis",
+      "key_risk": "manual review recommended",
       "position_usd": 5930.18,
       "position_pct": 0.06,
       "sector": "Technology",
-      "last_review_ts": "2026-05-20T12:37:44.895163-04:00",
-      "last_review_conviction": 7,
+      "last_review_ts": "2026-05-20T15:05:42.273482-04:00",
+      "last_review_conviction": 5,
       "thesis_status": "intact",
       "time_stop_flagged": false,
       "consecutive_weakened_count": 0
@@ -4029,6 +4035,145 @@
       ],
       "regime": "bull",
       "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-05-20T19:06:05.716542",
+      "run_type": "midday",
+      "candidates": [
+        "AMD",
+        "DDOG",
+        "ARM",
+        "SMCI"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "sentinel_trigger",
+      "event_symbols": [
+        "AMD",
+        "ARM",
+        "DDOG",
+        "DOCS",
+        "GTLB",
+        "HIMS",
+        "IONQ",
+        "NVDA",
+        "SMCI"
+      ],
+      "event_details": [
+        {
+          "symbol": "AMD",
+          "trigger_type": "intraday_move",
+          "value": 0.0755,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": 0.0755,
+          "latest": 445.36,
+          "previous_close": 414.11
+        },
+        {
+          "symbol": "ARM",
+          "trigger_type": "intraday_move",
+          "value": 0.1355,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": 0.1355,
+          "latest": 253.38,
+          "previous_close": 223.14
+        },
+        {
+          "symbol": "GTLB",
+          "trigger_type": "intraday_move",
+          "value": 0.041,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": 0.041,
+          "latest": 26.51,
+          "previous_close": 25.47
+        },
+        {
+          "symbol": "HIMS",
+          "trigger_type": "intraday_rebound",
+          "value": 0.0404,
+          "threshold": 0.035,
+          "severity": "normal",
+          "latest": 22.89,
+          "intraday_low": 22.0
+        },
+        {
+          "symbol": "IONQ",
+          "trigger_type": "intraday_move",
+          "value": 0.0674,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": 0.0674,
+          "latest": 51.71,
+          "previous_close": 48.44
+        },
+        {
+          "symbol": "SMCI",
+          "trigger_type": "intraday_move",
+          "value": 0.0911,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": 0.0911,
+          "latest": 33.35,
+          "previous_close": 30.57
+        },
+        {
+          "symbol": "DDOG",
+          "trigger_type": "position_move",
+          "value": 0.0667,
+          "threshold": 0.025,
+          "severity": "high",
+          "price": 211.31,
+          "entry": 198.09
+        },
+        {
+          "symbol": "NVDA",
+          "trigger_type": "position_move",
+          "value": 0.0544,
+          "threshold": 0.025,
+          "severity": "high",
+          "price": 222.45,
+          "entry": 235.23
+        },
+        {
+          "symbol": "ARM",
+          "trigger_type": "position_move",
+          "value": 0.1414,
+          "threshold": 0.025,
+          "severity": "high",
+          "price": 253.38,
+          "entry": 222.0
+        },
+        {
+          "symbol": "DOCS",
+          "trigger_type": "position_move",
+          "value": 0.1147,
+          "threshold": 0.025,
+          "severity": "high",
+          "price": 19.82,
+          "entry": 17.78
+        },
+        {
+          "symbol": "AMD",
+          "trigger_type": "position_move",
+          "value": 0.0709,
+          "threshold": 0.025,
+          "severity": "high",
+          "price": 445.29,
+          "entry": 415.82
+        },
+        {
+          "symbol": "NVDA",
+          "trigger_type": "earnings_today",
+          "value": 1.0,
+          "threshold": 1.0,
+          "severity": "high"
+        }
+      ],
+      "regime": "bull",
+      "vix_regime": "normal"
     }
   ],
   "debate_logs": [
@@ -5593,6 +5738,50 @@
       "bear_score": 6,
       "final_conviction": 7,
       "decision": "buy"
+    },
+    {
+      "id": "debate_AMD_20260520190558",
+      "symbol": "AMD",
+      "ts": "2026-05-20T19:05:58.978741",
+      "bull_case": "R1 Bull(1): Bull case unavailable | R1 Bear(1): Bear case unavailable | R2 Bull(1): Bull case unavailable | R2 Bear(1): Bear case unavailable",
+      "bear_case": "Primary risk: unknown | Unresolved: ['unknown']",
+      "bull_score": 1,
+      "bear_score": 1,
+      "final_conviction": 1,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_DDOG_20260520190601",
+      "symbol": "DDOG",
+      "ts": "2026-05-20T19:06:01.281569",
+      "bull_case": "R1 Bull(1): Bull case unavailable | R1 Bear(1): Bear case unavailable | R2 Bull(1): Bull case unavailable | R2 Bear(1): Bear case unavailable",
+      "bear_case": "Primary risk: unknown | Unresolved: ['unknown']",
+      "bull_score": 1,
+      "bear_score": 1,
+      "final_conviction": 1,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_ARM_20260520190603",
+      "symbol": "ARM",
+      "ts": "2026-05-20T19:06:03.454024",
+      "bull_case": "R1 Bull(1): Bull case unavailable | R1 Bear(1): Bear case unavailable | R2 Bull(1): Bull case unavailable | R2 Bear(1): Bear case unavailable",
+      "bear_case": "Primary risk: unknown | Unresolved: ['unknown']",
+      "bull_score": 1,
+      "bear_score": 1,
+      "final_conviction": 1,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_SMCI_20260520190605",
+      "symbol": "SMCI",
+      "ts": "2026-05-20T19:06:05.534459",
+      "bull_case": "R1 Bull(1): Bull case unavailable | R1 Bear(1): Bear case unavailable | R2 Bull(1): Bull case unavailable | R2 Bear(1): Bear case unavailable",
+      "bear_case": "Primary risk: unknown | Unresolved: ['unknown']",
+      "bull_score": 1,
+      "bear_score": 1,
+      "final_conviction": 1,
+      "decision": "skip"
     }
   ],
   "position_reviews": [
@@ -7068,6 +7257,72 @@
       "key_risk_to_monitor": "Any signs of EPS growth trajectory slowing or forward guidance being reduced, as this would directly challenge our core growth-at-reasonable-price thesis",
       "current_bull_case": "R1 Bull(8): AMD is breaking out on exceptional AI-driven fundamentals with 91.2% EPS growth and 37.8% revenue growth, while strong technical momentum (ADX 50.9, RSI 69.2) confirms institutional accumulation ahead of broader market recognition. | R2 Bull(7): AMD's AI-driven earnings transformation justifies current momentum despite volume concerns, with the forward P/E of 34.3x providing reasonable valuation support if growth trajectory continues.",
       "current_bear_case": "R1 Bear(7): AMD's 149x TTM P/E reveals a company trading on pure AI hype rather than sustainable fundamentals, with deteriorating capital efficiency (8.1% ROE) indicating management is destroying shareholder value despite the growth narrative. | R2 Bear(8): AMD's 149x TTM P/E represents an unsustainable valuation bubble that technical strength cannot protect against once the market recognizes the company's deteriorating capital efficiency and the impossibility of growing into such extreme multiples."
+    },
+    {
+      "trade_id": "DDOG_20260512160556",
+      "symbol": "DDOG",
+      "ts": "2026-05-20T19:04:06.190109",
+      "action": "hold",
+      "conviction": 7,
+      "thesis_status": "intact",
+      "rationale": "The original thesis of explosive earnings momentum (104% EPS growth still confirmed) meeting dominant technical breakout conditions (ADX strengthened to 51.4 from 35.2) remains fully intact and has actually strengthened since entry.",
+      "original_thesis_check": "Yes - the rare combination of 104% EPS growth with dominant technical momentum (ADX 51.4, strong +DI) creating institutional momentum buying is still occurring and has intensified",
+      "key_risk_to_monitor": "Q4 earnings execution and guidance - any disappointment will trigger violent multiple compression given the extreme valuation leaves zero room for error",
+      "current_bull_case": "R1 Bull(8): DDOG is hitting an inflection point where explosive profitability gains (104% EPS growth) are finally being recognized by the market, creating momentum that will drive the stock through technical resistance as AI infrastructure demand accelerates. | R2 Bull(7): DDOG's explosive profitability inflection (104% EPS growth) combined with AI infrastructure tailwinds creates a powerful fundamental catalyst that will drive sustained momentum despite near-term volume concerns.",
+      "current_bear_case": "R1 Bear(7): DDOG is a momentum trap where extreme valuation meets execution vulnerability - the 104% EPS growth that justifies the premium is unsustainable, while the technical setup shows classic distribution patterns disguised as accumulation. | R2 Bear(6): DDOG remains a momentum trap where the 40-50% downside risk from margin compression and multiple compression when unsustainable growth moderates far outweighs any AI infrastructure tailwinds."
+    },
+    {
+      "trade_id": "NVDA_20260514152756",
+      "symbol": "NVDA",
+      "ts": "2026-05-20T19:04:58.133314",
+      "action": "trim",
+      "conviction": 6,
+      "thesis_status": "weakened",
+      "rationale": "The original thesis elements remain intact (regulatory relief, strong AI fundamentals with 0.7 PEG, technical momentum), but the debate reveals the 7.3x debt-to-equity ratio creates significantly more amplified downside volatility risk than adequately emphasized in the original analysis.",
+      "original_thesis_check": "The core reasons we bought (regulatory relief removing China overhang, exceptional AI-driven fundamentals with 95.6% EPS growth at 0.7 PEG, confirmed technical momentum) are all still true and even strengthened.",
+      "key_risk_to_monitor": "Any signs of AI demand normalization or broader market deleveraging events that could overwhelm NVDA's liquidity buffers despite their $26B cash position",
+      "trim_reason": "While the original thesis remains valid, the current debate has clarified that the 7.3x debt-to-equity ratio creates asymmetric downside risk that wasn't adequately weighted in our original conviction, warranting reduced position size for proper risk management",
+      "current_bull_case": "R1 Bull(9): NVDA's exceptional 95.6% EPS growth with a PEG ratio of only 0.7 signals massive undervaluation despite recent gains, while strong technical momentum (ADX>25, RSI at 61.1) provides perfect entry timing before earnings catalyze the next breakout. | R2 Bull(8): NVDA's 0.7 PEG ratio with strong technical momentum (ADX>25) still signals significant upside potential, though elevated leverage requires position sizing discipline given amplified volatility risk around earnings",
+      "current_bear_case": "R1 Bear(8): NVDA's 7.3x debt-to-equity ratio creates massive financial fragility that will amplify any earnings disappointment or AI cycle downturn into catastrophic value destruction, while the bull's 'undervaluation' ignores that this leverage makes the company uninvestable at any price. | R2 Bear(6): While NVDA's $26B cash and investment-grade rating provide near-term protection, the 7.3x debt-to-equity ratio still creates asymmetric downside risk if broader AI sentiment collapses faster than the company can deleverage."
+    },
+    {
+      "trade_id": "ARM_20260514152848",
+      "symbol": "ARM",
+      "ts": "2026-05-20T19:05:37.460254",
+      "action": "hold",
+      "conviction": 5,
+      "thesis_status": "intact",
+      "rationale": "Review agent unavailable \u2014 defaulting to hold",
+      "original_thesis_check": "could not assess",
+      "key_risk_to_monitor": "manual review recommended",
+      "current_bull_case": "R1 Bull(8): ARM is breaking out with institutional backing and explosive earnings growth that makes the forward P/E of 83x reasonable for a AI semiconductor infrastructure play in a confirmed bull market. | R2 Bull(7): ARM remains a momentum play with institutional backing and AI infrastructure exposure, but position sizing must account for elevated volatility risk from premium valuation ahead of earnings catalysts",
+      "current_bear_case": "R1 Bear(7): ARM's extreme valuation creates catastrophic downside risk where even minor earnings disappointments or market rotation will trigger institutional liquidation, amplified by elevated debt levels during a period when Fed policy could shift. | R2 Bear(7): ARM's extreme valuation creates catastrophic downside risk where even minor earnings disappointments or market rotation will trigger institutional liquidation, amplified by elevated debt levels during a period when Fed policy could shift."
+    },
+    {
+      "trade_id": "DOCS_20260514172410",
+      "symbol": "DOCS",
+      "ts": "2026-05-20T19:05:39.839248",
+      "action": "hold",
+      "conviction": 5,
+      "thesis_status": "intact",
+      "rationale": "Review agent unavailable \u2014 defaulting to hold",
+      "original_thesis_check": "could not assess",
+      "key_risk_to_monitor": "manual review recommended",
+      "current_bull_case": "R1 Bull(1): Bull case unavailable | R2 Bull(1): Bull case unavailable",
+      "current_bear_case": "R1 Bear(1): Bear case unavailable | R2 Bear(1): Bear case unavailable"
+    },
+    {
+      "trade_id": "AMD_20260519163507",
+      "symbol": "AMD",
+      "ts": "2026-05-20T19:05:42.259782",
+      "action": "hold",
+      "conviction": 5,
+      "thesis_status": "intact",
+      "rationale": "Review agent unavailable \u2014 defaulting to hold",
+      "original_thesis_check": "could not assess",
+      "key_risk_to_monitor": "manual review recommended",
+      "current_bull_case": "R1 Bull(1): Bull case unavailable | R2 Bull(1): Bull case unavailable",
+      "current_bear_case": "R1 Bear(1): Bear case unavailable | R2 Bear(1): Bear case unavailable"
     }
   ],
   "risk_decisions": [
@@ -8083,6 +8338,74 @@
       "pm_action": "buy",
       "pm_verdict": "The bear's valuation concerns are systemic to AI infrastructure stocks, not trade-specific to ARM, while confirmed institutional accumulation with ADX>25 momentum continuation justifies buying into strength toward the $300 target.",
       "risk_category": "already_holding"
+    },
+    {
+      "ts": "2026-05-20T19:05:58.962113",
+      "symbol": "AMD",
+      "action": "hold",
+      "reason": "Already holding AMD",
+      "conviction": 1,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 446.04,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "PM decision unavailable \u2014 defaulting to skip",
+      "risk_category": "already_holding"
+    },
+    {
+      "ts": "2026-05-20T19:06:01.265831",
+      "symbol": "DDOG",
+      "action": "hold",
+      "reason": "Already holding DDOG",
+      "conviction": 1,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 211.18,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "PM decision unavailable \u2014 defaulting to skip",
+      "risk_category": "already_holding"
+    },
+    {
+      "ts": "2026-05-20T19:06:03.437525",
+      "symbol": "ARM",
+      "action": "hold",
+      "reason": "Already holding ARM",
+      "conviction": 1,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 254.26,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "PM decision unavailable \u2014 defaulting to skip",
+      "risk_category": "already_holding"
+    },
+    {
+      "ts": "2026-05-20T19:06:05.518410",
+      "symbol": "SMCI",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 error",
+      "conviction": 1,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 33.38,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "PM decision unavailable \u2014 defaulting to skip",
+      "risk_category": "pm_decision"
     }
   ],
   "watchlists": [

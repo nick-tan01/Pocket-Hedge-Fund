@@ -281,6 +281,12 @@
       "portfolio_value": 100201.04,
       "cash": 59377.74,
       "spy_price": 741.25
+    },
+    {
+      "ts": "2026-05-21T16:31:02.577230",
+      "portfolio_value": 100426.52,
+      "cash": 61484.73,
+      "spy_price": 738.92
     }
   ],
   "trades": [],
@@ -4492,6 +4498,21 @@
       ],
       "regime": "bull",
       "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-05-21T16:31:02.595927",
+      "run_type": "midday",
+      "candidates": [
+        "LLY",
+        "AMD",
+        "DDOG",
+        "GOOGL"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "scheduled",
+      "regime": "bull",
+      "vix_regime": "normal"
     }
   ],
   "debate_logs": [
@@ -6188,6 +6209,50 @@
       "bear_score": 1,
       "final_conviction": 1,
       "decision": "skip"
+    },
+    {
+      "id": "debate_LLY_20260521162831",
+      "symbol": "LLY",
+      "ts": "2026-05-21T16:28:31.844701",
+      "bull_case": "R1 Bull(8): LLY's exceptional fundamental performance (170% EPS growth, 55% revenue growth) combined with breakthrough obesity pipeline success creates a rare growth-at-reasonable-price opportunity with forward P/E of just 23.4x. | R1 Bear(7): LLY's 139% debt-to-equity ratio creates a dangerous leverage trap that will amplify any earnings disappointment or clinical setback, while the 170% EPS growth is unsustainable and sets up for massive multiple compression when growth inevitably normalizes. | R2 Bull(7): Despite elevated leverage, LLY's dominant position in the $100B+ obesity market with proven clinical efficacy and 80%+ gross margins generates sufficient cash flows to service debt while delivering exceptional shareholder returns. | R2 Bear(6): While LLY's current obesity cash flows can service debt today, the company remains dangerously leveraged for the inevitable growth deceleration and multiple compression cycle that will coincide with higher refinancing costs.",
+      "bear_case": "Primary risk: Debt-fueled growth model collapses when 170% EPS growth normalizes, forcing deleveraging at the worst possible time and creating a feedback loop of falling multiples and rising borrowing costs. | Unresolved: ['The bull fails to address what happens when the 170% EPS growth normalizes and multiple compression occurs simultaneously with high debt servicing costs', 'Market saturation and competitive pressure in obesity market will compress margins and cash flows while debt obligations remain fixed', 'Rising interest rate environment makes refinancing this debt burden increasingly expensive regardless of current cash generation']",
+      "bull_score": 7,
+      "bear_score": 6,
+      "final_conviction": 7,
+      "decision": "buy"
+    },
+    {
+      "id": "debate_AMD_20260521162920",
+      "symbol": "AMD",
+      "ts": "2026-05-21T16:29:20.813463",
+      "bull_case": "R1 Bull(8): AMD's explosive 91% EPS growth is driving P/E compression to reasonable 34x forward levels while the $10B+ Taiwan AI investment signals management's conviction in capturing massive AI infrastructure buildout through 2026. | R1 Bear(7): AMD's massive $10B+ capital commitment creates dangerous execution risk and balance sheet strain while the company trades at premium valuations despite facing intensifying AI competition from NVIDIA's entrenched ecosystem. | R2 Bull(7): AMD's 91% EPS growth trajectory supported by necessary $10B AI infrastructure investment creates compelling risk-reward despite near-term execution challenges, with technical momentum (ADX 50.0) supporting continuation above resistance. | R2 Bear(6): AMD's $10B capital commitment faces execution risk amplified by NVIDIA's entrenched software ecosystem advantage that hardware parity alone cannot overcome, creating potential for significant capital destruction.",
+      "bear_case": "Primary risk: Catastrophic capital destruction if the $10B+ AI investment fails to generate expected returns due to execution delays, TSMC process issues, or continued NVIDIA market dominance, leaving AMD with massive debt burden and compressed margins | Unresolved: [\"NVIDIA's accelerating ecosystem lock-in through CUDA software dominance and enterprise partnerships could render AMD's hardware investments irrelevant regardless of execution quality\"]",
+      "bull_score": 7,
+      "bear_score": 6,
+      "final_conviction": 7,
+      "decision": "buy"
+    },
+    {
+      "id": "debate_DDOG_20260521163010",
+      "symbol": "DDOG",
+      "ts": "2026-05-21T16:30:10.500634",
+      "bull_case": "R1 Bull(9): DDOG is experiencing explosive earnings acceleration (104% EPS growth) while riding a powerful technical breakout with ADX at 53.2, positioning it perfectly for the AI-driven software sector rotation that's just beginning. | R1 Bear(8): DDOG is a profitability mirage trading at 568x TTM P/E with razor-thin 3.7% margins, where any growth deceleration will trigger violent multiple compression from these extended levels. | R2 Bull(8): DDOG's explosive earnings acceleration combined with ADX-confirmed momentum at 53.2 positions it perfectly for continued AI-driven outperformance, despite the execution risk inherent in all high-growth SaaS models | R2 Bear(7): While DDOG shows operating leverage, the 568x P/E creates an asymmetric risk/reward profile where any growth miss will trigger violent multiple compression that far exceeds potential upside from continued execution.",
+      "bear_case": "Primary risk: Profitability cliff risk - with 3.7% margins and 568x TTM P/E, any growth slowdown or operational misstep will trigger catastrophic multiple compression as the market realizes the emperor has no earnings clothes | Unresolved: ['568x P/E multiple leaves zero margin for error - even minor growth deceleration will cause catastrophic rerating regardless of sector dynamics']",
+      "bull_score": 8,
+      "bear_score": 7,
+      "final_conviction": 7,
+      "decision": "buy"
+    },
+    {
+      "id": "debate_GOOGL_20260521163102",
+      "symbol": "GOOGL",
+      "ts": "2026-05-21T16:31:02.381224",
+      "bull_case": "R1 Bull(8): GOOGL's explosive 82% EPS growth combined with exceptional 37.9% profit margins and strong technical momentum (ADX 48.5) creates a rare convergence of fundamental acceleration and technical breakout potential that overrides temporary sentiment headwinds. | R1 Bear(7): GOOGL's 82% EPS growth is a peak-cycle mirage occurring at 52-week highs with only 9% upside to consensus targets, creating an asymmetric risk profile where regulatory AI headwinds and valuation compression pose far greater downside than the modest remaining upside potential. | R2 Bull(7): GOOGL's 82% EPS growth acceleration and technical momentum (ADX 48.5) create compelling upside despite regulatory noise, as the company's diversified AI leadership and fortress balance sheet position it to benefit from rather than be destroyed by eventual regulatory clarity | R2 Bear(6): GOOGL's 82% peak-cycle EPS growth at 52-week highs with minimal upside buffer creates poor risk-reward despite defensive AI positioning, as growth normalization and valuation compression pose greater downside than the 9% remaining upside potential.",
+      "bear_case": "Primary risk: Regulatory AI crackdown triggers multiple compression from premium valuation while already near 52-week highs with limited upside buffer, creating potential for 20-30% drawdown versus 9% upside potential. | Unresolved: ['Peak-cycle EPS growth of 82% occurring at 52-week highs with only 9% upside buffer creates asymmetric downside risk when growth inevitably normalizes', 'Valuation compression risk from current premium multiples regardless of regulatory outcomes']",
+      "bull_score": 7,
+      "bear_score": 6,
+      "final_conviction": 7,
+      "decision": "buy"
     }
   ],
   "position_reviews": [
@@ -9064,6 +9129,74 @@
       "correlation": 0.0,
       "pm_action": "skip",
       "pm_verdict": "PM decision unavailable \u2014 defaulting to skip",
+      "risk_category": "already_holding"
+    },
+    {
+      "ts": "2026-05-21T16:28:31.825964",
+      "symbol": "LLY",
+      "action": "hold",
+      "reason": "Already holding LLY",
+      "conviction": 7,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 1039.99,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "buy",
+      "pm_verdict": "The bull's fundamental case remains compelling with 170% EPS growth and dominant obesity market position at a reasonable 23.4x forward P/E, while the bear's leverage concerns are systemic risks already reflected in current pricing rather than trade-specific catalysts.",
+      "risk_category": "already_holding"
+    },
+    {
+      "ts": "2026-05-21T16:29:20.794302",
+      "symbol": "AMD",
+      "action": "hold",
+      "reason": "Already holding AMD",
+      "conviction": 7,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 440.3,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "buy",
+      "pm_verdict": "The 91% EPS growth with P/E compression to 34x forward creates compelling value despite $10B execution risk, while ADX 50.0 and bullish technical alignment support momentum continuation through resistance.",
+      "risk_category": "already_holding"
+    },
+    {
+      "ts": "2026-05-21T16:30:10.481776",
+      "symbol": "DDOG",
+      "action": "hold",
+      "reason": "Already holding DDOG",
+      "conviction": 7,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 215.79,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "buy",
+      "pm_verdict": "DDOG's 104% EPS acceleration combined with ADX-confirmed momentum at 53.2 creates a compelling continuation setup in the AI software rotation, where the profitability concerns are systemic SaaS risks already priced into the growth multiple rather than trade-specific catalysts.",
+      "risk_category": "already_holding"
+    },
+    {
+      "ts": "2026-05-21T16:31:02.362318",
+      "symbol": "GOOGL",
+      "action": "hold",
+      "reason": "Already holding GOOGL",
+      "conviction": 7,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 388.89,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "buy",
+      "pm_verdict": "GOOGL's 82% EPS growth acceleration combined with strong technical momentum (ADX 48.5) in a confirmed uptrend creates a compelling risk-adjusted opportunity despite regulatory noise. The bear's regulatory concerns are largely systemic risks already being discounted by the market rather than trade-specific catalysts.",
       "risk_category": "already_holding"
     }
   ],

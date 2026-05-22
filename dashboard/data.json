@@ -323,6 +323,12 @@
       "portfolio_value": 101677.77,
       "cash": 65046.24,
       "spy_price": 747.21
+    },
+    {
+      "ts": "2026-05-22T18:59:28.353480",
+      "portfolio_value": 101704.79,
+      "cash": 65046.24,
+      "spy_price": 747.14
     }
   ],
   "trades": [
@@ -674,6 +680,22 @@
       "thesis_status": "intact",
       "time_stop_flagged": false,
       "consecutive_weakened_count": 0
+    },
+    {
+      "id": "MS_20260522185742",
+      "symbol": "MS",
+      "side": "buy",
+      "qty": 40.1836,
+      "entry_price": 202.48,
+      "entry_ts": "2026-05-22T18:57:42.225738",
+      "stop_price": 191.6,
+      "conviction": 8,
+      "debate_id": "debate_MS_20260522185742",
+      "status": "open",
+      "key_risk": "Sudden deterioration in IPO market conditions or specific news that SpaceX/OpenAI mandates are delayed or lost to competitors",
+      "position_usd": 8136.38,
+      "position_pct": 0.08,
+      "sector": "Financial Services"
     }
   ],
   "runs": [
@@ -5617,6 +5639,23 @@
       ],
       "regime": "bull",
       "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-05-22T18:59:28.371991",
+      "run_type": "midday",
+      "candidates": [
+        "AMD",
+        "LLY",
+        "GOOGL",
+        "MS",
+        "DDOG",
+        "QCOM"
+      ],
+      "trades_executed": 1,
+      "skipped_reason": "",
+      "reason": "scheduled",
+      "regime": "bull",
+      "vix_regime": "normal"
     }
   ],
   "debate_logs": [
@@ -7617,6 +7656,72 @@
       "ts": "2026-05-22T18:05:13.109560",
       "bull_case": "R1 Bull(8): ARM's explosive 46% five-day breakout with ADX>25 and RSI 76.5 signals the start of a major momentum phase driven by AI chip positioning, not a reversal setup. | R1 Bear(7): ARM's 46% surge has created a perfect storm of extreme valuation (355.9x P/E), technical exhaustion (RSI 76.5), and institutional distribution masquerading as accumulation that sets up catastrophic downside risk. | R2 Bull(7): ARM's ADX>25 momentum with institutional accumulation signals early-stage positioning for AI chip licensing expansion that will drive rapid earnings growth to justify current multiples, though extreme valuation creates near-term earnings sensitivity | R2 Bear(6): ARM's 355x P/E embeds perfect execution of an unproven AI licensing transformation where any shortfall in the speculative growth narrative triggers catastrophic multiple compression from unsustainable valuation levels.",
       "bear_case": "Primary risk: Valuation collapse from 355.9x P/E on any earnings miss or guidance disappointment, amplified by momentum unwind as overleveraged buyers get margin-called in a cascading selloff. | Unresolved: ['The AI chip licensing expansion thesis is speculative and unproven - ARM still derives most revenue from mobile/embedded markets with slower growth, and any execution stumble or competitive pressure from custom silicon threatens the entire AI monetization narrative']",
+      "bull_score": 7,
+      "bear_score": 6,
+      "final_conviction": 7,
+      "decision": "buy"
+    },
+    {
+      "id": "debate_AMD_20260522185456",
+      "symbol": "AMD",
+      "ts": "2026-05-22T18:54:56.213144",
+      "bull_case": "R1 Bull(8): AMD is breaking out on exceptional AI/datacenter execution with 91% EPS growth trading at only 1.1 PEG ratio, while technical momentum (ADX>25, RSI 73) confirms institutional accumulation ahead of the next leg higher. | R1 Bear(7): AMD's capital structure is dangerously overleveraged with 6.0 debt/equity ratio generating anemic 8.1% ROE, making it extremely vulnerable to any growth deceleration while trading at premium valuations that assume flawless AI execution. | R2 Bull(7): AMD's AI datacenter momentum remains intact with 91% EPS growth driven by US hyperscaler demand, while the 1.1 PEG ratio and strong technical momentum (ADX>25, RSI 73) signal continued institutional accumulation despite manageable China headwinds | R2 Bear(6): AMD's dangerous 6.0 debt/equity leverage will amplify any AI growth deceleration into severe capital destruction, while premium valuations leave no room for execution missteps in an increasingly competitive AI landscape.",
+      "bear_case": "Primary risk: Leveraged balance sheet (6.0 D/E) will amplify losses if AI market share erodes to Nvidia/Intel competition, turning temporary growth deceleration into permanent capital destruction | Unresolved: ['The core leverage concern remains unaddressed - 6.0 debt/equity ratio still creates massive downside risk if AI growth slows, regardless of geography']",
+      "bull_score": 7,
+      "bear_score": 6,
+      "final_conviction": 7,
+      "decision": "buy"
+    },
+    {
+      "id": "debate_LLY_20260522185552",
+      "symbol": "LLY",
+      "ts": "2026-05-22T18:55:52.775254",
+      "bull_case": "R1 Bull(8): LLY is experiencing a fundamental re-rating as breakthrough obesity drug data expands its addressable market by 10x while extraordinary profitability metrics prove the company can monetize pharmaceutical innovation at unprecedented scale. | R1 Bear(7): LLY's 139% debt-to-equity ratio creates fatal leverage risk that will amplify any slowdown in their obesity drug momentum, while technical weakness shows smart money is already positioning for disappointment. | R2 Bull(7): LLY's strategic leverage to capture the obesity mega-trend represents calculated risk-taking that will drive extraordinary returns as GLP-1 adoption accelerates, with their revenue diversification and market-leading position providing sufficient downside protection | R2 Bear(6): While LLY's current cash flows provide near-term covenant protection, their leveraged bet on obesity drugs faces intensifying competition that could rapidly transform strategic debt into a growth constraint.",
+      "bear_case": "Primary risk: Debt-driven liquidity squeeze if obesity drug revenue growth disappoints - with 139% debt-to-equity, LLY cannot survive a significant slowdown in their core growth driver without potential covenant breaches or forced equity raises at distressed prices. | Unresolved: ['Market saturation and competitive pressure from emerging GLP-1 competitors could quickly erode pricing power and market share, turning strategic leverage into a liability faster than diversified cash flows can adapt']",
+      "bull_score": 7,
+      "bear_score": 6,
+      "final_conviction": 7,
+      "decision": "buy"
+    },
+    {
+      "id": "debate_GOOGL_20260522185648",
+      "symbol": "GOOGL",
+      "ts": "2026-05-22T18:56:48.008174",
+      "bull_case": "R1 Bull(8): GOOGL is poised for a breakout driven by exceptional profitability (37.9% margins, 82% EPS growth) meeting a transformational AI catalyst that positions Google to capture meaningful AR/VR market share from Meta's 80% dominance. | R1 Bear(7): Google's AR/VR ambitions represent a massive capital allocation trap that will bleed resources while their core advertising business faces structural threats from AI disruption and regulatory pressure. | R2 Bull(6): GOOGL remains a compelling play on AI transformation and exceptional profitability, but near-term technical deterioration suggests waiting for volume confirmation before aggressive positioning | R2 Bear(6): Google faces an existential threat to its search advertising cash cow from AI disruption while simultaneously misallocating capital to hardware ventures, creating a dangerous transition period where neither the legacy business nor new ventures may deliver returns.",
+      "bear_case": "Primary risk: Capital allocation disaster where Google burns billions chasing hardware market share while their core search dominance gets disrupted by AI chatbots, leaving shareholders with neither the cash cow nor the successful pivot | Unresolved: [\"AI chatbots and search alternatives fundamentally disrupting Google's search monopoly and advertising revenue model\", 'Regulatory antitrust pressure potentially forcing business model changes or breakup']",
+      "bull_score": 6,
+      "bear_score": 6,
+      "final_conviction": 4,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_MS_20260522185742",
+      "symbol": "MS",
+      "ts": "2026-05-22T18:57:42.004940",
+      "bull_case": "R1 Bull(9): Morgan Stanley is capturing a generational wave of high-value IPO mandates including SpaceX ($80B) and OpenAI while trading at only 15.9x forward earnings despite 31.9% earnings growth and exceptional 24.8% profit margins. | R1 Bear(7): Morgan Stanley's 502.2% debt-to-equity ratio creates catastrophic vulnerability to any credit market disruption or rate environment shift, making this a leveraged bet on perfect market conditions continuing indefinitely. | R2 Bull(8): Morgan Stanley's market-leading position in high-value mandates and 24.8% profit margins create asymmetric upside despite revenue timing uncertainties, while leverage concerns are standard TYPE B systemic risks already reflected in the reasonable 15.9x forward multiple | R2 Bear(6): Morgan Stanley's heavy dependence on cyclical investment banking fees exposes shareholders to severe earnings volatility that cannot be mitigated by market share advantages during extended market weakness.",
+      "bear_case": "Primary risk: Credit market disruption or rising funding costs that force deleveraging at the worst possible time, potentially requiring asset sales or equity raises at distressed valuations. | Unresolved: ['Concentration risk in volatile investment banking revenues creates earnings instability that IPO optionality cannot fully offset during prolonged market downturns']",
+      "bull_score": 8,
+      "bear_score": 6,
+      "final_conviction": 8,
+      "decision": "buy"
+    },
+    {
+      "id": "debate_DDOG_20260522185833",
+      "symbol": "DDOG",
+      "ts": "2026-05-22T18:58:33.686453",
+      "bull_case": "R1 Bull(8): DDOG is breaking out on explosive fundamental acceleration with 104% EPS growth while technical momentum remains intact despite overbought readings, creating a rare convergence of earnings power and price momentum in a dominant trend. | R1 Bear(7): DDOG's 104% EPS growth is built on an unsustainable 3.7% profit margin foundation that creates massive downside risk when growth inevitably slows, while extreme technical overbought conditions at RSI 84.5 signal imminent mean reversion despite trend strength. | R2 Bull(7): DDOG represents a calculated risk-reward opportunity where strong technical momentum (ADX 55.2) and fundamental acceleration create upside potential that outweighs margin expansion risks in a dominant market position | R2 Bear(6): DDOG's extreme valuation at 571.4 P/E creates asymmetric downside risk where any earnings disappointment or growth deceleration triggers severe multiple compression, regardless of whether current margins reflect strategic choice or structural weakness.",
+      "bear_case": "Primary risk: Margin compression or growth deceleration will cause exponential earnings collapse due to the 3.7% profit margin foundation, triggering immediate multiple compression from the extreme TTM P/E of 571.4 and creating 40-50% downside risk. | Unresolved: ['The bull failed to address how a 571.4 P/E creates catastrophic downside vulnerability even with minor earnings misses - even if margins are strategically thin, the valuation leaves zero room for execution errors or macro headwinds']",
+      "bull_score": 7,
+      "bear_score": 6,
+      "final_conviction": 7,
+      "decision": "buy"
+    },
+    {
+      "id": "debate_QCOM_20260522185928",
+      "symbol": "QCOM",
+      "ts": "2026-05-22T18:59:28.041680",
+      "bull_case": "R1 Bull(9): QCOM is breaking out on explosive momentum with ADX>41 confirming a powerful trend fueled by 173% EPS growth and transformative automotive AI partnerships that position it at the center of the next computing platform shift. | R1 Bear(8): QCOM's explosive EPS growth is masking fundamental deterioration as declining revenues and dangerous debt levels create a perfect storm for margin compression when the automotive AI promises inevitably face execution reality. | R2 Bull(7): QCOM's ADX>41 technical breakout reflects institutional recognition that cyclical smartphone headwinds are being offset by structural automotive AI positioning, with sufficient balance sheet strength to bridge the transition. | R2 Bear(6): While QCOM's balance sheet provides near-term stability, the multi-year gap between smartphone revenue decline and automotive AI monetization creates sustained margin pressure that even strong cash flow may not fully offset.",
+      "bear_case": "Primary risk: Revenue decline accelerates as smartphone market weakens further while automotive AI revenue remains years away, forcing margin compression that exposes the unsustainable debt structure and triggers institutional selling that turns technical momentum violently bearish. | Unresolved: ['Automotive AI revenue timeline uncertainty creates extended period where declining smartphone revenues cannot be offset, potentially forcing margin compression despite current cash cushion']",
       "bull_score": 7,
       "bear_score": 6,
       "final_conviction": 7,
@@ -11468,6 +11573,109 @@
       "correlation": 0.0,
       "pm_action": "buy",
       "pm_verdict": "The ADX>25 momentum regime with institutional accumulation outweighs valuation concerns in this confirmed uptrend, as the bear's primary argument rests on systemic P/E premium risk rather than trade-specific catalysts.",
+      "risk_category": "already_holding"
+    },
+    {
+      "ts": "2026-05-22T18:54:56.194730",
+      "symbol": "AMD",
+      "action": "hold",
+      "reason": "Already holding AMD",
+      "conviction": 7,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 470.43,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "buy",
+      "pm_verdict": "AMD's 91% EPS growth with fair 1.1 PEG valuation combined with strong technical momentum (ADX>25, RSI 73) creates a compelling momentum continuation setup that outweighs systemic leverage concerns already priced into the sector.",
+      "risk_category": "already_holding"
+    },
+    {
+      "ts": "2026-05-22T18:55:52.756348",
+      "symbol": "LLY",
+      "action": "hold",
+      "reason": "Already holding LLY",
+      "conviction": 7,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 1068.02,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "buy",
+      "pm_verdict": "LLY's extraordinary fundamentals (170% EPS growth, 107% ROE) driven by breakthrough obesity drugs justify the premium despite leverage concerns, which are manageable given the $45B revenue base and investment-grade profile.",
+      "risk_category": "already_holding"
+    },
+    {
+      "ts": "2026-05-22T18:56:47.990141",
+      "symbol": "GOOGL",
+      "action": "hold",
+      "reason": "Already holding GOOGL",
+      "conviction": 4,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 384.55,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "The combination of confirmed technical deterioration (MACD breakdown, 0.38x volume ratio indicating institutional selling) and legitimate capital allocation concerns around AR/VR hardware ventures creates trade-specific near-term headwinds that outweigh the strong fundamental metrics.",
+      "risk_category": "already_holding"
+    },
+    {
+      "ts": "2026-05-22T18:57:41.986460",
+      "symbol": "MS",
+      "action": "buy",
+      "reason": "PM conviction=8 | size=8% ($8,136) | regime=bull/normal | ATR=4.35 x2.5 | stop=$191.6 (-5.37%)",
+      "conviction": 8,
+      "rotate_from": "",
+      "position_usd": 8136.38,
+      "shares": 40.1836,
+      "entry_price": 202.48,
+      "stop_price": 191.6,
+      "stop_pct": 5.37,
+      "sector": "Financial Services",
+      "correlation": 0.0,
+      "pm_action": "buy",
+      "pm_verdict": "Morgan Stanley's positioning in high-value IPO mandates (SpaceX, OpenAI) combined with exceptional operational metrics (24.8% margins, 31.9% growth) at a reasonable 15.9x forward multiple creates asymmetric upside that outweighs standard investment banking cyclicality. The bear's leverage concerns are systemic TYPE B risks already reflected in pricing across all investment banks.",
+      "risk_category": "approved"
+    },
+    {
+      "ts": "2026-05-22T18:58:33.668266",
+      "symbol": "DDOG",
+      "action": "hold",
+      "reason": "Already holding DDOG",
+      "conviction": 7,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 222.86,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "buy",
+      "pm_verdict": "DDOG presents a momentum continuation opportunity where explosive EPS growth (104%) and dominant technical trend (ADX 55.2) create favorable risk-reward despite valuation concerns that are systemic to the growth tech sector.",
+      "risk_category": "already_holding"
+    },
+    {
+      "ts": "2026-05-22T18:59:28.023435",
+      "symbol": "QCOM",
+      "action": "hold",
+      "reason": "Already holding QCOM",
+      "conviction": 7,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 240.91,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "buy",
+      "pm_verdict": "QCOM's technical breakout momentum (ADX>41) combined with extraordinary EPS growth acceleration creates a compelling risk-adjusted opportunity despite the revenue transition timing mismatch. The bear's concerns about smartphone decline vs automotive AI timeline are valid but represent execution risk, not systemic breakdown, while the company's $7.2B cash provides adequate runway.",
       "risk_category": "already_holding"
     }
   ],

@@ -6747,6 +6747,100 @@
       "reason": "scheduled",
       "regime": "bull",
       "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-05-26T19:11:59.208010",
+      "run_type": "midday",
+      "candidates": [],
+      "trades_executed": 0,
+      "skipped_reason": "no_candidates",
+      "reason": "sentinel_trigger",
+      "event_symbols": [
+        "ACLS",
+        "AMD",
+        "ARM",
+        "DDOG",
+        "LLY",
+        "QCOM"
+      ],
+      "event_details": [
+        {
+          "symbol": "ACLS",
+          "trigger_type": "intraday_move",
+          "value": 0.0367,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": 0.0367,
+          "latest": 162.85,
+          "previous_close": 157.08
+        },
+        {
+          "symbol": "AMD",
+          "trigger_type": "intraday_move",
+          "value": 0.0827,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": 0.0827,
+          "latest": 506.17,
+          "previous_close": 467.51
+        },
+        {
+          "symbol": "AMD",
+          "trigger_type": "intraday_rebound",
+          "value": 0.0372,
+          "threshold": 0.035,
+          "severity": "normal",
+          "latest": 506.17,
+          "intraday_low": 488.0
+        },
+        {
+          "symbol": "DDOG",
+          "trigger_type": "position_move",
+          "value": 0.1305,
+          "threshold": 0.025,
+          "severity": "high",
+          "price": 223.95,
+          "entry": 198.09
+        },
+        {
+          "symbol": "ARM",
+          "trigger_type": "position_move",
+          "value": 0.4384,
+          "threshold": 0.025,
+          "severity": "high",
+          "price": 319.33,
+          "entry": 222.0
+        },
+        {
+          "symbol": "QCOM",
+          "trigger_type": "position_move",
+          "value": 0.207,
+          "threshold": 0.025,
+          "severity": "high",
+          "price": 245.84,
+          "entry": 203.67
+        },
+        {
+          "symbol": "AMD",
+          "trigger_type": "position_move",
+          "value": 0.2174,
+          "threshold": 0.025,
+          "severity": "high",
+          "price": 506.23,
+          "entry": 415.82
+        },
+        {
+          "symbol": "LLY",
+          "trigger_type": "position_move",
+          "value": 0.0562,
+          "threshold": 0.025,
+          "severity": "high",
+          "price": 1072.77,
+          "entry": 1015.67
+        }
+      ],
+      "regime": "bull",
+      "vix_regime": "normal"
     }
   ],
   "debate_logs": [

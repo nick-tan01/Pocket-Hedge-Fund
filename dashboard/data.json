@@ -7367,6 +7367,224 @@
       "reason": "scheduled",
       "regime": "bull",
       "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-05-27T21:16:50.302543",
+      "run_type": "midday",
+      "candidates": [],
+      "trades_executed": 0,
+      "skipped_reason": "no_candidates",
+      "reason": "sentinel_trigger",
+      "event_symbols": [
+        "AMD",
+        "ARM",
+        "CELH",
+        "COHR",
+        "CRWD",
+        "DDOG",
+        "DOCS",
+        "HIMS",
+        "IONQ",
+        "LLY",
+        "MS",
+        "MSTR",
+        "NET",
+        "QCOM",
+        "RKLB",
+        "SNOW"
+      ],
+      "event_details": [
+        {
+          "symbol": "ARM",
+          "trigger_type": "intraday_move",
+          "value": 0.0587,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": -0.0587,
+          "latest": 302.51,
+          "previous_close": 321.37
+        },
+        {
+          "symbol": "CELH",
+          "trigger_type": "intraday_move",
+          "value": 0.066,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": 0.066,
+          "latest": 31.64,
+          "previous_close": 29.67
+        },
+        {
+          "symbol": "COHR",
+          "trigger_type": "intraday_rebound",
+          "value": 0.0504,
+          "threshold": 0.035,
+          "severity": "normal",
+          "latest": 380.27,
+          "intraday_low": 362.03
+        },
+        {
+          "symbol": "CRWD",
+          "trigger_type": "intraday_move",
+          "value": 0.0392,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": -0.0392,
+          "latest": 645.2,
+          "previous_close": 671.55
+        },
+        {
+          "symbol": "DOCS",
+          "trigger_type": "intraday_move",
+          "value": 0.0378,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": 0.0378,
+          "latest": 20.26,
+          "previous_close": 19.52
+        },
+        {
+          "symbol": "HIMS",
+          "trigger_type": "intraday_move",
+          "value": 0.0562,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": 0.0562,
+          "latest": 25.19,
+          "previous_close": 23.85
+        },
+        {
+          "symbol": "IONQ",
+          "trigger_type": "intraday_rebound",
+          "value": 0.0874,
+          "threshold": 0.035,
+          "severity": "high",
+          "latest": 65.38,
+          "intraday_low": 60.12
+        },
+        {
+          "symbol": "MSTR",
+          "trigger_type": "intraday_move",
+          "value": 0.0361,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": -0.0361,
+          "latest": 154.15,
+          "previous_close": 159.93
+        },
+        {
+          "symbol": "NET",
+          "trigger_type": "intraday_move",
+          "value": 0.0382,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": -0.0382,
+          "latest": 209.23,
+          "previous_close": 217.55
+        },
+        {
+          "symbol": "QCOM",
+          "trigger_type": "intraday_move",
+          "value": 0.0619,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": -0.0619,
+          "latest": 233.41,
+          "previous_close": 248.81
+        },
+        {
+          "symbol": "QCOM",
+          "trigger_type": "intraday_rebound",
+          "value": 0.038,
+          "threshold": 0.035,
+          "severity": "normal",
+          "latest": 233.41,
+          "intraday_low": 224.88
+        },
+        {
+          "symbol": "RKLB",
+          "trigger_type": "intraday_move",
+          "value": 0.0484,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": 0.0484,
+          "latest": 150.23,
+          "previous_close": 143.3
+        },
+        {
+          "symbol": "RKLB",
+          "trigger_type": "intraday_rebound",
+          "value": 0.0839,
+          "threshold": 0.035,
+          "severity": "high",
+          "latest": 150.23,
+          "intraday_low": 138.6
+        },
+        {
+          "symbol": "DDOG",
+          "trigger_type": "position_move",
+          "value": 0.1197,
+          "threshold": 0.025,
+          "severity": "high",
+          "price": 221.81,
+          "entry": 198.09
+        },
+        {
+          "symbol": "ARM",
+          "trigger_type": "position_move",
+          "value": 0.3636,
+          "threshold": 0.025,
+          "severity": "high",
+          "price": 302.71,
+          "entry": 222.0
+        },
+        {
+          "symbol": "QCOM",
+          "trigger_type": "position_move",
+          "value": 0.146,
+          "threshold": 0.025,
+          "severity": "high",
+          "price": 233.4,
+          "entry": 203.67
+        },
+        {
+          "symbol": "AMD",
+          "trigger_type": "position_move",
+          "value": 0.1917,
+          "threshold": 0.025,
+          "severity": "high",
+          "price": 495.54,
+          "entry": 415.82
+        },
+        {
+          "symbol": "LLY",
+          "trigger_type": "position_move",
+          "value": 0.0662,
+          "threshold": 0.025,
+          "severity": "high",
+          "price": 1082.92,
+          "entry": 1015.67
+        },
+        {
+          "symbol": "MS",
+          "trigger_type": "near_stop",
+          "value": 1.0708,
+          "threshold": 0.85,
+          "severity": "high",
+          "current": 190.83,
+          "entry": 202.48,
+          "stop": 191.6
+        },
+        {
+          "symbol": "SNOW",
+          "trigger_type": "earnings_today",
+          "value": 1.0,
+          "threshold": 1.0,
+          "severity": "high"
+        }
+      ],
+      "regime": "bull",
+      "vix_regime": "normal"
     }
   ],
   "debate_logs": [

@@ -341,6 +341,12 @@
       "portfolio_value": 101438.53,
       "cash": 56907.45,
       "spy_price": 745.64
+    },
+    {
+      "ts": "2026-05-28T21:45:38.139524",
+      "portfolio_value": 103498.47,
+      "cash": 56907.42,
+      "spy_price": 754.6
     }
   ],
   "trades": [
@@ -500,7 +506,7 @@
       "conviction": 7,
       "debate_id": "debate_DDOG_20260512160556",
       "status": "open",
-      "key_risk": "Any deceleration in quarterly EPS growth momentum below 100% in upcoming earnings, as this remains the primary threat to our momentum-based thesis and could trigger violent multiple compression from the 570x P/E.",
+      "key_risk": "Any deceleration in quarterly EPS growth momentum below 100% in upcoming earnings, as this remains the primary threat to our momentum-based thesis and could trigger violent multiple compression from the extreme valuation.",
       "position_usd": 1998.65,
       "position_pct": 0.02,
       "sector": "Technology",
@@ -513,7 +519,7 @@
           "reason": "The self-reinforcing institutional momentum chase that was core to our thesis is not materializing as evidenced by the 0.41x volume ratio, though the fundamental and technical components remain strong enough to warrant partial position retention."
         }
       ],
-      "last_review_ts": "2026-05-22T17:38:17.672241-04:00",
+      "last_review_ts": "2026-05-28T17:37:06.855727-04:00",
       "last_review_conviction": 8,
       "thesis_status": "intact",
       "time_stop_flagged": false,
@@ -530,11 +536,11 @@
       "conviction": 7,
       "debate_id": "debate_GOOGL_20260513160622",
       "status": "open",
-      "key_risk": "Any material deterioration in quarterly margin trends or unexpected acceleration in AI infrastructure capex that would signal the margin compression thesis is materializing faster than expected.",
+      "key_risk": "Any material deterioration in quarterly margin trends as AI capex spending accelerates, particularly given Anthropic's $65B competitive positioning",
       "position_usd": 4066.61,
       "position_pct": 0.0419,
       "sector": "Communication Services",
-      "last_review_ts": "2026-05-22T16:03:29.109622-04:00",
+      "last_review_ts": "2026-05-28T17:37:55.762240-04:00",
       "last_review_conviction": 7,
       "thesis_status": "intact",
       "time_stop_flagged": false,
@@ -581,11 +587,11 @@
       "conviction": 7,
       "debate_id": "debate_ARM_20260514152848",
       "status": "open",
-      "key_risk": "Next earnings report for any miss or guidance disappointment that could trigger catastrophic multiple compression from the 356x P/E, which remains the original identified binary risk",
+      "key_risk": "Next earnings report for any miss or guidance disappointment that could trigger catastrophic multiple compression from the now 394x P/E ratio, which remains the critical binary risk point.",
       "position_usd": 1981.21,
       "position_pct": 0.0212,
       "sector": "Technology",
-      "last_review_ts": "2026-05-22T17:39:09.839502-04:00",
+      "last_review_ts": "2026-05-28T17:38:49.018603-04:00",
       "last_review_conviction": 7,
       "thesis_status": "intact",
       "time_stop_flagged": false,
@@ -618,11 +624,11 @@
       "conviction": 7,
       "debate_id": "debate_QCOM_20260514152935",
       "status": "open",
-      "key_risk": "Revenue trajectory in upcoming earnings to assess whether the timing mismatch between declining 5G and ramping automotive revenues is creating unsustainable cash burn, particularly given the extreme technical extension with RSI at 71.9",
+      "key_risk": "Revenue trajectory in next earnings to assess whether AI chip revenues are materializing fast enough to offset any acceleration in core mobile business decline",
       "position_usd": 1992.23,
       "position_pct": 0.0202,
       "sector": "Technology",
-      "last_review_ts": "2026-05-22T17:39:58.051722-04:00",
+      "last_review_ts": "2026-05-28T17:39:40.869045-04:00",
       "last_review_conviction": 8,
       "thesis_status": "intact",
       "time_stop_flagged": false,
@@ -666,11 +672,16 @@
       "position_usd": 5930.18,
       "position_pct": 0.06,
       "sector": "Technology",
-      "last_review_ts": "2026-05-22T17:40:48.733896-04:00",
-      "last_review_conviction": 7,
-      "thesis_status": "intact",
+      "last_review_ts": "2026-05-28T17:40:32.847532-04:00",
+      "last_review_conviction": 6,
+      "thesis_status": "weakened",
       "time_stop_flagged": false,
-      "consecutive_weakened_count": 0
+      "consecutive_weakened_count": 1,
+      "queued_action": {
+        "action": "trim",
+        "reason": "High debt ratio creates amplified downside risk to AI spending slowdowns that materially increases the impact of our original key risk beyond what we underwrote",
+        "queued_ts": "2026-05-28T21:40:32.825415"
+      }
     },
     {
       "id": "LLY_20260519190455",
@@ -683,12 +694,12 @@
       "conviction": 7,
       "debate_id": "debate_LLY_20260519190455",
       "status": "open",
-      "key_risk": "Any concrete Medicare pricing reform announcements specifically targeting GLP-1 obesity treatments or LLY's therapeutic areas that could threaten the earnings growth momentum",
+      "key_risk": "Any concrete announcements of Medicare pricing reforms specifically targeting GLP-1 obesity treatments, and early indicators of growth deceleration from the impossible 170% EPS comparison base",
       "position_usd": 5942.08,
       "position_pct": 0.06,
       "sector": "Healthcare",
-      "last_review_ts": "2026-05-22T16:07:05.669411-04:00",
-      "last_review_conviction": 8,
+      "last_review_ts": "2026-05-28T17:41:25.390348-04:00",
+      "last_review_conviction": 7,
       "thesis_status": "intact",
       "time_stop_flagged": false,
       "consecutive_weakened_count": 0
@@ -8078,6 +8089,279 @@
       ],
       "regime": "bull",
       "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-05-28T21:45:38.167706",
+      "run_type": "midday",
+      "candidates": [
+        "SNOW",
+        "GOOGL",
+        "AMD",
+        "DDOG"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "sentinel_trigger",
+      "event_symbols": [
+        "AMD",
+        "ARM",
+        "CELH",
+        "CRWD",
+        "DDOG",
+        "DOCS",
+        "GOOGL",
+        "IONQ",
+        "LLY",
+        "NET",
+        "PLTR",
+        "QCOM",
+        "SMCI",
+        "SNOW",
+        "TTD"
+      ],
+      "event_details": [
+        {
+          "symbol": "AMD",
+          "trigger_type": "intraday_move",
+          "value": 0.0452,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": 0.0452,
+          "latest": 518.14,
+          "previous_close": 495.75
+        },
+        {
+          "symbol": "AMD",
+          "trigger_type": "intraday_rebound",
+          "value": 0.0427,
+          "threshold": 0.035,
+          "severity": "normal",
+          "latest": 518.14,
+          "intraday_low": 496.92
+        },
+        {
+          "symbol": "ARM",
+          "trigger_type": "intraday_move",
+          "value": 0.1082,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": 0.1082,
+          "latest": 335.24,
+          "previous_close": 302.51
+        },
+        {
+          "symbol": "ARM",
+          "trigger_type": "intraday_rebound",
+          "value": 0.0529,
+          "threshold": 0.035,
+          "severity": "normal",
+          "latest": 335.24,
+          "intraday_low": 318.39
+        },
+        {
+          "symbol": "CELH",
+          "trigger_type": "intraday_move",
+          "value": 0.0498,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": 0.0498,
+          "latest": 33.21,
+          "previous_close": 31.64
+        },
+        {
+          "symbol": "CRWD",
+          "trigger_type": "intraday_move",
+          "value": 0.04,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": 0.04,
+          "latest": 671.0,
+          "previous_close": 645.2
+        },
+        {
+          "symbol": "DOCS",
+          "trigger_type": "intraday_move",
+          "value": 0.0397,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": 0.0397,
+          "latest": 21.07,
+          "previous_close": 20.26
+        },
+        {
+          "symbol": "IONQ",
+          "trigger_type": "intraday_move",
+          "value": 0.0728,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": 0.0728,
+          "latest": 70.14,
+          "previous_close": 65.38
+        },
+        {
+          "symbol": "IONQ",
+          "trigger_type": "intraday_rebound",
+          "value": 0.0551,
+          "threshold": 0.035,
+          "severity": "normal",
+          "latest": 70.14,
+          "intraday_low": 66.48
+        },
+        {
+          "symbol": "LLY",
+          "trigger_type": "intraday_move",
+          "value": 0.0404,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": 0.0404,
+          "latest": 1127.46,
+          "previous_close": 1083.73
+        },
+        {
+          "symbol": "NET",
+          "trigger_type": "intraday_move",
+          "value": 0.0907,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": 0.0907,
+          "latest": 228.2,
+          "previous_close": 209.23
+        },
+        {
+          "symbol": "NET",
+          "trigger_type": "intraday_rebound",
+          "value": 0.0557,
+          "threshold": 0.035,
+          "severity": "normal",
+          "latest": 228.2,
+          "intraday_low": 216.16
+        },
+        {
+          "symbol": "PLTR",
+          "trigger_type": "intraday_move",
+          "value": 0.0816,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": 0.0816,
+          "latest": 143.33,
+          "previous_close": 132.52
+        },
+        {
+          "symbol": "QCOM",
+          "trigger_type": "intraday_move",
+          "value": 0.042,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": 0.042,
+          "latest": 243.22,
+          "previous_close": 233.41
+        },
+        {
+          "symbol": "QCOM",
+          "trigger_type": "intraday_rebound",
+          "value": 0.0397,
+          "threshold": 0.035,
+          "severity": "normal",
+          "latest": 243.22,
+          "intraday_low": 233.94
+        },
+        {
+          "symbol": "SMCI",
+          "trigger_type": "intraday_move",
+          "value": 0.0817,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": 0.0817,
+          "latest": 41.31,
+          "previous_close": 38.19
+        },
+        {
+          "symbol": "SMCI",
+          "trigger_type": "intraday_rebound",
+          "value": 0.0837,
+          "threshold": 0.035,
+          "severity": "high",
+          "latest": 41.31,
+          "intraday_low": 38.12
+        },
+        {
+          "symbol": "SNOW",
+          "trigger_type": "intraday_move",
+          "value": 0.3639,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": 0.3639,
+          "latest": 239.11,
+          "previous_close": 175.31
+        },
+        {
+          "symbol": "TTD",
+          "trigger_type": "intraday_move",
+          "value": 0.0511,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": -0.0511,
+          "latest": 21.15,
+          "previous_close": 22.29
+        },
+        {
+          "symbol": "DDOG",
+          "trigger_type": "position_move",
+          "value": 0.1371,
+          "threshold": 0.025,
+          "severity": "high",
+          "price": 225.24,
+          "entry": 198.09
+        },
+        {
+          "symbol": "ARM",
+          "trigger_type": "position_move",
+          "value": 0.5102,
+          "threshold": 0.025,
+          "severity": "high",
+          "price": 335.27,
+          "entry": 222.0
+        },
+        {
+          "symbol": "QCOM",
+          "trigger_type": "position_move",
+          "value": 0.1945,
+          "threshold": 0.025,
+          "severity": "high",
+          "price": 243.29,
+          "entry": 203.67
+        },
+        {
+          "symbol": "AMD",
+          "trigger_type": "position_move",
+          "value": 0.2459,
+          "threshold": 0.025,
+          "severity": "high",
+          "price": 518.09,
+          "entry": 415.82
+        },
+        {
+          "symbol": "LLY",
+          "trigger_type": "position_move",
+          "value": 0.1094,
+          "threshold": 0.025,
+          "severity": "high",
+          "price": 1126.8,
+          "entry": 1015.67
+        },
+        {
+          "symbol": "GOOGL",
+          "trigger_type": "near_stop",
+          "value": 1.0873,
+          "threshold": 0.85,
+          "severity": "high",
+          "current": 368.28,
+          "entry": 398.42,
+          "stop": 370.7
+        }
+      ],
+      "regime": "bull",
+      "vix_regime": "normal"
     }
   ],
   "debate_logs": [
@@ -10236,6 +10520,50 @@
       "bear_score": 8,
       "final_conviction": 4,
       "decision": "skip"
+    },
+    {
+      "id": "debate_SNOW_20260528214252",
+      "symbol": "SNOW",
+      "ts": "2026-05-28T21:42:52.873628",
+      "bull_case": "R1 Bull(8): SNOW is experiencing a fundamental AI-driven inflection point that has triggered massive institutional accumulation, evidenced by the stock's 37% surge on a 'milestone quarter' with 4.85x volume confirming this isn't just technical noise but a genuine breakout. | R1 Bear(7): SNOW's AI narrative is masking unsustainable financial deterioration, with extreme valuation multiples (92.5x forward P/E) creating catastrophic downside risk when the technical momentum inevitably reverses from these severely overbought levels. | R2 Bull(7): SNOW remains at an AI-driven inflection point with genuine institutional backing, but the parabolic technical setup creates near-term volatility risk that could provide better entry points for the long-term AI data infrastructure thesis | R2 Bear(6): While institutional backing may extend the momentum longer than expected, SNOW's 92.5x P/E represents an unsustainable disconnection from profitability fundamentals that creates severe downside risk when the AI narrative inevitably moderates.",
+      "bear_case": "Primary risk: Catastrophic wealth destruction when momentum reverses from these parabolic levels, with 92.5x P/E providing no valuation floor and negative profitability ensuring no dividend support during the collapse. | Unresolved: ['The 92.5x forward P/E remains catastrophically disconnected from fundamentals regardless of AI narrative, creating inevitable mean reversion risk', 'No addressing of the underlying profitability challenges that leave zero margin of safety during any growth deceleration', 'Institutional accumulation can reverse just as quickly when AI euphoria cycle turns, leaving no valuation floor']",
+      "bull_score": 7,
+      "bear_score": 6,
+      "final_conviction": 7,
+      "decision": "buy"
+    },
+    {
+      "id": "debate_GOOGL_20260528214354",
+      "symbol": "GOOGL",
+      "ts": "2026-05-28T21:43:54.562511",
+      "bull_case": "R1 Bull(9): GOOGL's exceptional fundamentals (37.9% profit margin, 82% EPS growth) combined with powerful technical momentum (ADX 44.9, bullish EMA alignment) create a compelling breakout opportunity trading at only 26.9x forward P/E despite best-in-class profitability metrics. | R1 Bear(7): GOOGL's AI moat is crumbling as Anthropic's $65B raise and AWS partnership signals Google is becoming a commodity chip supplier while competitors capture the high-margin AI platform layer. | R2 Bull(7): Despite near-term AI partnership concerns, GOOGL's unmatched combination of consumer AI distribution through search/YouTube and enterprise cloud capabilities, trading at reasonable 26.9x forward P/E with exceptional 37.9% margins, positions it to capture multiple layers of the AI value stack that competitors cannot replicate | R2 Bear(6): While Google retains consumer AI dominance, its enterprise cloud weakness leaves it exposed to becoming a secondary infrastructure player as AWS and Azure capture the high-growth enterprise AI spending through superior partnership ecosystems.",
+      "bear_case": "Primary risk: Google's transformation from AI platform leader to commodity chip supplier as major AI companies choose competitor infrastructure, permanently impairing the multiple expansion thesis. | Unresolved: [\"Google's enterprise cloud business lacks the partnership momentum of AWS/Azure, making it vulnerable to being relegated to a secondary infrastructure provider as major AI companies choose competitor platforms for their primary deployments\"]",
+      "bull_score": 7,
+      "bear_score": 6,
+      "final_conviction": 7,
+      "decision": "buy"
+    },
+    {
+      "id": "debate_AMD_20260528214448",
+      "symbol": "AMD",
+      "ts": "2026-05-28T21:44:48.087842",
+      "bull_case": "R1 Bull(8): AMD is capturing structural AI datacenter share with 91% EPS growth and explosive momentum that's breaking out to new highs with institutional validation through expanding partnerships. | R1 Bear(7): AMD's 'manageable' 40x forward P/E becomes catastrophic in a momentum reversal, with 91% EPS growth creating unsustainable baseline expectations that any guidance disappointment will obliterate. | R2 Bull(7): AMD remains positioned to capture structural AI datacenter share with explosive earnings leverage, though elevated technical readings create near-term consolidation risk before the next leg higher | R2 Bear(6): AMD's 40x forward P/E combined with 91% EPS growth baseline creates a valuation trap where any execution hiccup triggers catastrophic multiple compression, regardless of long-term AI positioning.",
+      "bear_case": "Primary risk: Momentum-driven valuation collapse if AI capex cycle shows any signs of moderation, turning 40x forward P/E into a death trap with 50%+ downside in days | Unresolved: ['The bull failed to address the core mathematical problem: 91% EPS growth has created an impossibly high baseline where even modest guidance misses will trigger violent multiple compression from 40x forward P/E', 'Multi-year AI capex cycles are irrelevant if AMD faces any quarterly execution stumble in the next 2-3 earnings cycles given current valuation stretch']",
+      "bull_score": 7,
+      "bear_score": 6,
+      "final_conviction": 7,
+      "decision": "buy"
+    },
+    {
+      "id": "debate_DDOG_20260528214537",
+      "symbol": "DDOG",
+      "ts": "2026-05-28T21:45:37.923595",
+      "bull_case": "R1 Bull(8): Datadog is breaking out on explosive profitability inflection while securing massive government TAM expansion that the market hasn't fully priced in. | R1 Bear(7): DDOG is a profitability mirage trading at unsustainable valuations where the 104% EPS growth masks structural margin weakness that will collapse when growth inevitably decelerates. | R2 Bull(7): Datadog's profitability inflection combined with FedRAMP government TAM expansion justifies premium valuation, though current technical positioning suggests waiting for pullback from $235 resistance for optimal entry | R2 Bear(8): DDOG remains a profitability mirage at 563x P/E where the bull's reliance on technical momentum analysis rather than addressing core valuation metrics confirms this is an unsustainable momentum trade destined for catastrophic compression.",
+      "bear_case": "Primary risk: Buying into a 563x P/E momentum trade where any growth deceleration or government contract delays trigger catastrophic multiple compression from unsustainable valuation levels. | Unresolved: ['The bull completely ignored the core 563x P/E valuation risk and provided no framework for what happens when growth inevitably decelerates', 'No address of structural margin weakness masked by current growth rates', \"Technical analysis cannot justify fundamental overvaluation - momentum works until it doesn't\"]",
+      "bull_score": 7,
+      "bear_score": 8,
+      "final_conviction": 7,
+      "decision": "buy"
     }
   ],
   "position_reviews": [
@@ -12519,6 +12847,85 @@
       "key_risk_to_monitor": "Any concrete signs of AI datacenter demand deceleration in quarterly earnings guidance or management commentary, particularly given China regulatory headwinds adding a secondary risk layer",
       "current_bull_case": "R1 Bull(8): AMD's exceptional 91% EPS growth with a reasonable PEG of 1.1 proves AI datacenter execution is translating to massive earnings power, while ADX at 49.8 confirms this is a momentum breakout that typically continues for weeks in bull regimes. | R2 Bull(6): AMD's AI datacenter momentum remains intact with Western hyperscaler demand driving sustainable growth, while China regulatory risks are already being actively managed and don't undermine the core bull case at current ADX breakout levels.",
       "current_bear_case": "R1 Bear(7): AMD's 91% EPS growth is being driven by a cyclical AI datacenter boom that's creating unsustainable margin expansion, while China regulatory headwinds threaten a significant revenue base just as the company trades at 36x forward earnings with diminishing volume confirming institutional distribution. | R2 Bear(6): AMD's valuation remains stretched at 36x forward earnings for what's still fundamentally cyclical AI datacenter demand, with technical distribution patterns suggesting the rally lacks institutional conviction despite legitimate Western hyperscaler growth."
+    },
+    {
+      "trade_id": "DDOG_20260512160556",
+      "symbol": "DDOG",
+      "ts": "2026-05-28T21:37:06.833421",
+      "action": "hold",
+      "conviction": 8,
+      "thesis_status": "intact",
+      "rationale": "The original thesis of explosive earnings momentum (104% EPS growth) meeting dominant technical breakout conditions remains fully intact with even stronger technical confirmation (ADX improved from 35.2 to 60.6).",
+      "original_thesis_check": "Yes - the combination of explosive 104% EPS growth and dominant technical breakout conditions (now ADX 60.6 vs original 35.2) that creates institutional momentum buying is still driving the position exactly as anticipated.",
+      "key_risk_to_monitor": "Any deceleration in quarterly EPS growth momentum below 100% in upcoming earnings, as this remains the primary threat to our momentum-based thesis and could trigger violent multiple compression from the extreme valuation.",
+      "current_bull_case": "R1 Bull(9): DDOG's exceptional 104% EPS growth combined with AI performance leadership and FedRAMP High certification creates a rare triple catalyst for momentum continuation past $235 resistance. | R2 Bull(7): DDOG's AI leadership and FedRAMP certification provide near-term catalysts to sustain momentum past $235 resistance, though margin compression risk requires careful monitoring of upcoming earnings guidance.",
+      "current_bear_case": "R1 Bear(8): DDOG's RSI at 83.3 in a volatile tech environment with extremely low profit margins creates a perfect setup for brutal mean reversion that will evaporate gains faster than the bull's 'momentum continuation' thesis can deliver. | R2 Bear(7): Despite FedRAMP upside potential, DDOG's extreme technical overbought condition at 83.3 RSI with 79x forward P/E creates immediate mean reversion risk that will trigger before government contract margins can materialize."
+    },
+    {
+      "trade_id": "GOOGL_20260513160622",
+      "symbol": "GOOGL",
+      "ts": "2026-05-28T21:37:55.739858",
+      "action": "hold",
+      "conviction": 7,
+      "thesis_status": "intact",
+      "rationale": "The original thesis of exceptional operational execution (82% EPS growth, 37.9% margins) with technical momentum remains fully intact, as current fundamentals show identical metrics and technical analysis confirms continued uptrend strength.",
+      "original_thesis_check": "Yes - the breakout on exceptional operational execution with 82% EPS growth and 37.9% profit margins supported by technical momentum is still exactly true",
+      "key_risk_to_monitor": "Any material deterioration in quarterly margin trends as AI capex spending accelerates, particularly given Anthropic's $65B competitive positioning",
+      "current_bull_case": "R1 Bull(8): GOOGL is breaking out on exceptional operational execution with 82% EPS growth and 21.8% revenue growth trading at only 26.9x forward P/E, while technical momentum with ADX >25 and RSI at 62 confirms the move has room to run toward $408.61 resistance. | R2 Bull(7): GOOGL's 82% EPS growth reflects successful AI integration that enhances rather than cannibalizes its search moat, with technical momentum and 26.9x forward P/E offering compelling risk-reward as the company transforms competitive threats into ecosystem advantages.",
+      "current_bear_case": "R1 Bear(6): Google's 82% EPS growth masks a company burning capital to defend against existential AI threats, with Anthropic's $65B war chest specifically targeting partnerships with Google Cloud competitors creating a structural margin compression scenario. | R2 Bear(5): Google's search traffic retention through AI integration masks a fundamental monetization crisis where advertisers pay less for reduced clicks, creating a revenue cliff that defensive capex spending cannot solve."
+    },
+    {
+      "trade_id": "ARM_20260514152848",
+      "symbol": "ARM",
+      "ts": "2026-05-28T21:38:48.996267",
+      "action": "hold",
+      "conviction": 7,
+      "thesis_status": "intact",
+      "rationale": "The original thesis of explosive EPS growth meeting technical breakout confirmation remains fully intact with 47.9% EPS growth and strong ADX>25 momentum continuation. The AI infrastructure supercycle catalyst is still unfolding and not yet fully priced in despite the recent move.",
+      "original_thesis_check": "Yes - the explosive 45.7% EPS growth (now 47.9%) meeting technical breakout confirmation is exactly what's happening, with ADX>25 and extreme directional momentum (+DI 46.4 vs -DI 7.8) confirming the breakout thesis.",
+      "key_risk_to_monitor": "Next earnings report for any miss or guidance disappointment that could trigger catastrophic multiple compression from the now 394x P/E ratio, which remains the critical binary risk point.",
+      "current_bull_case": "R1 Bull(8): ARM's explosive 30.6% five-day breakout with ADX>25 and extreme directional momentum (+DI 46.4 vs -DI 7.8) signals the start of a sustained trend fueled by 47.9% EPS growth that justifies chasing this technical strength. | R2 Bull(7): ARM's ADX>25 trending environment with extreme directional momentum (+DI 46.4) supports continued price appreciation despite stretched valuations, as momentum markets can sustain elevated RSI levels for extended periods when institutional flow remains positive",
+      "current_bear_case": "R1 Bear(9): ARM's 394x P/E ratio creates catastrophic downside risk where any growth disappointment or market rotation will trigger violent mean reversion, making this a textbook momentum trap disguised as breakout strength. | R2 Bear(8): While institutional momentum may temporarily sustain ARM's extreme valuation, the 394x P/E ratio represents a mathematical impossibility for long-term returns that will eventually trigger catastrophic mean reversion regardless of current technical strength"
+    },
+    {
+      "trade_id": "QCOM_20260514152935",
+      "symbol": "QCOM",
+      "ts": "2026-05-28T21:39:40.846357",
+      "action": "hold",
+      "conviction": 8,
+      "thesis_status": "intact",
+      "rationale": "The core thesis of massive earnings acceleration (173% EPS growth) with value-momentum convergence remains fully intact and has been strengthened by concrete AI chip deals and PC market expansion that validate the fundamental business inflection point.",
+      "original_thesis_check": "Yes, the 173% EPS growth with reasonable valuation (PEG 1.1) creating value-momentum convergence is still true and confirmed by technical breakout continuation",
+      "key_risk_to_monitor": "Revenue trajectory in next earnings to assess whether AI chip revenues are materializing fast enough to offset any acceleration in core mobile business decline",
+      "current_bull_case": "R1 Bull(8): QCOM is experiencing a fundamental business inflection point as AI chip expansion and PC market penetration drive exceptional earnings leverage, evidenced by 173% EPS growth that's creating explosive momentum in a confirmed technical breakout. | R2 Bull(7): QCOM's transition to AI-enabled PC processors and automotive chips represents a fundamental shift to higher-margin, recurring revenue streams that justifies current momentum despite near-term execution risks.",
+      "current_bear_case": "R1 Bear(8): The 173% EPS growth is masking fundamental business deterioration, as negative revenue growth with high debt/equity ratios creates unsustainable leverage that will collapse when AI hype fades or execution stumbles. | R2 Bear(6): QCOM's leverage to unproven AI PC adoption creates asymmetric downside risk as cost-cutting gains exhaust before new revenue streams meaningfully scale, despite adequate liquidity buffers."
+    },
+    {
+      "trade_id": "AMD_20260519163507",
+      "symbol": "AMD",
+      "ts": "2026-05-28T21:40:32.797972",
+      "action": "trim",
+      "conviction": 6,
+      "thesis_status": "weakened",
+      "rationale": "The core growth thesis remains intact with 91% EPS growth continuing, but the emergence of high debt ratio concerns creates material balance sheet fragility that wasn't part of our original thesis evaluation.",
+      "original_thesis_check": "The explosive EPS growth and forward P/E valuation opportunity that drove our entry is still present, but new debt concerns materially change the risk profile",
+      "key_risk_to_monitor": "Any concrete signs of AI datacenter demand deceleration combined with debt service pressures that could trigger forced deleveraging",
+      "trim_reason": "High debt ratio creates amplified downside risk to AI spending slowdowns that materially increases the impact of our original key risk beyond what we underwrote",
+      "current_bull_case": "R1 Bull(8): AMD is riding a once-in-50-year AI infrastructure boom with exceptional 91% EPS growth and unstoppable technical momentum that typically extends far beyond initial RSI overbought readings in strong trending markets. | R2 Bull(7): AMD's AI infrastructure positioning and 91% EPS growth create a powerful fundamental backdrop that can overcome near-term volume concerns, though breakout confirmation above 527.2 with expanding volume is now critical for sustained upside",
+      "current_bear_case": "R1 Bear(7): AMD's 'high_debt_ratio' flag combined with extreme momentum readings at resistance creates a dangerous setup where any AI spending slowdown or execution misstep triggers amplified downside through forced deleveraging. | R2 Bear(8): AMD's high debt ratio creates a leveraged bet on AI sustainability where any spending deceleration triggers amplified downside through forced deleveraging, while weak institutional volume confirms smart money is already positioning defensively."
+    },
+    {
+      "trade_id": "LLY_20260519190455",
+      "symbol": "LLY",
+      "ts": "2026-05-28T21:41:25.367948",
+      "action": "hold",
+      "conviction": 7,
+      "thesis_status": "intact",
+      "rationale": "The original thesis of explosive earnings momentum overwhelming regulatory noise remains fully intact with 170% EPS growth continuing and no concrete Medicare pricing reforms announced targeting GLP-1 treatments. The $3.8B M&A expansion actually strengthens the growth momentum narrative.",
+      "original_thesis_check": "The explosive earnings momentum (170% EPS growth, 55% revenue growth, 35% margins) that we believed would overwhelm regulatory noise is still delivering exactly as anticipated, with no concrete Medicare pricing reforms materializing.",
+      "key_risk_to_monitor": "Any concrete announcements of Medicare pricing reforms specifically targeting GLP-1 obesity treatments, and early indicators of growth deceleration from the impossible 170% EPS comparison base",
+      "current_bull_case": "R1 Bull(9): LLY is breaking out of technical resistance with massive fundamental momentum driven by 170% EPS growth and aggressive $3.8B M&A expansion, creating a rare convergence of growth acceleration and market access expansion. | R2 Bull(8): LLY's technical breakout is supported by a dominant position in the transformational GLP-1 market that can sustain premium valuations through a multi-year growth cycle, despite near-term comparison headwinds",
+      "current_bear_case": "R1 Bear(7): LLY's $3.8B acquisition spree into unproven therapeutic areas signals management desperation to maintain unsustainable 170% growth rates, while extreme technical momentum (RSI 76.2, Bollinger %B >1.0) creates massive downside risk when growth inevitably normalizes. | R2 Bear(6): While LLY's GLP-1 dominance is real, extreme technical momentum and premium valuations leave no room for error as 170% growth inevitably moderates and acquisition integration costs mount."
     }
   ],
   "risk_decisions": [
@@ -14452,6 +14859,75 @@
       "correlation": 0.0,
       "pm_action": "skip",
       "pm_verdict": "The 46% surge in 5 days has created parabolic momentum that significantly increases reversal risk, while the 356x P/E ratio leaves zero margin for error in an environment where AI sentiment could shift rapidly.",
+      "risk_category": "already_holding"
+    },
+    {
+      "ts": "2026-05-28T21:42:52.846491",
+      "symbol": "SNOW",
+      "action": "buy",
+      "reason": "PM conviction=7 | size=6% ($6,210) | regime=bull/normal | ATR=12.39 x2.5 | stop=$220.06 (-8.0%)",
+      "conviction": 7,
+      "rotate_from": "",
+      "position_usd": 6209.91,
+      "shares": 25.9612,
+      "entry_price": 239.2,
+      "stop_price": 220.06,
+      "stop_pct": 8.0,
+      "sector": "Technology",
+      "correlation": 0.0,
+      "pm_action": "buy",
+      "pm_verdict": "The institutional accumulation (4.85x volume) and AI-driven growth catalyst represent a genuine fundamental inflection that justifies riding the momentum despite extended technicals. The bear's valuation concerns are systemic to high-growth SaaS in this market regime, not trade-specific catalysts.",
+      "risk_category": "approved"
+    },
+    {
+      "ts": "2026-05-28T21:43:54.535412",
+      "symbol": "GOOGL",
+      "action": "hold",
+      "reason": "Already holding GOOGL",
+      "conviction": 7,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 390.13,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "buy",
+      "pm_verdict": "Strong fundamentals (37.9% margins, 82% EPS growth) trading at reasonable 26.9x forward P/E with confirmed technical momentum (ADX 44.9) justifies buying despite enterprise cloud competitive concerns. Both analysts made concessions but core bull thesis remains intact in bullish regime.",
+      "risk_category": "already_holding"
+    },
+    {
+      "ts": "2026-05-28T21:44:48.060829",
+      "symbol": "AMD",
+      "action": "hold",
+      "reason": "Already holding AMD",
+      "conviction": 7,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 518.09,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "buy",
+      "pm_verdict": "Strong institutional momentum (ADX 50.5) combined with exceptional earnings leverage (91% EPS growth) creates a compelling risk-adjusted opportunity despite elevated valuation metrics. The bear's concerns about 40x forward P/E are systemic sector risks already reflected in current AI stock pricing.",
+      "risk_category": "already_holding"
+    },
+    {
+      "ts": "2026-05-28T21:45:37.896507",
+      "symbol": "DDOG",
+      "action": "hold",
+      "reason": "Already holding DDOG",
+      "conviction": 7,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 225.24,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "buy",
+      "pm_verdict": "The bear's 563x P/E argument is a systemic SaaS valuation concern already priced into the current regime, while DDOG's 104% EPS growth inflection plus FedRAMP government TAM expansion represents genuine fundamental acceleration that justifies momentum continuation.",
       "risk_category": "already_holding"
     }
   ],

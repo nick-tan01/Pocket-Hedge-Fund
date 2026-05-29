@@ -353,6 +353,12 @@
       "portfolio_value": 103570.51,
       "cash": 58194.76,
       "spy_price": 756.75
+    },
+    {
+      "ts": "2026-05-29T19:37:25.189553",
+      "portfolio_value": 103602.91,
+      "cash": 51998.39,
+      "spy_price": 757.29
     }
   ],
   "trades": [
@@ -8649,6 +8655,22 @@
       ],
       "regime": "bull",
       "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-05-29T19:37:25.220657",
+      "run_type": "midday",
+      "candidates": [
+        "MDB",
+        "DDOG",
+        "AMD",
+        "QCOM",
+        "LLY"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "scheduled",
+      "regime": "bull",
+      "vix_regime": "normal"
     }
   ],
   "debate_logs": [
@@ -10894,6 +10916,61 @@
       "bull_score": 8,
       "bear_score": 7,
       "final_conviction": 7,
+      "decision": "buy"
+    },
+    {
+      "id": "debate_MDB_20260529193350",
+      "symbol": "MDB",
+      "ts": "2026-05-29T19:33:50.422823",
+      "bull_case": "R1 Bull(8): MDB is breaking out on exceptional volume with MACD crossover confirmation while maintaining 26.7% revenue growth in a bullish market regime, creating a high-probability momentum continuation trade. | R1 Bear(7): MDB's 'healthy momentum' masks a value trap where 26.7% revenue growth cannot compensate for deteriorating capital efficiency and unsustainable debt levels that will force dilutive equity raises in a rising rate environment. | R2 Bull(7): MDB's technical breakout with MACD confirmation and 26.7% revenue growth creates a high-probability momentum trade despite refinancing headwinds that are manageable given their market position and access to capital. | R2 Bear(6): MDB's momentum masks fundamental value destruction as persistent negative cash flows will require continuous equity dilution even without immediate debt maturities, making current valuations unsustainable despite technical strength.",
+      "bear_case": "Primary risk: Debt refinancing crisis as rising rates make current debt structure unsustainable while negative profitability eliminates internal cash generation, forcing massive dilutive equity raises or potential bankruptcy | Unresolved: ['Capital efficiency deterioration with negative free cash flow of -$180M annually means equity dilution is inevitable regardless of timing, creating a structural value destruction cycle']",
+      "bull_score": 7,
+      "bear_score": 6,
+      "final_conviction": 7,
+      "decision": "buy"
+    },
+    {
+      "id": "debate_DDOG_20260529193441",
+      "symbol": "DDOG",
+      "ts": "2026-05-29T19:34:41.648245",
+      "bull_case": "R1 Bull(9): DDOG is breaking into a massive new government revenue stream with FedRAMP High certification while riding unstoppable AI-driven momentum that's crushing Microsoft and Adobe competitors. | R1 Bear(8): DDOG's catastrophic 642x P/E ratio and 3.7% profit margins reveal a company burning capital to manufacture growth while trading at RSI 87.3 levels that historically precede 30%+ corrections in overvalued momentum stocks. | R2 Bull(8): DDOG's FedRAMP breakthrough and AI observability dominance justify premium valuation despite near-term margin pressure, with ADX 62.6 confirming strong institutional momentum continues. | R2 Bear(7): While DDOG's SaaS growth story may have merit, the 642x P/E ratio creates an asymmetric risk/reward profile where inevitable execution hiccups will cause devastating losses that no amount of AI observability dominance can justify at current prices.",
+      "bear_case": "Primary risk: Valuation implosion risk - any earnings miss or guidance reduction will trigger massive institutional selling due to the 642x P/E ratio, potentially causing 50%+ losses as the stock reprices from momentum darling to value trap. | Unresolved: [\"The bull acknowledged but didn't solve the core problem: at 642x P/E, DDOG has zero margin for error and any earnings miss will trigger catastrophic institutional selling regardless of long-term SaaS potential\"]",
+      "bull_score": 8,
+      "bear_score": 7,
+      "final_conviction": 7,
+      "decision": "buy"
+    },
+    {
+      "id": "debate_AMD_20260529193541",
+      "symbol": "AMD",
+      "ts": "2026-05-29T19:35:41.651639",
+      "bull_case": "R1 Bull(8): AMD's exceptional 91% EPS growth acceleration justifies momentum continuation above $527 resistance, as technical dominance (ADX 50.8, +DI 39.3) confirms institutional accumulation driving the 37% revenue growth story toward fair value. | R1 Bear(7): AMD's horrific capital efficiency (8.1% ROE) reveals that despite 91% EPS growth, the company is destroying shareholder value by requiring massive capital deployment to generate returns, making this a profitless prosperity story at an obscene 169x TTM P/E. | R2 Bull(7): AMD's 91% EPS acceleration and strong directional momentum (ADX 50.8) support a break above $527, though lower volume creates execution risk requiring confirmation on any breakout attempt | R2 Bear(8): AMD's technical momentum cannot overcome the fundamental reality of 8.1% ROE capital destruction and 169x P/E unsustainability, creating massive downside risk when growth inevitably disappoints.",
+      "bear_case": "Primary risk: Any growth disappointment or competitive pressure from Intel's new chip launch creates a violent multiple compression from 169x to reasonable levels, potentially causing 70%+ downside as the market realizes this is unprofitable growth. | Unresolved: ['The bull failed to address the fundamental issue of 8.1% ROE indicating massive capital inefficiency despite EPS growth', 'No defense of the absurd 169x P/E multiple in a rising rate environment', 'Ignored the core argument that this represents unprofitable growth requiring excessive capital deployment']",
+      "bull_score": 7,
+      "bear_score": 8,
+      "final_conviction": 7,
+      "decision": "buy"
+    },
+    {
+      "id": "debate_QCOM_20260529193633",
+      "symbol": "QCOM",
+      "ts": "2026-05-29T19:36:33.788492",
+      "bull_case": "R1 Bull(9): QCOM is experiencing explosive operational leverage with 173% EPS growth despite revenue headwinds, while powerful technical momentum (ADX 42.2, 18% gain in 5 days) signals institutional recognition of this fundamental inflection point. | R1 Bear(7): QCOM's 173% EPS growth is a cost-cutting mirage masking fundamental business deterioration, as declining revenues in a booming semiconductor cycle signal deep competitive losses that operational leverage cannot sustainably offset. | R2 Bull(8): QCOM's operational leverage demonstrates earnings power at the cyclical trough, with technical momentum (ADX 42.2) signaling institutional positioning ahead of the 5G smartphone upgrade supercycle that will drive both revenue recovery and margin expansion. | R2 Bear(6): While QCOM may benefit from smartphone upgrade cycles, the company's revenue decline during a favorable semiconductor environment suggests structural competitive weakness that makes successful cycle timing execution highly uncertain.",
+      "bear_case": "Primary risk: Revenue decline acceleration once competitors fully capitalize on AI/5G opportunities that QCOM is apparently missing, making current cost-cutting gains irrelevant and triggering massive multiple compression | Unresolved: ['Revenue decline acceleration if 5G smartphone upgrade cycle fails to materialize in 2024 or competitors capture disproportionate share during the recovery']",
+      "bull_score": 8,
+      "bear_score": 6,
+      "final_conviction": 8,
+      "decision": "buy"
+    },
+    {
+      "id": "debate_LLY_20260529193724",
+      "symbol": "LLY",
+      "ts": "2026-05-29T19:37:24.952119",
+      "bull_case": "R1 Bull(9): LLY is experiencing a breakout moment where explosive fundamental performance (169.9% EPS growth) is being amplified by critical payer access expansion for its GLP-1 franchise, creating a rare convergence of earnings momentum and addressable market expansion. | R1 Bear(8): LLY's 139% debt-to-equity ratio represents an unsustainable capital structure that turns the GLP-1 boom from a growth story into a leverage trap, where any demand normalization or competitive pressure will trigger catastrophic deleveraging. | R2 Bull(8): LLY's explosive GLP-1 growth with expanding payer access creates a cash generation machine that can easily service its debt load while the obesity market reaches only early penetration stages | R2 Bear(6): While LLY can service its debt today, the 139% debt-to-equity ratio creates a fragile capital structure where the company becomes vulnerable to a liquidity crisis if GLP-1 revenues decline even modestly, turning temporary market headwinds into permanent capital destruction.",
+      "bear_case": "Primary risk: Debt-to-equity of 139% creates a leveraged bet on permanent GLP-1 dominance where any competitive pressure, demand normalization, or pricing erosion triggers forced deleveraging and equity destruction regardless of underlying business quality. | Unresolved: ['The bull ignores that 139% debt-to-equity creates asymmetric downside risk where even modest GLP-1 market share losses or pricing pressure would force rapid deleveraging at exactly the wrong time, amplifying any business cycle downturn into a potential solvency crisis']",
+      "bull_score": 8,
+      "bear_score": 6,
+      "final_conviction": 8,
       "decision": "buy"
     }
   ],
@@ -15420,6 +15497,92 @@
       "correlation": 0.0,
       "pm_action": "buy",
       "pm_verdict": "The bear's debt leverage concerns are systemic risks already priced into the market, while the bull's GLP-1 supercycle thesis is supported by exceptional fundamentals and confirmed technical momentum. Low volume during recent gains warrants reduced size but not avoidance in this strong trending environment.",
+      "risk_category": "already_holding"
+    },
+    {
+      "ts": "2026-05-29T19:33:50.392289",
+      "symbol": "MDB",
+      "action": "buy",
+      "reason": "PM conviction=7 | size=6% ($6,216) | regime=bull/normal | ATR=21.19 x2.5 | stop=$306.35 (-8.0%)",
+      "conviction": 7,
+      "rotate_from": "",
+      "position_usd": 6216.17,
+      "shares": 18.6677,
+      "entry_price": 332.99,
+      "stop_price": 306.35,
+      "stop_pct": 8.0,
+      "sector": "Technology",
+      "correlation": 0.0,
+      "pm_action": "buy",
+      "pm_verdict": "Strong technical momentum with MACD crossover and 3.6x volume surge, supported by 26.7% revenue growth, creates a high-probability continuation trade in a bullish regime. The bear's refinancing concerns are systemic to growth tech rather than MDB-specific catalysts.",
+      "risk_category": "approved"
+    },
+    {
+      "ts": "2026-05-29T19:34:41.617459",
+      "symbol": "DDOG",
+      "action": "hold",
+      "reason": "Already holding DDOG",
+      "conviction": 7,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 244.02,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "buy",
+      "pm_verdict": "The FedRAMP certification creates a genuine competitive moat with multi-billion TAM expansion, while the extreme technical momentum (ADX 62.6) in a bullish regime overrides valuation concerns that are systemic to all high-growth SaaS stocks.",
+      "risk_category": "already_holding"
+    },
+    {
+      "ts": "2026-05-29T19:35:41.620884",
+      "symbol": "AMD",
+      "action": "hold",
+      "reason": "Already holding AMD",
+      "conviction": 7,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 507.13,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "buy",
+      "pm_verdict": "The bear's concerns about ROE and P/E multiples are systemic valuation issues already priced in, while the 91% EPS acceleration with confirmed technical momentum (ADX 50.8) creates a compelling momentum continuation setup above $527 resistance.",
+      "risk_category": "already_holding"
+    },
+    {
+      "ts": "2026-05-29T19:36:33.756023",
+      "symbol": "QCOM",
+      "action": "hold",
+      "reason": "Already holding QCOM",
+      "conviction": 8,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 251.18,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "buy",
+      "pm_verdict": "QCOM's 173% EPS growth demonstrates extraordinary operational leverage at what appears to be the cyclical trough, while powerful technical momentum (ADX 42.2) signals institutional positioning ahead of the 5G upgrade cycle. The bear's revenue decline concerns are valid but represent cycle timing risk, not structural deterioration.",
+      "risk_category": "already_holding"
+    },
+    {
+      "ts": "2026-05-29T19:37:24.921312",
+      "symbol": "LLY",
+      "action": "hold",
+      "reason": "Already holding LLY",
+      "conviction": 8,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 1103.09,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "buy",
+      "pm_verdict": "The convergence of explosive fundamental execution (169.9% EPS growth) with expanding GLP-1 payer access creates a momentum continuation setup where current cash generation adequately services debt while the addressable market expands significantly.",
       "risk_category": "already_holding"
     }
   ],

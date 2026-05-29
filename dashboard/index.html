@@ -2,7 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0a0c0f">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="PHF">
 <title>Pocket Hedge Fund</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -213,49 +217,159 @@
     padding: 4px 0;
   }
 
-  /* ── Positions table ── */
-  .pos-table { width: 100%; border-collapse: collapse; }
-  .pos-table th {
+  /* ── Position cards ── */
+  .pos-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .pos-card {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 13px 14px;
+    background: var(--bg3);
+    transition: border-color 0.15s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pos-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--accent);
+  }
+
+  .pos-card.remnant {
+    opacity: 0.55;
+    border-style: dashed;
+  }
+  .pos-card.remnant::before { background: var(--muted); }
+
+  .pos-card.weakened::before { background: var(--amber); }
+  .pos-card.broken::before   { background: var(--red); }
+
+  .pos-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    gap: 8px;
+  }
+
+  .pos-card-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+    flex: 1;
+  }
+
+  .pos-card-right {
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .pos-pnl-main {
+    font-family: var(--font-mono);
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1;
+  }
+
+  .pos-pnl-sub {
     font-family: var(--font-mono);
     font-size: 10px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
     color: var(--muted);
-    text-align: left;
-    padding: 0 0 10px;
-    border-bottom: 1px solid var(--border);
+    margin-top: 3px;
   }
-  .pos-table td {
-    padding: 10px 0;
-    border-bottom: 1px solid var(--border);
+
+  .pos-card-meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 6px 12px;
+  }
+
+  .pos-meta-item {
     font-family: var(--font-mono);
-    font-size: 12px;
-    vertical-align: middle;
+    font-size: 10px;
   }
-  .pos-table tr:last-child td { border-bottom: none; }
-  .pos-table th:not(:first-child),
-  .pos-table td:not(:first-child) { text-align: right; }
+
+  .pos-meta-label {
+    color: var(--muted);
+    margin-bottom: 1px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-size: 9px;
+  }
+
+  .pos-meta-value {
+    color: var(--text);
+    font-size: 11px;
+  }
+
+  .pos-meta-value.danger { color: var(--red); }
+
+  .pos-key-risk {
+    margin-top: 9px;
+    padding: 6px 9px;
+    background: var(--amber-bg);
+    border-left: 2px solid var(--amber);
+    border-radius: 3px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--amber);
+    line-height: 1.5;
+  }
+
+  .remnant-badge {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    padding: 1px 5px;
+    border-radius: 2px;
+    background: var(--dim);
+    color: var(--muted);
+    border: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+
+  .sector-tag {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 
   .symbol-pill {
     display: inline-block;
     background: var(--bg3);
     border: 1px solid var(--border2);
     border-radius: 3px;
-    padding: 2px 8px;
-    font-size: 11px;
+    padding: 3px 9px;
+    font-size: 12px;
     font-weight: 500;
     color: var(--text);
     letter-spacing: 0.05em;
+    font-family: var(--font-mono);
+    flex-shrink: 0;
   }
 
   .conviction-bar {
     display: inline-flex;
     gap: 2px;
     align-items: center;
+    vertical-align: middle;
+    margin-left: 4px;
   }
 
   .conv-pip {
-    width: 6px; height: 10px;
+    width: 5px; height: 9px;
     border-radius: 1px;
     background: var(--dim);
   }
@@ -532,6 +646,94 @@
 
   .stat-card, .panel {
     animation: fadeIn 0.4s ease forwards;
+  }
+
+  /* ── Mobile / responsive ─────────────────────────────────────────────── */
+  @media (max-width: 900px) {
+    header {
+      padding: 0 16px;
+      height: auto;
+      flex-wrap: wrap;
+      gap: 6px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+
+    .header-meta {
+      flex-wrap: wrap;
+      gap: 10px 16px;
+      font-size: 10px;
+    }
+
+    main {
+      padding: 16px;
+      gap: 14px;
+    }
+
+    .stats-row {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Hide the 5th stat card (win rate) in a 3-col layout gracefully */
+    .stats-row .stat-card:nth-child(4),
+    .stats-row .stat-card:nth-child(5) {
+      grid-column: span 1;
+    }
+
+    .two-col,
+    .three-col {
+      grid-template-columns: 1fr;
+    }
+
+    .chart-wrap { height: 200px; }
+
+    footer {
+      padding: 12px 16px;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 9px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .stats-row {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .stat-value { font-size: 18px; }
+
+    /* Positions panel: full width meta grid on small screens */
+    .pos-card-meta {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    /* Trade history rows: simplify on very small screens */
+    .trade-row {
+      grid-template-columns: 70px 1fr 60px 60px;
+    }
+    /* Hide exit price column on small phones */
+    .trade-row > div:nth-child(4) { display: none; }
+
+    .run-ts { min-width: 0; font-size: 9px; }
+    .run-type { min-width: 50px; }
+
+    .watchlist-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .panel-body { padding: 12px; }
+
+    .debate-filter-row {
+      gap: 4px;
+    }
+  }
+
+  @media (max-width: 400px) {
+    .stats-row {
+      grid-template-columns: 1fr 1fr;
+    }
+    header { padding: 8px 12px; }
+    main { padding: 10px 10px; }
   }
 </style>
 </head>
@@ -912,45 +1114,144 @@ function filterByPeriod(snaps) {
 function renderOpenPositions() {
   const positions = DATA.open_trades || [];
   const el = document.getElementById('open-positions-body');
-  document.getElementById('open-count-badge').textContent = positions.length + ' ACTIVE';
+
+  // Latest portfolio value for P&L computation
+  const snaps = DATA.snapshots || [];
+  const portfolioValue = snaps.length ? snaps[snaps.length - 1].portfolio_value : 0;
+
+  const minSlotPct = 0.03; // mirrors config.MIN_SLOT_PCT
+  const meaningful = positions.filter(p => (p.position_pct || 0) >= minSlotPct);
+  const remnants   = positions.filter(p => (p.position_pct || 0) <  minSlotPct && (p.position_pct || 0) > 0);
+
+  document.getElementById('open-count-badge').textContent =
+    meaningful.length + ' ACTIVE' + (remnants.length ? ' · ' + remnants.length + ' REMNANT' : '');
 
   if (!positions.length) {
     el.innerHTML = '<div class="empty">No open positions</div>';
     return;
   }
 
-  el.innerHTML = `
-    <table class="pos-table">
-      <thead>
-        <tr>
-          <th>Symbol</th>
-          <th>Entry</th>
-          <th>Stop</th>
-          <th>P&L</th>
-          <th>Conv</th>
-        </tr>
-      </thead>
-      <tbody>
-        ${positions.map(p => {
-          const pnl    = p.pnl || 0;
-          const pnlPct = p.unrealized_plpc ? (p.unrealized_plpc * 100).toFixed(2) : '—';
-          const pnlStr = (pnl >= 0 ? '+$' : '-$') + Math.abs(pnl).toFixed(0);
-          const color  = pnl >= 0 ? 'var(--green)' : 'var(--red)';
-          return `<tr>
-            <td><span class="symbol-pill">${p.symbol}</span></td>
-            <td>$${p.entry_price.toFixed(2)}</td>
-            <td style="color:var(--red)">$${p.stop_price.toFixed(2)}</td>
-            <td style="color:${color}">${pnlStr}<br><span style="font-size:10px;opacity:0.7">${pnlPct}%</span></td>
-            <td>${convBar(p.conviction)}</td>
-          </tr>`;
-        }).join('')}
-      </tbody>
-    </table>
-    ${positions.map(p => p.key_risk ? `
-      <div style="margin-top:8px;padding:7px 10px;background:var(--amber-bg);border-left:2px solid var(--amber);border-radius:3px;font-family:var(--font-mono);font-size:10px;color:var(--amber)">
-        ⚠ ${p.symbol}: ${p.key_risk}
-      </div>` : '').join('')}
-  `;
+  function posCard(p) {
+    const isRemnant = p.is_remnant || (p.position_pct || 0) < minSlotPct;
+    const thesis    = (p.thesis_status || 'intact').toLowerCase();
+
+    // ── P&L: compute from live data if possible ──────────────────────────
+    // position_pct × portfolio_value = current market value
+    // qty × entry_price              = cost basis
+    let pnlDollar = null, pnlPct = null, currentPrice = null, stopDistPct = null;
+    const qty       = parseFloat(p.qty || 0);
+    const entryPx   = parseFloat(p.entry_price || 0);
+    const stopPx    = parseFloat(p.stop_price || 0);
+    const posPct    = parseFloat(p.position_pct || 0);
+    const costBasis = qty > 0 && entryPx > 0 ? qty * entryPx : 0;
+    const currMktVal = posPct > 0 && portfolioValue > 0 ? posPct * portfolioValue : 0;
+
+    if (costBasis > 0 && currMktVal > 0) {
+      pnlDollar   = currMktVal - costBasis;
+      pnlPct      = (pnlDollar / costBasis) * 100;
+      currentPrice = qty > 0 ? currMktVal / qty : null;
+    }
+    if (currentPrice && stopPx) {
+      stopDistPct = ((currentPrice - stopPx) / currentPrice) * 100;
+    }
+
+    // ── P&L display ───────────────────────────────────────────────────────
+    let pnlMainHtml, pnlSubHtml;
+    if (pnlDollar !== null) {
+      const color   = pnlDollar >= 0 ? 'var(--green)' : 'var(--red)';
+      const sign    = pnlDollar >= 0 ? '+' : '-';
+      pnlMainHtml   = `<div class="pos-pnl-main" style="color:${color}">${sign}$${Math.abs(pnlDollar).toFixed(0)}</div>`;
+      pnlSubHtml    = `<div class="pos-pnl-sub" style="color:${color}">${sign}${Math.abs(pnlPct).toFixed(2)}%</div>`;
+    } else {
+      pnlMainHtml   = `<div class="pos-pnl-main" style="color:var(--muted)">—</div>`;
+      pnlSubHtml    = `<div class="pos-pnl-sub">no price data</div>`;
+    }
+
+    // ── Days held ─────────────────────────────────────────────────────────
+    let daysHeld = '—';
+    if (p.entry_ts) {
+      const ms = Date.now() - parseTs(p.entry_ts).getTime();
+      const calDays = Math.floor(ms / 86400000);
+      const tradingDays = Math.round(calDays * 5 / 7);
+      daysHeld = tradingDays + 'd';
+    }
+
+    // ── Size display ──────────────────────────────────────────────────────
+    const sizePct  = posPct > 0 ? (posPct * 100).toFixed(1) + '%' : '—';
+    const sizeUsd  = currMktVal > 0 ? '$' + Math.round(currMktVal).toLocaleString() : '';
+
+    // ── Stop display ─────────────────────────────────────────────────────
+    const stopStr  = stopPx > 0 ? '$' + stopPx.toFixed(2) : '—';
+    const stopDist = stopDistPct !== null ? ' (−' + stopDistPct.toFixed(1) + '%)' : '';
+    const stopColor = stopDistPct !== null && stopDistPct < 5 ? 'danger' : '';
+
+    // ── Current price display ─────────────────────────────────────────────
+    const curPxStr = currentPrice ? '$' + currentPrice.toFixed(2) : '$' + entryPx.toFixed(2) + '*';
+
+    // ── Card class ────────────────────────────────────────────────────────
+    const cardClass = [
+      'pos-card',
+      isRemnant ? 'remnant' : '',
+      thesis === 'weakened' ? 'weakened' : '',
+      thesis === 'broken'   ? 'broken'   : '',
+    ].filter(Boolean).join(' ');
+
+    const sector    = p.sector ? p.sector.replace('Consumer ', '') : '';
+    const convScore = parseInt(p.conviction || 0);
+
+    return `
+      <div class="${cardClass}">
+        <div class="pos-card-top">
+          <div class="pos-card-left">
+            <span class="symbol-pill">${escapeHtml(p.symbol)}</span>
+            ${isRemnant ? '<span class="remnant-badge">REMNANT</span>' : ''}
+            ${thesis !== 'intact' ? `<span class="remnant-badge" style="color:var(--amber);border-color:var(--amber)">${thesis.toUpperCase()}</span>` : ''}
+            ${sector ? `<span class="sector-tag">${escapeHtml(sector)}</span>` : ''}
+          </div>
+          <div class="pos-card-right">
+            ${pnlMainHtml}
+            ${pnlSubHtml}
+          </div>
+        </div>
+
+        <div class="pos-card-meta">
+          <div class="pos-meta-item">
+            <div class="pos-meta-label">Entry</div>
+            <div class="pos-meta-value">$${entryPx.toFixed(2)}</div>
+          </div>
+          <div class="pos-meta-item">
+            <div class="pos-meta-label">Current</div>
+            <div class="pos-meta-value">${curPxStr}</div>
+          </div>
+          <div class="pos-meta-item">
+            <div class="pos-meta-label">Stop</div>
+            <div class="pos-meta-value ${stopColor}">${stopStr}${stopDist}</div>
+          </div>
+          <div class="pos-meta-item">
+            <div class="pos-meta-label">Size</div>
+            <div class="pos-meta-value">${sizePct} ${sizeUsd ? '<span style="color:var(--muted);font-size:9px">'+sizeUsd+'</span>' : ''}</div>
+          </div>
+          <div class="pos-meta-item">
+            <div class="pos-meta-label">Held</div>
+            <div class="pos-meta-value">${daysHeld}</div>
+          </div>
+          <div class="pos-meta-item">
+            <div class="pos-meta-label">Conv</div>
+            <div class="pos-meta-value">${convScore}/10 ${convBar(convScore)}</div>
+          </div>
+        </div>
+
+        ${p.key_risk ? `<div class="pos-key-risk">⚠ ${escapeHtml(p.key_risk)}</div>` : ''}
+      </div>`;
+  }
+
+  // Render meaningful positions first, then remnants
+  const sorted = [
+    ...meaningful.sort((a,b) => (b.position_pct||0) - (a.position_pct||0)),
+    ...remnants.sort((a,b)   => (b.position_pct||0) - (a.position_pct||0)),
+  ];
+
+  el.innerHTML = `<div class="pos-cards">${sorted.map(posCard).join('')}</div>`;
 }
 
 // ── Trade History ──────────────────────────────────────────────────────────
@@ -1176,7 +1477,7 @@ function renderRuns() {
     <div class="run-item">
 	      <span class="run-ts">${fmtPacificTime(r.ts)}</span>
       <span class="run-type">${r.run_type.toUpperCase()}</span>
-      <span class="run-candidates">${r.candidates.join(' · ') || (r.skipped_reason || '—')}</span>
+      <span class="run-candidates">${r.candidates.join(' · ') || (r.skipped_reason === 'data_unavailable' ? '⚡ data unavailable' : r.skipped_reason === 'no_candidates' ? '∅ no candidates' : r.skipped_reason || '—')}</span>
       <span style="color:var(--green);font-family:var(--font-mono);font-size:10px">${r.trades_executed ? r.trades_executed + ' traded' : ''}</span>
     </div>`).join('');
 }

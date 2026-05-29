@@ -57,5 +57,13 @@ jobs:
         run: |
           git config user.name "nick-tan01"
           git config user.email "${{ secrets.GIT_EMAIL }}"
+          # Save our freshly-written data.json before pulling.
+          # Concurrent runs (sentinel + scheduled) both modify data.json and try to push.
+          # If another run pushed first, a naive `git push` fails because the branch moved.
+          # Solution: save our data, pull the latest state, restore our data (always wins),
+          # then commit + push. Our run's data is always the authoritative version.
+          cp dashboard/data.json /tmp/pipeline_data.json
+          git pull --rebase origin main || git rebase --abort
+          cp /tmp/pipeline_data.json dashboard/data.json
           git add dashboard/data.json
           git diff --cached --quiet && echo "No changes to push" || git commit -m "Auto: pipeline run $(date -u +'%Y-%m-%d %H:%M UTC')" && git push

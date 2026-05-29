@@ -18,6 +18,15 @@ import config
 
 logger = logging.getLogger(__name__)
 
+
+class ScreenerDataUnavailable(RuntimeError):
+    """
+    Raised when the screener's quote health probe fails — all liquid probe symbols
+    (SPY, AAPL, MSFT) returned empty data. Distinguishes a data-layer outage from a
+    genuine 'no candidates' result so callers can log 'data_unavailable' rather than
+    'no_candidates' in the run record.
+    """
+
 SECTOR_ETFS = {
     "Technology": "XLK",
     "Health Care": "XLV",
@@ -200,6 +209,10 @@ class Screener:
     def __init__(self, data_fetcher: DataFetcher):
         self.fetcher = data_fetcher
 
+    # Liquid probe symbols used for the data health check.
+    # These are always in the universe and should always return a valid quote.
+    _PROBE_SYMBOLS = ["SPY", "AAPL", "MSFT"]
+
     def run(
         self,
         max_candidates: int | None = None,
@@ -207,15 +220,37 @@ class Screener:
     ) -> list[ScreenerCandidate]:
         universe = symbols or self.WATCHLIST
         logger.info("Screener starting — universe: %d symbols", len(universe))
-        candidates = []
 
+        # ── Quote data health check ───────────────────────────────────────────
+        # yfinance fast_info can silently return None/0 for all symbols when
+        # rate-limited or the network is down on GitHub Actions. When that
+        # happens every _score_symbol() call returns None, producing an empty
+        # candidate list that the pipeline logs as 'no_candidates'. This is a
+        # false negative — the screener didn't find 'nothing good', it found
+        # 'no data'. We distinguish the two cases with three liquid probes:
+        # if all probes fail, raise ScreenerDataUnavailable so the caller can
+        # log 'data_unavailable' instead of 'no_candidates'.
+        probes_ok = sum(1 for s in self._PROBE_SYMBOLS if self.fetcher.get_quote(s))
+        if probes_ok == 0:
+            raise ScreenerDataUnavailable(
+                f"All probe symbols {self._PROBE_SYMBOLS} returned empty quotes — "
+                "yfinance likely rate-limited or network unavailable"
+            )
+        if probes_ok < len(self._PROBE_SYMBOLS):
+            logger.warning(
+                "Screener partial data — only %d/%d probes returned quotes (%s). "
+                "Some symbols may be skipped.",
+                probes_ok, len(self._PROBE_SYMBOLS), self._PROBE_SYMBOLS,
+            )
+
+        candidates = []
         for symbol in universe:
             try:
                 candidate = self._score_symbol(symbol)
                 if candidate:
                     candidates.append(candidate)
             except Exception as e:
-                logger.debug("Screener skipped %s: %s", symbol, e)
+                logger.warning("Screener skipped %s: %s", symbol, e)  # was debug → warning
 
         # Sort by score descending, then deduplicate same-company tickers
         candidates.sort(key=lambda c: c.composite_score, reverse=True)

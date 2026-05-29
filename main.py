@@ -28,7 +28,7 @@ from core.journal import (
     log_trade_trim, set_queued_action, clear_queued_action,
     log_risk_decision, get_latest_watchlist,
 )
-from agents.screener import Screener
+from agents.screener import Screener, ScreenerDataUnavailable
 from agents.after_close_watchlist import LONG_SETUP_TYPES
 import agents.technical        as technical_agent
 import agents.fundamental      as fundamental_agent
@@ -96,6 +96,25 @@ def check_open_positions(alpaca: AlpacaClient):
     from core.journal import log_trade_close
     positions      = {p["symbol"]: p for p in alpaca.get_positions()}
     journal_trades = get_open_trades()
+
+    # Refresh position_pct and is_remnant from live Alpaca market values.
+    # position_pct is stored at entry time and updated on trims, but it drifts
+    # as the portfolio value changes. Stale pct causes the dashboard to show
+    # remnants (ARM 1.3%, QCOM 2%, DDOG 2%) as if they're full positions.
+    # We recompute every run so the slot-counting logic always works from fresh data.
+    min_slot_pct = getattr(config, "MIN_SLOT_PCT", 0.03)
+    portfolio_value = alpaca.get_account().get("portfolio_value", 0)
+    if portfolio_value > 0:
+        for trade in journal_trades:
+            live_pos = positions.get(trade["symbol"])
+            if not live_pos:
+                continue
+            live_pct = round(float(live_pos.get("market_value", 0)) / portfolio_value, 4)
+            is_remnant = live_pct < min_slot_pct and live_pct > 0
+            update_open_trade(trade["id"], {
+                "position_pct": live_pct,
+                "is_remnant":   is_remnant,
+            })
 
     for trade in journal_trades:
         symbol = trade["symbol"]
@@ -946,12 +965,23 @@ def run_pipeline(
         dynamic_max = min(dynamic_max, config.SENTINEL_EVENT_MAX_CANDIDATES)
         logger.info("Sentinel event mode — narrowed screener to %s", event_universe)
 
-    candidates = _select_candidates(
-        screener=screener,
-        dynamic_max=dynamic_max,
-        trigger_reason=trigger_reason,
-        event_universe=event_universe,
-    )
+    try:
+        candidates = _select_candidates(
+            screener=screener,
+            dynamic_max=dynamic_max,
+            trigger_reason=trigger_reason,
+            event_universe=event_universe,
+        )
+    except ScreenerDataUnavailable as exc:
+        # Quote data is unavailable (yfinance rate-limit / network down).
+        # Log as 'data_unavailable' — distinct from 'no_candidates' — so the
+        # dashboard can surface the right diagnostic rather than implying the
+        # screener ran and found nothing.
+        logger.warning("Screener data unavailable — skipping this run: %s", exc)
+        log_run(run_type, [], 0, skipped_reason="data_unavailable",
+                regime=regime, vix_regime=vix_regime, reason=trigger_reason,
+                event_symbols=sorted(event_symbols), event_details=event_details)
+        return
 
     if not candidates:
         logger.info("No screener candidates")

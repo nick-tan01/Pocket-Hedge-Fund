@@ -13,6 +13,7 @@ Do NOT inject into rebuttal functions — those must stay reactive to live debat
 """
 
 import logging
+import config
 from core.journal import get_all_trades
 
 logger = logging.getLogger(__name__)
@@ -28,7 +29,11 @@ def get_performance_context(lookback: int = 10) -> str:
         regime = _get_regime_tag()
         n = len(trades)
 
-        if n < 5:
+        # C17(3): when v2 is on, unlock outcome-based feedback sooner (n>=3 instead of
+        # n>=5) so realized losses (e.g. the NVDA stop) reach the debate instead of two
+        # more cold-start-only entries.
+        cold_threshold = 3 if getattr(config, "DEBATE_RUBRIC_V2", False) else 5
+        if n < cold_threshold:
             return _cold_start_context(regime)
         elif n < 20:
             return _growth_context(trades[-lookback:], regime, n)
@@ -61,6 +66,18 @@ def _get_regime_tag() -> str:
 # ── Phase builders ─────────────────────────────────────────────────────────────
 
 def _cold_start_context(regime: str) -> str:
+    # C17(1): when v2 is on, balance the three pro-momentum priors with symmetric
+    # counter-bias guidance so the cold-start block isn't a one-sided bullish thumb
+    # on the scale (the suspected driver of the conviction-collapse-to-7).
+    symmetric = ""
+    if getattr(config, "DEBATE_RUBRIC_V2", False):
+        symmetric = """
+Counter-biases to apply with EQUAL weight:
+• Sycophancy / agreement bias: the bear often parks at 6 and the bull at 7, manufacturing
+  a 1-point "tie." A narrow spread is frequently politeness, not evidence — it is NOT a buy signal.
+• Catalyst illusion: "continued momentum" is not a catalyst. Require a dated, trade-specific event.
+• Conviction-7 default: if you land on 7, ask whether the evidence actually justifies 6 or 8.
+  The middle is where unexamined calls hide."""
     return f"""
 ═══ PERFORMANCE CONTEXT (cold start — fewer than 5 closed trades) ═══
 Market regime (SPY 1-month): {regime}
@@ -74,7 +91,7 @@ Documented LLM biases to actively counter:
   (ADX > 25). Treat elevated RSI as momentum confirmation, not exhaustion.
   Only flag as bearish when ADX < 20 or volume is declining as price rises.
 • Momentum avoidance: LLMs systematically underweight continuation signals in
-  bull regimes. Strong technical + intact thesis = high conviction, not "watch".
+  bull regimes. Strong technical + intact thesis = high conviction, not "watch".{symmetric}
 ═══════════════════════════════════════════════════════════════════════════════
 """
 
@@ -152,23 +169,39 @@ skepticism if the current regime differs from when these trades were taken.
 
 def _check_conviction_calibration(trades: list[dict]) -> str:
     """Warn if high-conviction calls (8-10) are underperforming."""
+    # C17(2): when v2 is on, also audit the conviction-7 bucket — where ~93% of buys
+    # actually live. The legacy >=8 gate is structurally unreachable given the
+    # conviction collapse, so the default bucket is never checked.
+    focal_note = ""
+    if getattr(config, "DEBATE_RUBRIC_V2", False):
+        focal = [t for t in trades if t.get("conviction", 0) == 7]
+        if len(focal) >= 3:
+            focal_wins = sum(1 for t in focal if t.get("pnl", 0) > 0)
+            focal_wr = focal_wins / len(focal) * 100
+            if focal_wr < 50:
+                focal_note = (
+                    f"\n⚠ CALIBRATION ALERT: conviction-7 trades (your default bucket) "
+                    f"winning only {focal_wr:.0f}% ({focal_wins}/{len(focal)}). "
+                    f"A 7 should mean something — differentiate 6 vs 8 instead of defaulting.\n"
+                )
+
     high_conv = [t for t in trades if t.get("conviction", 0) >= 8]
     if len(high_conv) < 3:
-        return ""
+        return focal_note
     high_wins = sum(1 for t in high_conv if t.get("pnl", 0) > 0)
     high_wr   = high_wins / len(high_conv) * 100
     if high_wr < 40:
-        return (
+        return focal_note + (
             f"\n⚠ CALIBRATION ALERT: High-conviction trades (8-10) winning only "
             f"{high_wr:.0f}% ({high_wins}/{len(high_conv)}). "
             f"Apply extra scrutiny before assigning conviction ≥ 8.\n"
         )
     if high_wr > 75:
-        return (
+        return focal_note + (
             f"\n✓ High-conviction trades (8-10) performing well: "
             f"{high_wr:.0f}% win rate ({high_wins}/{len(high_conv)}).\n"
         )
-    return ""
+    return focal_note
 
 
 def _check_stop_clustering(trades: list[dict]) -> str:

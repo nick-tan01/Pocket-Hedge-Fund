@@ -88,6 +88,15 @@ DEBATE_MODEL    = "claude-sonnet-4-20250514"   # Debate agents
 MAX_TOKENS         = 500    # Screener / analyst agents (structured JSON, short output)
 DEBATE_MAX_TOKENS  = 1000   # Bull, Bear, PM, position reviewer (need nuanced reasoning)
 
+# ── Debate calibration (C14/C17) ─────────────────────────────────────────────
+# Experimental fix for the conviction-collapse-to-7 / PM-echoes-bull pathology.
+# OFF by default — flip to True to trial the evidence-anchored conviction rubric,
+# the unresolved-bear-points requirement, the exhaustion guardrail, symmetric
+# cold-start priors, and the conv-7 calibration audit. Forward-paper only; watch
+# for: conviction stdev among buys widening, buy-rate at conv-7 dropping below 100%,
+# PM==bull echo-rate dropping below ~60%.
+DEBATE_RUBRIC_V2 = False
+
 # ── Benchmark ────────────────────────────────────────────────────────────────
 BENCHMARK_TICKER = "SPY"
 

@@ -102,6 +102,16 @@ def rebuttal(
     """
     bull_concessions = "\n".join(f"  - {c}" for c in bull_r2.get("concessions", []))
 
+    # C14 (gated by DEBATE_RUBRIC_V2): stop the bear defaulting to a "middle" 6.
+    # Flag OFF => empty string, prompt unchanged.
+    deanchor = ""
+    if getattr(config, "DEBATE_RUBRIC_V2", False):
+        deanchor = (
+            "Your conviction must move from your R1 number ONLY for a stated reason — "
+            "do NOT default to a neutral 6. First state explicitly whether the bull "
+            "addressed your PRIMARY RISK (yes/no) and why; if not, hold or raise your conviction."
+        )
+
     prompt = f"""You are the bearish analyst for {symbol}. The bull has responded to your opening case.
 
 YOUR OPENING THESIS: {opening.get('thesis')}
@@ -118,7 +128,7 @@ Concessions the bull made:
 After hearing the bull's rebuttal, give your final bear conviction.
 Has the bull addressed your primary risk adequately? Where do you still disagree?
 Be intellectually honest — if the bull has genuinely addressed your concerns, lower your conviction.
-
+{deanchor}
 Return ONLY this JSON:
 {{
   "symbol": "{symbol}",

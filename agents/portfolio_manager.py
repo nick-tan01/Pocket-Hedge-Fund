@@ -44,6 +44,37 @@ def decide(
 
     perf_ctx = get_performance_context()
 
+    # C14 (gated by DEBATE_RUBRIC_V2): an evidence-anchored conviction rubric +
+    # exhaustion guardrail + tightened tie-break that SUPERSEDE the legacy pro-buy
+    # rules below, plus required output fields forcing the PM to dispose of each
+    # standing bear point instead of echoing the bull's number. Flag OFF => both
+    # strings are empty and the prompt is byte-identical to the legacy version.
+    rubric_block = ""
+    extra_fields = ""
+    if getattr(config, "DEBATE_RUBRIC_V2", False):
+        rubric_block = """
+═══ CONVICTION RUBRIC v2 (these rules SUPERSEDE the TIED DEBATE and MOMENTUM REGIME rules above when in conflict) ═══
+Anchor your score to named evidence, NOT to either analyst's number:
+  9-10: ≥2 independent analyst signals strong (≥8/10) AND a dated, trade-specific catalyst within 4 weeks AND no unresolved TYPE-A bear point.
+  7-8 : ≥2 analyst signals constructive AND momentum confirmed (ADX>25, volume ≥ average) AND every unresolved bear point is TYPE-B (systemic).
+  6   : thesis intact but evidence mixed, OR exactly one TYPE-A bear point remains only partially answered.
+  ≤5  : an unresolved TYPE-A bear point, OR analyst signals conflict, OR no catalyst.
+You MUST name which analyst signals and which catalyst place the score in its band.
+
+EXHAUSTION / CROWDING GUARDRAIL (counterweight to momentum): a confirmed uptrend is necessary, not sufficient.
+Lower conviction by ≥1 when ANY holds: (a) RSI>75 AND move >25% in <15 sessions (parabolic);
+(b) volume falling while price rises (distribution); (c) the only bull catalyst is "continued momentum"
+with no dated event; (d) the bear raised a TYPE-A point the bull did not concretely rebut.
+Do NOT assign 7+ on momentum alone without a named catalyst.
+
+TIED DEBATE RULE (tightened): a debate ending within 1 point is a BUY at reduced size ONLY IF
+(i) regime is bullish AND (ii) there is a named, dated catalyst within 4 weeks AND (iii) all unresolved
+bear points are TYPE-B. A tie resting on momentum with no catalyst is a WATCH with a specific entry trigger, not a BUY.
+"""
+        extra_fields = """,
+  "unresolved_bear_points": ["<each bear point still standing after R2, tagged TYPE-A or TYPE-B>"],
+  "why_not_lower": "<if conviction>=7 despite any TYPE-A point, justify explicitly>\""""
+
     prompt = f"""You are Fulcrum, the Chief Investment Officer of a hedge fund with a mandate to generate alpha, not to referee debates. You've heard Zealot and Reaper argue for two rounds on {symbol}. Your job: does the edge justify the risk at this exact moment? You are not required to side with the louder argument — you are required to be right.
 {perf_ctx}
 ═══ ANALYST CONSENSUS ═══
@@ -94,7 +125,7 @@ BEAR updated (conviction {bear_r2.get('conviction')}/10): {bear_r2.get('final_th
 MOMENTUM REGIME RULE:
 RSI above 70 is NOT automatically bearish. In a confirmed uptrend (ADX > 25, price above key EMAs), overbought RSI signals momentum continuation, not exhaustion. Apply the "overbought = bearish" interpretation ONLY when: (a) ADX is declining below 20, indicating trend weakness, OR (b) volume is declining as price rises (divergence), OR (c) there are genuine fundamental deterioration signals.
 A bear argument that rests SOLELY on elevated RSI — without structural breakdown, volume divergence, or fundamental deterioration — should be discounted significantly in a strong trending market. If ADX > 25 and volume is above average, a BUY with conviction 7-8 is appropriate for fundamentally sound stocks showing momentum continuation.
-
+{rubric_block}
 Return ONLY this JSON:
 {{
   "symbol": "{symbol}",
@@ -102,7 +133,7 @@ Return ONLY this JSON:
   "final_conviction": <1-10>,
   "verdict": "<1-2 sentence synthesis of why you made this call>",
   "deciding_factor": "<the single most important thing that tipped your decision>",
-  "key_risk_to_monitor": "<if buying: what condition would make you exit early>"
+  "key_risk_to_monitor": "<if buying: what condition would make you exit early>"{extra_fields}
 }}"""
 
     try:

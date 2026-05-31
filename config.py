@@ -95,9 +95,9 @@ REMNANT_FORCE_EXIT = True
 # buy is sized as the GAP only (target − current), never a fresh full position, so shares
 # are never double-counted, and it grows the existing position record instead of creating
 # a duplicate. Meaningful holdings (≥ MIN_SLOT_PCT) still hard-skip as before.
-# DORMANT by default (money-sizing change) — flip to True after reviewing the delta-math
-# proof. False = legacy "skip any held symbol" behavior.
-REMNANT_REBUY = False
+# ACTIVE — delta-math reviewed (2% remnant -> conv-8 buys the 6% gap = $6,000, not $8,000).
+# Set False to restore the legacy "skip any held symbol" behavior.
+REMNANT_REBUY = True
 
 # C13-TECH: "llm" (legacy, LLM narrates indicators), "shadow" (compute BOTH the
 # deterministic rule and the LLM, log agreement, but USE the LLM — data collection,

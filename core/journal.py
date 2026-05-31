@@ -150,6 +150,7 @@ def log_run(
     skipped_reason: str = "", regime: str = "", vix_regime: str = "",
     reason: str = "scheduled", event_symbols: list[str] | None = None,
     event_details: list[dict] | None = None,
+    candidate_details: list[dict] | None = None,
 ):
     """Log a summary of each pipeline run."""
     data = _load()
@@ -161,6 +162,12 @@ def log_run(
         "skipped_reason":   skipped_reason,
         "reason":           reason,
     }
+    # C3-OBS: persist the screener composite_score + per-factor signals for each
+    # candidate so signal-quality post-mortems and the C18 data-driven score floor
+    # become computable. Additive/append-only — the dashboard's `candidates` list is
+    # unchanged; this is an extra optional field.
+    if candidate_details:
+        entry["candidate_details"] = candidate_details
     if event_symbols:
         entry["event_symbols"] = event_symbols
     if event_details:

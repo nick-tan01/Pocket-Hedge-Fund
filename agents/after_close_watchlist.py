@@ -9,7 +9,7 @@ from __future__ import annotations
 
 import logging
 from dataclasses import dataclass, field
-from datetime import datetime, timedelta, timezone
+from datetime import date, datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
 
 import yfinance as yf
@@ -25,6 +25,21 @@ from core.journal import get_open_trades
 
 logger = logging.getLogger(__name__)
 ET = ZoneInfo("America/New_York")
+
+# C20b: NYSE full-day closures. The watchlist-expiry calendar must skip these (not
+# just weekends) so memory never expires on, or carries into, a closed session.
+# Covers the 6-month strategy horizon (May–Dec 2026) plus early 2027 for rollover.
+US_MARKET_HOLIDAYS = frozenset({
+    date(2026, 5, 25),  # Memorial Day
+    date(2026, 6, 19),  # Juneteenth
+    date(2026, 7, 3),   # Independence Day (observed)
+    date(2026, 9, 7),   # Labor Day
+    date(2026, 11, 26), # Thanksgiving
+    date(2026, 12, 25), # Christmas
+    date(2027, 1, 1),   # New Year's Day
+    date(2027, 1, 18),  # MLK Jr. Day
+    date(2027, 2, 15),  # Washington's Birthday
+})
 
 LONG_SETUP_TYPES = {
     "long_momentum_continuation",
@@ -71,7 +86,8 @@ def _utc_iso(dt: datetime | None = None) -> str:
 
 def _next_trading_morning(now_et: datetime) -> datetime:
     day = now_et.date() + timedelta(days=1)
-    while day.weekday() >= 5:
+    # C20b: skip weekends AND full-day market holidays.
+    while day.weekday() >= 5 or day in US_MARKET_HOLIDAYS:
         day += timedelta(days=1)
     return datetime(
         day.year,

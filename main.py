@@ -1054,7 +1054,12 @@ def run_pipeline(
     log_snapshot(account["portfolio_value"], account["cash"], spy_price)
     log_run(run_type, [c.symbol for c in candidates], trades_executed,
             regime=regime, vix_regime=vix_regime, reason=trigger_reason,
-            event_symbols=sorted(event_symbols), event_details=event_details)
+            event_symbols=sorted(event_symbols), event_details=event_details,
+            candidate_details=[
+                {"symbol": c.symbol, "composite_score": c.composite_score,
+                 "signals": c.signals}
+                for c in candidates
+            ])
 
     logger.info("══ Pipeline complete | portfolio=$%.2f | trades=%d ══",
                 account["portfolio_value"], trades_executed)

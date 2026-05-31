@@ -10,11 +10,14 @@ no hardcoded ticker pairs needed.
 import logging
 import pandas as pd
 from dataclasses import dataclass, field
-from datetime import date, datetime
+from datetime import date, datetime, timezone
+from zoneinfo import ZoneInfo
 import yfinance as yf
 
 from core.data_fetcher import DataFetcher
 import config
+
+ET = ZoneInfo("America/New_York")
 
 logger = logging.getLogger(__name__)
 
@@ -497,7 +500,8 @@ class Screener:
         )
         if not earnings_date:
             return False
-        days_to_earnings = (earnings_date - date.today()).days
+        # C20a: use the ET market date, consistent with the ET-converted earnings_date.
+        days_to_earnings = (earnings_date - datetime.now(ET).date()).days
         return 0 < days_to_earnings <= days
 
     def _parse_earnings_date(self, raw) -> date | None:
@@ -509,7 +513,10 @@ class Screener:
             if hasattr(raw, "iloc"):
                 raw = raw.iloc[0]
             if isinstance(raw, (int, float)):
-                return datetime.utcfromtimestamp(raw).date()
+                # C20a: convert the UTC epoch to the ET market date before taking
+                # .date(), so "earnings within 3 days" compares ET-to-ET. Using a raw
+                # UTC date could be off by one near the date line on late-night runs.
+                return datetime.fromtimestamp(raw, tz=timezone.utc).astimezone(ET).date()
             if isinstance(raw, datetime):
                 return raw.date()
             if isinstance(raw, date):

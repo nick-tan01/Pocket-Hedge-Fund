@@ -304,17 +304,44 @@ def review_open_positions(
         else:
             consec_weakened = 0  # thesis recovered — counter resets
 
+        # C13-EXIT (gated by WEAKENED_EXIT_REQUIRE_PRICE, default on): require PRICE
+        # confirmation before a thesis-"weakened" streak forces an exit. A daily-bar
+        # backtest showed the old unconditional rule cut RKLB at +5.4% (it ran to
+        # +15.3%) and DOCS at +9.6% (it ran to +21.5%) while both were still winning —
+        # a thesis-only weakened streak dumped the fund's biggest winners before the
+        # trailing stop could engage. A "broken" thesis still exits unconditionally (a
+        # real signal); a "weakened" streak only forces exit when price confirms
+        # weakness: below entry OR the EMA10/30 trend (the same trend the debate uses,
+        # with a 2% deadband that avoids single-day whipsaw — agents/technical.py:_trend)
+        # is no longer "up". When price is strong the position is left to the persisted
+        # trailing stop (C2); the streak counter is NOT reset, so the exit fires the
+        # moment the trend rolls over. Set WEAKENED_EXIT_REQUIRE_PRICE=False to restore
+        # the legacy unconditional exit.
         if consec_weakened >= 3 and action in ("trim", "hold"):
-            logger.warning(
-                "CONSECUTIVE WEAKENED EXIT | %s thesis=%s for %d consecutive reviews → EXIT",
-                symbol, thesis_status_raw, consec_weakened,
-            )
-            action = "exit"
-            review = dict(review)
-            review["exit_reason"] = (
-                f"consecutive_weakened_exit: thesis={thesis_status_raw} for "
-                f"{consec_weakened} consecutive reviews without recovery"
-            )
+            require_price = getattr(config, "WEAKENED_EXIT_REQUIRE_PRICE", True)
+            entry_px      = trade.get("entry_price", current_price)
+            trend         = (tech.get("indicators") or {}).get("trend", "unknown")
+            price_weak    = current_price < entry_px or trend != "up"
+            if not require_price or thesis_status_raw == "broken" or price_weak:
+                logger.warning(
+                    "CONSECUTIVE WEAKENED EXIT | %s thesis=%s for %d reviews "
+                    "(trend=%s, px=%.2f vs entry=%.2f) → EXIT",
+                    symbol, thesis_status_raw, consec_weakened, trend,
+                    current_price, entry_px,
+                )
+                action = "exit"
+                review = dict(review)
+                review["exit_reason"] = (
+                    f"consecutive_weakened_exit: thesis={thesis_status_raw} for "
+                    f"{consec_weakened} reviews, price confirmed weak "
+                    f"(px={current_price:.2f}, entry={entry_px:.2f}, trend={trend})"
+                )
+            else:
+                logger.info(
+                    "WEAKENED-EXIT SUPPRESSED | %s weakened x%d but price strong "
+                    "(px=%.2f >= entry=%.2f, trend=up) — holding; trailing stop manages",
+                    symbol, consec_weakened, current_price, entry_px,
+                )
 
         logger.info(
             "Position Review | %s → %s | conviction=%d | thesis=%s | %s",

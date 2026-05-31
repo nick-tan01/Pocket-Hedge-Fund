@@ -70,6 +70,12 @@ HARD_STOP_PCT        = 0.08       # Never lose more than 8% on any single trade
 TRAILING_STOP_TRIGGER= 0.15       # Activate trailing stop once +15% profit
 TRAILING_STOP_PCT    = 0.10       # Trail 10% below peak
 
+# C13-EXIT: when True (default), a thesis-"weakened" review streak only force-exits a
+# position if price ALSO confirms weakness (below entry OR EMA10/30 trend no longer up).
+# Prevents dumping winners on thesis-nerves (the rule cut RKLB/DOCS pre-rally in
+# backtest); a "broken" thesis still exits unconditionally. Set False for legacy behavior.
+WEAKENED_EXIT_REQUIRE_PRICE = True
+
 # ── Circuit breakers ──────────────────────────────────────────────────────────
 VIX_ELEVATED_THRESHOLD = 20.0     # Scale new entries down in elevated-volatility regimes
 VIX_HIGH_THRESHOLD     = 30.0     # Require stronger conviction and smaller sizing

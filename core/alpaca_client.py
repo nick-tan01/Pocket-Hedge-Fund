@@ -94,10 +94,16 @@ class AlpacaClient:
 
     def submit_market_order(
         self, symbol: str, qty: float, side: str, reason: str = ""
-    ) -> dict:
+    ) -> dict | None:
         """
         Submit a market order. side = 'buy' | 'sell'.
-        Returns order info dict. Raises on failure.
+        Returns order info dict, or None on failure.
+
+        C3: previously this raised on any Alpaca rejection (insufficient buying power,
+        halted symbol, wash-trade block, rate limit). The caller guards with `if order:`,
+        so a raised exception propagated out of analyse_symbol and aborted the whole
+        run before log_run/push — a genuine buy vanished with no journal trace. We now
+        mirror close_position() and return None on failure so the guard works.
         """
         order_side = OrderSide.BUY if side.lower() == "buy" else OrderSide.SELL
         req = MarketOrderRequest(
@@ -106,7 +112,14 @@ class AlpacaClient:
             side=order_side,
             time_in_force=TimeInForce.DAY,
         )
-        order = self.trading.submit_order(req)
+        try:
+            order = self.trading.submit_order(req)
+        except Exception as e:
+            logger.warning(
+                "Order submit FAILED | %s %s %.4f | reason: %s | error: %s",
+                side.upper(), symbol, qty, reason, e,
+            )
+            return None
         logger.info(
             "ORDER SUBMITTED | %s %s %.4f | reason: %s | id: %s",
             side.upper(), symbol, qty, reason, order.id,

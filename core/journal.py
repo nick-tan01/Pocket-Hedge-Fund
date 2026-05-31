@@ -7,7 +7,7 @@ JSON file that the Vercel dashboard reads. Append-only — never overwrites hist
 import json
 import logging
 import os
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 
 import config
@@ -26,7 +26,7 @@ def _load() -> dict:
             pass
     return {
         "meta": {
-            "created":          datetime.utcnow().isoformat(),
+            "created":          datetime.now(timezone.utc).isoformat(),
             "benchmark":        config.BENCHMARK_TICKER,
             "starting_capital": config.STARTING_CAPITAL,
         },
@@ -52,7 +52,7 @@ def log_snapshot(portfolio_value: float, cash: float, spy_price: float):
     """Record a portfolio value snapshot for the equity curve."""
     data = _load()
     data["snapshots"].append({
-        "ts":              datetime.utcnow().isoformat(),
+        "ts":              datetime.now(timezone.utc).isoformat(),
         "portfolio_value": round(portfolio_value, 2),
         "cash":            round(cash, 2),
         "spy_price":       round(spy_price, 2),
@@ -76,7 +76,7 @@ def log_trade_open(
         "side":          side,
         "qty":           qty,
         "entry_price":   round(entry_price, 2),
-        "entry_ts":      datetime.utcnow().isoformat(),
+        "entry_ts":      datetime.now(timezone.utc).isoformat(),
         "stop_price":    round(stop_price, 2),
         "conviction":    conviction,
         "debate_id":     debate_id,
@@ -110,7 +110,7 @@ def log_trade_close(
 
     trade.update({
         "exit_price":  exit_p,
-        "exit_ts":     datetime.utcnow().isoformat(),
+        "exit_ts":     datetime.now(timezone.utc).isoformat(),
         "exit_reason": exit_reason,
         "pnl":         pnl,
         "pnl_pct":     pnl_pct,
@@ -133,7 +133,7 @@ def log_debate(
     data["debate_logs"].append({
         "id":               debate_id,
         "symbol":           symbol,
-        "ts":               datetime.utcnow().isoformat(),
+        "ts":               datetime.now(timezone.utc).isoformat(),
         "bull_case":        bull_case,
         "bear_case":        bear_case,
         "bull_score":       bull_score,
@@ -154,7 +154,7 @@ def log_run(
     """Log a summary of each pipeline run."""
     data = _load()
     entry = {
-        "ts":               datetime.utcnow().isoformat(),
+        "ts":               datetime.now(timezone.utc).isoformat(),
         "run_type":         run_type,
         "candidates":       candidates,
         "trades_executed":  trades_executed,
@@ -185,7 +185,7 @@ def log_risk_decision(
     data = _load()
     data.setdefault("risk_decisions", [])
     entry = {
-        "ts":          datetime.utcnow().isoformat(),
+        "ts":          datetime.now(timezone.utc).isoformat(),
         "symbol":      symbol,
         "action":      action,
         "reason":      reason,
@@ -223,7 +223,7 @@ def log_watchlist(record: dict) -> str:
     """Append an after-close watchlist record and return its id."""
     data = _load()
     data.setdefault("watchlists", [])
-    generated = record.get("generated_at") or datetime.utcnow().isoformat()
+    generated = record.get("generated_at") or datetime.now(timezone.utc).isoformat()
     watchlist_id = record.get("id") or f"watchlist_{generated[:19].replace('-', '').replace(':', '').replace('T', '_')}"
     record["id"] = watchlist_id
     data["watchlists"].append(record)
@@ -266,7 +266,7 @@ def log_position_review(
     entry = {
         "trade_id":             trade_id,
         "symbol":               symbol,
-        "ts":                   datetime.utcnow().isoformat(),
+        "ts":                   datetime.now(timezone.utc).isoformat(),
         "action":               action,
         "conviction":           conviction,
         "thesis_status":        thesis_status,
@@ -305,7 +305,7 @@ def log_trade_trim(
             old_pct = float(trade.get("position_pct", 0) or 0)
             trade.setdefault("trim_history", [])
             trade["trim_history"].append({
-                "ts":       datetime.utcnow().isoformat(),
+                "ts":       datetime.now(timezone.utc).isoformat(),
                 "trim_qty": round(trim_qty, 4),
                 "new_qty":  round(new_qty, 4),
                 "price":    round(price, 2),
@@ -332,7 +332,7 @@ def set_queued_action(trade_id: str, action: str, reason: str):
             trade["queued_action"] = {
                 "action":    action,
                 "reason":    reason,
-                "queued_ts": datetime.utcnow().isoformat(),
+                "queued_ts": datetime.now(timezone.utc).isoformat(),
             }
             break
     _save(data)
@@ -359,6 +359,14 @@ def push_to_github(commit_message: str = None):
     """
     import subprocess
     import os
+
+    # C5: under GitHub Actions the workflow's "Push updated dashboard data" step is the
+    # single push authority (it serializes via the concurrency group and rebases safely).
+    # Doing a second commit+push here had no rebase and raced the workflow step, so we
+    # defer entirely in CI. Local/scheduled runs still commit+push as before.
+    if os.getenv("GITHUB_ACTIONS"):
+        logger.info("GitHub push: under GitHub Actions — deferring to workflow push step")
+        return
 
     repo_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     journal   = os.path.join(repo_root, config.JOURNAL_PATH)

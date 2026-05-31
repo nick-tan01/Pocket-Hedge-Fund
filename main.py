@@ -155,8 +155,11 @@ def check_open_positions(alpaca: AlpacaClient):
             peak     = trade["entry_price"] * (1 + pnl_pct)
             new_stop = round(peak * (1 - config.TRAILING_STOP_PCT), 2)
             if new_stop > stop_price:
-                trade["stop_price"] = new_stop
-                logger.info("Trailing stop → %s $%.2f", symbol, new_stop)
+                # C2: persist the ratcheted stop. Previously this only mutated the
+                # local dict (a copy from get_open_trades()), so the trailing stop was
+                # silently discarded every run and never actually protected gains.
+                update_open_trade(trade["id"], {"stop_price": new_stop})
+                logger.info("Trailing stop → %s $%.2f (persisted)", symbol, new_stop)
 
         try:
             entry_dt = datetime.fromisoformat(trade.get("entry_ts", ""))
@@ -346,7 +349,7 @@ def review_open_positions(
 
         if action == "hold":
             update_open_trade(trade_id, {
-                "last_review_ts":            datetime.now(ET).isoformat(),
+                "last_review_ts":            datetime.now(timezone.utc).isoformat(),
                 "last_review_conviction":    conviction,
                 "thesis_status":             review.get("thesis_status"),
                 "key_risk":                  review.get("key_risk_to_monitor"),
@@ -365,7 +368,7 @@ def review_open_positions(
                 logger.info("Market closed — EXIT queued for %s (will re-review next run)", symbol)
                 set_queued_action(trade_id, "exit", exit_reason_str)
                 update_open_trade(trade_id, {
-                    "last_review_ts":            datetime.now(ET).isoformat(),
+                    "last_review_ts":            datetime.now(timezone.utc).isoformat(),
                     "thesis_status":             review.get("thesis_status"),
                     "time_stop_flagged":         False,
                     "consecutive_weakened_count": consec_weakened,
@@ -387,7 +390,7 @@ def review_open_positions(
                 logger.info("Market closed — TRIM queued for %s (will re-review next run)", symbol)
                 set_queued_action(trade_id, "trim", review.get("trim_reason", "conviction_reduced"))
                 update_open_trade(trade_id, {
-                    "last_review_ts":            datetime.now(ET).isoformat(),
+                    "last_review_ts":            datetime.now(timezone.utc).isoformat(),
                     "last_review_conviction":    conviction,
                     "thesis_status":             review.get("thesis_status"),
                     "time_stop_flagged":         False,
@@ -407,7 +410,7 @@ def review_open_positions(
                 logger.info("TRIM %s — position already at or below target size, treating as hold",
                             symbol)
                 update_open_trade(trade_id, {
-                    "last_review_ts":            datetime.now(ET).isoformat(),
+                    "last_review_ts":            datetime.now(timezone.utc).isoformat(),
                     "last_review_conviction":    conviction,
                     "thesis_status":             review.get("thesis_status"),
                     "key_risk":                  review.get("key_risk_to_monitor"),
@@ -425,7 +428,7 @@ def review_open_positions(
                 logger.info("TRIM %s — trim qty %.4f below minimum, treating as hold",
                             symbol, trim_qty)
                 update_open_trade(trade_id, {
-                    "last_review_ts":            datetime.now(ET).isoformat(),
+                    "last_review_ts":            datetime.now(timezone.utc).isoformat(),
                     "last_review_conviction":    conviction,
                     "thesis_status":             review.get("thesis_status"),
                     "key_risk":                  review.get("key_risk_to_monitor"),
@@ -446,7 +449,7 @@ def review_open_positions(
                                review.get("trim_reason", ""))
                 update_open_trade(trade_id, {
                     "qty":                       new_qty,
-                    "last_review_ts":            datetime.now(ET).isoformat(),
+                    "last_review_ts":            datetime.now(timezone.utc).isoformat(),
                     "last_review_conviction":    conviction,
                     "thesis_status":             review.get("thesis_status"),
                     "key_risk":                  review.get("key_risk_to_monitor"),
@@ -734,18 +737,13 @@ def _active_watchlist_entries() -> list[dict]:
     eligible = []
     for entry in entries:
         side = entry.get("side", "")
-        tier = str(entry.get("tier", "")).upper()
         flags = entry.get("risk_flags", {})
 
-        # Original: explicit long_watch entries with a known setup type
-        if side == "long_watch" and entry.get("setup_type") in LONG_SETUP_TYPES:
-            pass
-        # New: also promote tier-A/B "long" entries — these are overnight top candidates
-        # that the after-close agent rated highly but flagged as "long" (not "long_watch").
-        # Without this they never reach the screener even though they passed nightly analysis.
-        elif side == "long" and tier in ("A", "B"):
-            pass
-        else:
+        # Only explicit long_watch entries with a known long setup type are eligible.
+        # C19: the after-close generator only ever emits side in
+        # {long_watch, weakness_or_hedge_watch, position_alert} — there is no "long"
+        # side, so the previous `elif side == "long"` branch was dead code (removed).
+        if not (side == "long_watch" and entry.get("setup_type") in LONG_SETUP_TYPES):
             continue
 
         if flags.get("earnings_within_3d"):
@@ -821,7 +819,27 @@ def _select_candidates(
     if event_universe is not None:
         return screener.run(max_candidates=dynamic_max, symbols=event_universe)
 
-    candidates = screener.run(max_candidates=dynamic_max)
+    # C1: Exclude names we already hold at meaningful size (>= MIN_SLOT_PCT) from the
+    # new-entry candidate pool. The screener scores the whole universe and routinely
+    # returns held momentum leaders in the top-N; they then burn a full LLM debate only
+    # to be vetoed at risk_manager ("Already holding"), starving real new ideas of the
+    # few candidate slots. Held names are still managed via review_open_positions().
+    # Remnants (< MIN_SLOT_PCT) are intentionally NOT excluded so they remain eligible
+    # for a deliberate rebuy-to-full. The risk_manager held-check stays as a backstop.
+    min_slot_pct = getattr(config, "MIN_SLOT_PCT", 0.03)
+    held_full = {
+        t["symbol"] for t in get_open_trades()
+        if t.get("symbol") and t.get("position_pct", 0) >= min_slot_pct
+    }
+
+    def _drop_held(cands: list) -> list:
+        kept = [c for c in cands if c.symbol not in held_full]
+        dropped = [c.symbol for c in cands if c.symbol in held_full]
+        if dropped:
+            logger.info("Excluded held positions from candidate pool: %s", dropped)
+        return kept
+
+    candidates = _drop_held(screener.run(max_candidates=dynamic_max))
     if trigger_reason == "sentinel_trigger":
         return candidates
 
@@ -831,7 +849,9 @@ def _select_candidates(
 
     watch_by_symbol = {e["symbol"]: e for e in watch_entries if e.get("symbol")}
     watch_symbols = sorted(watch_by_symbol)
-    revalidated = screener.run(max_candidates=len(watch_symbols), symbols=watch_symbols)
+    revalidated = _drop_held(
+        screener.run(max_candidates=len(watch_symbols), symbols=watch_symbols)
+    )
     if not revalidated:
         logger.info("After-close watchlist had no symbols pass next-run revalidation")
         return candidates
@@ -1007,17 +1027,25 @@ def run_pipeline(
             logger.info("Max positions reached — stopping analysis")
             break
 
-        executed = analyse_symbol(
-            symbol=candidate.symbol,
-            fetcher=fetcher,
-            portfolio_value=portfolio_value,
-            open_positions=open_positions,
-            dry_run=dry_run,
-            ok_to_trade=ok_to_trade,
-            alpaca=alpaca,
-            regime=regime,
-            vix_regime=vix_regime,
-        )
+        # C3: isolate each candidate so one unexpected error (data, API, agent)
+        # can't abort the run before log_snapshot/log_run/push_to_github below,
+        # which would lose the run record and break append-only auditability.
+        try:
+            executed = analyse_symbol(
+                symbol=candidate.symbol,
+                fetcher=fetcher,
+                portfolio_value=portfolio_value,
+                open_positions=open_positions,
+                dry_run=dry_run,
+                ok_to_trade=ok_to_trade,
+                alpaca=alpaca,
+                regime=regime,
+                vix_regime=vix_regime,
+            )
+        except Exception as exc:
+            logger.exception("analyse_symbol failed for %s — skipping: %s",
+                             candidate.symbol, exc)
+            executed = False
         if executed:
             trades_executed += 1
 

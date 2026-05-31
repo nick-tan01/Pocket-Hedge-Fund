@@ -39,8 +39,9 @@ SCREENER_WEIGHTS = {
 AFTER_CLOSE_WATCHLIST_MAX = 20     # Logged evidence cards; not all become candidates
 WATCHLIST_HISTORY_LIMIT   = 30     # Keep recent lists for audit without bloating data.json
 WATCHLIST_MEMORY_BONUS    = 0.06   # Small tie-breaker after next-run revalidation
-WATCHLIST_EXPIRE_HOUR_ET  = 10     # Expire next trading morning after early price discovery
-WATCHLIST_EXPIRE_MINUTE_ET= 15
+WATCHLIST_EXPIRE_HOUR_ET  = 14     # C6: expire 14:00 ET so the 13:00 ET midday run still
+WATCHLIST_EXPIRE_MINUTE_ET= 0      #     sees overnight memory (was 10:15, which locked it out);
+                                   #     still expires before the next open, never carried overnight.
 
 # ── Portfolio rules ───────────────────────────────────────────────────────────
 MAX_POSITIONS          = 8         # Max concurrent open positions

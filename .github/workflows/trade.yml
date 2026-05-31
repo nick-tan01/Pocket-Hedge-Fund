@@ -22,6 +22,15 @@ on:
 permissions:
   contents: write
 
+# C4: serialize all pipeline runs that write dashboard/data.json. The scheduled and
+# sentinel-triggered workflows both mutate the same append-only journal; running them
+# concurrently let one run's `cp`-overwrite erase another run's just-appended trades,
+# desyncing the journal from Alpaca and triggering spurious 24h orphan-closes.
+# cancel-in-progress:false => queue, never drop, an overlapping run.
+concurrency:
+  group: pipeline-data-json
+  cancel-in-progress: false
+
 jobs:
   run-pipeline:
     runs-on: ubuntu-latest
@@ -57,13 +66,17 @@ jobs:
         run: |
           git config user.name "nick-tan01"
           git config user.email "${{ secrets.GIT_EMAIL }}"
-          # Save our freshly-written data.json before pulling.
-          # Concurrent runs (sentinel + scheduled) both modify data.json and try to push.
-          # If another run pushed first, a naive `git push` fails because the branch moved.
-          # Solution: save our data, pull the latest state, restore our data (always wins),
-          # then commit + push. Our run's data is always the authoritative version.
-          cp dashboard/data.json /tmp/pipeline_data.json
-          git pull --rebase origin main || git rebase --abort
-          cp /tmp/pipeline_data.json dashboard/data.json
+          # C5: this step is the SINGLE push authority. main.py's push_to_github()
+          # skips its own commit/push under GitHub Actions (GITHUB_ACTIONS env), so
+          # there is no longer a competing in-process push with no rebase.
+          # Because runs are serialized by the `concurrency` group, the remote cannot
+          # move between our commit and push, so a plain commit -> rebase -> push
+          # cleanly replays our single-file change with NO destructive cp-overwrite.
           git add dashboard/data.json
-          git diff --cached --quiet && echo "No changes to push" || git commit -m "Auto: pipeline run $(date -u +'%Y-%m-%d %H:%M UTC')" && git push
+          if git diff --cached --quiet; then
+            echo "No changes to push"
+          else
+            git commit -m "Auto: pipeline run $(date -u +'%Y-%m-%d %H:%M UTC')"
+            git pull --rebase origin main
+            git push
+          fi

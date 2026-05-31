@@ -26,7 +26,7 @@ from core.journal import (
     log_trade_open, log_trade_close, get_open_trades, push_to_github,
     get_debate_by_id, log_position_review, update_open_trade,
     log_trade_trim, set_queued_action, clear_queued_action,
-    log_risk_decision, get_latest_watchlist,
+    log_risk_decision, get_latest_watchlist, log_pre_debate_gate,
 )
 from agents.screener import Screener, ScreenerDataUnavailable
 from agents.after_close_watchlist import LONG_SETUP_TYPES
@@ -343,6 +343,28 @@ def review_open_positions(
                     symbol, consec_weakened, current_price, entry_px,
                 )
 
+        # C12: clean up DEAD remnants. A position trimmed below MIN_SLOT_PCT whose thesis
+        # has weakened/broken for >=2 consecutive reviews is dead weight (e.g. ARM) — exit
+        # to free the cash/slot. Intact remnants are left alone (C7 rebuys them to full).
+        # Lower threshold (2) than the meaningful-position exit (3): a sub-slot position
+        # has negligible upside convexity, so the cost of an early exit is low.
+        pos_pct = trade.get("position_pct", 0)
+        if (getattr(config, "REMNANT_FORCE_EXIT", True)
+                and action in ("trim", "hold")
+                and 0 < pos_pct < getattr(config, "MIN_SLOT_PCT", 0.03)
+                and thesis_status_raw in ("weakened", "broken")
+                and consec_weakened >= 2):
+            logger.warning(
+                "REMNANT CLEANUP | %s remnant %.1f%% thesis=%s x%d → EXIT",
+                symbol, pos_pct * 100, thesis_status_raw, consec_weakened,
+            )
+            action = "exit"
+            review = dict(review)
+            review["exit_reason"] = (
+                f"remnant_cleanup: {pos_pct*100:.1f}% position, thesis="
+                f"{thesis_status_raw} for {consec_weakened} consecutive reviews"
+            )
+
         logger.info(
             "Position Review | %s → %s | conviction=%d | thesis=%s | %s",
             symbol, action.upper(), conviction,
@@ -492,6 +514,32 @@ def review_open_positions(
 
 
 # ── Per-symbol analysis ───────────────────────────────────────────────────────
+
+def _pre_debate_gate(candidate, open_positions: list[dict]) -> tuple[bool, str]:
+    """
+    C18: would a BUY be structurally impossible for this candidate regardless of the
+    debate outcome? Returns (would_gate, reason). Mirrors deterministic risk-manager
+    caps so the (expensive) debate can be skipped when the answer is already 'no'.
+    Note: a same-sector rotation could still admit a saturated-sector name, so in
+    'watch' mode we only LOG this and never skip — the scorecard reveals over-firing
+    before we ever enforce.
+    """
+    min_size = min(config.CONVICTION_SIZE_MAP.values())  # smallest possible new entry
+    deployed = sum(p.get("position_pct", 0) for p in open_positions)
+    if config.MAX_PORTFOLIO_EXPOSURE - deployed < 0.04:
+        return True, (f"exposure_maxed (deployed={deployed*100:.1f}%, "
+                      f"cap={config.MAX_PORTFOLIO_EXPOSURE*100:.0f}%)")
+    sector = (getattr(candidate, "signals", {}) or {}).get("sector")
+    if sector:
+        sector_deployed = sum(
+            p.get("position_pct", 0) for p in open_positions
+            if p.get("sector", "") == sector
+        )
+        if sector_deployed + min_size > config.MAX_SECTOR_PCT:
+            return True, (f"sector_saturated ({sector} at {sector_deployed*100:.1f}%, "
+                          f"cap={config.MAX_SECTOR_PCT*100:.0f}%)")
+    return False, ""
+
 
 def _risk_category(proposal) -> str:
     reason = (proposal.reason or "").lower()
@@ -682,21 +730,44 @@ def analyse_symbol(
         logger.info("ROTATION | closed %s before buying %s | %s",
                     proposal.rotate_from, symbol, proposal.rotation_reason)
 
+    # C7: detect a remnant top-up — the symbol is already held below MIN_SLOT_PCT. We
+    # grow the EXISTING position record rather than opening a duplicate open_trade.
+    min_slot_pct = getattr(config, "MIN_SLOT_PCT", 0.03)
+    topup_trade = None
+    if getattr(config, "REMNANT_REBUY", False):
+        topup_trade = next(
+            (t for t in open_positions
+             if t.get("symbol") == symbol and 0 < t.get("position_pct", 0) < min_slot_pct),
+            None,
+        )
+
     order = alpaca.submit_market_order(
         symbol=symbol, qty=proposal.shares, side="buy",
         reason=f"conviction={proposal.conviction} | {pm.get('verdict','')}",
     )
 
     if order:
-        log_trade_open(
-            symbol=symbol, side="buy", qty=proposal.shares,
-            entry_price=current_price, stop_price=proposal.stop_price,
-            conviction=proposal.conviction, debate_id=debate_id,
-            key_risk=proposal.key_risk, portfolio_value=portfolio_value,
-            sector=proposal.sector,
-        )
-        logger.info("✅ ORDER FILLED | %s %.4f @ $%.2f stop=$%.2f",
-                    symbol, proposal.shares, current_price, proposal.stop_price)
+        if topup_trade:
+            # Grow the existing remnant: add shares, keep the original entry/stop/debate.
+            new_qty = round(topup_trade.get("qty", 0) + proposal.shares, 4)
+            update_open_trade(topup_trade["id"], {
+                "qty":             new_qty,
+                "last_topup_ts":   datetime.now(timezone.utc).isoformat(),
+                "last_topup_qty":  proposal.shares,
+                "conviction":      proposal.conviction,
+            })
+            logger.info("✅ REMNANT TOP-UP | %s +%.4f sh → qty=%.4f @ $%.2f (conviction=%d)",
+                        symbol, proposal.shares, new_qty, current_price, proposal.conviction)
+        else:
+            log_trade_open(
+                symbol=symbol, side="buy", qty=proposal.shares,
+                entry_price=current_price, stop_price=proposal.stop_price,
+                conviction=proposal.conviction, debate_id=debate_id,
+                key_risk=proposal.key_risk, portfolio_value=portfolio_value,
+                sector=proposal.sector,
+            )
+            logger.info("✅ ORDER FILLED | %s %.4f @ $%.2f stop=$%.2f",
+                        symbol, proposal.shares, current_price, proposal.stop_price)
         return True
 
     return False
@@ -1053,6 +1124,21 @@ def run_pipeline(
         if meaningful_open + trades_executed >= config.MAX_POSITIONS:
             logger.info("Max positions reached — stopping analysis")
             break
+
+        # C18: pre-debate gate. In 'watch' mode we log what we WOULD have skipped but
+        # still run the debate (data collection). In 'enforce' mode we skip it for real.
+        gate_mode = getattr(config, "PRE_DEBATE_GATE_MODE", "watch")
+        if gate_mode in ("watch", "enforce"):
+            would_gate, gate_reason = _pre_debate_gate(candidate, open_positions)
+            if would_gate:
+                log_pre_debate_gate(candidate.symbol, True, gate_reason)
+                if gate_mode == "enforce":
+                    logger.info("PRE-DEBATE GATE | %s skipped — %s", candidate.symbol, gate_reason)
+                    log_risk_decision(symbol=candidate.symbol, action="gated",
+                                      reason=f"pre_debate_gate: {gate_reason}", conviction=0)
+                    continue
+                logger.info("PRE-DEBATE GATE (watch) | %s would skip (%s) — running debate anyway",
+                            candidate.symbol, gate_reason)
 
         # C3: isolate each candidate so one unexpected error (data, API, agent)
         # can't abort the run before log_snapshot/log_run/push_to_github below,

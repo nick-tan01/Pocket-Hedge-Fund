@@ -46,7 +46,15 @@ def evaluate(
     key_risk  = pm_verdict.get("key_risk_to_monitor", "")
 
     # ── No-go conditions ──────────────────────────────────────────────────────
-    if any(p["symbol"] == symbol for p in open_positions):
+    # C7: a MEANINGFUL holding (>= MIN_SLOT_PCT) still hard-skips. A held REMNANT
+    # (< MIN_SLOT_PCT) falls through to sizing so it can be rebought toward full —
+    # but only the GAP (target − current) is bought (see delta sizing below).
+    min_slot_pct  = getattr(config, "MIN_SLOT_PCT", 0.03)
+    remnant_rebuy = getattr(config, "REMNANT_REBUY", False)
+    held          = next((p for p in open_positions if p["symbol"] == symbol), None)
+    held_pct      = held.get("position_pct", 0) if held else 0.0
+    is_topup      = bool(held and remnant_rebuy and 0 < held_pct < min_slot_pct)
+    if held and not is_topup:
         return TradeProposal(
             symbol=symbol, action="hold", conviction=conviction,
             position_usd=0, shares=0, entry_price=current_price,
@@ -167,7 +175,10 @@ def evaluate(
         )
 
     effective_deployed = max(0, deployed_pct - rotation_credit)
-    remaining_exposure = config.MAX_PORTFOLIO_EXPOSURE - effective_deployed
+    # C7: for a remnant top-up, the existing remnant is already in deployed_pct, but we
+    # are replacing it with `target` (we only buy the gap), so add its allocation back to
+    # the headroom — otherwise the cap double-counts the slice we already own.
+    remaining_exposure = config.MAX_PORTFOLIO_EXPOSURE - effective_deployed + (held_pct if is_topup else 0)
     if remaining_exposure < 0.04:   # less than 4% headroom — too tight to add
         return TradeProposal(
             symbol=symbol, action="skip", conviction=conviction,
@@ -195,7 +206,11 @@ def evaluate(
         )
         sector_deployed = max(0, sector_deployed)
 
-    if sector and sector_deployed + size_pct > config.MAX_SECTOR_PCT:
+    # C7: for a top-up the remnant (same symbol, same sector) is already in
+    # sector_deployed; subtract it so the cap measures other-position sector exposure
+    # plus the new target, not double-counting the slice we already hold.
+    sector_base = sector_deployed - (held_pct if is_topup else 0)
+    if sector and sector_base + size_pct > config.MAX_SECTOR_PCT:
         return TradeProposal(
             symbol=symbol, action="skip", conviction=conviction,
             position_usd=0, shares=0, entry_price=current_price,
@@ -205,8 +220,22 @@ def evaluate(
             key_risk=key_risk,
         )
 
-    position_usd = round(portfolio_value * size_pct, 2)
+    # C7: `size_pct` is the TARGET fraction. For a remnant top-up we buy only the GAP
+    # (target − current) so shares are never double-counted; for a fresh entry the gap
+    # is the full target. If a remnant is already at/above target, hold.
+    target_pct = size_pct
+    buy_pct    = max(0.0, target_pct - held_pct) if is_topup else target_pct
+    position_usd = round(portfolio_value * buy_pct, 2)
     shares       = round(position_usd / current_price, 4) if current_price > 0 else 0
+    if is_topup and (buy_pct <= 0 or shares < 0.01):
+        return TradeProposal(
+            symbol=symbol, action="hold", conviction=conviction,
+            position_usd=0, shares=0, entry_price=current_price,
+            stop_price=0, stop_pct=0,
+            reason=(f"Remnant {symbol} already at/above target "
+                    f"({held_pct*100:.1f}% vs target {target_pct*100:.1f}%)"),
+            key_risk=key_risk,
+        )
 
     # ── ATR stop ─────────────────────────────────────────────────────────────
     atr      = _calculate_atr(bars, config.ATR_PERIOD)

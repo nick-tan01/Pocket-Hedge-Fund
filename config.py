@@ -86,6 +86,29 @@ TRAILING_STOP_PCT    = 0.10       # Trail 10% below peak
 # backtest); a "broken" thesis still exits unconditionally. Set False for legacy behavior.
 WEAKENED_EXIT_REQUIRE_PRICE = True
 
+# C12: force-exit a weakened/broken REMNANT (position < MIN_SLOT_PCT) after 2 consecutive
+# weakened reviews — clears dead-weight crumbs (e.g. ARM). Intact remnants are NOT exited;
+# they are left to be rebought to full by C7. Set False to disable remnant cleanup.
+REMNANT_FORCE_EXIT = True
+
+# C7: allow a held REMNANT (< MIN_SLOT_PCT) to be rebought back toward full size. The
+# buy is sized as the GAP only (target − current), never a fresh full position, so shares
+# are never double-counted, and it grows the existing position record instead of creating
+# a duplicate. Meaningful holdings (≥ MIN_SLOT_PCT) still hard-skip as before.
+# DORMANT by default (money-sizing change) — flip to True after reviewing the delta-math
+# proof. False = legacy "skip any held symbol" behavior.
+REMNANT_REBUY = False
+
+# C13-TECH: "llm" (legacy, LLM narrates indicators), "shadow" (compute BOTH the
+# deterministic rule and the LLM, log agreement, but USE the LLM — data collection,
+# no behavior change), or "deterministic" (use the rule, skip the LLM call). Default shadow.
+TECHNICAL_MODE = "shadow"
+
+# C18: "off", "watch" (compute the pre-debate skip decision + log it, but STILL run the
+# debate — data collection, no behavior change), or "enforce" (actually skip the debate
+# when a buy is structurally impossible). Default watch.
+PRE_DEBATE_GATE_MODE = "watch"
+
 # ── Circuit breakers ──────────────────────────────────────────────────────────
 VIX_ELEVATED_THRESHOLD = 20.0     # Scale new entries down in elevated-volatility regimes
 VIX_HIGH_THRESHOLD     = 30.0     # Require stronger conviction and smaller sizing

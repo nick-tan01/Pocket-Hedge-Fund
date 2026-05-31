@@ -19,9 +19,47 @@ import anthropic
 import pandas as pd
 
 import config
+from core.journal import log_tech_shadow
 
 logger = logging.getLogger(__name__)
 client = anthropic.Anthropic(api_key=config.ANTHROPIC_API_KEY)
+
+
+def _deterministic_signal(ind: dict) -> dict:
+    """
+    C13-TECH: map the already-computed indicators to a signal/strength with a plain
+    rule — no LLM. Mirrors the prompt's logic (trend gates RSI interpretation; MACD,
+    EMA trend, Bollinger, ADX strength, volume confirmation). Used in shadow mode for
+    comparison and, once validated, as the live replacement for the LLM narration call.
+    """
+    score = 0
+    rsi   = ind.get("rsi")
+    adx   = ind.get("adx")
+    trend = ind.get("trend", "unknown")
+    macd  = ind.get("macd", {}) or {}
+    bb    = ind.get("bollinger", {}) or {}
+    vol   = ind.get("volume_ratio", 1.0) or 1.0
+    strong_trend = adx is not None and adx > 25
+
+    if rsi is not None:
+        if rsi > 70:   score += 2 if strong_trend else -1   # continuation vs reversal
+        elif rsi > 55: score += 1
+        elif rsi < 30: score += 1                            # oversold bounce (long-only)
+        elif rsi < 45: score -= 1
+    if macd.get("crossover"):       score += 2
+    elif macd.get("above_signal"):  score += 1
+    else:                           score -= 1
+    score += {"up": 2, "sideways": 0, "down": -2, "unknown": 0}.get(trend, 0)
+    bbp = bb.get("pct_b")
+    if bbp is not None:
+        if bbp > 0.85:   score += 1 if strong_trend else -1
+        elif bbp < 0.15: score += 1
+    if strong_trend and score > 0: score += 1
+    if vol >= 1.5 and score > 0:   score += 1
+
+    signal   = "bullish" if score >= 3 else "bearish" if score <= -2 else "neutral"
+    strength = max(1, min(10, 5 + score))
+    return {"signal": signal, "strength": strength, "score": score}
 
 
 # ── Pure-pandas TA (same as screener, kept local to avoid circular imports) ───
@@ -183,6 +221,25 @@ def analyse(symbol: str, bars: list[dict]) -> dict:
         **sr,
     }
 
+    # C13-TECH: deterministic mapping over the indicators above.
+    det  = _deterministic_signal(indicators)
+    mode = getattr(config, "TECHNICAL_MODE", "shadow")
+
+    # "deterministic" mode: skip the LLM call entirely and use the rule.
+    if mode == "deterministic":
+        logger.info("Technical (deterministic) | %s | signal=%s strength=%s",
+                    symbol, det["signal"], det["strength"])
+        return {
+            "symbol":     symbol,
+            "signal":     det["signal"],
+            "strength":   det["strength"],
+            "rationale":  (f"RSI {rsi}, MACD "
+                           f"{'cross' if macd.get('crossover') else 'above' if macd.get('above_signal') else 'below'}, "
+                           f"trend {trend}, ADX {adx.get('adx')}."),
+            "key_levels": {"support": sr.get("support"), "resistance": sr.get("resistance")},
+            "indicators": indicators,
+        }
+
     # Build compact prompt — numbers only, no prose data dumps
     prompt = f"""You are a technical analyst. Analyse these indicators for {symbol} and return JSON only.
 
@@ -223,10 +280,24 @@ Return ONLY this JSON, no other text:
         result["indicators"] = indicators
         logger.info("Technical | %s | signal=%s strength=%s",
                     symbol, result.get("signal"), result.get("strength"))
-        return result
     except Exception as e:
         logger.warning("Technical agent failed for %s: %s", symbol, e)
-        return _fallback(symbol, str(e), indicators)
+        result = _fallback(symbol, str(e), indicators)
+
+    # C13-TECH shadow mode: record the LLM-vs-deterministic comparison (no behavior
+    # change — we still return the LLM result). Used to decide when it's safe to flip
+    # TECHNICAL_MODE to "deterministic".
+    if mode == "shadow":
+        agree = (result.get("signal") == det["signal"])
+        logger.info("TECH_SHADOW | %s | llm=%s/%s det=%s/%s agree=%s",
+                    symbol, result.get("signal"), result.get("strength"),
+                    det["signal"], det["strength"], agree)
+        try:
+            log_tech_shadow(symbol, result.get("signal"), result.get("strength"),
+                            det["signal"], det["strength"], agree)
+        except Exception as exc:
+            logger.debug("tech shadow log failed for %s: %s", symbol, exc)
+    return result
 
 
 def _fallback(symbol: str, reason: str, indicators: dict = None) -> dict:

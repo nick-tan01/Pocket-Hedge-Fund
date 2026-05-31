@@ -204,6 +204,40 @@ def log_risk_decision(
     _save(data)
 
 
+def _append_capped(key: str, entry: dict, cap: int = 500):
+    """Append entry to data[key] (created if absent), keeping only the last `cap`."""
+    data = _load()
+    data.setdefault(key, [])
+    data[key].append(entry)
+    if len(data[key]) > cap:
+        data[key] = data[key][-cap:]
+    _save(data)
+
+
+def log_tech_shadow(symbol: str, llm_signal, llm_strength, det_signal,
+                    det_strength, agree: bool):
+    """C13-TECH shadow mode: record one LLM-vs-deterministic technical comparison."""
+    _append_capped("tech_shadow", {
+        "ts":           datetime.now(timezone.utc).isoformat(),
+        "symbol":       symbol,
+        "llm_signal":   llm_signal,
+        "llm_strength": llm_strength,
+        "det_signal":   det_signal,
+        "det_strength": det_strength,
+        "agree":        bool(agree),
+    })
+
+
+def log_pre_debate_gate(symbol: str, would_gate: bool, reason: str):
+    """C18 watch mode: record what the pre-debate gate WOULD have done (no enforcement)."""
+    _append_capped("pre_debate_gates", {
+        "ts":         datetime.now(timezone.utc).isoformat(),
+        "symbol":     symbol,
+        "would_gate": bool(would_gate),
+        "reason":     reason,
+    })
+
+
 def get_open_trades() -> list[dict]:
     return _load().get("open_trades", [])
 

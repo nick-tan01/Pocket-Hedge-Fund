@@ -26,10 +26,15 @@ VOLUME_SPIKE_MULT = 2.0           # Flag if today's vol > 2× 20-day avg
 # ── Screener ──────────────────────────────────────────────────────────────────
 SCREENER_MAX_CANDIDATES = 6       # Hard ceiling for candidates passed to LLM agents
 SCREENER_MIN_CANDIDATES = 3       # Floor so the system keeps scanning for replacements
+# C16-Phase1: the old "earnings_catalyst" factor (top-weighted 0.25) actually read
+# TRAILING TTM growth, not event proximity — a growth-quality tilt mislabeled as a
+# catalyst, near-constant for most names. Renamed to growth_quality and demoted 0.25→0.20;
+# the freed weight goes to relative_strength (the core momentum edge) + technical.
+# (Phase 2 will add a real PEAD earnings-proximity factor.) Weights sum to 1.00.
 SCREENER_WEIGHTS = {
-    "earnings_catalyst": 0.25,
-    "relative_strength": 0.20,
-    "technical":         0.20,
+    "growth_quality":    0.20,
+    "relative_strength": 0.23,
+    "technical":         0.22,
     "volume_spike":      0.20,
     "news_quality":      0.10,
     "valuation":         0.05,
@@ -48,7 +53,12 @@ MAX_POSITIONS          = 8         # Max concurrent open positions
 MAX_POSITION_PCT       = 0.10      # 10% of portfolio hard ceiling per position
 MAX_PORTFOLIO_EXPOSURE = 0.60      # Total equity exposure cap (60% deployed, 40% reserve)
 MIN_CONVICTION_SCORE   = 6         # Out of 10 — below this, hold cash
-MAX_SECTOR_PCT         = 0.20      # No single sector > 20% of deployed capital
+MAX_SECTOR_PCT         = 0.25      # C11: No single sector > 25% of NAV (raised from 0.20).
+                                   # NOTE: measured as a fraction of NAV (sum of position_pct),
+                                   # NOT of deployed capital. At 0.60 gross, 0.25 of NAV ≈ 42% of
+                                   # the deployed book — admits a 4th conviction-7 tech name while
+                                   # still forcing ≥2 other sectors. The watchlist is ~9/14 tech,
+                                   # so 0.20 was structurally capping the book at ~3 tech positions.
 CORRELATION_THRESHOLD  = 0.75      # Return-correlation threshold for overlap checks
 ROTATION_SCORE_MARGIN  = 1.0       # Candidate must beat current holding by this much
 MIN_SLOT_PCT           = 0.03      # Positions below 3% don't count against MAX_POSITIONS —

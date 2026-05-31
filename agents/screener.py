@@ -286,7 +286,7 @@ class Screener:
             return None
 
         signals = {}
-        earnings_score, earnings_sig = self._score_earnings_catalyst(symbol, info)
+        growth_score,   growth_sig   = self._score_growth_quality(symbol, info)
         rs_score,       rs_sig       = self._score_relative_strength(symbol, bars, info)
         high52_score,   high52_sig   = self._score_52wk_high(symbol, info)
         vol_score,      vol_sig      = self._score_volume(bars)
@@ -294,7 +294,7 @@ class Screener:
         news_score,     news_sig     = self._score_news(symbol)
         val_score,      val_sig      = self._score_valuation(symbol, info)
 
-        signals.update(earnings_sig)
+        signals.update(growth_sig)
         signals.update(rs_sig)
         signals.update(high52_sig)
         signals.update(vol_sig)
@@ -303,7 +303,7 @@ class Screener:
         signals.update(val_sig)
 
         if (
-            earnings_score == 0 and rs_score == 0 and vol_score == 0 and
+            growth_score == 0 and rs_score == 0 and vol_score == 0 and
             ta_score == 0 and high52_score == 0 and news_score == 0 and
             val_score == 0
         ):
@@ -312,7 +312,7 @@ class Screener:
         w = config.SCREENER_WEIGHTS
         technical_score = (ta_score + high52_score) / 2
         composite = (
-            earnings_score * w["earnings_catalyst"] +
+            growth_score   * w["growth_quality"]    +
             rs_score       * w["relative_strength"] +
             technical_score * w["technical"]        +
             vol_score      * w["volume_spike"]      +
@@ -465,7 +465,10 @@ class Screener:
         except Exception:
             return 0.3, {}
 
-    def _score_earnings_catalyst(self, symbol: str, info=None) -> tuple[float, dict]:
+    def _score_growth_quality(self, symbol: str, info=None) -> tuple[float, dict]:
+        # C16-Phase1: this reads TRAILING TTM eps/revenue growth — it is a growth-QUALITY
+        # tilt, NOT an earnings catalyst (event proximity). Renamed + signal labels
+        # de-mislabeled accordingly. A real PEAD earnings-proximity factor is Phase 2.
         try:
             info = info or self._get_info(symbol)
             eps_growth = info.get("earningsGrowth")
@@ -476,17 +479,17 @@ class Screener:
                     "rev_growth": round(rev_growth * 100, 1),
                 }
                 if eps_growth > 0.5 and rev_growth > 0.2:
-                    signals["catalyst"] = "strong_beat"
+                    signals["growth_quality"] = "strong"
                     return 0.9, signals
                 if eps_growth > 0.2:
-                    signals["catalyst"] = "moderate_beat"
+                    signals["growth_quality"] = "moderate"
                     return 0.6, signals
                 if eps_growth < 0:
-                    signals["catalyst"] = "miss"
+                    signals["growth_quality"] = "negative"
                     return 0.1, signals
-            return 0.3, {"catalyst": "unknown"}
+            return 0.3, {"growth_quality": "unknown"}
         except Exception:
-            return 0.3, {"catalyst": "unknown"}
+            return 0.3, {"growth_quality": "unknown"}
 
     def _get_info(self, symbol: str) -> dict:
         try:

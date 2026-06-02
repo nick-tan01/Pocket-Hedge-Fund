@@ -751,6 +751,31 @@ def analyse_symbol(
             None,
         )
 
+    # ── DUP-GUARD (broker-level idempotency) ──────────────────────────────────
+    # The "already holding" decision upstream uses the JOURNAL (get_open_trades).
+    # If the journal and Alpaca disagree — e.g. a prior run's journal write was lost
+    # to a push race, a fill is delayed, or the paper account holds a pre-existing
+    # position — the journal won't flag the symbol as held and we would STACK a second
+    # buy on top of one we already own at the broker. That is exactly what doubled the
+    # MS/SMCI share counts. So re-check Alpaca live, right before submitting, and refuse
+    # to open a duplicate. (A genuine remnant top-up is allowed: Alpaca holding the
+    # remnant is expected there.)
+    live_broker_pos = alpaca.get_position(symbol)
+    if live_broker_pos and not topup_trade:
+        try:
+            broker_qty = float(live_broker_pos.get("qty", 0))
+        except (TypeError, ValueError):
+            broker_qty = 0.0
+        logger.warning(
+            "DUP-GUARD | %s already held at broker (%.4f sh) but not journaled as a "
+            "meaningful holding — refusing BUY to avoid doubling the position. "
+            "Journal/Alpaca are out of sync for this symbol; reconcile the paper account.",
+            symbol, broker_qty,
+        )
+        log_risk_decision(symbol=symbol, action="skip", conviction=proposal.conviction,
+                          reason="dup_guard: already held at broker, not in journal")
+        return False
+
     order = alpaca.submit_market_order(
         symbol=symbol, qty=proposal.shares, side="buy",
         reason=f"conviction={proposal.conviction} | {pm.get('verdict','')}",

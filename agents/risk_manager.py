@@ -334,6 +334,12 @@ def _correlation_tournament(
         conflicts = []
         for existing in open_positions:
             existing_sym = existing["symbol"]
+            # C7 fix: never compete a candidate against its OWN held position. For a
+            # remnant top-up (e.g. DDOG candidate vs the held DDOG remnant) this is a
+            # self-comparison with correlation 1.0, which would always "lose" the
+            # tournament and block the very top-up C7 is meant to allow.
+            if existing_sym == symbol:
+                continue
             existing_bars = fetcher.get_ohlcv(existing_sym, days=60)
             existing_returns = _daily_returns([b["close"] for b in existing_bars])
             min_len = min(len(candidate_returns), len(existing_returns))

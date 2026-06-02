@@ -111,9 +111,19 @@ def check_open_positions(alpaca: AlpacaClient):
                 continue
             live_pct = round(float(live_pos.get("market_value", 0)) / portfolio_value, 4)
             is_remnant = live_pct < min_slot_pct and live_pct > 0
+            # Persist Alpaca's REAL qty / price / unrealized P&L as the source of truth.
+            # Previously only position_pct was refreshed while qty stayed at the original
+            # entry value; if Alpaca holds more shares than the journal recorded, the
+            # dashboard valued real market value against a stale cost basis and showed
+            # wildly inflated per-share price and P&L% (e.g. MS +83% vs real +6.7%).
             update_open_trade(trade["id"], {
-                "position_pct": live_pct,
-                "is_remnant":   is_remnant,
+                "position_pct":    live_pct,
+                "is_remnant":      is_remnant,
+                "qty":             round(float(live_pos.get("qty", trade.get("qty", 0))), 4),
+                "current_price":   round(float(live_pos.get("current_price", 0)), 4),
+                "unrealized_pl":   round(float(live_pos.get("unrealized_pl", 0)), 2),
+                "unrealized_plpc": round(float(live_pos.get("unrealized_plpc", 0)), 6),
+                "avg_entry":       round(float(live_pos.get("avg_entry", 0)), 4),
             })
 
     for trade in journal_trades:

@@ -1143,13 +1143,24 @@ function renderOpenPositions() {
     const entryPx   = parseFloat(p.entry_price || 0);
     const stopPx    = parseFloat(p.stop_price || 0);
     const posPct    = parseFloat(p.position_pct || 0);
-    const costBasis = qty > 0 && entryPx > 0 ? qty * entryPx : 0;
-    const currMktVal = posPct > 0 && portfolioValue > 0 ? posPct * portfolioValue : 0;
 
-    if (costBasis > 0 && currMktVal > 0) {
-      pnlDollar   = currMktVal - costBasis;
-      pnlPct      = (pnlDollar / costBasis) * 100;
-      currentPrice = qty > 0 ? currMktVal / qty : null;
+    // Prefer Alpaca's real refreshed values (current_price / unrealized_pl) when present.
+    // Deriving current price as marketValue/qty inflates it whenever the journal qty is
+    // stale vs Alpaca's actual share count, so only fall back to that for old records.
+    if (p.current_price != null && p.unrealized_pl != null) {
+      currentPrice = parseFloat(p.current_price);
+      pnlDollar    = parseFloat(p.unrealized_pl);
+      pnlPct       = (p.unrealized_plpc != null)
+                       ? parseFloat(p.unrealized_plpc) * 100
+                       : (entryPx > 0 ? (currentPrice - entryPx) / entryPx * 100 : null);
+    } else {
+      const costBasis  = qty > 0 && entryPx > 0 ? qty * entryPx : 0;
+      const currMktVal = posPct > 0 && portfolioValue > 0 ? posPct * portfolioValue : 0;
+      if (costBasis > 0 && currMktVal > 0) {
+        pnlDollar    = currMktVal - costBasis;
+        pnlPct       = (pnlDollar / costBasis) * 100;
+        currentPrice = qty > 0 ? currMktVal / qty : null;
+      }
     }
     if (currentPrice && stopPx) {
       stopDistPct = ((currentPrice - stopPx) / currentPrice) * 100;

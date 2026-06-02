@@ -401,6 +401,12 @@
       "portfolio_value": 104933.86,
       "cash": 60008.27,
       "spy_price": 759.57
+    },
+    {
+      "ts": "2026-06-02T22:45:18.396567+00:00",
+      "portfolio_value": 104692.92,
+      "cash": 60008.27,
+      "spy_price": 759.57
     }
   ],
   "trades": [
@@ -655,7 +661,7 @@
       "conviction": 7,
       "debate_id": "debate_DDOG_20260512160556",
       "status": "open",
-      "key_risk": "Any signs of EPS growth momentum beginning to decelerate below 100% in the next earnings announcement, as extreme valuation levels (690x TTM P/E) amplify correction risk when momentum breaks.",
+      "key_risk": "Any signs of EPS growth momentum beginning to decelerate below 100% in the next earnings announcement, as the extreme valuation amplifies correction risk when momentum breaks",
       "position_usd": 1998.65,
       "position_pct": 0.0261,
       "sector": "Technology",
@@ -668,8 +674,8 @@
           "reason": "The self-reinforcing institutional momentum chase that was core to our thesis is not materializing as evidenced by the 0.41x volume ratio, though the fundamental and technical components remain strong enough to warrant partial position retention."
         }
       ],
-      "last_review_ts": "2026-06-02T20:29:52.923587+00:00",
-      "last_review_conviction": 7,
+      "last_review_ts": "2026-06-02T22:38:21.902110+00:00",
+      "last_review_conviction": 8,
       "thesis_status": "intact",
       "time_stop_flagged": false,
       "consecutive_weakened_count": 0,
@@ -716,11 +722,11 @@
       "conviction": 7,
       "debate_id": "debate_QCOM_20260514152935",
       "status": "open",
-      "key_risk": "Revenue stabilization trends and concrete AI partnership revenue contribution in upcoming earnings reports, as high leverage amplifies downside risk if smartphone recovery delays further.",
+      "key_risk": "Revenue stabilization trends in upcoming earnings reports, as continued revenue decline could exhaust cost-cutting capacity and threaten the operational leverage story that drives our thesis.",
       "position_usd": 1992.23,
       "position_pct": 0.0227,
       "sector": "Technology",
-      "last_review_ts": "2026-06-02T20:31:28.766916+00:00",
+      "last_review_ts": "2026-06-02T22:39:08.148408+00:00",
       "last_review_conviction": 7,
       "thesis_status": "intact",
       "time_stop_flagged": false,
@@ -765,11 +771,11 @@
       "conviction": 7,
       "debate_id": "debate_AMD_20260519163507",
       "status": "open",
-      "key_risk": "Next quarterly earnings guidance for any concrete signs of AI datacenter demand deceleration, as this was our originally identified key risk that could break the thesis.",
+      "key_risk": "Next quarterly earnings guidance for any concrete signs of AI datacenter demand deceleration, as this remains our originally identified thesis-breaking risk.",
       "position_usd": 5930.18,
       "position_pct": 0.0698,
       "sector": "Technology",
-      "last_review_ts": "2026-06-02T20:32:17.754245+00:00",
+      "last_review_ts": "2026-06-02T22:39:57.814409+00:00",
       "last_review_conviction": 7,
       "thesis_status": "intact",
       "time_stop_flagged": false,
@@ -817,12 +823,12 @@
       "conviction": 8,
       "debate_id": "debate_MS_20260522185742",
       "status": "open",
-      "key_risk": "Any deterioration in credit markets or earnings disappointment that could trigger the 502.2% debt-to-equity leverage vulnerability that remains the primary structural risk.",
+      "key_risk": "Any signs of credit market stress or earnings disappointment that could activate the 502.2% debt-to-equity leverage vulnerability",
       "position_usd": 7617.29,
       "position_pct": 0.0725,
       "sector": "Financial Services",
-      "last_review_ts": "2026-06-02T20:34:06.234345+00:00",
-      "last_review_conviction": 8,
+      "last_review_ts": "2026-06-02T22:40:44.008436+00:00",
+      "last_review_conviction": 7,
       "thesis_status": "intact",
       "time_stop_flagged": false,
       "consecutive_weakened_count": 0,
@@ -883,11 +889,11 @@
       "position_pct": 0.0632,
       "sector": "Technology",
       "is_remnant": false,
-      "last_review_ts": "2026-06-02T20:35:03.538602+00:00",
-      "last_review_conviction": 7,
-      "thesis_status": "intact",
+      "last_review_ts": "2026-06-02T22:41:35.315907+00:00",
+      "last_review_conviction": 6,
+      "thesis_status": "weakened",
       "time_stop_flagged": false,
-      "consecutive_weakened_count": 0,
+      "consecutive_weakened_count": 1,
       "trim_history": [
         {
           "ts": "2026-06-02T17:03:35.611124+00:00",
@@ -900,7 +906,12 @@
       "current_price": 49.7301,
       "unrealized_pl": 392.71,
       "unrealized_plpc": 0.06302,
-      "avg_entry": 46.7818
+      "avg_entry": 46.7818,
+      "queued_action": {
+        "action": "trim",
+        "reason": "The bear case around debt-fueled growth model creating vulnerability to liquidity stress has strengthened materially, with analysts now highlighting zero margin for error given razor-thin profits and high leverage",
+        "queued_ts": "2026-06-02T22:41:35.283352+00:00"
+      }
     }
   ],
   "runs": [
@@ -10050,6 +10061,291 @@
       ],
       "regime": "bull",
       "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-06-02T22:45:18.437314+00:00",
+      "run_type": "midday",
+      "candidates": [
+        "GTLB",
+        "AMD",
+        "DDOG",
+        "SMCI"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "sentinel_trigger",
+      "candidate_details": [
+        {
+          "symbol": "GTLB",
+          "composite_score": 0.6087,
+          "signals": {
+            "growth_quality": "unknown",
+            "rs_vs_sector_pct": 7.1,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.39,
+            "52wk_high": 52.38,
+            "volume_spike_ratio": 3.52,
+            "volume_spike": true,
+            "rsi": 68.8,
+            "macd_crossover": "False",
+            "bb_pct": 0.96,
+            "news_count": 8,
+            "top_headline": "GitLab Stock Rallies After Q1 Earnings \u2014 Here's Why",
+            "news_quality": 0.5,
+            "pe_trailing": null,
+            "pe_forward": 32.4,
+            "earnings_growth": null
+          }
+        },
+        {
+          "symbol": "AMD",
+          "composite_score": 0.5897,
+          "signals": {
+            "eps_growth": 91.2,
+            "rev_growth": 37.8,
+            "growth_quality": "strong",
+            "rs_vs_sector_pct": 30.4,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.99,
+            "52wk_high": 527.2,
+            "volume_spike_ratio": 0.58,
+            "volume_spike": false,
+            "rsi": 75.4,
+            "macd_crossover": "False",
+            "bb_pct": 0.87,
+            "news_count": 10,
+            "top_headline": "Looking Beyond Nvidia? Tradr's New ETFs Target The Chip Stock Cathie Wood Is Snapping Up",
+            "news_quality": 0.25,
+            "pe_trailing": 173.3,
+            "pe_forward": 39.9,
+            "earnings_growth": 91.2
+          }
+        },
+        {
+          "symbol": "DDOG",
+          "composite_score": 0.5647,
+          "signals": {
+            "eps_growth": 104.0,
+            "rev_growth": 32.2,
+            "growth_quality": "strong",
+            "rs_vs_sector_pct": 61.2,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.95,
+            "52wk_high": 278.7,
+            "volume_spike_ratio": 1.09,
+            "volume_spike": false,
+            "rsi": 84.1,
+            "macd_crossover": "False",
+            "bb_pct": 0.95,
+            "news_count": 1,
+            "top_headline": "S&P 500 Halts Gains As Oil Jumps 8% On Iran Ceasefire Standoff: Stock Market Today",
+            "news_quality": 0.0,
+            "pe_trailing": 690.1,
+            "pe_forward": 94.6,
+            "earnings_growth": 104.0
+          }
+        },
+        {
+          "symbol": "SMCI",
+          "composite_score": 0.5457,
+          "signals": {
+            "eps_growth": 326.0,
+            "rev_growth": 122.7,
+            "growth_quality": "strong",
+            "rs_vs_sector_pct": 57.4,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.72,
+            "52wk_high": 62.36,
+            "volume_spike_ratio": 1.16,
+            "volume_spike": false,
+            "rsi": 83.2,
+            "macd_crossover": "False",
+            "bb_pct": 1.1,
+            "news_count": 10,
+            "top_headline": "If You Invested $1000 In Super Micro Computer Stock 5 Years Ago, You Would Have This Much Today",
+            "news_quality": 0.25,
+            "pe_trailing": 26.4,
+            "pe_forward": 15.5,
+            "earnings_growth": 326.0
+          }
+        }
+      ],
+      "event_symbols": [
+        "AMAT",
+        "AMD",
+        "COHR",
+        "DDOG",
+        "DUOL",
+        "GTLB",
+        "MS",
+        "MSTR",
+        "ONTO",
+        "QCOM",
+        "SMCI",
+        "SNOW",
+        "TTD"
+      ],
+      "event_details": [
+        {
+          "symbol": "AMAT",
+          "trigger_type": "intraday_move",
+          "value": 0.0693,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": 0.0693,
+          "latest": 489.93,
+          "previous_close": 458.16
+        },
+        {
+          "symbol": "COHR",
+          "trigger_type": "intraday_move",
+          "value": 0.1763,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": 0.1763,
+          "latest": 426.85,
+          "previous_close": 362.87
+        },
+        {
+          "symbol": "DUOL",
+          "trigger_type": "intraday_move",
+          "value": 0.0685,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": -0.0685,
+          "latest": 109.91,
+          "previous_close": 117.99
+        },
+        {
+          "symbol": "MSTR",
+          "trigger_type": "intraday_move",
+          "value": 0.0911,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": -0.0911,
+          "latest": 136.1,
+          "previous_close": 149.74
+        },
+        {
+          "symbol": "ONTO",
+          "trigger_type": "intraday_move",
+          "value": 0.0856,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": 0.0856,
+          "latest": 278.01,
+          "previous_close": 256.1
+        },
+        {
+          "symbol": "SMCI",
+          "trigger_type": "intraday_move",
+          "value": 0.0702,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": 0.0702,
+          "latest": 50.17,
+          "previous_close": 46.88
+        },
+        {
+          "symbol": "SNOW",
+          "trigger_type": "intraday_move",
+          "value": 0.0676,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": -0.0676,
+          "latest": 261.14,
+          "previous_close": 280.08
+        },
+        {
+          "symbol": "TTD",
+          "trigger_type": "intraday_move",
+          "value": 0.0913,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": -0.0913,
+          "latest": 21.1,
+          "previous_close": 23.22
+        },
+        {
+          "symbol": "DDOG",
+          "trigger_type": "position_move",
+          "value": 0.3586,
+          "threshold": 0.025,
+          "severity": "high",
+          "price": 269.13,
+          "entry": 198.09
+        },
+        {
+          "symbol": "QCOM",
+          "trigger_type": "position_move",
+          "value": 0.1825,
+          "threshold": 0.025,
+          "severity": "high",
+          "price": 240.84,
+          "entry": 203.67
+        },
+        {
+          "symbol": "AMD",
+          "trigger_type": "position_move",
+          "value": 0.2542,
+          "threshold": 0.025,
+          "severity": "high",
+          "price": 521.54,
+          "entry": 415.82
+        },
+        {
+          "symbol": "MS",
+          "trigger_type": "position_move",
+          "value": 0.0617,
+          "threshold": 0.025,
+          "severity": "high",
+          "price": 214.98,
+          "entry": 202.48
+        },
+        {
+          "symbol": "DDOG",
+          "trigger_type": "near_stop",
+          "value": 1.1879,
+          "threshold": 0.85,
+          "severity": "high",
+          "current": 258.34,
+          "entry": 198.09,
+          "stop": 248.81
+        },
+        {
+          "symbol": "QCOM",
+          "trigger_type": "near_stop",
+          "value": 2.0561,
+          "threshold": 0.85,
+          "severity": "high",
+          "current": 230.05,
+          "entry": 203.67,
+          "stop": 216.5
+        },
+        {
+          "symbol": "AMD",
+          "trigger_type": "near_stop",
+          "value": 2.8256,
+          "threshold": 0.85,
+          "severity": "high",
+          "current": 542.52,
+          "entry": 415.82,
+          "stop": 460.66
+        },
+        {
+          "symbol": "GTLB",
+          "trigger_type": "earnings_today",
+          "value": 1.0,
+          "threshold": 1.0,
+          "severity": "high"
+        }
+      ],
+      "regime": "bull",
+      "vix_regime": "normal"
     }
   ],
   "debate_logs": [
@@ -12534,6 +12830,50 @@
       "ts": "2026-06-02T20:38:45.770901+00:00",
       "bull_case": "R1 Bull(8): SMCI is breaking out on explosive AI infrastructure momentum with 122.7% revenue growth and a $2B India deal, while the forward P/E of 15.5 creates asymmetric upside as the AI server buildout accelerates. | R1 Bear(7): SMCI's RSI at 83.2 signals dangerous momentum exhaustion while high debt and razor-thin margins create a fragile capital structure that can't survive any slowdown in the volatile AI infrastructure spending cycle. | R2 Bull(7): SMCI remains a compelling AI infrastructure play with sustainable competitive advantages and strong momentum, though investors should monitor execution on large international contracts for potential volatility | R2 Bear(8): SMCI's razor-thin margins and high debt load create a liquidity time bomb that the India deal's execution risk and concentration only amplifies, making any AI spending slowdown or operational hiccup potentially fatal.",
       "bear_case": "Primary risk: Margin compression from high debt service costs combined with inevitable AI spending slowdown will trigger a liquidity crisis in an overleveraged business model built for perfect execution. | Unresolved: ['Margin compression from high debt service costs combined with inevitable AI spending slowdown will trigger a liquidity crisis', 'RSI at 83.2 signals dangerous momentum exhaustion with technical breakdown imminent']",
+      "bull_score": 7,
+      "bear_score": 8,
+      "final_conviction": 5,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_GTLB_20260602224240",
+      "symbol": "GTLB",
+      "ts": "2026-06-02T22:42:40.149387+00:00",
+      "bull_case": "R1 Bull(8): GTLB's extraordinary momentum (+DI 43.9 vs -DI 9.6, 3.52x volume) following Q1 earnings beat and raised guidance signals institutional accumulation that will drive continued upside as the market re-rates this restructuring story. | R1 Bear(7): GTLB's 14% workforce reduction reveals underlying business deterioration that high momentum can't mask, with negative margins and expensive 32.4x forward P/E creating a perfect setup for violent reversal when restructuring benefits disappoint. | R2 Bull(7): GTLB's technical momentum (+DI 43.9 vs -DI 9.6) reflects institutional confidence in management's proactive restructuring to unlock operating leverage, with current RSI levels sustainable in a strong trending environment driven by genuine earnings revision cycle | R2 Bear(8): GTLB's technical overboughtness combined with restructuring execution risk in Q2-Q3 creates asymmetric downside when margin improvements inevitably disappoint, triggering violent momentum reversal in a fundamentally impaired business.",
+      "bear_case": "Primary risk: Momentum reversal when Q2-Q3 results show restructuring disruption and margin improvement disappoints, triggering violent selloff from technically overbought levels in a fundamentally impaired business. | Unresolved: ['Q2-Q3 restructuring execution risk creating margin disappointment and momentum reversal', 'Unsustainable technical momentum at overbought levels with 3.52x volume suggesting distribution rather than accumulation', 'Negative current margins making any restructuring disappointment catastrophic for sentiment']",
+      "bull_score": 7,
+      "bear_score": 8,
+      "final_conviction": 5,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_AMD_20260602224336",
+      "symbol": "AMD",
+      "ts": "2026-06-02T22:43:36.624223+00:00",
+      "bull_case": "R1 Bull(8): AMD is experiencing explosive earnings acceleration (91.2% EPS growth) while strategically positioning as the institutional alternative to Nvidia in AI infrastructure, creating a powerful fundamental-momentum convergence at the perfect technical breakout setup. | R1 Bear(6): AMD's 91.2% EPS growth is unsustainable at current scale while the company faces execution risk in AI infrastructure where it remains a distant second to an entrenched Nvidia, making this a momentum trap disguised as fundamental strength. | R2 Bull(7): AMD's transition from CPU-focused to AI-infrastructure player justifies premium valuations even with moderating growth rates, while technical momentum (ADX 49.7) suggests institutional recognition of this fundamental shift is still accelerating | R2 Bear(7): AMD's AI revenue surge from a tiny base has created unsustainable growth expectations at mega-cap scale, setting up a more severe momentum reversal when reality meets the mathematical impossibility of maintaining high growth rates on large numbers.",
+      "bear_case": "Primary risk: Earnings deceleration shock - when AMD's unsustainable 91.2% EPS growth inevitably normalizes to semiconductor industry averages (10-20%), the stock will face simultaneous multiple compression and momentum breakdown, potentially triggering 30%+ decline as seen in previous AMD hype cycles. | Unresolved: [\"The bull fails to address that 30-40% EPS growth expectations are still unrealistically high for a company at AMD's current scale ($273B market cap), and their own technical indicator (ADX 49.7) suggests overextended momentum that amplifies downside risk when growth disappoints\"]",
+      "bull_score": 7,
+      "bear_score": 7,
+      "final_conviction": 6,
+      "decision": "buy"
+    },
+    {
+      "id": "debate_DDOG_20260602224426",
+      "symbol": "DDOG",
+      "ts": "2026-06-02T22:44:26.085264+00:00",
+      "bull_case": "R1 Bull(8): DDOG is hitting the SaaS profitability inflection point where explosive EPS acceleration (104% growth) combined with extreme technical momentum (ADX 66.9, +DI dominance 48.3 vs 2.6) creates a powerful breakout before the street recognizes the earnings quality transformation. | R1 Bear(7): DDOG's RSI at 84.1 signals extreme technical exhaustion that will trigger violent institutional profit-taking, while the 'profitability transformation' is actually margin expansion from one-time cost cuts that won't sustain at 32% revenue growth rates in a macro-uncertain environment. | R2 Bull(7): DDOG's momentum breakout with ADX 66.9 supporting RSI strength above 84 signals institutional recognition of a legitimate SaaS profitability inflection, despite valid concerns about the sustainability of current margin expansion rates | R2 Bear(7): DDOG's extreme technical overbought condition at RSI 84.1 creates imminent reversal risk that will expose the unsustainable nature of margin expansion driving the current profitability narrative.",
+      "bear_case": "Primary risk: Violent momentum reversal from extreme RSI levels triggering cascading stop losses and institutional profit-taking that could deliver -20% to -30% correction within weeks as technical support fails. | Unresolved: ['Technical exhaustion at RSI 84.1 creating cascading stop-loss risk as momentum investors exit', 'Unsustainable margin expansion masking underlying business deceleration in uncertain macro environment']",
+      "bull_score": 7,
+      "bear_score": 7,
+      "final_conviction": 5,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_SMCI_20260602224518",
+      "symbol": "SMCI",
+      "ts": "2026-06-02T22:45:18.254703+00:00",
+      "bull_case": "R1 Bull(8): SMCI is experiencing a rare convergence of explosive fundamental growth (326% EPS growth, 122% revenue growth) with confirmed technical momentum continuation (ADX 37.7, RSI 83.2) that typically precedes multi-week breakouts, not reversals. | R1 Bear(7): SMCI's 'high debt' flag combined with low profit margins creates a fatal vulnerability where any AI infrastructure demand slowdown or competitive pressure will trigger rapid margin compression and potential liquidity stress at these extreme valuations. | R2 Bull(7): SMCI's explosive growth trajectory and technical momentum continuation (ADX 37.7 confirming trend strength) outweigh concentration risks in a market where AI infrastructure demand is creating winner-take-all dynamics favoring dominant players | R2 Bear(8): SMCI's acknowledged high debt and reduced financial flexibility creates a liquidity time bomb where any normalization in AI infrastructure spending will trigger margin compression that momentum investors cannot sustain.",
+      "bear_case": "Primary risk: Debt-fueled margin compression creating a liquidity spiral where any AI demand normalization forces fire-sale pricing to service debt obligations, turning the 326% EPS growth story into a leveraged unwind. | Unresolved: ['Debt servicing requirements will force aggressive pricing during any AI demand slowdown, creating a leveraged unwind scenario that technical momentum cannot prevent']",
       "bull_score": 7,
       "bear_score": 8,
       "final_conviction": 5,
@@ -15452,6 +15792,72 @@
       "key_risk_to_monitor": "Any concrete signs of AI capex spending moderation from hyperscalers, as extreme technical overextension could amplify any negative sentiment shift into violent reversal",
       "current_bull_case": "R1 Bull(9): SMCI is experiencing a rare convergence of explosive fundamental growth (326% EPS growth, 122% revenue growth) trading at value multiples (15.5 forward P/E, 0.9 PEG) with powerful technical momentum (ADX 37.7, +DI dominance at 49.8 vs 7.7) that historically signals continuation, not reversal. | R2 Bull(8): SMCI remains a compelling AI infrastructure play with explosive fundamentals trading at value multiples, though near-term technical exhaustion creates tactical entry risk for momentum-sensitive investors.",
       "current_bear_case": "R1 Bear(6): SMCI's extreme technical overextension (RSI 83.2, Bollinger %B at 1.1) combined with structural weaknesses (high debt/equity, low margins) creates asymmetric downside risk where any AI infrastructure headwinds will trigger violent mean reversion from unsustainable levels. | R2 Bear(7): SMCI's parabolic technical structure with extreme overextension readings creates violent reversal risk that will be amplified by structural balance sheet weaknesses, making any AI sentiment shift catastrophic despite near-term trend strength."
+    },
+    {
+      "trade_id": "DDOG_20260512160556",
+      "symbol": "DDOG",
+      "ts": "2026-06-02T22:38:21.861977+00:00",
+      "action": "hold",
+      "conviction": 8,
+      "thesis_status": "intact",
+      "rationale": "The original thesis remains fully intact - DDOG continues to show explosive 104% EPS growth combined with even stronger technical momentum (ADX increased from 35.2 to 66.9), creating the self-reinforcing acceleration phase we anticipated.",
+      "original_thesis_check": "The specific combination of explosive earnings momentum (still 104% EPS growth) meeting dominant technical breakout conditions (now even stronger with ADX 66.9 vs original 35.2) remains exactly as thesis predicted",
+      "key_risk_to_monitor": "Any signs of EPS growth momentum beginning to decelerate below 100% in the next earnings announcement, as the extreme valuation amplifies correction risk when momentum breaks",
+      "current_bull_case": "R1 Bull(9): DDOG is experiencing a powerful momentum breakout with exceptional 104% EPS growth driving a technically confirmed uptrend that's just beginning, not ending. | R2 Bull(7): DDOG's exceptional EPS acceleration is driving a technically confirmed strong trend that can sustain elevated momentum readings, though near-term consolidation risk requires tactical position management",
+      "current_bear_case": "R1 Bear(7): DDOG's 690x P/E ratio and 3.7% profit margin expose a fundamentally broken business model disguised by accounting-engineered EPS growth, creating massive downside vulnerability when momentum inevitably reverses. | R2 Bear(8): DDOG's 690x P/E with 3.7% margins represents a fundamental valuation catastrophe that technical momentum cannot indefinitely mask, creating amplified crash risk when the inevitable reversal occurs."
+    },
+    {
+      "trade_id": "QCOM_20260514152935",
+      "symbol": "QCOM",
+      "ts": "2026-06-02T22:39:08.116759+00:00",
+      "action": "hold",
+      "conviction": 7,
+      "thesis_status": "intact",
+      "rationale": "The core thesis of earnings acceleration (173% EPS growth) combined with value-momentum convergence remains fully intact, with current fundamental signals confirming continued operational leverage and fair valuation at 1.0 PEG ratio.",
+      "original_thesis_check": "The specific reason we bought - massive earnings acceleration with 173% EPS growth while trading at attractive valuation creating value-momentum convergence - is still true and confirmed by current data.",
+      "key_risk_to_monitor": "Revenue stabilization trends in upcoming earnings reports, as continued revenue decline could exhaust cost-cutting capacity and threaten the operational leverage story that drives our thesis.",
+      "current_bull_case": "R1 Bull(8): Qualcomm is experiencing explosive operational leverage with 173% EPS growth despite revenue headwinds, while positioning for AI agent dominance through Microsoft partnership and 'Dragonfly' products targeting 2026 as the 'Year of the Agent'. | R2 Bull(7): Qualcomm's temporary revenue headwinds mask exceptional operational leverage positioning for the AI agent inflection in 2025-2026, where Microsoft partnership and Snapdragon X Elite design wins will drive explosive earnings growth from a lean cost base",
+      "current_bear_case": "R1 Bear(7): QCOM's 173% EPS growth is built on unsustainable cost-cutting during revenue decline, while high debt levels create dangerous leverage during a cyclical downturn that could accelerate if AI agent hype fails to materialize. | R2 Bear(8): QCOM's debt-fueled margin expansion creates a dangerous double-or-nothing bet where failure of speculative AI agent revenue timing could trigger rapid deterioration in an overleveraged capital structure."
+    },
+    {
+      "trade_id": "AMD_20260519163507",
+      "symbol": "AMD",
+      "ts": "2026-06-02T22:39:57.781637+00:00",
+      "action": "hold",
+      "conviction": 7,
+      "thesis_status": "intact",
+      "rationale": "The original thesis of explosive EPS growth (91.2%) at reasonable forward valuation (now 39.9x vs original 32.1x) remains fully intact with continued strong execution in AI datacenter markets. No concrete signs of AI datacenter demand deceleration have emerged - our originally identified key risk that could break the thesis.",
+      "original_thesis_check": "The specific reason we bought - explosive EPS growth paired with reasonable forward P/E creating a GARP opportunity - remains true, though forward P/E has expanded from 32.1x to 39.9x while maintaining the growth trajectory.",
+      "key_risk_to_monitor": "Next quarterly earnings guidance for any concrete signs of AI datacenter demand deceleration, as this remains our originally identified thesis-breaking risk.",
+      "current_bull_case": "R1 Bull(8): AMD's exceptional 91.2% EPS growth combined with strong momentum continuation signals (ADX 49.7, +DI 35.3 vs -DI 14.5) creates a compelling breakout opportunity as the company captures AI infrastructure market share. | R2 Bull(7): AMD's 91% EPS growth and AI market share gains justify current momentum despite overbought conditions, as strong trend strength (ADX 49.7) typically overrides short-term technical concerns in transformative growth stories",
+      "current_bear_case": "R1 Bear(6): AMD's RSI at 75.4 combined with massive momentum exhaustion risk creates a dangerous technical setup where the 91% EPS growth is already fully priced in at these levels, leaving zero margin for execution disappointment. | R2 Bear(7): AMD's 39.9x forward P/E creates catastrophic downside risk when the current AI momentum cycle inevitably reverses, as the 91% EPS growth leaves no room for disappointment while institutional distribution patterns signal smart money is already positioning for the exit."
+    },
+    {
+      "trade_id": "MS_20260522185742",
+      "symbol": "MS",
+      "ts": "2026-06-02T22:40:43.974158+00:00",
+      "action": "hold",
+      "conviction": 7,
+      "thesis_status": "intact",
+      "rationale": "The original thesis remains valid as MS continues capturing high-value IPO mandates with strong 31.9% earnings growth at reasonable 16.9x forward P/E, while the debt leverage risk has not materialized in current favorable credit conditions.",
+      "original_thesis_check": "Yes - MS is still capturing generational IPO wave opportunities with strong earnings growth at attractive valuation, and the leverage vulnerability has not been triggered by credit market deterioration",
+      "key_risk_to_monitor": "Any signs of credit market stress or earnings disappointment that could activate the 502.2% debt-to-equity leverage vulnerability",
+      "current_bull_case": "R1 Bull(8): MS is breaking out on powerful momentum with RSI at 80.1, ADX>25, and 1.36x volume confirming institutional accumulation into a fundamental backdrop of 31.9% EPS growth at only 16.9x forward P/E. | R2 Bull(7): MS momentum breakout with ADX>25 and institutional volume support remains valid despite overbought conditions, as strong earnings growth at discounted valuation compensates for leverage risks in favorable rate environment",
+      "current_bear_case": "R1 Bear(7): MS is a dangerous momentum trap at RSI 80.1 with 502.2% debt/equity creating massive vulnerability to any earnings disappointment or rate environment shift, while complete absence of material news catalyst means this breakout lacks fundamental support. | R2 Bear(8): MS remains a leveraged momentum trap where overbought technical conditions at RSI 80.1 combined with 502.2% debt/equity creates asymmetric downside risk that forward P/E valuation cannot mitigate during momentum reversals."
+    },
+    {
+      "trade_id": "SMCI_20260601185552",
+      "symbol": "SMCI",
+      "ts": "2026-06-02T22:41:35.243960+00:00",
+      "action": "trim",
+      "conviction": 6,
+      "thesis_status": "weakened",
+      "rationale": "The core AI infrastructure demand thesis remains intact with continued strong growth metrics, but the debt-fueled growth model has emerged as a more material risk than originally assessed, warranting position size reduction.",
+      "original_thesis_check": "The original thesis of AI infrastructure demand acceleration with strong EPS growth at attractive valuation still holds, but the sustainability concerns around the debt-heavy model have intensified.",
+      "key_risk_to_monitor": "Margin compression trends and debt service capability as AI infrastructure spending matures",
+      "trim_reason": "The bear case around debt-fueled growth model creating vulnerability to liquidity stress has strengthened materially, with analysts now highlighting zero margin for error given razor-thin profits and high leverage",
+      "current_bull_case": "R1 Bull(8): SMCI is breaking out on explosive AI infrastructure momentum with 326% EPS growth while trading at only 15.5x forward P/E, creating a rare growth-at-value opportunity before consensus catches up. | R2 Bull(7): SMCI remains undervalued on explosive AI infrastructure growth with strong technical momentum (ADX>25 supporting RSI extension), but the debt-funded growth model requires careful monitoring of margin trends and inventory turnover rates",
+      "current_bear_case": "R1 Bear(7): SMCI's 326% EPS growth is built on unsustainable margin compression and dangerous leverage, creating a debt-fueled mirage that will collapse when AI infrastructure spending normalizes. | R2 Bear(6): SMCI's debt-fueled growth model remains vulnerable to margin compression in a maturing AI infrastructure market where even modest demand deceleration could trigger liquidity stress despite inventory financing protections."
     }
   ],
   "risk_decisions": [
@@ -17899,6 +18305,74 @@
       "correlation": 0.0,
       "pm_action": "skip",
       "pm_verdict": "Strong fundamentals and technical momentum are overshadowed by execution risk from the concentrated $2B India deal and dangerous parabolic move with RSI at 83.2 in an overleveraged capital structure.",
+      "risk_category": "already_holding"
+    },
+    {
+      "ts": "2026-06-02T22:42:40.111304+00:00",
+      "symbol": "GTLB",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 The bear's TYPE-A argument about Q2-Q3 restructuring execution risk remains unaddressed - the bull never explained how GTLB will avoid the typical operational disruption that accompanies 14% workforce reductions",
+      "conviction": 5,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 31.82,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "Strong technical momentum cannot overcome the unresolved TYPE-A risk of restructuring execution disappointment in Q2-Q3, which could trigger violent reversal from overbought levels.",
+      "risk_category": "pm_decision"
+    },
+    {
+      "ts": "2026-06-02T22:43:36.582889+00:00",
+      "symbol": "AMD",
+      "action": "hold",
+      "reason": "Already holding AMD",
+      "conviction": 6,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 521.54,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "buy",
+      "pm_verdict": "Strong technical momentum (ADX 49.7) and fundamental transition to AI infrastructure justify entry despite legitimate earnings deceleration risk ahead.",
+      "risk_category": "already_holding"
+    },
+    {
+      "ts": "2026-06-02T22:44:26.046967+00:00",
+      "symbol": "DDOG",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 The bear's TYPE-A point about cascading stop-loss risk from extreme technical exhaustion (RSI 84.1) remains unresolved, and the bull's primary catalyst is simply 'continued momentum' without a dated event",
+      "conviction": 5,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 269.13,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "Despite strong technical momentum (ADX 66.9) and fundamental profitability inflection signals, the extreme RSI at 84.1 combined with unsustainable margin expansion creates imminent reversal risk that the bull failed to adequately address.",
+      "risk_category": "pm_decision"
+    },
+    {
+      "ts": "2026-06-02T22:45:18.215556+00:00",
+      "symbol": "SMCI",
+      "action": "hold",
+      "reason": "Already holding SMCI",
+      "conviction": 5,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 50.17,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "While technical momentum is strong with ADX 37.7 confirming trend continuation, the high debt + margin compression risk creates a TYPE-A vulnerability where any AI demand normalization triggers a leveraged unwind that momentum cannot prevent.",
       "risk_category": "already_holding"
     }
   ],
@@ -28120,6 +28594,87 @@
       "det_signal": "bullish",
       "det_strength": 10,
       "agree": true
+    },
+    {
+      "ts": "2026-06-02T22:37:32.460450+00:00",
+      "symbol": "DDOG",
+      "llm_signal": "bullish",
+      "llm_strength": 8,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": true
+    },
+    {
+      "ts": "2026-06-02T22:38:25.534247+00:00",
+      "symbol": "QCOM",
+      "llm_signal": "neutral",
+      "llm_strength": 5,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": false
+    },
+    {
+      "ts": "2026-06-02T22:39:11.395426+00:00",
+      "symbol": "AMD",
+      "llm_signal": "bullish",
+      "llm_strength": 7,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": true
+    },
+    {
+      "ts": "2026-06-02T22:40:01.131571+00:00",
+      "symbol": "MS",
+      "llm_signal": "bullish",
+      "llm_strength": 8,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": true
+    },
+    {
+      "ts": "2026-06-02T22:40:47.717066+00:00",
+      "symbol": "SMCI",
+      "llm_signal": "bullish",
+      "llm_strength": 8,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": true
+    },
+    {
+      "ts": "2026-06-02T22:41:53.652014+00:00",
+      "symbol": "GTLB",
+      "llm_signal": "bullish",
+      "llm_strength": 8,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": true
+    },
+    {
+      "ts": "2026-06-02T22:42:43.838258+00:00",
+      "symbol": "AMD",
+      "llm_signal": "bullish",
+      "llm_strength": 7,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": true
+    },
+    {
+      "ts": "2026-06-02T22:43:39.379731+00:00",
+      "symbol": "DDOG",
+      "llm_signal": "bullish",
+      "llm_strength": 8,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": true
+    },
+    {
+      "ts": "2026-06-02T22:44:29.422453+00:00",
+      "symbol": "SMCI",
+      "llm_signal": "bullish",
+      "llm_strength": 8,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": true
     }
   ],
   "pre_debate_gates": [
@@ -28191,6 +28746,30 @@
     },
     {
       "ts": "2026-06-02T20:37:55.927134+00:00",
+      "symbol": "SMCI",
+      "would_gate": true,
+      "reason": "sector_saturated (Technology at 24.1%, cap=25%)"
+    },
+    {
+      "ts": "2026-06-02T22:41:50.183947+00:00",
+      "symbol": "GTLB",
+      "would_gate": true,
+      "reason": "sector_saturated (Technology at 24.1%, cap=25%)"
+    },
+    {
+      "ts": "2026-06-02T22:42:40.181490+00:00",
+      "symbol": "AMD",
+      "would_gate": true,
+      "reason": "sector_saturated (Technology at 24.1%, cap=25%)"
+    },
+    {
+      "ts": "2026-06-02T22:43:36.658028+00:00",
+      "symbol": "DDOG",
+      "would_gate": true,
+      "reason": "sector_saturated (Technology at 24.1%, cap=25%)"
+    },
+    {
+      "ts": "2026-06-02T22:44:26.117750+00:00",
       "symbol": "SMCI",
       "would_gate": true,
       "reason": "sector_saturated (Technology at 24.1%, cap=25%)"

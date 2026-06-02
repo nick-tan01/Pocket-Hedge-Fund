@@ -752,28 +752,31 @@ def analyse_symbol(
         )
 
     # ── DUP-GUARD (broker-level idempotency) ──────────────────────────────────
-    # The "already holding" decision upstream uses the JOURNAL (get_open_trades).
-    # If the journal and Alpaca disagree — e.g. a prior run's journal write was lost
-    # to a push race, a fill is delayed, or the paper account holds a pre-existing
-    # position — the journal won't flag the symbol as held and we would STACK a second
-    # buy on top of one we already own at the broker. That is exactly what doubled the
-    # MS/SMCI share counts. So re-check Alpaca live, right before submitting, and refuse
-    # to open a duplicate. (A genuine remnant top-up is allowed: Alpaca holding the
-    # remnant is expected there.)
+    # Fire ONLY on the dangerous case: Alpaca holds this symbol but the JOURNAL has no
+    # record of it. That untracked-duplicate state (from the old push-race, a fill
+    # delay, or a pre-existing paper position) is what let MS/SMCI accumulate ~2x the
+    # intended shares. We refuse to stack a second buy on a position we don't even know
+    # we hold.
+    #
+    # Crucially, this does NOT limit deliberately ADDING to a position the journal is
+    # tracking. A remnant top-up (C7) or any future "scale into a winner" add passes
+    # straight through, because the journal already lists the symbol. The guard only
+    # blocks buying something the broker holds that our own books never recorded.
+    journal_has_symbol = any(t.get("symbol") == symbol for t in open_positions)
     live_broker_pos = alpaca.get_position(symbol)
-    if live_broker_pos and not topup_trade:
+    if live_broker_pos and not journal_has_symbol:
         try:
             broker_qty = float(live_broker_pos.get("qty", 0))
         except (TypeError, ValueError):
             broker_qty = 0.0
         logger.warning(
-            "DUP-GUARD | %s already held at broker (%.4f sh) but not journaled as a "
-            "meaningful holding — refusing BUY to avoid doubling the position. "
-            "Journal/Alpaca are out of sync for this symbol; reconcile the paper account.",
+            "DUP-GUARD | %s held at broker (%.4f sh) but ABSENT from the journal — "
+            "refusing BUY to avoid doubling an untracked position. Reconcile the journal "
+            "with the paper account for this symbol.",
             symbol, broker_qty,
         )
         log_risk_decision(symbol=symbol, action="skip", conviction=proposal.conviction,
-                          reason="dup_guard: already held at broker, not in journal")
+                          reason="dup_guard: held at broker but not in journal")
         return False
 
     order = alpaca.submit_market_order(

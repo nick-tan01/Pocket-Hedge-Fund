@@ -389,6 +389,12 @@
       "portfolio_value": 104854.81,
       "cash": 60008.27,
       "spy_price": 758.92
+    },
+    {
+      "ts": "2026-06-02T20:09:59.711088+00:00",
+      "portfolio_value": 104874.6,
+      "cash": 60008.27,
+      "spy_price": 759.55
     }
   ],
   "trades": [
@@ -9533,6 +9539,95 @@
       ],
       "regime": "bull",
       "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-06-02T20:09:59.739926+00:00",
+      "run_type": "midday",
+      "candidates": [
+        "GTLB",
+        "DDOG",
+        "LRCX"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "scheduled",
+      "candidate_details": [
+        {
+          "symbol": "GTLB",
+          "composite_score": 0.5837,
+          "signals": {
+            "growth_quality": "unknown",
+            "rs_vs_sector_pct": 7.1,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.39,
+            "52wk_high": 52.38,
+            "volume_spike_ratio": 3.52,
+            "volume_spike": true,
+            "rsi": 68.8,
+            "macd_crossover": "False",
+            "bb_pct": 0.96,
+            "news_count": 3,
+            "top_headline": "Top Wall Street Forecasters Revamp Gitlab Expectations Ahead Of Q1 Earnings",
+            "news_quality": 0.25,
+            "pe_trailing": null,
+            "pe_forward": 32.4,
+            "earnings_growth": null
+          }
+        },
+        {
+          "symbol": "DDOG",
+          "composite_score": 0.5647,
+          "signals": {
+            "eps_growth": 104.0,
+            "rev_growth": 32.2,
+            "growth_quality": "strong",
+            "rs_vs_sector_pct": 61.1,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.95,
+            "52wk_high": 278.7,
+            "volume_spike_ratio": 1.09,
+            "volume_spike": false,
+            "rsi": 84.1,
+            "macd_crossover": "False",
+            "bb_pct": 0.95,
+            "news_count": 1,
+            "top_headline": "S&P 500 Halts Gains As Oil Jumps 8% On Iran Ceasefire Standoff: Stock Market Today",
+            "news_quality": 0.0,
+            "pe_trailing": 690.1,
+            "pe_forward": 94.6,
+            "earnings_growth": 104.0
+          }
+        },
+        {
+          "symbol": "LRCX",
+          "composite_score": 0.5547,
+          "signals": {
+            "eps_growth": 40.8,
+            "rev_growth": 23.8,
+            "growth_quality": "moderate",
+            "rs_vs_sector_pct": 7.0,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 1.0,
+            "52wk_high": 335.55,
+            "volume_spike_ratio": 0.87,
+            "volume_spike": false,
+            "rsi": 71.3,
+            "macd_crossover": "False",
+            "bb_pct": 1.01,
+            "news_count": 3,
+            "top_headline": "AI-Chip Rally Powers S&P 500, Nasdaq 100, Dow To Fresh Records: Stock Market Today",
+            "news_quality": 0.5,
+            "pe_trailing": 63.1,
+            "pe_forward": 42.1,
+            "earnings_growth": 40.8
+          }
+        }
+      ],
+      "regime": "bull",
+      "vix_regime": "normal"
     }
   ],
   "debate_logs": [
@@ -11944,6 +12039,39 @@
       "bear_score": 6,
       "final_conviction": 7,
       "decision": "buy"
+    },
+    {
+      "id": "debate_GTLB_20260602200803",
+      "symbol": "GTLB",
+      "ts": "2026-06-02T20:08:03.919265+00:00",
+      "bull_case": "R1 Bull(8): GTLB is experiencing a powerful momentum breakout with ADX>25 confirming the uptrend strength while 23.2% revenue growth validates the business fundamentals beneath the technical surge. | R1 Bear(7): GTLB's momentum surge into Q1 earnings is a classic pre-earnings volatility trap with negative margins making any revenue miss catastrophic at these technically extended levels. | R2 Bull(7): GTLB's momentum breakout supported by ADX>25 and volume conviction positions it for continued upside, though pre-earnings technical extension creates binary risk around Q1 results | R2 Bear(8): GTLB's technically extended position with negative margins creates a high-probability earnings disappointment trap where even modest misses trigger violent momentum unwinds, especially given the bull's own admission of meaningful downside asymmetry.",
+      "bear_case": "Primary risk: Pre-earnings positioning at technically extended levels with an unprofitable business model creates maximum downside if Q1 results disappoint, potentially triggering 20-30% decline as momentum unwinds. | Unresolved: [\"Bull's technical indicators (ADX>25, volume surge) are lagging confirmations of momentum that's already extended, not predictive tools for earnings outcomes, while the fundamental risk of negative margins amplifying any revenue miss remains completely unaddressed\"]",
+      "bull_score": 7,
+      "bear_score": 8,
+      "final_conviction": 5,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_DDOG_20260602200904",
+      "symbol": "DDOG",
+      "ts": "2026-06-02T20:09:04.091462+00:00",
+      "bull_case": "R1 Bull(8): DDOG's exceptional 104% EPS growth combined with extreme technical momentum (ADX 66.9, +DI dominance 48.3 vs 2.6) creates a breakout continuation play into the $280 resistance zone. | R1 Bear(7): DDOG's extreme technical overextension (RSI 84.1, price at 0.95 Bollinger Band) combined with a fundamentally unsustainable 690x current P/E creates a high-probability momentum trap at resistance. | R2 Bull(6): DDOG's extreme technical momentum (ADX 66.9) combined with transitioning profitability metrics justifies a breakout attempt toward $280, though position sizing must account for elevated volatility risk from the temporary valuation distortion. | R2 Bear(7): While DDOG's earnings may normalize upward long-term, the immediate technical setup at resistance combined with extreme momentum positioning creates a high-probability reversal trap that fundamental improvements cannot prevent.",
+      "bear_case": "Primary risk: Momentum reversal at $278.7 resistance could trigger 30%+ decline as overleveraged momentum buyers hit stop losses while the 690x P/E multiple provides no fundamental support floor. | Unresolved: ['Momentum reversal at $278.7 resistance triggering cascading stop losses among overleveraged momentum buyers with no fundamental valuation floor to arrest the decline']",
+      "bull_score": 6,
+      "bear_score": 7,
+      "final_conviction": 1,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_LRCX_20260602200959",
+      "symbol": "LRCX",
+      "ts": "2026-06-02T20:09:59.573007+00:00",
+      "bull_case": "R1 Bull(8): LRCX is a quality momentum play where exceptional 66.8% ROE and 40.8% EPS growth justify the premium valuation, positioned to ride the AI chip equipment supercycle while technical overbought conditions signal strength, not weakness, in this bull regime. | R1 Bear(7): LRCX's extreme valuation stretched beyond fundamental reality creates asymmetric downside risk where any disappointment in AI capex cycles triggers severe multiple compression from unsustainable levels. | R2 Bull(7): LRCX remains a quality momentum play where exceptional fundamentals justify premium valuation in the AI equipment supercycle, though investors should monitor capex guidance closely given elevated multiple expectations. | R2 Bear(8): LRCX's 42.1x forward P/E represents an unsustainable valuation bubble that even the bull acknowledges creates vulnerability, making any AI capex deceleration a severe downside catalyst regardless of the company's market position.",
+      "bear_case": "Primary risk: Severe multiple compression from unsustainable 42.1x forward P/E if AI capex cycle shows any signs of deceleration or hyperscaler spending optimization, triggering 30-50% downside as valuation normalizes to historical cyclical levels | Unresolved: [\"The bull failed to address the core valuation risk - acknowledging 42.1x P/E vulnerability while arguing for continued premium multiples is contradictory, and momentum/technical indicators are lagging measures that don't protect against fundamental valuation compression when AI capex cycles inevitably moderate\"]",
+      "bull_score": 7,
+      "bear_score": 8,
+      "final_conviction": 5,
+      "decision": "skip"
     }
   ],
   "position_reviews": [
@@ -17096,6 +17224,57 @@
       "pm_action": "buy",
       "pm_verdict": "Strong technical momentum (ADX>25, RSI 77.7) combined with exceptional fundamentals (21.7% revenue growth, 25.3% margins) creates a continuation setup where debt concerns are systemic rather than trade-specific.",
       "risk_category": "sector_cap"
+    },
+    {
+      "ts": "2026-06-02T20:08:03.889520+00:00",
+      "symbol": "GTLB",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 Bull's own concession of 'meaningful downside asymmetry' combined with Q1 earnings as immediate binary catalyst within days",
+      "conviction": 5,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 31.82,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "Strong technical momentum confirmed by ADX>25 and volume surge, but pre-earnings positioning at extended levels with negative margins creates asymmetric downside risk that the bull explicitly acknowledged.",
+      "risk_category": "pm_decision"
+    },
+    {
+      "ts": "2026-06-02T20:09:04.061562+00:00",
+      "symbol": "DDOG",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 error",
+      "conviction": 1,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 269.12,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "PM decision unavailable \u2014 defaulting to skip",
+      "risk_category": "pm_decision"
+    },
+    {
+      "ts": "2026-06-02T20:09:59.544998+00:00",
+      "symbol": "LRCX",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 The bull's concession that 42.1x forward P/E creates genuine vulnerability to AI capex disappointments represents an unresolved TYPE-A risk - this is trade-specific timing risk where any near-term guidance disappointment triggers severe multiple compression",
+      "conviction": 5,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 334.41,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "While LRCX has exceptional fundamentals (66.8% ROE, 40.8% EPS growth), the 42.1x forward P/E creates asymmetric downside risk that even the bull acknowledged, and momentum alone without a specific catalyst isn't sufficient at these valuation levels.",
+      "risk_category": "pm_decision"
     }
   ],
   "watchlists": [
@@ -27190,6 +27369,33 @@
       "det_signal": "bullish",
       "det_strength": 10,
       "agree": true
+    },
+    {
+      "ts": "2026-06-02T20:07:21.289760+00:00",
+      "symbol": "GTLB",
+      "llm_signal": "bullish",
+      "llm_strength": 8,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": true
+    },
+    {
+      "ts": "2026-06-02T20:08:07.871463+00:00",
+      "symbol": "DDOG",
+      "llm_signal": "bullish",
+      "llm_strength": 8,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": true
+    },
+    {
+      "ts": "2026-06-02T20:09:07.808804+00:00",
+      "symbol": "LRCX",
+      "llm_signal": "neutral",
+      "llm_strength": 5,
+      "det_signal": "neutral",
+      "det_strength": 6,
+      "agree": true
     }
   ],
   "pre_debate_gates": [
@@ -27220,6 +27426,24 @@
     {
       "ts": "2026-06-02T17:58:44.168262+00:00",
       "symbol": "ORCL",
+      "would_gate": true,
+      "reason": "sector_saturated (Technology at 24.1%, cap=25%)"
+    },
+    {
+      "ts": "2026-06-02T20:07:17.611487+00:00",
+      "symbol": "GTLB",
+      "would_gate": true,
+      "reason": "sector_saturated (Technology at 24.1%, cap=25%)"
+    },
+    {
+      "ts": "2026-06-02T20:08:03.975488+00:00",
+      "symbol": "DDOG",
+      "would_gate": true,
+      "reason": "sector_saturated (Technology at 24.1%, cap=25%)"
+    },
+    {
+      "ts": "2026-06-02T20:09:04.115768+00:00",
+      "symbol": "LRCX",
       "would_gate": true,
       "reason": "sector_saturated (Technology at 24.1%, cap=25%)"
     }

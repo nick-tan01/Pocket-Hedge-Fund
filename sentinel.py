@@ -7,7 +7,7 @@ Writes trigger=true/false to $GITHUB_OUTPUT for GitHub Actions.
 import json
 import logging
 import os
-from datetime import date, datetime, timedelta
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
 import yfinance as yf
@@ -254,13 +254,15 @@ def set_github_output(key: str, value: str):
 def is_recent_duplicate(evt: dict, runs: list[dict]) -> bool:
     if evt.get("severity") == "high":
         return False
-    cutoff = datetime.utcnow() - timedelta(minutes=COOLDOWN_MINUTES)
+    cutoff = datetime.now(timezone.utc) - timedelta(minutes=COOLDOWN_MINUTES)
     symbol = evt.get("symbol")
     trigger_type = evt.get("trigger_type")
 
     for run in reversed(runs):
         try:
-            ts = datetime.fromisoformat(str(run.get("ts", "")))
+            ts = datetime.fromisoformat(str(run.get("ts", "")).replace("Z", "+00:00"))
+            if ts.tzinfo is None:
+                ts = ts.replace(tzinfo=timezone.utc)
         except ValueError:
             continue
         if ts < cutoff:

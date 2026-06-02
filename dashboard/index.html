@@ -1143,6 +1143,9 @@ function renderOpenPositions() {
     const entryPx   = parseFloat(p.entry_price || 0);
     const stopPx    = parseFloat(p.stop_price || 0);
     const posPct    = parseFloat(p.position_pct || 0);
+    // Market value is needed by the Size display below regardless of which P&L branch
+    // we take, so it must live at function scope (not inside a branch).
+    const currMktVal = posPct > 0 && portfolioValue > 0 ? posPct * portfolioValue : 0;
 
     // Prefer Alpaca's real refreshed values (current_price / unrealized_pl) when present.
     // Deriving current price as marketValue/qty inflates it whenever the journal qty is
@@ -1154,8 +1157,7 @@ function renderOpenPositions() {
                        ? parseFloat(p.unrealized_plpc) * 100
                        : (entryPx > 0 ? (currentPrice - entryPx) / entryPx * 100 : null);
     } else {
-      const costBasis  = qty > 0 && entryPx > 0 ? qty * entryPx : 0;
-      const currMktVal = posPct > 0 && portfolioValue > 0 ? posPct * portfolioValue : 0;
+      const costBasis = qty > 0 && entryPx > 0 ? qty * entryPx : 0;
       if (costBasis > 0 && currMktVal > 0) {
         pnlDollar    = currMktVal - costBasis;
         pnlPct       = (pnlDollar / costBasis) * 100;

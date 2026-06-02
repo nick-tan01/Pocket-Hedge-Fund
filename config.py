@@ -129,12 +129,12 @@ DEBATE_MAX_TOKENS  = 1000   # Bull, Bear, PM, position reviewer (need nuanced re
 
 # ── Debate calibration (C14/C17) ─────────────────────────────────────────────
 # Experimental fix for the conviction-collapse-to-7 / PM-echoes-bull pathology.
-# OFF by default — flip to True to trial the evidence-anchored conviction rubric,
-# the unresolved-bear-points requirement, the exhaustion guardrail, symmetric
-# cold-start priors, and the conv-7 calibration audit. Forward-paper only; watch
-# for: conviction stdev among buys widening, buy-rate at conv-7 dropping below 100%,
-# PM==bull echo-rate dropping below ~60%.
-DEBATE_RUBRIC_V2 = False
+# ON (trial started 2026-06-02) — evidence-anchored conviction rubric + unresolved-
+# bear-points requirement + exhaustion guardrail + symmetric cold-start priors + conv-7
+# calibration audit. Forward-paper experiment; watching for: conviction stdev among
+# buys widening (from ~0.3 toward >0.8), buy-rate at conv-7 dropping below 100%, and
+# PM==bull echo-rate dropping below ~60%. Flip back to False to revert instantly.
+DEBATE_RUBRIC_V2 = True
 
 # ── Benchmark ────────────────────────────────────────────────────────────────
 BENCHMARK_TICKER = "SPY"

@@ -27,6 +27,7 @@ from core.journal import (
     get_debate_by_id, log_position_review, update_open_trade,
     log_trade_trim, set_queued_action, clear_queued_action,
     log_risk_decision, get_latest_watchlist, log_pre_debate_gate,
+    log_would_have_traded,
 )
 from agents.screener import Screener, ScreenerDataUnavailable
 from agents.after_close_watchlist import LONG_SETUP_TYPES
@@ -637,6 +638,12 @@ def analyse_symbol(
     pm["bull_r2_conviction"] = bull_r2.get("conviction", pm.get("final_conviction", 7))
     pm["bear_r2_conviction"] = bear_r2.get("conviction", 0)
 
+    # ── Options shadow logger (Phase 1 — inert unless OPTIONS_ENABLED=True) ───
+    # Completely skipped when flag is off; never affects the risk/execution path.
+    if getattr(config, "OPTIONS_ENABLED", False) and \
+            getattr(config, "OPTIONS_MODE", "shadow") == "shadow":
+        _options_shadow_log(symbol, pm, tech, fetcher, alpaca, portfolio_value)
+
     # ── Risk manager ──────────────────────────────────────────────────────────
     proposal = risk_agent.evaluate(
         symbol=symbol,
@@ -809,6 +816,118 @@ def analyse_symbol(
         return True
 
     return False
+
+
+# ── Options shadow logger (Phase 0/1 — never runs unless OPTIONS_ENABLED=True) ──
+
+def _options_shadow_log(
+    symbol: str,
+    pm: dict,
+    tech: dict,
+    fetcher,
+    alpaca,
+    portfolio_value: float,
+) -> None:
+    """
+    Phase 1 shadow: when the debate produces a buy with conviction >= OPTION_MIN_CONVICTION
+    and a named catalyst, resolve the would-be call debit spread and log it alongside
+    the real equity trade. NO orders are ever submitted here.
+
+    This function is only reached when OPTIONS_ENABLED=True AND OPTIONS_MODE="shadow".
+    With OPTIONS_ENABLED=False (the default) the caller never invokes it.
+    """
+    try:
+        from core.options_selector import select_call_debit_spread
+
+        min_conv = getattr(config, "OPTION_MIN_CONVICTION", 8)
+        action   = pm.get("action", "skip")
+        conv     = int(pm.get("final_conviction", 0))
+        catalyst = pm.get("deciding_factor") or pm.get("key_risk_to_monitor") or ""
+
+        # Only log for genuine buys at the conviction threshold with a named catalyst.
+        if action != "buy" or conv < min_conv:
+            return
+        if not catalyst or catalyst in ("error", "unknown", ""):
+            logger.debug("options_shadow: skipping %s — no named catalyst in PM verdict", symbol)
+            return
+
+        # Get the current spot price for contract selection.
+        quote = fetcher.get_quote(symbol)
+        if not quote:
+            return
+        spot = float(quote["price"])
+
+        proposal = select_call_debit_spread(
+            symbol=symbol,
+            spot=spot,
+            portfolio_value=portfolio_value,
+            conviction=conv,
+            catalyst=catalyst,
+            fetcher=fetcher,
+            alpaca_client=alpaca,
+        )
+
+        if proposal is None:
+            logger.info("options_shadow | %s — no valid spread found", symbol)
+            log_would_have_traded({
+                "symbol": symbol, "structure": "call_debit_spread",
+                "conviction": conv, "catalyst": catalyst,
+                "veto_reason": "no_valid_spread_found",
+            })
+            return
+
+        # Serialize the proposal for logging (dataclasses → dicts).
+        def _leg_dict(leg):
+            if leg is None:
+                return None
+            return {
+                "occ_symbol":  leg.occ_symbol,
+                "strike":      leg.strike,
+                "expiry":      leg.expiry,
+                "option_type": leg.option_type,
+                "greeks": {
+                    "delta": leg.greeks.delta, "gamma": leg.greeks.gamma,
+                    "theta": leg.greeks.theta, "vega":  leg.greeks.vega,
+                    "iv":    leg.greeks.iv,    "price": leg.greeks.price,
+                },
+                "market_mid": leg.market_mid,
+            }
+
+        record = {
+            "symbol":           proposal.underlying,
+            "structure":        proposal.structure,
+            "conviction":       proposal.conviction,
+            "catalyst":         proposal.catalyst,
+            "veto_reason":      proposal.veto_reason,
+            "long_leg":         _leg_dict(proposal.long_leg),
+            "short_leg":        _leg_dict(proposal.short_leg),
+            "net_debit":        proposal.net_debit,
+            "max_loss":         proposal.max_loss,
+            "max_profit":       proposal.max_profit,
+            "breakeven":        proposal.breakeven,
+            "qty":              proposal.qty,
+            "total_premium":    proposal.total_premium,
+            "pct_of_portfolio": proposal.pct_of_portfolio,
+            "net_greeks":       proposal.net_greeks,
+            "dte":              proposal.dte,
+            "expiry_date":      proposal.expiry_date,
+            "spot_at_log":      spot,
+        }
+        log_would_have_traded(record)
+
+        if proposal.veto_reason:
+            logger.info("options_shadow | %s → VETOED: %s", symbol, proposal.veto_reason)
+        else:
+            logger.info(
+                "options_shadow | %s | conv=%d | debit=$%.2f max_loss=$%.2f "
+                "max_profit=$%.2f breakeven=%.2f dte=%d | catalyst=%s",
+                symbol, conv, proposal.net_debit, proposal.max_loss,
+                proposal.max_profit, proposal.breakeven, proposal.dte, catalyst[:60],
+            )
+
+    except Exception as exc:
+        # Never let the shadow logger affect the live pipeline.
+        logger.warning("options_shadow: exception for %s (ignored): %s", symbol, exc)
 
 
 # ── Main pipeline ─────────────────────────────────────────────────────────────

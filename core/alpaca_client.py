@@ -242,3 +242,170 @@ class AlpacaClient:
             market_open = datetime.now(ET).replace(hour=9, minute=30, second=0, microsecond=0)
             delta = datetime.now(ET) - market_open
         return max(0, int(delta.total_seconds() / 60))
+
+    # ── Options (Phase 0 scaffolding) ─────────────────────────────────────────
+    # All methods below are additive and never called from the existing pipeline
+    # (gated by OPTIONS_ENABLED=False in config). They become active in Phase 1+.
+
+    def get_option_contracts(
+        self, symbol: str, option_type: str = "call",
+        expiry_gte: str = "", expiry_lte: str = "",
+        limit: int = 200,
+    ) -> list[dict]:
+        """
+        Query the option chain for an underlying. Returns a list of contract dicts
+        {occ_symbol, strike, expiry, type}. Uses the trading client (contract metadata
+        is entitlement-free on all Alpaca plans — no feed subscription needed).
+        """
+        try:
+            from alpaca.trading.requests import GetOptionContractsRequest
+            from alpaca.trading.enums import ContractType
+            req = GetOptionContractsRequest(
+                underlying_symbols=[symbol],
+                type=ContractType.CALL if option_type.lower() == "call" else ContractType.PUT,
+                expiration_date_gte=expiry_gte or None,
+                expiration_date_lte=expiry_lte or None,
+                status="active",
+                limit=limit,
+            )
+            result = self.trading.get_option_contracts(req)
+            contracts = getattr(result, "option_contracts", []) or []
+            return [
+                {
+                    "occ_symbol": c.symbol,
+                    "strike":     float(c.strike_price),
+                    "expiry":     str(c.expiration_date)[:10],
+                    "type":       option_type.lower(),
+                    "open_interest": getattr(c, "open_interest", None),
+                }
+                for c in contracts
+            ]
+        except Exception as e:
+            logger.warning("get_option_contracts failed for %s: %s", symbol, e)
+            return []
+
+    def get_option_snapshot(self, occ_symbols: list[str]) -> dict:
+        """
+        Fetch the latest indicative-feed snapshot (quote + greeks, 15-min delayed
+        on Basic plan) for a list of OCC symbols. Used ONLY as a cross-check against
+        local BSM greeks — do NOT use as the primary pricing source. Returns {} on
+        any entitlement/feed failure.
+        """
+        if not occ_symbols:
+            return {}
+        try:
+            from alpaca.data.historical.option import OptionHistoricalDataClient
+            from alpaca.data.requests import OptionLatestQuoteRequest
+            data_client = OptionHistoricalDataClient(
+                api_key=config.ALPACA_API_KEY,
+                secret_key=config.ALPACA_SECRET_KEY,
+            )
+            req    = OptionLatestQuoteRequest(symbol_or_symbols=occ_symbols, feed="indicative")
+            quotes = data_client.get_option_latest_quote(req)
+            out = {}
+            for sym, q in (quotes or {}).items():
+                mid = None
+                if hasattr(q, "ask_price") and hasattr(q, "bid_price"):
+                    ask = getattr(q, "ask_price", 0) or 0
+                    bid = getattr(q, "bid_price", 0) or 0
+                    if ask > 0 and bid > 0:
+                        mid = round((ask + bid) / 2, 4)
+                out[sym] = {"mid": mid, "ask": getattr(q, "ask_price", None),
+                            "bid": getattr(q, "bid_price", None)}
+            return out
+        except Exception as e:
+            logger.debug("get_option_snapshot failed (%s) — indicative feed unavailable", e)
+            return {}
+
+    def submit_vertical_spread(
+        self,
+        long_occ: str,
+        short_occ: str,
+        qty: int,
+        net_limit: float,
+        reason: str = "",
+    ) -> dict | None:
+        """
+        Submit a vertical debit spread as a single MLEG order.
+        net_limit = net debit per spread (positive = debit, e.g. 1.50 = $1.50/spread).
+        Phase 1 (shadow mode) never calls this. Phase 2+ calls this for live paper trades.
+        Returns order dict or None on failure.
+        """
+        try:
+            from alpaca.trading.requests import OptionLegRequest
+            from alpaca.trading.enums import OrderClass, PositionIntent, OrderType
+            order = self.trading.submit_order(
+                order_data={
+                    "order_class": "mleg",
+                    "qty":         str(qty),
+                    "type":        "limit",
+                    "limit_price": str(round(net_limit, 2)),
+                    "time_in_force": "day",
+                    "legs": [
+                        {"symbol": long_occ,  "ratio_qty": "1",
+                         "side": "buy",  "position_intent": "buy_to_open"},
+                        {"symbol": short_occ, "ratio_qty": "1",
+                         "side": "sell", "position_intent": "sell_to_open"},
+                    ],
+                }
+            )
+            logger.info(
+                "SPREAD SUBMITTED | %s/%s qty=%d net_debit=%.2f | %s",
+                long_occ, short_occ, qty, net_limit, reason,
+            )
+            return {"id": str(order.id), "long_occ": long_occ, "short_occ": short_occ,
+                    "qty": qty, "net_limit": net_limit, "reason": reason}
+        except Exception as e:
+            logger.warning("submit_vertical_spread failed: %s", e)
+            return None
+
+    def close_option_position(
+        self, occ_symbol: str, qty: int | None = None, reason: str = ""
+    ) -> dict | None:
+        """
+        Close (or partially close) an option position by OCC symbol.
+        qty=None closes the full position. Returns order dict or None.
+        """
+        try:
+            if qty is None:
+                order = self.trading.close_position(occ_symbol)
+            else:
+                order = self.trading.submit_order(
+                    order_data={
+                        "symbol": occ_symbol,
+                        "qty": str(qty),
+                        "side": "sell",
+                        "type": "market",
+                        "time_in_force": "day",
+                        "position_intent": "sell_to_close",
+                    }
+                )
+            logger.info("CLOSE OPTION | %s qty=%s | %s", occ_symbol, qty or "all", reason)
+            return {"symbol": occ_symbol, "qty": qty, "reason": reason}
+        except Exception as e:
+            logger.warning("close_option_position failed for %s: %s", occ_symbol, e)
+            return None
+
+    def get_account_extended(self) -> dict:
+        """
+        Extended account fields needed for options/margin accounting:
+        long_market_value, short_market_value, regt_buying_power,
+        maintenance_margin, initial_margin, multiplier.
+        Supplements get_account(); all fields default to None if unavailable
+        so existing code paths are unaffected.
+        """
+        try:
+            acct = self.trading.get_account()
+            base = self.get_account()
+            base.update({
+                "long_market_value":    float(getattr(acct, "long_market_value",  0) or 0),
+                "short_market_value":   float(getattr(acct, "short_market_value", 0) or 0),
+                "regt_buying_power":    float(getattr(acct, "regt_buying_power",  0) or 0),
+                "maintenance_margin":   float(getattr(acct, "maintenance_margin", 0) or 0),
+                "initial_margin":       float(getattr(acct, "initial_margin",     0) or 0),
+                "multiplier":           float(getattr(acct, "multiplier",         1) or 1),
+            })
+            return base
+        except Exception as e:
+            logger.warning("get_account_extended failed: %s", e)
+            return self.get_account()

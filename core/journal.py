@@ -238,6 +238,31 @@ def log_pre_debate_gate(symbol: str, would_gate: bool, reason: str):
     })
 
 
+def log_would_have_traded(record: dict):
+    """
+    Phase 1 options shadow: log a would-be spread alongside the real equity trade.
+    Record should include: ts, symbol, structure, long_leg, short_leg, net_debit,
+    max_loss, max_profit, breakeven, qty, total_premium, pct_of_portfolio, net_greeks,
+    dte, expiry_date, conviction, catalyst, veto_reason. Append-only, capped at 200.
+    """
+    entry = {"ts": datetime.now(timezone.utc).isoformat()}
+    entry.update(record)
+    _append_capped("would_have_traded", entry, cap=200)
+
+
+def log_greeks_snapshot(symbol: str, occ_symbol: str, greeks: dict):
+    """
+    Periodic greeks snapshot for an open option position (Phase 2+).
+    Used for dashboard P&L display and theta/vega monitoring. Capped at 1000.
+    """
+    _append_capped("greeks_snapshots", {
+        "ts":         datetime.now(timezone.utc).isoformat(),
+        "symbol":     symbol,
+        "occ_symbol": occ_symbol,
+        "greeks":     greeks,
+    }, cap=1000)
+
+
 def get_open_trades() -> list[dict]:
     return _load().get("open_trades", [])
 

@@ -136,6 +136,43 @@ DEBATE_MAX_TOKENS  = 1000   # Bull, Bear, PM, position reviewer (need nuanced re
 # PM==bull echo-rate dropping below ~60%. Flip back to False to revert instantly.
 DEBATE_RUBRIC_V2 = True
 
+# ── Options scaffold (Phase 0 / Phase 1) ─────────────────────────────────────
+# Master kill-switch: False = byte-identical to pre-options pipeline.
+# Nothing in options code executes unless this is True.
+OPTIONS_ENABLED               = False
+
+# "shadow" = log would-have-traded but submit NO orders (Phase 1 — data collection).
+# "live"   = submit real paper orders (Phase 2 — needs explicit sign-off to flip).
+OPTIONS_MODE                  = "shadow"
+
+# Safety: only defined-risk structures allowed (debit spreads, long options).
+# Never flip False without a full short/naked-options risk-model review.
+DEFINED_RISK_ONLY             = True
+
+# Portfolio-wide premium-at-risk cap (% of NAV). Total open options premium ≤ this.
+OPTIONS_PREMIUM_BUDGET_PCT    = 0.06
+# Per-trade premium cap (% of NAV). No single spread costs more than this.
+OPTIONS_MAX_PREMIUM_PER_TRADE = 0.02
+# Max concurrent open option positions (Phase 1: 1 — proof-of-concept only).
+OPTIONS_MAX_CONCURRENT        = 1
+
+# Minimum conviction to trigger an options shadow/trade (adjusted from 9/10 to 8
+# given historical distribution: 0 trades ever scored 9+; 8 is the highest realistic
+# threshold that DEBATE_RUBRIC_V2 can reach. Revisit after 20+ debates with v2 on).
+OPTION_MIN_CONVICTION         = 8
+
+# Contract selection parameters.
+OPTION_TARGET_DTE             = 38    # Target DTE at entry (30-45 band).
+OPTION_MIN_DTE                = 21    # Exit/roll trigger DTE.
+OPTION_LONG_DELTA             = 0.575 # Long-leg target delta (0.55-0.60; slightly ITM,
+                                      # lower premium than 0.65 given conv-8 threshold).
+OPTION_SHORT_DELTA            = 0.30  # Short-leg target delta (0.30-0.35).
+OPTION_PREMIUM_STOP_PCT       = 0.50  # Exit if premium falls to 50% of debit paid.
+
+# Greeks source: "local_bsm" = our own Black-Scholes calc (core/options_greeks.py).
+# Alpaca indicative feed used only as a cross-check (15-min delayed on Basic plan).
+GREEKS_SOURCE                 = "local_bsm"
+
 # ── Benchmark ────────────────────────────────────────────────────────────────
 BENCHMARK_TICKER = "SPY"
 

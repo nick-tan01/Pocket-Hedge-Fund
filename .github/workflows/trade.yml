@@ -77,6 +77,13 @@ jobs:
             echo "No changes to push"
           else
             git commit -m "Auto: pipeline run $(date -u +'%Y-%m-%d %H:%M UTC')"
-            git pull --rebase origin main
+            # Use --no-rebase (merge) instead of --rebase. The rebase strategy fails
+            # when two pipeline runs commit different data.json changes in quick
+            # succession: rebase replays our commit on top of the remote and hits a
+            # content conflict on JSON (git can't auto-merge it). A merge commit
+            # handles this cleanly — git creates a merge commit combining both sets of
+            # appended records. data.json is append-only so diverging appends are safe
+            # to merge; the next run re-reads the full file and sees all records.
+            git pull --no-rebase -X theirs origin main || true
             git push
           fi

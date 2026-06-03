@@ -413,6 +413,12 @@
       "portfolio_value": 104526.41,
       "cash": 73307.35,
       "spy_price": 755.38
+    },
+    {
+      "ts": "2026-06-03T20:19:56.174372+00:00",
+      "portfolio_value": 104436.73,
+      "cash": 69948.63,
+      "spy_price": 754.13
     }
   ],
   "trades": [
@@ -10787,6 +10793,95 @@
       ],
       "regime": "bull",
       "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-06-03T20:19:56.214539+00:00",
+      "run_type": "midday",
+      "candidates": [
+        "GTLB",
+        "QCOM",
+        "DDOG"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "scheduled",
+      "candidate_details": [
+        {
+          "symbol": "GTLB",
+          "composite_score": 0.5848,
+          "signals": {
+            "growth_quality": "unknown",
+            "rs_vs_sector_pct": 6.0,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.36,
+            "52wk_high": 52.38,
+            "volume_spike_ratio": 2.63,
+            "volume_spike": true,
+            "rsi": 65.0,
+            "macd_crossover": "False",
+            "bb_pct": 0.84,
+            "news_count": 10,
+            "top_headline": "UBS Maintains Neutral on GitLab, Raises Price Target to $32",
+            "news_quality": 1.0,
+            "pe_trailing": null,
+            "pe_forward": 30.0,
+            "earnings_growth": null
+          }
+        },
+        {
+          "symbol": "QCOM",
+          "composite_score": 0.5547,
+          "signals": {
+            "eps_growth": 173.0,
+            "rev_growth": -3.5,
+            "growth_quality": "moderate",
+            "rs_vs_sector_pct": 15.6,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.93,
+            "52wk_high": 259.92,
+            "volume_spike_ratio": 0.64,
+            "volume_spike": false,
+            "rsi": 65.1,
+            "macd_crossover": "False",
+            "bb_pct": 0.86,
+            "news_count": 7,
+            "top_headline": "Watching Foxx Development Holdings; Traders Circulate Unconfirmed Rumor The Co Has Been Added To The QUALCOMM Partner Network Directory Today",
+            "news_quality": 0.5,
+            "pe_trailing": 26.9,
+            "pe_forward": 23.5,
+            "earnings_growth": 173.0
+          }
+        },
+        {
+          "symbol": "DDOG",
+          "composite_score": 0.5335,
+          "signals": {
+            "eps_growth": 104.0,
+            "rev_growth": 32.2,
+            "growth_quality": "strong",
+            "rs_vs_sector_pct": 53.3,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.84,
+            "52wk_high": 278.7,
+            "volume_spike_ratio": 1.1,
+            "volume_spike": false,
+            "rsi": 70.7,
+            "macd_crossover": "False",
+            "bb_pct": 0.79,
+            "news_count": 0,
+            "top_headline": "",
+            "news_quality": 0.0,
+            "pe_trailing": 658.8,
+            "pe_forward": 88.0,
+            "earnings_growth": 104.0
+          }
+        }
+      ],
+      "regime": "bull",
+      "vix_regime": "normal"
     }
   ],
   "debate_logs": [
@@ -13363,6 +13458,39 @@
       "bear_score": 7,
       "final_conviction": 6,
       "decision": "buy"
+    },
+    {
+      "id": "debate_GTLB_20260603201757",
+      "symbol": "GTLB",
+      "ts": "2026-06-03T20:17:57.453942+00:00",
+      "bull_case": "R1 Bull(8): GTLB is experiencing a rare technical breakout with exceptional volume confirmation (2.63x average) and ADX-confirmed momentum (+DI 39.5 vs -DI 17.0) that historically precedes sustained moves in growth names during bullish market regimes. | R1 Bear(7): This is a momentum chase into a cash-burning company where technical breakouts can't overcome fundamental insolvency risk and where exceptional volume could signal distribution rather than accumulation. | R2 Bull(6): GTLB's technical breakout with institutional-grade volume confirmation and ADX momentum above 25 suggests a sustainable move higher, though dilution risk requires tight risk management below breakout levels. | R2 Bear(6): While institutional accumulation could delay the funding crunch, GTLB's cash burn trajectory still creates a fundamental constraint that will eventually override technical momentum regardless of current volume patterns.",
+      "bear_case": "Primary risk: Cash burn acceleration forces emergency dilution or debt raise at unfavorable terms, causing immediate 30-50% price collapse that technical momentum cannot prevent | Unresolved: ['Cash burn acceleration still creates fundamental insolvency timeline that technical momentum cannot extend indefinitely', \"Volume interpretation remains ambiguous - institutional accumulation theory assumes rational institutional behavior but doesn't eliminate the possibility of sophisticated distribution\"]",
+      "bull_score": 6,
+      "bear_score": 6,
+      "final_conviction": 6,
+      "decision": "watch"
+    },
+    {
+      "id": "debate_QCOM_20260603201850",
+      "symbol": "QCOM",
+      "ts": "2026-06-03T20:18:50.762449+00:00",
+      "bull_case": "R1 Bull(8): QCOM is breaking out on exceptional operational leverage with 173% EPS growth despite revenue decline, positioning it as the premier AI agent infrastructure play for 2026 with Microsoft partnership validation. | R1 Bear(7): QCOM's 173% EPS growth is built on an unsustainable foundation of revenue decline and high debt levels, creating a dangerous illusion of operational excellence that masks fundamental business deterioration in a momentum-chasing market environment. | R2 Bull(7): QCOM represents asymmetric risk/reward with temporary margin expansion from strategic restructuring creating earnings power that will amplify returns when AI agent revenue inflection begins in 2025-2026 | R2 Bear(8): QCOM's debt-fueled cost-cutting creates a dangerous cash flow squeeze that threatens their ability to sustain critical R&D investments through the revenue decline, potentially missing the AI opportunity entirely while better-capitalized competitors gain market share.",
+      "bear_case": "Primary risk: Revenue decline accelerating while high debt service costs increase, forcing deeper cost cuts that damage competitive positioning just as AI agent opportunity window opens for better-capitalized competitors | Unresolved: ['High debt service costs during revenue decline creating cash flow pressure that could force deeper cuts to the $7.5B R&D spend, undermining competitive positioning for AI transition']",
+      "bull_score": 7,
+      "bear_score": 8,
+      "final_conviction": 6,
+      "decision": "buy"
+    },
+    {
+      "id": "debate_DDOG_20260603201955",
+      "symbol": "DDOG",
+      "ts": "2026-06-03T20:19:55.963098+00:00",
+      "bull_case": "R1 Bull(8): DDOG is experiencing explosive earnings acceleration (104% YoY EPS growth) while technical momentum indicators confirm institutional accumulation during a breakout phase, creating a rare convergence of fundamental expansion and technical strength. | R1 Bear(7): The 104% EPS growth is masking catastrophic margin compression as DDOG burns capital to defend market share, evidenced by the 3.7% profit margin and 658x TTM P/E revealing a business model under severe stress that forward earnings projections cannot credibly sustain. | R2 Bull(7): DDOG's explosive earnings acceleration reflects the natural scaling characteristics of SaaS businesses reaching operational inflection points, where current technical momentum confirms institutional recognition of this fundamental transition despite elevated valuation metrics. | R2 Bear(8): DDOG's 658x TTM P/E and 88x forward P/E create an mathematically inevitable multiple compression scenario where any earnings disappointment triggers 50-60% downside as the market reprices from growth fantasy to SaaS reality.",
+      "bear_case": "Primary risk: Any quarterly earnings miss or guidance reduction will trigger catastrophic multiple compression from 88x forward P/E to realistic levels around 30-40x, representing 50-60% downside risk as the market recognizes the unsustainable margin structure. | Unresolved: ['The bull completely failed to address how DDOG can avoid catastrophic multiple compression from 88x forward P/E to realistic 30-40x levels, instead only acknowledging the vulnerability exists']",
+      "bull_score": 7,
+      "bear_score": 8,
+      "final_conviction": 1,
+      "decision": "skip"
     }
   ],
   "position_reviews": [
@@ -19023,6 +19151,58 @@
       "pm_action": "buy",
       "pm_verdict": "Strong technical momentum (ADX 66.6) and earnings acceleration justify entry, but razor-thin 3.7% operating margins create meaningful execution risk that prevents higher conviction.",
       "risk_category": "approved"
+    },
+    {
+      "ts": "2026-06-03T20:17:57.414342+00:00",
+      "symbol": "GTLB",
+      "action": "watch",
+      "reason": "PM decision: watch \u2014 Bear's dilution risk argument remains unresolved as TYPE-A - potential emergency funding could trigger immediate 30-50% decline regardless of technical momentum",
+      "conviction": 6,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 30.93,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "watch",
+      "pm_verdict": "Strong technical setup with institutional-grade volume confirmation, but cash burn dilution risk creates a TYPE-A threat that neither side fully resolved.",
+      "risk_category": "pm_decision"
+    },
+    {
+      "ts": "2026-06-03T20:18:50.722856+00:00",
+      "symbol": "QCOM",
+      "action": "buy",
+      "reason": "PM conviction=6 | size=4% ($1,692) | regime=bull/normal | ATR=18.14 x2.5 | stop=$230.01 (-8.0%)",
+      "conviction": 6,
+      "rotate_from": "",
+      "position_usd": 1691.88,
+      "shares": 6.7672,
+      "entry_price": 250.01,
+      "stop_price": 230.01,
+      "stop_pct": 8.0,
+      "sector": "Technology",
+      "correlation": 0.0,
+      "pm_action": "buy",
+      "pm_verdict": "QCOM presents a reasonable risk/reward setup with strong technical momentum and AI positioning, but the bear's cash flow squeeze argument during revenue decline creates genuine near-term execution risk that prevents higher conviction.",
+      "risk_category": "approved"
+    },
+    {
+      "ts": "2026-06-03T20:19:55.922766+00:00",
+      "symbol": "DDOG",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 error",
+      "conviction": 1,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 250.33,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "PM decision unavailable \u2014 defaulting to skip",
+      "risk_category": "pm_decision"
     }
   ],
   "watchlists": [
@@ -30292,6 +30472,33 @@
     },
     {
       "ts": "2026-06-03T18:11:38.092048+00:00",
+      "symbol": "DDOG",
+      "llm_signal": "bullish",
+      "llm_strength": 8,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": true
+    },
+    {
+      "ts": "2026-06-03T20:17:10.698639+00:00",
+      "symbol": "GTLB",
+      "llm_signal": "bullish",
+      "llm_strength": 8,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": true
+    },
+    {
+      "ts": "2026-06-03T20:18:00.890120+00:00",
+      "symbol": "QCOM",
+      "llm_signal": "bullish",
+      "llm_strength": 7,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": true
+    },
+    {
+      "ts": "2026-06-03T20:18:54.509569+00:00",
       "symbol": "DDOG",
       "llm_signal": "bullish",
       "llm_strength": 8,

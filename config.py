@@ -106,8 +106,11 @@ TECHNICAL_MODE = "shadow"
 
 # C18: "off", "watch" (compute the pre-debate skip decision + log it, but STILL run the
 # debate — data collection, no behavior change), or "enforce" (actually skip the debate
-# when a buy is structurally impossible). Default watch.
-PRE_DEBATE_GATE_MODE = "watch"
+# when a buy is structurally impossible). Flipped to enforce 2026-06-04 after 16/16
+# shadow samples matched the risk manager's post-debate skips (100% accuracy).
+# Gates active: sector_saturated + exposure_maxed. Score-floor gate deferred pending
+# more C3-OBS composite data.
+PRE_DEBATE_GATE_MODE = "enforce"
 
 # ── Circuit breakers ──────────────────────────────────────────────────────────
 VIX_ELEVATED_THRESHOLD = 20.0     # Scale new entries down in elevated-volatility regimes

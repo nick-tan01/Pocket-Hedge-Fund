@@ -237,6 +237,8 @@ def review_open_positions(
     fetcher: DataFetcher,
     dry_run: bool,
     symbols: set[str] | None = None,
+    regime: str = "bull",
+    vix_regime: str = "normal",
 ):
     """
     Re-analyse every open position and decide hold / trim / exit based on whether
@@ -375,6 +377,41 @@ def review_open_positions(
                 f"remnant_cleanup: {pos_pct*100:.1f}% position, thesis="
                 f"{thesis_status_raw} for {consec_weakened} consecutive reviews"
             )
+
+        # ── Regime-conditional trim discipline (TRIM-DISC) ───────────────────
+        # Problem: the reviewer re-trims winners on STATIC TYPE-B concerns (debt,
+        # valuation, P/E) that were already known at entry — e.g. AMD's 6.0 debt/equity
+        # got trimmed 4x in 2 days while the stock ran +26%. That bleeds the winners a
+        # momentum book depends on (Shefrin-Statman disposition effect; trim drag
+        # measured at ~1.1pp of NAV).
+        #
+        # Fix: in a CALM bull regime, do NOT trim a green, technically-intact position
+        # on a merely-"weakened" thesis. Let the trailing/ATR/hard stops be the downside
+        # control. A trim is still allowed when ANY of these hold:
+        #   - the thesis is BROKEN (not just weakened) — real deterioration,
+        #   - price confirms weakness (below entry OR EMA10/30 trend no longer "up"),
+        #   - the weakened read PERSISTS across >=2 consecutive reviews (hysteresis —
+        #     kills the intraday oscillation from multiple daily + sentinel reviews),
+        #   - the regime is RISK-OFF (caution/bear OR elevated/high VIX) — this is when
+        #     momentum crashes happen (Daniel-Moskowitz), so de-risking is warranted.
+        # Set REGIME_CONDITIONAL_TRIMS=False to restore legacy (trim on every weakened).
+        if getattr(config, "REGIME_CONDITIONAL_TRIMS", True) and action == "trim":
+            risk_off       = regime in ("caution", "bear") or vix_regime in ("elevated_vix", "high_vix")
+            entry_px       = trade.get("entry_price", current_price)
+            trend          = (tech.get("indicators") or {}).get("trend", "unknown")
+            price_strong   = current_price >= entry_px and trend == "up"
+            thesis_broken  = thesis_status_raw == "broken"
+            persistent     = consec_weakened >= 2
+            if (not risk_off) and price_strong and (not thesis_broken) and (not persistent):
+                logger.info(
+                    "TRIM SUPPRESSED | %s calm-bull, price strong (px=%.2f >= entry=%.2f, "
+                    "trend=up), thesis=%s consec_weakened=%d — holding full size; "
+                    "stops are the downside control",
+                    symbol, current_price, entry_px, thesis_status_raw, consec_weakened,
+                )
+                action = "hold"
+                review = dict(review)
+                review["trim_suppressed"] = True
 
         logger.info(
             "Position Review | %s → %s | conviction=%d | thesis=%s | %s",
@@ -1210,13 +1247,15 @@ def run_pipeline(
     if skip_llm_review_for_sentinel:
         logger.info("Sentinel stop-proximity run — mechanical checks only, no LLM review")
     elif _should_run_thesis_review(run_start, trigger_reason):
-        review_open_positions(alpaca, fetcher, dry_run=dry_run, symbols=review_symbols)
+        review_open_positions(alpaca, fetcher, dry_run=dry_run, symbols=review_symbols,
+                              regime=regime, vix_regime=vix_regime)
     elif overnight_alerts:
         # Not Monday and not sentinel, but overnight weakness detected on open positions
         # Run a targeted review only on the flagged symbols — don't review the whole book
         logger.info("Non-Monday early review triggered by overnight alerts: %s",
                     sorted(overnight_alerts))
-        review_open_positions(alpaca, fetcher, dry_run=dry_run, symbols=overnight_alerts)
+        review_open_positions(alpaca, fetcher, dry_run=dry_run, symbols=overnight_alerts,
+                              regime=regime, vix_regime=vix_regime)
     else:
         logger.info("Skipping full thesis review (not Monday) — mechanical stops only")
 

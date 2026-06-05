@@ -112,6 +112,17 @@ TECHNICAL_MODE = "shadow"
 # more C3-OBS composite data.
 PRE_DEBATE_GATE_MODE = "enforce"
 
+# TRIM-DISC: regime-conditional trim discipline. When True (default), the position
+# reviewer will NOT trim a green, technically-intact winner on a merely-"weakened"
+# thesis during a CALM bull regime — it lets the trailing/ATR/hard stops manage
+# downside instead of bleeding winners on re-discovered static TYPE-B concerns
+# (valuation/debt/P-E that were known at entry). Trims still fire on a BROKEN thesis,
+# price weakness (below entry / EMA trend down), a >=2-review weakened streak
+# (hysteresis), OR a risk-off regime (caution/bear or elevated/high VIX) — the
+# Daniel-Moskowitz momentum-crash window where de-risking is warranted.
+# Set False to restore legacy behavior (trim on every weakened review).
+REGIME_CONDITIONAL_TRIMS = True
+
 # ── Circuit breakers ──────────────────────────────────────────────────────────
 VIX_ELEVATED_THRESHOLD = 20.0     # Scale new entries down in elevated-volatility regimes
 VIX_HIGH_THRESHOLD     = 30.0     # Require stronger conviction and smaller sizing

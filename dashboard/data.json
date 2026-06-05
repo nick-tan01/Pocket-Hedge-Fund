@@ -467,6 +467,12 @@
       "portfolio_value": 102789.65,
       "cash": 91128.59,
       "spy_price": 743.26
+    },
+    {
+      "ts": "2026-06-05T19:01:40.543771+00:00",
+      "portfolio_value": 102772.54,
+      "cash": 91128.59,
+      "spy_price": 738.36
     }
   ],
   "trades": [
@@ -977,7 +983,7 @@
       "status": "open",
       "key_risk": "Any actual signs of GLP-1 growth deceleration or competitive pressure that could trigger debt-fueled deleveraging given the persistent 139% debt-to-equity vulnerability",
       "position_usd": 4177.12,
-      "position_pct": 0.041,
+      "position_pct": 0.0409,
       "sector": "Healthcare",
       "last_review_ts": "2026-06-05T18:05:56.146532+00:00",
       "last_review_conviction": 7,
@@ -985,9 +991,9 @@
       "time_stop_flagged": false,
       "consecutive_weakened_count": 0,
       "is_remnant": false,
-      "current_price": 1145.35,
-      "unrealized_pl": 477.78,
-      "unrealized_plpc": 0.12787,
+      "current_price": 1141.23,
+      "unrealized_pl": 462.62,
+      "unrealized_plpc": 0.12381,
       "avg_entry": 1015.5,
       "trim_history": [
         {
@@ -1036,9 +1042,9 @@
           "reason": "manual_derisk_50pct"
         }
       ],
-      "current_price": 211.81,
-      "unrealized_pl": 333.91,
-      "unrealized_plpc": 0.0469,
+      "current_price": 211.8001,
+      "unrealized_pl": 333.57,
+      "unrealized_plpc": 0.04685,
       "avg_entry": 202.3212
     }
   ],
@@ -13324,6 +13330,123 @@
       ],
       "regime": "bull",
       "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-06-05T19:01:40.591509+00:00",
+      "run_type": "midday",
+      "candidates": [
+        "GS",
+        "AMD",
+        "DDOG",
+        "SMCI"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "scheduled",
+      "candidate_details": [
+        {
+          "symbol": "GS",
+          "composite_score": 0.5165,
+          "signals": {
+            "eps_growth": 24.2,
+            "rev_growth": 14.5,
+            "growth_quality": "moderate",
+            "rs_vs_sector_pct": 11.8,
+            "sector": "Financial Services",
+            "sector_etf": "XLF",
+            "pct_of_52wk_range": 0.89,
+            "52wk_high": 1098.36,
+            "volume_spike_ratio": 0.76,
+            "volume_spike": false,
+            "rsi": 62.1,
+            "macd_crossover": "False",
+            "bb_pct": 0.78,
+            "news_count": 6,
+            "top_headline": "SpaceX Reportedly Locks Hong Kong, China Out Of Record IPO Citing Arms Rules",
+            "news_quality": 0.5,
+            "pe_trailing": 19.1,
+            "pe_forward": 16.0,
+            "earnings_growth": 24.2
+          }
+        },
+        {
+          "symbol": "AMD",
+          "composite_score": 0.5115,
+          "signals": {
+            "eps_growth": 91.2,
+            "rev_growth": 37.8,
+            "growth_quality": "strong",
+            "rs_vs_sector_pct": 7.8,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.82,
+            "52wk_high": 546.44,
+            "volume_spike_ratio": 0.87,
+            "volume_spike": false,
+            "rsi": 54.8,
+            "macd_crossover": "False",
+            "bb_pct": 0.46,
+            "news_count": 9,
+            "top_headline": "10 Information Technology Stocks With Whale Alerts In Today's Session",
+            "news_quality": 0.0,
+            "pe_trailing": 156.8,
+            "pe_forward": 35.9,
+            "earnings_growth": 91.2
+          }
+        },
+        {
+          "symbol": "DDOG",
+          "composite_score": 0.484,
+          "signals": {
+            "eps_growth": 104.0,
+            "rev_growth": 32.2,
+            "growth_quality": "strong",
+            "rs_vs_sector_pct": 16.3,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.74,
+            "52wk_high": 278.7,
+            "volume_spike_ratio": 0.5,
+            "volume_spike": false,
+            "rsi": 60.3,
+            "macd_crossover": "False",
+            "bb_pct": 0.59,
+            "news_count": 0,
+            "top_headline": "",
+            "news_quality": 0.0,
+            "pe_trailing": 596.1,
+            "pe_forward": 81.7,
+            "earnings_growth": 104.0
+          }
+        },
+        {
+          "symbol": "SMCI",
+          "composite_score": 0.477,
+          "signals": {
+            "eps_growth": 326.0,
+            "rev_growth": 122.7,
+            "growth_quality": "strong",
+            "rs_vs_sector_pct": 17.0,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.52,
+            "52wk_high": 62.36,
+            "volume_spike_ratio": 0.83,
+            "volume_spike": false,
+            "rsi": 58.4,
+            "macd_crossover": "False",
+            "bb_pct": 0.65,
+            "news_count": 3,
+            "top_headline": "3 Good AI Stocks to Take Profits On Right Now",
+            "news_quality": 0.0,
+            "pe_trailing": 21.9,
+            "pe_forward": 12.8,
+            "earnings_growth": 326.0
+          }
+        }
+      ],
+      "regime": "bull",
+      "vix_regime": "normal"
     }
   ],
   "debate_logs": [
@@ -16283,6 +16406,50 @@
       "bear_case": "Primary risk: Margin compression cascade where 3.7% profit margins get squeezed by rising component costs or competitive pressure, triggering covenant breaches on 120.8% debt/equity ratio and forcing emergency deleveraging that destroys equity value regardless of AI demand trends. | Unresolved: [\"The bull failed to address how SMCI maintains pricing power when hyperscalers like AWS/Google have massive negotiating leverage and can easily switch suppliers, making the 'customers pay premiums' argument unsustainable at scale\"]",
       "bull_score": 7,
       "bear_score": 9,
+      "final_conviction": 5,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_GS_20260605185904",
+      "symbol": "GS",
+      "ts": "2026-06-05T18:59:04.234093+00:00",
+      "bull_case": "R1 Bull(8): Goldman Sachs is positioned to capture outsized investment banking fees from historic IPOs (SpaceX, Anthropic) while technical momentum and operational excellence create a perfect storm for breakout continuation. | R1 Bear(7): Goldman's 678.6% debt-to-equity ratio creates catastrophic downside vulnerability in any credit contraction, while IPO fee projections represent speculative timing bets that could evaporate with market volatility. | R2 Bull(7): Goldman Sachs trades at a reasonable 15.9x forward P/E with operational momentum intact and asymmetric upside to investment banking fee cycles, despite uncertain IPO timing creating near-term execution risk | R2 Bear(7): Goldman's 678.6% debt-to-equity ratio remains an unaddressed systemic risk that could trigger catastrophic deleveraging in any credit contraction, regardless of fee upside potential.",
+      "bear_case": "Primary risk: Extreme leverage ratio of 678.6% creates asymmetric downside where any credit market stress, Fed policy shift, or funding cost increase triggers cascading margin compression and forced deleveraging. | Unresolved: ['Extreme 678.6% debt-to-equity ratio creates asymmetric downside where any credit market stress, Fed policy shift, or funding cost increase triggers cascading margin compression and forced deleveraging']",
+      "bull_score": 7,
+      "bear_score": 7,
+      "final_conviction": 5,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_AMD_20260605185959",
+      "symbol": "AMD",
+      "ts": "2026-06-05T18:59:59.607932+00:00",
+      "bull_case": "R1 Bull(8): AMD's exceptional 91% EPS growth and 38% revenue expansion signal fundamental momentum that will overwhelm temporary technical weakness, while Cathie Wood's selling creates a contrarian entry opportunity before earnings power drives revaluation. | R1 Bear(7): AMD's 91% EPS growth is masking a dangerous combination of high debt vulnerability and institutional exodus that signals smart money recognizes the semiconductor cycle peak before retail catches on. | R2 Bull(7): AMD's exceptional 91% EPS growth creates fundamental momentum that will ultimately overcome current technical weakness, though near-term institutional distribution may delay the revaluation process by several weeks | R2 Bear(8): AMD's debt-leveraged growth model faces existential risk when the semiconductor cycle turns, as high fixed costs will compress margins while the bull's focus on current EPS growth ignores the unsustainable nature of debt-fueled expansion at cycle peaks.",
+      "bear_case": "Primary risk: Debt-fueled growth model becomes a death spiral when semiconductor cycle turns - high fixed costs from debt service while revenues decline creates margin compression that forces asset sales or dilutive equity raises | Unresolved: ['Debt service burden creating margin compression during semiconductor cycle downturn', 'High fixed costs from leveraged growth model becoming unsustainable when revenues decline', 'Institutional exodus potentially signaling smart money recognition of peak cycle timing']",
+      "bull_score": 7,
+      "bear_score": 8,
+      "final_conviction": 1,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_DDOG_20260605190046",
+      "symbol": "DDOG",
+      "ts": "2026-06-05T19:00:46.298009+00:00",
+      "bull_case": "R1 Bull(8): DDOG's explosive 104% EPS growth combined with 32% revenue expansion signals the company has cracked the code on operational leverage, creating a compounding machine disguised as an expensive growth stock. | R1 Bear(8): DDOG's 104% EPS growth is built on an unsustainable foundation with TTM P/E of 596 revealing extreme earnings volatility, while 3.7% profit margins leave zero room for error in a deteriorating growth environment. | R2 Bull(7): DDOG's transition from growth-at-all-costs to profitable expansion is creating durable operational leverage, though investors must monitor margin sustainability closely as the primary execution risk | R2 Bear(8): DDOG's 596x P/E creates a mathematical impossibility where the company must maintain 25%+ growth indefinitely to justify current valuation, making any growth deceleration catastrophic for shareholders.",
+      "bear_case": "Primary risk: Earnings volatility collapse where any revenue deceleration below 25% instantly destroys the margin expansion story and sends the stock down 40%+ as the unsustainable P/E multiple compresses | Unresolved: [\"The bull's land-and-expand argument ignores that at 596x P/E, even a modest revenue deceleration from 25% to 15-20% would trigger massive multiple compression regardless of retention rates\"]",
+      "bull_score": 7,
+      "bear_score": 8,
+      "final_conviction": 5,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_SMCI_20260605190140",
+      "symbol": "SMCI",
+      "ts": "2026-06-05T19:01:40.380120+00:00",
+      "bull_case": "R1 Bull(8): SMCI's 326% EPS growth at a forward P/E of just 12.8 represents a rare asymmetric opportunity where exceptional AI infrastructure demand fundamentals are temporarily masked by sentiment-driven selling. | R1 Bear(7): SMCI's high debt load combined with razor-thin profit margins creates a lethal combination where any AI demand slowdown or margin compression will trigger a violent deleverage cycle that destroys equity value regardless of revenue growth. | R2 Bull(7): SMCI's 326% EPS growth at 12.8 forward P/E reflects genuine AI infrastructure demand that outweighs leverage concerns, though position sizing should account for higher volatility risk from debt structure during any demand normalization period | R2 Bear(8): SMCI's debt-leveraged bet on sustained AI hardware demand creates asymmetric downside risk where inevitable technology transitions or demand normalization will trigger a rapid deleveraging spiral that destroys equity value faster than management can react.",
+      "bear_case": "Primary risk: Debt-fueled margin compression spiral where any softening in AI demand or pricing pressure triggers a cascade of earnings misses, covenant violations, and equity dilution that wipes out shareholders before a recovery can occur | Unresolved: ['The bull underestimates how rapidly AI infrastructure demand can pivot away from current-gen solutions when next-gen chips emerge, leaving SMCI with inventory writedowns and fixed costs that their thin margins cannot absorb', 'Current liquidity position is irrelevant if covenant ratios are breached during an earnings miss cycle, triggering accelerated payment schedules']",
+      "bull_score": 7,
+      "bear_score": 8,
       "final_conviction": 5,
       "decision": "skip"
     }
@@ -22900,6 +23067,74 @@
       "correlation": 0.0,
       "pm_action": "skip",
       "pm_verdict": "The margin-debt death spiral risk creates a TYPE-A vulnerability that could trigger regardless of AI demand fundamentals, while the bull's catalyst relies on multiple re-rating rather than a specific dated event.",
+      "risk_category": "pm_decision"
+    },
+    {
+      "ts": "2026-06-05T18:59:04.186038+00:00",
+      "symbol": "GS",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 Bull catalyst relies on speculative IPO timing with no dated events within 4 weeks, while 678.6% debt-to-equity ratio represents unresolved TYPE-A systemic risk that could trigger deleveraging",
+      "conviction": 5,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 1042.41,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "While GS shows strong operational metrics and technical momentum, the bull's primary catalyst (SpaceX/Anthropic IPO fees) is speculative timing with no concrete dates, and the extreme leverage creates asymmetric downside risk.",
+      "risk_category": "pm_decision"
+    },
+    {
+      "ts": "2026-06-05T18:59:59.560882+00:00",
+      "symbol": "AMD",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 error",
+      "conviction": 1,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 469.11,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "PM decision unavailable \u2014 defaulting to skip",
+      "risk_category": "pm_decision"
+    },
+    {
+      "ts": "2026-06-05T19:00:46.248989+00:00",
+      "symbol": "DDOG",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 The bear's mathematical argument that DDOG must maintain 25%+ growth indefinitely at 596x P/E creates an asymmetric risk profile where modest growth deceleration becomes catastrophic",
+      "conviction": 5,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 232.51,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "The 596x P/E multiple creates catastrophic downside risk where any growth deceleration triggers massive multiple compression, while razor-thin 3.7% margins provide zero buffer for execution errors.",
+      "risk_category": "pm_decision"
+    },
+    {
+      "ts": "2026-06-05T19:01:40.332684+00:00",
+      "symbol": "SMCI",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 Bear's unresolved TYPE-A point about debt covenant risk during earnings volatility cycles - this is trade-specific execution risk, not systemic sector risk",
+      "conviction": 5,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 41.56,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "Despite strong fundamentals (326% EPS growth, 12.8 forward P/E), the debt-leveraged structure creates TYPE-A execution risk where AI demand volatility could trigger rapid margin compression faster than fundamentals can recover.",
       "risk_category": "pm_decision"
     }
   ],
@@ -36483,6 +36718,42 @@
       "symbol": "SMCI",
       "llm_signal": "bullish",
       "llm_strength": 7,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": true
+    },
+    {
+      "ts": "2026-06-05T18:58:21.158288+00:00",
+      "symbol": "GS",
+      "llm_signal": "bullish",
+      "llm_strength": 7,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": true
+    },
+    {
+      "ts": "2026-06-05T18:59:07.980695+00:00",
+      "symbol": "AMD",
+      "llm_signal": "bearish",
+      "llm_strength": 6,
+      "det_signal": "bullish",
+      "det_strength": 8,
+      "agree": false
+    },
+    {
+      "ts": "2026-06-05T19:00:03.098410+00:00",
+      "symbol": "DDOG",
+      "llm_signal": "neutral",
+      "llm_strength": 4,
+      "det_signal": "bullish",
+      "det_strength": 8,
+      "agree": false
+    },
+    {
+      "ts": "2026-06-05T19:00:50.178524+00:00",
+      "symbol": "SMCI",
+      "llm_signal": "bullish",
+      "llm_strength": 6,
       "det_signal": "bullish",
       "det_strength": 10,
       "agree": true

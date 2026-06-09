@@ -503,6 +503,12 @@
       "portfolio_value": 102852.68,
       "cash": 91128.55,
       "spy_price": 739.22
+    },
+    {
+      "ts": "2026-06-09T16:13:24.939222+00:00",
+      "portfolio_value": 102674.95,
+      "cash": 91128.55,
+      "spy_price": 728.44
     }
   ],
   "trades": [
@@ -1011,19 +1017,19 @@
       "conviction": 7,
       "debate_id": "debate_LLY_20260519190455",
       "status": "open",
-      "key_risk": "Any emergence of competitive GLP-1 drugs matching Foundayo's demonstrated efficacy, as this would directly challenge the strengthened competitive moat thesis",
+      "key_risk": "Any emergence of competitive GLP-1 drugs matching or exceeding retatrutide's 28.3% weight loss efficacy, which would challenge the strengthened competitive moat",
       "position_usd": 4177.12,
-      "position_pct": 0.0412,
+      "position_pct": 0.0413,
       "sector": "Healthcare",
-      "last_review_ts": "2026-06-08T21:24:12.408562+00:00",
+      "last_review_ts": "2026-06-09T16:08:23.574253+00:00",
       "last_review_conviction": 8,
       "thesis_status": "intact",
       "time_stop_flagged": false,
       "consecutive_weakened_count": 0,
       "is_remnant": false,
-      "current_price": 1151.1663,
-      "unrealized_pl": 499.18,
-      "unrealized_plpc": 0.1336,
+      "current_price": 1152.37,
+      "unrealized_pl": 503.61,
+      "unrealized_plpc": 0.13478,
       "avg_entry": 1015.5,
       "trim_history": [
         {
@@ -1053,12 +1059,12 @@
       "conviction": 8,
       "debate_id": "debate_MS_20260522185742",
       "status": "open",
-      "key_risk": "Credit market conditions and funding cost pressures that could stress the leverage structure, particularly watching for widening credit spreads or banking sector deterioration",
+      "key_risk": "Credit market stress indicators and widening spreads that could trigger deleveraging pressures given the 502.2% debt-to-equity ratio",
       "position_usd": 7617.29,
-      "position_pct": 0.0728,
+      "position_pct": 0.0713,
       "sector": "Financial Services",
-      "last_review_ts": "2026-06-08T21:25:01.374597+00:00",
-      "last_review_conviction": 8,
+      "last_review_ts": "2026-06-09T16:09:15.831398+00:00",
+      "last_review_conviction": 7,
       "thesis_status": "intact",
       "time_stop_flagged": false,
       "consecutive_weakened_count": 0,
@@ -1072,9 +1078,9 @@
           "reason": "manual_derisk_50pct"
         }
       ],
-      "current_price": 212.835,
-      "unrealized_pl": 369.98,
-      "unrealized_plpc": 0.05197,
+      "current_price": 208.075,
+      "unrealized_pl": 202.48,
+      "unrealized_plpc": 0.02844,
       "avg_entry": 202.3212
     }
   ],
@@ -14888,6 +14894,334 @@
       ],
       "regime": "bull",
       "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-06-09T16:13:24.990375+00:00",
+      "run_type": "midday",
+      "candidates": [
+        "LLY",
+        "DDOG",
+        "SMCI",
+        "MS"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "sentinel_trigger",
+      "candidate_details": [
+        {
+          "symbol": "LLY",
+          "composite_score": 0.5647,
+          "signals": {
+            "eps_growth": 169.9,
+            "rev_growth": 55.5,
+            "growth_quality": "strong",
+            "rs_vs_sector_pct": 11.5,
+            "sector": "Healthcare",
+            "sector_etf": "XLV",
+            "pct_of_52wk_range": 0.94,
+            "52wk_high": 1182.73,
+            "volume_spike_ratio": 0.4,
+            "volume_spike": false,
+            "rsi": 71.1,
+            "macd_crossover": "False",
+            "bb_pct": 0.9,
+            "news_count": 10,
+            "top_headline": "7 Health Care Stocks With Whale Alerts In Today's Session",
+            "news_quality": 0.0,
+            "pe_trailing": 40.9,
+            "pe_forward": 25.9,
+            "earnings_growth": 169.9
+          }
+        },
+        {
+          "symbol": "DDOG",
+          "composite_score": 0.509,
+          "signals": {
+            "eps_growth": 104.0,
+            "rev_growth": 32.2,
+            "growth_quality": "strong",
+            "rs_vs_sector_pct": 11.2,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.69,
+            "52wk_high": 278.7,
+            "volume_spike_ratio": 0.28,
+            "volume_spike": false,
+            "rsi": 55.0,
+            "macd_crossover": "False",
+            "bb_pct": 0.45,
+            "news_count": 1,
+            "top_headline": "B of A Securities Maintains Buy on Datadog, Raises Price Target to $280",
+            "news_quality": 0.25,
+            "pe_trailing": 570.9,
+            "pe_forward": 78.2,
+            "earnings_growth": 104.0
+          }
+        },
+        {
+          "symbol": "SMCI",
+          "composite_score": 0.502,
+          "signals": {
+            "eps_growth": 326.0,
+            "rev_growth": 122.7,
+            "growth_quality": "strong",
+            "rs_vs_sector_pct": 18.2,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.46,
+            "52wk_high": 62.36,
+            "volume_spike_ratio": 0.48,
+            "volume_spike": false,
+            "rsi": 52.3,
+            "macd_crossover": "False",
+            "bb_pct": 0.53,
+            "news_count": 4,
+            "top_headline": "Micron Rallies, Nasdaq 100 Rebounds As Trump Calls For Immediate Iran-Israel Ceasefire",
+            "news_quality": 0.25,
+            "pe_trailing": 20.7,
+            "pe_forward": 12.1,
+            "earnings_growth": 326.0
+          }
+        },
+        {
+          "symbol": "MS",
+          "composite_score": 0.4665,
+          "signals": {
+            "eps_growth": 31.9,
+            "rev_growth": 16.3,
+            "growth_quality": "moderate",
+            "rs_vs_sector_pct": 6.8,
+            "sector": "Financial Services",
+            "sector_etf": "XLF",
+            "pct_of_52wk_range": 0.87,
+            "52wk_high": 219.16,
+            "volume_spike_ratio": 0.44,
+            "volume_spike": false,
+            "rsi": 58.4,
+            "macd_crossover": "False",
+            "bb_pct": 0.64,
+            "news_count": 1,
+            "top_headline": "Why Galaxy Digital Stock Is Surging On Monday?",
+            "news_quality": 0.0,
+            "pe_trailing": 18.8,
+            "pe_forward": 16.4,
+            "earnings_growth": 31.9
+          }
+        }
+      ],
+      "event_symbols": [
+        "AAPL",
+        "ACLS",
+        "AMD",
+        "ARM",
+        "BILL",
+        "COHR",
+        "CRWD",
+        "DDOG",
+        "GTLB",
+        "IONQ",
+        "LLY",
+        "MS",
+        "MSTR",
+        "NET",
+        "PLTR",
+        "QCOM",
+        "RKLB",
+        "SMCI",
+        "TSLA"
+      ],
+      "event_details": [
+        {
+          "symbol": "AAPL",
+          "trigger_type": "intraday_move",
+          "value": 0.0359,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": -0.0359,
+          "latest": 290.74,
+          "previous_close": 301.57
+        },
+        {
+          "symbol": "ACLS",
+          "trigger_type": "intraday_move",
+          "value": 0.0474,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": 0.0474,
+          "latest": 162.09,
+          "previous_close": 154.76
+        },
+        {
+          "symbol": "AMD",
+          "trigger_type": "intraday_move",
+          "value": 0.0671,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": -0.0671,
+          "latest": 457.25,
+          "previous_close": 490.12
+        },
+        {
+          "symbol": "ARM",
+          "trigger_type": "intraday_move",
+          "value": 0.0965,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": -0.0965,
+          "latest": 312.9,
+          "previous_close": 346.33
+        },
+        {
+          "symbol": "BILL",
+          "trigger_type": "intraday_move",
+          "value": 0.0496,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": -0.0496,
+          "latest": 33.4,
+          "previous_close": 35.15
+        },
+        {
+          "symbol": "COHR",
+          "trigger_type": "intraday_move",
+          "value": 0.1337,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": -0.1337,
+          "latest": 348.22,
+          "previous_close": 401.96
+        },
+        {
+          "symbol": "CRWD",
+          "trigger_type": "intraday_move",
+          "value": 0.0466,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": -0.0466,
+          "latest": 627.95,
+          "previous_close": 658.65
+        },
+        {
+          "symbol": "DDOG",
+          "trigger_type": "intraday_move",
+          "value": 0.0353,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": -0.0353,
+          "latest": 223.51,
+          "previous_close": 231.7
+        },
+        {
+          "symbol": "GTLB",
+          "trigger_type": "intraday_move",
+          "value": 0.0521,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": -0.0521,
+          "latest": 29.47,
+          "previous_close": 31.09
+        },
+        {
+          "symbol": "IONQ",
+          "trigger_type": "intraday_move",
+          "value": 0.1165,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": -0.1165,
+          "latest": 55.49,
+          "previous_close": 62.81
+        },
+        {
+          "symbol": "MSTR",
+          "trigger_type": "intraday_move",
+          "value": 0.0906,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": -0.0906,
+          "latest": 115.67,
+          "previous_close": 127.19
+        },
+        {
+          "symbol": "NET",
+          "trigger_type": "intraday_move",
+          "value": 0.0586,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": -0.0586,
+          "latest": 233.27,
+          "previous_close": 247.78
+        },
+        {
+          "symbol": "PLTR",
+          "trigger_type": "intraday_move",
+          "value": 0.0484,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": -0.0484,
+          "latest": 129.86,
+          "previous_close": 136.47
+        },
+        {
+          "symbol": "QCOM",
+          "trigger_type": "intraday_move",
+          "value": 0.0907,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": -0.0907,
+          "latest": 197.95,
+          "previous_close": 217.69
+        },
+        {
+          "symbol": "RKLB",
+          "trigger_type": "intraday_move",
+          "value": 0.0837,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": -0.0837,
+          "latest": 104.14,
+          "previous_close": 113.65
+        },
+        {
+          "symbol": "SMCI",
+          "trigger_type": "intraday_move",
+          "value": 0.1021,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": -0.1021,
+          "latest": 39.48,
+          "previous_close": 43.97
+        },
+        {
+          "symbol": "TSLA",
+          "trigger_type": "intraday_move",
+          "value": 0.0418,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": -0.0418,
+          "latest": 391.93,
+          "previous_close": 409.01
+        },
+        {
+          "symbol": "LLY",
+          "trigger_type": "position_move",
+          "value": 0.1349,
+          "threshold": 0.025,
+          "severity": "high",
+          "price": 1152.71,
+          "entry": 1015.67
+        },
+        {
+          "symbol": "MS",
+          "trigger_type": "position_move",
+          "value": 0.0274,
+          "threshold": 0.025,
+          "severity": "normal",
+          "price": 208.04,
+          "entry": 202.48
+        }
+      ],
+      "regime": "bull",
+      "vix_regime": "normal"
     }
   ],
   "debate_logs": [
@@ -18112,6 +18446,50 @@
       "bull_score": 7,
       "bear_score": 7,
       "final_conviction": 6,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_LLY_20260609161047",
+      "symbol": "LLY",
+      "ts": "2026-06-09T16:10:47.474718+00:00",
+      "bull_case": "R1 Bull(8): LLY's dominant GLP-1 franchise with game-changing 28-30% weight loss results creates a multi-decade growth runway that justifies premium valuations despite debt concerns. | R1 Bear(7): LLY's 139% debt-to-equity ratio creates a financial powder keg that could detonate when the current momentum reverses, turning today's 107.5% ROE into tomorrow's bankruptcy risk. | R2 Bull(7): LLY's dominant position in the $100B+ obesity market with best-in-class clinical results creates sufficient cash flow velocity to rapidly deleverage while maintaining multi-decade growth runway. | R2 Bear(6): While LLY's strategic debt deployment for obesity market capture shows promise, the company remains vulnerable to growth deceleration or regulatory disruption before deleveraging is complete.",
+      "bear_case": "Primary risk: Debt servicing costs spiraling out of control if revenue growth falters, turning LLY from a growth story into a distressed debt situation that could wipe out 50-80% of equity value | Unresolved: ['Market saturation and competitive pressure could cause the triple-digit growth rates to decelerate faster than expected, leaving LLY with elevated debt levels just as cash flows normalize', 'Regulatory risks around GLP-1 drugs could disrupt the revenue stream before deleveraging is complete']",
+      "bull_score": 7,
+      "bear_score": 6,
+      "final_conviction": 7,
+      "decision": "buy"
+    },
+    {
+      "id": "debate_DDOG_20260609161141",
+      "symbol": "DDOG",
+      "ts": "2026-06-09T16:11:41.605366+00:00",
+      "bull_case": "R1 Bull(8): DDOG's explosive 104% EPS growth combined with 32.2% revenue growth proves operational leverage is finally kicking in at scale, making the recent 17% pullback from $269 to $222 a rare buy-the-dip opportunity before the market reprices this profitability inflection. | R1 Bear(8): DDOG's 'profitability breakthrough' is a statistical mirage masking razor-thin 3.7% margins that cannot sustain current valuations as growth inevitably decelerates in a maturing monitoring market. | R2 Bull(7): DDOG's transition from growth-at-all-costs to profitable growth represents a strategic inflection that justifies premium valuation multiples, with the pullback creating entry opportunity before margins expand further as platform benefits compound. | R2 Bear(8): DDOG's razor-thin 3.7% margins remain unsustainable in a maturing market where competitive pricing pressure will expose the fragility of this 'profitability breakthrough' and crush premium valuations.",
+      "bear_case": "Primary risk: Margin compression as DDOG faces inevitable pricing pressure from competitors while burning cash to maintain unsustainable growth rates, causing the market to realize current profitability metrics are an accounting mirage. | Unresolved: ['Margin compression from competitive pricing pressure as monitoring market matures', 'Sustainability of profitability when growth rates decelerate', \"Premium valuation vulnerability when 'inflection point' narrative fails to deliver expanding margins\"]",
+      "bull_score": 7,
+      "bear_score": 8,
+      "final_conviction": 5,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_SMCI_20260609161238",
+      "symbol": "SMCI",
+      "ts": "2026-06-09T16:12:38.298688+00:00",
+      "bull_case": "R1 Bull(8): SMCI's rumored $5.2 billion Xai deal represents a paradigm shift that could quintuple current market cap assumptions while the stock trades at a forward P/E of just 12.1 despite 326% EPS growth. | R1 Bear(8): SMCI's valuation entirely depends on an unconfirmed $5.2B rumor while the company's debt-heavy, low-margin structure creates catastrophic downside if the deal fails to materialize or gets delayed. | R2 Bull(7): SMCI remains undervalued at 12.1x forward P/E given its dominant position in AI infrastructure hardware that's essential regardless of any single contract, though near-term volatility is likely until deal clarity emerges | R2 Bear(8): SMCI's current valuation remains critically dependent on unconfirmed mega-deals, and while the company may have good positioning, this doesn't prevent a severe multiple contraction if growth expectations built into current levels fail to materialize.",
+      "bear_case": "Primary risk: Complete collapse if the $5.2B Xai deal fails to materialize or comes with unfavorable terms, leaving a debt-heavy company with unsustainable growth expectations and no fundamental support level. | Unresolved: [\"The bull's argument about 'structural AI tailwinds' and 'dominant positioning' doesn't provide concrete downside protection - at 12.1x forward P/E, those multiples are still predicated on aggressive growth assumptions that evaporate without mega-deals like the rumored Xai contract, and no amount of 'positioning' prevents a re-rating to single-digit multiples if growth disappoints\"]",
+      "bull_score": 7,
+      "bear_score": 8,
+      "final_conviction": 5,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_MS_20260609161324",
+      "symbol": "MS",
+      "ts": "2026-06-09T16:13:24.739927+00:00",
+      "bull_case": "R1 Bull(8): Morgan Stanley's exceptional operational execution with 31.9% EPS growth and 24.8% profit margins creates a compelling value opportunity at 16.4x forward P/E, especially as recent weakness on low volume (0.45x) presents an optimal entry before momentum resumes. | R1 Bear(7): Morgan Stanley's 502.2 debt/equity ratio creates catastrophic downside risk in any credit tightening scenario, while the PEG ratio of 2.5 indicates the market has already overvalued this cyclical growth that won't sustain. | R2 Bull(7): Morgan Stanley's 31.9% EPS growth and 16.4x forward P/E still present compelling value despite leverage concerns, though the low-volume technical weakness requires closer monitoring for institutional distribution patterns | R2 Bear(7): Morgan Stanley's 502.2 debt/equity ratio creates existential risk in any credit tightening scenario that no amount of current earnings growth can offset, while technical weakness suggests smart money is already positioning for this vulnerability.",
+      "bear_case": "Primary risk: Credit market stress triggering margin calls and forced deleveraging at 502.2 debt/equity ratio, leading to catastrophic capital destruction that equity holders cannot recover from | Unresolved: ['Credit market stress triggering margin calls and forced deleveraging at 502.2 debt/equity ratio, leading to catastrophic capital destruction']",
+      "bull_score": 7,
+      "bear_score": 7,
+      "final_conviction": 5,
       "decision": "skip"
     }
   ],
@@ -21663,6 +22041,32 @@
       "key_risk_to_monitor": "Credit market conditions and funding cost pressures that could stress the leverage structure, particularly watching for widening credit spreads or banking sector deterioration",
       "current_bull_case": "R1 Bull(8): MS exhibits the rare combination of extreme technical momentum (ADX 41.9 with dominant +DI) and fundamental quality (24.8% margins, 31.9% EPS growth) that typically drives institutional breakouts above consensus targets. | R2 Bull(7): MS's dominant technical momentum (ADX 41.9) combined with superior execution metrics (24.8% margins) creates institutional accumulation despite standard IB leverage ratios that are already stress-tested and regulated.",
       "current_bear_case": "R1 Bear(7): The 502.2% debt-to-equity ratio creates massive downside leverage that will amplify any market stress, while the expensive 2.5 PEG ratio suggests this momentum is unsustainable at current valuations. | R2 Bear(5): While MS's leverage is industry-appropriate, the 2.5 PEG ratio indicates current technical momentum has pushed valuations beyond sustainable levels for meaningful risk-adjusted returns"
+    },
+    {
+      "trade_id": "LLY_20260519190455",
+      "symbol": "LLY",
+      "ts": "2026-06-09T16:08:23.532562+00:00",
+      "action": "hold",
+      "conviction": 8,
+      "thesis_status": "intact",
+      "rationale": "The original thesis of explosive earnings momentum overwhelming regulatory noise remains fully intact with continued exceptional growth metrics and strengthening competitive position through superior clinical results. Recent Phase 3 successes with Foundayo and retatrutide actually reinforce the core momentum thesis.",
+      "original_thesis_check": "The explosive 169.9% EPS growth and 55.5% revenue growth with 35% margins creating unstoppable earnings momentum is still demonstrably true and being reinforced by pipeline successes",
+      "key_risk_to_monitor": "Any emergence of competitive GLP-1 drugs matching or exceeding retatrutide's 28.3% weight loss efficacy, which would challenge the strengthened competitive moat",
+      "current_bull_case": "R1 Bull(8): Lilly's obesity franchise is delivering unprecedented clinical results that will redefine market share dynamics, with retatrutide's 28.3% weight loss and Foundayo outperforming Novo's semaglutide creating a multi-year competitive moat in the fastest-growing pharma market. | R2 Bull(7): Despite elevated leverage, Lilly's superior obesity pipeline with retatrutide's 28.3% weight loss results creates a defendable competitive moat in a $100B+ market where clinical superiority directly translates to market share and pricing power.",
+      "current_bear_case": "R1 Bear(6): The 139% debt-to-equity ratio creates unsustainable capital structure risk that will force massive equity dilution or constrain pipeline investment exactly when competition intensifies in the obesity market. | R2 Bear(5): LLY's 139% debt-to-equity ratio creates strategic inflexibility during the critical 2025-2027 period when obesity market competition intensifies but retatrutide contributions remain limited, potentially forcing suboptimal capital allocation decisions."
+    },
+    {
+      "trade_id": "MS_20260522185742",
+      "symbol": "MS",
+      "ts": "2026-06-09T16:09:15.789881+00:00",
+      "action": "hold",
+      "conviction": 7,
+      "thesis_status": "intact",
+      "rationale": "The original thesis remains valid as MS continues to demonstrate exceptional earnings power (31.9% growth) with strong margins (24.8%) while trading at reasonable forward P/E of 16.4x, and credit market conditions remain stable without the deterioration that would trigger our key risk scenario.",
+      "original_thesis_check": "Yes - MS is still capturing high-value mandates with strong earnings growth (31.9%) and margins (24.8%) while trading at attractive forward P/E (16.4x), exactly matching our original investment rationale.",
+      "key_risk_to_monitor": "Credit market stress indicators and widening spreads that could trigger deleveraging pressures given the 502.2% debt-to-equity ratio",
+      "current_bull_case": "R1 Bull(8): MS is demonstrating exceptional earnings power with 31.9% EPS growth and 24.8% margins while trading at only 16.4x forward P/E, creating a compelling value-growth hybrid opportunity as the technical pullback completes. | R2 Bull(7): MS remains attractively valued at 16.4x forward P/E with strong earnings momentum, though investors should recognize that leverage amplifies both upside potential and downside risk in this recovering investment banking cycle.",
+      "current_bear_case": "R1 Bear(7): The 502.2% debt-to-equity ratio creates catastrophic downside risk in any credit stress scenario, while the 2.5 PEG ratio indicates the market is already pricing in perfect execution of unsustainable growth rates. | R2 Bear(6): While MS has proven leverage management capabilities, the combination of cycle timing risk and stretched growth expectations at 2.5 PEG creates meaningful downside as investment banking recovery matures."
     }
   ],
   "risk_decisions": [
@@ -25254,6 +25658,74 @@
       "pm_action": "skip",
       "pm_verdict": "Strong fundamentals meet weak technical conviction in a geopolitically-driven setup without a concrete catalyst beyond continued momentum.",
       "risk_category": "conviction"
+    },
+    {
+      "ts": "2026-06-09T16:10:47.425029+00:00",
+      "symbol": "LLY",
+      "action": "hold",
+      "reason": "Already holding LLY",
+      "conviction": 7,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 1150.38,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "buy",
+      "pm_verdict": "Strong fundamental momentum with 170% EPS growth and dominant GLP-1 positioning justifies buying despite elevated debt, as all bear concerns are systemic rather than trade-specific catalysts.",
+      "risk_category": "already_holding"
+    },
+    {
+      "ts": "2026-06-09T16:11:41.554967+00:00",
+      "symbol": "DDOG",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 Bull's own concession that 104% EPS growth is 'mathematically inflated' from low base effects, exposing the core thesis as statistical noise rather than genuine operational leverage",
+      "conviction": 5,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 222.41,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "The profitability narrative is undermined by razor-thin 3.7% margins vulnerable to competitive pressure, while the recent distribution pattern on weak volume suggests institutional skepticism of sustainability.",
+      "risk_category": "pm_decision"
+    },
+    {
+      "ts": "2026-06-09T16:12:38.248097+00:00",
+      "symbol": "SMCI",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 Bull's own conviction drop to 7 and concession that thesis relies heavily on unconfirmed rumor creates TYPE-A catalyst risk that wasn't adequately rebutted",
+      "conviction": 5,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 39.28,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "The thesis entirely depends on an unconfirmed $5.2B rumor creating massive downside asymmetry if it fails to materialize, while technical weakness shows continued selling pressure.",
+      "risk_category": "conviction"
+    },
+    {
+      "ts": "2026-06-09T16:13:24.689146+00:00",
+      "symbol": "MS",
+      "action": "hold",
+      "reason": "Already holding MS",
+      "conviction": 5,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 207.78,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "Strong fundamentals meet problematic technical setup with no near-term catalyst to overcome institutional distribution risk in a leveraged financial.",
+      "risk_category": "already_holding"
     }
   ],
   "watchlists": [
@@ -40882,6 +41354,60 @@
       "det_signal": "bullish",
       "det_strength": 8,
       "agree": true
+    },
+    {
+      "ts": "2026-06-09T16:07:34.881462+00:00",
+      "symbol": "LLY",
+      "llm_signal": "bullish",
+      "llm_strength": 8,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": true
+    },
+    {
+      "ts": "2026-06-09T16:08:28.974516+00:00",
+      "symbol": "MS",
+      "llm_signal": "neutral",
+      "llm_strength": 5,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": false
+    },
+    {
+      "ts": "2026-06-09T16:09:57.337349+00:00",
+      "symbol": "LLY",
+      "llm_signal": "bullish",
+      "llm_strength": 8,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": true
+    },
+    {
+      "ts": "2026-06-09T16:10:51.330845+00:00",
+      "symbol": "DDOG",
+      "llm_signal": "bearish",
+      "llm_strength": 7,
+      "det_signal": "neutral",
+      "det_strength": 7,
+      "agree": false
+    },
+    {
+      "ts": "2026-06-09T16:11:46.100814+00:00",
+      "symbol": "SMCI",
+      "llm_signal": "bearish",
+      "llm_strength": 7,
+      "det_signal": "neutral",
+      "det_strength": 7,
+      "agree": false
+    },
+    {
+      "ts": "2026-06-09T16:12:42.534841+00:00",
+      "symbol": "MS",
+      "llm_signal": "neutral",
+      "llm_strength": 5,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": false
     }
   ],
   "pre_debate_gates": [

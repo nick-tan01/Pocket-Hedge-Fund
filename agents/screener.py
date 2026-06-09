@@ -189,13 +189,16 @@ class Screener:
         # Mega-cap tech & AI
         "NVDA", "MSFT", "AAPL", "AMZN", "GOOGL", "META", "TSLA",
         "AVGO", "ORCL", "CRM", "AMD", "INTC", "QCOM", "TXN", "AMAT", "LRCX",
-        # Healthcare & biotech
+        # Healthcare & biotech (expanded — defensive sector holding up in risk-off)
         "LLY", "UNH", "JNJ", "ABBV", "MRK", "PFE", "AMGN", "GILD",
         "REGN", "VRTX", "BMY", "CVS",
-        # Financials
+        "ELV", "HCA", "MDT", "SYK", "ISRG", "EW",
+        # Financials (expanded — sector breadth +0 on 6/09 while tech -5%)
         "JPM", "BAC", "GS", "MS", "BLK", "SCHW", "AXP", "V", "MA", "PYPL",
-        # Consumer & retail
+        "WFC", "C", "COF", "ICE", "CME", "TRV", "CB", "PGR",
+        # Consumer defensive (holding bid in risk-off rotation)
         "WMT", "COST", "TGT", "HD", "LOW", "NKE", "SBUX", "MCD", "CMG",
+        "PG", "KO", "PEP", "CL", "GIS",
         # Energy & industrials
         "XOM", "CVX", "COP", "GE", "CAT", "DE", "BA", "HON", "LMT",
         # Communication & media

@@ -13,7 +13,7 @@ import json
 import logging
 import sys
 import time
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 
 import pytz
 import schedule
@@ -1015,6 +1015,54 @@ def _parse_iso_utc(raw: str = "") -> datetime | None:
         return None
 
 
+def _cooled_down_symbols() -> set[str]:
+    """
+    Return symbols that had a TYPE-B systemic PM skip within TYPEB_SKIP_COOLDOWN_DAYS.
+    TYPE-B: structural concerns (valuation, leverage, macro, competition, sector) that
+    will not resolve in a 4-week window and should not trigger re-debate every run.
+    """
+    cooldown_days = getattr(config, "TYPEB_SKIP_COOLDOWN_DAYS", 0)
+    if cooldown_days <= 0:
+        return set()
+
+    try:
+        import json as _json
+        with open(config.JOURNAL_PATH) as f:
+            data = _json.load(f)
+    except Exception:
+        return set()
+
+    type_b_keywords = [
+        "valuation", "p/e", "pe ratio", "multiple", "overvalued",
+        "debt", "leverage", "debt/equity",
+        "macro", "competition", "competitive", "sector headwind",
+        "growth indefinitely", "priced in", "market recognition",
+    ]
+    cutoff = datetime.now(timezone.utc) - timedelta(days=cooldown_days)
+    cooled: set[str] = set()
+    for rd in data.get("risk_decisions", []):
+        if rd.get("action") != "skip":
+            continue
+        reason = rd.get("reason", "").lower()
+        if "pm decision" not in reason:
+            continue
+        try:
+            ts = datetime.fromisoformat(str(rd.get("ts", "")).replace("Z", "+00:00"))
+            if ts.tzinfo is None:
+                ts = ts.replace(tzinfo=timezone.utc)
+        except (ValueError, TypeError):
+            continue
+        if ts < cutoff:
+            continue
+        if any(kw in reason for kw in type_b_keywords):
+            sym = rd.get("symbol", "").upper()
+            if sym:
+                cooled.add(sym)
+    if cooled:
+        logger.info("TYPE-B cooldown suppressing %d symbol(s): %s", len(cooled), sorted(cooled))
+    return cooled
+
+
 def _active_watchlist_entries() -> list[dict]:
     latest = get_latest_watchlist("after_close")
     if not latest:
@@ -1111,6 +1159,11 @@ def _select_candidates(
     if event_universe is not None:
         return screener.run(max_candidates=dynamic_max, symbols=event_universe)
 
+    # TYPE-B cooldown: suppress names recently skipped on systemic/structural grounds.
+    # These re-enter the screener once the cooldown expires — so the suppression is
+    # temporary and we don't need to maintain a separate denylist.
+    cooled = _cooled_down_symbols()
+
     # C1: Exclude names we already hold at meaningful size (>= MIN_SLOT_PCT) from the
     # new-entry candidate pool. The screener scores the whole universe and routinely
     # returns held momentum leaders in the top-N; they then burn a full LLM debate only
@@ -1131,7 +1184,8 @@ def _select_candidates(
             logger.info("Excluded held positions from candidate pool: %s", dropped)
         return kept
 
-    candidates = _drop_held(screener.run(max_candidates=dynamic_max))
+    filtered_universe = [s for s in screener.WATCHLIST if s not in cooled] if cooled else None
+    candidates = _drop_held(screener.run(max_candidates=dynamic_max, symbols=filtered_universe))
     if trigger_reason == "sentinel_trigger":
         return candidates
 

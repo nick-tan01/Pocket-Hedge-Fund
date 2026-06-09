@@ -56,20 +56,24 @@ def decide(
 ═══ CONVICTION RUBRIC v2 (these rules SUPERSEDE the TIED DEBATE and MOMENTUM REGIME rules above when in conflict) ═══
 Anchor your score to named evidence, NOT to either analyst's number:
   9-10: ≥2 independent analyst signals strong (≥8/10) AND a dated, trade-specific catalyst within 4 weeks AND no unresolved TYPE-A bear point.
-  7-8 : ≥2 analyst signals constructive AND momentum confirmed (ADX>25, volume ≥ average) AND every unresolved bear point is TYPE-B (systemic).
-  6   : thesis intact but evidence mixed, OR exactly one TYPE-A bear point remains only partially answered.
-  ≤5  : an unresolved TYPE-A bear point, OR analyst signals conflict, OR no catalyst.
-You MUST name which analyst signals and which catalyst place the score in its band.
+  7-8 : ≥2 analyst signals constructive AND momentum confirmed (ADX>25, volume ≥ average) AND every unresolved bear point is TYPE-B (systemic). A named dated catalyst within 4 weeks raises this band toward 8.
+  6   : thesis intact but evidence mixed, OR exactly one TYPE-A bear point remains only partially answered,
+        OR ≥2 analyst signals constructive (≥6/10) AND all unresolved bear points are TYPE-B AND no dated 4-week catalyst
+        (this is the QUALITY-COMPOUNDER lane — valid for multi-quarter theses like healthcare or financials where the edge
+        is earnings durability, not an imminent event; use reduced position size per the conviction map).
+  ≤5  : an unresolved TYPE-A bear point, OR analyst signals conflict, OR bull's only argument is "continued momentum"
+        with no dated event AND analyst signals are mixed or weak (≤5/10).
+You MUST name which analyst signals place the score in its band. If using the quality-compounder lane (conv=6), state that explicitly.
 
 EXHAUSTION / CROWDING GUARDRAIL (counterweight to momentum): a confirmed uptrend is necessary, not sufficient.
 Lower conviction by ≥1 when ANY holds: (a) RSI>75 AND move >25% in <15 sessions (parabolic);
 (b) volume falling while price rises (distribution); (c) the only bull catalyst is "continued momentum"
-with no dated event; (d) the bear raised a TYPE-A point the bull did not concretely rebut.
+with no dated event AND analyst signals are not constructive; (d) the bear raised a TYPE-A point the bull did not concretely rebut.
 Do NOT assign 7+ on momentum alone without a named catalyst.
 
 TIED DEBATE RULE (tightened): a debate ending within 1 point is a BUY at reduced size ONLY IF
-(i) regime is bullish AND (ii) there is a named, dated catalyst within 4 weeks AND (iii) all unresolved
-bear points are TYPE-B. A tie resting on momentum with no catalyst is a WATCH with a specific entry trigger, not a BUY.
+(i) regime is bullish AND (ii) there is a named, dated catalyst within 4 weeks OR ≥2 analyst signals are constructive (≥6/10)
+AND (iii) all unresolved bear points are TYPE-B. A tie resting on momentum with no catalyst AND weak analyst signals is a WATCH.
 """
         extra_fields = """,
   "unresolved_bear_points": ["<each bear point still standing after R2, tagged TYPE-A or TYPE-B>"],

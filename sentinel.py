@@ -21,10 +21,15 @@ ALPACA_API_KEY = os.getenv("ALPACA_API_KEY")
 ALPACA_SECRET_KEY = os.getenv("ALPACA_SECRET_KEY")
 
 WATCHLIST = [
+    # Tech & AI
     "NVDA", "AAPL", "AMD", "GOOGL", "META", "AMZN", "QCOM", "AMAT",
     "MSFT", "TSLA", "CRWD", "NET", "SNOW", "DDOG", "PLTR", "RKLB",
     "SMCI", "MSTR", "IONQ", "GTLB", "TTD", "HIMS", "DUOL", "ARM",
     "ACLS", "COHR", "ONTO", "CELH", "DOCS", "BILL",
+    # Financials & defensives — added for risk-off regime coverage
+    "JPM", "GS", "MS", "V", "MA", "WFC", "ICE", "CME", "PGR", "TRV",
+    "LLY", "UNH", "ABBV", "ELV", "MDT", "SYK", "ISRG",
+    "PG", "KO", "WMT", "COST",
 ]
 MARKET_SENTINELS = ["SPY", "QQQ", "IWM"]
 

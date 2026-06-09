@@ -77,8 +77,8 @@ CONVICTION_SIZE_MAP = {
 ATR_PERIOD           = 14         # 14-day ATR
 ATR_MULTIPLIER       = 2.5        # Stop = entry - (2.5 × ATR), widened for momentum names
 HARD_STOP_PCT        = 0.08       # Never lose more than 8% on any single trade
-TRAILING_STOP_TRIGGER= 0.15       # Activate trailing stop once +15% profit
-TRAILING_STOP_PCT    = 0.10       # Trail 10% below peak
+TRAILING_STOP_TRIGGER= 0.20       # Activate trailing stop once +20% profit (raised from 0.15 — give winners more room before locking in)
+TRAILING_STOP_PCT    = 0.13       # Trail 13% below peak (raised from 0.10 — 28 premature trims vs 7 good ones)
 
 # C13-EXIT: when True (default), a thesis-"weakened" review streak only force-exits a
 # position if price ALSO confirms weakness (below entry OR EMA10/30 trend no longer up).
@@ -140,6 +140,14 @@ ANALYST_MODEL   = "claude-sonnet-4-20250514"   # Fast, cheap — analysts
 DEBATE_MODEL    = "claude-sonnet-4-20250514"   # Debate agents
 MAX_TOKENS         = 500    # Screener / analyst agents (structured JSON, short output)
 DEBATE_MAX_TOKENS  = 1000   # Bull, Bear, PM, position reviewer (need nuanced reasoning)
+
+# ── Screener cooldown for systemically-rejected names ────────────────────────
+# After a PM skip whose reason contains TYPE-B systemic keywords (valuation,
+# leverage, macro, competition), suppress that symbol from the screener for N
+# calendar days. Prevents re-debating the same name on the same structural thesis
+# run after run — the primary driver of the 90% zero-trade rate.
+# Set 0 to disable. TYPE-B keywords defined in main._cooled_down_symbols().
+TYPEB_SKIP_COOLDOWN_DAYS = 3
 
 # ── Debate calibration (C14/C17) ─────────────────────────────────────────────
 # Experimental fix for the conviction-collapse-to-7 / PM-echoes-bull pathology.

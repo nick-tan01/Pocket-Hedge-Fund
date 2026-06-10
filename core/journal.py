@@ -438,6 +438,17 @@ def log_trade_trim(
                 trade_id, trim_qty, new_qty, price)
 
 
+def log_universe_discovery(record: dict):
+    """
+    EXP-006: per-run audit of dynamic universe discovery — accepted symbols (with
+    source + momentum stats) and rejected symbols (with the guard that fired).
+    Capped at 300.
+    """
+    entry = {"ts": datetime.now(timezone.utc).isoformat()}
+    entry.update(record)
+    _append_capped("universe_discovery", entry, cap=300)
+
+
 def log_baseline_shadow(record: dict):
     """
     S2 (audit): log what the deterministic baseline twin WOULD have bought this run

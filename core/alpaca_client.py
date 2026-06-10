@@ -182,36 +182,55 @@ class AlpacaClient:
         """
         Submit a GTC sell STOP order so downside protection rests at the broker
         between pipeline runs (the software stop only samples a few times a day).
+
+        Alpaca constraint: fractional orders must be DAY orders, so a GTC stop can
+        only cover WHOLE shares. We floor the qty — the fractional remainder stays
+        protected by the software stop fallback (a few dollars of exposure, vs the
+        whole position unprotected overnight). qty < 1 share → no broker stop.
         Returns order dict or None on failure — callers fall back to software stops.
         """
+        whole_qty = int(qty)
+        if whole_qty < 1:
+            logger.info("Stop order skipped | %s qty %.4f < 1 whole share — "
+                        "software stop fallback covers", symbol, qty)
+            return None
         try:
             from alpaca.trading.requests import StopOrderRequest
             req = StopOrderRequest(
                 symbol=symbol,
-                qty=round(qty, 4),
+                qty=whole_qty,
                 side=OrderSide.SELL,
                 time_in_force=TimeInForce.GTC,
                 stop_price=round(stop_price, 2),
             )
             order = self.trading.submit_order(req)
-            logger.info("STOP ORDER SUBMITTED | %s %.4f @ $%.2f | %s | id: %s",
-                        symbol, qty, stop_price, reason, order.id)
-            return {"id": str(order.id), "symbol": symbol, "qty": float(qty),
+            logger.info("STOP ORDER SUBMITTED | %s %d @ $%.2f | %s | id: %s",
+                        symbol, whole_qty, stop_price, reason, order.id)
+            return {"id": str(order.id), "symbol": symbol, "qty": float(whole_qty),
                     "stop_price": round(stop_price, 2), "status": str(order.status)}
         except Exception as e:
-            logger.warning("Stop order submit FAILED | %s %.4f @ $%.2f: %s",
-                           symbol, qty, stop_price, e)
+            logger.warning("Stop order submit FAILED | %s %d @ $%.2f: %s",
+                           symbol, whole_qty, stop_price, e)
             return None
 
     def replace_stop_order(
         self, order_id: str, new_stop_price: float, new_qty: float | None = None
     ) -> dict | None:
-        """Ratchet/resize a resting stop order in place. Returns None on failure."""
+        """
+        Ratchet/resize a resting stop order in place. Returns None on failure.
+        qty is floored to whole shares (GTC stops can't be fractional); a resize
+        below 1 share cancels instead — software fallback covers the dust.
+        """
         try:
             from alpaca.trading.requests import ReplaceOrderRequest
             kwargs = {"stop_price": round(new_stop_price, 2)}
             if new_qty is not None:
-                kwargs["qty"] = round(new_qty, 4)
+                whole = int(new_qty)
+                if whole < 1:
+                    self.trading.cancel_order_by_id(order_id)
+                    logger.info("STOP ORDER CANCELLED (resize < 1 share) | id=%s", order_id)
+                    return None
+                kwargs["qty"] = whole
             order = self.trading.replace_order_by_id(order_id, ReplaceOrderRequest(**kwargs))
             logger.info("STOP ORDER REPLACED | id=%s → stop=$%.2f qty=%s",
                         order_id, new_stop_price, new_qty if new_qty is not None else "unchanged")
@@ -228,6 +247,7 @@ class AlpacaClient:
                 "id":               str(o.id),
                 "symbol":           o.symbol,
                 "status":           str(o.status.value if hasattr(o.status, "value") else o.status),
+                "qty":              float(o.qty or 0),
                 "filled_qty":       float(o.filled_qty or 0),
                 "filled_avg_price": float(o.filled_avg_price) if o.filled_avg_price else None,
             }

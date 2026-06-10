@@ -114,35 +114,74 @@ def _stop_exit_reason(trade: dict) -> str:
     return "trailing_stop" if trade.get("stop_ratcheted") else "initial_stop"
 
 
-def _ensure_broker_stop(alpaca: AlpacaClient, trade: dict) -> None:
+_STOP_OPEN_STATES = ("new", "accepted", "held", "pending_new", "partially_filled")
+
+
+def _ensure_broker_stop(alpaca: AlpacaClient, trade: dict) -> bool:
     """
     S1 reconciliation: make sure a journal-tracked position has a live stop order
     resting at the broker matching the journal's stop_price/qty. Places one for
     legacy positions opened before broker-native stops existed.
+
+    Returns True only if a stop is ACTUALLY resting — callers must use this (not
+    the mere presence of stop_order_id) to decide whether the software fallback
+    fires. A filled/cancelled order id is cleared so the fallback re-engages.
     """
     if not getattr(config, "BROKER_NATIVE_STOPS", False):
-        return
+        return False
     symbol = trade["symbol"]
     stop_price = trade.get("stop_price") or 0
     qty = trade.get("qty") or 0
     if stop_price <= 0 or qty <= 0:
-        return
+        return False
+
     stop_order_id = trade.get("stop_order_id")
     if stop_order_id:
         order = alpaca.get_order(stop_order_id)
-        if order and order["status"] in ("new", "accepted", "held", "pending_new"):
-            return  # resting and tracked — nothing to do
+        if order and order["status"] in _STOP_OPEN_STATES:
+            # Resting — fix qty drift (e.g. a failed trim left it oversized/undersized).
+            want = int(qty)
+            if want >= 1 and abs(order.get("qty", 0) - want) >= 1:
+                replaced = alpaca.replace_stop_order(stop_order_id, stop_price, want)
+                if replaced:
+                    update_open_trade(trade["id"], {"stop_order_id": replaced["id"]})
+                    trade["stop_order_id"] = replaced["id"]
+            return True
+        # Dead order — clear so fallback logic engages. If it DIED BY FILLING while
+        # a fractional dust position remains (the floored whole-share leg sold),
+        # book those shares as a realized trim so the ledger stays complete; the
+        # software fallback then closes the dust.
+        if order and order["status"] == "filled" and order.get("filled_qty") \
+                and order.get("filled_avg_price"):
+            basis = trade.get("avg_entry") or trade.get("entry_price", 0)
+            logger.warning(
+                "BROKER STOP FILLED (partial position) | %s %.0f sh @ $%.2f — "
+                "booked as realized trim; dust remains",
+                symbol, order["filled_qty"], order["filled_avg_price"],
+            )
+            log_trade_trim(
+                trade["id"], order["filled_qty"], trade.get("qty", 0),
+                order["filled_avg_price"],
+                reason=f"broker_stop_fill_{_stop_exit_reason(trade)}",
+                basis=basis,
+            )
+        update_open_trade(trade["id"], {"stop_order_id": ""})
+        trade["stop_order_id"] = ""
+
     live = alpaca.get_open_stop_orders(symbol)
     if live:
         # A stop exists but the journal lost the id — re-adopt it.
         update_open_trade(trade["id"], {"stop_order_id": live[0]["id"]})
         trade["stop_order_id"] = live[0]["id"]
-        return
+        return True
+
     placed = alpaca.submit_stop_order(symbol, qty, stop_price,
                                       reason="s1_reconcile_protective_stop")
     if placed:
         update_open_trade(trade["id"], {"stop_order_id": placed["id"]})
         trade["stop_order_id"] = placed["id"]
+        return True
+    return False
 
 
 def check_open_positions(alpaca: AlpacaClient):
@@ -221,16 +260,14 @@ def check_open_positions(alpaca: AlpacaClient):
             continue
 
         # S1: make sure a protective stop is resting at the broker for this position.
-        _ensure_broker_stop(alpaca, trade)
+        # Software stop check stays as a FALLBACK: it fires only if no live broker
+        # stop is actually resting (flag off, submit failed, fractional-only position,
+        # or the order filled/was cancelled).
+        has_broker_stop = _ensure_broker_stop(alpaca, trade)
 
         pos           = positions[symbol]
         current_price = pos["current_price"]
         stop_price    = trade["stop_price"]
-
-        # Software stop check stays as a FALLBACK: it fires only if no live broker
-        # stop is resting (flag off, submit failed, or order was cancelled).
-        has_broker_stop = bool(trade.get("stop_order_id")) and \
-            getattr(config, "BROKER_NATIVE_STOPS", False)
         if current_price <= stop_price and not has_broker_stop:
             reason = _stop_exit_reason(trade)
             logger.warning("STOP TRIGGERED (software) | %s $%.2f <= $%.2f",
@@ -1357,8 +1394,25 @@ def _select_candidates(
             logger.info("Excluded held positions from candidate pool: %s", dropped)
         return kept
 
-    filtered_universe = [s for s in screener.WATCHLIST if s not in cooled] if cooled else None
-    candidates = _drop_held(screener.run(max_candidates=dynamic_max, symbols=filtered_universe))
+    # EXP-006: extend the static core list with dynamically discovered names
+    # (market-wide most-actives + filtered gainers). Discovery is skipped for
+    # sentinel runs (those use a narrow event universe) and is fail-safe — any
+    # error leaves the core watchlist untouched.
+    from agents.discovery import discover_universe
+    discovered = discover_universe(screener.fetcher, screener.WATCHLIST) \
+        if trigger_reason != "sentinel_trigger" else []
+    base_universe = list(dict.fromkeys(list(screener.WATCHLIST) + discovered))
+    universe = [s for s in base_universe if s not in cooled] if cooled else base_universe
+
+    candidates = _drop_held(screener.run(max_candidates=dynamic_max, symbols=universe))
+
+    # Tag discovered candidates so EXP-006 can compare their forward outcomes
+    # against core-list candidates in the journal.
+    disc_set = set(discovered)
+    for c in candidates:
+        if c.symbol in disc_set:
+            c.signals["discovered"] = True
+
     if trigger_reason == "sentinel_trigger":
         return candidates
 

@@ -40,6 +40,25 @@ SCREENER_WEIGHTS = {
     "valuation":         0.05,
 }
 
+# ── Dynamic universe discovery (EXP-006) ─────────────────────────────────────
+# Each non-sentinel run, pull market-wide most-actives + top gainers (Alpaca
+# screener API) and add the survivors of strict quality guards to the screener
+# universe alongside the static core WATCHLIST. Discovered candidates are tagged
+# signals["discovered"]=True so their forward outcomes can be compared to core-
+# list candidates (see docs/EXPERIMENTS.md EXP-006).
+#
+# ANTI-BLOW-OFF GUARDS — discovery must surface sustainable momentum, not
+# parabolic spikes. A name is REJECTED when any of these holds:
+#   - day gain  > DISCOVERY_MAX_DAY_GAIN  (gap/news spike — too late, worst entry)
+#   - 5-day gain > DISCOVERY_MAX_5D_GAIN  (parabolic — Daniel-Moskowitz crash zone)
+#   - EMA10 <= EMA30 (no established uptrend — dead-cat bounces, falling knives)
+#   - fails the existing universe floors (MIN_PRICE / MIN_MARKET_CAP / MIN_VOLUME)
+DISCOVERY_ENABLED        = True
+DISCOVERY_SOURCE_TOP     = 50     # names pulled per source before filtering
+DISCOVERY_MAX_SYMBOLS    = 25     # hard cap on additions per run (screener cost)
+DISCOVERY_MAX_DAY_GAIN   = 0.12   # reject > +12% today
+DISCOVERY_MAX_5D_GAIN    = 0.25   # reject > +25% over 5 sessions
+
 # ── After-close market memory ────────────────────────────────────────────────
 AFTER_CLOSE_WATCHLIST_MAX = 20     # Logged evidence cards; not all become candidates
 WATCHLIST_HISTORY_LIMIT   = 30     # Keep recent lists for audit without bloating data.json

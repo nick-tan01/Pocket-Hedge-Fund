@@ -239,7 +239,7 @@ def parse_earnings_date(raw) -> date | None:
         if hasattr(raw, "iloc"):
             raw = raw.iloc[0]
         if isinstance(raw, (int, float)):
-            return datetime.utcfromtimestamp(raw).date()
+            return datetime.fromtimestamp(raw, tz=timezone.utc).date()
         if isinstance(raw, datetime):
             return raw.date()
         if isinstance(raw, date):

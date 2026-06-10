@@ -76,6 +76,26 @@ Status values: `proposed` → `running` → `accepted` / `rejected` / `inconclus
   move the pipeline missed (check via `baseline_shadow` + watchlist records).
 - **Failure:** missed-alpha skips rise on the scorecard → shorten cooldown to 1 day.
 
+## EXP-006 — Dynamic universe discovery
+- **Status:** running (started 2026-06-10)
+- **Change:** `DISCOVERY_ENABLED=True` — each non-sentinel run pulls market-wide
+  most-actives + top gainers (Alpaca screener API) and adds up to 25 names that
+  pass ALL guards to the screener universe: core floors (price/mcap/volume),
+  day gain ≤ 12%, 5-session gain ≤ 25% (anti-blow-off), and EMA10 > EMA30
+  (no dead-cat bounces). Discovered candidates carry `signals.discovered=true`;
+  every accept/reject is journaled under `universe_discovery`.
+- **Hypothesis:** the hand-curated 112-name list misses emerging momentum names
+  (audit §4C.1 — universe edits were reactive); a guarded dynamic scan surfaces
+  them earlier without feeding parabolic spikes into the pipeline.
+- **Metric / success:** after 8 weeks: (a) discovered candidates' forward 10/20-day
+  SPY-relative returns ≥ core-list candidates' (from `candidate_details` +
+  `universe_discovery`); (b) at least ~1 discovered candidate/week reaches the
+  debate stage; (c) skip-precision on the weekly scorecard does not degrade.
+- **Failure:** discovered names systematically underperform core names, or the
+  blow-off guards admit names that mean-revert hard (avg 10d excess < −2%) →
+  tighten guards or disable.
+- **Min sample:** 8 weeks or 30 discovered candidates. **Rollback:** `DISCOVERY_ENABLED=False`.
+
 ---
 
 ## Template

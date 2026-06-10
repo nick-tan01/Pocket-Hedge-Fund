@@ -932,7 +932,8 @@ function renderStats() {
 
   const openPos = DATA.open_trades || [];
   const trades  = DATA.trades || [];
-  const wins    = trades.filter(t => t.pnl > 0).length;
+  // total_pnl includes realized trim P&L (A5); fall back to pnl for legacy records
+  const wins    = trades.filter(t => (t.total_pnl != null ? t.total_pnl : t.pnl) > 0).length;
   const wr      = trades.length ? Math.round((wins / trades.length) * 100) : null;
 
   // Portfolio value
@@ -1286,15 +1287,19 @@ function renderTrades() {
       <div>Exit</div><div>P&L</div><div>Reason</div>
     </div>
     ${sorted.map(t => {
-      const color = t.pnl >= 0 ? 'var(--green)' : 'var(--red)';
-      const pnlStr = (t.pnl >= 0 ? '+$' : '-$') + Math.abs(t.pnl).toFixed(2);
+      // Whole-position outcome: final leg + realized trim P&L (A5)
+      const pnlVal = (t.total_pnl != null ? t.total_pnl : t.pnl);
+      const color = pnlVal >= 0 ? 'var(--green)' : 'var(--red)';
+      const trimNote = (t.trim_pnl && Math.abs(t.trim_pnl) >= 0.01)
+        ? `<br><span style="font-size:9px;opacity:0.6">incl. trims ${t.trim_pnl >= 0 ? '+' : '-'}$${Math.abs(t.trim_pnl).toFixed(0)}</span>` : '';
+      const pnlStr = (pnlVal >= 0 ? '+$' : '-$') + Math.abs(pnlVal).toFixed(2);
       const pctStr = (t.pnl_pct >= 0 ? '+' : '') + t.pnl_pct.toFixed(2) + '%';
       return `<div class="trade-row">
 	        <div style="color:var(--muted)">${fmtPacificDate(t.exit_ts)}</div>
         <div><span class="symbol-pill">${t.symbol}</span></div>
         <div>$${t.entry_price.toFixed(2)}</div>
         <div>$${t.exit_price.toFixed(2)}</div>
-        <div style="color:${color}">${pnlStr}<br><span style="font-size:10px;opacity:0.7">${pctStr}</span></div>
+        <div style="color:${color}">${pnlStr}<br><span style="font-size:10px;opacity:0.7">${pctStr}</span>${trimNote}</div>
         <div style="color:var(--muted);font-size:10px">${t.exit_reason.replace(/_/g,' ')}</div>
       </div>`;
     }).join('')}

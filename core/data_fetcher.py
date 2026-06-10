@@ -12,7 +12,7 @@ import time
 import requests
 import yfinance as yf
 import pandas as pd
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 import config
 
@@ -88,6 +88,11 @@ class DataFetcher:
                 c[0] if isinstance(c, tuple) else c
                 for c in df.columns
             ]
+            # Drop rows with NaN prices — yfinance occasionally returns them for
+            # cross-listed names; NaN poisons every downstream comparison (RSI,
+            # ATR, discovery guards) and is invalid in strict JSON.
+            df = df.dropna(subset=[c for c in ("Open", "High", "Low", "Close", "Volume")
+                                   if c in df.columns])
             rows = []
             for _, row in df.iterrows():
                 rows.append({
@@ -111,7 +116,7 @@ class DataFetcher:
         Falls back to empty list on any error.
         """
         try:
-            end   = datetime.utcnow()
+            end   = datetime.now(timezone.utc).replace(tzinfo=None)
             start = end - timedelta(days=days)
             params = {
                 "symbols":    symbol,
@@ -159,6 +164,46 @@ class DataFetcher:
         except Exception as e:
             logger.warning("Fundamentals failed %s: %s", symbol, e)
             return None
+
+    # ── Market screeners (Alpaca, EXP-006 dynamic universe) ──────────────────
+
+    def get_most_actives(self, top: int = 50) -> list[dict]:
+        """
+        Market-wide most-active stocks by volume (Alpaca screener endpoint,
+        entitled on all plans with the existing keys). Returns
+        [{symbol, volume, trade_count}], [] on any failure.
+        """
+        try:
+            r = requests.get(
+                f"{self._alpaca_data_url}/screener/stocks/most-actives",
+                headers=self._headers,
+                params={"by": "volume", "top": top},
+                timeout=10,
+            )
+            r.raise_for_status()
+            return r.json().get("most_actives", []) or []
+        except Exception as e:
+            logger.warning("most-actives fetch failed: %s", e)
+            return []
+
+    def get_market_movers(self, top: int = 50) -> dict:
+        """
+        Market-wide top movers (Alpaca screener endpoint). Returns
+        {"gainers": [{symbol, percent_change, change, price}], "losers": [...]},
+        {} on any failure.
+        """
+        try:
+            r = requests.get(
+                f"{self._alpaca_data_url}/screener/stocks/movers",
+                headers=self._headers,
+                params={"top": top},
+                timeout=10,
+            )
+            r.raise_for_status()
+            return r.json() or {}
+        except Exception as e:
+            logger.warning("movers fetch failed: %s", e)
+            return {}
 
     # ── VIX ───────────────────────────────────────────────────────────────────
 

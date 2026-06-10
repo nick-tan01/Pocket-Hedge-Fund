@@ -563,6 +563,12 @@
       "portfolio_value": 102073.36,
       "cash": 87551.58,
       "spy_price": 726.98
+    },
+    {
+      "ts": "2026-06-10T21:42:34.847448+00:00",
+      "portfolio_value": 102038.13,
+      "cash": 87551.58,
+      "spy_price": 725.43
     }
   ],
   "trades": [
@@ -1186,11 +1192,11 @@
       "conviction": 7,
       "debate_id": "debate_LLY_20260519190455",
       "status": "open",
-      "key_risk": "Debt refinancing timeline relative to retatrutide commercial launch timeline, as originally identified - any signs of capital allocation stress during the critical competitive ramp phase",
+      "key_risk": "Any signs of growth deceleration creating multiple compression risk as the market reprices from growth premium back to traditional pharma valuations",
       "position_usd": 4177.12,
       "position_pct": 0.041,
       "sector": "Healthcare",
-      "last_review_ts": "2026-06-10T19:21:43.298150+00:00",
+      "last_review_ts": "2026-06-10T21:37:27.945837+00:00",
       "last_review_conviction": 8,
       "thesis_status": "intact",
       "time_stop_flagged": false,
@@ -1278,7 +1284,7 @@
       "conviction": 6,
       "debate_id": "debate_C_20260610165355",
       "status": "open",
-      "key_risk": "Price breakdown below 0.87 breakout level, especially on volume above 1.5x average, would invalidate the technical thesis.",
+      "key_risk": "Price breakdown below the 0.87 breakout level on volume above 1.5x average, which would invalidate the technical thesis component",
       "position_usd": 3063.57,
       "position_pct": 0.0299,
       "sector": "Financial Services",
@@ -1287,7 +1293,12 @@
       "current_price": 133.595,
       "unrealized_pl": -15.76,
       "unrealized_plpc": -0.00514,
-      "avg_entry": 134.2856
+      "avg_entry": 134.2856,
+      "last_review_ts": "2026-06-10T21:38:20.946650+00:00",
+      "last_review_conviction": 7,
+      "thesis_status": "intact",
+      "time_stop_flagged": false,
+      "consecutive_weakened_count": 0
     }
   ],
   "runs": [
@@ -17623,6 +17634,190 @@
       ],
       "regime": "bull",
       "vix_regime": "elevated_vix"
+    },
+    {
+      "ts": "2026-06-10T21:42:34.916602+00:00",
+      "run_type": "midday",
+      "candidates": [
+        "LLY",
+        "SMCI",
+        "C",
+        "NET"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "sentinel_trigger",
+      "candidate_details": [
+        {
+          "symbol": "LLY",
+          "composite_score": 0.575,
+          "signals": {
+            "eps_growth": 169.9,
+            "rev_growth": 55.5,
+            "growth_quality": "strong",
+            "rs_vs_sector_pct": 10.2,
+            "sector": "Healthcare",
+            "sector_etf": "XLV",
+            "pct_of_52wk_range": 0.92,
+            "52wk_high": 1182.73,
+            "volume_spike_ratio": 0.83,
+            "volume_spike": false,
+            "rsi": 67.5,
+            "macd_crossover": "False",
+            "bb_pct": 0.81,
+            "news_count": 4,
+            "top_headline": "Reported Earlier, Lilly's EBGLYSS Wins FDA Approval For Every-Eight-Week Maintenance Dose In Moderate-To-Severe Atopic Dermatitis, Becoming Only Option With Six Annual Injections And No Required Topicals",
+            "news_quality": 0.25,
+            "pe_trailing": 40.4,
+            "pe_forward": 25.5,
+            "earnings_growth": 169.9
+          }
+        },
+        {
+          "symbol": "SMCI",
+          "composite_score": 0.518,
+          "signals": {
+            "eps_growth": 326.0,
+            "rev_growth": 122.7,
+            "growth_quality": "strong",
+            "rs_vs_sector_pct": -11.6,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.23,
+            "52wk_high": 62.36,
+            "volume_spike_ratio": 4.49,
+            "volume_spike": true,
+            "rsi": 38.5,
+            "macd_crossover": "False",
+            "bb_pct": 0.16,
+            "news_count": 10,
+            "top_headline": "Super Micro Plummets, But This ETF Turned It Into A 40% Payday",
+            "news_quality": 0.25,
+            "pe_trailing": 15.4,
+            "pe_forward": 9.0,
+            "earnings_growth": 326.0
+          }
+        },
+        {
+          "symbol": "C",
+          "composite_score": 0.442,
+          "signals": {
+            "eps_growth": 56.1,
+            "rev_growth": 15.9,
+            "growth_quality": "moderate",
+            "rs_vs_sector_pct": 4.2,
+            "sector": "Financial Services",
+            "sector_etf": "XLF",
+            "pct_of_52wk_range": 0.94,
+            "52wk_high": 137.11,
+            "volume_spike_ratio": 1.48,
+            "volume_spike": false,
+            "rsi": 61.2,
+            "macd_crossover": "False",
+            "bb_pct": 0.82,
+            "news_count": 4,
+            "top_headline": "Amazon Signs $17.5B  Senior Unsecured Delayed Draw Term Loan Credit Facility With Citibank, Other Lenders Through Sept. 30, 2026",
+            "news_quality": 0.05,
+            "pe_trailing": 16.5,
+            "pe_forward": 10.6,
+            "earnings_growth": 56.1
+          }
+        },
+        {
+          "symbol": "NET",
+          "composite_score": 0.422,
+          "signals": {
+            "growth_quality": "unknown",
+            "rs_vs_sector_pct": 16.8,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.52,
+            "52wk_high": 276.81,
+            "volume_spike_ratio": 1.22,
+            "volume_spike": false,
+            "rsi": 45.9,
+            "macd_crossover": "False",
+            "bb_pct": 0.42,
+            "news_count": 9,
+            "top_headline": "UBS Maintains Neutral on Cloudflare, Raises Price Target to $250",
+            "news_quality": 1.0,
+            "pe_trailing": null,
+            "pe_forward": 140.8,
+            "earnings_growth": null
+          }
+        }
+      ],
+      "event_symbols": [
+        "C",
+        "ELV",
+        "LLY",
+        "NET",
+        "QCOM",
+        "SMCI"
+      ],
+      "event_details": [
+        {
+          "symbol": "ELV",
+          "trigger_type": "intraday_move",
+          "value": 0.047,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": -0.047,
+          "latest": 404.44,
+          "previous_close": 424.37
+        },
+        {
+          "symbol": "NET",
+          "trigger_type": "intraday_move",
+          "value": 0.0703,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": -0.0703,
+          "latest": 219.59,
+          "previous_close": 236.18
+        },
+        {
+          "symbol": "QCOM",
+          "trigger_type": "intraday_move",
+          "value": 0.0708,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": -0.0708,
+          "latest": 190.88,
+          "previous_close": 205.41
+        },
+        {
+          "symbol": "SMCI",
+          "trigger_type": "intraday_move",
+          "value": 0.2802,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": -0.2802,
+          "latest": 29.25,
+          "previous_close": 40.63
+        },
+        {
+          "symbol": "LLY",
+          "trigger_type": "position_move",
+          "value": 0.1188,
+          "threshold": 0.025,
+          "severity": "high",
+          "price": 1136.37,
+          "entry": 1015.67
+        },
+        {
+          "symbol": "C",
+          "trigger_type": "near_stop",
+          "value": 0.8837,
+          "threshold": 0.85,
+          "severity": "high",
+          "current": 126.54,
+          "entry": 134.29,
+          "stop": 125.52
+        }
+      ],
+      "regime": "bull",
+      "vix_regime": "elevated_vix"
     }
   ],
   "debate_logs": [
@@ -21342,6 +21537,50 @@
       "bull_score": 7,
       "bear_score": 8,
       "final_conviction": 5,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_LLY_20260610213958",
+      "symbol": "LLY",
+      "ts": "2026-06-10T21:39:58.931434+00:00",
+      "bull_case": "R1 Bull(8): LLY is breaking out on explosive fundamentals with 169.9% EPS growth and a pipeline execution story that's creating sustainable competitive advantages in the massive obesity/diabetes market. | R1 Bear(6): LLY's explosive growth story is unsustainable at current valuations with a dangerous 139% debt-to-equity ratio creating financial fragility just as the company enters peak competitive pressure in obesity treatments. | R2 Bull(7): LLY remains a momentum play on dominant obesity market positioning with best-in-class efficacy, though elevated debt levels require monitoring if competitive threats accelerate. | R2 Bear(7): LLY's 139% debt-to-equity ratio creates a dangerous mismatch between fixed financial obligations and variable competitive positioning in an obesity market that will inevitably see margin compression as competition intensifies.",
+      "bear_case": "Primary risk: Debt-fueled growth model collapses under competitive pressure, forcing equity dilution or asset sales that destroy shareholder value when the obesity drug premium inevitably compresses | Unresolved: ['Debt-fueled growth model becomes unsustainable when obesity drug pricing power erodes under competitive pressure from Novo Nordisk and emerging biosimilars']",
+      "bull_score": 7,
+      "bear_score": 7,
+      "final_conviction": 7,
+      "decision": "buy"
+    },
+    {
+      "id": "debate_SMCI_20260610214051",
+      "symbol": "SMCI",
+      "ts": "2026-06-10T21:40:51.731439+00:00",
+      "bull_case": "R1 Bull(8): SMCI's explosive 326% EPS growth and forward P/E of just 9.0x creates a generational value opportunity as the $7B equity raise - while painful short-term - positions the company to capture massive AI infrastructure demand without debt constraints. | R1 Bear(8): The $7B equity raise signals desperate capital needs that contradict the bull's 'war chest' narrative, while institutional selling (4.49x volume) into AI hype reveals smart money recognizes this growth is unsustainable at current margins. | R2 Bull(6): Despite concerning equity raise timing, SMCI's 9.0x forward P/E with 326% EPS growth represents asymmetric upside as AI infrastructure demand acceleration will validate the strategic capital raise within 2-3 quarters | R2 Bear(8): The $7B equity raise during peak AI hype exposes SMCI's unsustainable debt-fueled growth model, with ongoing institutional selling pressure indicating smart money recognizes the fundamental disconnect between valuation and genuine profitability.",
+      "bear_case": "Primary risk: Continued institutional selling pressure will overwhelm any technical bounces, as the equity raise has fundamentally broken the investment thesis by revealing the company's growth was debt-fueled rather than genuinely profitable. | Unresolved: [\"The bull acknowledged institutional selling creates 'several weeks' of pressure but didn't address how this fundamentally breaks the growth narrative by revealing debt-fueled rather than profitable expansion\", \"Tesla comparison is flawed as Tesla raised capital during proven profitability ramp, while SMCI's timing suggests capital constraints amid margin compression\"]",
+      "bull_score": 6,
+      "bear_score": 8,
+      "final_conviction": 4,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_C_20260610214147",
+      "symbol": "C",
+      "ts": "2026-06-10T21:41:47.575179+00:00",
+      "bull_case": "R1 Bull(8): Citigroup is experiencing a powerful earnings acceleration cycle trading at a deep value disconnect, with 56% EPS growth and 10.6x forward P/E creating an explosive setup as the market reprices this transformation. | R1 Bear(6): Citigroup's 7.6% ROE reveals fundamental capital inefficiency that makes this apparent 'value' a value trap, where earnings growth is masking poor underlying returns that will compress valuations once the trading revenue cycle turns. | R2 Bull(7): Citigroup's 56% EPS growth at 10.6x forward P/E creates compelling risk-adjusted upside as the market has over-discounted ROE concerns while undervaluing the earnings acceleration from trading strength and operational improvements. | R2 Bear(7): Citigroup's transformation plan timeline misaligns with cyclical trading revenue peaks, creating amplified downside risk as both earnings and multiples compress simultaneously when the cycle turns.",
+      "bear_case": "Primary risk: Cyclical trading revenue peak coinciding with structural ROE problems creates a double-hit scenario where earnings collapse faster than expected while the market simultaneously re-rates the multiple lower due to capital inefficiency. | Unresolved: ['Cyclical trading revenue peak coinciding with structural ROE problems creates a double-hit scenario where earnings collapse faster than expected while the market simultaneously re-rates the multiple lower due to capital inefficiency']",
+      "bull_score": 7,
+      "bear_score": 7,
+      "final_conviction": 7,
+      "decision": "buy"
+    },
+    {
+      "id": "debate_NET_20260610214234",
+      "symbol": "NET",
+      "ts": "2026-06-10T21:42:34.621674+00:00",
+      "bull_case": "R1 Bull(4): The 17% five-day selloff has created a short-term oversold bounce opportunity in a company delivering exceptional 33.5% revenue growth, with neutral RSI at 45.9 suggesting downside momentum is exhausting. | R1 Bear(7): The bull's 'oversold bounce' narrative ignores that weak ADX shows no trend support for any reversal, while a 140.8x forward P/E with negative profitability creates massive downside risk in any growth deceleration scenario. | R2 Bull(3): NET remains a short-term oversold bounce candidate despite weak trend support, as 17% selloffs in high-growth names often produce technical relief rallies even in sideways markets | R2 Bear(7): While NET may see short-term technical relief, the 140.8x forward P/E with negative profitability creates catastrophic downside risk that far outweighs any temporary bounce potential in a sideways market.",
+      "bear_case": "Primary risk: Valuation multiple compression in a company trading at 140.8x forward P/E with negative profitability - any growth disappointment or margin pressure could trigger a 30-50% decline as the multiple resets to reasonable levels. | Unresolved: ['Valuation multiple compression risk - 140.8x forward P/E with negative profitability creates massive downside in any growth deceleration scenario']",
+      "bull_score": 3,
+      "bear_score": 7,
+      "final_conviction": 4,
       "decision": "skip"
     }
   ],
@@ -25128,6 +25367,32 @@
       "key_risk_to_monitor": "Debt refinancing timeline relative to retatrutide commercial launch timeline, as originally identified - any signs of capital allocation stress during the critical competitive ramp phase",
       "current_bull_case": "R1 Bull(8): LLY is hitting clinical inflection points in the massive obesity market with retatrutide's breakthrough 28.3% weight loss results positioning it to dominate next-generation GLP-1 competition while current blockbuster drugs drive 55.5% revenue growth. | R2 Bull(7): LLY's retatrutide breakthrough creates a multi-year competitive moat in the $100B+ obesity market that overcomes near-term technical and leverage concerns, but execution at current resistance levels requires careful position sizing",
       "current_bear_case": "R1 Bear(6): LLY's 139% debt-to-equity ratio creates dangerous financial leverage just as the company faces peak competitive threats and declining volume momentum, while trading at stretched valuations near technical resistance. | R2 Bear(7): LLY's dangerous 139% debt leverage creates amplified downside risk that technical momentum and obesity market potential cannot offset when trading at resistance with weak volume confirmation."
+    },
+    {
+      "trade_id": "LLY_20260519190455",
+      "symbol": "LLY",
+      "ts": "2026-06-10T21:37:27.891980+00:00",
+      "action": "hold",
+      "conviction": 8,
+      "thesis_status": "intact",
+      "rationale": "The explosive earnings momentum thesis remains fully intact with continued exceptional growth metrics (169.9% EPS, 55.5% revenue) and strong margins, while the original key risk of debt refinancing stress during competitive ramp has not materialized - the company continues executing well operationally.",
+      "original_thesis_check": "The unstoppable earnings momentum overwhelming regulatory noise thesis is still true - growth remains explosive and regulatory concerns have not derailed execution",
+      "key_risk_to_monitor": "Any signs of growth deceleration creating multiple compression risk as the market reprices from growth premium back to traditional pharma valuations",
+      "current_bull_case": "R1 Bull(9): Lilly's obesity/diabetes franchise is hitting escape velocity with blockbuster drugs driving 169.9% EPS growth while technical momentum (ADX 37.9, RSI 67.5) confirms institutional accumulation ahead of broader market recognition of their dominant positioning in the massive weight-loss market. | R2 Bull(8): Despite creating challenging future comps, LLY's obesity franchise transformation justifies premium valuation as the market underestimates the durability and scale of this secular growth opportunity.",
+      "current_bear_case": "R1 Bear(7): LLY's parabolic rally on 169.9% EPS growth has created unsustainable expectations where any deceleration in the obesity drug boom will trigger severe multiple compression from the stretched 25.5 forward P/E. | R2 Bear(8): LLY's admission that 169.9% growth is unsustainable combined with emerging distribution signals confirms the market will eventually reprice this obesity euphoria, making the 25.5 forward P/E untenable regardless of TAM projections."
+    },
+    {
+      "trade_id": "C_20260610165357",
+      "symbol": "C",
+      "ts": "2026-06-10T21:38:20.893055+00:00",
+      "action": "hold",
+      "conviction": 7,
+      "thesis_status": "intact",
+      "rationale": "The original thesis of explosive earnings momentum (56% EPS growth) with technical breakout confirmation remains fully intact, with current analysts confirming both the earnings acceleration and strong technical setup.",
+      "original_thesis_check": "The specific reason we bought - breakout on explosive earnings momentum that market is underpricing - is still true with 56.1% YoY EPS growth, 10.6x forward P/E, and bullish technical confirmation",
+      "key_risk_to_monitor": "Price breakdown below the 0.87 breakout level on volume above 1.5x average, which would invalidate the technical thesis component",
+      "current_bull_case": "R1 Bull(8): Citigroup is at an inflection point where accelerating earnings growth (56.1% YoY EPS) meets deeply undervalued forward multiples (10.6x P/E, 0.7 PEG), while strong technical momentum confirms institutional recognition of this fundamental reset. | R2 Bull(7): Citigroup represents a deep value play on a structurally improving ROE story where current metrics reflect peak restructuring costs, positioning for dramatic earnings leverage as Fraser's simplification program completes over the next 12-18 months",
+      "current_bear_case": "R1 Bear(6): The bull's 'value-growth combo' narrative masks that Citigroup's 56% EPS growth is artificially inflated from an extremely weak base year, while the structurally broken 7.6% ROE reveals a bank still hemorrhaging shareholder value despite favorable rate conditions. | R2 Bear(6): Citigroup remains a value trap where investors are paying for restructuring promises that have repeatedly failed to deliver sustainable ROE improvement over two decades of attempted turnarounds."
     }
   ],
   "risk_decisions": [
@@ -29487,6 +29752,75 @@
       "pm_action": "skip",
       "pm_verdict": "The debate reveals a TYPE-A risk (institutional selling with conviction before earnings) that the bull conceded, combined with mixed analyst signals and no concrete catalyst timing beyond vague earnings expectations.",
       "risk_category": "conviction"
+    },
+    {
+      "ts": "2026-06-10T21:39:58.868104+00:00",
+      "symbol": "LLY",
+      "action": "hold",
+      "reason": "Already holding LLY",
+      "conviction": 7,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 1136.37,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "buy",
+      "pm_verdict": "Strong fundamental execution (169.9% EPS growth) with confirmed technical momentum (ADX>25) justifies the position despite elevated debt levels, which represent systemic leverage risk already reflected in healthcare sector valuations.",
+      "risk_category": "already_holding"
+    },
+    {
+      "ts": "2026-06-10T21:40:51.659218+00:00",
+      "symbol": "SMCI",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 Bull's conviction dropped from 8 to 6 and conceded 'several weeks' of institutional selling pressure, but failed to explain how the company recovers from what appears to be smart money recognizing unsustainable debt-fueled growth",
+      "conviction": 4,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 29.27,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "The $7B equity raise during peak AI hype combined with massive institutional selling (4.49x volume) creates a TYPE-A bear point that the bull failed to adequately address, overriding the attractive 9.0x forward P/E valuation.",
+      "risk_category": "conviction"
+    },
+    {
+      "ts": "2026-06-10T21:41:47.511611+00:00",
+      "symbol": "C",
+      "action": "buy",
+      "reason": "PM conviction=7 | size=4% ($1,541) | regime=bull/elevated_vix | ATR=3.51 x2.5 | stop=$124.61 (-6.58%)",
+      "conviction": 7,
+      "rotate_from": "",
+      "position_usd": 1540.78,
+      "shares": 11.5518,
+      "entry_price": 133.38,
+      "stop_price": 124.61,
+      "stop_pct": 6.58,
+      "sector": "Financial Services",
+      "correlation": 0.0,
+      "pm_action": "buy",
+      "pm_verdict": "Strong earnings momentum with 56% growth at 10.6x forward P/E creates compelling risk-adjusted opportunity, supported by confirmed technical breakout and management's guided Q2 revenue acceleration.",
+      "risk_category": "approved"
+    },
+    {
+      "ts": "2026-06-10T21:42:34.558179+00:00",
+      "symbol": "NET",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 Bull completely avoided addressing the core TYPE-A risk of catastrophic multiple compression at 140.8x P/E, while technical setup is weak with no trend support",
+      "conviction": 4,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 219.67,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "The valuation risk at 140.8x forward P/E with negative profitability creates massive downside exposure that the bull never addressed, while weak technicals (ADX showing no trend support, RSI only at neutral) provide insufficient counterweight for a profitable risk-adjusted trade.",
+      "risk_category": "pm_decision"
     }
   ],
   "watchlists": [
@@ -48310,6 +48644,60 @@
       "det_signal": "neutral",
       "det_strength": 7,
       "agree": false
+    },
+    {
+      "ts": "2026-06-10T21:36:36.815479+00:00",
+      "symbol": "LLY",
+      "llm_signal": "bullish",
+      "llm_strength": 8,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": true
+    },
+    {
+      "ts": "2026-06-10T21:37:32.168647+00:00",
+      "symbol": "C",
+      "llm_signal": "bullish",
+      "llm_strength": 7,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": true
+    },
+    {
+      "ts": "2026-06-10T21:38:41.950892+00:00",
+      "symbol": "LLY",
+      "llm_signal": "bullish",
+      "llm_strength": 8,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": true
+    },
+    {
+      "ts": "2026-06-10T21:40:03.350572+00:00",
+      "symbol": "SMCI",
+      "llm_signal": "bearish",
+      "llm_strength": 8,
+      "det_signal": "neutral",
+      "det_strength": 5,
+      "agree": false
+    },
+    {
+      "ts": "2026-06-10T21:40:56.587180+00:00",
+      "symbol": "C",
+      "llm_signal": "bullish",
+      "llm_strength": 7,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": true
+    },
+    {
+      "ts": "2026-06-10T21:41:51.410824+00:00",
+      "symbol": "NET",
+      "llm_signal": "bearish",
+      "llm_strength": 6,
+      "det_signal": "neutral",
+      "det_strength": 6,
+      "agree": false
     }
   ],
   "pre_debate_gates": [
@@ -48563,6 +48951,43 @@
         }
       ],
       "skipped": [
+        {
+          "symbol": "C",
+          "reason": "held"
+        }
+      ]
+    },
+    {
+      "ts": "2026-06-10T21:38:38.159397+00:00",
+      "regime": "bull",
+      "vix_regime": "elevated_vix",
+      "run_reason": "sentinel_trigger",
+      "n_candidates": 4,
+      "would_buy": [
+        {
+          "symbol": "SMCI",
+          "composite_score": 0.518,
+          "price": 29.27,
+          "size_pct": 0.06,
+          "position_usd": 6122.29,
+          "stop_price": 26.93,
+          "sector": "Technology"
+        },
+        {
+          "symbol": "NET",
+          "composite_score": 0.422,
+          "price": 219.67,
+          "size_pct": 0.06,
+          "position_usd": 6122.29,
+          "stop_price": 202.1,
+          "sector": "Technology"
+        }
+      ],
+      "skipped": [
+        {
+          "symbol": "LLY",
+          "reason": "held"
+        },
         {
           "symbol": "C",
           "reason": "held"

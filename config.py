@@ -74,6 +74,11 @@ CONVICTION_SIZE_MAP = {
 }
 
 # ── Risk / Stop loss ──────────────────────────────────────────────────────────
+# S1 (audit): when True, every filled buy gets a real STOP order resting at Alpaca
+# (gap protection between pipeline runs). The software stop check in
+# check_open_positions() remains as a fallback/reconciler. Set False to restore
+# the legacy software-sampled stop behavior.
+BROKER_NATIVE_STOPS  = True
 ATR_PERIOD           = 14         # 14-day ATR
 ATR_MULTIPLIER       = 2.5        # Stop = entry - (2.5 × ATR), widened for momentum names
 HARD_STOP_PCT        = 0.08       # Never lose more than 8% on any single trade
@@ -194,6 +199,16 @@ OPTION_PREMIUM_STOP_PCT       = 0.50  # Exit if premium falls to 50% of debit pa
 # Greeks source: "local_bsm" = our own Black-Scholes calc (core/options_greeks.py).
 # Alpaca indicative feed used only as a cross-check (15-min delayed on Basic plan).
 GREEKS_SOURCE                 = "local_bsm"
+
+# ── Baseline shadow arm (S2 — audit) ─────────────────────────────────────────
+# When True, every pipeline run also logs (NEVER executes) what a "null-intelligence"
+# twin would buy: the screener's top-N composite candidates that pass the same
+# deterministic risk caps, fixed size, same ATR/hard stop math. Forward returns of
+# these logged decisions vs the live pipeline's measure whether the LLM debate layer
+# adds selection value over its own screener. Log-only — zero effect on trading.
+BASELINE_SHADOW_ENABLED = True
+BASELINE_SHADOW_TOP_N   = 3
+BASELINE_SHADOW_SIZE_PCT = 0.06   # fixed sizing mirrors the de-facto conviction-7 size
 
 # ── Benchmark ────────────────────────────────────────────────────────────────
 BENCHMARK_TICKER = "SPY"

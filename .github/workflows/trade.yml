@@ -2,8 +2,8 @@ name: Pocket Hedge Fund — Trading Pipeline
 
 on:
   schedule:
-    - cron: '30 13 * * 1-5'   # 8:30am ET (EDT)
-    - cron: '0 17 * * 1-5'    # 1:00pm ET (EDT)
+    - cron: '30 13 * * 1-5'   # 9:30am EDT / 8:30am EST (UTC cron does not track DST)
+    - cron: '0 17 * * 1-5'    # 1:00pm EDT / 12:00pm EST
   workflow_dispatch:
     inputs:
       reason:
@@ -77,13 +77,12 @@ jobs:
             echo "No changes to push"
           else
             git commit -m "Auto: pipeline run $(date -u +'%Y-%m-%d %H:%M UTC')"
-            # Use --no-rebase (merge) instead of --rebase. The rebase strategy fails
-            # when two pipeline runs commit different data.json changes in quick
-            # succession: rebase replays our commit on top of the remote and hits a
-            # content conflict on JSON (git can't auto-merge it). A merge commit
-            # handles this cleanly — git creates a merge commit combining both sets of
-            # appended records. data.json is append-only so diverging appends are safe
-            # to merge; the next run re-reads the full file and sees all records.
-            git pull --no-rebase -X theirs origin main || true
+            # A9 (audit): NO -X theirs and NO '|| true'. '-X theirs' silently threw
+            # away THIS run's just-written journal records whenever the merge hit a
+            # data.json conflict. All journal-writing workflows now share the
+            # pipeline-data-json concurrency group, so the remote cannot move under
+            # us in normal operation; if a conflict still happens, fail LOUDLY so the
+            # run shows red instead of quietly losing records.
+            git pull --no-rebase origin main
             git push
           fi

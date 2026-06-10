@@ -205,8 +205,16 @@ def _check_conviction_calibration(trades: list[dict]) -> str:
 
 
 def _check_stop_clustering(trades: list[dict]) -> str:
-    """Warn if too many recent trades are exiting via stop loss."""
-    stops = [t for t in trades if t.get("exit_reason") == "stop_loss"]
+    """
+    Warn if too many recent trades are exiting via a PROTECTIVE stop.
+    A8 (audit): trailing_stop exits are profit harvests, not failed entries — only
+    initial stops (and legacy un-split 'stop_loss' records that lost money) count.
+    """
+    stops = [
+        t for t in trades
+        if t.get("exit_reason") == "initial_stop"
+        or (t.get("exit_reason") == "stop_loss" and t.get("pnl", 0) <= 0)
+    ]
     if not trades:
         return ""
     rate = len(stops) / len(trades) * 100

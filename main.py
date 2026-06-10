@@ -27,7 +27,7 @@ from core.journal import (
     get_debate_by_id, log_position_review, update_open_trade,
     log_trade_trim, set_queued_action, clear_queued_action,
     log_risk_decision, get_latest_watchlist, log_pre_debate_gate,
-    log_would_have_traded,
+    log_would_have_traded, get_snapshots, log_baseline_shadow,
 )
 from agents.screener import Screener, ScreenerDataUnavailable
 from agents.after_close_watchlist import LONG_SETUP_TYPES
@@ -72,10 +72,24 @@ def check_hard_stops(alpaca: AlpacaClient, fetcher: DataFetcher) -> tuple[bool, 
         elif spy_current < spy_200d_ma:
             regime = "caution"
 
-    account  = alpaca.get_account()
-    drawdown = (config.STARTING_CAPITAL - account["portfolio_value"]) / config.STARTING_CAPITAL
-    if drawdown > config.MAX_PORTFOLIO_DD:
-        return False, f"Portfolio drawdown {drawdown*100:.1f}% exceeds limit", regime, vix_regime
+    account = alpaca.get_account()
+    value   = account["portfolio_value"]
+    # A2 (audit): drawdown must be measured from the PEAK equity, not from starting
+    # capital — loss-from-inception lets a 21% fall from a run-up read as 5%. Peak is
+    # reconstructed from journal snapshots (plus current value and starting capital).
+    # The legacy from-inception number is still logged during the transition.
+    try:
+        snap_peak = max((s.get("portfolio_value", 0) for s in get_snapshots()), default=0)
+    except Exception:
+        snap_peak = 0
+    peak = max(config.STARTING_CAPITAL, snap_peak, value)
+    drawdown_from_peak  = (peak - value) / peak if peak > 0 else 0.0
+    drawdown_inception  = (config.STARTING_CAPITAL - value) / config.STARTING_CAPITAL
+    logger.info("Drawdown | from_peak=%.2f%% (peak=$%.0f) | from_inception=%.2f%%",
+                drawdown_from_peak * 100, peak, drawdown_inception * 100)
+    if drawdown_from_peak > config.MAX_PORTFOLIO_DD:
+        return False, (f"Portfolio drawdown {drawdown_from_peak*100:.1f}% from peak "
+                       f"${peak:,.0f} exceeds limit"), regime, vix_regime
     return True, "", regime, vix_regime
 
 
@@ -90,6 +104,46 @@ def can_execute_trades(alpaca: AlpacaClient) -> tuple[bool, str]:
 
 
 # ── Stop loss monitor ─────────────────────────────────────────────────────────
+
+def _stop_exit_reason(trade: dict) -> str:
+    """
+    A8 (audit): distinguish a protective initial stop from a trailing-stop harvest.
+    Lumping both under 'stop_loss' made +24% trailing exits look like failed entries
+    in every downstream feedback loop.
+    """
+    return "trailing_stop" if trade.get("stop_ratcheted") else "initial_stop"
+
+
+def _ensure_broker_stop(alpaca: AlpacaClient, trade: dict) -> None:
+    """
+    S1 reconciliation: make sure a journal-tracked position has a live stop order
+    resting at the broker matching the journal's stop_price/qty. Places one for
+    legacy positions opened before broker-native stops existed.
+    """
+    if not getattr(config, "BROKER_NATIVE_STOPS", False):
+        return
+    symbol = trade["symbol"]
+    stop_price = trade.get("stop_price") or 0
+    qty = trade.get("qty") or 0
+    if stop_price <= 0 or qty <= 0:
+        return
+    stop_order_id = trade.get("stop_order_id")
+    if stop_order_id:
+        order = alpaca.get_order(stop_order_id)
+        if order and order["status"] in ("new", "accepted", "held", "pending_new"):
+            return  # resting and tracked — nothing to do
+    live = alpaca.get_open_stop_orders(symbol)
+    if live:
+        # A stop exists but the journal lost the id — re-adopt it.
+        update_open_trade(trade["id"], {"stop_order_id": live[0]["id"]})
+        trade["stop_order_id"] = live[0]["id"]
+        return
+    placed = alpaca.submit_stop_order(symbol, qty, stop_price,
+                                      reason="s1_reconcile_protective_stop")
+    if placed:
+        update_open_trade(trade["id"], {"stop_order_id": placed["id"]})
+        trade["stop_order_id"] = placed["id"]
+
 
 def check_open_positions(alpaca: AlpacaClient):
     if not alpaca.is_market_open():
@@ -130,6 +184,20 @@ def check_open_positions(alpaca: AlpacaClient):
     for trade in journal_trades:
         symbol = trade["symbol"]
         if symbol not in positions:
+            # S1: the position may be gone because the BROKER stop filled between
+            # runs. Check the resting stop order first — closing at the real fill
+            # price beats the legacy orphan-close-at-entry fabrication.
+            stop_order_id = trade.get("stop_order_id")
+            if stop_order_id:
+                order = alpaca.get_order(stop_order_id)
+                if order and order["status"] == "filled" and order["filled_avg_price"]:
+                    reason = _stop_exit_reason(trade)
+                    logger.warning(
+                        "BROKER STOP FILLED | %s @ $%.2f → closing journal trade (%s)",
+                        symbol, order["filled_avg_price"], reason,
+                    )
+                    log_trade_close(trade["id"], order["filled_avg_price"], reason)
+                    continue
             try:
                 entry_dt = datetime.fromisoformat(trade.get("entry_ts", ""))
                 if entry_dt.tzinfo is None:
@@ -145,32 +213,53 @@ def check_open_positions(alpaca: AlpacaClient):
                 )
                 continue
             logger.warning(
-                "ORPHAN CLOSE | %s not in Alpaca after %.1fh — closing at entry price.",
+                "ORPHAN CLOSE | %s not in Alpaca after %.1fh — closing at entry price "
+                "(P&L is an ESTIMATE, no fill data).",
                 symbol, age_hours,
             )
             log_trade_close(trade["id"], trade["entry_price"], "orphan_close")
             continue
+
+        # S1: make sure a protective stop is resting at the broker for this position.
+        _ensure_broker_stop(alpaca, trade)
+
         pos           = positions[symbol]
         current_price = pos["current_price"]
         stop_price    = trade["stop_price"]
 
-        if current_price <= stop_price:
-            logger.warning("STOP TRIGGERED | %s $%.2f <= $%.2f",
+        # Software stop check stays as a FALLBACK: it fires only if no live broker
+        # stop is resting (flag off, submit failed, or order was cancelled).
+        has_broker_stop = bool(trade.get("stop_order_id")) and \
+            getattr(config, "BROKER_NATIVE_STOPS", False)
+        if current_price <= stop_price and not has_broker_stop:
+            reason = _stop_exit_reason(trade)
+            logger.warning("STOP TRIGGERED (software) | %s $%.2f <= $%.2f",
                            symbol, current_price, stop_price)
-            order = alpaca.close_position(symbol, reason="stop_loss")
+            order = alpaca.close_position(symbol, reason=reason)
             if order:
-                log_trade_close(trade["id"], current_price, "stop_loss")
+                log_trade_close(trade["id"], current_price, reason)
+                continue
 
         pnl_pct = pos["unrealized_plpc"]
         if pnl_pct >= config.TRAILING_STOP_TRIGGER:
-            peak     = trade["entry_price"] * (1 + pnl_pct)
-            new_stop = round(peak * (1 - config.TRAILING_STOP_PCT), 2)
+            # A7 (audit): trail off the LIVE price, not entry_price*(1+plpc) — plpc is
+            # computed by Alpaca against avg_entry (which includes top-ups), so the old
+            # mixed-base math produced wrong ratchet levels on topped-up positions.
+            # The ratchet only ever moves the stop UP, so peak-tracking still emerges.
+            new_stop = round(current_price * (1 - config.TRAILING_STOP_PCT), 2)
             if new_stop > stop_price:
-                # C2: persist the ratcheted stop. Previously this only mutated the
-                # local dict (a copy from get_open_trades()), so the trailing stop was
-                # silently discarded every run and never actually protected gains.
-                update_open_trade(trade["id"], {"stop_price": new_stop})
-                logger.info("Trailing stop → %s $%.2f (persisted)", symbol, new_stop)
+                updates = {"stop_price": new_stop, "stop_ratcheted": True}
+                # S1: move the resting broker stop with the ratchet.
+                if has_broker_stop:
+                    replaced = alpaca.replace_stop_order(trade["stop_order_id"], new_stop)
+                    if replaced:
+                        updates["stop_order_id"] = replaced["id"]
+                    else:
+                        logger.warning("Trailing ratchet: broker replace failed for %s — "
+                                       "journal stop updated, software fallback covers", symbol)
+                update_open_trade(trade["id"], updates)
+                logger.info("Trailing stop → %s $%.2f (persisted%s)",
+                            symbol, new_stop, " + broker" if has_broker_stop else "")
 
         try:
             entry_dt = datetime.fromisoformat(trade.get("entry_ts", ""))
@@ -536,14 +625,31 @@ def review_open_positions(
                 clear_queued_action(trade_id)
                 continue
 
+            # S1: shrink the resting broker stop FIRST — Alpaca holds the full qty
+            # against the open sell stop, so the trim sell would otherwise be
+            # rejected for insufficient available shares.
+            if getattr(config, "BROKER_NATIVE_STOPS", False) and trade.get("stop_order_id"):
+                replaced = alpaca.replace_stop_order(
+                    trade["stop_order_id"], trade.get("stop_price", 0), new_qty)
+                if replaced:
+                    update_open_trade(trade_id, {"stop_order_id": replaced["id"]})
+                else:
+                    # Could not shrink — cancel so the trim can execute; reconciler
+                    # re-places a correctly-sized stop next run.
+                    alpaca.cancel_stop_orders(symbol)
+                    update_open_trade(trade_id, {"stop_order_id": ""})
+
             order = alpaca.submit_market_order(
                 symbol=symbol, qty=trim_qty, side="sell",
                 reason=(f"review_trim | conviction={conviction} | "
                         f"{review.get('trim_reason', '')}"),
             )
             if order:
+                # A5 (audit): book realized P&L on the trimmed shares against the
+                # position's basis so trim proceeds stop vanishing from the ledger.
+                basis = (live_pos or {}).get("avg_entry") or trade.get("entry_price", 0)
                 log_trade_trim(trade_id, trim_qty, new_qty, current_price,
-                               review.get("trim_reason", ""))
+                               review.get("trim_reason", ""), basis=basis)
                 update_open_trade(trade_id, {
                     "qty":                       new_qty,
                     "last_review_ts":            datetime.now(timezone.utc).isoformat(),
@@ -610,6 +716,20 @@ def _risk_category(proposal) -> str:
     return "other"
 
 
+def _count_llm_fallbacks(diag: dict | None, tech: dict, fund: dict, sent: dict,
+                         pm: dict) -> None:
+    """Observability (audit §7.4): tally agent fallbacks so a degraded run is
+    distinguishable from a genuine no-trade analysis in the run record."""
+    if diag is None:
+        return
+    for name, result in (("technical", tech), ("fundamental", fund), ("sentiment", sent)):
+        if "unavailable" in str(result.get("rationale", "")).lower():
+            diag["analyst_fallbacks"] = diag.get("analyst_fallbacks", 0) + 1
+            diag.setdefault("fallback_agents", []).append(name)
+    if pm.get("deciding_factor") == "error":
+        diag["pm_failures"] = diag.get("pm_failures", 0) + 1
+
+
 def analyse_symbol(
     symbol: str,
     fetcher: DataFetcher,
@@ -620,6 +740,7 @@ def analyse_symbol(
     alpaca: AlpacaClient,
     regime: str,
     vix_regime: str,
+    llm_diag: dict | None = None,
 ) -> bool:
     logger.info("── Analysing %s ──", symbol)
 
@@ -668,6 +789,8 @@ def analyse_symbol(
 
     logger.info("%s PM verdict → action=%s conviction=%d | %s",
                 symbol, pm["action"], pm["final_conviction"], pm["verdict"])
+
+    _count_llm_fallbacks(llm_diag, tech, fund, sent, pm)
 
     # Enrich pm_verdict with R2 debate scores so the risk manager can apply
     # bear spread shading (Fix 4): a contested debate (high bear R2 vs low bull R2)
@@ -829,30 +952,80 @@ def analyse_symbol(
     )
 
     if order:
+        # A6 (audit): reconcile to the actual FILL, not the pre-order quote. The quote
+        # was logged as entry_price, so slippage was invisible and stop math ran off a
+        # price the fund never paid. Brief poll — market orders fill near-instantly.
+        fill_price, fill_qty = _await_fill(alpaca, order.get("id"))
+        entry_price = fill_price or current_price
+        filled_qty  = fill_qty or proposal.shares
+        if fill_price and abs(fill_price - current_price) / current_price > 0.001:
+            logger.info("Fill reconcile | %s quote=$%.2f fill=$%.2f (%.2f%% slippage)",
+                        symbol, current_price, fill_price,
+                        (fill_price - current_price) / current_price * 100)
+        # Keep the stop's percentage distance anchored to the actual fill.
+        stop_price = round(entry_price * (1 - proposal.stop_pct / 100), 2) \
+            if proposal.stop_pct else proposal.stop_price
+
         if topup_trade:
             # Grow the existing remnant: add shares, keep the original entry/stop/debate.
-            new_qty = round(topup_trade.get("qty", 0) + proposal.shares, 4)
-            update_open_trade(topup_trade["id"], {
+            new_qty = round(topup_trade.get("qty", 0) + filled_qty, 4)
+            updates = {
                 "qty":             new_qty,
                 "last_topup_ts":   datetime.now(timezone.utc).isoformat(),
-                "last_topup_qty":  proposal.shares,
+                "last_topup_qty":  filled_qty,
                 "conviction":      proposal.conviction,
-            })
+            }
+            # S1: resize the resting stop to cover the grown position.
+            if getattr(config, "BROKER_NATIVE_STOPS", False):
+                sid = topup_trade.get("stop_order_id")
+                if sid:
+                    replaced = alpaca.replace_stop_order(
+                        sid, topup_trade.get("stop_price", stop_price), new_qty)
+                    if replaced:
+                        updates["stop_order_id"] = replaced["id"]
+            update_open_trade(topup_trade["id"], updates)
             logger.info("✅ REMNANT TOP-UP | %s +%.4f sh → qty=%.4f @ $%.2f (conviction=%d)",
-                        symbol, proposal.shares, new_qty, current_price, proposal.conviction)
+                        symbol, filled_qty, new_qty, entry_price, proposal.conviction)
         else:
+            stop_order_id = ""
+            if getattr(config, "BROKER_NATIVE_STOPS", False):
+                placed = alpaca.submit_stop_order(
+                    symbol, filled_qty, stop_price,
+                    reason=f"protective_stop conviction={proposal.conviction}",
+                )
+                if placed:
+                    stop_order_id = placed["id"]
+                else:
+                    logger.warning("S1: protective stop submit failed for %s — "
+                                   "software stop fallback active", symbol)
             log_trade_open(
-                symbol=symbol, side="buy", qty=proposal.shares,
-                entry_price=current_price, stop_price=proposal.stop_price,
+                symbol=symbol, side="buy", qty=filled_qty,
+                entry_price=entry_price, stop_price=stop_price,
                 conviction=proposal.conviction, debate_id=debate_id,
                 key_risk=proposal.key_risk, portfolio_value=portfolio_value,
-                sector=proposal.sector,
+                sector=proposal.sector, stop_order_id=stop_order_id,
             )
-            logger.info("✅ ORDER FILLED | %s %.4f @ $%.2f stop=$%.2f",
-                        symbol, proposal.shares, current_price, proposal.stop_price)
+            logger.info("✅ ORDER FILLED | %s %.4f @ $%.2f stop=$%.2f%s",
+                        symbol, filled_qty, entry_price, stop_price,
+                        " (broker stop resting)" if stop_order_id else "")
         return True
 
     return False
+
+
+def _await_fill(alpaca: AlpacaClient, order_id: str | None,
+                attempts: int = 5, delay_s: float = 1.0) -> tuple[float | None, float | None]:
+    """Poll an order briefly for its fill price/qty. Returns (price, qty) or (None, None)."""
+    if not order_id:
+        return None, None
+    for _ in range(attempts):
+        info = alpaca.get_order(order_id)
+        if info and info["status"] == "filled" and info["filled_avg_price"]:
+            return info["filled_avg_price"], info["filled_qty"] or None
+        time.sleep(delay_s)
+    logger.warning("Fill poll: order %s not confirmed filled after %.0fs — "
+                   "falling back to quote price", order_id, attempts * delay_s)
+    return None, None
 
 
 # ── Options shadow logger (Phase 0/1 — never runs unless OPTIONS_ENABLED=True) ──
@@ -1360,6 +1533,19 @@ def run_pipeline(
 
     logger.info(screener.format_for_log(candidates))
 
+    # S2 (audit): log the deterministic baseline twin's would-buy decisions for this
+    # run BEFORE any LLM judgment — measurement only, never executes anything.
+    from core.baseline import log_baseline_decisions
+    log_baseline_decisions(
+        candidates=candidates,
+        open_positions=get_open_trades(),
+        portfolio_value=alpaca.get_account()["portfolio_value"],
+        fetcher=fetcher,
+        regime=regime,
+        vix_regime=vix_regime,
+        run_reason=trigger_reason,
+    )
+
     ok_to_trade, trade_reason = can_execute_trades(alpaca)
     if not ok_to_trade:
         logger.info("Execution gate: %s", trade_reason)
@@ -1369,6 +1555,7 @@ def run_pipeline(
     open_positions  = get_open_trades()
 
     trades_executed = 0
+    llm_diag = {"analyst_fallbacks": 0, "pm_failures": 0}
     for candidate in candidates:
         meaningful_open = sum(1 for p in open_positions if p.get("position_pct", 0) >= min_slot_pct)
         if meaningful_open + trades_executed >= config.MAX_POSITIONS:
@@ -1404,6 +1591,7 @@ def run_pipeline(
                 alpaca=alpaca,
                 regime=regime,
                 vix_regime=vix_regime,
+                llm_diag=llm_diag,
             )
         except Exception as exc:
             logger.exception("analyse_symbol failed for %s — skipping: %s",
@@ -1422,7 +1610,11 @@ def run_pipeline(
                 {"symbol": c.symbol, "composite_score": c.composite_score,
                  "signals": c.signals}
                 for c in candidates
-            ])
+            ],
+            llm_failures=llm_diag)
+    if llm_diag.get("analyst_fallbacks") or llm_diag.get("pm_failures"):
+        logger.warning("LLM DEGRADATION | %d analyst fallback(s), %d PM failure(s) this run",
+                       llm_diag.get("analyst_fallbacks", 0), llm_diag.get("pm_failures", 0))
 
     logger.info("══ Pipeline complete | portfolio=$%.2f | trades=%d ══",
                 account["portfolio_value"], trades_executed)

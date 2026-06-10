@@ -159,14 +159,113 @@ class AlpacaClient:
         }
 
     def close_position(self, symbol: str, reason: str = "") -> dict | None:
-        """Close entire position in a symbol."""
+        """
+        Close entire position in a symbol.
+        S1: any resting stop order is cancelled first — Alpaca holds the shares
+        against the open sell stop, so close_position would otherwise be rejected
+        for insufficient available qty.
+        """
         try:
+            self.cancel_stop_orders(symbol)
             order = self.trading.close_position(symbol)
             logger.info("CLOSE POSITION | %s | reason: %s", symbol, reason)
             return {"symbol": symbol, "status": str(order.status), "reason": reason}
         except Exception as e:
             logger.warning("Could not close %s: %s", symbol, e)
             return None
+
+    # ── Stop orders (S1 — broker-native stops) ────────────────────────────────
+
+    def submit_stop_order(
+        self, symbol: str, qty: float, stop_price: float, reason: str = ""
+    ) -> dict | None:
+        """
+        Submit a GTC sell STOP order so downside protection rests at the broker
+        between pipeline runs (the software stop only samples a few times a day).
+        Returns order dict or None on failure — callers fall back to software stops.
+        """
+        try:
+            from alpaca.trading.requests import StopOrderRequest
+            req = StopOrderRequest(
+                symbol=symbol,
+                qty=round(qty, 4),
+                side=OrderSide.SELL,
+                time_in_force=TimeInForce.GTC,
+                stop_price=round(stop_price, 2),
+            )
+            order = self.trading.submit_order(req)
+            logger.info("STOP ORDER SUBMITTED | %s %.4f @ $%.2f | %s | id: %s",
+                        symbol, qty, stop_price, reason, order.id)
+            return {"id": str(order.id), "symbol": symbol, "qty": float(qty),
+                    "stop_price": round(stop_price, 2), "status": str(order.status)}
+        except Exception as e:
+            logger.warning("Stop order submit FAILED | %s %.4f @ $%.2f: %s",
+                           symbol, qty, stop_price, e)
+            return None
+
+    def replace_stop_order(
+        self, order_id: str, new_stop_price: float, new_qty: float | None = None
+    ) -> dict | None:
+        """Ratchet/resize a resting stop order in place. Returns None on failure."""
+        try:
+            from alpaca.trading.requests import ReplaceOrderRequest
+            kwargs = {"stop_price": round(new_stop_price, 2)}
+            if new_qty is not None:
+                kwargs["qty"] = round(new_qty, 4)
+            order = self.trading.replace_order_by_id(order_id, ReplaceOrderRequest(**kwargs))
+            logger.info("STOP ORDER REPLACED | id=%s → stop=$%.2f qty=%s",
+                        order_id, new_stop_price, new_qty if new_qty is not None else "unchanged")
+            return {"id": str(order.id), "stop_price": round(new_stop_price, 2)}
+        except Exception as e:
+            logger.warning("Stop order replace FAILED | id=%s: %s", order_id, e)
+            return None
+
+    def get_order(self, order_id: str) -> dict | None:
+        """Return key fields of an order by id (status, filled qty/price)."""
+        try:
+            o = self.trading.get_order_by_id(order_id)
+            return {
+                "id":               str(o.id),
+                "symbol":           o.symbol,
+                "status":           str(o.status.value if hasattr(o.status, "value") else o.status),
+                "filled_qty":       float(o.filled_qty or 0),
+                "filled_avg_price": float(o.filled_avg_price) if o.filled_avg_price else None,
+            }
+        except Exception as e:
+            logger.warning("get_order failed | id=%s: %s", order_id, e)
+            return None
+
+    def get_open_stop_orders(self, symbol: str) -> list[dict]:
+        """Return open sell STOP orders for a symbol."""
+        try:
+            req = GetOrdersRequest(status=QueryOrderStatus.OPEN, symbols=[symbol])
+            orders = self.trading.get_orders(req)
+            out = []
+            for o in orders:
+                otype = str(getattr(o, "type", "") or getattr(o, "order_type", ""))
+                if "stop" in otype.lower() and str(o.side).lower().endswith("sell"):
+                    out.append({
+                        "id":         str(o.id),
+                        "symbol":     o.symbol,
+                        "qty":        float(o.qty or 0),
+                        "stop_price": float(o.stop_price) if getattr(o, "stop_price", None) else None,
+                    })
+            return out
+        except Exception as e:
+            logger.warning("get_open_stop_orders failed | %s: %s", symbol, e)
+            return []
+
+    def cancel_stop_orders(self, symbol: str) -> int:
+        """Cancel all resting sell stop orders for a symbol. Returns count cancelled."""
+        cancelled = 0
+        for o in self.get_open_stop_orders(symbol):
+            try:
+                self.trading.cancel_order_by_id(o["id"])
+                cancelled += 1
+                logger.info("STOP ORDER CANCELLED | %s id=%s", symbol, o["id"])
+            except Exception as e:
+                logger.warning("Stop cancel failed | %s id=%s: %s", symbol, o["id"], e)
+        return cancelled
 
     def cancel_all_orders(self):
         self.trading.cancel_orders()

@@ -1,0 +1,59 @@
+name: Pocket Hedge Fund — Weekly Decision Quality
+
+# S4 (audit): the decision-quality scorecard existed but was never persisted, so
+# parameter changes were argued from unsaved one-off readings. This job appends a
+# scorecard (skip precision, trim precision, conviction calibration, S2 baseline-vs-
+# pipeline comparison) to dashboard/data.json every Friday after the close.
+
+on:
+  schedule:
+    - cron: '30 22 * * 5'   # Friday 22:30 UTC — after both EDT and EST closes
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# Shares the journal-writer serialization group (A9).
+concurrency:
+  group: pipeline-data-json
+  cancel-in-progress: false
+
+jobs:
+  decision-quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run decision-quality scorecard (saved)
+        env:
+          ALPACA_API_KEY:    ${{ secrets.ALPACA_API_KEY }}
+          ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
+        run: python scripts/decision_quality.py --save --verbose
+
+      - name: Push updated dashboard data
+        run: |
+          git config user.name "nick-tan01"
+          git config user.email "${{ secrets.GIT_EMAIL }}"
+          git add dashboard/data.json
+          if git diff --cached --quiet; then
+            echo "No changes to push"
+          else
+            git commit -m "Auto: weekly decision-quality scorecard $(date -u +'%Y-%m-%d')"
+            git pull --no-rebase origin main
+            git push
+          fi

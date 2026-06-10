@@ -15,15 +15,29 @@ import config
 logger = logging.getLogger(__name__)
 
 
+class JournalCorrupt(RuntimeError):
+    """Raised when the journal exists but cannot be parsed. NEVER auto-reset."""
+
+
 def _load() -> dict:
-    """Load existing journal or return fresh structure."""
+    """
+    Load existing journal or return fresh structure.
+
+    A4 (audit): a corrupt/truncated journal must HALT the pipeline, not silently
+    return a fresh structure — the very next _save() would have overwritten the
+    entire trading history with an empty file. Recovery is manual: restore from
+    the .bak sibling or from git (every run is committed).
+    """
     path = Path(config.JOURNAL_PATH)
     if path.exists() and path.stat().st_size > 0:
         try:
             with open(path) as f:
                 return json.load(f)
-        except Exception:
-            pass
+        except Exception as e:
+            raise JournalCorrupt(
+                f"{path} exists but failed to parse ({e}). Refusing to reset the "
+                f"journal — restore from {path}.bak or git history."
+            ) from e
     return {
         "meta": {
             "created":          datetime.now(timezone.utc).isoformat(),
@@ -40,10 +54,21 @@ def _load() -> dict:
 
 
 def _save(data: dict):
+    """
+    Atomic write (tmp + os.replace) so a killed process can never leave a
+    truncated journal, plus a .bak of the previous good file for manual recovery.
+    """
     path = Path(config.JOURNAL_PATH)
     path.parent.mkdir(parents=True, exist_ok=True)
-    with open(path, "w") as f:
+    tmp = path.with_suffix(".json.tmp")
+    with open(tmp, "w") as f:
         json.dump(data, f, indent=2, default=str)
+    if path.exists():
+        try:
+            os.replace(path, path.with_suffix(".json.bak"))
+        except OSError:
+            pass
+    os.replace(tmp, path)
 
 
 # ── Public API ────────────────────────────────────────────────────────────────
@@ -65,19 +90,22 @@ def log_trade_open(
     symbol: str, side: str, qty: float, entry_price: float,
     stop_price: float, conviction: int, debate_id: str,
     key_risk: str = "", portfolio_value: float = 0.0, sector: str = "",
+    stop_order_id: str = "",
 ):
-    """Record when a new position is opened."""
+    """Record when a new position is opened. entry_price should be the FILL price."""
     data = _load()
     position_usd = round(entry_price * qty, 2)
     position_pct = round(position_usd / portfolio_value, 4) if portfolio_value > 0 else 0.0
     trade = {
-        "id":            f"{symbol}_{datetime.utcnow().strftime('%Y%m%d%H%M%S')}",
+        "id":            f"{symbol}_{datetime.now(timezone.utc).strftime('%Y%m%d%H%M%S')}",
         "symbol":        symbol,
         "side":          side,
         "qty":           qty,
         "entry_price":   round(entry_price, 2),
         "entry_ts":      datetime.now(timezone.utc).isoformat(),
         "stop_price":    round(stop_price, 2),
+        "stop_order_id": stop_order_id,      # S1: resting broker stop, "" if none
+        "stop_ratcheted": False,             # A8: flips True on first trailing ratchet
         "conviction":    conviction,
         "debate_id":     debate_id,
         "status":        "open",
@@ -85,6 +113,7 @@ def log_trade_open(
         "position_usd":  position_usd,
         "position_pct":  position_pct,
         "sector":        sector,
+        "trim_pnl":      0.0,                # A5: realized P&L booked on trims
     }
     data["open_trades"].append(trade)
     _save(data)
@@ -107,6 +136,10 @@ def log_trade_close(
     qty    = trade["qty"]
     pnl    = round((exit_p - entry) * qty, 2) if trade["side"] == "buy" else round((entry - exit_p) * qty, 2)
     pnl_pct = round((pnl / (entry * qty)) * 100, 2) if entry * qty > 0 else 0
+    # A5: total_pnl = final-leg P&L + realized P&L booked on earlier trims, so the
+    # whole-position outcome is visible (pnl alone covers only the remaining shares).
+    trim_pnl  = round(float(trade.get("trim_pnl", 0) or 0), 2)
+    total_pnl = round(pnl + trim_pnl, 2)
 
     trade.update({
         "exit_price":  exit_p,
@@ -114,6 +147,8 @@ def log_trade_close(
         "exit_reason": exit_reason,
         "pnl":         pnl,
         "pnl_pct":     pnl_pct,
+        "trim_pnl":    trim_pnl,
+        "total_pnl":   total_pnl,
         "status":      "closed",
     })
 
@@ -129,7 +164,7 @@ def log_debate(
 ) -> str:
     """Store the full bull/bear debate transcript. Returns debate_id."""
     data = _load()
-    debate_id = f"debate_{symbol}_{datetime.utcnow().strftime('%Y%m%d%H%M%S')}"
+    debate_id = f"debate_{symbol}_{datetime.now(timezone.utc).strftime('%Y%m%d%H%M%S')}"
     data["debate_logs"].append({
         "id":               debate_id,
         "symbol":           symbol,
@@ -151,6 +186,7 @@ def log_run(
     reason: str = "scheduled", event_symbols: list[str] | None = None,
     event_details: list[dict] | None = None,
     candidate_details: list[dict] | None = None,
+    llm_failures: dict | None = None,
 ):
     """Log a summary of each pipeline run."""
     data = _load()
@@ -168,6 +204,10 @@ def log_run(
     # unchanged; this is an extra optional field.
     if candidate_details:
         entry["candidate_details"] = candidate_details
+    # Observability (audit §7.4): a run where the analysts all fell back to
+    # neutral-5 is a data/LLM outage, not analysis — make that visible per run.
+    if llm_failures and any(llm_failures.values()):
+        entry["llm_failures"] = llm_failures
     if event_symbols:
         entry["event_symbols"] = event_symbols
     if event_details:
@@ -362,21 +402,32 @@ def log_trade_trim(
     new_qty: float,
     price: float,
     reason: str,
+    basis: float | None = None,
 ):
-    """Record a partial sell on an open trade and update its qty."""
+    """
+    Record a partial sell on an open trade and update its qty.
+    A5 (audit): realized P&L on the trimmed shares is booked against `basis`
+    (broker avg_entry preferred, journal entry_price fallback) and accumulated on
+    the trade's trim_pnl so trim proceeds stop vanishing from the ledger.
+    """
     data = _load()
     for trade in data["open_trades"]:
         if trade["id"] == trade_id:
             old_qty = float(trade.get("qty", 0) or 0)
             old_pct = float(trade.get("position_pct", 0) or 0)
+            cost_basis = float(basis if basis else trade.get("entry_price", 0) or 0)
+            realized = round((price - cost_basis) * trim_qty, 2) if cost_basis > 0 else 0.0
             trade.setdefault("trim_history", [])
             trade["trim_history"].append({
-                "ts":       datetime.now(timezone.utc).isoformat(),
-                "trim_qty": round(trim_qty, 4),
-                "new_qty":  round(new_qty, 4),
-                "price":    round(price, 2),
-                "reason":   reason,
+                "ts":           datetime.now(timezone.utc).isoformat(),
+                "trim_qty":     round(trim_qty, 4),
+                "new_qty":      round(new_qty, 4),
+                "price":        round(price, 2),
+                "basis":        round(cost_basis, 4),
+                "realized_pnl": realized,
+                "reason":       reason,
             })
+            trade["trim_pnl"] = round(float(trade.get("trim_pnl", 0) or 0) + realized, 2)
             trade["qty"] = round(new_qty, 4)
             trade["position_usd"] = round(price * new_qty, 2)
             if old_qty > 0:
@@ -385,6 +436,18 @@ def log_trade_trim(
     _save(data)
     logger.info("Trim logged: trade=%s sold=%.4f remaining=%.4f @ $%.2f",
                 trade_id, trim_qty, new_qty, price)
+
+
+def log_baseline_shadow(record: dict):
+    """
+    S2 (audit): log what the deterministic baseline twin WOULD have bought this run
+    (screener top-N + same risk caps + fixed size + same stop math). Never executed.
+    Forward returns of these records vs the live pipeline's decisions measure whether
+    the LLM debate layer adds selection value. Capped at 500.
+    """
+    entry = {"ts": datetime.now(timezone.utc).isoformat()}
+    entry.update(record)
+    _append_capped("baseline_shadow", entry, cap=500)
 
 
 def set_queued_action(trade_id: str, action: str, reason: str):
@@ -436,7 +499,7 @@ def push_to_github(commit_message: str = None):
 
     repo_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     journal   = os.path.join(repo_root, config.JOURNAL_PATH)
-    msg       = commit_message or f"Auto: pipeline run {datetime.utcnow().strftime('%Y-%m-%d %H:%M')} UTC"
+    msg       = commit_message or f"Auto: pipeline run {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M')} UTC"
 
     try:
         # Stage only the dashboard data file — nothing else

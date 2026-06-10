@@ -79,6 +79,19 @@ def main():
     else:
         print(f"  no decided trims yet ({tr['n_pending']} pending forward data)")
 
+    print("\nBASELINE vs PIPELINE  (S2: does the LLM layer out-select its own screener?)")
+    bvp = sc.get("baseline_vs_pipeline") or {}
+    for side in ("baseline", "pipeline"):
+        row = bvp.get(side)
+        if not row:
+            continue
+        if row["n_decided"]:
+            print(f"  {side:9}: n={row['n']:3d} decided={row['n_decided']:3d}  "
+                  f"avg {sc['primary_window_days']}d excess vs SPY: {row['avg_excess_pct']:+.2f}%  "
+                  f"hit-rate {row['hit_rate_pct']:.0f}%")
+        else:
+            print(f"  {side:9}: n={row['n']:3d}, none decided yet (forward window pending)")
+
     print("\nCONVICTION CALIBRATION  (does higher conviction earn higher P&L?)")
     cal = sc["conviction_calibration"]
     if cal:
@@ -102,9 +115,15 @@ def main():
             print(f"  {r['date']} {r['symbol']:6} [{r['verdict']:9}] {_fmt_excess(r['fwd_excess_vs_spy'])} | thesis={r['thesis']}")
 
     if args.save:
-        sc_lite = {k: v for k, v in sc.items() if k not in ("skip_quality", "trim_quality")}
+        sc_lite = {k: v for k, v in sc.items()
+                   if k not in ("skip_quality", "trim_quality", "baseline_vs_pipeline")}
         sc_lite["skip_precision_pct"] = sk["precision_pct"]
         sc_lite["trim_precision_pct"] = tr["precision_pct"]
+        bvp = sc.get("baseline_vs_pipeline") or {}
+        sc_lite["baseline_vs_pipeline"] = {
+            side: {k: v for k, v in (bvp.get(side) or {}).items() if k != "rows"}
+            for side in ("baseline", "pipeline") if bvp.get(side)
+        }
         sc_lite["ts"] = datetime.now(timezone.utc).isoformat()
         data.setdefault("decision_quality", [])
         data["decision_quality"].append(sc_lite)

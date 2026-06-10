@@ -201,10 +201,16 @@ def analyze_decisions(data: dict, fetcher, lookback_days: int = 45,
         for c, v in sorted(conv_buckets.items())
     }
 
+    # ── Baseline twin vs live pipeline (S2) ─────────────────────────────────────
+    baseline = analyze_baseline(data, fetcher, lookback_days=lookback_days,
+                                primary_window=primary_window,
+                                price_cache=price_cache, spy_series=spy_series)
+
     return {
         "as_of": today.isoformat(),
         "lookback_days": lookback_days,
         "primary_window_days": primary_window,
+        "baseline_vs_pipeline": baseline,
         "skip_quality": {
             "n_decided": skip_decided, "n_pending": skip_pending,
             "good": skip_good, "missed": skip_missed,
@@ -217,4 +223,76 @@ def analyze_decisions(data: dict, fetcher, lookback_days: int = 45,
         },
         "conviction_calibration": calibration,
         "closed_trades": len(closed),
+    }
+
+
+def analyze_baseline(data: dict, fetcher, lookback_days: int = 45,
+                     primary_window: int = 10,
+                     price_cache: dict | None = None,
+                     spy_series: list | None = None) -> dict:
+    """
+    S2 (audit): score the deterministic baseline twin's logged would-buy decisions
+    by forward SPY-relative return, next to the live pipeline's actual entries over
+    the same window. The comparison isolates whether the LLM debate layer SELECTS
+    better names than its own screener + risk caps would alone.
+
+    Deduplicates baseline picks per (symbol, date) — the twin re-logs the same name
+    across same-day runs; one decision per symbol-day is what's being judged.
+    """
+    today = date.today()
+    cutoff = today.toordinal() - lookback_days
+    price_cache = dict(price_cache or {})
+
+    # One decision per (symbol, date) from baseline shadow records.
+    picks: dict[tuple, dict] = {}
+    for rec in data.get("baseline_shadow", []):
+        dt = _parse_date(rec.get("ts", ""))
+        if not dt or dt.toordinal() < cutoff:
+            continue
+        for b in rec.get("would_buy", []):
+            key = (b.get("symbol"), dt)
+            if key not in picks:
+                picks[key] = {"symbol": b.get("symbol"), "date": dt,
+                              "score": b.get("composite_score")}
+
+    # Live pipeline entries (open or closed) in the window.
+    live_entries = []
+    for t in data.get("trades", []) + data.get("open_trades", []):
+        dt = _parse_date(t.get("entry_ts", ""))
+        if dt and dt.toordinal() >= cutoff:
+            live_entries.append({"symbol": t.get("symbol"), "date": dt})
+
+    if spy_series is None:
+        fetch_days = lookback_days + max(FORWARD_WINDOWS) + 15
+        spy_series = _bars_by_date(fetcher.get_ohlcv("SPY", days=fetch_days))
+
+    def _score(rows: list[dict], label: str) -> dict:
+        fetch_days = lookback_days + max(FORWARD_WINDOWS) + 15
+        scored, decided = [], []
+        for r in rows:
+            sym = r["symbol"]
+            if sym not in price_cache:
+                try:
+                    price_cache[sym] = _bars_by_date(fetcher.get_ohlcv(sym, days=fetch_days))
+                except Exception:
+                    price_cache[sym] = []
+            exc = _excess(_forward_returns(price_cache[sym], r["date"]),
+                          _forward_returns(spy_series, r["date"]))
+            pw = exc.get(primary_window)
+            scored.append({**r, "date": r["date"].isoformat(), "fwd_excess_vs_spy": exc})
+            if pw is not None:
+                decided.append(pw)
+        return {
+            "label": label,
+            "n": len(scored),
+            "n_decided": len(decided),
+            "avg_excess_pct": round(sum(decided) / len(decided), 2) if decided else None,
+            "hit_rate_pct": round(sum(1 for x in decided if x > 0) / len(decided) * 100, 1)
+                            if decided else None,
+            "rows": scored,
+        }
+
+    return {
+        "baseline": _score(list(picks.values()), "baseline_topN"),
+        "pipeline": _score(live_entries, "live_pipeline"),
     }

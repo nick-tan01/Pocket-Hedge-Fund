@@ -6,6 +6,9 @@ No Finnhub dependency.
 """
 
 import logging
+import random
+import time
+
 import requests
 import yfinance as yf
 import pandas as pd
@@ -14,6 +17,25 @@ from datetime import datetime, timedelta
 import config
 
 logger = logging.getLogger(__name__)
+
+# Audit §7.5: yfinance on shared CI runners is the most common silent-degradation
+# point (rate limits). One cheap retry with jittered backoff recovers transient
+# failures without masking a real outage (the screener's probe check still catches
+# a full outage and logs 'data_unavailable').
+_RETRIES = 2
+_BACKOFF_S = 1.5
+
+
+def _with_retry(fn, what: str):
+    last_exc = None
+    for attempt in range(_RETRIES + 1):
+        try:
+            return fn()
+        except Exception as e:
+            last_exc = e
+            if attempt < _RETRIES:
+                time.sleep(_BACKOFF_S * (attempt + 1) + random.uniform(0, 0.5))
+    raise last_exc
 
 
 class DataFetcher:
@@ -29,15 +51,16 @@ class DataFetcher:
 
     def get_quote(self, symbol: str) -> dict | None:
         """Return current price, volume, market cap for one symbol."""
-        try:
-            t    = yf.Ticker(symbol)
-            info = t.fast_info
+        def _fetch():
+            info = yf.Ticker(symbol).fast_info
             return {
                 "symbol":     symbol,
                 "price":      round(float(info.last_price or 0), 2),
                 "volume":     int(info.three_month_average_volume or 0),
                 "market_cap": float(info.market_cap or 0),
             }
+        try:
+            return _with_retry(_fetch, f"quote {symbol}")
         except Exception as e:
             logger.debug("Quote failed %s: %s", symbol, e)
             return None
@@ -47,11 +70,17 @@ class DataFetcher:
     def get_ohlcv(self, symbol: str, days: int = 60) -> list[dict]:
         """Return daily OHLCV as list of dicts, oldest first."""
         try:
-            df = yf.download(
-                symbol, period=f"{days+10}d",
-                progress=False, auto_adjust=True
-            )
-            if df.empty:
+            def _dl():
+                out = yf.download(
+                    symbol, period=f"{days+10}d",
+                    progress=False, auto_adjust=True
+                )
+                if out.empty:
+                    raise RuntimeError("empty dataframe")
+                return out
+            try:
+                df = _with_retry(_dl, f"ohlcv {symbol}")
+            except Exception:
                 return []
             df = df.reset_index()
             # Flatten MultiIndex columns if present

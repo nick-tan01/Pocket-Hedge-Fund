@@ -8,6 +8,12 @@ on:
 permissions:
   contents: write
 
+# A9 (audit): this workflow writes dashboard/data.json too — it must share the
+# trade pipeline's serialization group or the two can interleave and lose records.
+concurrency:
+  group: pipeline-data-json
+  cancel-in-progress: false
+
 jobs:
   build-watchlist:
     runs-on: ubuntu-latest

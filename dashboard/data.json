@@ -557,6 +557,12 @@
       "portfolio_value": 102077.5,
       "cash": 87551.58,
       "spy_price": 725.95
+    },
+    {
+      "ts": "2026-06-10T19:36:23.066741+00:00",
+      "portfolio_value": 102073.36,
+      "cash": 87551.58,
+      "spy_price": 726.98
     }
   ],
   "trades": [
@@ -1190,9 +1196,9 @@
       "time_stop_flagged": false,
       "consecutive_weakened_count": 0,
       "is_remnant": false,
-      "current_price": 1138.44,
-      "unrealized_pl": 452.36,
-      "unrealized_plpc": 0.12106,
+      "current_price": 1137.04,
+      "unrealized_pl": 447.21,
+      "unrealized_plpc": 0.11968,
       "avg_entry": 1015.5,
       "trim_history": [
         {
@@ -1252,9 +1258,9 @@
           "basis_estimated": true
         }
       ],
-      "current_price": 207.19,
-      "unrealized_pl": 171.34,
-      "unrealized_plpc": 0.02406,
+      "current_price": 206.97,
+      "unrealized_pl": 163.59,
+      "unrealized_plpc": 0.02298,
       "avg_entry": 202.3212,
       "trim_pnl": 491.96,
       "stop_order_id": "afb8459c-b650-4f35-8585-19a36beee065"
@@ -1278,9 +1284,9 @@
       "sector": "Financial Services",
       "trim_pnl": 0.0,
       "is_remnant": true,
-      "current_price": 133.63,
-      "unrealized_pl": -14.96,
-      "unrealized_plpc": -0.00488,
+      "current_price": 133.595,
+      "unrealized_pl": -15.76,
+      "unrealized_plpc": -0.00514,
       "avg_entry": 134.2856
     }
   ],
@@ -17499,6 +17505,124 @@
       ],
       "regime": "bull",
       "vix_regime": "elevated_vix"
+    },
+    {
+      "ts": "2026-06-10T19:36:23.131459+00:00",
+      "run_type": "midday",
+      "candidates": [
+        "MU",
+        "BAC",
+        "C",
+        "ORCL"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "scheduled",
+      "candidate_details": [
+        {
+          "symbol": "MU",
+          "composite_score": 0.5365,
+          "signals": {
+            "eps_growth": 756.0,
+            "rev_growth": 196.3,
+            "growth_quality": "strong",
+            "rs_vs_sector_pct": 16.5,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.81,
+            "52wk_high": 1089.29,
+            "volume_spike_ratio": 0.82,
+            "volume_spike": false,
+            "rsi": 56.2,
+            "macd_crossover": "False",
+            "bb_pct": 0.55,
+            "news_count": 10,
+            "top_headline": "10 Information Technology Stocks With Whale Alerts In Today's Session",
+            "news_quality": 0.25,
+            "pe_trailing": 42.6,
+            "pe_forward": 8.1,
+            "earnings_growth": 756.0,
+            "discovered": true
+          }
+        },
+        {
+          "symbol": "BAC",
+          "composite_score": 0.4857,
+          "signals": {
+            "eps_growth": 24.4,
+            "rev_growth": 8.1,
+            "growth_quality": "moderate",
+            "rs_vs_sector_pct": 6.8,
+            "sector": "Financial Services",
+            "sector_etf": "XLF",
+            "pct_of_52wk_range": 0.8,
+            "52wk_high": 57.55,
+            "volume_spike_ratio": 0.65,
+            "volume_spike": false,
+            "rsi": 68.7,
+            "macd_crossover": "False",
+            "bb_pct": 0.96,
+            "news_count": 2,
+            "top_headline": "'The U.S. Attorney's Office In D.C. Subpoenaed JPMorgan, Bank Of America And Others As Part Of A Probe Into Alleged Debanking' - WSJ Exclusive",
+            "news_quality": 0.0,
+            "pe_trailing": 13.6,
+            "pe_forward": 10.8,
+            "earnings_growth": 24.4
+          }
+        },
+        {
+          "symbol": "C",
+          "composite_score": 0.442,
+          "signals": {
+            "eps_growth": 56.1,
+            "rev_growth": 15.9,
+            "growth_quality": "moderate",
+            "rs_vs_sector_pct": 4.3,
+            "sector": "Financial Services",
+            "sector_etf": "XLF",
+            "pct_of_52wk_range": 0.94,
+            "52wk_high": 137.11,
+            "volume_spike_ratio": 1.01,
+            "volume_spike": false,
+            "rsi": 62.1,
+            "macd_crossover": "False",
+            "bb_pct": 0.84,
+            "news_count": 4,
+            "top_headline": "Amazon Signs $17.5B  Senior Unsecured Delayed Draw Term Loan Credit Facility With Citibank, Other Lenders Through Sept. 30, 2026",
+            "news_quality": 0.05,
+            "pe_trailing": 16.6,
+            "pe_forward": 10.7,
+            "earnings_growth": 56.1
+          }
+        },
+        {
+          "symbol": "ORCL",
+          "composite_score": 0.427,
+          "signals": {
+            "eps_growth": 24.5,
+            "rev_growth": 21.7,
+            "growth_quality": "moderate",
+            "rs_vs_sector_pct": 7.8,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.32,
+            "52wk_high": 345.72,
+            "volume_spike_ratio": 1.08,
+            "volume_spike": false,
+            "rsi": 50.1,
+            "macd_crossover": "False",
+            "bb_pct": 0.46,
+            "news_count": 10,
+            "top_headline": "U.S. Office Of Personnel Management Awards A Nearly $400M, Ten-Year Contract To Oracle To Streamline Federal Agencies' HR Management Platforms",
+            "news_quality": 0.25,
+            "pe_trailing": 36.3,
+            "pe_forward": 25.2,
+            "earnings_growth": 24.5
+          }
+        }
+      ],
+      "regime": "bull",
+      "vix_regime": "elevated_vix"
     }
   ],
   "debate_logs": [
@@ -21174,6 +21298,50 @@
       "bull_score": 3,
       "bear_score": 8,
       "final_conviction": 4,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_MU_20260610193348",
+      "symbol": "MU",
+      "ts": "2026-06-10T19:33:48.119053+00:00",
+      "bull_case": "R1 Bull(8): MU's explosive 756% EPS growth combined with an 8.1 forward P/E and 0.3 PEG ratio represents a massive valuation disconnect that the recent 16.6% technical selloff has only made more extreme. | R1 Bear(7): MU's extreme cyclical earnings peak combined with high debt and deteriorating technical momentum creates a value trap where apparent cheapness masks an imminent earnings collapse that will destroy the entire valuation premise. | R2 Bull(7): MU's dominant HBM position and AI infrastructure exposure create structural earnings support that should cushion any cyclical downturn while the 8.1 forward P/E still offers significant upside if the company can maintain even half its current margin levels | R2 Bear(6): While MU's HBM dominance provides some structural support, the combination of cyclical peak earnings and elevated debt still creates meaningful downside risk if AI infrastructure spending moderates or memory pricing deteriorates.",
+      "bear_case": "Primary risk: Catastrophic earnings collapse as memory cycle turns, transforming apparent 8.1x P/E into 40x+ P/E on normalized earnings while high debt amplifies downside during cash flow contraction | Unresolved: [\"High debt burden still amplifies downside risk during any earnings contraction, and HBM market share leadership doesn't guarantee pricing power if overall memory demand weakens\"]",
+      "bull_score": 7,
+      "bear_score": 6,
+      "final_conviction": 5,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_BAC_20260610193436",
+      "symbol": "BAC",
+      "ts": "2026-06-10T19:34:36.919245+00:00",
+      "bull_case": "R1 Bull(8): BAC's exceptional 29% profit margin and 24.4% earnings growth trading at only 10.8x forward P/E creates a compelling value-growth hybrid that the market is mispricing due to overblown regulatory noise. | R1 Bear(7): BAC's unsustainable 29% profit margins built on rate-cycle tailwinds combined with federal regulatory investigation create a perfect storm for margin compression and multiple contraction just as technical momentum stalls at resistance. | R2 Bull(7): BAC's exceptional profitability and attractive valuation create compelling risk-adjusted returns despite regulatory headwinds, as the market has already discounted much of the rate cut impact while undervaluing the bank's operational improvements and diversified revenue base | R2 Bear(8): BAC's admission that 60% of revenue remains rate-sensitive confirms my thesis that Fed rate cuts will trigger severe margin compression, while regulatory overhang adds multiple contraction risk at technical resistance levels.",
+      "bear_case": "Primary risk: Fed rate cuts triggering 400+ basis point margin compression while regulatory settlement forces business model restrictions, creating simultaneous fundamental deterioration and multiple contraction. | Unresolved: ['400+ basis point NIM compression from Fed rate cuts devastating the 60% rate-sensitive revenue base', '29% profit margins unsustainable as rate tailwinds reverse', 'Technical resistance confluence with fundamental deterioration timing']",
+      "bull_score": 7,
+      "bear_score": 8,
+      "final_conviction": 5,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_C_20260610193529",
+      "symbol": "C",
+      "ts": "2026-06-10T19:35:29.249094+00:00",
+      "bull_case": "R1 Bull(8): Citigroup is breaking out on explosive 56.1% EPS growth with management guiding to accelerating Q2 momentum in their highest-margin businesses, while trading at only 0.7 PEG ratio - a classic growth-at-a-discount setup before consensus catches up. | R1 Bear(7): Citigroup's explosive EPS growth masks deteriorating capital efficiency at 7.6% ROE - half the peer average - signaling fundamental business model problems that will compress multiples when the market realizes growth quality is terrible. | R2 Bull(6): Citigroup represents a deep value turnaround play where management's regulatory simplification strategy is beginning to show results in explosive EPS growth, trading at a discount that compensates for execution risk. | R2 Bear(7): Citigroup's 7.6% ROE - half the peer average - represents a structural capital efficiency problem that turnaround promises cannot overcome quickly enough to prevent multiple compression as the market recognizes the poor quality of the 56.1% EPS growth.",
+      "bear_case": "Primary risk: Multiple compression when investors realize the 56.1% EPS growth was achieved through capital destruction (7.6% ROE), turning this apparent growth-at-discount story into a classic value trap where falling multiples offset any earnings gains | Unresolved: ['Multiple compression when investors realize the 56.1% EPS growth was achieved through capital destruction (7.6% ROE), turning this apparent growth-at-discount story into a classic value trap where falling multiples offset any earnings gains']",
+      "bull_score": 6,
+      "bear_score": 7,
+      "final_conviction": 6,
+      "decision": "buy"
+    },
+    {
+      "id": "debate_ORCL_20260610193622",
+      "symbol": "ORCL",
+      "ts": "2026-06-10T19:36:22.897048+00:00",
+      "bull_case": "R1 Bull(8): Oracle's accelerating cloud transformation is generating exceptional growth (21.7% revenue, 24.5% EPS) at reasonable valuation (25.1x forward P/E), while the sharp 12% technical selloff creates an asymmetric entry point ahead of earnings with 91% market expectations for positive commentary. | R1 Bear(7): Oracle's 415.3% debt-to-equity ratio creates catastrophic leverage risk that will amplify any cloud momentum slowdown, while the violent -12% selloff in 5 days signals institutional knowledge of fundamental deterioration that earnings expectations cannot overcome. | R2 Bull(7): Oracle's accelerating cloud transformation with 52% booking growth and federal contract wins creates a compelling risk-reward at current levels despite near-term institutional selling pressure. | R2 Bear(8): Oracle's extreme 415.3% debt-to-equity leverage creates a asymmetric risk profile where any cloud growth deceleration triggers balance sheet crisis, while violent institutional selling with sustained volume signals informed money recognizing this structural vulnerability.",
+      "bear_case": "Primary risk: Debt-driven balance sheet implosion if cloud growth disappoints even modestly, triggering forced asset sales and equity dilution in a leveraged capital structure that leaves no margin for error | Unresolved: ['Debt-driven balance sheet implosion with 415.3% debt-to-equity ratio leaving zero margin for error if cloud momentum falters', 'Leverage amplification turning modest cloud disappointment into forced asset sales and equity dilution']",
+      "bull_score": 7,
+      "bear_score": 8,
+      "final_conviction": 5,
       "decision": "skip"
     }
   ],
@@ -29250,6 +29418,75 @@
       "pm_action": "skip",
       "pm_verdict": "The bear case is correct that institutional distribution at 141x P/E signals informed capital recognizing fundamental overvaluation, which trumps any technical oversold bounce opportunity in a sideways market regime.",
       "risk_category": "pm_decision"
+    },
+    {
+      "ts": "2026-06-10T19:33:48.056302+00:00",
+      "symbol": "MU",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 Strong downward technical momentum (ADX 33.9, 16.6% drop in 5 days) combined with genuine cyclical peak earnings risk that both analysts acknowledged - this creates trade-specific downside catalyst rather than just systemic risk",
+      "conviction": 5,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 900.57,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "Despite compelling fundamental valuation (8.1 forward P/E with 756% EPS growth), the combination of confirmed technical breakdown with strong momentum (ADX 33.9) and unresolved cyclical peak earnings risk creates too much near-term uncertainty.",
+      "risk_category": "pm_decision"
+    },
+    {
+      "ts": "2026-06-10T19:34:36.856565+00:00",
+      "symbol": "BAC",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 The combination of imminent NIM compression from Fed cuts (60% rate-sensitive revenue) and unpredictable regulatory settlement timing creates two independent TYPE-A catalysts that could trigger significant downside in the next 2-4 weeks",
+      "conviction": 5,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 54.78,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "Multiple TYPE-A risks converging at technical resistance with weak trend strength create unfavorable risk-reward despite attractive valuation.",
+      "risk_category": "pm_decision"
+    },
+    {
+      "ts": "2026-06-10T19:35:29.185921+00:00",
+      "symbol": "C",
+      "action": "buy",
+      "reason": "PM conviction=6 | size=3% ($10) | regime=bull/elevated_vix | ATR=3.51 x2.5 | stop=$124.93 (-6.56%)",
+      "conviction": 6,
+      "rotate_from": "",
+      "position_usd": 10.21,
+      "shares": 0.0764,
+      "entry_price": 133.7,
+      "stop_price": 124.93,
+      "stop_pct": 6.56,
+      "sector": "Financial Services",
+      "correlation": 0.0,
+      "pm_action": "buy",
+      "pm_verdict": "Quality-compounder play where 56.1% EPS growth and specific Q2 guidance create a multi-quarter earnings durability thesis, but 7.6% ROE creates near-term multiple compression risk requiring reduced position size.",
+      "risk_category": "approved"
+    },
+    {
+      "ts": "2026-06-10T19:36:22.832470+00:00",
+      "symbol": "ORCL",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 Bull's concession that 'institutional selling pattern with sustained volume represents genuine near-term earnings risk' creates an unresolved TYPE-A bear point that drops conviction below buy threshold.",
+      "conviction": 5,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 202.58,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "The debate reveals a TYPE-A risk (institutional selling with conviction before earnings) that the bull conceded, combined with mixed analyst signals and no concrete catalyst timing beyond vague earnings expectations.",
+      "risk_category": "conviction"
     }
   ],
   "watchlists": [
@@ -48037,6 +48274,42 @@
       "det_signal": "neutral",
       "det_strength": 6,
       "agree": false
+    },
+    {
+      "ts": "2026-06-10T19:32:52.189964+00:00",
+      "symbol": "MU",
+      "llm_signal": "bearish",
+      "llm_strength": 7,
+      "det_signal": "bullish",
+      "det_strength": 8,
+      "agree": false
+    },
+    {
+      "ts": "2026-06-10T19:33:51.242385+00:00",
+      "symbol": "BAC",
+      "llm_signal": "neutral",
+      "llm_strength": 5,
+      "det_signal": "bullish",
+      "det_strength": 8,
+      "agree": false
+    },
+    {
+      "ts": "2026-06-10T19:34:41.511496+00:00",
+      "symbol": "C",
+      "llm_signal": "bullish",
+      "llm_strength": 7,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": true
+    },
+    {
+      "ts": "2026-06-10T19:35:33.825024+00:00",
+      "symbol": "ORCL",
+      "llm_signal": "bearish",
+      "llm_strength": 7,
+      "det_signal": "neutral",
+      "det_strength": 7,
+      "agree": false
     }
   ],
   "pre_debate_gates": [
@@ -48250,6 +48523,48 @@
       "skipped": [
         {
           "symbol": "LLY",
+          "reason": "held"
+        }
+      ]
+    },
+    {
+      "ts": "2026-06-10T19:32:48.280496+00:00",
+      "regime": "bull",
+      "vix_regime": "elevated_vix",
+      "run_reason": "scheduled",
+      "n_candidates": 4,
+      "would_buy": [
+        {
+          "symbol": "MU",
+          "composite_score": 0.5365,
+          "price": 900.58,
+          "size_pct": 0.06,
+          "position_usd": 6124.39,
+          "stop_price": 828.53,
+          "sector": "Technology"
+        },
+        {
+          "symbol": "BAC",
+          "composite_score": 0.4857,
+          "price": 54.71,
+          "size_pct": 0.06,
+          "position_usd": 6124.39,
+          "stop_price": 51.98,
+          "sector": "Financial Services"
+        },
+        {
+          "symbol": "ORCL",
+          "composite_score": 0.427,
+          "price": 202.64,
+          "size_pct": 0.06,
+          "position_usd": 6124.39,
+          "stop_price": 186.43,
+          "sector": "Technology"
+        }
+      ],
+      "skipped": [
+        {
+          "symbol": "C",
           "reason": "held"
         }
       ]
@@ -48675,6 +48990,431 @@
           "symbol": "DSYWW",
           "source": "movers_gainers",
           "reason": "blowoff_day_gain 148.1%"
+        }
+      ],
+      "core_size": 112
+    },
+    {
+      "ts": "2026-06-10T19:30:35.781169+00:00",
+      "accepted": [
+        {
+          "symbol": "AAL",
+          "source": "most_actives",
+          "day_gain_pct": -5.04,
+          "gain_5d_pct": -1.4,
+          "price": 13.38
+        },
+        {
+          "symbol": "NOK",
+          "source": "most_actives",
+          "day_gain_pct": -3.61,
+          "gain_5d_pct": -20.2,
+          "price": 13.36
+        },
+        {
+          "symbol": "MU",
+          "source": "most_actives",
+          "day_gain_pct": -4.5,
+          "gain_5d_pct": -17.21,
+          "price": 893.77
+        },
+        {
+          "symbol": "MRVL",
+          "source": "most_actives",
+          "day_gain_pct": -4.76,
+          "gain_5d_pct": -15.74,
+          "price": 254.22
+        },
+        {
+          "symbol": "KEEL",
+          "source": "most_actives",
+          "day_gain_pct": -1.66,
+          "gain_5d_pct": -13.33,
+          "price": 5.33
+        },
+        {
+          "symbol": "PATH",
+          "source": "most_actives",
+          "day_gain_pct": 0.19,
+          "gain_5d_pct": -7.71,
+          "price": 10.77
+        }
+      ],
+      "rejected": [
+        {
+          "symbol": "SOXS",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "TZA",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "BITO",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "YYGH",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "CPOP",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "CHOW",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "VSME",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "BATL",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "ADTX",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "SPDN",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "SQQQ",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "FLD",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "DSY",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "BMNU",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "UVIX",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "GCDT",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "SOXL",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "TQQQ",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "CIIT",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "WCT",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "GLE",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "SNDQ",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "NVD",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "GMM",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "WOK",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "BQ",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "QQQ",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "PAVS",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "SMXT",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "FRMI",
+          "source": "most_actives",
+          "reason": "blowoff_day_gain 23.0%"
+        },
+        {
+          "symbol": "TSLL",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "SPY",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "LYG",
+          "source": "most_actives",
+          "reason": "no_uptrend"
+        },
+        {
+          "symbol": "OPEN",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "SNXX",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "SNBR",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "BYND",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "DRAM",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "BETRW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 25.7%"
+        },
+        {
+          "symbol": "TGL",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 26.4%"
+        },
+        {
+          "symbol": "FTRK",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 26.5%"
+        },
+        {
+          "symbol": "LNZAW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 26.5%"
+        },
+        {
+          "symbol": "CDTTW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 26.6%"
+        },
+        {
+          "symbol": "COOTW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 28.8%"
+        },
+        {
+          "symbol": "CRE",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 28.8%"
+        },
+        {
+          "symbol": "AZI",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 29.2%"
+        },
+        {
+          "symbol": "RETO",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 30.1%"
+        },
+        {
+          "symbol": "HWH",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 30.8%"
+        },
+        {
+          "symbol": "MWYN",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 30.8%"
+        },
+        {
+          "symbol": "AMPGR",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 31.2%"
+        },
+        {
+          "symbol": "MPU",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 31.8%"
+        },
+        {
+          "symbol": "HCAI",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 33.6%"
+        },
+        {
+          "symbol": "LICN",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 34.0%"
+        },
+        {
+          "symbol": "DSS",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 34.3%"
+        },
+        {
+          "symbol": "QH",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 34.9%"
+        },
+        {
+          "symbol": "VELL",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 35.1%"
+        },
+        {
+          "symbol": "STI",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 35.6%"
+        },
+        {
+          "symbol": "STAK",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 36.7%"
+        },
+        {
+          "symbol": "AMPGZ",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 37.4%"
+        },
+        {
+          "symbol": "ALDFW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 37.9%"
+        },
+        {
+          "symbol": "MLACR",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 38.1%"
+        },
+        {
+          "symbol": "ECXWW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 38.5%"
+        },
+        {
+          "symbol": "FLDDW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 39.1%"
+        },
+        {
+          "symbol": "FAC",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 39.8%"
+        },
+        {
+          "symbol": "CRACW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 42.9%"
+        },
+        {
+          "symbol": "CNET",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 46.3%"
+        },
+        {
+          "symbol": "BIYA",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 46.5%"
+        },
+        {
+          "symbol": "SMCZ",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 51.1%"
+        },
+        {
+          "symbol": "CINGW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 51.6%"
+        },
+        {
+          "symbol": "HXHX",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 64.1%"
+        },
+        {
+          "symbol": "SDOT",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 92.4%"
+        },
+        {
+          "symbol": "SBFMW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 98.8%"
+        },
+        {
+          "symbol": "GIPRW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 138.7%"
+        },
+        {
+          "symbol": "OIOWW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 141.3%"
+        },
+        {
+          "symbol": "DSYWW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 167.5%"
         }
       ],
       "core_size": 112

@@ -551,6 +551,12 @@
       "portfolio_value": 102137.31,
       "cash": 90615.15,
       "spy_price": 730.01
+    },
+    {
+      "ts": "2026-06-10T19:25:26.618833+00:00",
+      "portfolio_value": 102077.5,
+      "cash": 87551.58,
+      "spy_price": 725.95
     }
   ],
   "trades": [
@@ -1174,19 +1180,19 @@
       "conviction": 7,
       "debate_id": "debate_LLY_20260519190455",
       "status": "open",
-      "key_risk": "Timing mismatch between debt refinancing schedules and retatrutide revenue ramp that could force suboptimal capital allocation during the critical competitive phase",
+      "key_risk": "Debt refinancing timeline relative to retatrutide commercial launch timeline, as originally identified - any signs of capital allocation stress during the critical competitive ramp phase",
       "position_usd": 4177.12,
-      "position_pct": 0.0412,
+      "position_pct": 0.041,
       "sector": "Healthcare",
-      "last_review_ts": "2026-06-10T16:48:03.444990+00:00",
+      "last_review_ts": "2026-06-10T19:21:43.298150+00:00",
       "last_review_conviction": 8,
       "thesis_status": "intact",
       "time_stop_flagged": false,
       "consecutive_weakened_count": 0,
       "is_remnant": false,
-      "current_price": 1142.33,
-      "unrealized_pl": 466.67,
-      "unrealized_plpc": 0.12489,
+      "current_price": 1138.44,
+      "unrealized_pl": 452.36,
+      "unrealized_plpc": 0.12106,
       "avg_entry": 1015.5,
       "trim_history": [
         {
@@ -1226,7 +1232,7 @@
       "status": "open",
       "key_risk": "Credit market stress indicators and any widening spreads that could pressure the 502.2% debt-to-equity ratio, particularly if M&A revenue disappoints expectations",
       "position_usd": 7617.29,
-      "position_pct": 0.0716,
+      "position_pct": 0.0714,
       "sector": "Financial Services",
       "last_review_ts": "2026-06-10T16:40:49.997364+00:00",
       "last_review_conviction": 8,
@@ -1246,9 +1252,9 @@
           "basis_estimated": true
         }
       ],
-      "current_price": 207.755,
-      "unrealized_pl": 191.22,
-      "unrealized_plpc": 0.02686,
+      "current_price": 207.19,
+      "unrealized_pl": 171.34,
+      "unrealized_plpc": 0.02406,
       "avg_entry": 202.3212,
       "trim_pnl": 491.96,
       "stop_order_id": "afb8459c-b650-4f35-8585-19a36beee065"
@@ -1268,9 +1274,14 @@
       "status": "open",
       "key_risk": "Price breakdown below 0.87 breakout level, especially on volume above 1.5x average, would invalidate the technical thesis.",
       "position_usd": 3063.57,
-      "position_pct": 0.03,
+      "position_pct": 0.0299,
       "sector": "Financial Services",
-      "trim_pnl": 0.0
+      "trim_pnl": 0.0,
+      "is_remnant": true,
+      "current_price": 133.63,
+      "unrealized_pl": -14.96,
+      "unrealized_plpc": -0.00488,
+      "avg_entry": 134.2856
     }
   ],
   "runs": [
@@ -17238,6 +17249,256 @@
       ],
       "regime": "bull",
       "vix_regime": "elevated_vix"
+    },
+    {
+      "ts": "2026-06-10T19:25:26.683665+00:00",
+      "run_type": "midday",
+      "candidates": [
+        "LLY",
+        "SMCI",
+        "ARM",
+        "NET"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "sentinel_trigger",
+      "candidate_details": [
+        {
+          "symbol": "LLY",
+          "composite_score": 0.575,
+          "signals": {
+            "eps_growth": 169.9,
+            "rev_growth": 55.5,
+            "growth_quality": "strong",
+            "rs_vs_sector_pct": 10.3,
+            "sector": "Healthcare",
+            "sector_etf": "XLV",
+            "pct_of_52wk_range": 0.92,
+            "52wk_high": 1182.73,
+            "volume_spike_ratio": 0.58,
+            "volume_spike": false,
+            "rsi": 67.9,
+            "macd_crossover": "False",
+            "bb_pct": 0.81,
+            "news_count": 4,
+            "top_headline": "Reported Earlier, Lilly's EBGLYSS Wins FDA Approval For Every-Eight-Week Maintenance Dose In Moderate-To-Severe Atopic Dermatitis, Becoming Only Option With Six Annual Injections And No Required Topicals",
+            "news_quality": 0.25,
+            "pe_trailing": 40.4,
+            "pe_forward": 25.6,
+            "earnings_growth": 169.9
+          }
+        },
+        {
+          "symbol": "SMCI",
+          "composite_score": 0.4901,
+          "signals": {
+            "eps_growth": 326.0,
+            "rev_growth": 122.7,
+            "growth_quality": "strong",
+            "rs_vs_sector_pct": -7.5,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.26,
+            "52wk_high": 62.36,
+            "volume_spike_ratio": 2.72,
+            "volume_spike": true,
+            "rsi": 39.8,
+            "macd_crossover": "False",
+            "bb_pct": 0.2,
+            "news_count": 10,
+            "top_headline": "Super Micro Plummets, But This ETF Turned It Into A 40% Payday",
+            "news_quality": 0.25,
+            "pe_trailing": 16.1,
+            "pe_forward": 9.4,
+            "earnings_growth": 326.0
+          }
+        },
+        {
+          "symbol": "ARM",
+          "composite_score": 0.424,
+          "signals": {
+            "eps_growth": 47.9,
+            "rev_growth": 20.1,
+            "growth_quality": "moderate",
+            "rs_vs_sector_pct": 45.8,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.62,
+            "52wk_high": 427.99,
+            "volume_spike_ratio": 0.48,
+            "volume_spike": false,
+            "rsi": 51.4,
+            "macd_crossover": "False",
+            "bb_pct": 0.48,
+            "news_count": 2,
+            "top_headline": "What Is Going On With Arm Stock On Wednesday?",
+            "news_quality": 0.0,
+            "pe_trailing": 362.2,
+            "pe_forward": 99.2,
+            "earnings_growth": 47.9
+          }
+        },
+        {
+          "symbol": "NET",
+          "composite_score": 0.422,
+          "signals": {
+            "growth_quality": "unknown",
+            "rs_vs_sector_pct": 17.3,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.52,
+            "52wk_high": 276.81,
+            "volume_spike_ratio": 0.95,
+            "volume_spike": false,
+            "rsi": 46.1,
+            "macd_crossover": "False",
+            "bb_pct": 0.42,
+            "news_count": 9,
+            "top_headline": "UBS Maintains Neutral on Cloudflare, Raises Price Target to $250",
+            "news_quality": 1.0,
+            "pe_trailing": null,
+            "pe_forward": 141.2,
+            "earnings_growth": null
+          }
+        }
+      ],
+      "event_symbols": [
+        "ACLS",
+        "AMD",
+        "ARM",
+        "BILL",
+        "GTLB",
+        "HIMS",
+        "LLY",
+        "NET",
+        "NVDA",
+        "QCOM",
+        "SMCI",
+        "TSLA"
+      ],
+      "event_details": [
+        {
+          "symbol": "ACLS",
+          "trigger_type": "intraday_move",
+          "value": 0.0362,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": -0.0362,
+          "latest": 158.71,
+          "previous_close": 164.68
+        },
+        {
+          "symbol": "AMD",
+          "trigger_type": "intraday_move",
+          "value": 0.0544,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": -0.0544,
+          "latest": 449.65,
+          "previous_close": 475.5
+        },
+        {
+          "symbol": "ARM",
+          "trigger_type": "intraday_move",
+          "value": 0.0602,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": -0.0602,
+          "latest": 305.02,
+          "previous_close": 324.56
+        },
+        {
+          "symbol": "BILL",
+          "trigger_type": "intraday_move",
+          "value": 0.0518,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": -0.0518,
+          "latest": 32.31,
+          "previous_close": 34.08
+        },
+        {
+          "symbol": "GTLB",
+          "trigger_type": "intraday_move",
+          "value": 0.0642,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": -0.0642,
+          "latest": 28.36,
+          "previous_close": 30.31
+        },
+        {
+          "symbol": "HIMS",
+          "trigger_type": "intraday_move",
+          "value": 0.0371,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": -0.0371,
+          "latest": 27.89,
+          "previous_close": 28.97
+        },
+        {
+          "symbol": "NET",
+          "trigger_type": "intraday_move",
+          "value": 0.0666,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": -0.0666,
+          "latest": 220.45,
+          "previous_close": 236.18
+        },
+        {
+          "symbol": "NVDA",
+          "trigger_type": "intraday_move",
+          "value": 0.0374,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": -0.0374,
+          "latest": 200.4,
+          "previous_close": 208.19
+        },
+        {
+          "symbol": "QCOM",
+          "trigger_type": "intraday_move",
+          "value": 0.0714,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": -0.0714,
+          "latest": 190.75,
+          "previous_close": 205.41
+        },
+        {
+          "symbol": "SMCI",
+          "trigger_type": "intraday_move",
+          "value": 0.243,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": -0.243,
+          "latest": 30.75,
+          "previous_close": 40.63
+        },
+        {
+          "symbol": "TSLA",
+          "trigger_type": "intraday_move",
+          "value": 0.0405,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": -0.0405,
+          "latest": 380.52,
+          "previous_close": 396.57
+        },
+        {
+          "symbol": "LLY",
+          "trigger_type": "position_move",
+          "value": 0.1202,
+          "threshold": 0.025,
+          "severity": "high",
+          "price": 1137.71,
+          "entry": 1015.67
+        }
+      ],
+      "regime": "bull",
+      "vix_regime": "elevated_vix"
     }
   ],
   "debate_logs": [
@@ -20869,6 +21130,50 @@
       "bull_score": 7,
       "bear_score": 8,
       "final_conviction": 5,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_LLY_20260610192256",
+      "symbol": "LLY",
+      "ts": "2026-06-10T19:22:56.735204+00:00",
+      "bull_case": "R1 Bull(8): LLY's obesity franchise dominance is about to accelerate with retatrutide's exceptional 28.3% weight loss results creating a new standard of care that justifies premium valuations through massive TAM expansion. | R1 Bear(6): LLY's 139% debt/equity ratio creates catastrophic refinancing risk in a high-rate environment while obesity drug competition intensifies and premium valuation offers zero margin of safety. | R2 Bull(7): LLY's retatrutide franchise will drive explosive growth as 28.3% weight loss results capture premium market share in the massive obesity TAM, with strong cash flows providing sufficient refinancing capacity despite elevated debt levels. | R2 Bear(7): LLY faces a catastrophic 2025-2027 liquidity crunch as refinancing costs triple while retatrutide won't generate meaningful revenue until 2028, forcing value-destructive equity dilution during peak competitive threat.",
+      "bear_case": "Primary risk: Debt refinancing crisis forces emergency equity dilution or pipeline cuts precisely when maximum investment is needed to defend obesity market share against incoming competition. | Unresolved: [\"$8B operating cash flow is insufficient for both debt service costs rising from ~$400M to $1.2B+ annually AND the $15B+ capex/R&D needed to defend obesity market share against Amgen, Roche, and Viking's competing triple-receptor agonists launching 2025-2026\"]",
+      "bull_score": 7,
+      "bear_score": 7,
+      "final_conviction": 5,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_SMCI_20260610192348",
+      "symbol": "SMCI",
+      "ts": "2026-06-10T19:23:48.693637+00:00",
+      "bull_case": "R1 Bull(8): The market has overreacted to dilution fears while creating a generational entry point into explosive AI infrastructure growth at only 9.4x forward earnings despite 326% EPS growth. | R1 Bear(8): The massive $7B equity raise reveals management's lack of confidence in organic cash generation despite claimed growth, while razor-thin 3.7% margins and extreme 120.8% debt/equity ratio expose a capital-intensive business model that destroys shareholder value during any demand slowdown. | R2 Bull(7): While dilution creates near-term headwinds, SMCI is building war-chest capacity for an AI infrastructure boom that will drive explosive earnings growth far exceeding the dilution impact at a historically cheap 9.4x forward P/E. | R2 Bear(8): SMCI's capital-intensive model with razor-thin margins makes it structurally vulnerable to demand cycles, where any AI infrastructure slowdown will trigger margin compression and force additional dilutive capital raises that permanently destroy shareholder value.",
+      "bear_case": "Primary risk: Further equity dilution becomes necessary as AI infrastructure demand normalizes, creating a feedback loop where declining margins force more capital raises that further destroy per-share value in a business with structural profitability challenges. | Unresolved: ['Further equity dilution becomes necessary as AI infrastructure demand normalizes, creating a feedback loop where declining margins force more capital raises that further destroy per-share value']",
+      "bull_score": 7,
+      "bear_score": 8,
+      "final_conviction": 4,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_ARM_20260610192435",
+      "symbol": "ARM",
+      "ts": "2026-06-10T19:24:35.490073+00:00",
+      "bull_case": "R1 Bull(4): ARM's 25.8% five-day decline on low volume (0.48x ratio) creates a technical oversold opportunity in a stock with intact uptrend structure (EMA10>EMA30) and explosive 48% EPS growth driven by AI tailwinds. | R1 Bear(8): ARM's 363x P/E ratio combined with 5.9 debt/equity creates a valuation death trap where any growth disappointment triggers massive multiple compression in an overleveraged balance sheet. | R2 Bull(2): ARM remains a leveraged play on AI chip demand, but the high debt load creates binary outcomes where execution must be flawless to avoid forced deleveraging. | R2 Bear(8): ARM's 363x P/E creates catastrophic downside risk where any growth hiccup triggers massive multiple compression, while high leverage eliminates any margin for error.",
+      "bear_case": "Primary risk: Valuation multiple compression cascade - if ARM trades down to even 100x P/E (still expensive), that's a 72% decline from current levels, and the high leverage amplifies downside. | Unresolved: ['Valuation multiple compression cascade - even dropping to 100x P/E means 72% decline, and bull provided no justification for current 363x multiple sustainability']",
+      "bull_score": 2,
+      "bear_score": 8,
+      "final_conviction": 3,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_NET_20260610192526",
+      "symbol": "NET",
+      "ts": "2026-06-10T19:25:26.444576+00:00",
+      "bull_case": "R1 Bull(4): The 17% five-day decline has created a technical oversold condition in a name still delivering 33.5% revenue growth, setting up a counter-trend bounce as RSI at 46 approaches oversold territory while maintaining an intact longer-term upward EMA trend. | R1 Bear(7): NET's extreme valuation at 141.1x forward P/E with no profitability path makes it a value trap masquerading as an oversold bounce opportunity in a sideways market regime that punishes growth premiums. | R2 Bull(3): NET's 17% decline on normal volume suggests controlled institutional repositioning rather than fundamental breakdown, creating opportunity as 33.5% revenue growth with improving unit economics positions the company for multiple expansion once profitability inflection becomes visible. | R2 Bear(8): NET's institutional distribution pattern at 141.1x forward P/E signals informed capital recognizing the value trap, where even strong revenue growth cannot justify extreme valuations in a regime that punishes unprofitable growth premiums.",
+      "bear_case": "Primary risk: Value trap risk where the stock continues declining 30-50% more as the 141.1x P/E compresses toward sector norms, turning what looks like an oversold bounce into a dead cat bounce in an extended bear market for unprofitable growth | Unresolved: ['The 141.1x forward P/E multiple compression risk remains unaddressed - even with 33.5% revenue growth, the valuation requires perfect execution for years to justify current prices, and any growth deceleration or margin pressure will cause severe multiple contraction']",
+      "bull_score": 3,
+      "bear_score": 8,
+      "final_conviction": 4,
       "decision": "skip"
     }
   ],
@@ -24642,6 +24947,19 @@
       "key_risk_to_monitor": "Timing mismatch between debt refinancing schedules and retatrutide revenue ramp that could force suboptimal capital allocation during the critical competitive phase",
       "current_bull_case": "R1 Bull(8): LLY is entering a multi-year dominance cycle in the massive weight management market, with EBGLYSS's best-in-class dosing advantage and retatrutide's exceptional 28.3% weight loss results creating an unassailable competitive moat that justifies aggressive multiple expansion. | R2 Bull(7): Despite elevated leverage concerns, LLY's dominant position in the explosive weight management market with best-in-class pipeline assets creates a multi-year growth trajectory that overshadows temporary financing constraints",
       "current_bear_case": "R1 Bear(7): LLY's 139% debt/equity ratio creates catastrophic refinancing risk in a rising rate environment while RSI at 69.1 and trading at 83rd percentile of Bollinger Bands signals an exhausted rally vulnerable to violent correction. | R2 Bear(5): While LLY's cash generation capacity mitigates refinancing risk, the convergence of debt maturities with retatrutide launch execution creates a narrow window where capital constraints could undermine competitive positioning at technically overbought levels."
+    },
+    {
+      "trade_id": "LLY_20260519190455",
+      "symbol": "LLY",
+      "ts": "2026-06-10T19:21:43.240513+00:00",
+      "action": "hold",
+      "conviction": 8,
+      "thesis_status": "intact",
+      "rationale": "The original thesis of explosive earnings momentum (169.9% EPS growth, 55.5% revenue growth) overwhelming regulatory noise remains fully intact and has been strengthened by retatrutide's breakthrough clinical results. While the debt-to-equity concern persists, the core growth engine driving our entry is accelerating.",
+      "original_thesis_check": "Yes - the explosive earnings momentum that was our original buy catalyst is still delivering with exceptional growth metrics and has been reinforced by major clinical wins in the obesity market",
+      "key_risk_to_monitor": "Debt refinancing timeline relative to retatrutide commercial launch timeline, as originally identified - any signs of capital allocation stress during the critical competitive ramp phase",
+      "current_bull_case": "R1 Bull(8): LLY is hitting clinical inflection points in the massive obesity market with retatrutide's breakthrough 28.3% weight loss results positioning it to dominate next-generation GLP-1 competition while current blockbuster drugs drive 55.5% revenue growth. | R2 Bull(7): LLY's retatrutide breakthrough creates a multi-year competitive moat in the $100B+ obesity market that overcomes near-term technical and leverage concerns, but execution at current resistance levels requires careful position sizing",
+      "current_bear_case": "R1 Bear(6): LLY's 139% debt-to-equity ratio creates dangerous financial leverage just as the company faces peak competitive threats and declining volume momentum, while trading at stretched valuations near technical resistance. | R2 Bear(7): LLY's dangerous 139% debt leverage creates amplified downside risk that technical momentum and obesity market potential cannot offset when trading at resistance with weak volume confirmation."
     }
   ],
   "risk_decisions": [
@@ -28863,6 +29181,74 @@
       "correlation": 0.0,
       "pm_action": "skip",
       "pm_verdict": "Despite strong technical momentum (ADX>25, RSI 66.9), the bear's liquidity-driven collapse scenario remains unresolved - high debt plus negative profitability creates genuine forced selling risk that momentum flows could amplify rather than cushion.",
+      "risk_category": "pm_decision"
+    },
+    {
+      "ts": "2026-06-10T19:22:56.668139+00:00",
+      "symbol": "LLY",
+      "action": "hold",
+      "reason": "Already holding LLY",
+      "conviction": 5,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 1137.9,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "The timing mismatch between immediate refinancing pressures (2025-2027) and retatrutide revenue generation (2028) creates unresolved liquidity risk that the bull failed to address concretely.",
+      "risk_category": "already_holding"
+    },
+    {
+      "ts": "2026-06-10T19:23:48.623683+00:00",
+      "symbol": "SMCI",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 The combination of TYPE-A dilution risk from an abnormally large equity raise with confirmed bearish momentum creates too much near-term downside risk despite attractive valuation metrics.",
+      "conviction": 4,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 30.57,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "The massive $7B equity raise creates substantial near-term dilution headwinds that the 9.4x forward P/E cannot overcome, while confirmed bearish technicals (ADX>25 with -DI dominance) signal continued selling pressure.",
+      "risk_category": "pm_decision"
+    },
+    {
+      "ts": "2026-06-10T19:24:35.424722+00:00",
+      "symbol": "ARM",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 Bull's conviction collapsed from 4 to 2 after acknowledging debt risks, while bear's core valuation argument (72% downside to 100x P/E) remains completely unresolved",
+      "conviction": 3,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 305.45,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "The 363x P/E creates catastrophic multiple compression risk that the bull never addressed, while technical signals are mixed at best with declining momentum in a sideways regime.",
+      "risk_category": "conviction"
+    },
+    {
+      "ts": "2026-06-10T19:25:26.381043+00:00",
+      "symbol": "NET",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 Normal volume during 17% decline indicates systematic institutional exit rather than emotional selling - smart money positioning against extreme valuation",
+      "conviction": 4,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 220.1,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "The bear case is correct that institutional distribution at 141x P/E signals informed capital recognizing fundamental overvaluation, which trumps any technical oversold bounce opportunity in a sideways market regime.",
       "risk_category": "pm_decision"
     }
   ],
@@ -47606,6 +47992,51 @@
       "det_signal": "bullish",
       "det_strength": 10,
       "agree": true
+    },
+    {
+      "ts": "2026-06-10T19:20:57.273471+00:00",
+      "symbol": "LLY",
+      "llm_signal": "bullish",
+      "llm_strength": 7,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": true
+    },
+    {
+      "ts": "2026-06-10T19:22:04.337865+00:00",
+      "symbol": "LLY",
+      "llm_signal": "bullish",
+      "llm_strength": 8,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": true
+    },
+    {
+      "ts": "2026-06-10T19:23:01.192986+00:00",
+      "symbol": "SMCI",
+      "llm_signal": "bearish",
+      "llm_strength": 8,
+      "det_signal": "neutral",
+      "det_strength": 5,
+      "agree": false
+    },
+    {
+      "ts": "2026-06-10T19:23:52.389496+00:00",
+      "symbol": "ARM",
+      "llm_signal": "bearish",
+      "llm_strength": 7,
+      "det_signal": "neutral",
+      "det_strength": 7,
+      "agree": false
+    },
+    {
+      "ts": "2026-06-10T19:24:39.256067+00:00",
+      "symbol": "NET",
+      "llm_signal": "bearish",
+      "llm_strength": 6,
+      "det_signal": "neutral",
+      "det_strength": 6,
+      "agree": false
     }
   ],
   "pre_debate_gates": [
@@ -47780,6 +48211,48 @@
         }
       ],
       "skipped": []
+    },
+    {
+      "ts": "2026-06-10T19:21:59.543327+00:00",
+      "regime": "bull",
+      "vix_regime": "elevated_vix",
+      "run_reason": "sentinel_trigger",
+      "n_candidates": 4,
+      "would_buy": [
+        {
+          "symbol": "SMCI",
+          "composite_score": 0.4901,
+          "price": 30.52,
+          "size_pct": 0.06,
+          "position_usd": 6124.65,
+          "stop_price": 28.08,
+          "sector": "Technology"
+        },
+        {
+          "symbol": "ARM",
+          "composite_score": 0.424,
+          "price": 304.46,
+          "size_pct": 0.06,
+          "position_usd": 6124.65,
+          "stop_price": 280.1,
+          "sector": "Technology"
+        },
+        {
+          "symbol": "NET",
+          "composite_score": 0.422,
+          "price": 220.26,
+          "size_pct": 0.06,
+          "position_usd": 6124.65,
+          "stop_price": 202.64,
+          "sector": "Technology"
+        }
+      ],
+      "skipped": [
+        {
+          "symbol": "LLY",
+          "reason": "held"
+        }
+      ]
     }
   ],
   "universe_discovery": [

@@ -575,6 +575,12 @@
       "portfolio_value": 102209.53,
       "cash": 87551.55,
       "spy_price": 726.24
+    },
+    {
+      "ts": "2026-06-11T19:37:40.406048+00:00",
+      "portfolio_value": 102473.68,
+      "cash": 87551.55,
+      "spy_price": 739.85
     }
   ],
   "trades": [
@@ -1200,7 +1206,7 @@
       "status": "open",
       "key_risk": "Early signs of EPS growth deceleration from triple-digit levels that could trigger multiple compression and make the 139% debt load more concerning",
       "position_usd": 4177.12,
-      "position_pct": 0.0417,
+      "position_pct": 0.0419,
       "sector": "Healthcare",
       "last_review_ts": "2026-06-11T16:59:54.287229+00:00",
       "last_review_conviction": 8,
@@ -1208,9 +1214,9 @@
       "time_stop_flagged": false,
       "consecutive_weakened_count": 0,
       "is_remnant": false,
-      "current_price": 1157.45,
-      "unrealized_pl": 522.31,
-      "unrealized_plpc": 0.13978,
+      "current_price": 1168.21,
+      "unrealized_pl": 561.9,
+      "unrealized_plpc": 0.15038,
       "avg_entry": 1015.5,
       "trim_history": [
         {
@@ -1250,7 +1256,7 @@
       "status": "open",
       "key_risk": "manual review recommended",
       "position_usd": 7617.29,
-      "position_pct": 0.0716,
+      "position_pct": 0.0729,
       "sector": "Financial Services",
       "last_review_ts": "2026-06-11T17:00:43.903365+00:00",
       "last_review_conviction": 5,
@@ -1270,9 +1276,9 @@
           "basis_estimated": true
         }
       ],
-      "current_price": 208.085,
-      "unrealized_pl": 202.83,
-      "unrealized_plpc": 0.02849,
+      "current_price": 212.27,
+      "unrealized_pl": 350.1,
+      "unrealized_plpc": 0.04917,
       "avg_entry": 202.3212,
       "trim_pnl": 491.96,
       "stop_order_id": "afb8459c-b650-4f35-8585-19a36beee065"
@@ -1292,13 +1298,13 @@
       "status": "open",
       "key_risk": "Price breakdown below the 0.87 breakout level on volume above 1.5x average, which would invalidate the technical thesis component",
       "position_usd": 3063.57,
-      "position_pct": 0.0301,
+      "position_pct": 0.0307,
       "sector": "Financial Services",
       "trim_pnl": 0.0,
       "is_remnant": false,
-      "current_price": 134.865,
-      "unrealized_pl": 13.22,
-      "unrealized_plpc": 0.00431,
+      "current_price": 137.99,
+      "unrealized_pl": 84.51,
+      "unrealized_plpc": 0.02759,
       "avg_entry": 134.2856,
       "last_review_ts": "2026-06-10T21:38:20.946650+00:00",
       "last_review_conviction": 7,
@@ -18063,6 +18069,98 @@
       ],
       "regime": "bull",
       "vix_regime": "elevated_vix"
+    },
+    {
+      "ts": "2026-06-11T19:37:40.471077+00:00",
+      "run_type": "midday",
+      "candidates": [
+        "AMD",
+        "BAC",
+        "MU"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "scheduled",
+      "candidate_details": [
+        {
+          "symbol": "AMD",
+          "composite_score": 0.5615,
+          "signals": {
+            "eps_growth": 91.2,
+            "rev_growth": 37.8,
+            "growth_quality": "strong",
+            "rs_vs_sector_pct": 6.2,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.87,
+            "52wk_high": 546.44,
+            "volume_spike_ratio": 0.66,
+            "volume_spike": false,
+            "rsi": 57.1,
+            "macd_crossover": "False",
+            "bb_pct": 0.57,
+            "news_count": 5,
+            "top_headline": "Retail Is Cashing Out Of Micron, AMD, AI Stocks Ahead Of SpaceX IPO",
+            "news_quality": 0.5,
+            "pe_trailing": 163.7,
+            "pe_forward": 37.4,
+            "earnings_growth": 91.2
+          }
+        },
+        {
+          "symbol": "BAC",
+          "composite_score": 0.5382,
+          "signals": {
+            "eps_growth": 24.4,
+            "rev_growth": 8.1,
+            "growth_quality": "moderate",
+            "rs_vs_sector_pct": 8.1,
+            "sector": "Financial Services",
+            "sector_etf": "XLF",
+            "pct_of_52wk_range": 0.84,
+            "52wk_high": 57.55,
+            "volume_spike_ratio": 0.5,
+            "volume_spike": false,
+            "rsi": 71.2,
+            "macd_crossover": "False",
+            "bb_pct": 0.98,
+            "news_count": 4,
+            "top_headline": "Intel Stock Gets Rare Double Upgrade From Bank of America: Here's Why",
+            "news_quality": 0.25,
+            "pe_trailing": 13.7,
+            "pe_forward": 10.9,
+            "earnings_growth": 24.4
+          }
+        },
+        {
+          "symbol": "MU",
+          "composite_score": 0.5365,
+          "signals": {
+            "eps_growth": 756.0,
+            "rev_growth": 196.3,
+            "growth_quality": "strong",
+            "rs_vs_sector_pct": 19.1,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.9,
+            "52wk_high": 1089.29,
+            "volume_spike_ratio": 0.81,
+            "volume_spike": false,
+            "rsi": 61.6,
+            "macd_crossover": "False",
+            "bb_pct": 0.71,
+            "news_count": 10,
+            "top_headline": "Micron Shares Climb Over 3% After Key Trading Signal",
+            "news_quality": 0.25,
+            "pe_trailing": 46.5,
+            "pe_forward": 8.8,
+            "earnings_growth": 756.0,
+            "discovered": true
+          }
+        }
+      ],
+      "regime": "bull",
+      "vix_regime": "normal"
     }
   ],
   "debate_logs": [
@@ -21869,6 +21967,39 @@
       "bear_case": "Primary risk: unknown | Unresolved: ['unknown']",
       "bull_score": 8,
       "bear_score": 1,
+      "final_conviction": 6,
+      "decision": "buy"
+    },
+    {
+      "id": "debate_AMD_20260611193542",
+      "symbol": "AMD",
+      "ts": "2026-06-11T19:35:42.636087+00:00",
+      "bull_case": "R1 Bull(8): AMD's exceptional 91% EPS growth with forward P/E of 37.4x and PEG ratio of 1.1 creates a rare combination of explosive earnings expansion at reasonable valuation, while the tech selloff provides an optimal entry point before institutional money rotates back. | R1 Bear(7): AMD's debt-fueled growth story is colliding with a deteriorating technical picture and bearish sentiment cascade that the bull's 'contrarian opportunity' thesis dangerously underestimates. | R2 Bull(7): AMD's debt-financed 91% EPS growth combined with current technical weakness creates near-term volatility, but the fundamental AI datacenter story and reasonable PEG of 1.1 make any further selloff a strategic buying opportunity for the next upcycle. | R2 Bear(7): AMD's debt-fueled 91% EPS growth creates dangerous leverage exposure when the AI datacenter cycle peaks, while current technical weakness with low volume signals institutional distribution that contradicts the bull's 'accumulation opportunity' narrative.",
+      "bear_case": "Primary risk: Debt-fueled growth model collapses when AI/datacenter cycle peaks, leaving AMD overleveraged with unsustainable valuations as both retail and institutional selling pressure accelerates. | Unresolved: ['Debt-financed growth model vulnerability when AI/datacenter demand inevitably cycles down, leaving AMD overleveraged with unsustainable valuations']",
+      "bull_score": 7,
+      "bear_score": 7,
+      "final_conviction": 5,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_BAC_20260611193637",
+      "symbol": "BAC",
+      "ts": "2026-06-11T19:36:37.571289+00:00",
+      "bull_case": "R1 Bull(8): BAC is a coiled spring trading at fire-sale valuations despite explosive earnings growth, where regulatory noise creates the exact mispricings that generate alpha before consensus catches up. | R1 Bear(7): BAC's seemingly attractive valuation is a value trap masking severe regulatory risks that could trigger sustained capital flight and operational restrictions, making this a falling knife disguised as a bargain. | R2 Bull(7): BAC remains a coiled spring where regulatory overhang creates temporary valuation discount, but diversified business model and fortress balance sheet position the bank to absorb compliance costs while delivering explosive earnings leverage as rate environment normalizes | R2 Bear(8): BAC faces existential regulatory risk where debanking investigations represent the tip of an iceberg that could systematically constrain operations across all business lines, creating a value trap where current metrics become irrelevant under new regulatory reality",
+      "bear_case": "Primary risk: Regulatory investigation escalation could trigger systematic debanking restrictions that permanently impair BAC's business model, causing sustained institutional selling that overwhelms any valuation support. | Unresolved: [\"Regulatory investigation escalation triggering systematic operational restrictions that impair BAC's entire business model through compliance burdens and institutional client exodus\"]",
+      "bull_score": 7,
+      "bear_score": 8,
+      "final_conviction": 5,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_MU_20260611193740",
+      "symbol": "MU",
+      "ts": "2026-06-11T19:37:40.124792+00:00",
+      "bull_case": "R1 Bull(8): MU trades at a criminal 8.8x forward P/E despite 756% EPS growth, creating a monster value trap that springs when momentum investors recognize this isn't cyclical peak earnings but sustained memory demand acceleration. | R1 Bear(7): The 'high debt' flag combined with memory industry cyclicality creates catastrophic refinancing risk if this earnings surge reverses, while the 8.8x P/E isn't cheap\u2014it's the market pricing in mean reversion from unsustainable margins. | R2 Bull(7): MU remains undervalued at 8.8x forward P/E with strong balance sheet metrics providing adequate downside protection, though debt dynamics reduce the asymmetric upside potential in a cyclical downturn scenario. | R2 Bear(6): While MU's current financial cushion is adequate for moderate downturns, the timing risk of a severe memory cycle coinciding with 2026-2027 refinancing creates meaningful downside scenarios that justify the market's subdued valuation multiple.",
+      "bear_case": "Primary risk: Debt-fueled cyclical peak disguised as sustainable growth\u2014when memory cycle turns, high leverage amplifies losses while destroying the company's ability to weather the downturn through refinancing constraints. | Unresolved: ['Memory cycle timing risk - if downturn hits closer to 2026-2027 debt maturities, the company may not have sufficient time to delever before refinancing in a distressed credit environment']",
+      "bull_score": 7,
+      "bear_score": 6,
       "final_conviction": 6,
       "decision": "buy"
     }
@@ -30204,6 +30335,58 @@
       "pm_action": "buy",
       "pm_verdict": "Quality compounder play with strong fundamentals (7/10) supporting multi-quarter earnings durability, despite lack of near-term catalyst and one-sided debate structure.",
       "risk_category": "already_holding"
+    },
+    {
+      "ts": "2026-06-11T19:35:42.572958+00:00",
+      "symbol": "AMD",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 Technical deterioration with low volume represents genuine institutional selling pressure, not retail noise - this is a TYPE-A risk that could persist 2-4 weeks",
+      "conviction": 5,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 489.15,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "Below-average volume (0.67x) with bearish MACD signals institutional distribution that contradicts accumulation thesis, while debt sustainability concerns create material downside risk when AI cycle inevitably moderates.",
+      "risk_category": "pm_decision"
+    },
+    {
+      "ts": "2026-06-11T19:36:37.507053+00:00",
+      "symbol": "BAC",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 Bull failed to concretely rebut bear's TYPE-A point about regulatory investigation escalation - dismissing debanking as 'tiny fraction of revenue' ignores systemic compliance and reputational cascade effects that could impair the entire business model",
+      "conviction": 5,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 55.26,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "DOJ debanking investigation represents unresolved TYPE-A regulatory risk that could trigger operational restrictions and institutional exodus, while technical setup at resistance with moderate volume fails to overcome fundamental uncertainty.",
+      "risk_category": "pm_decision"
+    },
+    {
+      "ts": "2026-06-11T19:37:40.061210+00:00",
+      "symbol": "MU",
+      "action": "buy",
+      "reason": "PM conviction=6 | size=4% ($4,099) | regime=bull/normal | ATR=85.79 x3.0 | stop=$908.22 (-8.0%)",
+      "conviction": 6,
+      "rotate_from": "",
+      "position_usd": 4098.95,
+      "shares": 4.1521,
+      "entry_price": 987.2,
+      "stop_price": 908.22,
+      "stop_pct": 8.0,
+      "sector": "Technology",
+      "correlation": 0.0,
+      "pm_action": "buy",
+      "pm_verdict": "Quality compounder scenario with constructive analyst signals (tech 6/10, fundamental 8/10) and all unresolved bear points being systemic/cyclical rather than trade-specific catalysts.",
+      "risk_category": "approved"
     }
   ],
   "watchlists": [
@@ -50024,6 +50207,33 @@
       "det_signal": "bullish",
       "det_strength": 8,
       "agree": false
+    },
+    {
+      "ts": "2026-06-11T19:34:54.257436+00:00",
+      "symbol": "AMD",
+      "llm_signal": "neutral",
+      "llm_strength": 4,
+      "det_signal": "bullish",
+      "det_strength": 8,
+      "agree": false
+    },
+    {
+      "ts": "2026-06-11T19:35:47.359710+00:00",
+      "symbol": "BAC",
+      "llm_signal": "neutral",
+      "llm_strength": 5,
+      "det_signal": "neutral",
+      "det_strength": 6,
+      "agree": true
+    },
+    {
+      "ts": "2026-06-11T19:36:42.476369+00:00",
+      "symbol": "MU",
+      "llm_signal": "bullish",
+      "llm_strength": 6,
+      "det_signal": "bullish",
+      "det_strength": 8,
+      "agree": true
     }
   ],
   "pre_debate_gates": [
@@ -50356,6 +50566,43 @@
           "reason": "held"
         }
       ]
+    },
+    {
+      "ts": "2026-06-11T19:34:50.223719+00:00",
+      "regime": "bull",
+      "vix_regime": "normal",
+      "run_reason": "scheduled",
+      "n_candidates": 3,
+      "would_buy": [
+        {
+          "symbol": "AMD",
+          "composite_score": 0.5615,
+          "price": 489.47,
+          "size_pct": 0.06,
+          "position_usd": 6148.43,
+          "stop_price": 450.31,
+          "sector": "Technology"
+        },
+        {
+          "symbol": "BAC",
+          "composite_score": 0.5382,
+          "price": 55.26,
+          "size_pct": 0.06,
+          "position_usd": 6148.43,
+          "stop_price": 52.44,
+          "sector": "Financial Services"
+        },
+        {
+          "symbol": "MU",
+          "composite_score": 0.5365,
+          "price": 987.37,
+          "size_pct": 0.06,
+          "position_usd": 6148.43,
+          "stop_price": 908.38,
+          "sector": "Technology"
+        }
+      ],
+      "skipped": []
     }
   ],
   "universe_discovery": [
@@ -51203,6 +51450,438 @@
           "symbol": "DSYWW",
           "source": "movers_gainers",
           "reason": "blowoff_day_gain 167.5%"
+        }
+      ],
+      "core_size": 112
+    },
+    {
+      "ts": "2026-06-11T19:31:15.864019+00:00",
+      "accepted": [
+        {
+          "symbol": "AAL",
+          "source": "most_actives",
+          "day_gain_pct": 6.93,
+          "gain_5d_pct": 7.89,
+          "price": 14.34
+        },
+        {
+          "symbol": "NOK",
+          "source": "most_actives",
+          "day_gain_pct": 5.07,
+          "gain_5d_pct": -15.28,
+          "price": 14.08
+        },
+        {
+          "symbol": "MU",
+          "source": "most_actives",
+          "day_gain_pct": 10.41,
+          "gain_5d_pct": -1.13,
+          "price": 984.76
+        },
+        {
+          "symbol": "PATH",
+          "source": "most_actives",
+          "day_gain_pct": -1.02,
+          "gain_5d_pct": -8.83,
+          "price": 10.64
+        },
+        {
+          "symbol": "MRVL",
+          "source": "most_actives",
+          "day_gain_pct": 11.13,
+          "gain_5d_pct": -11.29,
+          "price": 280.71
+        },
+        {
+          "symbol": "KEEL",
+          "source": "most_actives",
+          "day_gain_pct": 4.19,
+          "gain_5d_pct": -7.76,
+          "price": 5.47
+        },
+        {
+          "symbol": "IREN",
+          "source": "most_actives",
+          "day_gain_pct": 10.52,
+          "gain_5d_pct": -7.95,
+          "price": 56.98
+        }
+      ],
+      "rejected": [
+        {
+          "symbol": "SOXS",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "ADTX",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "TZA",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "BITO",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "TOVX",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "PPCB",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "RUBI",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "CCHH",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "GELS",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "SPDN",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "RKDA",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "GLXG",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "SQQQ",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "TQQQ",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "CPOP",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "SPCE",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "NVD",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "BMNU",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "CPNG",
+          "source": "most_actives",
+          "reason": "blowoff_day_gain 13.6%"
+        },
+        {
+          "symbol": "LYG",
+          "source": "most_actives",
+          "reason": "no_uptrend"
+        },
+        {
+          "symbol": "SOXL",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "WTO",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "EDHL",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "SPY",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "TSLL",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "DRIP",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "QQQ",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "RDW",
+          "source": "most_actives",
+          "reason": "blowoff_day_gain 15.3%"
+        },
+        {
+          "symbol": "SNDQ",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "BATL",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "YYGH",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "AMC",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "UVIX",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "NTCL",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "GRAB",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "LASE",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "MSTU",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "SNXX",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "KLAG",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 24.8%"
+        },
+        {
+          "symbol": "GLMD",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 24.9%"
+        },
+        {
+          "symbol": "ENGNW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 25.0%"
+        },
+        {
+          "symbol": "MNTSW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 25.5%"
+        },
+        {
+          "symbol": "CPNX",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 26.1%"
+        },
+        {
+          "symbol": "ILLRW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 26.2%"
+        },
+        {
+          "symbol": "ASTI",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 27.0%"
+        },
+        {
+          "symbol": "RDWU",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 27.5%"
+        },
+        {
+          "symbol": "RITR",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 28.7%"
+        },
+        {
+          "symbol": "CPSH",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 28.9%"
+        },
+        {
+          "symbol": "SNDG",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 28.9%"
+        },
+        {
+          "symbol": "SNDU",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 29.4%"
+        },
+        {
+          "symbol": "RDACR",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 29.4%"
+        },
+        {
+          "symbol": "ESLAW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 30.0%"
+        },
+        {
+          "symbol": "SATLW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 30.7%"
+        },
+        {
+          "symbol": "LUNL",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 30.9%"
+        },
+        {
+          "symbol": "BQ",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 31.5%"
+        },
+        {
+          "symbol": "MTEN",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 32.2%"
+        },
+        {
+          "symbol": "KORU",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 32.6%"
+        },
+        {
+          "symbol": "FLYT",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 34.0%"
+        },
+        {
+          "symbol": "AMPGR",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 34.0%"
+        },
+        {
+          "symbol": "COCHW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 34.5%"
+        },
+        {
+          "symbol": "HSPT",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 34.6%"
+        },
+        {
+          "symbol": "AERT",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 35.3%"
+        },
+        {
+          "symbol": "VELO",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 37.0%"
+        },
+        {
+          "symbol": "BREZR",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 37.1%"
+        },
+        {
+          "symbol": "TLSIW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 44.2%"
+        },
+        {
+          "symbol": "ADIL",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 44.9%"
+        },
+        {
+          "symbol": "UBXG",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 45.1%"
+        },
+        {
+          "symbol": "MNTS",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 45.1%"
+        },
+        {
+          "symbol": "INDP",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 45.9%"
+        },
+        {
+          "symbol": "DAICW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 53.3%"
+        },
+        {
+          "symbol": "CELUW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 58.3%"
+        },
+        {
+          "symbol": "CDTTW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 65.7%"
+        },
+        {
+          "symbol": "VELL",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 72.6%"
+        },
+        {
+          "symbol": "QH",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 94.2%"
+        },
+        {
+          "symbol": "SPKLW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 471.4%"
         }
       ],
       "core_size": 112

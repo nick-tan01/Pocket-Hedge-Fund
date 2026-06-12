@@ -611,6 +611,12 @@
       "portfolio_value": 102540.81,
       "cash": 79353.87,
       "spy_price": 741.92
+    },
+    {
+      "ts": "2026-06-12T20:44:49.858897+00:00",
+      "portfolio_value": 102482.77,
+      "cash": 79353.87,
+      "spy_price": 741.75
     }
   ],
   "trades": [
@@ -1234,11 +1240,11 @@
       "conviction": 7,
       "debate_id": "debate_LLY_20260519190455",
       "status": "open",
-      "key_risk": "Any signs of EPS growth deceleration below the exceptional current levels or margin compression that could trigger the feared multiple compression, especially given the unchanged debt-to-equity concerns.",
+      "key_risk": "Any signs of EPS growth deceleration below current exceptional levels, as the 139% debt-to-equity ratio creates amplified downside risk if the growth engine falters",
       "position_usd": 4177.12,
       "position_pct": 0.0408,
       "sector": "Healthcare",
-      "last_review_ts": "2026-06-12T18:26:08.281577+00:00",
+      "last_review_ts": "2026-06-12T20:38:25.656895+00:00",
       "last_review_conviction": 7,
       "thesis_status": "intact",
       "time_stop_flagged": false,
@@ -1284,11 +1290,11 @@
       "conviction": 8,
       "debate_id": "debate_MS_20260522185742",
       "status": "open",
-      "key_risk": "Signs of credit market stress or deterioration in private credit markets that could trigger deleveraging given the high debt-to-equity ratio",
+      "key_risk": "Any signs of credit market stress or rising funding costs that could pressure the 502.2% debt-to-equity ratio and trigger deleveraging",
       "position_usd": 7617.29,
       "position_pct": 0.0738,
       "sector": "Financial Services",
-      "last_review_ts": "2026-06-12T18:26:58.450771+00:00",
+      "last_review_ts": "2026-06-12T20:39:12.796222+00:00",
       "last_review_conviction": 8,
       "thesis_status": "intact",
       "time_stop_flagged": false,
@@ -1326,7 +1332,7 @@
       "conviction": 6,
       "debate_id": "debate_C_20260610165355",
       "status": "open",
-      "key_risk": "ROE improvement trajectory and whether earnings growth is translating to better capital efficiency rather than just scale expansion, as this was our original key risk that could break the thesis",
+      "key_risk": "ROE improvement trajectory - whether the improved M&A ranking and deal flow momentum translates to measurable capital efficiency gains above the concerning 7.6% baseline ROE",
       "position_usd": 3063.57,
       "position_pct": 0.0312,
       "sector": "Financial Services",
@@ -1336,8 +1342,8 @@
       "unrealized_pl": 137.44,
       "unrealized_plpc": 0.04486,
       "avg_entry": 134.2856,
-      "last_review_ts": "2026-06-12T16:26:20.234686+00:00",
-      "last_review_conviction": 6,
+      "last_review_ts": "2026-06-12T20:40:06.610208+00:00",
+      "last_review_conviction": 7,
       "thesis_status": "intact",
       "time_stop_flagged": false,
       "consecutive_weakened_count": 0
@@ -1355,7 +1361,7 @@
       "conviction": 6,
       "debate_id": "debate_AMD_20260612162936",
       "status": "open",
-      "key_risk": "Volume remaining below average on continued gains would signal institutional distribution and warrant exit",
+      "key_risk": "Volume patterns and institutional flow - any sustained below-average volume on continued gains would signal distribution per original risk framework",
       "position_usd": 4104.54,
       "position_pct": 0.0401,
       "sector": "Technology",
@@ -1364,7 +1370,12 @@
       "current_price": 514.2393,
       "unrealized_pl": 7.47,
       "unrealized_plpc": 0.00182,
-      "avg_entry": 513.3051
+      "avg_entry": 513.3051,
+      "last_review_ts": "2026-06-12T20:40:56.149525+00:00",
+      "last_review_conviction": 7,
+      "thesis_status": "intact",
+      "time_stop_flagged": false,
+      "consecutive_weakened_count": 0
     }
   ],
   "runs": [
@@ -19609,6 +19620,313 @@
       ],
       "regime": "bull",
       "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-06-12T20:44:49.950417+00:00",
+      "run_type": "midday",
+      "candidates": [
+        "AMAT",
+        "AMD",
+        "LLY",
+        "C"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "sentinel_trigger",
+      "candidate_details": [
+        {
+          "symbol": "AMAT",
+          "composite_score": 0.5547,
+          "signals": {
+            "eps_growth": 33.5,
+            "rev_growth": 11.4,
+            "growth_quality": "moderate",
+            "rs_vs_sector_pct": 26.0,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.99,
+            "52wk_high": 569.92,
+            "volume_spike_ratio": 0.83,
+            "volume_spike": false,
+            "rsi": 74.2,
+            "macd_crossover": "False",
+            "bb_pct": 1.07,
+            "news_count": 3,
+            "top_headline": "Dow Jumps Over 900 Points On US-Iran Deal Optimism: Investor Sentiment Improves, Greed Index Remains In 'Fear' Zone",
+            "news_quality": 0.5,
+            "pe_trailing": 53.5,
+            "pe_forward": 34.9,
+            "earnings_growth": 33.5
+          }
+        },
+        {
+          "symbol": "AMD",
+          "composite_score": 0.553,
+          "signals": {
+            "eps_growth": 91.2,
+            "rev_growth": 37.8,
+            "growth_quality": "strong",
+            "rs_vs_sector_pct": 10.8,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.92,
+            "52wk_high": 546.44,
+            "volume_spike_ratio": 0.97,
+            "volume_spike": false,
+            "rsi": 60.5,
+            "macd_crossover": "False",
+            "bb_pct": 0.7,
+            "news_count": 10,
+            "top_headline": "10 Information Technology Stocks With Whale Alerts In Today's Session",
+            "news_quality": 0.25,
+            "pe_trailing": 171.7,
+            "pe_forward": 39.0,
+            "earnings_growth": 91.2
+          }
+        },
+        {
+          "symbol": "LLY",
+          "composite_score": 0.528,
+          "signals": {
+            "eps_growth": 169.9,
+            "rev_growth": 55.5,
+            "growth_quality": "strong",
+            "rs_vs_sector_pct": 7.8,
+            "sector": "Healthcare",
+            "sector_etf": "XLV",
+            "pct_of_52wk_range": 0.91,
+            "52wk_high": 1182.73,
+            "volume_spike_ratio": 0.75,
+            "volume_spike": false,
+            "rsi": 63.2,
+            "macd_crossover": "False",
+            "bb_pct": 0.72,
+            "news_count": 2,
+            "top_headline": "American Express, Live Nation And A Health Care Stock: CNBC's 'Final Trades'",
+            "news_quality": 0.0,
+            "pe_trailing": 40.3,
+            "pe_forward": 25.5,
+            "earnings_growth": 169.9
+          }
+        },
+        {
+          "symbol": "C",
+          "composite_score": 0.5197,
+          "signals": {
+            "eps_growth": 56.1,
+            "rev_growth": 15.9,
+            "growth_quality": "moderate",
+            "rs_vs_sector_pct": 8.0,
+            "sector": "Financial Services",
+            "sector_etf": "XLF",
+            "pct_of_52wk_range": 0.98,
+            "52wk_high": 141.12,
+            "volume_spike_ratio": 0.85,
+            "volume_spike": false,
+            "rsi": 69.9,
+            "macd_crossover": "False",
+            "bb_pct": 0.99,
+            "news_count": 3,
+            "top_headline": "SpaceX IPO: First Indicative Price At $174 Per Share",
+            "news_quality": 0.0,
+            "pe_trailing": 17.3,
+            "pe_forward": 11.2,
+            "earnings_growth": 56.1
+          }
+        }
+      ],
+      "event_symbols": [
+        "ACLS",
+        "AMAT",
+        "AMD",
+        "ARM",
+        "C",
+        "COHR",
+        "HIMS",
+        "LLY",
+        "MS",
+        "MSTR",
+        "ONTO",
+        "QCOM",
+        "RKLB",
+        "SMCI",
+        "TSLA",
+        "TTD"
+      ],
+      "event_details": [
+        {
+          "symbol": "ACLS",
+          "trigger_type": "intraday_move",
+          "value": 0.0369,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": 0.0369,
+          "latest": 180.03,
+          "previous_close": 173.62
+        },
+        {
+          "symbol": "AMAT",
+          "trigger_type": "intraday_rebound",
+          "value": 0.0387,
+          "threshold": 0.035,
+          "severity": "normal",
+          "latest": 567.19,
+          "intraday_low": 546.08
+        },
+        {
+          "symbol": "AMD",
+          "trigger_type": "intraday_move",
+          "value": 0.0469,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": 0.0469,
+          "latest": 511.12,
+          "previous_close": 488.21
+        },
+        {
+          "symbol": "ARM",
+          "trigger_type": "intraday_move",
+          "value": 0.1114,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": 0.1114,
+          "latest": 380.47,
+          "previous_close": 342.32
+        },
+        {
+          "symbol": "ARM",
+          "trigger_type": "intraday_rebound",
+          "value": 0.0654,
+          "threshold": 0.035,
+          "severity": "high",
+          "latest": 380.47,
+          "intraday_low": 357.1
+        },
+        {
+          "symbol": "COHR",
+          "trigger_type": "intraday_rebound",
+          "value": 0.069,
+          "threshold": 0.035,
+          "severity": "high",
+          "latest": 385.05,
+          "intraday_low": 360.2
+        },
+        {
+          "symbol": "HIMS",
+          "trigger_type": "intraday_move",
+          "value": 0.07,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": -0.07,
+          "latest": 26.82,
+          "previous_close": 28.84
+        },
+        {
+          "symbol": "MSTR",
+          "trigger_type": "intraday_rebound",
+          "value": 0.0568,
+          "threshold": 0.035,
+          "severity": "normal",
+          "latest": 123.96,
+          "intraday_low": 117.3
+        },
+        {
+          "symbol": "ONTO",
+          "trigger_type": "intraday_move",
+          "value": 0.0663,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": 0.0663,
+          "latest": 323.75,
+          "previous_close": 303.61
+        },
+        {
+          "symbol": "ONTO",
+          "trigger_type": "intraday_rebound",
+          "value": 0.0624,
+          "threshold": 0.035,
+          "severity": "high",
+          "latest": 323.75,
+          "intraday_low": 304.74
+        },
+        {
+          "symbol": "QCOM",
+          "trigger_type": "intraday_move",
+          "value": 0.0432,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": 0.0432,
+          "latest": 211.67,
+          "previous_close": 202.9
+        },
+        {
+          "symbol": "RKLB",
+          "trigger_type": "intraday_move",
+          "value": 0.1076,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": -0.1076,
+          "latest": 102.42,
+          "previous_close": 114.77
+        },
+        {
+          "symbol": "SMCI",
+          "trigger_type": "intraday_move",
+          "value": 0.0469,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": -0.0469,
+          "latest": 30.46,
+          "previous_close": 31.96
+        },
+        {
+          "symbol": "TSLA",
+          "trigger_type": "intraday_rebound",
+          "value": 0.0446,
+          "threshold": 0.035,
+          "severity": "normal",
+          "latest": 406.45,
+          "intraday_low": 389.09
+        },
+        {
+          "symbol": "TTD",
+          "trigger_type": "intraday_rebound",
+          "value": 0.0482,
+          "threshold": 0.035,
+          "severity": "normal",
+          "latest": 19.26,
+          "intraday_low": 18.38
+        },
+        {
+          "symbol": "LLY",
+          "trigger_type": "position_move",
+          "value": 0.1155,
+          "threshold": 0.025,
+          "severity": "high",
+          "price": 1133.0,
+          "entry": 1015.67
+        },
+        {
+          "symbol": "MS",
+          "trigger_type": "position_move",
+          "value": 0.0571,
+          "threshold": 0.025,
+          "severity": "high",
+          "price": 214.04,
+          "entry": 202.48
+        },
+        {
+          "symbol": "C",
+          "trigger_type": "position_move",
+          "value": 0.0413,
+          "threshold": 0.025,
+          "severity": "normal",
+          "price": 139.83,
+          "entry": 134.29
+        }
+      ],
+      "regime": "bull",
+      "vix_regime": "normal"
     }
   ],
   "debate_logs": [
@@ -23659,6 +23977,50 @@
       "bear_score": 8,
       "final_conviction": 4,
       "decision": "skip"
+    },
+    {
+      "id": "debate_AMAT_20260612204210",
+      "symbol": "AMAT",
+      "ts": "2026-06-12T20:42:10.054186+00:00",
+      "bull_case": "R1 Bull(8): AMAT is positioned for momentum continuation as AI infrastructure demand accelerates, with technical breakout signals confirming fundamental strength in a recovering semiconductor cycle. | R1 Bear(6): AMAT's momentum is dangerously extended with RSI at 74.2 and Bollinger %B at 1.07 after a 25% rally, while cyclical semiconductor exposure creates vulnerability to inevitable AI spending normalization that forward P/E of 34.9 doesn't adequately discount. | R2 Bull(7): AMAT remains positioned for AI infrastructure demand acceleration, though near-term momentum may face headwinds from potential institutional distribution patterns requiring closer volume monitoring. | R2 Bear(7): AMAT's 34.9x forward P/E at likely cyclical earnings peak creates asymmetric downside risk when AI capex spending inevitably normalizes, with technical momentum indicators confirming dangerous overextension.",
+      "bear_case": "Primary risk: Cyclical peak trap where we buy at maximum earnings/valuation multiples just as semiconductor capex cycle turns, creating 40%+ downside when both EPS growth and P/E multiples compress simultaneously. | Unresolved: ['Cyclical peak trap where buying at maximum earnings/valuation multiples as semiconductor capex cycle turns creates 40%+ downside from simultaneous EPS growth deceleration and P/E compression']",
+      "bull_score": 7,
+      "bear_score": 7,
+      "final_conviction": 5,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_AMD_20260612204305",
+      "symbol": "AMD",
+      "ts": "2026-06-12T20:43:05.068501+00:00",
+      "bull_case": "R1 Bull(8): AMD's exceptional 91.2% EPS acceleration is driving multiple expansion as the forward P/E compresses to 39x, creating a rare momentum breakout where fundamental catch-up meets technical confirmation. | R1 Bear(7): AMD's 6.0 debt/equity ratio creates a fragile capital structure that transforms any earnings deceleration into a liquidity crisis, while retail investors are already cashing out despite the technical momentum. | R2 Bull(7): AMD's AI-driven transformation to higher-margin data center revenue reduces traditional cyclical risk, allowing the company to support current leverage while 91% EPS growth drives multiple expansion toward fair value. | R2 Bear(8): AMD's extreme 6.0 debt/equity ratio creates existential risk during any semiconductor downturn, regardless of end-market mix, as inventory corrections and demand shocks affect all chip segments simultaneously.",
+      "bear_case": "Primary risk: Debt service costs on the 6.0 debt/equity ratio will consume cash flow during any cyclical downturn, forcing emergency dilution that could cut the stock price in half within weeks | Unresolved: [\"The bull assumes AI/data center demand is acyclical, but semiconductor downturns are typically inventory-driven across all segments, and AMD's 6.0 debt ratio leaves zero margin for error when the cycle turns\"]",
+      "bull_score": 7,
+      "bear_score": 8,
+      "final_conviction": 5,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_LLY_20260612204400",
+      "symbol": "LLY",
+      "ts": "2026-06-12T20:44:00.575541+00:00",
+      "bull_case": "R1 Bull(8): LLY is experiencing exceptional fundamental momentum with 170% EPS growth that's being validated by strong technical continuation signals, creating a rare alignment of growth acceleration and technical breakout potential. | R1 Bear(7): LLY's 139% debt-to-equity ratio creates unsustainable leverage risk that the market hasn't recognized, while technical signals near resistance with heavy institutional positioning suggest exhaustion rather than continuation. | R2 Bull(7): LLY's dominant obesity franchise with 170% EPS growth and technical momentum continuation (ADX>25) outweighs balance sheet concerns in a structurally growing market, though leverage does create downside risk on any execution stumbles | R2 Bear(6): While LLY's obesity cash flows currently support high leverage, competitive threats to pricing power and technical distribution signals create asymmetric downside risk that outweighs momentum factors.",
+      "bear_case": "Primary risk: Debt-to-equity ratio of 139% creates margin call risk on any earnings disappointment, potentially forcing emergency dilutive equity raises that could cut share price in half regardless of fundamental merit. | Unresolved: ['Market saturation risk as competitors enter obesity space could quickly erode pricing power and cash flows supporting current debt levels', 'Technical exhaustion signals near resistance levels suggest institutional distribution despite momentum indicators']",
+      "bull_score": 7,
+      "bear_score": 6,
+      "final_conviction": 7,
+      "decision": "buy"
+    },
+    {
+      "id": "debate_C_20260612204449",
+      "symbol": "C",
+      "ts": "2026-06-12T20:44:49.631450+00:00",
+      "bull_case": "R1 Bull(8): Citigroup represents a classic momentum breakout with fundamental validation - 56% EPS growth trading at only 11.2x forward P/E while technical momentum accelerates through confirmed uptrend with ADX>25. | R1 Bear(6): Citigroup's momentum breakout is built on unsustainable M&A fee income in a sideways market regime, while the fundamental rot of 7.6% ROE - catastrophically low for financials - signals structural inefficiency that explosive EPS growth cannot mask. | R2 Bull(6): Citigroup offers asymmetric upside as a turnaround story with 56% EPS growth momentum and strong technical breakout, though execution risk around ROE improvement creates meaningful downside protection needs. | R2 Bear(6): While Fraser's transformation may eventually improve ROE, Citigroup's current momentum depends on unsustainable peak M&A fees that will reverse before structural efficiency gains materialize.",
+      "bear_case": "Primary risk: M&A advisory fees are inherently cyclical and already peaking - any slowdown in deal activity will expose the structural ROE problem while triggering technical selling from overbought levels with weak volume support. | Unresolved: ['M&A advisory fees are inherently cyclical and already peaking - any slowdown in deal activity will expose the structural ROE problem']",
+      "bull_score": 6,
+      "bear_score": 6,
+      "final_conviction": 6,
+      "decision": "buy"
     }
   ],
   "position_reviews": [
@@ -27614,6 +27976,58 @@
       "key_risk_to_monitor": "Signs of credit market stress or deterioration in private credit markets that could trigger deleveraging given the high debt-to-equity ratio",
       "current_bull_case": "R1 Bull(8): Morgan Stanley is positioned for a major breakout as investment banking revenue surges from high-profile deals like the $100M SpaceX IPO fee while institutional buying accelerates into confirmed technical momentum. | R2 Bull(7): Morgan Stanley remains a strong breakout candidate despite volume concerns, as their proven ability to capture mega-deal fees like SpaceX creates sustainable competitive advantages that will drive institutional accumulation once technical momentum gains broader participation",
       "current_bear_case": "R1 Bear(6): Morgan Stanley's momentum is built on unsustainable fee windfalls while stretched growth expectations (PEG 2.5) and high leverage create significant downside risk in a sideways market regime. | R2 Bear(6): Morgan Stanley's high leverage and stretched valuation (PEG 2.5) create asymmetric downside risk when lumpy investment banking fees revert to mean, regardless of technical breakout patterns."
+    },
+    {
+      "trade_id": "LLY_20260519190455",
+      "symbol": "LLY",
+      "ts": "2026-06-12T20:38:25.593391+00:00",
+      "action": "hold",
+      "conviction": 7,
+      "thesis_status": "intact",
+      "rationale": "The original thesis of explosive earnings momentum (170% EPS growth vs original 169.9%) with exceptional margins (35% maintained) remains fully intact and is actually strengthening with continued technical momentum confirmation.",
+      "original_thesis_check": "The specific catalyst of unstoppable earnings momentum overwhelming regulatory noise is still true - EPS growth remains at exceptional 170% levels with maintained 35% margins, while recent FDA approval of EBGLYSS demonstrates continued regulatory success rather than the feared regulatory headwinds.",
+      "key_risk_to_monitor": "Any signs of EPS growth deceleration below current exceptional levels, as the 139% debt-to-equity ratio creates amplified downside risk if the growth engine falters",
+      "current_bull_case": "R1 Bull(8): LLY's exceptional fundamentals (170% EPS growth, 35% margins) are accelerating through momentum continuation confirmed by ADX 39.2 with dominant +DI, creating a rare combination of explosive growth meeting technical breakout. | R2 Bull(7): LLY's dominant position in the transformational obesity market with 170% EPS growth and strong technical momentum (ADX 39.2) outweighs leverage concerns given the company's exceptional cash generation capacity from a franchise addressing a $100B+ addressable market.",
+      "current_bear_case": "R1 Bear(7): LLY's 139% debt-to-equity ratio creates unsustainable capital structure vulnerability that will amplify any growth deceleration, while technical momentum at upper Bollinger Band resistance suggests an imminent reversal from overbought levels. | R2 Bear(6): While LLY's cash generation mitigates immediate leverage concerns, the company's binary dependence on the obesity franchise amplifies risk of synchronized fundamental and technical breakdown if this single profit engine faces disruption."
+    },
+    {
+      "trade_id": "MS_20260522185742",
+      "symbol": "MS",
+      "ts": "2026-06-12T20:39:12.734571+00:00",
+      "action": "hold",
+      "conviction": 8,
+      "thesis_status": "intact",
+      "rationale": "The original thesis of capturing generational IPO mandates while trading at attractive valuations remains fully intact, with the $100M SpaceX IPO fee directly validating our investment case. Technical and fundamental signals have strengthened while the core risk of credit market stress has not materialized.",
+      "original_thesis_check": "Yes, Morgan Stanley is actively capturing high-value IPO mandates (SpaceX $100M fee) and still trades at reasonable valuations (16.8x forward P/E) with strong margins (24.8%), exactly as our original thesis predicted.",
+      "key_risk_to_monitor": "Any signs of credit market stress or rising funding costs that could pressure the 502.2% debt-to-equity ratio and trigger deleveraging",
+      "current_bull_case": "R1 Bull(8): Morgan Stanley is breaking out on multiple catalysts with $100M SpaceX IPO fees providing immediate earnings lift while technical momentum (ADX 40.2) confirms institutional accumulation ahead of consensus recognition. | R2 Bull(7): Morgan Stanley's technical breakout with ADX 40.2 confirming strong momentum is supported by demonstrated ability to capture premium IPO mandates, positioning the bank for continued outperformance as the unicorn IPO cycle accelerates",
+      "current_bear_case": "R1 Bear(7): Morgan Stanley's extreme 502.2% debt/equity ratio creates catastrophic downside risk in any credit stress scenario, while the $100M SpaceX fee is a one-time event being extrapolated into sustainable momentum. | R2 Bear(7): Morgan Stanley's extreme leverage creates existential risk in credit stress scenarios that no amount of IPO fee momentum can offset, while technical breakouts are meaningless against balance sheet fragility."
+    },
+    {
+      "trade_id": "C_20260610165357",
+      "symbol": "C",
+      "ts": "2026-06-12T20:40:06.548540+00:00",
+      "action": "hold",
+      "conviction": 7,
+      "thesis_status": "intact",
+      "rationale": "The original thesis of explosive earnings momentum being underpriced remains intact with 56% EPS growth continuing and strong business momentum evidenced by #1 M&A ranking and major deal flow. Technical confirmation (ADX>25) supports this as momentum continuation rather than a value trap.",
+      "original_thesis_check": "Yes - explosive earnings momentum (56% EPS growth) continues and market still underpricing at reasonable forward P/E, with technical momentum confirming breakout rather than value trap scenario",
+      "key_risk_to_monitor": "ROE improvement trajectory - whether the improved M&A ranking and deal flow momentum translates to measurable capital efficiency gains above the concerning 7.6% baseline ROE",
+      "current_bull_case": "R1 Bull(8): Citigroup is breaking out on legitimate business momentum with Trump's public endorsement of their #1 M&A ranking coinciding with massive deal flow like the $17.5B Amazon facility, while technical momentum (ADX>25, +DI 30.5 vs -DI 7.8) confirms this isn't just hype. | R2 Bull(7): Citigroup's breakout reflects early-stage operational momentum from improved capital deployment evidenced by #1 M&A ranking, with technical strength (ADX>25) confirming the trend despite ROE headwinds that should improve as restructuring benefits materialize",
+      "current_bear_case": "R1 Bear(7): Citigroup's 7.6% ROE reveals fundamental capital inefficiency that makes this a value trap disguised as a growth story, while political endorsement creates fragile sentiment dependency at technically overbought levels. | R2 Bear(7): Citigroup remains a value trap where episodic M&A successes mask persistent capital allocation dysfunction, as 7.6% ROE signals fundamental structural problems that won't be fixed by temporary deal flow momentum."
+    },
+    {
+      "trade_id": "AMD_20260612162939",
+      "symbol": "AMD",
+      "ts": "2026-06-12T20:40:56.086619+00:00",
+      "action": "hold",
+      "conviction": 7,
+      "thesis_status": "intact",
+      "rationale": "The original AI transformation thesis remains fully supported with 91.2% EPS growth and forward P/E compression to 39x indicating revenue acceleration, while technical momentum continues with strong directional indicators and analyst upgrades validating institutional confidence.",
+      "original_thesis_check": "AMD's explosive 91.2% EPS growth validating AI transformation story remains true, and technical momentum above support levels continues with RSI at 60.5 providing further runway - the core thesis is intact",
+      "key_risk_to_monitor": "Volume patterns and institutional flow - any sustained below-average volume on continued gains would signal distribution per original risk framework",
+      "current_bull_case": "R1 Bull(8): AMD's exceptional 91.2% earnings growth with forward P/E of only 39x creates a rare growth-at-reasonable-price opportunity in the AI acceleration cycle, supported by strong technical momentum that institutional upgrades are now validating. | R2 Bull(7): AMD's forward P/E compression from 171x to 39x signals the AI investment cycle is transitioning from cost phase to revenue acceleration phase, with technical momentum confirming institutional confidence in execution despite temporary ROE pressure.",
+      "current_bear_case": "R1 Bear(7): AMD's fundamentally broken profitability metrics with 8.1% ROE and 171.7x TTM P/E signal a company burning through capital to generate growth that institutional money will abandon once the AI hype cycle peaks. | R2 Bear(8): AMD's 8.1% ROE reflects systematic capital allocation problems that forward P/E compression cannot solve, creating institutional selling pressure when AI margin promises inevitably disappoint in an increasingly competitive landscape."
     }
   ],
   "risk_decisions": [
@@ -32488,6 +32902,74 @@
       "pm_action": "skip",
       "pm_verdict": "The weak trend environment (ADX 14.1) creates genuine false breakout risk that the bull conceded, dropping their conviction to just 3/10 for what amounts to a pure momentum play without fundamental support.",
       "risk_category": "pm_decision"
+    },
+    {
+      "ts": "2026-06-12T20:42:09.982192+00:00",
+      "symbol": "AMAT",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 Bull failed to rebut the core TYPE-A risk of buying at cyclical earnings peak with 34.9x forward P/E when semiconductor capex cycles inevitably turn",
+      "conviction": 5,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 567.25,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "The bear's cyclical peak trap argument remains completely unaddressed, creating asymmetric downside risk that outweighs momentum signals in a stock already up 25% with extended valuations.",
+      "risk_category": "pm_decision"
+    },
+    {
+      "ts": "2026-06-12T20:43:04.995240+00:00",
+      "symbol": "AMD",
+      "action": "hold",
+      "reason": "Already holding AMD",
+      "conviction": 5,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 511.57,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "While technical momentum is confirmed with ADX>25 and strong fundamentals show 91% EPS growth, the 6.0 debt/equity ratio creates genuine execution risk that neither side adequately resolved, and no specific catalyst justifies the elevated risk.",
+      "risk_category": "already_holding"
+    },
+    {
+      "ts": "2026-06-12T20:44:00.501254+00:00",
+      "symbol": "LLY",
+      "action": "hold",
+      "reason": "Already holding LLY",
+      "conviction": 7,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 1133.0,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "buy",
+      "pm_verdict": "Strong fundamental momentum (170% EPS growth) with confirmed technical continuation signals (ADX>25, RSI 63.2) creates a compelling risk-reward setup where structural obesity market growth outweighs balance sheet leverage concerns.",
+      "risk_category": "already_holding"
+    },
+    {
+      "ts": "2026-06-12T20:44:49.558490+00:00",
+      "symbol": "C",
+      "action": "hold",
+      "reason": "Already holding C",
+      "conviction": 6,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 139.83,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "buy",
+      "pm_verdict": "Quality-compounder lane: Strong analyst consensus (7/7/7) with confirmed technical momentum (ADX>25) supports multi-quarter turnaround thesis despite structural ROE concerns requiring reduced size.",
+      "risk_category": "already_holding"
     }
   ],
   "watchlists": [
@@ -53454,6 +53936,78 @@
       "det_signal": "neutral",
       "det_strength": 6,
       "agree": true
+    },
+    {
+      "ts": "2026-06-12T20:37:37.627663+00:00",
+      "symbol": "LLY",
+      "llm_signal": "bullish",
+      "llm_strength": 7,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": true
+    },
+    {
+      "ts": "2026-06-12T20:38:29.582395+00:00",
+      "symbol": "MS",
+      "llm_signal": "bullish",
+      "llm_strength": 7,
+      "det_signal": "bullish",
+      "det_strength": 8,
+      "agree": true
+    },
+    {
+      "ts": "2026-06-12T20:39:16.973081+00:00",
+      "symbol": "C",
+      "llm_signal": "bullish",
+      "llm_strength": 7,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": true
+    },
+    {
+      "ts": "2026-06-12T20:40:10.440314+00:00",
+      "symbol": "AMD",
+      "llm_signal": "bullish",
+      "llm_strength": 7,
+      "det_signal": "bullish",
+      "det_strength": 8,
+      "agree": true
+    },
+    {
+      "ts": "2026-06-12T20:41:22.489441+00:00",
+      "symbol": "AMAT",
+      "llm_signal": "bullish",
+      "llm_strength": 8,
+      "det_signal": "neutral",
+      "det_strength": 6,
+      "agree": false
+    },
+    {
+      "ts": "2026-06-12T20:42:14.092407+00:00",
+      "symbol": "AMD",
+      "llm_signal": "bullish",
+      "llm_strength": 7,
+      "det_signal": "bullish",
+      "det_strength": 8,
+      "agree": true
+    },
+    {
+      "ts": "2026-06-12T20:43:08.746327+00:00",
+      "symbol": "LLY",
+      "llm_signal": "bullish",
+      "llm_strength": 7,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": true
+    },
+    {
+      "ts": "2026-06-12T20:44:04.454031+00:00",
+      "symbol": "C",
+      "llm_signal": "bullish",
+      "llm_strength": 7,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": true
     }
   ],
   "pre_debate_gates": [
@@ -54013,6 +54567,38 @@
         }
       ],
       "skipped": []
+    },
+    {
+      "ts": "2026-06-12T20:41:17.699606+00:00",
+      "regime": "bull",
+      "vix_regime": "normal",
+      "run_reason": "sentinel_trigger",
+      "n_candidates": 4,
+      "would_buy": [
+        {
+          "symbol": "AMAT",
+          "composite_score": 0.5547,
+          "price": 567.25,
+          "size_pct": 0.06,
+          "position_usd": 6148.97,
+          "stop_price": 521.87,
+          "sector": "Technology"
+        }
+      ],
+      "skipped": [
+        {
+          "symbol": "AMD",
+          "reason": "held"
+        },
+        {
+          "symbol": "LLY",
+          "reason": "held"
+        },
+        {
+          "symbol": "C",
+          "reason": "held"
+        }
+      ]
     }
   ],
   "universe_discovery": [

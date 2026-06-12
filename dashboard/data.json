@@ -605,6 +605,12 @@
       "portfolio_value": 102513.54,
       "cash": 79353.87,
       "spy_price": 741.48
+    },
+    {
+      "ts": "2026-06-12T19:06:47.248800+00:00",
+      "portfolio_value": 102540.81,
+      "cash": 79353.87,
+      "spy_price": 741.92
     }
   ],
   "trades": [
@@ -1230,7 +1236,7 @@
       "status": "open",
       "key_risk": "Any signs of EPS growth deceleration below the exceptional current levels or margin compression that could trigger the feared multiple compression, especially given the unchanged debt-to-equity concerns.",
       "position_usd": 4177.12,
-      "position_pct": 0.0409,
+      "position_pct": 0.0408,
       "sector": "Healthcare",
       "last_review_ts": "2026-06-12T18:26:08.281577+00:00",
       "last_review_conviction": 7,
@@ -1238,9 +1244,9 @@
       "time_stop_flagged": false,
       "consecutive_weakened_count": 0,
       "is_remnant": false,
-      "current_price": 1140.775,
-      "unrealized_pl": 460.95,
-      "unrealized_plpc": 0.12336,
+      "current_price": 1137.57,
+      "unrealized_pl": 449.16,
+      "unrealized_plpc": 0.12021,
       "avg_entry": 1015.5,
       "trim_history": [
         {
@@ -1280,7 +1286,7 @@
       "status": "open",
       "key_risk": "Signs of credit market stress or deterioration in private credit markets that could trigger deleveraging given the high debt-to-equity ratio",
       "position_usd": 7617.29,
-      "position_pct": 0.0737,
+      "position_pct": 0.0738,
       "sector": "Financial Services",
       "last_review_ts": "2026-06-12T18:26:58.450771+00:00",
       "last_review_conviction": 8,
@@ -1300,9 +1306,9 @@
           "basis_estimated": true
         }
       ],
-      "current_price": 214.76,
-      "unrealized_pl": 437.73,
-      "unrealized_plpc": 0.06148,
+      "current_price": 214.92,
+      "unrealized_pl": 443.36,
+      "unrealized_plpc": 0.06227,
       "avg_entry": 202.3212,
       "trim_pnl": 491.96,
       "stop_order_id": "afb8459c-b650-4f35-8585-19a36beee065"
@@ -1326,9 +1332,9 @@
       "sector": "Financial Services",
       "trim_pnl": 0.0,
       "is_remnant": false,
-      "current_price": 140.045,
-      "unrealized_pl": 131.39,
-      "unrealized_plpc": 0.04289,
+      "current_price": 140.31,
+      "unrealized_pl": 137.44,
+      "unrealized_plpc": 0.04486,
       "avg_entry": 134.2856,
       "last_review_ts": "2026-06-12T16:26:20.234686+00:00",
       "last_review_conviction": 6,
@@ -1351,13 +1357,13 @@
       "status": "open",
       "key_risk": "Volume remaining below average on continued gains would signal institutional distribution and warrant exit",
       "position_usd": 4104.54,
-      "position_pct": 0.04,
+      "position_pct": 0.0401,
       "sector": "Technology",
       "trim_pnl": 0.0,
       "is_remnant": false,
-      "current_price": 513.23,
-      "unrealized_pl": -0.6,
-      "unrealized_plpc": -0.00015,
+      "current_price": 514.2393,
+      "unrealized_pl": 7.47,
+      "unrealized_plpc": 0.00182,
       "avg_entry": 513.3051
     }
   ],
@@ -19512,6 +19518,97 @@
       ],
       "regime": "bull",
       "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-06-12T19:06:47.322874+00:00",
+      "run_type": "midday",
+      "candidates": [
+        "BAC",
+        "GS",
+        "TGT"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "scheduled",
+      "candidate_details": [
+        {
+          "symbol": "BAC",
+          "composite_score": 0.5382,
+          "signals": {
+            "eps_growth": 24.4,
+            "rev_growth": 8.1,
+            "growth_quality": "moderate",
+            "rs_vs_sector_pct": 8.8,
+            "sector": "Financial Services",
+            "sector_etf": "XLF",
+            "pct_of_52wk_range": 0.88,
+            "52wk_high": 57.55,
+            "volume_spike_ratio": 0.54,
+            "volume_spike": false,
+            "rsi": 73.6,
+            "macd_crossover": "False",
+            "bb_pct": 1.0,
+            "news_count": 5,
+            "top_headline": "SpaceX Starts Trading At $150, Before Rising To $165: 'Liftoff', Says Elon Musk-Led Company",
+            "news_quality": 0.25,
+            "pe_trailing": 13.9,
+            "pe_forward": 11.1,
+            "earnings_growth": 24.4
+          }
+        },
+        {
+          "symbol": "GS",
+          "composite_score": 0.483,
+          "signals": {
+            "eps_growth": 24.2,
+            "rev_growth": 14.5,
+            "growth_quality": "moderate",
+            "rs_vs_sector_pct": 6.6,
+            "sector": "Financial Services",
+            "sector_etf": "XLF",
+            "pct_of_52wk_range": 0.93,
+            "52wk_high": 1098.36,
+            "volume_spike_ratio": 0.61,
+            "volume_spike": false,
+            "rsi": 62.2,
+            "macd_crossover": "False",
+            "bb_pct": 0.8,
+            "news_count": 8,
+            "top_headline": "9 Financials Stocks With Whale Alerts In Today's Session",
+            "news_quality": 0.0,
+            "pe_trailing": 19.5,
+            "pe_forward": 16.3,
+            "earnings_growth": 24.2
+          }
+        },
+        {
+          "symbol": "TGT",
+          "composite_score": 0.4497,
+          "signals": {
+            "eps_growth": -24.7,
+            "rev_growth": 6.7,
+            "growth_quality": "negative",
+            "rs_vs_sector_pct": 9.2,
+            "sector": "Consumer Defensive",
+            "sector_etf": "XLP",
+            "pct_of_52wk_range": 0.99,
+            "52wk_high": 136.14,
+            "volume_spike_ratio": 0.51,
+            "volume_spike": false,
+            "rsi": 67.4,
+            "macd_crossover": "False",
+            "bb_pct": 1.18,
+            "news_count": 3,
+            "top_headline": "Target Stock Is Moving Higher Today: What's Going On?",
+            "news_quality": 0.5,
+            "pe_trailing": 17.9,
+            "pe_forward": 15.2,
+            "earnings_growth": -24.7
+          }
+        }
+      ],
+      "regime": "bull",
+      "vix_regime": "normal"
     }
   ],
   "debate_logs": [
@@ -23528,6 +23625,39 @@
       "bull_score": 6,
       "bear_score": 8,
       "final_conviction": 1,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_BAC_20260612190503",
+      "symbol": "BAC",
+      "ts": "2026-06-12T19:05:03.187980+00:00",
+      "bull_case": "R1 Bull(8): BAC is a momentum breakout play with exceptional operational efficiency (29% profit margin) trading at a discount (11.1 forward P/E) where the DOJ investigation creates a short-term sentiment wall that masks the underlying earnings power driving toward the $63.2 analyst target. | R1 Bear(8): BAC is a technical trap where overbought momentum (RSI 73.8, 0.54x volume ratio) meets a sector-wide regulatory investigation that will compress multiples regardless of earnings quality, creating asymmetric downside risk at resistance. | R2 Bull(6): BAC remains a value play at 11.1 forward P/E with 29% margins, but the immediate momentum breakout thesis is compromised by distribution patterns requiring a pullback and volume confirmation before resuming the move toward $63.2 target | R2 Bear(8): BAC faces a double-headed risk where technical distribution at overbought levels coincides with unaddressed regulatory threats that could permanently impair the earnings quality underlying the seemingly attractive valuation multiple.",
+      "bear_case": "Primary risk: Regulatory forced business model changes that permanently compress the 29% profit margins, making the current 11.1 forward P/E a value trap as the market reprices BAC's sustainable earning power downward. | Unresolved: ['Regulatory forced business model changes that permanently compress the 29% profit margins, making the current 11.1 forward P/E a value trap']",
+      "bull_score": 6,
+      "bear_score": 8,
+      "final_conviction": 6,
+      "decision": "watch"
+    },
+    {
+      "id": "debate_GS_20260612190556",
+      "symbol": "GS",
+      "ts": "2026-06-12T19:05:56.798395+00:00",
+      "bull_case": "R1 Bull(8): Goldman Sachs is primed for a technical breakout above $1098.36 resistance, backed by exceptional 29.4% profit margins and immediate $100M SpaceX IPO fee revenue that validates their franchise strength despite macro headwinds. | R1 Bear(7): Goldman's catastrophic 678.6% debt-to-equity ratio creates fatal leverage risk that will amplify any earnings disappointment or market downturn, making this a value trap disguised as momentum. | R2 Bull(7): Goldman Sachs remains positioned for a technical breakout above $1098.36 resistance driven by exceptional margins and SpaceX IPO validation, though lower volume requires confirmation of institutional follow-through for sustained momentum | R2 Bear(7): Goldman's 678.6% debt-to-equity ratio creates a leveraged house of cards where any credit stress or earnings disappointment will trigger forced deleveraging that overwhelms technical momentum.",
+      "bear_case": "Primary risk: Credit market stress or Fed hawkishness could trigger margin calls and forced deleveraging on Goldman's extreme debt load, causing share price collapse regardless of technical patterns or recent deal flow. | Unresolved: [\"Goldman's extreme 678.6% debt-to-equity leverage creates systemic risk that technical breakouts cannot protect against during credit market stress or Fed hawkishness\", 'Investment banking margins are cyclically unsustainable and will compress during any market downturn, amplified by the massive debt load']",
+      "bull_score": 7,
+      "bear_score": 7,
+      "final_conviction": 7,
+      "decision": "buy"
+    },
+    {
+      "id": "debate_TGT_20260612190647",
+      "symbol": "TGT",
+      "ts": "2026-06-12T19:06:47.069557+00:00",
+      "bull_case": "R1 Bull(4): Target's +DI dominance above Bollinger upper band with strong recent momentum creates a low-conviction tactical breakout opportunity despite fundamental headwinds. | R1 Bear(7): Target's weak trend environment (ADX 14.1) combined with declining earnings and high debt creates a fundamental-technical disconnect where any breakout lacks sustainable momentum to justify downside risk. | R2 Bull(3): Target offers a low-conviction tactical momentum play based on +DI dominance and Bollinger positioning, but weak trend conditions create elevated false breakout risk requiring tight risk management | R2 Bear(8): Target's fundamental-technical disconnect becomes more pronounced when bulls can only muster 3/10 conviction for a short-term tactical play, while ignoring that declining earnings will ultimately override any temporary +DI momentum in this weak trending environment.",
+      "bear_case": "Primary risk: False breakout trap where weak trend conditions (ADX 14.1) cause any move above $136.14 resistance to quickly reverse, leading to rapid losses as declining earnings fundamentals reassert themselves in the sideways market regime. | Unresolved: ['False breakout trap where weak trend conditions (ADX 14.1) cause any move above $136.14 resistance to quickly reverse, compounded by declining earnings fundamentals that create unsustainable technical momentum']",
+      "bull_score": 3,
+      "bear_score": 8,
+      "final_conviction": 4,
       "decision": "skip"
     }
   ],
@@ -32306,6 +32436,57 @@
       "correlation": 0.0,
       "pm_action": "skip",
       "pm_verdict": "PM decision unavailable \u2014 defaulting to skip",
+      "risk_category": "pm_decision"
+    },
+    {
+      "ts": "2026-06-12T19:05:03.115519+00:00",
+      "symbol": "BAC",
+      "action": "watch",
+      "reason": "PM decision: watch \u2014 Bull dropped conviction from 8 to 6 after conceding the 0.54x volume ratio represents genuine distribution risk, undermining the immediate breakout thesis that was central to the trade timing",
+      "conviction": 6,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 55.94,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "watch",
+      "pm_verdict": "BAC offers compelling fundamental value at 11.1 forward P/E with 29% margins, but the bull's momentum thesis collapsed under volume scrutiny and distribution risk requires confirmation of demand before entry.",
+      "risk_category": "conviction"
+    },
+    {
+      "ts": "2026-06-12T19:05:56.726943+00:00",
+      "symbol": "GS",
+      "action": "skip",
+      "reason": "Correlation tournament: GS score 7.6 does not beat MS score 8.6 by 1.0 (r=0.78)",
+      "conviction": 7,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 1066.98,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.78,
+      "pm_action": "buy",
+      "pm_verdict": "Strong technical setup with ADX>25 momentum confirmation, exceptional 29.4% margins, and $100M SpaceX IPO catalyst justify the trade despite leverage concerns.",
+      "risk_category": "correlation"
+    },
+    {
+      "ts": "2026-06-12T19:06:46.996574+00:00",
+      "symbol": "TGT",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 ADX at 14.1 represents a TYPE-A risk where any breakout above $136.14 resistance lacks the trend strength to sustain, creating immediate reversal danger in the next 2-4 weeks",
+      "conviction": 4,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 135.47,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "The weak trend environment (ADX 14.1) creates genuine false breakout risk that the bull conceded, dropping their conviction to just 3/10 for what amounts to a pure momentum play without fundamental support.",
       "risk_category": "pm_decision"
     }
   ],
@@ -53246,6 +53427,33 @@
       "det_signal": "bullish",
       "det_strength": 10,
       "agree": true
+    },
+    {
+      "ts": "2026-06-12T19:04:14.598705+00:00",
+      "symbol": "BAC",
+      "llm_signal": "bullish",
+      "llm_strength": 7,
+      "det_signal": "neutral",
+      "det_strength": 6,
+      "agree": false
+    },
+    {
+      "ts": "2026-06-12T19:05:06.652113+00:00",
+      "symbol": "GS",
+      "llm_signal": "bullish",
+      "llm_strength": 7,
+      "det_signal": "bullish",
+      "det_strength": 8,
+      "agree": true
+    },
+    {
+      "ts": "2026-06-12T19:06:01.354949+00:00",
+      "symbol": "TGT",
+      "llm_signal": "neutral",
+      "llm_strength": 5,
+      "det_signal": "neutral",
+      "det_strength": 6,
+      "agree": true
     }
   ],
   "pre_debate_gates": [
@@ -53768,6 +53976,43 @@
           "reason": "held"
         }
       ]
+    },
+    {
+      "ts": "2026-06-12T19:04:10.118037+00:00",
+      "regime": "bull",
+      "vix_regime": "normal",
+      "run_reason": "scheduled",
+      "n_candidates": 3,
+      "would_buy": [
+        {
+          "symbol": "BAC",
+          "composite_score": 0.5382,
+          "price": 55.9,
+          "size_pct": 0.06,
+          "position_usd": 6152.45,
+          "stop_price": 53.01,
+          "sector": "Financial Services"
+        },
+        {
+          "symbol": "GS",
+          "composite_score": 0.483,
+          "price": 1066.05,
+          "size_pct": 0.06,
+          "position_usd": 6152.45,
+          "stop_price": 980.77,
+          "sector": "Financial Services"
+        },
+        {
+          "symbol": "TGT",
+          "composite_score": 0.4497,
+          "price": 135.46,
+          "size_pct": 0.06,
+          "position_usd": 6152.45,
+          "stop_price": 126.81,
+          "sector": "Consumer Defensive"
+        }
+      ],
+      "skipped": []
     }
   ],
   "universe_discovery": [
@@ -55047,6 +55292,434 @@
           "symbol": "SPKLW",
           "source": "movers_gainers",
           "reason": "blowoff_day_gain 471.4%"
+        }
+      ],
+      "core_size": 112
+    },
+    {
+      "ts": "2026-06-12T19:01:06.542769+00:00",
+      "accepted": [
+        {
+          "symbol": "AAL",
+          "source": "most_actives",
+          "day_gain_pct": 1.77,
+          "gain_5d_pct": 10.44,
+          "price": 14.91
+        },
+        {
+          "symbol": "NOK",
+          "source": "most_actives",
+          "day_gain_pct": 5.96,
+          "gain_5d_pct": 3.82,
+          "price": 14.93
+        },
+        {
+          "symbol": "RDW",
+          "source": "most_actives",
+          "day_gain_pct": -11.59,
+          "gain_5d_pct": -18.1,
+          "price": 15.11
+        },
+        {
+          "symbol": "ASTS",
+          "source": "most_actives",
+          "day_gain_pct": -14.28,
+          "gain_5d_pct": -10.65,
+          "price": 83.63
+        },
+        {
+          "symbol": "KEEL",
+          "source": "most_actives",
+          "day_gain_pct": 5.07,
+          "gain_5d_pct": 13.06,
+          "price": 5.8
+        }
+      ],
+      "rejected": [
+        {
+          "symbol": "ADTX",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "SOXS",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "DFNS",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "BITO",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "RUBI",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "TZA",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "CAST",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "BMNU",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "SPCE",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "SHFS",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "SRXH",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "BYAH",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "SPDN",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "TSLL",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "TQQQ",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "PAVS",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "CUPR",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "CPOP",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "VSME",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "SQQQ",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "NVD",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "TSLG",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "WOK",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "SNDQ",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "ONDS",
+          "source": "most_actives",
+          "reason": "no_uptrend"
+        },
+        {
+          "symbol": "DRIP",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "SOXL",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "QQQ",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "YYGH",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "SATS",
+          "source": "most_actives",
+          "reason": "no_uptrend"
+        },
+        {
+          "symbol": "RKLZ",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "AMC",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "RZLV",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "PLUG",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "SNXX",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "XLF",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "SPY",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "MSTU",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "FCHL",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 18.8%"
+        },
+        {
+          "symbol": "ALBG",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 18.8%"
+        },
+        {
+          "symbol": "BNAIW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 18.8%"
+        },
+        {
+          "symbol": "YI",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 19.9%"
+        },
+        {
+          "symbol": "NHIVW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 20.0%"
+        },
+        {
+          "symbol": "TVACW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 20.3%"
+        },
+        {
+          "symbol": "CIFU",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 20.3%"
+        },
+        {
+          "symbol": "NMPAR",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 20.3%"
+        },
+        {
+          "symbol": "SNSE",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 20.4%"
+        },
+        {
+          "symbol": "TXMD",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 20.9%"
+        },
+        {
+          "symbol": "CIFG",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 21.1%"
+        },
+        {
+          "symbol": "JCTC",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 21.1%"
+        },
+        {
+          "symbol": "SCAGW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 21.3%"
+        },
+        {
+          "symbol": "POEL",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 22.2%"
+        },
+        {
+          "symbol": "ARCLW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 22.2%"
+        },
+        {
+          "symbol": "ZDGE",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 22.4%"
+        },
+        {
+          "symbol": "ARMG",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 22.7%"
+        },
+        {
+          "symbol": "CNCKW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 22.8%"
+        },
+        {
+          "symbol": "VGASW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 23.4%"
+        },
+        {
+          "symbol": "SWVLW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 24.6%"
+        },
+        {
+          "symbol": "GPATW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 27.6%"
+        },
+        {
+          "symbol": "AXTX",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 27.8%"
+        },
+        {
+          "symbol": "ASTN",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 29.0%"
+        },
+        {
+          "symbol": "AXTU",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 29.6%"
+        },
+        {
+          "symbol": "FRD",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 30.4%"
+        },
+        {
+          "symbol": "DFNSW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 32.5%"
+        },
+        {
+          "symbol": "DSY",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 32.6%"
+        },
+        {
+          "symbol": "GMM",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 32.6%"
+        },
+        {
+          "symbol": "MRNOW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 32.8%"
+        },
+        {
+          "symbol": "RIBBU",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 33.2%"
+        },
+        {
+          "symbol": "HUBCZ",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 35.2%"
+        },
+        {
+          "symbol": "SBFMW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 50.5%"
+        },
+        {
+          "symbol": "EDHL",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 52.1%"
+        },
+        {
+          "symbol": "DSYWW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 55.6%"
+        },
+        {
+          "symbol": "SPCL",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 56.6%"
+        },
+        {
+          "symbol": "HSPTR",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 71.1%"
+        },
+        {
+          "symbol": "UBXG",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 74.3%"
+        },
+        {
+          "symbol": "ALFUW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 100.0%"
+        },
+        {
+          "symbol": "IVDAW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 146.9%"
         }
       ],
       "core_size": 112

@@ -599,6 +599,12 @@
       "portfolio_value": 102486.95,
       "cash": 87551.55,
       "spy_price": 740.56
+    },
+    {
+      "ts": "2026-06-12T18:31:00.608439+00:00",
+      "portfolio_value": 102513.54,
+      "cash": 79353.87,
+      "spy_price": 741.48
     }
   ],
   "trades": [
@@ -1222,19 +1228,19 @@
       "conviction": 7,
       "debate_id": "debate_LLY_20260519190455",
       "status": "open",
-      "key_risk": "Any signs of EPS growth deceleration or margin compression that could trigger multiple compression, particularly given the unchanged 139% debt-to-equity ratio vulnerability",
+      "key_risk": "Any signs of EPS growth deceleration below the exceptional current levels or margin compression that could trigger the feared multiple compression, especially given the unchanged debt-to-equity concerns.",
       "position_usd": 4177.12,
-      "position_pct": 0.0411,
+      "position_pct": 0.0409,
       "sector": "Healthcare",
-      "last_review_ts": "2026-06-12T16:24:40.950625+00:00",
+      "last_review_ts": "2026-06-12T18:26:08.281577+00:00",
       "last_review_conviction": 7,
       "thesis_status": "intact",
       "time_stop_flagged": false,
       "consecutive_weakened_count": 0,
       "is_remnant": false,
-      "current_price": 1146.2351,
-      "unrealized_pl": 481.04,
-      "unrealized_plpc": 0.12874,
+      "current_price": 1140.775,
+      "unrealized_pl": 460.95,
+      "unrealized_plpc": 0.12336,
       "avg_entry": 1015.5,
       "trim_history": [
         {
@@ -1272,15 +1278,15 @@
       "conviction": 8,
       "debate_id": "debate_MS_20260522185742",
       "status": "open",
-      "key_risk": "Further signs of credit market stress or private credit deterioration that could trigger the deleveraging spiral we identified as the primary risk",
+      "key_risk": "Signs of credit market stress or deterioration in private credit markets that could trigger deleveraging given the high debt-to-equity ratio",
       "position_usd": 7617.29,
-      "position_pct": 0.0734,
+      "position_pct": 0.0737,
       "sector": "Financial Services",
-      "last_review_ts": "2026-06-12T16:25:31.117956+00:00",
-      "last_review_conviction": 6,
-      "thesis_status": "weakened",
+      "last_review_ts": "2026-06-12T18:26:58.450771+00:00",
+      "last_review_conviction": 8,
+      "thesis_status": "intact",
       "time_stop_flagged": false,
-      "consecutive_weakened_count": 1,
+      "consecutive_weakened_count": 0,
       "is_remnant": false,
       "trim_history": [
         {
@@ -1294,9 +1300,9 @@
           "basis_estimated": true
         }
       ],
-      "current_price": 213.825,
-      "unrealized_pl": 404.82,
-      "unrealized_plpc": 0.05686,
+      "current_price": 214.76,
+      "unrealized_pl": 437.73,
+      "unrealized_plpc": 0.06148,
       "avg_entry": 202.3212,
       "trim_pnl": 491.96,
       "stop_order_id": "afb8459c-b650-4f35-8585-19a36beee065"
@@ -1316,13 +1322,13 @@
       "status": "open",
       "key_risk": "ROE improvement trajectory and whether earnings growth is translating to better capital efficiency rather than just scale expansion, as this was our original key risk that could break the thesis",
       "position_usd": 3063.57,
-      "position_pct": 0.0313,
+      "position_pct": 0.0312,
       "sector": "Financial Services",
       "trim_pnl": 0.0,
       "is_remnant": false,
-      "current_price": 140.465,
-      "unrealized_pl": 140.98,
-      "unrealized_plpc": 0.04602,
+      "current_price": 140.045,
+      "unrealized_pl": 131.39,
+      "unrealized_plpc": 0.04289,
       "avg_entry": 134.2856,
       "last_review_ts": "2026-06-12T16:26:20.234686+00:00",
       "last_review_conviction": 6,
@@ -1347,7 +1353,12 @@
       "position_usd": 4104.54,
       "position_pct": 0.04,
       "sector": "Technology",
-      "trim_pnl": 0.0
+      "trim_pnl": 0.0,
+      "is_remnant": false,
+      "current_price": 513.23,
+      "unrealized_pl": -0.6,
+      "unrealized_plpc": -0.00015,
+      "avg_entry": 513.3051
     }
   ],
   "runs": [
@@ -19273,6 +19284,234 @@
       ],
       "regime": "bull",
       "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-06-12T18:31:00.676214+00:00",
+      "run_type": "midday",
+      "candidates": [
+        "LLY",
+        "MS",
+        "ARM",
+        "ACLS"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "sentinel_trigger",
+      "candidate_details": [
+        {
+          "symbol": "LLY",
+          "composite_score": 0.528,
+          "signals": {
+            "eps_growth": 169.9,
+            "rev_growth": 55.5,
+            "growth_quality": "strong",
+            "rs_vs_sector_pct": 8.6,
+            "sector": "Healthcare",
+            "sector_etf": "XLV",
+            "pct_of_52wk_range": 0.92,
+            "52wk_high": 1182.73,
+            "volume_spike_ratio": 0.39,
+            "volume_spike": false,
+            "rsi": 65.0,
+            "macd_crossover": "False",
+            "bb_pct": 0.76,
+            "news_count": 2,
+            "top_headline": "American Express, Live Nation And A Health Care Stock: CNBC's 'Final Trades'",
+            "news_quality": 0.0,
+            "pe_trailing": 40.6,
+            "pe_forward": 25.6,
+            "earnings_growth": 169.9
+          }
+        },
+        {
+          "symbol": "MS",
+          "composite_score": 0.508,
+          "signals": {
+            "eps_growth": 31.9,
+            "rev_growth": 16.3,
+            "growth_quality": "moderate",
+            "rs_vs_sector_pct": 6.6,
+            "sector": "Financial Services",
+            "sector_etf": "XLF",
+            "pct_of_52wk_range": 0.95,
+            "52wk_high": 219.16,
+            "volume_spike_ratio": 0.44,
+            "volume_spike": false,
+            "rsi": 64.2,
+            "macd_crossover": "False",
+            "bb_pct": 0.78,
+            "news_count": 10,
+            "top_headline": "'Goldman and Morgan Stanley to Pocket $100 Million Each In SpaceX IPO Fees' - Wall Street Journal",
+            "news_quality": 0.25,
+            "pe_trailing": 19.5,
+            "pe_forward": 16.9,
+            "earnings_growth": 31.9
+          }
+        },
+        {
+          "symbol": "ARM",
+          "composite_score": 0.4765,
+          "signals": {
+            "eps_growth": 47.9,
+            "rev_growth": 20.1,
+            "growth_quality": "moderate",
+            "rs_vs_sector_pct": 62.3,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.85,
+            "52wk_high": 427.99,
+            "volume_spike_ratio": 0.98,
+            "volume_spike": false,
+            "rsi": 63.4,
+            "macd_crossover": "False",
+            "bb_pct": 0.72,
+            "news_count": 6,
+            "top_headline": "12 Information Technology Stocks Moving In Friday's Intraday Session",
+            "news_quality": 0.25,
+            "pe_trailing": 439.1,
+            "pe_forward": 123.1,
+            "earnings_growth": 47.9
+          }
+        },
+        {
+          "symbol": "ACLS",
+          "composite_score": 0.414,
+          "signals": {
+            "eps_growth": -65.9,
+            "rev_growth": 3.3,
+            "growth_quality": "negative",
+            "rs_vs_sector_pct": 9.8,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 1.0,
+            "52wk_high": 182.54,
+            "volume_spike_ratio": 0.75,
+            "volume_spike": false,
+            "rsi": 65.9,
+            "macd_crossover": "True",
+            "bb_pct": 1.18,
+            "news_count": 0,
+            "top_headline": "",
+            "news_quality": 0.0,
+            "pe_trailing": 56.4,
+            "pe_forward": 39.3,
+            "earnings_growth": -65.9
+          }
+        }
+      ],
+      "llm_failures": {
+        "analyst_fallbacks": 0,
+        "pm_failures": 3
+      },
+      "event_symbols": [
+        "ACLS",
+        "ARM",
+        "COHR",
+        "HIMS",
+        "LLY",
+        "MS",
+        "ONTO",
+        "RKLB"
+      ],
+      "event_details": [
+        {
+          "symbol": "ACLS",
+          "trigger_type": "intraday_rebound",
+          "value": 0.0417,
+          "threshold": 0.035,
+          "severity": "normal",
+          "latest": 181.87,
+          "intraday_low": 174.58
+        },
+        {
+          "symbol": "ARM",
+          "trigger_type": "intraday_move",
+          "value": 0.0995,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": 0.0995,
+          "latest": 376.38,
+          "previous_close": 342.32
+        },
+        {
+          "symbol": "COHR",
+          "trigger_type": "intraday_move",
+          "value": 0.066,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": 0.066,
+          "latest": 387.48,
+          "previous_close": 363.49
+        },
+        {
+          "symbol": "COHR",
+          "trigger_type": "intraday_rebound",
+          "value": 0.0758,
+          "threshold": 0.035,
+          "severity": "high",
+          "latest": 387.48,
+          "intraday_low": 360.2
+        },
+        {
+          "symbol": "HIMS",
+          "trigger_type": "intraday_move",
+          "value": 0.0763,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": -0.0763,
+          "latest": 26.64,
+          "previous_close": 28.84
+        },
+        {
+          "symbol": "ONTO",
+          "trigger_type": "intraday_move",
+          "value": 0.0661,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": 0.0661,
+          "latest": 323.67,
+          "previous_close": 303.61
+        },
+        {
+          "symbol": "ONTO",
+          "trigger_type": "intraday_rebound",
+          "value": 0.0621,
+          "threshold": 0.035,
+          "severity": "high",
+          "latest": 323.67,
+          "intraday_low": 304.74
+        },
+        {
+          "symbol": "RKLB",
+          "trigger_type": "intraday_move",
+          "value": 0.0875,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": -0.0875,
+          "latest": 104.73,
+          "previous_close": 114.77
+        },
+        {
+          "symbol": "LLY",
+          "trigger_type": "position_move",
+          "value": 0.1231,
+          "threshold": 0.025,
+          "severity": "high",
+          "price": 1140.66,
+          "entry": 1015.67
+        },
+        {
+          "symbol": "MS",
+          "trigger_type": "position_move",
+          "value": 0.0599,
+          "threshold": 0.025,
+          "severity": "high",
+          "price": 214.6,
+          "entry": 202.48
+        }
+      ],
+      "regime": "bull",
+      "vix_regime": "normal"
     }
   ],
   "debate_logs": [
@@ -23246,6 +23485,50 @@
       "bear_score": 8,
       "final_conviction": 5,
       "decision": "skip"
+    },
+    {
+      "id": "debate_LLY_20260612182808",
+      "symbol": "LLY",
+      "ts": "2026-06-12T18:28:08.520723+00:00",
+      "bull_case": "R1 Bull(8): LLY is experiencing a breakout powered by exceptional fundamental execution (55.5% revenue growth, 169.9% EPS growth) with technical momentum confirming the move before consensus fully recognizes the durability of their obesity/diabetes franchise expansion. | R1 Bear(7): LLY's extraordinary growth metrics are unsustainable at current debt levels, with 139% debt-to-equity creating financial fragility that will force margin compression when the obesity franchise faces inevitable competitive pressure or regulatory headwinds. | R2 Bull(7): LLY remains a momentum play with exceptional fundamental execution in an early-stage obesity market, though elevated leverage creates asymmetric downside risk that warrants position sizing discipline despite strong growth visibility. | R2 Bear(8): LLY's 139% debt-to-equity ratio creates a binary outcome where any material deceleration in the obesity franchise triggers a liquidity crisis, making this a leveraged bet on perfect execution in an early-stage market with unknown regulatory and competitive risks.",
+      "bear_case": "Primary risk: Debt service obligations becoming unsustainable if obesity franchise growth decelerates, forcing dilutive equity raises or asset sales at the worst possible time when leverage multiples compress in a risk-off environment | Unresolved: ['Debt service obligations becoming unsustainable during any growth deceleration, creating forced deleveraging at compressed multiples', 'Early-stage market penetration actually increases execution risk and regulatory scrutiny as scale grows', 'Supply constraints masking true demand elasticity and competitive dynamics']",
+      "bull_score": 7,
+      "bear_score": 8,
+      "final_conviction": 6,
+      "decision": "buy"
+    },
+    {
+      "id": "debate_MS_20260612182903",
+      "symbol": "MS",
+      "ts": "2026-06-12T18:29:03.242762+00:00",
+      "bull_case": "R1 Bull(8): Morgan Stanley is positioned for a breakout above $219 resistance as exceptional profitability (24.8% margins, 31.9% earnings growth) combines with high-visibility SpaceX IPO fees and confirmed technical momentum in a strong ADX uptrend. | R1 Bear(7): Morgan Stanley's PEG ratio of 2.5 reveals unsustainable valuation expansion amid technical resistance at $219.16, where the company's debt-heavy structure will amplify any earnings deceleration or market downturn. | R2 Bull(7): Morgan Stanley remains positioned for a breakout above $219 resistance as exceptional profitability metrics and SpaceX IPO catalysts outweigh late-stage momentum concerns, though risk/reward is tighter near resistance | R2 Bear(7): Morgan Stanley's debt-amplified structure creates systemic vulnerability to investment banking earnings collapse that technical momentum cannot protect against, making the 2.5 PEG ratio unsustainable regardless of short-term breakout potential.",
+      "bear_case": "Primary risk: Debt-amplified earnings collapse if investment banking cycle turns negative, causing rapid multiple compression from the already-stretched PEG of 2.5 | Unresolved: ['Bull completely ignored the debt-heavy structure vulnerability and earnings deceleration risk from investment banking cycle turns, focusing only on technical momentum indicators']",
+      "bull_score": 7,
+      "bear_score": 7,
+      "final_conviction": 1,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_ARM_20260612183006",
+      "symbol": "ARM",
+      "ts": "2026-06-12T18:30:06.474541+00:00",
+      "bull_case": "R1 Bull(8): ARM is experiencing a rare convergence of technical momentum breakout (ADX 44.7, 10.5% in 5 days) and agentic AI catalyst-driven institutional upgrades that creates a momentum continuation trade before consensus fully prices the AI positioning opportunity. | R1 Bear(8): ARM's 441x TTM P/E and 279% run from lows creates a catastrophic valuation air pocket where even minor AI hype disappointment will trigger violent institutional selling that technical momentum cannot withstand. | R2 Bull(7): ARM remains a momentum continuation play driven by institutional positioning for AI transformation, but binary execution risk from extreme valuation creates asymmetric downside on any negative catalyst | R2 Bear(8): ARM's 441x P/E creates an acknowledged binary risk where any catalyst failure triggers severe institutional selling that no momentum indicator can prevent, making the downside mathematically certain and devastating.",
+      "bear_case": "Primary risk: Valuation-driven capitulation where institutional profit-taking overwhelms momentum as 441x P/E becomes indefensible on any negative catalyst, creating 30-40% downside in days. | Unresolved: [\"Bull admits 441x P/E creates 'binary risk' and 'severe institutional selling' on any disappointment but provides no evidence that ADX momentum can withstand coordinated institutional profit-taking when forward AI positioning fails to materialize in earnings\"]",
+      "bull_score": 7,
+      "bear_score": 8,
+      "final_conviction": 1,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_ACLS_20260612183100",
+      "symbol": "ACLS",
+      "ts": "2026-06-12T18:31:00.400107+00:00",
+      "bull_case": "R1 Bull(8): ACLS is at a technical breakout inflection point where powerful momentum indicators (ADX>25, MACD bullish crossover) signal institutional accumulation that will overwhelm fundamental concerns as price discovery occurs above $182.63 resistance. | R1 Bear(8): ACLS is a momentum trap where deteriorating fundamentals (65.9% EPS collapse, 6.7x debt/equity) create an unsustainable debt burden that will force equity dilution or bankruptcy regardless of technical patterns. | R2 Bull(6): ACLS remains a momentum-driven technical breakout play where institutional positioning above $182.63 suggests the debt concerns are already discounted, though the leverage risk requires tighter stops and smaller position sizing | R2 Bear(8): ACLS remains a momentum trap where institutional positioning cannot overcome the mathematical reality that 6.7x leverage with 65.9% EPS collapse creates existential solvency risk that will destroy equity value regardless of technical patterns.",
+      "bear_case": "Primary risk: Debt-driven bankruptcy or massive equity dilution that completely wipes out current shareholders regardless of entry price | Unresolved: ['6.7x debt/equity ratio creating imminent bankruptcy risk that no amount of institutional positioning can solve if the company cannot service its debt obligations or refinance']",
+      "bull_score": 6,
+      "bear_score": 8,
+      "final_conviction": 1,
+      "decision": "skip"
     }
   ],
   "position_reviews": [
@@ -27175,6 +27458,32 @@
       "key_risk_to_monitor": "ROE improvement trajectory and whether earnings growth is translating to better capital efficiency rather than just scale expansion, as this was our original key risk that could break the thesis",
       "current_bull_case": "R1 Bull(8): Citi is in a rare fundamental acceleration phase with 56% EPS growth trading at only 11.2x forward P/E, while technical momentum (ADX>25, RSI 70.3) confirms institutional accumulation ahead of strong Q2 guidance delivery. | R2 Bull(7): Citi's 56% EPS growth at 11.2x P/E represents a capital allocation transition period where current ROE weakness will convert to sector-leading returns as transformation investments mature and strong ADX momentum confirms institutional positioning ahead of this inflection",
       "current_bear_case": "R1 Bear(6): Citi's explosive 56% EPS growth is masking deteriorating capital efficiency with below-sector ROE, while technical momentum at RSI 70.3 near resistance creates asymmetric risk as trading revenue guidance depends on volatile market conditions. | R2 Bear(7): Citi's transformation story doesn't eliminate the immediate risk that volatile trading revenue supporting current momentum could collapse with market conditions, while overbought technicals create asymmetric downside risk."
+    },
+    {
+      "trade_id": "LLY_20260519190455",
+      "symbol": "LLY",
+      "ts": "2026-06-12T18:26:08.225824+00:00",
+      "action": "hold",
+      "conviction": 7,
+      "thesis_status": "intact",
+      "rationale": "The original thesis of explosive EPS growth (169.9%) and exceptional margins (35%) creating unstoppable earnings momentum remains fully validated with current 170% EPS growth and maintained 35% profit margins. The EBGLYSS FDA approval with unique dosing advantage actually strengthens the competitive moat component of our growth thesis.",
+      "original_thesis_check": "The specific reason we bought - explosive EPS growth and exceptional margins creating unstoppable earnings momentum - is still demonstrably true with sustained 170% EPS growth and 35% margins.",
+      "key_risk_to_monitor": "Any signs of EPS growth deceleration below the exceptional current levels or margin compression that could trigger the feared multiple compression, especially given the unchanged debt-to-equity concerns.",
+      "current_bull_case": "R1 Bull(8): LLY is in a powerful fundamental-technical convergence with 170% EPS growth driving momentum continuation above RSI 65 and ADX 39.2, while EBGLYSS's unique six-injection annual dosing creates a moat that bears will underestimate until market share data proves the competitive advantage. | R2 Bull(7): LLY's technical momentum with ADX 39.2 remains valid for trend continuation while the diabetes/obesity mega-trend provides earnings durability that sustains premium valuations despite debt concerns and growth normalization.",
+      "current_bear_case": "R1 Bear(7): LLY's 170% EPS growth has created unsustainable momentum chasing that ignores the high debt flag and elevated valuation multiples, setting up a violent correction when growth inevitably normalizes. | R2 Bear(6): While LLY's diabetes/obesity franchise provides growth durability, the combination of high debt servicing costs and inevitable growth normalization creates a dangerous timing mismatch that threatens current premium valuations."
+    },
+    {
+      "trade_id": "MS_20260522185742",
+      "symbol": "MS",
+      "ts": "2026-06-12T18:26:58.395896+00:00",
+      "action": "hold",
+      "conviction": 8,
+      "thesis_status": "intact",
+      "rationale": "The original thesis remains fully intact - MS continues to capture high-value IPO mandates (SpaceX $100M fee) and trades at reasonable valuation (16.9x forward P/E) with strong fundamentals (31.9% EPS growth, 24.8% margins).",
+      "original_thesis_check": "Yes - MS is still capturing generational IPO mandates including SpaceX while maintaining attractive valuation metrics and strong earnings growth",
+      "key_risk_to_monitor": "Signs of credit market stress or deterioration in private credit markets that could trigger deleveraging given the high debt-to-equity ratio",
+      "current_bull_case": "R1 Bull(8): Morgan Stanley is positioned for a major breakout as investment banking revenue surges from high-profile deals like the $100M SpaceX IPO fee while institutional buying accelerates into confirmed technical momentum. | R2 Bull(7): Morgan Stanley remains a strong breakout candidate despite volume concerns, as their proven ability to capture mega-deal fees like SpaceX creates sustainable competitive advantages that will drive institutional accumulation once technical momentum gains broader participation",
+      "current_bear_case": "R1 Bear(6): Morgan Stanley's momentum is built on unsustainable fee windfalls while stretched growth expectations (PEG 2.5) and high leverage create significant downside risk in a sideways market regime. | R2 Bear(6): Morgan Stanley's high leverage and stretched valuation (PEG 2.5) create asymmetric downside risk when lumpy investment banking fees revert to mean, regardless of technical breakout patterns."
     }
   ],
   "risk_decisions": [
@@ -31930,6 +32239,74 @@
       "pm_action": "skip",
       "pm_verdict": "The 7.6% ROE reflects genuine execution risk that creates a binary bet on management's ability to deploy capital efficiently as regulatory constraints ease, while entering at technical resistance with weak volume amplifies downside if the ROE normalization story takes longer than expected.",
       "risk_category": "already_holding"
+    },
+    {
+      "ts": "2026-06-12T18:28:08.454287+00:00",
+      "symbol": "LLY",
+      "action": "hold",
+      "reason": "Already holding LLY",
+      "conviction": 6,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 1140.58,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "buy",
+      "pm_verdict": "Quality compounder play with exceptional fundamental execution (55.5% revenue growth, 169.9% EPS growth) in early-stage obesity market, supported by strong technicals, but 139% debt-to-equity creates meaningful downside asymmetry warranting reduced position size.",
+      "risk_category": "already_holding"
+    },
+    {
+      "ts": "2026-06-12T18:29:03.176372+00:00",
+      "symbol": "MS",
+      "action": "hold",
+      "reason": "Already holding MS",
+      "conviction": 1,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 214.71,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "PM decision unavailable \u2014 defaulting to skip",
+      "risk_category": "already_holding"
+    },
+    {
+      "ts": "2026-06-12T18:30:06.408189+00:00",
+      "symbol": "ARM",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 error",
+      "conviction": 1,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 379.0,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "PM decision unavailable \u2014 defaulting to skip",
+      "risk_category": "pm_decision"
+    },
+    {
+      "ts": "2026-06-12T18:31:00.331368+00:00",
+      "symbol": "ACLS",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 error",
+      "conviction": 1,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 182.29,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "PM decision unavailable \u2014 defaulting to skip",
+      "risk_category": "pm_decision"
     }
   ],
   "watchlists": [
@@ -52815,6 +53192,60 @@
       "det_signal": "bullish",
       "det_strength": 10,
       "agree": false
+    },
+    {
+      "ts": "2026-06-12T18:25:18.108022+00:00",
+      "symbol": "LLY",
+      "llm_signal": "bullish",
+      "llm_strength": 7,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": true
+    },
+    {
+      "ts": "2026-06-12T18:26:12.382024+00:00",
+      "symbol": "MS",
+      "llm_signal": "bullish",
+      "llm_strength": 7,
+      "det_signal": "bullish",
+      "det_strength": 8,
+      "agree": true
+    },
+    {
+      "ts": "2026-06-12T18:27:16.616407+00:00",
+      "symbol": "LLY",
+      "llm_signal": "bullish",
+      "llm_strength": 7,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": true
+    },
+    {
+      "ts": "2026-06-12T18:28:12.532692+00:00",
+      "symbol": "MS",
+      "llm_signal": "bullish",
+      "llm_strength": 7,
+      "det_signal": "bullish",
+      "det_strength": 8,
+      "agree": true
+    },
+    {
+      "ts": "2026-06-12T18:29:08.297363+00:00",
+      "symbol": "ARM",
+      "llm_signal": "bullish",
+      "llm_strength": 7,
+      "det_signal": "bullish",
+      "det_strength": 8,
+      "agree": true
+    },
+    {
+      "ts": "2026-06-12T18:30:10.324671+00:00",
+      "symbol": "ACLS",
+      "llm_signal": "bullish",
+      "llm_strength": 8,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": true
     }
   ],
   "pre_debate_gates": [
@@ -53297,6 +53728,43 @@
         },
         {
           "symbol": "C",
+          "reason": "held"
+        }
+      ]
+    },
+    {
+      "ts": "2026-06-12T18:27:12.306056+00:00",
+      "regime": "bull",
+      "vix_regime": "normal",
+      "run_reason": "sentinel_trigger",
+      "n_candidates": 4,
+      "would_buy": [
+        {
+          "symbol": "ARM",
+          "composite_score": 0.4765,
+          "price": 377.59,
+          "size_pct": 0.06,
+          "position_usd": 6150.94,
+          "stop_price": 347.38,
+          "sector": "Technology"
+        },
+        {
+          "symbol": "ACLS",
+          "composite_score": 0.414,
+          "price": 182.13,
+          "size_pct": 0.06,
+          "position_usd": 6150.94,
+          "stop_price": 167.56,
+          "sector": "Technology"
+        }
+      ],
+      "skipped": [
+        {
+          "symbol": "LLY",
+          "reason": "held"
+        },
+        {
+          "symbol": "MS",
           "reason": "held"
         }
       ]

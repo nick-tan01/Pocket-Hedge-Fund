@@ -57630,5 +57630,44 @@
       ],
       "core_size": 112
     }
+  ],
+  "decision_quality": [
+    {
+      "as_of": "2026-06-13",
+      "lookback_days": 45,
+      "primary_window_days": 10,
+      "conviction_calibration": {
+        "6": {
+          "n": 3,
+          "avg_pnl_pct": 6.14,
+          "win_rate": 67.0
+        },
+        "7": {
+          "n": 9,
+          "avg_pnl_pct": 8.37,
+          "win_rate": 44.0
+        }
+      },
+      "closed_trades": 12,
+      "skip_precision_pct": 38.2,
+      "trim_precision_pct": 23.7,
+      "baseline_vs_pipeline": {
+        "baseline": {
+          "label": "baseline_topN",
+          "n": 22,
+          "n_decided": 0,
+          "avg_excess_pct": null,
+          "hit_rate_pct": null
+        },
+        "pipeline": {
+          "label": "live_pipeline",
+          "n": 16,
+          "n_decided": 11,
+          "avg_excess_pct": 12.08,
+          "hit_rate_pct": 72.7
+        }
+      },
+      "ts": "2026-06-13T00:01:53.153172+00:00"
+    }
   ]
 }

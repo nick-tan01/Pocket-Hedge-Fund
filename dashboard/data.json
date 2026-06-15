@@ -635,6 +635,12 @@
       "portfolio_value": 103105.4,
       "cash": 79353.86,
       "spy_price": 755.05
+    },
+    {
+      "ts": "2026-06-15T20:26:19.644313+00:00",
+      "portfolio_value": 103028.66,
+      "cash": 79353.86,
+      "spy_price": 754.83
     }
   ],
   "trades": [
@@ -1262,7 +1268,7 @@
       "position_usd": 4177.12,
       "position_pct": 0.0402,
       "sector": "Healthcare",
-      "last_review_ts": "2026-06-15T18:07:54.613902+00:00",
+      "last_review_ts": "2026-06-15T20:22:43.628801+00:00",
       "last_review_conviction": 5,
       "thesis_status": "intact",
       "time_stop_flagged": false,
@@ -1312,7 +1318,7 @@
       "position_usd": 7617.29,
       "position_pct": 0.0749,
       "sector": "Financial Services",
-      "last_review_ts": "2026-06-15T18:07:57.324226+00:00",
+      "last_review_ts": "2026-06-15T20:22:46.160783+00:00",
       "last_review_conviction": 5,
       "thesis_status": "intact",
       "time_stop_flagged": false,
@@ -1360,7 +1366,7 @@
       "unrealized_pl": 168.58,
       "unrealized_plpc": 0.05503,
       "avg_entry": 134.2856,
-      "last_review_ts": "2026-06-15T18:07:59.701402+00:00",
+      "last_review_ts": "2026-06-15T20:22:48.642115+00:00",
       "last_review_conviction": 5,
       "thesis_status": "intact",
       "time_stop_flagged": false,
@@ -1389,7 +1395,7 @@
       "unrealized_pl": 279.83,
       "unrealized_plpc": 0.06818,
       "avg_entry": 513.3051,
-      "last_review_ts": "2026-06-15T18:08:03.240704+00:00",
+      "last_review_ts": "2026-06-15T20:22:50.821056+00:00",
       "last_review_conviction": 5,
       "thesis_status": "intact",
       "time_stop_flagged": false,
@@ -1419,7 +1425,7 @@
       "unrealized_pl": 170.3,
       "unrealized_plpc": 0.04161,
       "avg_entry": 565.78,
-      "last_review_ts": "2026-06-15T18:08:05.434682+00:00",
+      "last_review_ts": "2026-06-15T20:22:53.052089+00:00",
       "last_review_conviction": 5,
       "thesis_status": "intact",
       "time_stop_flagged": false,
@@ -20653,6 +20659,83 @@
       },
       "regime": "bull",
       "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-06-15T20:26:19.721319+00:00",
+      "run_type": "midday",
+      "candidates": [
+        "BAC",
+        "LRCX"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "scheduled",
+      "candidate_details": [
+        {
+          "symbol": "BAC",
+          "composite_score": 0.5632,
+          "signals": {
+            "eps_growth": 24.4,
+            "rev_growth": 8.1,
+            "growth_quality": "moderate",
+            "rs_vs_sector_pct": 8.0,
+            "sector": "Financial Services",
+            "sector_etf": "XLF",
+            "pct_of_52wk_range": 0.88,
+            "52wk_high": 57.55,
+            "volume_spike_ratio": 0.54,
+            "volume_spike": false,
+            "rsi": 72.5,
+            "macd_crossover": "False",
+            "bb_pct": 0.93,
+            "news_count": 3,
+            "top_headline": "Bank Of America Credit Card Charge-Off Rate Was 2.33% In May; Credit Card Delinquency Rate Was 1.30% At May End",
+            "news_quality": 0.5,
+            "pe_trailing": 13.9,
+            "pe_forward": 11.1,
+            "earnings_growth": 24.4
+          }
+        },
+        {
+          "symbol": "LRCX",
+          "composite_score": 0.5297,
+          "signals": {
+            "eps_growth": 40.8,
+            "rev_growth": 23.8,
+            "growth_quality": "moderate",
+            "rs_vs_sector_pct": 27.8,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.99,
+            "52wk_high": 393.07,
+            "volume_spike_ratio": 1.25,
+            "volume_spike": false,
+            "rsi": 72.8,
+            "macd_crossover": "False",
+            "bb_pct": 1.08,
+            "news_count": 2,
+            "top_headline": "Oppenheimer Maintains Outperform on Lam Research, Raises Price Target to $400",
+            "news_quality": 0.25,
+            "pe_trailing": 73.7,
+            "pe_forward": 48.8,
+            "earnings_growth": 40.8
+          }
+        }
+      ],
+      "llm_failures": {
+        "analyst_fallbacks": 6,
+        "pm_failures": 2,
+        "fallback_agents": [
+          "technical",
+          "fundamental",
+          "sentiment",
+          "technical",
+          "fundamental",
+          "sentiment"
+        ]
+      },
+      "regime": "bull",
+      "vix_regime": "normal"
     }
   ],
   "debate_logs": [
@@ -24857,6 +24940,28 @@
       "bear_score": 1,
       "final_conviction": 1,
       "decision": "skip"
+    },
+    {
+      "id": "debate_BAC_20260615202617",
+      "symbol": "BAC",
+      "ts": "2026-06-15T20:26:17.362990+00:00",
+      "bull_case": "R1 Bull(1): Bull case unavailable | R1 Bear(1): Bear case unavailable | R2 Bull(1): Bull case unavailable | R2 Bear(1): Bear case unavailable",
+      "bear_case": "Primary risk: unknown | Unresolved: ['unknown']",
+      "bull_score": 1,
+      "bear_score": 1,
+      "final_conviction": 1,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_LRCX_20260615202619",
+      "symbol": "LRCX",
+      "ts": "2026-06-15T20:26:19.441871+00:00",
+      "bull_case": "R1 Bull(1): Bull case unavailable | R1 Bear(1): Bear case unavailable | R2 Bull(1): Bull case unavailable | R2 Bear(1): Bear case unavailable",
+      "bear_case": "Primary risk: unknown | Unresolved: ['unknown']",
+      "bull_score": 1,
+      "bear_score": 1,
+      "final_conviction": 1,
+      "decision": "skip"
     }
   ],
   "position_reviews": [
@@ -29012,6 +29117,71 @@
       "trade_id": "AMAT_RECONCILED_20260612",
       "symbol": "AMAT",
       "ts": "2026-06-15T18:08:05.368965+00:00",
+      "action": "hold",
+      "conviction": 5,
+      "thesis_status": "intact",
+      "rationale": "Review agent unavailable \u2014 defaulting to hold",
+      "original_thesis_check": "could not assess",
+      "key_risk_to_monitor": "manual review recommended",
+      "current_bull_case": "R1 Bull(1): Bull case unavailable | R2 Bull(1): Bull case unavailable",
+      "current_bear_case": "R1 Bear(1): Bear case unavailable | R2 Bear(1): Bear case unavailable"
+    },
+    {
+      "trade_id": "LLY_20260519190455",
+      "symbol": "LLY",
+      "ts": "2026-06-15T20:22:43.561815+00:00",
+      "action": "hold",
+      "conviction": 5,
+      "thesis_status": "intact",
+      "rationale": "Review agent unavailable \u2014 defaulting to hold",
+      "original_thesis_check": "could not assess",
+      "key_risk_to_monitor": "manual review recommended",
+      "current_bull_case": "R1 Bull(1): Bull case unavailable | R2 Bull(1): Bull case unavailable",
+      "current_bear_case": "R1 Bear(1): Bear case unavailable | R2 Bear(1): Bear case unavailable"
+    },
+    {
+      "trade_id": "MS_20260522185742",
+      "symbol": "MS",
+      "ts": "2026-06-15T20:22:46.050422+00:00",
+      "action": "hold",
+      "conviction": 5,
+      "thesis_status": "intact",
+      "rationale": "Review agent unavailable \u2014 defaulting to hold",
+      "original_thesis_check": "could not assess",
+      "key_risk_to_monitor": "manual review recommended",
+      "current_bull_case": "R1 Bull(1): Bull case unavailable | R2 Bull(1): Bull case unavailable",
+      "current_bear_case": "R1 Bear(1): Bear case unavailable | R2 Bear(1): Bear case unavailable"
+    },
+    {
+      "trade_id": "C_20260610165357",
+      "symbol": "C",
+      "ts": "2026-06-15T20:22:48.578524+00:00",
+      "action": "hold",
+      "conviction": 5,
+      "thesis_status": "intact",
+      "rationale": "Review agent unavailable \u2014 defaulting to hold",
+      "original_thesis_check": "could not assess",
+      "key_risk_to_monitor": "manual review recommended",
+      "current_bull_case": "R1 Bull(1): Bull case unavailable | R2 Bull(1): Bull case unavailable",
+      "current_bear_case": "R1 Bear(1): Bear case unavailable | R2 Bear(1): Bear case unavailable"
+    },
+    {
+      "trade_id": "AMD_20260612162939",
+      "symbol": "AMD",
+      "ts": "2026-06-15T20:22:50.755873+00:00",
+      "action": "hold",
+      "conviction": 5,
+      "thesis_status": "intact",
+      "rationale": "Review agent unavailable \u2014 defaulting to hold",
+      "original_thesis_check": "could not assess",
+      "key_risk_to_monitor": "manual review recommended",
+      "current_bull_case": "R1 Bull(1): Bull case unavailable | R2 Bull(1): Bull case unavailable",
+      "current_bear_case": "R1 Bear(1): Bear case unavailable | R2 Bear(1): Bear case unavailable"
+    },
+    {
+      "trade_id": "AMAT_RECONCILED_20260612",
+      "symbol": "AMAT",
+      "ts": "2026-06-15T20:22:52.987464+00:00",
       "action": "hold",
       "conviction": 5,
       "thesis_status": "intact",
@@ -34126,6 +34296,40 @@
       "position_usd": 0,
       "shares": 0,
       "entry_price": 389.37,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "PM decision unavailable \u2014 defaulting to skip",
+      "risk_category": "pm_decision"
+    },
+    {
+      "ts": "2026-06-15T20:26:17.285157+00:00",
+      "symbol": "BAC",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 error",
+      "conviction": 1,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 55.87,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "PM decision unavailable \u2014 defaulting to skip",
+      "risk_category": "pm_decision"
+    },
+    {
+      "ts": "2026-06-15T20:26:19.364074+00:00",
+      "symbol": "LRCX",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 error",
+      "conviction": 1,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 388.92,
       "stop_price": 0,
       "stop_pct": 0,
       "correlation": 0.0,
@@ -56230,6 +56434,69 @@
       "det_signal": "bullish",
       "det_strength": 10,
       "agree": false
+    },
+    {
+      "ts": "2026-06-15T20:22:41.987595+00:00",
+      "symbol": "LLY",
+      "llm_signal": "neutral",
+      "llm_strength": 5,
+      "det_signal": "bullish",
+      "det_strength": 8,
+      "agree": false
+    },
+    {
+      "ts": "2026-06-15T20:22:44.420397+00:00",
+      "symbol": "MS",
+      "llm_signal": "neutral",
+      "llm_strength": 5,
+      "det_signal": "bullish",
+      "det_strength": 8,
+      "agree": false
+    },
+    {
+      "ts": "2026-06-15T20:22:47.148578+00:00",
+      "symbol": "C",
+      "llm_signal": "neutral",
+      "llm_strength": 5,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": false
+    },
+    {
+      "ts": "2026-06-15T20:22:49.312436+00:00",
+      "symbol": "AMD",
+      "llm_signal": "neutral",
+      "llm_strength": 5,
+      "det_signal": "bullish",
+      "det_strength": 9,
+      "agree": false
+    },
+    {
+      "ts": "2026-06-15T20:22:51.551676+00:00",
+      "symbol": "AMAT",
+      "llm_signal": "neutral",
+      "llm_strength": 5,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": false
+    },
+    {
+      "ts": "2026-06-15T20:26:15.505042+00:00",
+      "symbol": "BAC",
+      "llm_signal": "neutral",
+      "llm_strength": 5,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": false
+    },
+    {
+      "ts": "2026-06-15T20:26:17.967728+00:00",
+      "symbol": "LRCX",
+      "llm_signal": "neutral",
+      "llm_strength": 5,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": false
     }
   ],
   "pre_debate_gates": [
@@ -56908,6 +57175,34 @@
           "size_pct": 0.06,
           "position_usd": 6186.29,
           "stop_price": 358.45,
+          "sector": "Technology"
+        }
+      ],
+      "skipped": []
+    },
+    {
+      "ts": "2026-06-15T20:26:14.858374+00:00",
+      "regime": "bull",
+      "vix_regime": "normal",
+      "run_reason": "scheduled",
+      "n_candidates": 2,
+      "would_buy": [
+        {
+          "symbol": "BAC",
+          "composite_score": 0.5632,
+          "price": 55.87,
+          "size_pct": 0.06,
+          "position_usd": 6181.72,
+          "stop_price": 52.92,
+          "sector": "Financial Services"
+        },
+        {
+          "symbol": "LRCX",
+          "composite_score": 0.5297,
+          "price": 388.92,
+          "size_pct": 0.06,
+          "position_usd": 6181.72,
+          "stop_price": 357.81,
           "sector": "Technology"
         }
       ],
@@ -59040,6 +59335,449 @@
           "symbol": "NIXXW",
           "source": "movers_gainers",
           "reason": "blowoff_day_gain 233.3%"
+        }
+      ],
+      "core_size": 112
+    },
+    {
+      "ts": "2026-06-15T20:23:11.262743+00:00",
+      "accepted": [
+        {
+          "symbol": "AAL",
+          "source": "most_actives",
+          "day_gain_pct": 3.2,
+          "gain_5d_pct": 13.68,
+          "price": 15.46
+        },
+        {
+          "symbol": "NOK",
+          "source": "most_actives",
+          "day_gain_pct": 0.14,
+          "gain_5d_pct": 1.58,
+          "price": 14.82
+        },
+        {
+          "symbol": "PATH",
+          "source": "most_actives",
+          "day_gain_pct": 2.27,
+          "gain_5d_pct": -3.4,
+          "price": 10.79
+        },
+        {
+          "symbol": "MRVL",
+          "source": "most_actives",
+          "day_gain_pct": 10.43,
+          "gain_5d_pct": 6.93,
+          "price": 308.88
+        },
+        {
+          "symbol": "F",
+          "source": "most_actives",
+          "day_gain_pct": -0.47,
+          "gain_5d_pct": -1.53,
+          "price": 14.77
+        }
+      ],
+      "rejected": [
+        {
+          "symbol": "ADTX",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "GPUS",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "PAVS",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "SOXS",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "SPCX",
+          "source": "most_actives",
+          "reason": "insufficient_bars"
+        },
+        {
+          "symbol": "TZA",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "BITO",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "WOK",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "RGNT",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "CTM",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "CAST",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "BMNU",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "SRXH",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "COSM",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "QTEX",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "NIXX",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "GRAB",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "PAYO",
+          "source": "most_actives",
+          "reason": "blowoff_5d_gain 36.8%"
+        },
+        {
+          "symbol": "MEHA",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "VSME",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "TSLL",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "NU",
+          "source": "most_actives",
+          "reason": "no_uptrend"
+        },
+        {
+          "symbol": "GELS",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "NVD",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "SPY",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "TQQQ",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "SQQQ",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "ACHR",
+          "source": "most_actives",
+          "reason": "no_uptrend"
+        },
+        {
+          "symbol": "ONDS",
+          "source": "most_actives",
+          "reason": "no_uptrend"
+        },
+        {
+          "symbol": "GLXG",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "PLTD",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "JOBY",
+          "source": "most_actives",
+          "reason": "no_uptrend"
+        },
+        {
+          "symbol": "IBIT",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "MSTU",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "BMNR",
+          "source": "most_actives",
+          "reason": "no_uptrend"
+        },
+        {
+          "symbol": "AHMA",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "CUPR",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "SNAP",
+          "source": "most_actives",
+          "reason": "no_uptrend"
+        },
+        {
+          "symbol": "NNDM",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "QQQ",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "UXRP",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 25.8%"
+        },
+        {
+          "symbol": "SPKLW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 26.0%"
+        },
+        {
+          "symbol": "FOXXW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 26.2%"
+        },
+        {
+          "symbol": "DRMAW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 26.5%"
+        },
+        {
+          "symbol": "WLDS",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 26.5%"
+        },
+        {
+          "symbol": "IPEXR",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 26.8%"
+        },
+        {
+          "symbol": "AAOG",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 26.9%"
+        },
+        {
+          "symbol": "SLMT",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 27.6%"
+        },
+        {
+          "symbol": "AXTX",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 27.8%"
+        },
+        {
+          "symbol": "AXTU",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 27.9%"
+        },
+        {
+          "symbol": "BTQ",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 28.6%"
+        },
+        {
+          "symbol": "CHARR",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 28.8%"
+        },
+        {
+          "symbol": "KWMWW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 29.0%"
+        },
+        {
+          "symbol": "ZKPW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 29.3%"
+        },
+        {
+          "symbol": "TALKW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 29.4%"
+        },
+        {
+          "symbol": "CCIXW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 30.5%"
+        },
+        {
+          "symbol": "ARQQ",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 31.8%"
+        },
+        {
+          "symbol": "WDCX",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 32.0%"
+        },
+        {
+          "symbol": "STLU",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 32.1%"
+        },
+        {
+          "symbol": "BRUNW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 34.0%"
+        },
+        {
+          "symbol": "ONFOW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 34.8%"
+        },
+        {
+          "symbol": "XNDX",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 35.7%"
+        },
+        {
+          "symbol": "MTEN",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 37.2%"
+        },
+        {
+          "symbol": "CRGOW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 39.5%"
+        },
+        {
+          "symbol": "WYFL",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 41.7%"
+        },
+        {
+          "symbol": "HUBC",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 42.4%"
+        },
+        {
+          "symbol": "RTB",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 43.4%"
+        },
+        {
+          "symbol": "TLNCW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 43.6%"
+        },
+        {
+          "symbol": "NPACW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 44.7%"
+        },
+        {
+          "symbol": "SDOT",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 44.8%"
+        },
+        {
+          "symbol": "EVLVW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 53.3%"
+        },
+        {
+          "symbol": "KVACW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 60.7%"
+        },
+        {
+          "symbol": "HQ",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 63.3%"
+        },
+        {
+          "symbol": "SBFMW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 77.5%"
+        },
+        {
+          "symbol": "PRFX",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 83.1%"
+        },
+        {
+          "symbol": "QTEXW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 86.7%"
+        },
+        {
+          "symbol": "HQWWW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 140.6%"
+        },
+        {
+          "symbol": "ORGNW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 150.0%"
+        },
+        {
+          "symbol": "SPCM",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 227.6%"
+        },
+        {
+          "symbol": "NIXXW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 255.6%"
         }
       ],
       "core_size": 112

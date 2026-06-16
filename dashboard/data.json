@@ -665,6 +665,12 @@
       "portfolio_value": 102690.96,
       "cash": 79353.86,
       "spy_price": 750.35
+    },
+    {
+      "ts": "2026-06-16T21:22:02.634032+00:00",
+      "portfolio_value": 102723.07,
+      "cash": 79353.86,
+      "spy_price": 750.33
     }
   ],
   "trades": [
@@ -1292,7 +1298,7 @@
       "position_usd": 4177.12,
       "position_pct": 0.0404,
       "sector": "Healthcare",
-      "last_review_ts": "2026-06-16T18:07:20.571255+00:00",
+      "last_review_ts": "2026-06-16T21:21:25.473687+00:00",
       "last_review_conviction": 5,
       "thesis_status": "intact",
       "time_stop_flagged": false,
@@ -1342,7 +1348,7 @@
       "position_usd": 7617.29,
       "position_pct": 0.0755,
       "sector": "Financial Services",
-      "last_review_ts": "2026-06-16T18:07:23.903749+00:00",
+      "last_review_ts": "2026-06-16T21:21:28.118452+00:00",
       "last_review_conviction": 5,
       "thesis_status": "intact",
       "time_stop_flagged": false,
@@ -1390,7 +1396,7 @@
       "unrealized_pl": 185.69,
       "unrealized_plpc": 0.06061,
       "avg_entry": 134.2856,
-      "last_review_ts": "2026-06-16T18:07:27.414692+00:00",
+      "last_review_ts": "2026-06-16T21:21:30.739517+00:00",
       "last_review_conviction": 5,
       "thesis_status": "intact",
       "time_stop_flagged": false,
@@ -1419,7 +1425,7 @@
       "unrealized_pl": 51.26,
       "unrealized_plpc": 0.01249,
       "avg_entry": 513.3051,
-      "last_review_ts": "2026-06-16T18:07:33.998971+00:00",
+      "last_review_ts": "2026-06-16T21:21:33.101507+00:00",
       "last_review_conviction": 5,
       "thesis_status": "intact",
       "time_stop_flagged": false,
@@ -21578,6 +21584,316 @@
       },
       "regime": "bull",
       "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-06-16T21:22:02.714964+00:00",
+      "run_type": "midday",
+      "candidates": [
+        "AMD",
+        "MS",
+        "C",
+        "LLY"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "sentinel_trigger",
+      "candidate_details": [
+        {
+          "symbol": "AMD",
+          "composite_score": 0.5615,
+          "signals": {
+            "eps_growth": 91.2,
+            "rev_growth": 37.8,
+            "growth_quality": "strong",
+            "rs_vs_sector_pct": 13.6,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.88,
+            "52wk_high": 558.37,
+            "volume_spike_ratio": 0.84,
+            "volume_spike": false,
+            "rsi": 56.9,
+            "macd_crossover": "False",
+            "bb_pct": 0.61,
+            "news_count": 9,
+            "top_headline": "Why Is Rackspace Stock Surging Today?",
+            "news_quality": 0.5,
+            "pe_trailing": 168.5,
+            "pe_forward": 38.7,
+            "earnings_growth": 91.2
+          }
+        },
+        {
+          "symbol": "MS",
+          "composite_score": 0.554,
+          "signals": {
+            "eps_growth": 31.9,
+            "rev_growth": 16.3,
+            "growth_quality": "moderate",
+            "rs_vs_sector_pct": 9.6,
+            "sector": "Financial Services",
+            "sector_etf": "XLF",
+            "pct_of_52wk_range": 0.98,
+            "52wk_high": 222.3,
+            "volume_spike_ratio": 0.67,
+            "volume_spike": false,
+            "rsi": 69.0,
+            "macd_crossover": "True",
+            "bb_pct": 0.9,
+            "news_count": 3,
+            "top_headline": "Morgan Stanley Investment Management Acquires London & Quadrant Housing Trust's Private Rented Sector Operations For \u00a31.045B",
+            "news_quality": 0.05,
+            "pe_trailing": 20.0,
+            "pe_forward": 17.4,
+            "earnings_growth": 31.9
+          }
+        },
+        {
+          "symbol": "C",
+          "composite_score": 0.5197,
+          "signals": {
+            "eps_growth": 56.1,
+            "rev_growth": 15.9,
+            "growth_quality": "moderate",
+            "rs_vs_sector_pct": 11.8,
+            "sector": "Financial Services",
+            "sector_etf": "XLF",
+            "pct_of_52wk_range": 0.99,
+            "52wk_high": 143.56,
+            "volume_spike_ratio": 0.9,
+            "volume_spike": false,
+            "rsi": 73.3,
+            "macd_crossover": "False",
+            "bb_pct": 0.97,
+            "news_count": 2,
+            "top_headline": "10 Financials Stocks With Whale Alerts In Today's Session",
+            "news_quality": 0.0,
+            "pe_trailing": 17.7,
+            "pe_forward": 11.4,
+            "earnings_growth": 56.1
+          }
+        },
+        {
+          "symbol": "LLY",
+          "composite_score": 0.5115,
+          "signals": {
+            "eps_growth": 169.9,
+            "rev_growth": 55.5,
+            "growth_quality": "strong",
+            "rs_vs_sector_pct": 8.6,
+            "sector": "Healthcare",
+            "sector_etf": "XLV",
+            "pct_of_52wk_range": 0.89,
+            "52wk_high": 1182.73,
+            "volume_spike_ratio": 0.51,
+            "volume_spike": false,
+            "rsi": 60.4,
+            "macd_crossover": "False",
+            "bb_pct": 0.64,
+            "news_count": 6,
+            "top_headline": "Eli Lilly To Acquire Neuroscience Firm 4E Therapeutics; Financial Terms Undisclosed",
+            "news_quality": 0.0,
+            "pe_trailing": 39.9,
+            "pe_forward": 25.2,
+            "earnings_growth": 169.9
+          }
+        }
+      ],
+      "llm_failures": {
+        "analyst_fallbacks": 12,
+        "pm_failures": 4,
+        "fallback_agents": [
+          "technical",
+          "fundamental",
+          "sentiment",
+          "technical",
+          "fundamental",
+          "sentiment",
+          "technical",
+          "fundamental",
+          "sentiment",
+          "technical",
+          "fundamental",
+          "sentiment"
+        ]
+      },
+      "event_symbols": [
+        "ACLS",
+        "AMD",
+        "ARM",
+        "C",
+        "CELH",
+        "COHR",
+        "HIMS",
+        "IONQ",
+        "JPM",
+        "LLY",
+        "MS",
+        "MSTR",
+        "ONTO",
+        "RKLB",
+        "SMCI"
+      ],
+      "event_details": [
+        {
+          "symbol": "ACLS",
+          "trigger_type": "intraday_move",
+          "value": 0.0771,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": -0.0771,
+          "latest": 176.81,
+          "previous_close": 191.59
+        },
+        {
+          "symbol": "AMD",
+          "trigger_type": "intraday_move",
+          "value": 0.073,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": -0.073,
+          "latest": 507.29,
+          "previous_close": 547.26
+        },
+        {
+          "symbol": "ARM",
+          "trigger_type": "intraday_move",
+          "value": 0.0395,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": -0.0395,
+          "latest": 396.19,
+          "previous_close": 412.49
+        },
+        {
+          "symbol": "CELH",
+          "trigger_type": "intraday_move",
+          "value": 0.0449,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": 0.0449,
+          "latest": 30.03,
+          "previous_close": 28.74
+        },
+        {
+          "symbol": "CELH",
+          "trigger_type": "intraday_rebound",
+          "value": 0.0687,
+          "threshold": 0.035,
+          "severity": "high",
+          "latest": 30.03,
+          "intraday_low": 28.1
+        },
+        {
+          "symbol": "COHR",
+          "trigger_type": "intraday_move",
+          "value": 0.0744,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": -0.0744,
+          "latest": 383.16,
+          "previous_close": 413.96
+        },
+        {
+          "symbol": "HIMS",
+          "trigger_type": "intraday_move",
+          "value": 0.0431,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": 0.0431,
+          "latest": 31.48,
+          "previous_close": 30.18
+        },
+        {
+          "symbol": "IONQ",
+          "trigger_type": "intraday_move",
+          "value": 0.0838,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": -0.0838,
+          "latest": 56.1,
+          "previous_close": 61.23
+        },
+        {
+          "symbol": "JPM",
+          "trigger_type": "intraday_move",
+          "value": 0.0361,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": 0.0361,
+          "latest": 331.18,
+          "previous_close": 319.65
+        },
+        {
+          "symbol": "MSTR",
+          "trigger_type": "intraday_move",
+          "value": 0.0629,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": -0.0629,
+          "latest": 122.83,
+          "previous_close": 131.07
+        },
+        {
+          "symbol": "ONTO",
+          "trigger_type": "intraday_move",
+          "value": 0.0584,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": -0.0584,
+          "latest": 316.35,
+          "previous_close": 335.98
+        },
+        {
+          "symbol": "RKLB",
+          "trigger_type": "intraday_move",
+          "value": 0.0422,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": -0.0422,
+          "latest": 104.67,
+          "previous_close": 109.28
+        },
+        {
+          "symbol": "SMCI",
+          "trigger_type": "intraday_move",
+          "value": 0.0527,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": -0.0527,
+          "latest": 29.23,
+          "previous_close": 30.85
+        },
+        {
+          "symbol": "LLY",
+          "trigger_type": "position_move",
+          "value": 0.1052,
+          "threshold": 0.025,
+          "severity": "high",
+          "price": 1122.5,
+          "entry": 1015.67
+        },
+        {
+          "symbol": "MS",
+          "trigger_type": "position_move",
+          "value": 0.0906,
+          "threshold": 0.025,
+          "severity": "high",
+          "price": 220.83,
+          "entry": 202.48
+        },
+        {
+          "symbol": "C",
+          "trigger_type": "position_move",
+          "value": 0.0648,
+          "threshold": 0.025,
+          "severity": "high",
+          "price": 142.99,
+          "entry": 134.29
+        }
+      ],
+      "regime": "bull",
+      "vix_regime": "normal"
     }
   ],
   "debate_logs": [
@@ -25947,6 +26263,50 @@
       "bear_score": 1,
       "final_conviction": 1,
       "decision": "skip"
+    },
+    {
+      "id": "debate_AMD_20260616212155",
+      "symbol": "AMD",
+      "ts": "2026-06-16T21:21:55.379105+00:00",
+      "bull_case": "R1 Bull(1): Bull case unavailable | R1 Bear(1): Bear case unavailable | R2 Bull(1): Bull case unavailable | R2 Bear(1): Bear case unavailable",
+      "bear_case": "Primary risk: unknown | Unresolved: ['unknown']",
+      "bull_score": 1,
+      "bear_score": 1,
+      "final_conviction": 1,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_MS_20260616212157",
+      "symbol": "MS",
+      "ts": "2026-06-16T21:21:57.441975+00:00",
+      "bull_case": "R1 Bull(1): Bull case unavailable | R1 Bear(1): Bear case unavailable | R2 Bull(1): Bull case unavailable | R2 Bear(1): Bear case unavailable",
+      "bear_case": "Primary risk: unknown | Unresolved: ['unknown']",
+      "bull_score": 1,
+      "bear_score": 1,
+      "final_conviction": 1,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_C_20260616212159",
+      "symbol": "C",
+      "ts": "2026-06-16T21:21:59.952613+00:00",
+      "bull_case": "R1 Bull(1): Bull case unavailable | R1 Bear(1): Bear case unavailable | R2 Bull(1): Bull case unavailable | R2 Bear(1): Bear case unavailable",
+      "bear_case": "Primary risk: unknown | Unresolved: ['unknown']",
+      "bull_score": 1,
+      "bear_score": 1,
+      "final_conviction": 1,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_LLY_20260616212202",
+      "symbol": "LLY",
+      "ts": "2026-06-16T21:22:02.439441+00:00",
+      "bull_case": "R1 Bull(1): Bull case unavailable | R1 Bear(1): Bear case unavailable | R2 Bull(1): Bull case unavailable | R2 Bear(1): Bear case unavailable",
+      "bear_case": "Primary risk: unknown | Unresolved: ['unknown']",
+      "bull_score": 1,
+      "bear_score": 1,
+      "final_conviction": 1,
+      "decision": "skip"
     }
   ],
   "position_reviews": [
@@ -30297,6 +30657,58 @@
       "trade_id": "AMAT_RECONCILED_20260612",
       "symbol": "AMAT",
       "ts": "2026-06-16T18:07:48.637419+00:00",
+      "action": "hold",
+      "conviction": 5,
+      "thesis_status": "intact",
+      "rationale": "Review agent unavailable \u2014 defaulting to hold",
+      "original_thesis_check": "could not assess",
+      "key_risk_to_monitor": "manual review recommended",
+      "current_bull_case": "R1 Bull(1): Bull case unavailable | R2 Bull(1): Bull case unavailable",
+      "current_bear_case": "R1 Bear(1): Bear case unavailable | R2 Bear(1): Bear case unavailable"
+    },
+    {
+      "trade_id": "LLY_20260519190455",
+      "symbol": "LLY",
+      "ts": "2026-06-16T21:21:25.407368+00:00",
+      "action": "hold",
+      "conviction": 5,
+      "thesis_status": "intact",
+      "rationale": "Review agent unavailable \u2014 defaulting to hold",
+      "original_thesis_check": "could not assess",
+      "key_risk_to_monitor": "manual review recommended",
+      "current_bull_case": "R1 Bull(1): Bull case unavailable | R2 Bull(1): Bull case unavailable",
+      "current_bear_case": "R1 Bear(1): Bear case unavailable | R2 Bear(1): Bear case unavailable"
+    },
+    {
+      "trade_id": "MS_20260522185742",
+      "symbol": "MS",
+      "ts": "2026-06-16T21:21:28.050406+00:00",
+      "action": "hold",
+      "conviction": 5,
+      "thesis_status": "intact",
+      "rationale": "Review agent unavailable \u2014 defaulting to hold",
+      "original_thesis_check": "could not assess",
+      "key_risk_to_monitor": "manual review recommended",
+      "current_bull_case": "R1 Bull(1): Bull case unavailable | R2 Bull(1): Bull case unavailable",
+      "current_bear_case": "R1 Bear(1): Bear case unavailable | R2 Bear(1): Bear case unavailable"
+    },
+    {
+      "trade_id": "C_20260610165357",
+      "symbol": "C",
+      "ts": "2026-06-16T21:21:30.665722+00:00",
+      "action": "hold",
+      "conviction": 5,
+      "thesis_status": "intact",
+      "rationale": "Review agent unavailable \u2014 defaulting to hold",
+      "original_thesis_check": "could not assess",
+      "key_risk_to_monitor": "manual review recommended",
+      "current_bull_case": "R1 Bull(1): Bull case unavailable | R2 Bull(1): Bull case unavailable",
+      "current_bear_case": "R1 Bear(1): Bear case unavailable | R2 Bear(1): Bear case unavailable"
+    },
+    {
+      "trade_id": "AMD_20260612162939",
+      "symbol": "AMD",
+      "ts": "2026-06-16T21:21:33.034928+00:00",
       "action": "hold",
       "conviction": 5,
       "thesis_status": "intact",
@@ -35672,6 +36084,74 @@
       "pm_action": "skip",
       "pm_verdict": "PM decision unavailable \u2014 defaulting to skip",
       "risk_category": "pm_decision"
+    },
+    {
+      "ts": "2026-06-16T21:21:55.299741+00:00",
+      "symbol": "AMD",
+      "action": "hold",
+      "reason": "Already holding AMD",
+      "conviction": 1,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 507.29,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "PM decision unavailable \u2014 defaulting to skip",
+      "risk_category": "already_holding"
+    },
+    {
+      "ts": "2026-06-16T21:21:57.362871+00:00",
+      "symbol": "MS",
+      "action": "hold",
+      "reason": "Already holding MS",
+      "conviction": 1,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 220.83,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "PM decision unavailable \u2014 defaulting to skip",
+      "risk_category": "already_holding"
+    },
+    {
+      "ts": "2026-06-16T21:21:59.872238+00:00",
+      "symbol": "C",
+      "action": "hold",
+      "reason": "Already holding C",
+      "conviction": 1,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 142.99,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "PM decision unavailable \u2014 defaulting to skip",
+      "risk_category": "already_holding"
+    },
+    {
+      "ts": "2026-06-16T21:22:02.357966+00:00",
+      "symbol": "LLY",
+      "action": "hold",
+      "reason": "Already holding LLY",
+      "conviction": 1,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 1122.5,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "PM decision unavailable \u2014 defaulting to skip",
+      "risk_category": "already_holding"
     }
   ],
   "watchlists": [
@@ -58906,6 +59386,78 @@
       "det_signal": "bullish",
       "det_strength": 10,
       "agree": false
+    },
+    {
+      "ts": "2026-06-16T21:21:24.010691+00:00",
+      "symbol": "LLY",
+      "llm_signal": "neutral",
+      "llm_strength": 5,
+      "det_signal": "bullish",
+      "det_strength": 8,
+      "agree": false
+    },
+    {
+      "ts": "2026-06-16T21:21:26.466305+00:00",
+      "symbol": "MS",
+      "llm_signal": "neutral",
+      "llm_strength": 5,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": false
+    },
+    {
+      "ts": "2026-06-16T21:21:29.126527+00:00",
+      "symbol": "C",
+      "llm_signal": "neutral",
+      "llm_strength": 5,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": false
+    },
+    {
+      "ts": "2026-06-16T21:21:31.548990+00:00",
+      "symbol": "AMD",
+      "llm_signal": "neutral",
+      "llm_strength": 5,
+      "det_signal": "bullish",
+      "det_strength": 8,
+      "agree": false
+    },
+    {
+      "ts": "2026-06-16T21:21:53.976373+00:00",
+      "symbol": "AMD",
+      "llm_signal": "neutral",
+      "llm_strength": 5,
+      "det_signal": "bullish",
+      "det_strength": 8,
+      "agree": false
+    },
+    {
+      "ts": "2026-06-16T21:21:56.093461+00:00",
+      "symbol": "MS",
+      "llm_signal": "neutral",
+      "llm_strength": 5,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": false
+    },
+    {
+      "ts": "2026-06-16T21:21:58.218904+00:00",
+      "symbol": "C",
+      "llm_signal": "neutral",
+      "llm_strength": 5,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": false
+    },
+    {
+      "ts": "2026-06-16T21:22:00.782506+00:00",
+      "symbol": "LLY",
+      "llm_signal": "neutral",
+      "llm_strength": 5,
+      "det_signal": "bullish",
+      "det_strength": 8,
+      "agree": false
     }
   ],
   "pre_debate_gates": [
@@ -59733,6 +60285,32 @@
         }
       ],
       "skipped": []
+    },
+    {
+      "ts": "2026-06-16T21:21:53.085167+00:00",
+      "regime": "bull",
+      "vix_regime": "normal",
+      "run_reason": "sentinel_trigger",
+      "n_candidates": 4,
+      "would_buy": [],
+      "skipped": [
+        {
+          "symbol": "AMD",
+          "reason": "held"
+        },
+        {
+          "symbol": "MS",
+          "reason": "held"
+        },
+        {
+          "symbol": "C",
+          "reason": "held"
+        },
+        {
+          "symbol": "LLY",
+          "reason": "held"
+        }
+      ]
     }
   ],
   "universe_discovery": [

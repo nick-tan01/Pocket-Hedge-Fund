@@ -653,6 +653,12 @@
       "portfolio_value": 102879.7,
       "cash": 79353.86,
       "spy_price": 752.01
+    },
+    {
+      "ts": "2026-06-16T18:18:09.573375+00:00",
+      "portfolio_value": 102865.77,
+      "cash": 79353.86,
+      "spy_price": 752.01
     }
   ],
   "trades": [
@@ -1286,9 +1292,9 @@
       "time_stop_flagged": false,
       "consecutive_weakened_count": 0,
       "is_remnant": false,
-      "current_price": 1129.25,
-      "unrealized_pl": 418.54,
-      "unrealized_plpc": 0.11201,
+      "current_price": 1129.205,
+      "unrealized_pl": 418.38,
+      "unrealized_plpc": 0.11197,
       "avg_entry": 1015.5,
       "trim_history": [
         {
@@ -1328,7 +1334,7 @@
       "status": "open",
       "key_risk": "manual review recommended",
       "position_usd": 7617.29,
-      "position_pct": 0.0754,
+      "position_pct": 0.0755,
       "sector": "Financial Services",
       "last_review_ts": "2026-06-16T18:07:23.903749+00:00",
       "last_review_conviction": 5,
@@ -1348,9 +1354,9 @@
           "basis_estimated": true
         }
       ],
-      "current_price": 220.425,
-      "unrealized_pl": 637.08,
-      "unrealized_plpc": 0.08948,
+      "current_price": 220.57,
+      "unrealized_pl": 642.18,
+      "unrealized_plpc": 0.0902,
       "avg_entry": 202.3212,
       "trim_pnl": 491.96,
       "stop_order_id": "afb8459c-b650-4f35-8585-19a36beee065"
@@ -1374,9 +1380,9 @@
       "sector": "Financial Services",
       "trim_pnl": 0.0,
       "is_remnant": false,
-      "current_price": 142.48,
-      "unrealized_pl": 186.95,
-      "unrealized_plpc": 0.06102,
+      "current_price": 142.425,
+      "unrealized_pl": 185.69,
+      "unrealized_plpc": 0.06061,
       "avg_entry": 134.2856,
       "last_review_ts": "2026-06-16T18:07:27.414692+00:00",
       "last_review_conviction": 5,
@@ -1403,9 +1409,9 @@
       "sector": "Technology",
       "trim_pnl": 0.0,
       "is_remnant": false,
-      "current_price": 520.18,
-      "unrealized_pl": 54.97,
-      "unrealized_plpc": 0.01339,
+      "current_price": 519.715,
+      "unrealized_pl": 51.26,
+      "unrealized_plpc": 0.01249,
       "avg_entry": 513.3051,
       "last_review_ts": "2026-06-16T18:07:33.998971+00:00",
       "last_review_conviction": 5,
@@ -1433,9 +1439,9 @@
       "trim_pnl": 0.0,
       "reconciled_from_broker": true,
       "is_remnant": false,
-      "current_price": 579.225,
-      "unrealized_pl": 97.27,
-      "unrealized_plpc": 0.02376,
+      "current_price": 579.12,
+      "unrealized_pl": 96.51,
+      "unrealized_plpc": 0.02358,
       "avg_entry": 565.78,
       "last_review_ts": "2026-06-16T18:07:48.700549+00:00",
       "last_review_conviction": 5,
@@ -21383,6 +21389,112 @@
       ],
       "regime": "bull",
       "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-06-16T18:18:09.658927+00:00",
+      "run_type": "midday",
+      "candidates": [
+        "GS",
+        "BAC",
+        "LRCX"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "scheduled",
+      "candidate_details": [
+        {
+          "symbol": "GS",
+          "composite_score": 0.574,
+          "signals": {
+            "eps_growth": 24.2,
+            "rev_growth": 14.5,
+            "growth_quality": "moderate",
+            "rs_vs_sector_pct": 11.1,
+            "sector": "Financial Services",
+            "sector_etf": "XLF",
+            "pct_of_52wk_range": 0.99,
+            "52wk_high": 1098.36,
+            "volume_spike_ratio": 0.37,
+            "volume_spike": false,
+            "rsi": 65.6,
+            "macd_crossover": "True",
+            "bb_pct": 0.89,
+            "news_count": 8,
+            "top_headline": "10 Financials Stocks With Whale Alerts In Today's Session",
+            "news_quality": 0.25,
+            "pe_trailing": 19.9,
+            "pe_forward": 16.6,
+            "earnings_growth": 24.2
+          }
+        },
+        {
+          "symbol": "BAC",
+          "composite_score": 0.5547,
+          "signals": {
+            "eps_growth": 24.4,
+            "rev_growth": 8.1,
+            "growth_quality": "moderate",
+            "rs_vs_sector_pct": 7.8,
+            "sector": "Financial Services",
+            "sector_etf": "XLF",
+            "pct_of_52wk_range": 0.95,
+            "52wk_high": 57.55,
+            "volume_spike_ratio": 0.45,
+            "volume_spike": false,
+            "rsi": 75.9,
+            "macd_crossover": "False",
+            "bb_pct": 0.98,
+            "news_count": 2,
+            "top_headline": "Bank Of America Credit Card Charge-Off Rate Was 2.33% In May; Credit Card Delinquency Rate Was 1.30% At May End",
+            "news_quality": 0.25,
+            "pe_trailing": 14.1,
+            "pe_forward": 11.3,
+            "earnings_growth": 24.4
+          }
+        },
+        {
+          "symbol": "LRCX",
+          "composite_score": 0.5297,
+          "signals": {
+            "eps_growth": 40.8,
+            "rev_growth": 23.8,
+            "growth_quality": "moderate",
+            "rs_vs_sector_pct": 23.4,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.94,
+            "52wk_high": 393.07,
+            "volume_spike_ratio": 0.59,
+            "volume_spike": false,
+            "rsi": 70.1,
+            "macd_crossover": "False",
+            "bb_pct": 0.98,
+            "news_count": 3,
+            "top_headline": "Alphabet, Lam Research And A Financial Stock On CNBC's 'Final Trades'",
+            "news_quality": 0.25,
+            "pe_trailing": 70.6,
+            "pe_forward": 46.8,
+            "earnings_growth": 40.8
+          }
+        }
+      ],
+      "llm_failures": {
+        "analyst_fallbacks": 9,
+        "pm_failures": 3,
+        "fallback_agents": [
+          "technical",
+          "fundamental",
+          "sentiment",
+          "technical",
+          "fundamental",
+          "sentiment",
+          "technical",
+          "fundamental",
+          "sentiment"
+        ]
+      },
+      "regime": "bull",
+      "vix_regime": "normal"
     }
   ],
   "debate_logs": [
@@ -25691,6 +25803,39 @@
       "id": "debate_C_20260616181012",
       "symbol": "C",
       "ts": "2026-06-16T18:10:12.800241+00:00",
+      "bull_case": "R1 Bull(1): Bull case unavailable | R1 Bear(1): Bear case unavailable | R2 Bull(1): Bull case unavailable | R2 Bear(1): Bear case unavailable",
+      "bear_case": "Primary risk: unknown | Unresolved: ['unknown']",
+      "bull_score": 1,
+      "bear_score": 1,
+      "final_conviction": 1,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_GS_20260616181805",
+      "symbol": "GS",
+      "ts": "2026-06-16T18:18:05.028131+00:00",
+      "bull_case": "R1 Bull(1): Bull case unavailable | R1 Bear(1): Bear case unavailable | R2 Bull(1): Bull case unavailable | R2 Bear(1): Bear case unavailable",
+      "bear_case": "Primary risk: unknown | Unresolved: ['unknown']",
+      "bull_score": 1,
+      "bear_score": 1,
+      "final_conviction": 1,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_BAC_20260616181807",
+      "symbol": "BAC",
+      "ts": "2026-06-16T18:18:07.135425+00:00",
+      "bull_case": "R1 Bull(1): Bull case unavailable | R1 Bear(1): Bear case unavailable | R2 Bull(1): Bull case unavailable | R2 Bear(1): Bear case unavailable",
+      "bear_case": "Primary risk: unknown | Unresolved: ['unknown']",
+      "bull_score": 1,
+      "bear_score": 1,
+      "final_conviction": 1,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_LRCX_20260616181809",
+      "symbol": "LRCX",
+      "ts": "2026-06-16T18:18:09.367407+00:00",
       "bull_case": "R1 Bull(1): Bull case unavailable | R1 Bear(1): Bear case unavailable | R2 Bull(1): Bull case unavailable | R2 Bear(1): Bear case unavailable",
       "bear_case": "Primary risk: unknown | Unresolved: ['unknown']",
       "bull_score": 1,
@@ -35337,6 +35482,57 @@
       "pm_action": "skip",
       "pm_verdict": "PM decision unavailable \u2014 defaulting to skip",
       "risk_category": "already_holding"
+    },
+    {
+      "ts": "2026-06-16T18:18:04.945346+00:00",
+      "symbol": "GS",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 error",
+      "conviction": 1,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 1092.71,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "PM decision unavailable \u2014 defaulting to skip",
+      "risk_category": "pm_decision"
+    },
+    {
+      "ts": "2026-06-16T18:18:07.049693+00:00",
+      "symbol": "BAC",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 error",
+      "conviction": 1,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 56.81,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "PM decision unavailable \u2014 defaulting to skip",
+      "risk_category": "pm_decision"
+    },
+    {
+      "ts": "2026-06-16T18:18:09.285482+00:00",
+      "symbol": "LRCX",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 error",
+      "conviction": 1,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 373.33,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "PM decision unavailable \u2014 defaulting to skip",
+      "risk_category": "pm_decision"
     }
   ],
   "watchlists": [
@@ -58526,6 +58722,33 @@
       "det_signal": "bullish",
       "det_strength": 10,
       "agree": false
+    },
+    {
+      "ts": "2026-06-16T18:18:03.618391+00:00",
+      "symbol": "GS",
+      "llm_signal": "neutral",
+      "llm_strength": 5,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": false
+    },
+    {
+      "ts": "2026-06-16T18:18:05.687242+00:00",
+      "symbol": "BAC",
+      "llm_signal": "neutral",
+      "llm_strength": 5,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": false
+    },
+    {
+      "ts": "2026-06-16T18:18:07.767374+00:00",
+      "symbol": "LRCX",
+      "llm_signal": "neutral",
+      "llm_strength": 5,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": false
     }
   ],
   "pre_debate_gates": [
@@ -59288,6 +59511,43 @@
           "reason": "held"
         }
       ]
+    },
+    {
+      "ts": "2026-06-16T18:18:02.385612+00:00",
+      "regime": "bull",
+      "vix_regime": "normal",
+      "run_reason": "scheduled",
+      "n_candidates": 3,
+      "would_buy": [
+        {
+          "symbol": "GS",
+          "composite_score": 0.574,
+          "price": 1091.96,
+          "size_pct": 0.06,
+          "position_usd": 6171.95,
+          "stop_price": 1004.6,
+          "sector": "Financial Services"
+        },
+        {
+          "symbol": "BAC",
+          "composite_score": 0.5547,
+          "price": 56.81,
+          "size_pct": 0.06,
+          "position_usd": 6171.95,
+          "stop_price": 53.91,
+          "sector": "Financial Services"
+        },
+        {
+          "symbol": "LRCX",
+          "composite_score": 0.5297,
+          "price": 373.62,
+          "size_pct": 0.06,
+          "position_usd": 6171.95,
+          "stop_price": 343.73,
+          "sector": "Technology"
+        }
+      ],
+      "skipped": []
     }
   ],
   "universe_discovery": [
@@ -61859,6 +62119,449 @@
           "symbol": "NIXXW",
           "source": "movers_gainers",
           "reason": "blowoff_day_gain 255.6%"
+        }
+      ],
+      "core_size": 112
+    },
+    {
+      "ts": "2026-06-16T18:15:30.195785+00:00",
+      "accepted": [
+        {
+          "symbol": "AAL",
+          "source": "most_actives",
+          "day_gain_pct": 2.72,
+          "gain_5d_pct": 12.7,
+          "price": 15.88
+        },
+        {
+          "symbol": "NOK",
+          "source": "most_actives",
+          "day_gain_pct": -6.55,
+          "gain_5d_pct": 0.0,
+          "price": 13.86
+        },
+        {
+          "symbol": "KEEL",
+          "source": "most_actives",
+          "day_gain_pct": 9.89,
+          "gain_5d_pct": 14.76,
+          "price": 6.22
+        },
+        {
+          "symbol": "MRVL",
+          "source": "most_actives",
+          "day_gain_pct": -5.31,
+          "gain_5d_pct": 9.6,
+          "price": 292.49
+        },
+        {
+          "symbol": "MU",
+          "source": "most_actives",
+          "day_gain_pct": -3.97,
+          "gain_5d_pct": 11.64,
+          "price": 1044.84
+        }
+      ],
+      "rejected": [
+        {
+          "symbol": "ADTX",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "GDC",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "SOXS",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "OBAI",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "IVDA",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "TZA",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "GPUS",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "SPCX",
+          "source": "most_actives",
+          "reason": "insufficient_bars"
+        },
+        {
+          "symbol": "SUGP",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "CRVO",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "YYGH",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "BITO",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "SRXH",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "BMNU",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "CCTG",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "SSPC",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "NIVF",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "WOK",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "PAVS",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "IMCC",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "RXT",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "SNAP",
+          "source": "most_actives",
+          "reason": "no_uptrend"
+        },
+        {
+          "symbol": "BEEM",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "SPCH",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "TQQQ",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "TSLL",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "OPEN",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "GRAB",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "BTBT",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "SNDQ",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "SQQQ",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "ACHR",
+          "source": "most_actives",
+          "reason": "no_uptrend"
+        },
+        {
+          "symbol": "SOXL",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "AHMA",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "ONDS",
+          "source": "most_actives",
+          "reason": "no_uptrend"
+        },
+        {
+          "symbol": "ALIT",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "DRAM",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "NVD",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "NU",
+          "source": "most_actives",
+          "reason": "no_uptrend"
+        },
+        {
+          "symbol": "OTLK",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "SPCL",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 22.1%"
+        },
+        {
+          "symbol": "SPCU",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 22.2%"
+        },
+        {
+          "symbol": "SPCM",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 22.3%"
+        },
+        {
+          "symbol": "CWVX",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 22.6%"
+        },
+        {
+          "symbol": "WYFI",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 22.7%"
+        },
+        {
+          "symbol": "CRWG",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 23.2%"
+        },
+        {
+          "symbol": "CRWU",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 23.5%"
+        },
+        {
+          "symbol": "CNXU",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 24.3%"
+        },
+        {
+          "symbol": "VELL",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 24.5%"
+        },
+        {
+          "symbol": "SAAQW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 24.8%"
+        },
+        {
+          "symbol": "CRE",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 27.0%"
+        },
+        {
+          "symbol": "OSSL",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 29.3%"
+        },
+        {
+          "symbol": "DYNCW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 33.1%"
+        },
+        {
+          "symbol": "RTB",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 33.3%"
+        },
+        {
+          "symbol": "DRDBW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 33.6%"
+        },
+        {
+          "symbol": "CINGW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 34.5%"
+        },
+        {
+          "symbol": "NIVFW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 35.1%"
+        },
+        {
+          "symbol": "VNCE",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 35.3%"
+        },
+        {
+          "symbol": "SDSTW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 37.3%"
+        },
+        {
+          "symbol": "FTHM",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 38.1%"
+        },
+        {
+          "symbol": "WBX",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 38.2%"
+        },
+        {
+          "symbol": "TDIC",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 38.5%"
+        },
+        {
+          "symbol": "AMPGR",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 38.9%"
+        },
+        {
+          "symbol": "HONAV",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 41.0%"
+        },
+        {
+          "symbol": "GDHG",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 41.4%"
+        },
+        {
+          "symbol": "AMPGZ",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 43.1%"
+        },
+        {
+          "symbol": "TBLAW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 43.8%"
+        },
+        {
+          "symbol": "WYFL",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 44.8%"
+        },
+        {
+          "symbol": "LPRO",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 48.3%"
+        },
+        {
+          "symbol": "OIOWW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 49.7%"
+        },
+        {
+          "symbol": "NMRA",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 50.6%"
+        },
+        {
+          "symbol": "SVAQW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 51.6%"
+        },
+        {
+          "symbol": "BFRIW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 53.2%"
+        },
+        {
+          "symbol": "CDTTW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 55.2%"
+        },
+        {
+          "symbol": "NTRBW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 55.6%"
+        },
+        {
+          "symbol": "CCAQW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 59.9%"
+        },
+        {
+          "symbol": "MRNOW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 62.5%"
+        },
+        {
+          "symbol": "BNCWZ",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 69.5%"
+        },
+        {
+          "symbol": "DAICW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 86.9%"
+        },
+        {
+          "symbol": "SLBT",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 166.7%"
         }
       ],
       "core_size": 112

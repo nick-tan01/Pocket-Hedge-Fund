@@ -683,6 +683,12 @@
       "portfolio_value": 103356.01,
       "cash": 79353.86,
       "spy_price": 750.12
+    },
+    {
+      "ts": "2026-06-17T19:14:41.080433+00:00",
+      "portfolio_value": 103337.57,
+      "cash": 79353.86,
+      "spy_price": 746.57
     }
   ],
   "trades": [
@@ -1308,17 +1314,17 @@
       "status": "open",
       "key_risk": "manual review recommended",
       "position_usd": 4177.12,
-      "position_pct": 0.0398,
+      "position_pct": 0.0397,
       "sector": "Healthcare",
-      "last_review_ts": "2026-06-17T16:45:30.723236+00:00",
+      "last_review_ts": "2026-06-17T19:13:57.061513+00:00",
       "last_review_conviction": 5,
       "thesis_status": "intact",
       "time_stop_flagged": false,
       "consecutive_weakened_count": 0,
       "is_remnant": false,
-      "current_price": 1116.6,
-      "unrealized_pl": 372.0,
-      "unrealized_plpc": 0.09956,
+      "current_price": 1114.34,
+      "unrealized_pl": 363.68,
+      "unrealized_plpc": 0.09733,
       "avg_entry": 1015.5,
       "trim_history": [
         {
@@ -1358,9 +1364,9 @@
       "status": "open",
       "key_risk": "manual review recommended",
       "position_usd": 7617.29,
-      "position_pct": 0.077,
+      "position_pct": 0.0772,
       "sector": "Financial Services",
-      "last_review_ts": "2026-06-17T16:45:33.865627+00:00",
+      "last_review_ts": "2026-06-17T19:14:00.038276+00:00",
       "last_review_conviction": 5,
       "thesis_status": "intact",
       "time_stop_flagged": false,
@@ -1378,9 +1384,9 @@
           "basis_estimated": true
         }
       ],
-      "current_price": 226.0,
-      "unrealized_pl": 833.26,
-      "unrealized_plpc": 0.11704,
+      "current_price": 226.61,
+      "unrealized_pl": 854.73,
+      "unrealized_plpc": 0.12005,
       "avg_entry": 202.3212,
       "trim_pnl": 491.96,
       "stop_order_id": "afb8459c-b650-4f35-8585-19a36beee065"
@@ -1400,15 +1406,15 @@
       "status": "open",
       "key_risk": "manual review recommended",
       "position_usd": 3063.57,
-      "position_pct": 0.0322,
+      "position_pct": 0.032,
       "sector": "Financial Services",
       "trim_pnl": 0.0,
       "is_remnant": false,
-      "current_price": 145.6,
-      "unrealized_pl": 258.12,
-      "unrealized_plpc": 0.08426,
+      "current_price": 145.16,
+      "unrealized_pl": 248.09,
+      "unrealized_plpc": 0.08098,
       "avg_entry": 134.2856,
-      "last_review_ts": "2026-06-17T16:41:30.732420+00:00",
+      "last_review_ts": "2026-06-17T19:14:03.139387+00:00",
       "last_review_conviction": 5,
       "thesis_status": "intact",
       "time_stop_flagged": false,
@@ -1429,13 +1435,13 @@
       "status": "open",
       "key_risk": "manual review recommended",
       "position_usd": 4104.54,
-      "position_pct": 0.0404,
+      "position_pct": 0.0407,
       "sector": "Technology",
       "trim_pnl": 0.0,
       "is_remnant": false,
-      "current_price": 521.6503,
-      "unrealized_pl": 66.73,
-      "unrealized_plpc": 0.01626,
+      "current_price": 525.77,
+      "unrealized_pl": 99.67,
+      "unrealized_plpc": 0.02428,
       "avg_entry": 513.3051,
       "last_review_ts": "2026-06-17T16:45:36.966104+00:00",
       "last_review_conviction": 5,
@@ -1458,16 +1464,16 @@
       "status": "open",
       "key_risk": "manual review recommended",
       "position_usd": 4093.14,
-      "position_pct": 0.0426,
+      "position_pct": 0.0427,
       "sector": "Technology",
       "trim_pnl": 0.0,
       "reconciled_from_broker": true,
       "is_remnant": false,
-      "current_price": 608.985,
-      "unrealized_pl": 312.57,
-      "unrealized_plpc": 0.07636,
+      "current_price": 610.05,
+      "unrealized_pl": 320.27,
+      "unrealized_plpc": 0.07825,
       "avg_entry": 565.78,
-      "last_review_ts": "2026-06-17T16:45:50.641898+00:00",
+      "last_review_ts": "2026-06-17T19:14:06.204669+00:00",
       "last_review_conviction": 5,
       "thesis_status": "intact",
       "time_stop_flagged": false,
@@ -22342,6 +22348,279 @@
       },
       "regime": "bull",
       "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-06-17T19:14:41.163862+00:00",
+      "run_type": "midday",
+      "candidates": [
+        "AMAT",
+        "C",
+        "ARM",
+        "MS"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "sentinel_trigger",
+      "candidate_details": [
+        {
+          "symbol": "AMAT",
+          "composite_score": 0.5797,
+          "signals": {
+            "eps_growth": 33.5,
+            "rev_growth": 11.4,
+            "growth_quality": "moderate",
+            "rs_vs_sector_pct": 40.9,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.97,
+            "52wk_high": 623.35,
+            "volume_spike_ratio": 0.81,
+            "volume_spike": false,
+            "rsi": 75.2,
+            "macd_crossover": "False",
+            "bb_pct": 1.02,
+            "news_count": 7,
+            "top_headline": "Citigroup Maintains Buy on Applied Materials, Raises Price Target to $710",
+            "news_quality": 0.75,
+            "pe_trailing": 57.3,
+            "pe_forward": 37.5,
+            "earnings_growth": 33.5
+          }
+        },
+        {
+          "symbol": "C",
+          "composite_score": 0.5447,
+          "signals": {
+            "eps_growth": 56.1,
+            "rev_growth": 15.9,
+            "growth_quality": "moderate",
+            "rs_vs_sector_pct": 14.7,
+            "sector": "Financial Services",
+            "sector_etf": "XLF",
+            "pct_of_52wk_range": 0.98,
+            "52wk_high": 146.54,
+            "volume_spike_ratio": 0.76,
+            "volume_spike": false,
+            "rsi": 75.4,
+            "macd_crossover": "False",
+            "bb_pct": 0.99,
+            "news_count": 2,
+            "top_headline": "Trump's Iran Peace Deal Could Ignite A 'Relief Rally,' Says Ben Emons, Flags 4 'Cheap' Stocks Beyond Tech",
+            "news_quality": 0.25,
+            "pe_trailing": 17.9,
+            "pe_forward": 11.6,
+            "earnings_growth": 56.1
+          }
+        },
+        {
+          "symbol": "ARM",
+          "composite_score": 0.534,
+          "signals": {
+            "eps_growth": 47.9,
+            "rev_growth": 20.1,
+            "growth_quality": "moderate",
+            "rs_vs_sector_pct": 89.0,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.99,
+            "52wk_high": 444.8,
+            "volume_spike_ratio": 0.66,
+            "volume_spike": false,
+            "rsi": 69.1,
+            "macd_crossover": "True",
+            "bb_pct": 0.94,
+            "news_count": 1,
+            "top_headline": "Broadcom's Massive AI Pipeline Secures Multi-Year Growth, Analyst Says",
+            "news_quality": 0.0,
+            "pe_trailing": 532.5,
+            "pe_forward": 144.1,
+            "earnings_growth": 47.9
+          }
+        },
+        {
+          "symbol": "MS",
+          "composite_score": 0.5247,
+          "signals": {
+            "eps_growth": 31.9,
+            "rev_growth": 16.3,
+            "growth_quality": "moderate",
+            "rs_vs_sector_pct": 13.2,
+            "sector": "Financial Services",
+            "sector_etf": "XLF",
+            "pct_of_52wk_range": 0.98,
+            "52wk_high": 228.07,
+            "volume_spike_ratio": 0.88,
+            "volume_spike": false,
+            "rsi": 72.8,
+            "macd_crossover": "False",
+            "bb_pct": 1.04,
+            "news_count": 4,
+            "top_headline": "24/7 Stock Trading Coming? SEC Reportedly Nears Landmark Crypto Rule Shift\u2014 Here's What To Know",
+            "news_quality": 0.05,
+            "pe_trailing": 20.5,
+            "pe_forward": 17.8,
+            "earnings_growth": 31.9
+          }
+        }
+      ],
+      "llm_failures": {
+        "analyst_fallbacks": 12,
+        "pm_failures": 4,
+        "fallback_agents": [
+          "technical",
+          "fundamental",
+          "sentiment",
+          "technical",
+          "fundamental",
+          "sentiment",
+          "technical",
+          "fundamental",
+          "sentiment",
+          "technical",
+          "fundamental",
+          "sentiment"
+        ]
+      },
+      "event_symbols": [
+        "AMAT",
+        "ARM",
+        "C",
+        "HIMS",
+        "ICE",
+        "ISRG",
+        "LLY",
+        "MDT",
+        "MS",
+        "SYK"
+      ],
+      "event_details": [
+        {
+          "symbol": "AMAT",
+          "trigger_type": "intraday_move",
+          "value": 0.0668,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": 0.0668,
+          "latest": 605.61,
+          "previous_close": 567.67
+        },
+        {
+          "symbol": "ARM",
+          "trigger_type": "intraday_move",
+          "value": 0.1018,
+          "threshold": 0.035,
+          "severity": "high",
+          "signed_move": 0.1018,
+          "latest": 436.51,
+          "previous_close": 396.19
+        },
+        {
+          "symbol": "ARM",
+          "trigger_type": "intraday_rebound",
+          "value": 0.0795,
+          "threshold": 0.035,
+          "severity": "high",
+          "latest": 436.51,
+          "intraday_low": 404.35
+        },
+        {
+          "symbol": "HIMS",
+          "trigger_type": "intraday_move",
+          "value": 0.0496,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": 0.0496,
+          "latest": 33.04,
+          "previous_close": 31.48
+        },
+        {
+          "symbol": "HIMS",
+          "trigger_type": "intraday_rebound",
+          "value": 0.0556,
+          "threshold": 0.035,
+          "severity": "normal",
+          "latest": 33.04,
+          "intraday_low": 31.3
+        },
+        {
+          "symbol": "ICE",
+          "trigger_type": "intraday_move",
+          "value": 0.0527,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": -0.0527,
+          "latest": 133.85,
+          "previous_close": 141.29
+        },
+        {
+          "symbol": "ISRG",
+          "trigger_type": "intraday_move",
+          "value": 0.0372,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": -0.0372,
+          "latest": 401.75,
+          "previous_close": 417.26
+        },
+        {
+          "symbol": "MDT",
+          "trigger_type": "intraday_move",
+          "value": 0.0435,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": -0.0435,
+          "latest": 77.78,
+          "previous_close": 81.32
+        },
+        {
+          "symbol": "SYK",
+          "trigger_type": "intraday_move",
+          "value": 0.0355,
+          "threshold": 0.035,
+          "severity": "normal",
+          "signed_move": -0.0355,
+          "latest": 299.59,
+          "previous_close": 310.61
+        },
+        {
+          "symbol": "LLY",
+          "trigger_type": "position_move",
+          "value": 0.0961,
+          "threshold": 0.025,
+          "severity": "high",
+          "price": 1113.23,
+          "entry": 1015.67
+        },
+        {
+          "symbol": "MS",
+          "trigger_type": "position_move",
+          "value": 0.1173,
+          "threshold": 0.025,
+          "severity": "high",
+          "price": 226.24,
+          "entry": 202.48
+        },
+        {
+          "symbol": "C",
+          "trigger_type": "position_move",
+          "value": 0.0794,
+          "threshold": 0.025,
+          "severity": "high",
+          "price": 144.96,
+          "entry": 134.29
+        },
+        {
+          "symbol": "AMAT",
+          "trigger_type": "position_move",
+          "value": 0.071,
+          "threshold": 0.025,
+          "severity": "high",
+          "price": 605.93,
+          "entry": 565.78
+        }
+      ],
+      "regime": "bull",
+      "vix_regime": "normal"
     }
   ],
   "debate_logs": [
@@ -26854,6 +27133,50 @@
       "bear_score": 1,
       "final_conviction": 1,
       "decision": "skip"
+    },
+    {
+      "id": "debate_AMAT_20260617191431",
+      "symbol": "AMAT",
+      "ts": "2026-06-17T19:14:31.521408+00:00",
+      "bull_case": "R1 Bull(1): Bull case unavailable | R1 Bear(1): Bear case unavailable | R2 Bull(1): Bull case unavailable | R2 Bear(1): Bear case unavailable",
+      "bear_case": "Primary risk: unknown | Unresolved: ['unknown']",
+      "bull_score": 1,
+      "bear_score": 1,
+      "final_conviction": 1,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_C_20260617191434",
+      "symbol": "C",
+      "ts": "2026-06-17T19:14:34.387082+00:00",
+      "bull_case": "R1 Bull(1): Bull case unavailable | R1 Bear(1): Bear case unavailable | R2 Bull(1): Bull case unavailable | R2 Bear(1): Bear case unavailable",
+      "bear_case": "Primary risk: unknown | Unresolved: ['unknown']",
+      "bull_score": 1,
+      "bear_score": 1,
+      "final_conviction": 1,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_ARM_20260617191437",
+      "symbol": "ARM",
+      "ts": "2026-06-17T19:14:37.437139+00:00",
+      "bull_case": "R1 Bull(1): Bull case unavailable | R1 Bear(1): Bear case unavailable | R2 Bull(1): Bull case unavailable | R2 Bear(1): Bear case unavailable",
+      "bear_case": "Primary risk: unknown | Unresolved: ['unknown']",
+      "bull_score": 1,
+      "bear_score": 1,
+      "final_conviction": 1,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_MS_20260617191440",
+      "symbol": "MS",
+      "ts": "2026-06-17T19:14:40.796679+00:00",
+      "bull_case": "R1 Bull(1): Bull case unavailable | R1 Bear(1): Bear case unavailable | R2 Bull(1): Bull case unavailable | R2 Bear(1): Bear case unavailable",
+      "bear_case": "Primary risk: unknown | Unresolved: ['unknown']",
+      "bull_score": 1,
+      "bear_score": 1,
+      "final_conviction": 1,
+      "decision": "skip"
     }
   ],
   "position_reviews": [
@@ -31360,6 +31683,58 @@
       "trade_id": "AMAT_RECONCILED_20260612",
       "symbol": "AMAT",
       "ts": "2026-06-17T16:45:50.576422+00:00",
+      "action": "hold",
+      "conviction": 5,
+      "thesis_status": "intact",
+      "rationale": "Review agent unavailable \u2014 defaulting to hold",
+      "original_thesis_check": "could not assess",
+      "key_risk_to_monitor": "manual review recommended",
+      "current_bull_case": "R1 Bull(1): Bull case unavailable | R2 Bull(1): Bull case unavailable",
+      "current_bear_case": "R1 Bear(1): Bear case unavailable | R2 Bear(1): Bear case unavailable"
+    },
+    {
+      "trade_id": "LLY_20260519190455",
+      "symbol": "LLY",
+      "ts": "2026-06-17T19:13:56.992167+00:00",
+      "action": "hold",
+      "conviction": 5,
+      "thesis_status": "intact",
+      "rationale": "Review agent unavailable \u2014 defaulting to hold",
+      "original_thesis_check": "could not assess",
+      "key_risk_to_monitor": "manual review recommended",
+      "current_bull_case": "R1 Bull(1): Bull case unavailable | R2 Bull(1): Bull case unavailable",
+      "current_bear_case": "R1 Bear(1): Bear case unavailable | R2 Bear(1): Bear case unavailable"
+    },
+    {
+      "trade_id": "MS_20260522185742",
+      "symbol": "MS",
+      "ts": "2026-06-17T19:13:59.969557+00:00",
+      "action": "hold",
+      "conviction": 5,
+      "thesis_status": "intact",
+      "rationale": "Review agent unavailable \u2014 defaulting to hold",
+      "original_thesis_check": "could not assess",
+      "key_risk_to_monitor": "manual review recommended",
+      "current_bull_case": "R1 Bull(1): Bull case unavailable | R2 Bull(1): Bull case unavailable",
+      "current_bear_case": "R1 Bear(1): Bear case unavailable | R2 Bear(1): Bear case unavailable"
+    },
+    {
+      "trade_id": "C_20260610165357",
+      "symbol": "C",
+      "ts": "2026-06-17T19:14:03.069180+00:00",
+      "action": "hold",
+      "conviction": 5,
+      "thesis_status": "intact",
+      "rationale": "Review agent unavailable \u2014 defaulting to hold",
+      "original_thesis_check": "could not assess",
+      "key_risk_to_monitor": "manual review recommended",
+      "current_bull_case": "R1 Bull(1): Bull case unavailable | R2 Bull(1): Bull case unavailable",
+      "current_bear_case": "R1 Bear(1): Bear case unavailable | R2 Bear(1): Bear case unavailable"
+    },
+    {
+      "trade_id": "AMAT_RECONCILED_20260612",
+      "symbol": "AMAT",
+      "ts": "2026-06-17T19:14:06.135725+00:00",
       "action": "hold",
       "conviction": 5,
       "thesis_status": "intact",
@@ -36956,6 +37331,74 @@
       "pm_action": "skip",
       "pm_verdict": "PM decision unavailable \u2014 defaulting to skip",
       "risk_category": "pm_decision"
+    },
+    {
+      "ts": "2026-06-17T19:14:31.440589+00:00",
+      "symbol": "AMAT",
+      "action": "hold",
+      "reason": "Already holding AMAT",
+      "conviction": 1,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 609.18,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "PM decision unavailable \u2014 defaulting to skip",
+      "risk_category": "already_holding"
+    },
+    {
+      "ts": "2026-06-17T19:14:34.304815+00:00",
+      "symbol": "C",
+      "action": "hold",
+      "reason": "Already holding C",
+      "conviction": 1,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 145.01,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "PM decision unavailable \u2014 defaulting to skip",
+      "risk_category": "already_holding"
+    },
+    {
+      "ts": "2026-06-17T19:14:37.353641+00:00",
+      "symbol": "ARM",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 error",
+      "conviction": 1,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 441.54,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "PM decision unavailable \u2014 defaulting to skip",
+      "risk_category": "pm_decision"
+    },
+    {
+      "ts": "2026-06-17T19:14:40.715705+00:00",
+      "symbol": "MS",
+      "action": "hold",
+      "reason": "Already holding MS",
+      "conviction": 1,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 226.46,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "PM decision unavailable \u2014 defaulting to skip",
+      "risk_category": "already_holding"
     }
   ],
   "watchlists": [
@@ -61289,6 +61732,78 @@
       "det_signal": "bullish",
       "det_strength": 8,
       "agree": false
+    },
+    {
+      "ts": "2026-06-17T19:13:54.289917+00:00",
+      "symbol": "LLY",
+      "llm_signal": "neutral",
+      "llm_strength": 5,
+      "det_signal": "bullish",
+      "det_strength": 8,
+      "agree": false
+    },
+    {
+      "ts": "2026-06-17T19:13:58.304109+00:00",
+      "symbol": "MS",
+      "llm_signal": "neutral",
+      "llm_strength": 5,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": false
+    },
+    {
+      "ts": "2026-06-17T19:14:01.388847+00:00",
+      "symbol": "C",
+      "llm_signal": "neutral",
+      "llm_strength": 5,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": false
+    },
+    {
+      "ts": "2026-06-17T19:14:04.452964+00:00",
+      "symbol": "AMAT",
+      "llm_signal": "neutral",
+      "llm_strength": 5,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": false
+    },
+    {
+      "ts": "2026-06-17T19:14:29.635756+00:00",
+      "symbol": "AMAT",
+      "llm_signal": "neutral",
+      "llm_strength": 5,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": false
+    },
+    {
+      "ts": "2026-06-17T19:14:32.595514+00:00",
+      "symbol": "C",
+      "llm_signal": "neutral",
+      "llm_strength": 5,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": false
+    },
+    {
+      "ts": "2026-06-17T19:14:35.261779+00:00",
+      "symbol": "ARM",
+      "llm_signal": "neutral",
+      "llm_strength": 5,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": false
+    },
+    {
+      "ts": "2026-06-17T19:14:38.452549+00:00",
+      "symbol": "MS",
+      "llm_signal": "neutral",
+      "llm_strength": 5,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": false
     }
   ],
   "pre_debate_gates": [
@@ -62211,6 +62726,38 @@
         }
       ],
       "skipped": []
+    },
+    {
+      "ts": "2026-06-17T19:14:28.414819+00:00",
+      "regime": "bull",
+      "vix_regime": "normal",
+      "run_reason": "sentinel_trigger",
+      "n_candidates": 4,
+      "would_buy": [
+        {
+          "symbol": "ARM",
+          "composite_score": 0.534,
+          "price": 441.99,
+          "size_pct": 0.06,
+          "position_usd": 6200.4,
+          "stop_price": 406.63,
+          "sector": "Technology"
+        }
+      ],
+      "skipped": [
+        {
+          "symbol": "AMAT",
+          "reason": "held"
+        },
+        {
+          "symbol": "C",
+          "reason": "held"
+        },
+        {
+          "symbol": "MS",
+          "reason": "held"
+        }
+      ]
     }
   ],
   "universe_discovery": [

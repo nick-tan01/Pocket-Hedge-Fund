@@ -61419,6 +61419,893 @@
         }
       ],
       "id": "watchlist_20260617_225605"
+    },
+    {
+      "source": "after_close",
+      "generated_at": "2026-06-18T23:15:50.397428Z",
+      "expires_at": "2026-06-22T18:00:00Z",
+      "universe_count": 112,
+      "entry_count": 20,
+      "long_candidate_count": 11,
+      "weakness_count": 6,
+      "position_alert_count": 3,
+      "entries": [
+        {
+          "symbol": "HIMS",
+          "score": 0.8308,
+          "tier": "A",
+          "setup_type": "long_momentum_continuation",
+          "side": "long_watch",
+          "reason": "long momentum continuation: close location 96%, day +11.2%, volume 1.7x, RS vs SPY +53.2%",
+          "stable_signals": {
+            "asof_date": "2026-06-18",
+            "close": 35.47,
+            "day_return_pct": 11.23,
+            "return_5d_pct": 22.86,
+            "return_20d_pct": 53.95,
+            "rs_vs_spy_20d_pct": 53.21,
+            "rs_vs_sector_20d_pct": null,
+            "sector": null,
+            "sector_etf": null,
+            "volume_ratio_20d": 1.72,
+            "close_location": 0.957,
+            "atr14_pct": 7.04,
+            "range_expansion": 1.74,
+            "breakout_20d": true,
+            "breakdown_20d": false,
+            "news": {
+              "news_count": 3,
+              "top_headline": "Hims & Hers Stock Jumps After Barclays Raises Price Target",
+              "news_quality": 0.4,
+              "earnings_like_news": false,
+              "bearish_like_news": false
+            }
+          },
+          "risk_flags": {
+            "earnings_within_3d": null,
+            "close_near_day_low": false,
+            "failed_breakout": false,
+            "bearish_news": false
+          },
+          "secondary_setups": [
+            "relative_strength_leader"
+          ],
+          "status": "pending_revalidation",
+          "generated_at": "2026-06-18T23:15:50.397428Z",
+          "expires_at": "2026-06-22T18:00:00Z",
+          "source": "after_close_regular_session",
+          "data_source": "yfinance_daily_ohlcv"
+        },
+        {
+          "symbol": "AMAT",
+          "score": 0.8,
+          "tier": "A",
+          "setup_type": "existing_position_alert",
+          "side": "position_alert",
+          "reason": "existing position alert: close location 17%, day +4.1%, volume 1.9x, RS vs SPY +44.0%",
+          "stable_signals": {
+            "asof_date": "2026-06-18",
+            "close": 617.11,
+            "day_return_pct": 4.08,
+            "return_5d_pct": 11.67,
+            "return_20d_pct": 44.75,
+            "rs_vs_spy_20d_pct": 44.01,
+            "rs_vs_sector_20d_pct": null,
+            "sector": null,
+            "sector_etf": null,
+            "volume_ratio_20d": 1.9,
+            "close_location": 0.175,
+            "atr14_pct": 6.44,
+            "range_expansion": 1.46,
+            "breakout_20d": false,
+            "breakdown_20d": false,
+            "news": {
+              "news_count": 6,
+              "top_headline": "Citigroup Maintains Buy on Applied Materials, Raises Price Target to $710",
+              "news_quality": 0.6,
+              "earnings_like_news": true,
+              "bearish_like_news": false
+            }
+          },
+          "risk_flags": {
+            "earnings_within_3d": null,
+            "close_near_day_low": true,
+            "failed_breakout": true,
+            "bearish_news": false
+          },
+          "secondary_setups": [
+            "failed_breakout_avoid"
+          ],
+          "status": "pending_revalidation",
+          "generated_at": "2026-06-18T23:15:50.397428Z",
+          "expires_at": "2026-06-22T18:00:00Z",
+          "source": "after_close_regular_session",
+          "data_source": "yfinance_daily_ohlcv"
+        },
+        {
+          "symbol": "INTC",
+          "score": 0.7925,
+          "tier": "A",
+          "setup_type": "long_momentum_continuation",
+          "side": "long_watch",
+          "reason": "long momentum continuation: close location 80%, day +10.6%, volume 1.7x, RS vs SPY +11.9%",
+          "stable_signals": {
+            "asof_date": "2026-06-18",
+            "close": 133.99,
+            "day_return_pct": 10.64,
+            "return_5d_pct": 14.56,
+            "return_20d_pct": 12.63,
+            "rs_vs_spy_20d_pct": 11.89,
+            "rs_vs_sector_20d_pct": null,
+            "sector": null,
+            "sector_etf": null,
+            "volume_ratio_20d": 1.65,
+            "close_location": 0.803,
+            "atr14_pct": 7.75,
+            "range_expansion": 1.52,
+            "breakout_20d": true,
+            "breakdown_20d": false,
+            "news": {
+              "news_count": 10,
+              "top_headline": "10 Information Technology Stocks With Whale Alerts In Today's Session",
+              "news_quality": 0.4,
+              "earnings_like_news": false,
+              "bearish_like_news": false
+            }
+          },
+          "risk_flags": {
+            "earnings_within_3d": null,
+            "close_near_day_low": false,
+            "failed_breakout": false,
+            "bearish_news": false
+          },
+          "secondary_setups": [
+            "relative_strength_leader"
+          ],
+          "status": "pending_revalidation",
+          "generated_at": "2026-06-18T23:15:50.397428Z",
+          "expires_at": "2026-06-22T18:00:00Z",
+          "source": "after_close_regular_session",
+          "data_source": "yfinance_daily_ohlcv"
+        },
+        {
+          "symbol": "COP",
+          "score": 0.7836,
+          "tier": "A",
+          "setup_type": "hedge_or_weakness_watch",
+          "side": "weakness_or_hedge_watch",
+          "reason": "hedge or weakness watch: close location 26%, day -3.1%, volume 3.3x, RS vs SPY -12.7%",
+          "stable_signals": {
+            "asof_date": "2026-06-18",
+            "close": 107.74,
+            "day_return_pct": -3.12,
+            "return_5d_pct": -6.61,
+            "return_20d_pct": -11.95,
+            "rs_vs_spy_20d_pct": -12.69,
+            "rs_vs_sector_20d_pct": null,
+            "sector": null,
+            "sector_etf": null,
+            "volume_ratio_20d": 3.31,
+            "close_location": 0.257,
+            "atr14_pct": 3.36,
+            "range_expansion": 1.22,
+            "breakout_20d": false,
+            "breakdown_20d": true,
+            "news": {
+              "news_count": 0,
+              "top_headline": ""
+            }
+          },
+          "risk_flags": {
+            "earnings_within_3d": null,
+            "close_near_day_low": false,
+            "failed_breakout": false,
+            "bearish_news": false
+          },
+          "secondary_setups": [],
+          "status": "pending_revalidation",
+          "generated_at": "2026-06-18T23:15:50.397428Z",
+          "expires_at": "2026-06-22T18:00:00Z",
+          "source": "after_close_regular_session",
+          "data_source": "yfinance_daily_ohlcv"
+        },
+        {
+          "symbol": "TXN",
+          "score": 0.7687,
+          "tier": "A",
+          "setup_type": "long_momentum_continuation",
+          "side": "long_watch",
+          "reason": "long momentum continuation: close location 94%, day +6.9%, volume 2.2x, RS vs SPY +5.2%",
+          "stable_signals": {
+            "asof_date": "2026-06-18",
+            "close": 322.86,
+            "day_return_pct": 6.95,
+            "return_5d_pct": 8.67,
+            "return_20d_pct": 5.9,
+            "rs_vs_spy_20d_pct": 5.16,
+            "rs_vs_sector_20d_pct": null,
+            "sector": null,
+            "sector_etf": null,
+            "volume_ratio_20d": 2.18,
+            "close_location": 0.939,
+            "atr14_pct": 4.48,
+            "range_expansion": 1.59,
+            "breakout_20d": false,
+            "breakdown_20d": false,
+            "news": {
+              "news_count": 1,
+              "top_headline": "$100 Invested In Texas Instruments 15 Years Ago Would Be Worth This Much Today",
+              "news_quality": 0.0,
+              "earnings_like_news": false,
+              "bearish_like_news": false
+            }
+          },
+          "risk_flags": {
+            "earnings_within_3d": null,
+            "close_near_day_low": false,
+            "failed_breakout": false,
+            "bearish_news": false
+          },
+          "secondary_setups": [
+            "relative_strength_leader"
+          ],
+          "status": "pending_revalidation",
+          "generated_at": "2026-06-18T23:15:50.397428Z",
+          "expires_at": "2026-06-22T18:00:00Z",
+          "source": "after_close_regular_session",
+          "data_source": "yfinance_daily_ohlcv"
+        },
+        {
+          "symbol": "QCOM",
+          "score": 0.7678,
+          "tier": "A",
+          "setup_type": "long_momentum_continuation",
+          "side": "long_watch",
+          "reason": "long momentum continuation: close location 77%, day +6.2%, volume 2.0x, RS vs SPY +11.3%",
+          "stable_signals": {
+            "asof_date": "2026-06-18",
+            "close": 226.11,
+            "day_return_pct": 6.17,
+            "return_5d_pct": 11.41,
+            "return_20d_pct": 12.07,
+            "rs_vs_spy_20d_pct": 11.33,
+            "rs_vs_sector_20d_pct": null,
+            "sector": null,
+            "sector_etf": null,
+            "volume_ratio_20d": 1.98,
+            "close_location": 0.775,
+            "atr14_pct": 7.62,
+            "range_expansion": 0.91,
+            "breakout_20d": false,
+            "breakdown_20d": false,
+            "news": {
+              "news_count": 7,
+              "top_headline": "10 Information Technology Stocks With Whale Alerts In Today's Session",
+              "news_quality": 0.2,
+              "earnings_like_news": false,
+              "bearish_like_news": false
+            }
+          },
+          "risk_flags": {
+            "earnings_within_3d": null,
+            "close_near_day_low": false,
+            "failed_breakout": false,
+            "bearish_news": false
+          },
+          "secondary_setups": [
+            "relative_strength_leader"
+          ],
+          "status": "pending_revalidation",
+          "generated_at": "2026-06-18T23:15:50.397428Z",
+          "expires_at": "2026-06-22T18:00:00Z",
+          "source": "after_close_regular_session",
+          "data_source": "yfinance_daily_ohlcv"
+        },
+        {
+          "symbol": "JPM",
+          "score": 0.7238,
+          "tier": "B",
+          "setup_type": "failed_breakout_avoid",
+          "side": "weakness_or_hedge_watch",
+          "reason": "failed breakout avoid: close location 8%, day -2.5%, volume 2.2x, RS vs SPY +7.0%",
+          "stable_signals": {
+            "asof_date": "2026-06-18",
+            "close": 325.22,
+            "day_return_pct": -2.47,
+            "return_5d_pct": 3.74,
+            "return_20d_pct": 7.7,
+            "rs_vs_spy_20d_pct": 6.96,
+            "rs_vs_sector_20d_pct": null,
+            "sector": null,
+            "sector_etf": null,
+            "volume_ratio_20d": 2.19,
+            "close_location": 0.075,
+            "atr14_pct": 2.33,
+            "range_expansion": 2.06,
+            "breakout_20d": false,
+            "breakdown_20d": false,
+            "news": {
+              "news_count": 0,
+              "top_headline": "",
+              "news_quality": 0.0
+            }
+          },
+          "risk_flags": {
+            "earnings_within_3d": null,
+            "close_near_day_low": true,
+            "failed_breakout": true,
+            "bearish_news": false
+          },
+          "secondary_setups": [
+            "hedge_or_weakness_watch"
+          ],
+          "status": "pending_revalidation",
+          "generated_at": "2026-06-18T23:15:50.397428Z",
+          "expires_at": "2026-06-22T18:00:00Z",
+          "source": "after_close_regular_session",
+          "data_source": "yfinance_daily_ohlcv"
+        },
+        {
+          "symbol": "TMDX",
+          "score": 0.6547,
+          "tier": "B",
+          "setup_type": "relative_strength_leader",
+          "side": "long_watch",
+          "reason": "relative strength leader: close location 66%, day +7.6%, volume 1.5x, RS vs SPY +15.1%",
+          "stable_signals": {
+            "asof_date": "2026-06-18",
+            "close": 78.79,
+            "day_return_pct": 7.61,
+            "return_5d_pct": 7.07,
+            "return_20d_pct": 15.87,
+            "rs_vs_spy_20d_pct": 15.13,
+            "rs_vs_sector_20d_pct": null,
+            "sector": null,
+            "sector_etf": null,
+            "volume_ratio_20d": 1.52,
+            "close_location": 0.655,
+            "atr14_pct": 5.61,
+            "range_expansion": 1.91,
+            "breakout_20d": true,
+            "breakdown_20d": false,
+            "news": {
+              "news_count": 1,
+              "top_headline": "Stifel Maintains Hold on TransMedics Group, Raises Price Target to $80",
+              "news_quality": 0.2,
+              "earnings_like_news": false,
+              "bearish_like_news": false
+            }
+          },
+          "risk_flags": {
+            "earnings_within_3d": null,
+            "close_near_day_low": false,
+            "failed_breakout": false,
+            "bearish_news": false
+          },
+          "secondary_setups": [],
+          "status": "pending_revalidation",
+          "generated_at": "2026-06-18T23:15:50.397428Z",
+          "expires_at": "2026-06-22T18:00:00Z",
+          "source": "after_close_regular_session",
+          "data_source": "yfinance_daily_ohlcv"
+        },
+        {
+          "symbol": "MS",
+          "score": 0.65,
+          "tier": "B",
+          "setup_type": "existing_position_alert",
+          "side": "position_alert",
+          "reason": "existing position alert: close location 4%, day -0.8%, volume 1.1x, RS vs SPY +12.1%",
+          "stable_signals": {
+            "asof_date": "2026-06-18",
+            "close": 223.17,
+            "day_return_pct": -0.8,
+            "return_5d_pct": 4.94,
+            "return_20d_pct": 12.84,
+            "rs_vs_spy_20d_pct": 12.1,
+            "rs_vs_sector_20d_pct": null,
+            "sector": null,
+            "sector_etf": null,
+            "volume_ratio_20d": 1.1,
+            "close_location": 0.039,
+            "atr14_pct": 2.85,
+            "range_expansion": 1.3,
+            "breakout_20d": false,
+            "breakdown_20d": false,
+            "news": {
+              "news_count": 6,
+              "top_headline": "OpenAI, Anthropic IPOs Spark Battle Between Goldman And Morgan Stanley",
+              "news_quality": 0.0,
+              "earnings_like_news": false,
+              "bearish_like_news": false
+            }
+          },
+          "risk_flags": {
+            "earnings_within_3d": null,
+            "close_near_day_low": true,
+            "failed_breakout": false,
+            "bearish_news": false
+          },
+          "secondary_setups": [],
+          "status": "pending_revalidation",
+          "generated_at": "2026-06-18T23:15:50.397428Z",
+          "expires_at": "2026-06-22T18:00:00Z",
+          "source": "after_close_regular_session",
+          "data_source": "yfinance_daily_ohlcv"
+        },
+        {
+          "symbol": "C",
+          "score": 0.65,
+          "tier": "B",
+          "setup_type": "existing_position_alert",
+          "side": "position_alert",
+          "reason": "existing position alert: close location 0%, day -0.5%, volume 1.2x, RS vs SPY +13.9%",
+          "stable_signals": {
+            "asof_date": "2026-06-18",
+            "close": 143.06,
+            "day_return_pct": -0.5,
+            "return_5d_pct": 3.61,
+            "return_20d_pct": 14.61,
+            "rs_vs_spy_20d_pct": 13.87,
+            "rs_vs_sector_20d_pct": null,
+            "sector": null,
+            "sector_etf": null,
+            "volume_ratio_20d": 1.25,
+            "close_location": 0.0,
+            "atr14_pct": 2.83,
+            "range_expansion": 1.36,
+            "breakout_20d": false,
+            "breakdown_20d": false,
+            "news": {
+              "news_count": 4,
+              "top_headline": "Wells Fargo Maintains Overweight on Citigroup, Raises Price Target to $165",
+              "news_quality": 0.4,
+              "earnings_like_news": false,
+              "bearish_like_news": false
+            }
+          },
+          "risk_flags": {
+            "earnings_within_3d": null,
+            "close_near_day_low": true,
+            "failed_breakout": false,
+            "bearish_news": false
+          },
+          "secondary_setups": [],
+          "status": "pending_revalidation",
+          "generated_at": "2026-06-18T23:15:50.397428Z",
+          "expires_at": "2026-06-22T18:00:00Z",
+          "source": "after_close_regular_session",
+          "data_source": "yfinance_daily_ohlcv"
+        },
+        {
+          "symbol": "CMCSA",
+          "score": 0.6281,
+          "tier": "B",
+          "setup_type": "hedge_or_weakness_watch",
+          "side": "weakness_or_hedge_watch",
+          "reason": "hedge or weakness watch: close location 9%, day -1.1%, volume 2.1x, RS vs SPY -10.6%",
+          "stable_signals": {
+            "asof_date": "2026-06-18",
+            "close": 22.43,
+            "day_return_pct": -1.15,
+            "return_5d_pct": -6.42,
+            "return_20d_pct": -9.85,
+            "rs_vs_spy_20d_pct": -10.59,
+            "rs_vs_sector_20d_pct": null,
+            "sector": null,
+            "sector_etf": null,
+            "volume_ratio_20d": 2.08,
+            "close_location": 0.091,
+            "atr14_pct": 3.09,
+            "range_expansion": 0.68,
+            "breakout_20d": false,
+            "breakdown_20d": true,
+            "news": {
+              "news_count": 0,
+              "top_headline": "",
+              "news_quality": 0.0
+            }
+          },
+          "risk_flags": {
+            "earnings_within_3d": null,
+            "close_near_day_low": true,
+            "failed_breakout": false,
+            "bearish_news": false
+          },
+          "secondary_setups": [],
+          "status": "pending_revalidation",
+          "generated_at": "2026-06-18T23:15:50.397428Z",
+          "expires_at": "2026-06-22T18:00:00Z",
+          "source": "after_close_regular_session",
+          "data_source": "yfinance_daily_ohlcv"
+        },
+        {
+          "symbol": "AMD",
+          "score": 0.6094,
+          "tier": "B",
+          "setup_type": "relative_strength_leader",
+          "side": "long_watch",
+          "reason": "relative strength leader: close location 83%, day +4.9%, volume 1.4x, RS vs SPY +19.3%",
+          "stable_signals": {
+            "asof_date": "2026-06-18",
+            "close": 537.37,
+            "day_return_pct": 4.86,
+            "return_5d_pct": 10.02,
+            "return_20d_pct": 20.06,
+            "rs_vs_spy_20d_pct": 19.32,
+            "rs_vs_sector_20d_pct": null,
+            "sector": null,
+            "sector_etf": null,
+            "volume_ratio_20d": 1.36,
+            "close_location": 0.826,
+            "atr14_pct": 6.87,
+            "range_expansion": 0.79,
+            "breakout_20d": false,
+            "breakdown_20d": false,
+            "news": {
+              "news_count": 10,
+              "top_headline": "Nasdaq 100 Rallies, Oil Sinks To $75 On Iran Peace Deal: Stock Market Today",
+              "news_quality": 0.02,
+              "earnings_like_news": false,
+              "bearish_like_news": true
+            }
+          },
+          "risk_flags": {
+            "earnings_within_3d": null,
+            "close_near_day_low": false,
+            "failed_breakout": false,
+            "bearish_news": true
+          },
+          "secondary_setups": [],
+          "status": "pending_revalidation",
+          "generated_at": "2026-06-18T23:15:50.397428Z",
+          "expires_at": "2026-06-22T18:00:00Z",
+          "source": "after_close_regular_session",
+          "data_source": "yfinance_daily_ohlcv"
+        },
+        {
+          "symbol": "VRTX",
+          "score": 0.6048,
+          "tier": "B",
+          "setup_type": "failed_breakout_avoid",
+          "side": "weakness_or_hedge_watch",
+          "reason": "failed breakout avoid: close location 8%, day -1.6%, volume 2.0x, RS vs SPY +4.2%",
+          "stable_signals": {
+            "asof_date": "2026-06-18",
+            "close": 451.63,
+            "day_return_pct": -1.6,
+            "return_5d_pct": 1.48,
+            "return_20d_pct": 4.92,
+            "rs_vs_spy_20d_pct": 4.18,
+            "rs_vs_sector_20d_pct": null,
+            "sector": null,
+            "sector_etf": null,
+            "volume_ratio_20d": 2.0,
+            "close_location": 0.084,
+            "atr14_pct": 2.71,
+            "range_expansion": 1.3,
+            "breakout_20d": false,
+            "breakdown_20d": false,
+            "news": {
+              "news_count": 0,
+              "top_headline": "",
+              "news_quality": 0.0
+            }
+          },
+          "risk_flags": {
+            "earnings_within_3d": null,
+            "close_near_day_low": true,
+            "failed_breakout": true,
+            "bearish_news": false
+          },
+          "secondary_setups": [
+            "hedge_or_weakness_watch"
+          ],
+          "status": "pending_revalidation",
+          "generated_at": "2026-06-18T23:15:50.397428Z",
+          "expires_at": "2026-06-22T18:00:00Z",
+          "source": "after_close_regular_session",
+          "data_source": "yfinance_daily_ohlcv"
+        },
+        {
+          "symbol": "PFE",
+          "score": 0.604,
+          "tier": "B",
+          "setup_type": "hedge_or_weakness_watch",
+          "side": "weakness_or_hedge_watch",
+          "reason": "hedge or weakness watch: close location 38%, day -2.7%, volume 2.0x, RS vs SPY -3.0%",
+          "stable_signals": {
+            "asof_date": "2026-06-18",
+            "close": 25.21,
+            "day_return_pct": -2.74,
+            "return_5d_pct": -3.67,
+            "return_20d_pct": -2.25,
+            "rs_vs_spy_20d_pct": -2.99,
+            "rs_vs_sector_20d_pct": null,
+            "sector": null,
+            "sector_etf": null,
+            "volume_ratio_20d": 2.02,
+            "close_location": 0.375,
+            "atr14_pct": 2.12,
+            "range_expansion": 2.14,
+            "breakout_20d": false,
+            "breakdown_20d": true,
+            "news": {
+              "news_count": 6,
+              "top_headline": "Pfizer Reaffirms FY26 Adjusted EPS Range $2.80 to $3, Revenue Range $59.5B - $62.5B",
+              "news_quality": 0.2,
+              "earnings_like_news": true,
+              "bearish_like_news": false
+            }
+          },
+          "risk_flags": {
+            "earnings_within_3d": null,
+            "close_near_day_low": false,
+            "failed_breakout": false,
+            "bearish_news": false
+          },
+          "secondary_setups": [],
+          "status": "pending_revalidation",
+          "generated_at": "2026-06-18T23:15:50.397428Z",
+          "expires_at": "2026-06-22T18:00:00Z",
+          "source": "after_close_regular_session",
+          "data_source": "yfinance_daily_ohlcv"
+        },
+        {
+          "symbol": "SOFI",
+          "score": 0.6014,
+          "tier": "B",
+          "setup_type": "relative_strength_leader",
+          "side": "long_watch",
+          "reason": "relative strength leader: close location 89%, day +2.8%, volume 1.0x, RS vs SPY +13.4%",
+          "stable_signals": {
+            "asof_date": "2026-06-18",
+            "close": 17.91,
+            "day_return_pct": 2.81,
+            "return_5d_pct": 7.44,
+            "return_20d_pct": 14.15,
+            "rs_vs_spy_20d_pct": 13.41,
+            "rs_vs_sector_20d_pct": null,
+            "sector": null,
+            "sector_etf": null,
+            "volume_ratio_20d": 1.0,
+            "close_location": 0.89,
+            "atr14_pct": 5.65,
+            "range_expansion": 0.73,
+            "breakout_20d": false,
+            "breakdown_20d": false,
+            "news": {
+              "news_count": 0,
+              "top_headline": "",
+              "news_quality": 0.0
+            }
+          },
+          "risk_flags": {
+            "earnings_within_3d": null,
+            "close_near_day_low": false,
+            "failed_breakout": false,
+            "bearish_news": false
+          },
+          "secondary_setups": [],
+          "status": "pending_revalidation",
+          "generated_at": "2026-06-18T23:15:50.397428Z",
+          "expires_at": "2026-06-22T18:00:00Z",
+          "source": "after_close_regular_session",
+          "data_source": "yfinance_daily_ohlcv"
+        },
+        {
+          "symbol": "HOOD",
+          "score": 0.5994,
+          "tier": "C",
+          "setup_type": "relative_strength_leader",
+          "side": "long_watch",
+          "reason": "relative strength leader: close location 83%, day +2.8%, volume 1.2x, RS vs SPY +42.0%",
+          "stable_signals": {
+            "asof_date": "2026-06-18",
+            "close": 108.15,
+            "day_return_pct": 2.8,
+            "return_5d_pct": 17.26,
+            "return_20d_pct": 42.75,
+            "rs_vs_spy_20d_pct": 42.01,
+            "rs_vs_sector_20d_pct": null,
+            "sector": null,
+            "sector_etf": null,
+            "volume_ratio_20d": 1.16,
+            "close_location": 0.835,
+            "atr14_pct": 6.81,
+            "range_expansion": 0.84,
+            "breakout_20d": false,
+            "breakdown_20d": false,
+            "news": {
+              "news_count": 0,
+              "top_headline": "",
+              "news_quality": 0.0
+            }
+          },
+          "risk_flags": {
+            "earnings_within_3d": null,
+            "close_near_day_low": false,
+            "failed_breakout": false,
+            "bearish_news": false
+          },
+          "secondary_setups": [],
+          "status": "pending_revalidation",
+          "generated_at": "2026-06-18T23:15:50.397428Z",
+          "expires_at": "2026-06-22T18:00:00Z",
+          "source": "after_close_regular_session",
+          "data_source": "yfinance_daily_ohlcv"
+        },
+        {
+          "symbol": "ACLS",
+          "score": 0.5916,
+          "tier": "C",
+          "setup_type": "relative_strength_leader",
+          "side": "long_watch",
+          "reason": "relative strength leader: close location 78%, day +6.9%, volume 1.2x, RS vs SPY +24.6%",
+          "stable_signals": {
+            "asof_date": "2026-06-18",
+            "close": 187.53,
+            "day_return_pct": 6.89,
+            "return_5d_pct": 8.04,
+            "return_20d_pct": 25.39,
+            "rs_vs_spy_20d_pct": 24.65,
+            "rs_vs_sector_20d_pct": null,
+            "sector": null,
+            "sector_etf": null,
+            "volume_ratio_20d": 1.21,
+            "close_location": 0.782,
+            "atr14_pct": 7.43,
+            "range_expansion": 1.12,
+            "breakout_20d": false,
+            "breakdown_20d": false,
+            "news": {
+              "news_count": 0,
+              "top_headline": ""
+            }
+          },
+          "risk_flags": {
+            "earnings_within_3d": null,
+            "close_near_day_low": false,
+            "failed_breakout": false,
+            "bearish_news": false
+          },
+          "secondary_setups": [],
+          "status": "pending_revalidation",
+          "generated_at": "2026-06-18T23:15:50.397428Z",
+          "expires_at": "2026-06-22T18:00:00Z",
+          "source": "after_close_regular_session",
+          "data_source": "yfinance_daily_ohlcv"
+        },
+        {
+          "symbol": "SNOW",
+          "score": 0.5907,
+          "tier": "C",
+          "setup_type": "relative_strength_leader",
+          "side": "long_watch",
+          "reason": "relative strength leader: close location 90%, day -1.0%, volume 0.6x, RS vs SPY +38.4%",
+          "stable_signals": {
+            "asof_date": "2026-06-18",
+            "close": 232.29,
+            "day_return_pct": -0.95,
+            "return_5d_pct": -3.37,
+            "return_20d_pct": 39.12,
+            "rs_vs_spy_20d_pct": 38.38,
+            "rs_vs_sector_20d_pct": null,
+            "sector": null,
+            "sector_etf": null,
+            "volume_ratio_20d": 0.55,
+            "close_location": 0.897,
+            "atr14_pct": 6.74,
+            "range_expansion": 0.91,
+            "breakout_20d": false,
+            "breakdown_20d": false,
+            "news": {
+              "news_count": 0,
+              "top_headline": "",
+              "news_quality": 0.0
+            }
+          },
+          "risk_flags": {
+            "earnings_within_3d": null,
+            "close_near_day_low": false,
+            "failed_breakout": false,
+            "bearish_news": false
+          },
+          "secondary_setups": [],
+          "status": "pending_revalidation",
+          "generated_at": "2026-06-18T23:15:50.397428Z",
+          "expires_at": "2026-06-22T18:00:00Z",
+          "source": "after_close_regular_session",
+          "data_source": "yfinance_daily_ohlcv"
+        },
+        {
+          "symbol": "DUOL",
+          "score": 0.5907,
+          "tier": "C",
+          "setup_type": "relative_strength_leader",
+          "side": "long_watch",
+          "reason": "relative strength leader: close location 80%, day +1.8%, volume 1.1x, RS vs SPY +16.8%",
+          "stable_signals": {
+            "asof_date": "2026-06-18",
+            "close": 125.56,
+            "day_return_pct": 1.76,
+            "return_5d_pct": 1.38,
+            "return_20d_pct": 17.54,
+            "rs_vs_spy_20d_pct": 16.8,
+            "rs_vs_sector_20d_pct": null,
+            "sector": null,
+            "sector_etf": null,
+            "volume_ratio_20d": 1.12,
+            "close_location": 0.802,
+            "atr14_pct": 6.9,
+            "range_expansion": 0.72,
+            "breakout_20d": false,
+            "breakdown_20d": false,
+            "news": {
+              "news_count": 0,
+              "top_headline": "",
+              "news_quality": 0.0
+            }
+          },
+          "risk_flags": {
+            "earnings_within_3d": null,
+            "close_near_day_low": false,
+            "failed_breakout": false,
+            "bearish_news": false
+          },
+          "secondary_setups": [],
+          "status": "pending_revalidation",
+          "generated_at": "2026-06-18T23:15:50.397428Z",
+          "expires_at": "2026-06-22T18:00:00Z",
+          "source": "after_close_regular_session",
+          "data_source": "yfinance_daily_ohlcv"
+        },
+        {
+          "symbol": "MSTR",
+          "score": 0.5884,
+          "tier": "C",
+          "setup_type": "hedge_or_weakness_watch",
+          "side": "weakness_or_hedge_watch",
+          "reason": "hedge or weakness watch: close location 47%, day -3.5%, volume 1.9x, RS vs SPY -32.9%",
+          "stable_signals": {
+            "asof_date": "2026-06-18",
+            "close": 112.53,
+            "day_return_pct": -3.46,
+            "return_5d_pct": -6.34,
+            "return_20d_pct": -32.13,
+            "rs_vs_spy_20d_pct": -32.87,
+            "rs_vs_sector_20d_pct": null,
+            "sector": null,
+            "sector_etf": null,
+            "volume_ratio_20d": 1.86,
+            "close_location": 0.473,
+            "atr14_pct": 9.62,
+            "range_expansion": 0.99,
+            "breakout_20d": false,
+            "breakdown_20d": true,
+            "news": {
+              "news_count": 10,
+              "top_headline": "5 Stocks to Sell as Cryptocurrencies Crumble",
+              "news_quality": 0.0,
+              "earnings_like_news": false,
+              "bearish_like_news": true
+            }
+          },
+          "risk_flags": {
+            "earnings_within_3d": null,
+            "close_near_day_low": false,
+            "failed_breakout": false,
+            "bearish_news": true
+          },
+          "secondary_setups": [],
+          "status": "pending_revalidation",
+          "generated_at": "2026-06-18T23:15:50.397428Z",
+          "expires_at": "2026-06-22T18:00:00Z",
+          "source": "after_close_regular_session",
+          "data_source": "yfinance_daily_ohlcv"
+        }
+      ],
+      "id": "watchlist_20260618_231550"
     }
   ],
   "tech_shadow": [

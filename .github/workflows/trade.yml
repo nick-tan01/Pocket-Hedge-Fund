@@ -86,3 +86,9 @@ jobs:
             git pull --no-rebase origin main
             git push
           fi
+
+      # Recommendation #1: alert on LLM outages. Runs AFTER the push so the journal
+      # always commits; a degraded run then turns this job RED (→ GitHub email) instead
+      # of failing silently like the 2026-06-15 model-EOL outage did for 3 days.
+      - name: Check LLM health (alert on outage)
+        run: python scripts/check_llm_health.py

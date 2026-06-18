@@ -23,6 +23,7 @@ import logging
 import anthropic
 import config
 from agents.performance_context import get_performance_context
+from core.llm_json import complete_json
 
 logger = logging.getLogger(__name__)
 client = anthropic.Anthropic(api_key=config.ANTHROPIC_API_KEY)
@@ -141,17 +142,10 @@ Return ONLY this JSON:
 }}"""
 
     try:
-        r = client.messages.create(
-            model=config.DEBATE_MODEL,
-            max_tokens=config.DEBATE_MAX_TOKENS,
-            messages=[{"role": "user", "content": prompt}],
+        result = complete_json(
+            client, model=config.DEBATE_MODEL, max_tokens=config.DEBATE_MAX_TOKENS,
+            prompt=prompt, label=f"pm:{symbol}",
         )
-        raw = r.content[0].text.strip()
-        if raw.startswith("```"):
-            raw = raw.split("```")[1]
-            if raw.startswith("json"):
-                raw = raw[4:]
-        result = json.loads(raw.strip())
         logger.info(
             "PM | %s | action=%s conviction=%s | %s",
             symbol, result.get("action"),

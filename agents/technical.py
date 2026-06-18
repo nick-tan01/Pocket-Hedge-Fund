@@ -20,6 +20,7 @@ import pandas as pd
 
 import config
 from core.journal import log_tech_shadow
+from core.llm_json import complete_json
 
 logger = logging.getLogger(__name__)
 client = anthropic.Anthropic(api_key=config.ANTHROPIC_API_KEY)
@@ -265,18 +266,10 @@ Return ONLY this JSON, no other text:
 }}"""
 
     try:
-        response = client.messages.create(
-            model=config.ANALYST_MODEL,
-            max_tokens=config.MAX_TOKENS,
-            messages=[{"role": "user", "content": prompt}],
+        result = complete_json(
+            client, model=config.ANALYST_MODEL, max_tokens=config.MAX_TOKENS,
+            prompt=prompt, label=f"technical:{symbol}",
         )
-        raw = response.content[0].text.strip()
-        # Strip markdown fences if present
-        if raw.startswith("```"):
-            raw = raw.split("```")[1]
-            if raw.startswith("json"):
-                raw = raw[4:]
-        result = json.loads(raw.strip())
         result["indicators"] = indicators
         logger.info("Technical | %s | signal=%s strength=%s",
                     symbol, result.get("signal"), result.get("strength"))

@@ -170,8 +170,12 @@ SENTINEL_EVENT_MAX_CANDIDATES = 4                 # Narrow reruns after symbol e
 # next migration so this never silently recurs.
 ANALYST_MODEL   = "claude-sonnet-4-6"   # Fast, cheap — analysts
 DEBATE_MODEL    = "claude-sonnet-4-6"   # Debate agents
-MAX_TOKENS         = 500    # Screener / analyst agents (structured JSON, short output)
-DEBATE_MAX_TOKENS  = 1000   # Bull, Bear, PM, position reviewer (need nuanced reasoning)
+MAX_TOKENS         = 700    # Screener / analyst agents (structured JSON, short output)
+# Raised 1000→1500 (2026-06-19): the bull/bear/PM JSON was truncating at the 1000-token
+# cap mid-object (the 6/17 bear failure at char 4061), producing unparseable output that
+# fell back to conviction-1. 1500 gives the rubric-v2 PM (extra unresolved_bear_points /
+# why_not_lower fields) room to close the JSON. Reliability fix, not a strategy change.
+DEBATE_MAX_TOKENS  = 1500   # Bull, Bear, PM, position reviewer (need nuanced reasoning)
 
 # ── Screener cooldown for systemically-rejected names ────────────────────────
 # After a PM skip whose reason contains TYPE-B systemic keywords (valuation,

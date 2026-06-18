@@ -19,6 +19,7 @@ import anthropic
 import yfinance as yf
 
 import config
+from core.llm_json import complete_json
 
 logger = logging.getLogger(__name__)
 client = anthropic.Anthropic(api_key=config.ANTHROPIC_API_KEY)
@@ -109,17 +110,10 @@ Return ONLY this JSON, no other text:
 }}"""
 
     try:
-        response = client.messages.create(
-            model=config.ANALYST_MODEL,
-            max_tokens=config.MAX_TOKENS,
-            messages=[{"role": "user", "content": prompt}],
+        result = complete_json(
+            client, model=config.ANALYST_MODEL, max_tokens=config.MAX_TOKENS,
+            prompt=prompt, label=f"fundamental:{symbol}",
         )
-        raw = response.content[0].text.strip()
-        if raw.startswith("```"):
-            raw = raw.split("```")[1]
-            if raw.startswith("json"):
-                raw = raw[4:]
-        result = json.loads(raw.strip())
         result["metrics"] = metrics
         logger.info("Fundamental | %s | signal=%s strength=%s",
                     symbol, result.get("signal"), result.get("strength"))

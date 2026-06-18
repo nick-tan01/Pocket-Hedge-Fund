@@ -9,6 +9,7 @@ import logging
 import anthropic
 import config
 from agents.performance_context import get_performance_context
+from core.llm_json import complete_json
 
 logger = logging.getLogger(__name__)
 client = anthropic.Anthropic(api_key=config.ANTHROPIC_API_KEY)
@@ -64,13 +65,10 @@ Return ONLY this JSON:
     )
 
     try:
-        r = client.messages.create(
-            model=config.DEBATE_MODEL,
-            max_tokens=config.DEBATE_MAX_TOKENS,
-            messages=[{"role": "user", "content": prompt}],
+        result = complete_json(
+            client, model=config.DEBATE_MODEL, max_tokens=config.DEBATE_MAX_TOKENS,
+            prompt=prompt, label=f"bull_r1:{symbol}",
         )
-        raw = _clean(r.content[0].text)
-        result = json.loads(raw)
         logger.info("Bull R1 | %s | conviction=%s | %s",
                     symbol, result.get("conviction"), result.get("thesis"))
         return result
@@ -129,13 +127,10 @@ Return ONLY this JSON:
 }}"""
 
     try:
-        r = client.messages.create(
-            model=config.DEBATE_MODEL,
-            max_tokens=config.DEBATE_MAX_TOKENS,
-            messages=[{"role": "user", "content": prompt}],
+        result = complete_json(
+            client, model=config.DEBATE_MODEL, max_tokens=config.DEBATE_MAX_TOKENS,
+            prompt=prompt, label=f"bull_r2:{symbol}",
         )
-        raw = _clean(r.content[0].text)
-        result = json.loads(raw)
         logger.info("Bull R2 | %s | updated conviction=%s | %s",
                     symbol, result.get("conviction"), result.get("conviction_change"))
         return result

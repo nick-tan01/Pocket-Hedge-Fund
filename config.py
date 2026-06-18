@@ -160,8 +160,16 @@ SENTINEL_MARKET_SYMBOLS = ["SPY", "QQQ", "IWM"]  # Broad event symbols
 SENTINEL_EVENT_MAX_CANDIDATES = 4                 # Narrow reruns after symbol events
 
 # ── AI Model ─────────────────────────────────────────────────────────────────
-ANALYST_MODEL   = "claude-sonnet-4-20250514"   # Fast, cheap — analysts
-DEBATE_MODEL    = "claude-sonnet-4-20250514"   # Debate agents
+# 2026-06-17 OUTAGE FIX: claude-sonnet-4-20250514 reached end-of-life on 2026-06-15
+# and now 404s. From 6/15 every analyst/bull/bear/PM call failed → fell back to
+# conviction-1 → 100% of debates skipped ("skip — error"). The fund made zero real
+# decisions for 3 days; only the mechanical broker stops kept it safe. Migrated to
+# claude-sonnet-4-6, the direct successor (like-for-like, minimal behavior change —
+# both roles were Sonnet-4 before). Dependency fix, exempt from the EXP freeze.
+# Check https://docs.anthropic.com/en/docs/resources/model-deprecations before the
+# next migration so this never silently recurs.
+ANALYST_MODEL   = "claude-sonnet-4-6"   # Fast, cheap — analysts
+DEBATE_MODEL    = "claude-sonnet-4-6"   # Debate agents
 MAX_TOKENS         = 500    # Screener / analyst agents (structured JSON, short output)
 DEBATE_MAX_TOKENS  = 1000   # Bull, Bear, PM, position reviewer (need nuanced reasoning)
 

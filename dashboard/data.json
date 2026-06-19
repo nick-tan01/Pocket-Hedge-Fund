@@ -725,6 +725,12 @@
       "portfolio_value": 103344.88,
       "cash": 75220.47,
       "spy_price": 746.74
+    },
+    {
+      "ts": "2026-06-19T19:08:35.663820+00:00",
+      "portfolio_value": 103344.88,
+      "cash": 75220.47,
+      "spy_price": 746.74
     }
   ],
   "trades": [
@@ -1398,15 +1404,15 @@
       "conviction": 8,
       "debate_id": "debate_MS_20260522185742",
       "status": "open",
-      "key_risk": "The upcoming earnings report remains the single binary catalyst \u2014 any miss in investment banking or FICC revenue, or softening of the deal-pipeline guidance, breaks the thesis immediately and triggers exit regardless of price; secondarily, watch for the price trading above $230.47 resistance into earnings with no valuation cushion, which combined with 502x D/E could produce an ungraceful gap-down that outpaces the hard stop.",
+      "key_risk": "The upcoming earnings report remains the single determinative event \u2014 any miss in investment banking revenue, FICC, or softening of deal-pipeline guidance breaks the thesis and triggers full exit regardless of price; secondarily, watch for any credit spread widening that exploits the 502x D/E leverage and gaps the stock through the hard stop.",
       "position_usd": 7617.29,
       "position_pct": 0.0767,
       "sector": "Financial Services",
-      "last_review_ts": "2026-06-19T16:13:11.660204+00:00",
-      "last_review_conviction": 7,
-      "thesis_status": "intact",
+      "last_review_ts": "2026-06-19T18:52:25.481590+00:00",
+      "last_review_conviction": 6,
+      "thesis_status": "weakened",
       "time_stop_flagged": false,
-      "consecutive_weakened_count": 0,
+      "consecutive_weakened_count": 1,
       "is_remnant": false,
       "trim_history": [
         {
@@ -1450,11 +1456,11 @@
       "unrealized_pl": 219.0,
       "unrealized_plpc": 0.07148,
       "avg_entry": 134.2856,
-      "last_review_ts": "2026-06-19T16:14:31.374836+00:00",
-      "last_review_conviction": 6,
-      "thesis_status": "intact",
+      "last_review_ts": "2026-06-19T18:53:50.317752+00:00",
+      "last_review_conviction": 5,
+      "thesis_status": "weakened",
       "time_stop_flagged": false,
-      "consecutive_weakened_count": 0
+      "consecutive_weakened_count": 1
     },
     {
       "id": "AMD_20260612162939",
@@ -1469,7 +1475,7 @@
       "conviction": 6,
       "debate_id": "debate_AMD_20260612162936",
       "status": "open",
-      "key_risk": "Next earnings print \u2014 specifically any Q2 guidance or actuals showing gross margin deterioration below 52%, data center revenue recognition slippage, or net margin stagnation, which remains the sole legitimate exit trigger and is amplified by AMD's thin 13.4% profit margin and $26B+ goodwill exposure if AI accelerator revenue disappoints.",
+      "key_risk": "Next earnings print for any sequential deceleration in data center revenue growth below ~25% or gross margin compression below 52%, either of which would constitute the specific exit trigger defined at entry and could catalyze a 30-40% multiple compression from current elevated TTM P/E of 179.7x.",
       "position_usd": 4104.54,
       "position_pct": 0.0411,
       "sector": "Technology",
@@ -1479,7 +1485,7 @@
       "unrealized_pl": 141.01,
       "unrealized_plpc": 0.03436,
       "avg_entry": 513.3051,
-      "last_review_ts": "2026-06-19T16:16:10.805684+00:00",
+      "last_review_ts": "2026-06-19T18:55:21.608373+00:00",
       "last_review_conviction": 6,
       "thesis_status": "intact",
       "time_stop_flagged": false,
@@ -1498,7 +1504,7 @@
       "conviction": 6,
       "debate_id": "",
       "status": "open",
-      "key_risk": "AMAT's next earnings print for any sign that 33.5% EPS growth is reverting toward the 11.4% revenue growth rate due to margin compression rather than operating leverage \u2014 if that spread narrows for the wrong reason, the 38x forward P/E loses its justification and the exit criterion is met.",
+      "key_risk": "The next AMAT earnings print \u2014 specifically whether margin compression or reduced buyback activity causes the 22-point EPS/revenue divergence to narrow, which would validate the bear's structural fragility argument and trigger the pre-defined exit criterion at a 38x forward P/E that loses justification.",
       "position_usd": 4093.14,
       "position_pct": 0.0431,
       "sector": "Technology",
@@ -1509,7 +1515,7 @@
       "unrealized_pl": 358.14,
       "unrealized_plpc": 0.0875,
       "avg_entry": 565.78,
-      "last_review_ts": "2026-06-19T16:17:37.547597+00:00",
+      "last_review_ts": "2026-06-19T18:56:49.418883+00:00",
       "last_review_conviction": 6,
       "thesis_status": "intact",
       "time_stop_flagged": false,
@@ -24259,6 +24265,156 @@
       ],
       "regime": "bull",
       "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-06-19T19:08:35.757225+00:00",
+      "run_type": "midday",
+      "candidates": [
+        "ARM",
+        "CAT",
+        "LRCX",
+        "MU",
+        "QCOM"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "scheduled",
+      "candidate_details": [
+        {
+          "symbol": "ARM",
+          "composite_score": 0.6607,
+          "signals": {
+            "eps_growth": 47.9,
+            "rev_growth": 20.1,
+            "growth_quality": "moderate",
+            "rs_vs_sector_pct": 63.1,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.96,
+            "52wk_high": 452.7,
+            "volume_spike_ratio": 2.56,
+            "volume_spike": true,
+            "rsi": 69.0,
+            "macd_crossover": "False",
+            "bb_pct": 0.93,
+            "news_count": 1,
+            "top_headline": "New Street Research Downgrades ARM Holdings to Neutral",
+            "news_quality": 0.0,
+            "pe_trailing": 529.5,
+            "pe_forward": 143.2,
+            "earnings_growth": 47.9
+          }
+        },
+        {
+          "symbol": "CAT",
+          "composite_score": 0.6269,
+          "signals": {
+            "eps_growth": 30.2,
+            "rev_growth": 22.2,
+            "growth_quality": "moderate",
+            "rs_vs_sector_pct": 7.0,
+            "sector": "Industrials",
+            "sector_etf": "XLI",
+            "pct_of_52wk_range": 0.99,
+            "52wk_high": 994.49,
+            "volume_spike_ratio": 2.22,
+            "volume_spike": true,
+            "rsi": 65.5,
+            "macd_crossover": "False",
+            "bb_pct": 1.08,
+            "news_count": 0,
+            "top_headline": "",
+            "news_quality": 0.0,
+            "pe_trailing": 49.2,
+            "pe_forward": 32.8,
+            "earnings_growth": 30.2
+          }
+        },
+        {
+          "symbol": "LRCX",
+          "composite_score": 0.6194,
+          "signals": {
+            "eps_growth": 40.8,
+            "rev_growth": 23.8,
+            "growth_quality": "moderate",
+            "rs_vs_sector_pct": 25.2,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.96,
+            "52wk_high": 401.0,
+            "volume_spike_ratio": 2.15,
+            "volume_spike": true,
+            "rsi": 68.7,
+            "macd_crossover": "False",
+            "bb_pct": 0.96,
+            "news_count": 1,
+            "top_headline": "Here\u2019s How Much You Would Have Made Owning Lam Research Stock In The Last 10 Years",
+            "news_quality": 0.0,
+            "pe_trailing": 73.7,
+            "pe_forward": 48.8,
+            "earnings_growth": 40.8
+          }
+        },
+        {
+          "symbol": "MU",
+          "composite_score": 0.619,
+          "signals": {
+            "eps_growth": 756.0,
+            "rev_growth": 196.3,
+            "growth_quality": "strong",
+            "rs_vs_sector_pct": 46.8,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.99,
+            "52wk_high": 1149.43,
+            "volume_spike_ratio": 1.2,
+            "volume_spike": false,
+            "rsi": 66.5,
+            "macd_crossover": "True",
+            "bb_pct": 0.92,
+            "news_count": 10,
+            "top_headline": "10 Information Technology Stocks Whale Activity In Today\u2019s Session",
+            "news_quality": 0.25,
+            "pe_trailing": 53.4,
+            "pe_forward": 9.9,
+            "earnings_growth": 756.0,
+            "discovered": true
+          }
+        },
+        {
+          "symbol": "QCOM",
+          "composite_score": 0.5591,
+          "signals": {
+            "eps_growth": 173.0,
+            "rev_growth": -3.5,
+            "growth_quality": "moderate",
+            "rs_vs_sector_pct": 4.0,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.75,
+            "52wk_high": 259.92,
+            "volume_spike_ratio": 2.21,
+            "volume_spike": true,
+            "rsi": 55.5,
+            "macd_crossover": "False",
+            "bb_pct": 0.52,
+            "news_count": 2,
+            "top_headline": "10 Information Technology Stocks Whale Activity In Today\u2019s Session",
+            "news_quality": 0.0,
+            "pe_trailing": 24.3,
+            "pe_forward": 21.2,
+            "earnings_growth": 173.0,
+            "watchlist_memory": true,
+            "watchlist_setup_type": "long_momentum_continuation",
+            "watchlist_tier": "A",
+            "watchlist_score": 0.7678,
+            "watchlist_reason": "long momentum continuation: close location 77%, day +6.2%, volume 2.0x, RS vs SPY +11.3%",
+            "watchlist_memory_bonus": 0.06
+          }
+        }
+      ],
+      "regime": "bull",
+      "vix_regime": "normal"
     }
   ],
   "debate_logs": [
@@ -29068,6 +29224,61 @@
       "bear_score": 7,
       "final_conviction": 6,
       "decision": "buy"
+    },
+    {
+      "id": "debate_ARM_20260619190136",
+      "symbol": "ARM",
+      "ts": "2026-06-19T19:01:36.755707+00:00",
+      "bull_case": "R1 Bull(6): ARM is in a technically confirmed momentum breakout \u2014 ADX 44.8, 2.56x volume surge, and 28% five-day move signal institutional accumulation that overrides valuation noise in the near term. | R1 Bear(7): ARM is a momentum trade built on a foundation of extreme valuation fragility \u2014 trading 60% above analyst consensus at a 529.5 P/E with a D/E of 5.9, any single catalyst reversal turns this 28% five-day surge into a violent mean-reversion that our recent 40% win rate and -13.7% average loser cannot absorb. | R2 Bull(5): ARM's ADX 44.8 and 2.56x volume surge represent a high-conviction institutional momentum regime that statistically favors upside resolution through $452.7 resistance, but position size must be constrained to reflect the asymmetric risk/reward and our fund's demonstrated stop-loss execution weakness, making this a small-size, defined-risk trade rather than a full conviction entry. | R2 Bear(7): ARM remains a dangerous momentum trap where the bull's own concessions \u2014 unfavorable 3%-to-37% risk/reward asymmetry and a fund with broken stop-loss execution \u2014 invalidate the proposed 'small size, defined risk' solution, leaving no viable position structure that survives a failed $452.7 breakout against a 529.5x earnings backdrop with no valuation floor.",
+      "bear_case": "Primary risk: A failed breakout attempt at $452.7 resistance triggers systematic stop-loss selling into a stock with no valuation support below \u2014 a rapid 20-40% drawdown is not a tail risk, it is the base case if momentum stalls, and our fund's current 40% win rate with -13.7% average losers cannot survive that outcome at any meaningful position size. | Unresolved: [\"The bull's 'strict position sizing + predefined stop' solution presupposes disciplined stop-loss execution, but our fund has a documented 3-of-5 stop-loss failure pattern \u2014 the proposed risk mitigation relies on the exact operational capability we have demonstrated we lack\", \"ADX 44.8 statistically favoring upside resolution does not change the valuation gravity below \u2014 if the breakout fails, there is no fundamental floor between current price and analyst consensus at ~$180, meaning a failed breakout doesn't produce a normal pullback but a structural collapse\", 'The bull never addressed the 529.5 P/E fragility \u2014 any earnings guidance miss, macro rate shock, or AI capex slowdown narrative shift collapses the multiple with no valuation support, independent of whether the technical breakout succeeds', 'A 28% five-day surge entering first resistance means momentum chasers are already crowded on the long side \u2014 the asymmetry of who is left to buy versus who needs to sell on a failure is deeply unfavorable and was not addressed']",
+      "bull_score": 5,
+      "bear_score": 7,
+      "final_conviction": 6,
+      "decision": "watch"
+    },
+    {
+      "id": "debate_CAT_20260619190326",
+      "symbol": "CAT",
+      "ts": "2026-06-19T19:03:26.354129+00:00",
+      "bull_case": "R1 Bull(6): CAT is in a confirmed momentum breakout \u2014 price surging 9.8% on 2.22x volume with ADX at 25.5 and MACD above signal \u2014 and momentum this strong in an industrial leader does not stall at resistance, it breaks through it. | R1 Bear(7): CAT is a cyclical industrial trading at a peak-cycle P/E of 49.2x with 230.8% Debt/Equity \u2014 a lethal combination when the macro turns, and the bull's momentum argument is the last chapter of the trade, not the first. | R2 Bull(5): CAT's confirmed momentum breakout \u2014 ADX 25.5, 2.22x volume, MACD above signal \u2014 reflects institutional conviction that infrastructure supercycle and reshoring tailwinds justify a premium multiple, and while valuation and leverage risks are real, they are systemic and fully visible to the market, making the near-term technical setup the highest-signal input in the absence of a specific negative catalyst. | R2 Bear(7): CAT remains a peak-cycle trap where institutional momentum confirms the consensus trade rather than refutes the valuation risk \u2014 49.2x P/E and 230.8% D/E have not been 'priced in' so much as deferred, and the absence of a specific named catalyst is precisely the condition under which cyclical reversals inflict maximum damage on crowded longs.",
+      "bear_case": "Primary risk: A macro softening or single quarter of EPS deceleration triggers simultaneous multiple compression from 49.2x toward historical cyclical norms of 18-22x and debt-stress repricing on 230.8% D/E \u2014 a combination that could cut the stock 40-50% while the technical setup provides false confidence right up to the breakdown. | Unresolved: [\"The bull never quantified downside absorption capacity at 230.8% D/E if EBITDA contracts 20-30% in a cyclical downturn \u2014 leverage ratios that are 'visible' are not the same as 'priced in' when credit conditions tighten\", 'ADX 25.5 and volume confirmation are momentum descriptors, not valuation anchors \u2014 they cannot prevent multiple compression from 49.2x toward 18-22x historical cyclical norms if a single EPS miss triggers institutional rotation out of peak-cycle industrials', 'The infrastructure supercycle and reshoring thesis is duration-dependent and has not been subjected to a stress test: if federal spending slows, rate-sensitive capex contracts, or China demand disappoints simultaneously, the forward optionality the market is pricing evaporates rapidly', \"The bull's own desk win rate of 40% in a sideways SPY regime with asymmetric average losses (-13.7% vs +13.2%) applies with equal or greater force to the long side, and the bull did not reconcile this with a 5/10 conviction long recommendation\"]",
+      "bull_score": 5,
+      "bear_score": 7,
+      "final_conviction": 6,
+      "decision": "watch"
+    },
+    {
+      "id": "debate_LRCX_20260619190501",
+      "symbol": "LRCX",
+      "ts": "2026-06-19T19:05:01.948448+00:00",
+      "bull_case": "R1 Bull(7): LRCX is in a technically confirmed momentum breakout \u2014 ADX 28.6 + RSI 68.7 + 2.15x volume on a 7.4% five-day move is not noise, it is institutional accumulation, and the bears calling this 'overbought' are about to get run over by the trend. | R1 Bear(6): LRCX is a cyclical semiconductor equipment stock trading at a TTM P/E of 73.7 and PEG of 2.3 near all-time highs in a sideways market regime, where the bull's 'momentum continuation' thesis depends entirely on a breakout that hasn't happened yet \u2014 and our recent 40% win rate on conviction-7 trades in exactly this kind of setup should terrify us. | R2 Bull(6): LRCX's ADX 28.6 / RSI 68.7 / 2.15x volume momentum structure represents genuine institutional accumulation, and while prudent bulls should wait for a confirmed close above $401 rather than front-running the breakout, the underlying trend has the technical strength to clear that level \u2014 the valuation concerns are TYPE B cyclical-sector premia already priced by a market that has had the P/E in plain sight throughout this entire 7.4% move | R2 Bear(7): LRCX remains a dangerous long at 73.7x TTM P/E near all-time highs in a sideways macro regime where the bull's entire rebuttal defended the technical setup while completely ignoring the primary risk: one earnings miss or cautious guide triggers double compression that no confirmed $401 breakout bar can protect against.",
+      "bear_case": "Primary risk: Cyclical peak double compression: LRCX reports even a modest earnings miss or issues cautious forward guidance, triggering simultaneous EPS estimate cuts and P/E multiple contraction from 73.7x \u2014 a combination that routinely produces 35-50% drawdowns in semiconductor equipment names with no technical support until significantly lower levels, and our current sideways regime provides no macro tailwind to cushion the fall. | Unresolved: ['Cyclical peak double compression: a modest earnings miss or cautious guidance at 73.7x TTM P/E triggers simultaneous EPS cuts and multiple contraction, producing 35-50% drawdowns with no technical support at lower levels \u2014 the bull never engaged with this scenario', \"The bull's 'TYPE B valuation premium already priced' argument is assertion without mechanism \u2014 it does not explain why the market would maintain a 73.7x multiple through a guidance cut cycle when semiconductor equipment P/Es historically compress violently in downturns\", \"Sideways SPY regime with documented 40% win rate on conviction-7 momentum breakout trades was conceded as a legitimate risk but never reconciled with the bull's optimistic breakout probability claim \u2014 the base rate itself refutes the 'higher probability outcome' framing\"]",
+      "bull_score": 6,
+      "bear_score": 7,
+      "final_conviction": 6,
+      "decision": "watch"
+    },
+    {
+      "id": "debate_MU_20260619190653",
+      "symbol": "MU",
+      "ts": "2026-06-19T19:06:53.859956+00:00",
+      "bull_case": "R1 Bull(8): MU is a fundamentally mispriced AI infrastructure play \u2014 a forward P/E of 9.9 with 756% EPS growth and a PEG of 0.4 represents a valuation anomaly that the market is only beginning to correct, confirmed by institutional upgrades and accelerating price momentum. | R1 Bear(6): MU's 756% EPS growth and 41.5% margins are a trough-recovery illusion built on 196% revenue recovery from a deep cycle bottom \u2014 the bull is paying 'deep value' prices for peak-cycle earnings at a moment when Debt/Equity of 14.9 leaves zero cushion if the cycle turns. | R2 Bull(7): MU remains a compelling asymmetric long with a 9.9x forward P/E and ADX-confirmed momentum at RSI 66.5 \u2014 the bear's strongest operational concern around resistance entry timing is valid and reduces conviction marginally, but institutional re-rating of HBM as a structural rather than purely cyclical demand driver means the valuation gap to peers is the real anomaly, and a trend with ADX 29.9 and 1.2x volume support is more likely to resolve through resistance than reverse at it. | R2 Bear(7): MU's bull case rests on an unproven HBM structural narrative layered over peak-cycle margins and a levered balance sheet, entering at hard technical resistance after a 13.9% surge with no catalyst \u2014 the asymmetric risk remains a -25% to -35% mean reversion that the fund's own stop-loss mechanics will crystallize before the damage is recognized, and the bull's concession on staged entry implicitly validates this without resolving it.",
+      "bear_case": "Primary risk: MU reports a disappointing forward quarter or HBM demand signals soften even marginally \u2014 with D/E of 14.9, peak-cycle margins, and a stock priced for perfect cycle continuation after a 13.9% 5-day run into hard resistance, the mean reversion is not -10%, it is -25% to -35%, and the fund's current stop-loss discipline (3 of 5 recent exits via initial stop) means we will take the full initial stop loss before the damage becomes clear. | Unresolved: [\"D/E of 14.9 at cycle peak leaves balance sheet fragile to any demand softening \u2014 the bull's 'institutions have modeled it' argument does not eliminate the risk, it confirms the crowded consensus long that unwinds violently on disappointment\", 'HBM structural demand re-rating is a narrative, not yet a financial reality visible in forward guidance \u2014 MU has not provided multi-quarter HBM revenue visibility sufficient to justify decoupling from DRAM cyclicality in valuation models', \"The fund's 40% win rate with average losers exceeding winners means a -25% to -35% cycle reversal scenario interacts lethally with the existing stop-loss discipline, and the bull conceded staged entry without addressing what happens after the initial stop is triggered at resistance\", 'ADX 29.9 and RSI 66.5 describe current momentum, not post-resistance momentum \u2014 the bull has not demonstrated that institutional accumulation is sufficient to absorb supply at $1149 hard resistance after a 13.9% 5-day move with no imminent catalyst']",
+      "bull_score": 7,
+      "bear_score": 7,
+      "final_conviction": 6,
+      "decision": "watch"
+    },
+    {
+      "id": "debate_QCOM_20260619190835",
+      "symbol": "QCOM",
+      "ts": "2026-06-19T19:08:35.448197+00:00",
+      "bull_case": "R1 Bull(6): QCOM is experiencing a technically confirmed momentum breakout \u2014 11% in 5 days on 2.21x volume with room to run to $258.96 resistance \u2014 and the bear's 'earnings quality' objection actually masks the real story: 173% EPS growth at a PEG of 1.0 is being systematically undervalued by a consensus stuck on stale revenue optics. | R1 Bear(7): QCOM's 173% EPS growth is a margin-expansion mirage built on a shrinking revenue base, and with the stock already trading at analyst consensus price targets, the bull is paying full price for a recovery that hasn't arrived yet in a sideways market where our recent momentum trades are losing 60% of the time. | R2 Bull(5): QCOM's technically confirmed momentum breakout is supported by an underappreciated structural margin floor from a $45B automotive design-win backlog that makes the bear's 'margin harvesting is exhausted' thesis incomplete, while the PEG of 1.0 remains defensible on normalized 15-20% forward EPS growth even as the 173% comparison fades \u2014 but position sizing must reflect genuine TYPE A earnings normalization risk at the next print. | R2 Bear(7): QCOM's automotive backlog is a real but temporally mismatched offset to near-term handset weakness \u2014 it does not prevent the next earnings print from delivering YoY revenue decline and sharp EPS growth normalization, which will expose the fragile PEG multiple the bull himself concedes, in a sideways tape with no beta cushion and technically ambiguous momentum that the bull can no longer claim as a clean confirmation.",
+      "bear_case": "Primary risk: QCOM reports next quarter with revenue still declining YoY, margin expansion year-over-year comparisons become unfavorable, EPS growth rate normalizes sharply downward, and the stock re-rates off the PEG multiple that justified the entire bull thesis \u2014 with no cycle recovery catalyst to arrest the move, in a sideways market where we have no cushion from broader beta tailwinds. | Unresolved: ['Automotive revenue at current run-rate is too small to offset handset weakness in the near-term revenue line, meaning the next earnings print still carries high probability of YoY revenue decline that triggers the re-rating scenario', 'The $45B backlog is a disclosed pipeline over an unspecified multi-year horizon, not booked revenue, and design-win pipelines in automotive have historically long and variable conversion timelines that provide no valuation support at the next quarterly print', 'EPS growth normalization from 173% to 15-20% is not a gentle glide path \u2014 the comparison base collapse is sharp and front-loaded, creating a sentiment air pocket before the structural automotive thesis can be validated by actual reported numbers', \"The bull's own concessions on technical ambiguity (ADX below threshold, volume distribution vs. accumulation uncertainty) leave the momentum leg of the thesis structurally weakened, removing the stop-loss discipline that would otherwise bound downside risk\"]",
+      "bull_score": 5,
+      "bear_score": 7,
+      "final_conviction": 5,
+      "decision": "watch"
     }
   ],
   "position_reviews": [
@@ -33922,6 +34133,60 @@
       "key_risk_to_monitor": "AMAT's next earnings print for any sign that 33.5% EPS growth is reverting toward the 11.4% revenue growth rate due to margin compression rather than operating leverage \u2014 if that spread narrows for the wrong reason, the 38x forward P/E loses its justification and the exit criterion is met.",
       "current_bull_case": "R1 Bull(7): AMAT is in a confirmed, volume-backed momentum breakout where technicals and fundamentals are mutually reinforcing \u2014 not diverging \u2014 making the bear's 'overbought' objection the exact trap that gets missed before the next leg up. | R2 Bull(6): AMAT remains a momentum-confirmed breakout with institutional sponsorship and structural equipment cycle tailwinds, but the EPS-to-revenue growth divergence is a legitimate near-term earnings quality risk that warrants reduced position sizing and a disciplined stop below the breakout level rather than full conviction chasing at Bollinger Band extremes.",
       "current_bear_case": "R1 Bear(6): AMAT's EPS growth dramatically outpacing revenue growth by nearly 3:1 signals earnings quality deterioration \u2014 the multiple the bull is paying for is built on a foundation that can't sustain itself, not a genuine growth engine. | R2 Bear(6): AMAT's bull case requires simultaneously believing operating leverage justifies a 3:1 EPS-to-revenue growth ratio, that 38x forward is fair for a semiconductor equipment cyclical, and that momentum continuation is probable at Bollinger Band extremes in a sideways macro \u2014 all three must hold simultaneously for the long to work, while the bear only needs one to crack."
+    },
+    {
+      "trade_id": "MS_20260522185742",
+      "symbol": "MS",
+      "ts": "2026-06-19T18:52:25.406070+00:00",
+      "action": "hold",
+      "conviction": 6,
+      "thesis_status": "weakened",
+      "rationale": "The core thesis \u2014 MS capturing generational IPO mandates at a discount to growth \u2014 remains structurally intact, with 31.9% EPS growth, strong institutional momentum, and the IPO pipeline still alive; however, the thesis has materially weakened because the OpenAI/Anthropic IPO catalysts have been downgraded to unconfirmed optionality, price is now $26 above analyst consensus with no fundamental price-target backstop, and the stock is approaching hard resistance at $230.47 with earnings as an unresolved binary catalyst ahead.",
+      "original_thesis_check": "Partially true: the IPO mandate thesis (SpaceX, OpenAI) is still directionally valid but has not been confirmed as near-term revenue, the valuation discount argument has eroded as price has run to 17.6x forward P/E approaching resistance, and the binary earnings catalyst risk flagged in the original key risk remains live and unresolved \u2014 the thesis is intact in structure but weaker in every specific supporting pillar.",
+      "key_risk_to_monitor": "The upcoming earnings report remains the single determinative event \u2014 any miss in investment banking revenue, FICC, or softening of deal-pipeline guidance breaks the thesis and triggers full exit regardless of price; secondarily, watch for any credit spread widening that exploits the 502x D/E leverage and gaps the stock through the hard stop.",
+      "trim_reason": "With the consensus price-target backstop gone, IPO catalysts unconfirmed, and price approaching hard resistance at $230.47 ahead of a binary earnings event, the thesis has materially softened enough to warrant size reduction \u2014 not exit, because EPS growth is real, momentum is institutionally confirmed, and the IPO pipeline remains a live optionality; trimming reduces exposure to a potential gap-down through the hard stop on a credit event or earnings miss while preserving participation if the thesis fully validates on earnings.",
+      "current_bull_case": "R1 Bull(7): MS is exhibiting a rare confluence of institutional-grade momentum \u2014 ADX 43.6, volume 2x average, 31.9% EPS growth \u2014 in a stock that hasn't yet reached analyst consensus price targets, making this a trend continuation trade with fundamental backing before the IPO cycle catalyst fully prices in. | R2 Bull(6): MS remains a momentum-continuation trade with legitimate fundamental underpinning in 31.9% EPS growth and institutional accumulation confirmed by ADX 43.6 and 2x volume, but conviction is trimmed to reflect the real risk of stalling at hard resistance above analyst consensus, requiring tight stop discipline and position sizing that accounts for the fund's current 40% win rate environment.",
+      "current_bear_case": "R1 Bear(6): MS is a leveraged, cycle-dependent business trading above analyst consensus at peak momentum and peak earnings \u2014 the bull's IPO catalyst is speculative optionality dressed as a fundamental thesis, while the actual risk is a 502x leveraged balance sheet catching any credit or liquidity shock in a sideways market regime. | R2 Bear(7): With the bull's own concessions stripping away the consensus backstop, the IPO catalyst, and the sizing rationale, MS is now a pure momentum bet on a 502x leveraged balance sheet trading at hard resistance with no fundamental floor, inside a fund already running stop-out-dominated exits \u2014 the expected loss on a position that gaps down 15-20% in a credit event exceeds any momentum premium the trade can realistically capture."
+    },
+    {
+      "trade_id": "C_20260610165357",
+      "symbol": "C",
+      "ts": "2026-06-19T18:53:50.243404+00:00",
+      "action": "hold",
+      "conviction": 5,
+      "thesis_status": "weakened",
+      "rationale": "The original thesis of underpriced EPS momentum remains intact, but the DOJ Iran probe \u2014 explicitly named in the original thesis as the sole thesis-breaking trigger \u2014 has now surfaced in sentiment signals and the current debate as an active, material risk with specific consent-order-amendment mechanisms that could structurally impair the buyback-and-EPS-growth narrative without requiring the hard-stop trigger of a formal Citigroup naming; the thesis survives but is materially softer than at entry.",
+      "original_thesis_check": "The core thesis \u2014 56% EPS growth underpriced at sub-11x forward P/E with technical momentum confirmation \u2014 remains directionally true (fundamentals bullish 7/10, technicals bullish 8/10, PEG 0.8), but the original key risk (DOJ Iran probe naming Citigroup) has not yet been triggered as a hard exit; however, the probe has escalated sufficiently in credibility and specificity in today's signals to represent a material weakening of the risk/reward without yet breaking the thesis.",
+      "key_risk_to_monitor": "Any DOJ subpoena, enforcement action, or public filing that specifically names Citigroup in the Iran money-flow investigation \u2014 this remains the sole defined thesis-breaking trigger and must be monitored daily given the live probe and Citigroup's large international compliance footprint.",
+      "trim_reason": "The DOJ Iran probe has graduated from background noise to a specifically articulated structural threat \u2014 including the consent-order-amendment channel identified in R2 Bear \u2014 that could constrain buyback execution and EPS delivery on the exact timeline the re-rating thesis requires; trimming reduces binary-event exposure while preserving participation in the intact momentum thesis, consistent with the bull's own concession that defensive sizing is warranted.",
+      "current_bull_case": "R1 Bull(7): Citigroup's rare combination of 56.1% EPS growth at a PEG of 0.8 is finally getting priced in, and the technical structure \u2014 ADX 41.4, volume 2.57x average \u2014 confirms institutional accumulation is accelerating, not exhausting. | R2 Bull(6): Citigroup's 56.1% EPS growth at a PEG of 0.8 reflects a genuine transformation inflection that institutional accumulation at 2.57x average volume and ADX 41.4 confirms is being recognized, and while the DOJ Iran probe is a real TYPE A risk deserving respect, Citi's capital buffer and historical DPA resolution patterns make equity dilution the tail scenario \u2014 not the base \u2014 leaving the re-rating thesis intact for investors with a 3-6 month horizon willing to size position defensively.",
+      "current_bear_case": "R1 Bear(6): A DOJ probe into Iran sanctions violations \u2014 the exact category of regulatory failure that has previously triggered multi-billion dollar fines and forced consent orders \u2014 represents a non-trivial existential risk to the transformation narrative that the bull has dismissed as 'already priced in' without a shred of evidence it actually is. | R2 Bear(6): Even if the DOJ Iran probe resolves via a negotiated DPA without triggering an equity raise, the near-certainty of enhanced consent order conditions would constrain buyback execution and operational flexibility precisely when the re-rating thesis demands accelerating EPS delivery \u2014 making the probe not merely a valuation haircut risk but a structural threat to the transformation narrative's timeline regardless of settlement size."
+    },
+    {
+      "trade_id": "AMD_20260612162939",
+      "symbol": "AMD",
+      "ts": "2026-06-19T18:55:21.532405+00:00",
+      "action": "hold",
+      "conviction": 6,
+      "thesis_status": "intact",
+      "rationale": "The original thesis \u2014 AMD's 91.2% EPS growth validating its AI transformation with technical momentum continuation \u2014 remains intact; no earnings print has occurred showing gross margin deterioration below 52%, data center revenue slippage, or net margin stagnation, which were the sole defined exit triggers. Sentiment noise from ARK selling and UBS caution does not constitute thesis invalidation under our framework.",
+      "original_thesis_check": "Still true. The 91.2% EPS growth figure stands, AI/data center revenue expansion of 37.8% is confirmed, technical momentum has strengthened (RSI 61.2, ADX 29.1, 1.39x volume), and the PEG of 1.3 remains reasonable relative to growth. The original key risk event \u2014 a negative earnings print \u2014 has not occurred.",
+      "key_risk_to_monitor": "Next earnings print for any sequential deceleration in data center revenue growth below ~25% or gross margin compression below 52%, either of which would constitute the specific exit trigger defined at entry and could catalyze a 30-40% multiple compression from current elevated TTM P/E of 179.7x.",
+      "current_bull_case": "R1 Bull(6): AMD's 91.2% EPS growth and 37.8% revenue expansion in AI/data center are being re-rated in real time \u2014 the PEG of 1.3 against a confirmed technical breakout with 1.39x volume tells you institutions are still accumulating despite surface-level noise. | R2 Bull(5): AMD's confirmed ADX trend with institutional-grade volume accumulation into overhead resistance is a tactical entry risk worth respecting, but the structural MI300X data center ramp, 91.2% EPS growth trajectory, and PEG of 1.3 make any macro-driven pullback to support a higher-conviction entry rather than a reason to abandon a thesis that remains fundamentally sound.",
+      "current_bear_case": "R1 Bear(6): AMD's bull case rests entirely on a forward growth rate that is already priced to perfection, while the fund's own 40% win rate in a sideways regime means the asymmetry here \u2014 a 179.7x TTM multiple with 13.4% profit margins \u2014 punishes any miss catastrophically and rewards continuation only modestly. | R2 Bear(7): AMD's 179.7x TTM multiple with 13.4% profit margins and a bull who concedes a tactically poor entry and unresolved capital efficiency concerns confirms the asymmetry remains catastrophically skewed \u2014 any data center revenue deceleration triggers a multiple compression the trend confirmation and institutional volume signatures cannot prevent."
+    },
+    {
+      "trade_id": "AMAT_RECONCILED_20260612",
+      "symbol": "AMAT",
+      "ts": "2026-06-19T18:56:49.343234+00:00",
+      "action": "hold",
+      "conviction": 6,
+      "thesis_status": "intact",
+      "rationale": "The original exit criterion \u2014 evidence that the 33.5% EPS growth rate is reverting toward the 11.4% revenue growth rate due to margin compression rather than operating leverage \u2014 has not been triggered; no new earnings print has arrived to test that divergence, and the 33.5% EPS growth and 29.3% profit margin figures cited in today's fundamental signal remain consistent with the thesis as originally framed.",
+      "original_thesis_check": "Still true as of today: the EPS/revenue divergence has not been observed to narrow for the wrong reason in any reported data; the thesis-breaking event is forward-looking and earnings-dependent, not yet realized.",
+      "key_risk_to_monitor": "The next AMAT earnings print \u2014 specifically whether margin compression or reduced buyback activity causes the 22-point EPS/revenue divergence to narrow, which would validate the bear's structural fragility argument and trigger the pre-defined exit criterion at a 38x forward P/E that loses justification.",
+      "current_bull_case": "R1 Bull(7): AMAT is in a confirmed momentum continuation move \u2014 not an exhaustion spike \u2014 driven by institutional accumulation and AI-driven demand expansion, with technical and fundamental signals aligned for a run toward the $638.90 resistance target. | R2 Bull(6): AMAT remains a conviction long toward $638.90 driven by AI-capex-cycle institutional accumulation and a confirmed ADX>30 trend, with the primary near-term risk being sideways macro regime execution rather than any fundamental deterioration, warranting a reduced position size but not a thesis reversal.",
+      "current_bear_case": "R1 Bear(7): AMAT's EPS growth story is built on margin expansion and buybacks rather than revenue acceleration, making it structurally fragile at peak valuation precisely when momentum chasers are most exposed to a sudden earnings quality reckoning. | R2 Bear(7): AMAT's 58x TTM P/E built on buyback-and-margin EPS engineering rather than revenue acceleration remains a structural powder keg that ADX trend readings and a single outlier upgrade cannot defuse when the next earnings print forces the market to reconcile a 22-point EPS/revenue divergence at peak valuation with zero technical cushion below."
     }
   ],
   "risk_decisions": [
@@ -39969,6 +40234,91 @@
       "pm_action": "buy",
       "pm_verdict": "AMD clears the quality-compounder lane at conviction 6: two constructive analyst signals (Technical 7/10, Fundamental 7/10) with confirmed momentum (ADX 29.1, volume 1.39x, RSI 61.2 with room), but one partially-answered TYPE-A bear point (MACD non-confirmation at hard resistance $558.37) and no dated catalyst within 4 weeks keep this out of the 7-8 band; reduced size is mandatory.",
       "risk_category": "already_holding"
+    },
+    {
+      "ts": "2026-06-19T19:01:36.664399+00:00",
+      "symbol": "ARM",
+      "action": "watch",
+      "reason": "PM decision: watch \u2014 The Exhaustion/Crowding Guardrail: a 28% move in 5 sessions with RSI approaching 70 meets the parabolic threshold (>25% in <15 sessions), mandating a -1 conviction penalty that prevents a 7+ score, and the bull's sole catalyst (resistance breakout) is a price condition, not a dated event \u2014 blocking the Tied Debate Rule's buy trigger and redirecting to WATCH pending a confirmed close above $452.7 on sustained volume.",
+      "conviction": 6,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 439.46,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "watch",
+      "pm_verdict": "ARM has a technically elite momentum setup (ADX 44.8, 2.56x volume, Technical analyst 9/10) but the bull's only named near-term catalyst \u2014 a close above $452.7 resistance \u2014 is 3% away with no dated event, and the Exhaustion/Crowding Guardrail triggers on a 28% move in 5 sessions (RSI ~70, >25% in <15 sessions), holding conviction at 6 rather than 7+; the Tied Debate Rule cannot elevate this to a buy because the third condition fails \u2014 the unresolved $452.7 failed-breakout risk is TYPE-A, not TYPE-B.",
+      "risk_category": "conviction"
+    },
+    {
+      "ts": "2026-06-19T19:03:26.265091+00:00",
+      "symbol": "CAT",
+      "action": "watch",
+      "reason": "PM decision: watch \u2014 No named, dated catalyst within 4 weeks \u2014 the Conviction Rubric v2 explicitly requires a dated catalyst to elevate a 2-analyst-constructive setup into the 7-8 band; without it, and with fundamental signal at neutral (5/10), the score cannot exceed 6, and the Tied Debate Rule's tightened conditions (requiring \u22652 constructive signals \u22656/10 OR a dated catalyst) are only half-met. The 6 conviction falls below the minimum BUY threshold of 6 only when paired with a clean entry \u2014 here, price is at all-time-high resistance with no pullback to support, making WATCH the disciplined call.",
+      "conviction": 6,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 985.82,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "watch",
+      "pm_verdict": "CAT has legitimate technical momentum (ADX 25.5, 2.22x volume, MACD confirmed) placing it in the 7-8 band on technicals alone, but the absence of any named, dated catalyst within 4 weeks and a neutral fundamental signal (5/10) cap this at 6 under the Conviction Rubric v2 \u2014 this is the quality-compounder lane with mixed signals, not a momentum continuation trade. The Tied Debate Rule's catalyst requirement is unmet, making this a WATCH pending a defined entry condition rather than a buy into extended price.",
+      "risk_category": "conviction"
+    },
+    {
+      "ts": "2026-06-19T19:05:01.855192+00:00",
+      "symbol": "LRCX",
+      "action": "watch",
+      "reason": "PM decision: watch \u2014 The bear's cyclical peak double-compression scenario \u2014 a near-term earnings miss or cautious guidance triggering simultaneous EPS cuts and multiple contraction at 73.7x TTM P/E \u2014 was never concretely rebutted by the bull, who instead pivoted entirely to defending the technical setup. This constitutes one unresolved TYPE-A bear point under the Exhaustion/Crowding Guardrail, which mandates a conviction reduction and blocks the 7-8 band.",
+      "conviction": 6,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 389.04,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "watch",
+      "pm_verdict": "LRCX has a genuinely strong technical momentum structure (ADX 28.6, 2.15x volume, RSI 68.7) supported by constructive technical and fundamental analyst signals, but the bull never concretely rebutted the cyclical peak double-compression risk from an earnings miss or cautious guidance at 73.7x TTM P/E \u2014 that is a TYPE-A trade-specific catalyst risk that prevents conviction from reaching 7, and the correct entry requires a confirmed close above $401 on elevated volume before initiating.",
+      "risk_category": "conviction"
+    },
+    {
+      "ts": "2026-06-19T19:06:53.767379+00:00",
+      "symbol": "MU",
+      "action": "watch",
+      "reason": "PM decision: watch \u2014 The absence of a named, dated catalyst within 4 weeks is the structural blocker: the 7-8 band requires either a dated catalyst OR confirmation that all unresolved bear points are TYPE-B systemic \u2014 but the $1149 resistance entry timing after a 13.9% 5-day move with no imminent catalyst is a TYPE-A timing risk (specific to this stock at this moment), and the bull's own R2 concession on staged entry validates it without resolving it, which under the Exhaustion/Crowding Guardrail (TYPE-A point not concretely rebutted) forces a \u22651 conviction reduction from the 7-8 band to 6.",
+      "conviction": 6,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 1133.99,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "watch",
+      "pm_verdict": "MU has a genuine structural bull case anchored by a 9.9x forward P/E, ADX-confirmed momentum (29.9), and constructive signals across all three analyst dimensions (Technical 8/10, Fundamental 8/10, Sentiment 6/10), but the bear raised one unresolved TYPE-A point \u2014 entering at hard $1149 resistance after a 13.9% 5-day surge with no dated catalyst within 4 weeks \u2014 that the bull conceded without resolving, preventing a clean 7+ conviction score under the rubric and triggering the WATCH condition for a defined entry level.",
+      "risk_category": "conviction"
+    },
+    {
+      "ts": "2026-06-19T19:08:35.354446+00:00",
+      "symbol": "QCOM",
+      "action": "watch",
+      "reason": "PM decision: watch \u2014 The bull's own Round 2 concession that the 173% EPS growth normalization risk is 'real and near-term' converts the bear's primary argument into a bull-acknowledged TYPE-A risk \u2014 an unresolved TYPE-A point caps conviction at \u22645 per the rubric, regardless of technical setup.",
+      "conviction": 5,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 226.11,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "watch",
+      "pm_verdict": "QCOM's technical momentum is real but below the ADX>25 confirmation threshold, the fundamental analyst is neutral with analyst consensus at hold near current price targets, and the bear's TYPE-A point \u2014 near-term EPS normalization from 173% to ~15-20% creating a valuation air pocket at the next earnings print \u2014 was conceded by the bull himself and remains arithmetically unresolved by the automotive backlog argument. The tied-debate BUY rule does not trigger because unresolved bear points are TYPE-A, not TYPE-B, and there is no named dated catalyst within 4 weeks to override.",
+      "risk_category": "conviction"
     }
   ],
   "watchlists": [
@@ -66556,6 +66906,87 @@
       "det_signal": "bullish",
       "det_strength": 8,
       "agree": true
+    },
+    {
+      "ts": "2026-06-19T18:50:53.399864+00:00",
+      "symbol": "MS",
+      "llm_signal": "bullish",
+      "llm_strength": 8,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": true
+    },
+    {
+      "ts": "2026-06-19T18:52:29.374090+00:00",
+      "symbol": "C",
+      "llm_signal": "bullish",
+      "llm_strength": 8,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": true
+    },
+    {
+      "ts": "2026-06-19T18:53:54.561197+00:00",
+      "symbol": "AMD",
+      "llm_signal": "bullish",
+      "llm_strength": 7,
+      "det_signal": "bullish",
+      "det_strength": 8,
+      "agree": true
+    },
+    {
+      "ts": "2026-06-19T18:55:26.326096+00:00",
+      "symbol": "AMAT",
+      "llm_signal": "bullish",
+      "llm_strength": 9,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": true
+    },
+    {
+      "ts": "2026-06-19T18:59:57.523503+00:00",
+      "symbol": "ARM",
+      "llm_signal": "bullish",
+      "llm_strength": 9,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": true
+    },
+    {
+      "ts": "2026-06-19T19:01:41.447466+00:00",
+      "symbol": "CAT",
+      "llm_signal": "bullish",
+      "llm_strength": 8,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": true
+    },
+    {
+      "ts": "2026-06-19T19:03:30.455985+00:00",
+      "symbol": "LRCX",
+      "llm_signal": "bullish",
+      "llm_strength": 8,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": true
+    },
+    {
+      "ts": "2026-06-19T19:05:06.084817+00:00",
+      "symbol": "MU",
+      "llm_signal": "bullish",
+      "llm_strength": 8,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": true
+    },
+    {
+      "ts": "2026-06-19T19:06:58.322620+00:00",
+      "symbol": "QCOM",
+      "llm_signal": "bullish",
+      "llm_strength": 7,
+      "det_signal": "bullish",
+      "det_strength": 8,
+      "agree": true
     }
   ],
   "pre_debate_gates": [
@@ -67695,6 +68126,43 @@
           "reason": "held"
         }
       ]
+    },
+    {
+      "ts": "2026-06-19T18:59:53.659413+00:00",
+      "regime": "bull",
+      "vix_regime": "normal",
+      "run_reason": "scheduled",
+      "n_candidates": 5,
+      "would_buy": [
+        {
+          "symbol": "ARM",
+          "composite_score": 0.6607,
+          "price": 439.46,
+          "size_pct": 0.06,
+          "position_usd": 6200.69,
+          "stop_price": 404.3,
+          "sector": "Technology"
+        },
+        {
+          "symbol": "CAT",
+          "composite_score": 0.6269,
+          "price": 985.82,
+          "size_pct": 0.06,
+          "position_usd": 6200.69,
+          "stop_price": 906.95,
+          "sector": "Industrials"
+        },
+        {
+          "symbol": "LRCX",
+          "composite_score": 0.6194,
+          "price": 389.04,
+          "size_pct": 0.06,
+          "position_usd": 6200.69,
+          "stop_price": 357.92,
+          "sector": "Technology"
+        }
+      ],
+      "skipped": []
     }
   ],
   "universe_discovery": [
@@ -72000,6 +72468,413 @@
           "symbol": "SDOT",
           "source": "movers_gainers",
           "reason": "blowoff_day_gain 97.2%"
+        }
+      ],
+      "core_size": 112
+    },
+    {
+      "ts": "2026-06-19T18:57:01.290889+00:00",
+      "accepted": [
+        {
+          "symbol": "MRVL",
+          "source": "most_actives",
+          "day_gain_pct": 7.27,
+          "gain_5d_pct": 10.64,
+          "price": 310.58
+        },
+        {
+          "symbol": "NOK",
+          "source": "most_actives",
+          "day_gain_pct": -2.46,
+          "gain_5d_pct": -4.26,
+          "price": 13.49
+        },
+        {
+          "symbol": "AAL",
+          "source": "most_actives",
+          "day_gain_pct": 3.7,
+          "gain_5d_pct": 9.15,
+          "price": 15.99
+        },
+        {
+          "symbol": "F",
+          "source": "most_actives",
+          "day_gain_pct": 0.72,
+          "gain_5d_pct": -4.42,
+          "price": 14.06
+        },
+        {
+          "symbol": "KEEL",
+          "source": "most_actives",
+          "day_gain_pct": 5.36,
+          "gain_5d_pct": 13.95,
+          "price": 6.29
+        },
+        {
+          "symbol": "FLEX",
+          "source": "most_actives",
+          "day_gain_pct": 3.13,
+          "gain_5d_pct": -2.88,
+          "price": 147.61
+        },
+        {
+          "symbol": "MU",
+          "source": "most_actives",
+          "day_gain_pct": 8.7,
+          "gain_5d_pct": 13.87,
+          "price": 1133.99
+        }
+      ],
+      "rejected": [
+        {
+          "symbol": "ADTX",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "GPUS",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "SOXS",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "SRXH",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "BITO",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "TZA",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "SPCX",
+          "source": "most_actives",
+          "reason": "insufficient_bars"
+        },
+        {
+          "symbol": "CDT",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "WKSP",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "CDE",
+          "source": "most_actives",
+          "reason": "no_uptrend"
+        },
+        {
+          "symbol": "INLF",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "AZTR",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "CAST",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "CRVO",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "SPY",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "GRAB",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "QS",
+          "source": "most_actives",
+          "reason": "blowoff_day_gain 16.5%"
+        },
+        {
+          "symbol": "YYGH",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "AMC",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "COTY",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "ATPC",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "LNKS",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "SMR",
+          "source": "most_actives",
+          "reason": "blowoff_day_gain 13.5%"
+        },
+        {
+          "symbol": "RIG",
+          "source": "most_actives",
+          "reason": "no_uptrend"
+        },
+        {
+          "symbol": "MSTU",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "NU",
+          "source": "most_actives",
+          "reason": "no_uptrend"
+        },
+        {
+          "symbol": "PLUG",
+          "source": "most_actives",
+          "reason": "price_floor"
+        },
+        {
+          "symbol": "TSLL",
+          "source": "most_actives",
+          "reason": "mcap_floor"
+        },
+        {
+          "symbol": "CRWV",
+          "source": "most_actives",
+          "reason": "no_uptrend"
+        },
+        {
+          "symbol": "ONDS",
+          "source": "most_actives",
+          "reason": "no_uptrend"
+        },
+        {
+          "symbol": "EXOZ",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 23.7%"
+        },
+        {
+          "symbol": "DFLIW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 24.0%"
+        },
+        {
+          "symbol": "SMU",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 24.6%"
+        },
+        {
+          "symbol": "FVNNR",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 24.9%"
+        },
+        {
+          "symbol": "APLM",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 25.3%"
+        },
+        {
+          "symbol": "MRNOW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 25.4%"
+        },
+        {
+          "symbol": "EUDAW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 25.4%"
+        },
+        {
+          "symbol": "SMUP",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 25.5%"
+        },
+        {
+          "symbol": "AUROW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 25.5%"
+        },
+        {
+          "symbol": "LEUX",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 25.5%"
+        },
+        {
+          "symbol": "COCHW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 25.5%"
+        },
+        {
+          "symbol": "OM",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 25.6%"
+        },
+        {
+          "symbol": "MFI",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 25.6%"
+        },
+        {
+          "symbol": "KALA",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 26.9%"
+        },
+        {
+          "symbol": "BETRW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 28.7%"
+        },
+        {
+          "symbol": "STG",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 29.2%"
+        },
+        {
+          "symbol": "CUBWW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 29.3%"
+        },
+        {
+          "symbol": "DAVEW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 29.8%"
+        },
+        {
+          "symbol": "WYFL",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 30.0%"
+        },
+        {
+          "symbol": "EXFY",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 30.0%"
+        },
+        {
+          "symbol": "MDCX",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 30.1%"
+        },
+        {
+          "symbol": "BEG",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 30.1%"
+        },
+        {
+          "symbol": "NEOV",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 31.1%"
+        },
+        {
+          "symbol": "BEX",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 31.1%"
+        },
+        {
+          "symbol": "RNWWW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 31.8%"
+        },
+        {
+          "symbol": "QSU",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 33.2%"
+        },
+        {
+          "symbol": "VELL",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 34.0%"
+        },
+        {
+          "symbol": "HQ",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 35.5%"
+        },
+        {
+          "symbol": "BESS",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 37.9%"
+        },
+        {
+          "symbol": "ACONW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 38.5%"
+        },
+        {
+          "symbol": "APWC",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 43.2%"
+        },
+        {
+          "symbol": "RMCOW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 43.4%"
+        },
+        {
+          "symbol": "SDAWW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 46.3%"
+        },
+        {
+          "symbol": "ORGNW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 50.0%"
+        },
+        {
+          "symbol": "EVLVW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 53.1%"
+        },
+        {
+          "symbol": "MYSEW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 54.2%"
+        },
+        {
+          "symbol": "BFLY",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 55.9%"
+        },
+        {
+          "symbol": "HQWWW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 67.2%"
+        },
+        {
+          "symbol": "TBLAW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 83.7%"
+        },
+        {
+          "symbol": "GIPRW",
+          "source": "movers_gainers",
+          "reason": "blowoff_day_gain 90.1%"
         }
       ],
       "core_size": 112

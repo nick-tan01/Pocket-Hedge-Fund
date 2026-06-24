@@ -42,6 +42,16 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
+          # A10: start from the LATEST journal, not the trigger-time SHA. actions/checkout
+          # defaults to github.sha, so a run queued behind another (via the
+          # pipeline-data-json concurrency group) used to run main.py against a stale
+          # data.json; by push time the remote had the earlier run's commit and the
+          # `git pull --no-rebase` below could not line-merge two divergent edits to the
+          # same in-place position/price fields -> "CONFLICT (content)" -> red job with the
+          # run's journal discarded (runs #155/#163/#166/#172, 6/19-6/24). Because runs are
+          # serialized, checking out `main` here yields the prior run's just-pushed commit,
+          # so the pre-push pull fast-forwards instead of merging.
+          ref: main
 
       - name: Set up Python
         uses: actions/setup-python@v5

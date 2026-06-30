@@ -36,6 +36,7 @@ from core.journal import _load, _save, push_to_github
 # carries the true entry time rather than "now". Extend as needed.
 KNOWN_ENTRY_TS = {
     "AMAT": "2026-06-12T16:37:38+00:00",
+    "MU":   "2026-06-24T15:56:43+00:00",  # recovered from Alpaca order history; buy lost to push/merge race
 }
 
 

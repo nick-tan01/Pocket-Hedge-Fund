@@ -953,8 +953,10 @@ function renderStats() {
   set('stat-cash', '$' + fmt(cash));
   set('stat-cash-pct', cashPct.toFixed(1) + '% of portfolio');
 
-  // Open
+  // Open  (the "of N max" sub-line is driven by data so it never goes stale on a MAX_POSITIONS change)
   document.getElementById('stat-open').textContent = openPos.length;
+  const maxPos = (DATA.meta && DATA.meta.max_positions) || 8;
+  document.getElementById('stat-open-sub').textContent = 'of ' + maxPos + ' max';
 
   // Win rate
   if (wr !== null) {

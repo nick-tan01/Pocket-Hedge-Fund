@@ -110,9 +110,10 @@ Status values: `proposed` → `running` → `accepted` / `rejected` / `inconclus
 - **Unhold condition:** pipeline forward excess ≥ baseline at ≥20 paired decisions, OR an
   explicit decision to run it as a measured experiment with the guardrails above.
 
-## EXP-008 — Raise MAX_POSITIONS 8 → 10
+## EXP-008 — Raise MAX_POSITIONS 8 → 11
 - **Status:** running (started 2026-06-30)
-- **Change:** `MAX_POSITIONS` 8 → 10 (single int). Nothing else.
+- **Change:** `MAX_POSITIONS` 8 → 11 (single int). Nothing else. (Operator chose 11 over the
+  plan's suggested 10-first step — marginal difference, same diversification rationale.)
 - **Hypothesis:** the 8-slot cap binds ~⅓ of the time and forces idle cash; more slots
   raise deployment via DIVERSIFICATION (more, smaller names → lower per-name and lower
   momentum-crash risk), gated by the unchanged 60% gross and 25% sector caps so it cannot

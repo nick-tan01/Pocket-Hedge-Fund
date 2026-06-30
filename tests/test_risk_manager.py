@@ -84,14 +84,14 @@ def test_sector_cap_blocks_buy():
 
 
 def test_max_positions_blocks_buy():
-    # EXP-008: cap raised 8 -> 10. 10 meaningful held -> skip; 9 -> still allowed (new headroom).
-    held10 = [{"symbol": f"P{i}", "position_pct": 0.05, "sector": "Other"} for i in range(10)]
-    p = evaluate(pm(conviction=7), open_positions=held10)
+    # EXP-008: cap raised 8 -> 11. 11 meaningful held -> skip; 10 -> still allowed (new headroom).
+    held11 = [{"symbol": f"P{i}", "position_pct": 0.04, "sector": "Other"} for i in range(11)]
+    p = evaluate(pm(conviction=7), open_positions=held11)
     assert p.action == "skip"
     assert "max positions" in p.reason.lower()
 
-    held9 = [{"symbol": f"P{i}", "position_pct": 0.05, "sector": "Other"} for i in range(9)]
-    assert evaluate(pm(conviction=7), open_positions=held9).action == "buy"
+    held10 = [{"symbol": f"P{i}", "position_pct": 0.04, "sector": "Other"} for i in range(10)]
+    assert evaluate(pm(conviction=7), open_positions=held10).action == "buy"
 
 
 def test_size_clamped_to_max_position_pct(monkeypatch):

@@ -68,7 +68,7 @@ WATCHLIST_EXPIRE_MINUTE_ET= 0      #     sees overnight memory (was 10:15, which
                                    #     still expires before the next open, never carried overnight.
 
 # ── Portfolio rules ───────────────────────────────────────────────────────────
-MAX_POSITIONS          = 10        # EXP-008: raised 8→10 to lift deployment via DIVERSIFICATION
+MAX_POSITIONS          = 11        # EXP-008: raised 8→11 to lift deployment via DIVERSIFICATION
                                    # (more, smaller names → lower per-name and lower momentum-crash
                                    # risk), gated by the unchanged 60% gross and 25% sector caps so it
                                    # cannot over-concentrate. Rollback: set back to 8.

@@ -43,6 +43,7 @@ def _load() -> dict:
             "created":          datetime.now(timezone.utc).isoformat(),
             "benchmark":        config.BENCHMARK_TICKER,
             "starting_capital": config.STARTING_CAPITAL,
+            "max_positions":    config.MAX_POSITIONS,
         },
         "snapshots":  [],   # portfolio value over time
         "trades":     [],   # completed trades (entry + exit)
@@ -76,6 +77,9 @@ def _save(data: dict):
 def log_snapshot(portfolio_value: float, cash: float, spy_price: float):
     """Record a portfolio value snapshot for the equity curve."""
     data = _load()
+    # Keep config-derived display values fresh so the dashboard reflects them with no code
+    # edit (e.g. the "of N max" positions sub-line). Refreshed every run from config.
+    data.setdefault("meta", {})["max_positions"] = config.MAX_POSITIONS
     data["snapshots"].append({
         "ts":              datetime.now(timezone.utc).isoformat(),
         "portfolio_value": round(portfolio_value, 2),

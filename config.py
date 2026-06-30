@@ -68,7 +68,10 @@ WATCHLIST_EXPIRE_MINUTE_ET= 0      #     sees overnight memory (was 10:15, which
                                    #     still expires before the next open, never carried overnight.
 
 # ── Portfolio rules ───────────────────────────────────────────────────────────
-MAX_POSITIONS          = 8         # Max concurrent open positions
+MAX_POSITIONS          = 10        # EXP-008: raised 8→10 to lift deployment via DIVERSIFICATION
+                                   # (more, smaller names → lower per-name and lower momentum-crash
+                                   # risk), gated by the unchanged 60% gross and 25% sector caps so it
+                                   # cannot over-concentrate. Rollback: set back to 8.
 MAX_POSITION_PCT       = 0.10      # 10% of portfolio hard ceiling per position
 MAX_PORTFOLIO_EXPOSURE = 0.60      # Total equity exposure cap (60% deployed, 40% reserve)
 MIN_CONVICTION_SCORE   = 6         # Out of 10 — below this, hold cash

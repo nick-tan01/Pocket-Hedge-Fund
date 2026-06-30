@@ -189,6 +189,12 @@ def evaluate(
                     f"cap={config.MAX_PORTFOLIO_EXPOSURE*100:.0f}%)"),
             key_risk=key_risk,
         )
+    # A11 (per-name hard cap): clamp to MAX_POSITION_PCT FIRST. The 10% per-position
+    # ceiling was defined in config but enforced nowhere here — only the 60% gross cap
+    # (remaining_exposure) was applied. With every sizing multiplier ≤1.0 today this is a
+    # no-op, but it makes the per-name cap real so a future >1.0 multiplier or a
+    # higher-conviction size-map entry can't silently breach the 10% hard ceiling.
+    size_pct = min(size_pct, config.MAX_POSITION_PCT)
     size_pct = min(size_pct, remaining_exposure)
 
     sector = _get_sector(symbol)

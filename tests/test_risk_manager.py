@@ -84,10 +84,27 @@ def test_sector_cap_blocks_buy():
 
 
 def test_max_positions_blocks_buy():
-    held = [{"symbol": f"P{i}", "position_pct": 0.05, "sector": "Other"} for i in range(8)]
-    p = evaluate(pm(conviction=7), open_positions=held)
+    # EXP-008: cap raised 8 -> 10. 10 meaningful held -> skip; 9 -> still allowed (new headroom).
+    held10 = [{"symbol": f"P{i}", "position_pct": 0.05, "sector": "Other"} for i in range(10)]
+    p = evaluate(pm(conviction=7), open_positions=held10)
     assert p.action == "skip"
     assert "max positions" in p.reason.lower()
+
+    held9 = [{"symbol": f"P{i}", "position_pct": 0.05, "sector": "Other"} for i in range(9)]
+    assert evaluate(pm(conviction=7), open_positions=held9).action == "buy"
+
+
+def test_size_clamped_to_max_position_pct(monkeypatch):
+    # EXP-009 Part A: the per-name MAX_POSITION_PCT (10%) clamp must hold even if a future
+    # size-map entry or >1.0 multiplier would otherwise size larger. Inflate the map so
+    # conv-9 -> 30% and assert the position is still capped at 10% of NAV (not blocked by
+    # the 60% gross cap, which has ample headroom here).
+    monkeypatch.setattr(config, "CONVICTION_SIZE_MAP",
+                        {6: 0.04, 7: 0.20, 8: 0.25, 9: 0.30, 10: 0.30})
+    p = evaluate(pm(conviction=9, bull_r2=9, bear_r2=5))
+    assert p.action == "buy"
+    assert p.position_usd <= config.MAX_POSITION_PCT * 100_000 + 0.01
+    assert p.position_usd == pytest.approx(10_000, abs=1)
 
 
 def test_remnant_topup_buys_only_the_gap(monkeypatch):

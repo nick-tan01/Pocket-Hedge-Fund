@@ -96,6 +96,49 @@ Status values: `proposed` → `running` → `accepted` / `rejected` / `inconclus
   tighten guards or disable.
 - **Min sample:** 8 weeks or 30 discovered candidates. **Rollback:** `DISCOVERY_ENABLED=False`.
 
+## EXP-007 — Pyramiding into confirmed winners
+- **Status:** proposed — **HELD 2026-06-30** (do NOT implement yet)
+- **Change (when unheld):** allow ONE de-risked add to a meaningful winner (≥ +8% above
+  `avg_entry`, trend intact), gated by — original stop ratcheted to ≥ breakeven on the
+  blended basis BEFORE the add; total position ≤ 8% NAV; no adds to names extended past
+  their 52-week high; all existing caps apply. Flag `PYRAMID_ADDS`.
+- **Why held:** the Phase-0 decision gate (2026-06-30) shows the deterministic baseline
+  twin (+4.96% 10d excess vs SPY, n=24) currently OUT-SELECTS the live LLM pipeline
+  (+2.23%, n=9). Pyramiding concentrates MORE capital into the LLM funnel's picks —
+  the wrong move while the funnel is not beating its own screener. Naive pyramiding also
+  lowers Sharpe and maximizes 52-wk-high crash beta (Byun & Jeon 2023).
+- **Unhold condition:** pipeline forward excess ≥ baseline at ≥20 paired decisions, OR an
+  explicit decision to run it as a measured experiment with the guardrails above.
+
+## EXP-008 — Raise MAX_POSITIONS 8 → 10
+- **Status:** running (started 2026-06-30)
+- **Change:** `MAX_POSITIONS` 8 → 10 (single int). Nothing else.
+- **Hypothesis:** the 8-slot cap binds ~⅓ of the time and forces idle cash; more slots
+  raise deployment via DIVERSIFICATION (more, smaller names → lower per-name and lower
+  momentum-crash risk), gated by the unchanged 60% gross and 25% sector caps so it cannot
+  over-concentrate. The conservative, gate-endorsed deployment lever.
+- **Metric / success (≥6 weeks or until 60% gross binds before slot count):** average
+  deployment rises toward ~40–50% AND names filling the new slots have forward 10/20-day
+  SPY-relative returns ≥ 0 on the decision-quality scorer AND max drawdown stays within
+  the −10% breaker.
+- **Failure:** new slots fill with names that underperform SPY, or sit empty (funnel, not
+  slots, is the binding constraint) → revert to 8.
+- **Min sample:** 6 weeks / 15 new-slot entries. **Rollback:** `MAX_POSITIONS=8`.
+
+## EXP-009 — Per-name clamp + DOWN-ONLY volatility discipline
+- **Status:** accepted (2026-06-30)
+- **Change (two parts):** (A, bug fix) enforce the `MAX_POSITION_PCT` per-name clamp in
+  `risk_manager.evaluate` — it was defined in config but applied nowhere (only the 60%
+  gross cap was). (B, decision) KEEP the existing down-only regime/VIX size scaling;
+  explicitly do NOT add a calm-market up-multiplier.
+- **Rationale:** the academic benefit of volatility management comes from the DE-RISKING
+  leg, not from leveraging up when calm (Cederburg et al. 2020 — vol-management beats
+  buy-and-hold out-of-sample only ~half the time, robustly only for momentum; sizing up in
+  low-VIX loads risk right before vol spikes). Part A is a prerequisite for any future
+  up-leg to be safe.
+- **Revisit:** a vol-up multiplier, if ever proposed, must ship WITH Part A and as its own
+  registered experiment with a pre-stated drawdown failure threshold.
+
 ---
 
 ## Template

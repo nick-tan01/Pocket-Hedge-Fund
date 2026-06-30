@@ -102,3 +102,12 @@ jobs:
       # of failing silently like the 2026-06-15 model-EOL outage did for 3 days.
       - name: Check LLM health (alert on outage)
         run: python scripts/check_llm_health.py
+
+      # Alert if a trade executed at the broker but its open_trade record didn't persist
+      # this run (the journal⇄broker desync that left MU/HOOD/AMAT untracked). The next
+      # run's auto-reconcile self-heals it; this turns the job RED as an early signal.
+      - name: Check journal/broker sync (alert on drift)
+        env:
+          ALPACA_API_KEY:    ${{ secrets.ALPACA_API_KEY }}
+          ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
+        run: python scripts/check_journal_sync.py

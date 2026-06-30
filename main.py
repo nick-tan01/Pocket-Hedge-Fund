@@ -1488,6 +1488,20 @@ def run_pipeline(
                 event_symbols=sorted(event_symbols), event_details=event_details)
         return
 
+    # A11: self-heal the journal before anything reads it. The broker is the source of
+    # truth; a prior run may have filled an order but failed to persist the open_trade
+    # record (push/merge race, crash, timeout, network). Adopt any such untracked
+    # position now so the journal converges to the broker every cycle — reviews, sizing,
+    # the dup-guard, and the dashboard all then read an accurate book. Non-fatal.
+    try:
+        from core.reconcile import reconcile_untracked
+        adopted = reconcile_untracked(alpaca, apply=not dry_run)
+        if adopted:
+            logger.warning("AUTO-RECONCILE | adopted %d untracked broker position(s): %s",
+                           len(adopted), ", ".join(r["symbol"] for r in adopted))
+    except Exception as e:
+        logger.error("auto-reconcile failed (non-fatal): %s", e)
+
     check_open_positions(alpaca)
     broad_event = trigger_reason == "sentinel_trigger" and _is_broad_market_event(event_symbols)
     review_symbols = None

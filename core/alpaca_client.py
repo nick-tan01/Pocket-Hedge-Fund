@@ -275,6 +275,33 @@ class AlpacaClient:
             logger.warning("get_open_stop_orders failed | %s: %s", symbol, e)
             return []
 
+    def get_last_filled_buy(self, symbol: str, lookback_days: int = 90) -> dict | None:
+        """Most recent FILLED buy order for a symbol — used to recover a lost entry
+        timestamp / fill price when reconciling an untracked broker position. Returns
+        {filled_at (iso), filled_avg_price, qty} or None. Read-only.
+
+        Uses status=ALL + an explicit `after` window because get_orders defaults to a
+        short recent window and to non-closed orders, which silently misses older fills.
+        """
+        try:
+            after = datetime.now(pytz.UTC) - timedelta(days=lookback_days)
+            req = GetOrdersRequest(status=QueryOrderStatus.ALL, after=after,
+                                   symbols=[symbol], limit=500)
+            orders = self.trading.get_orders(req)
+        except Exception as e:
+            logger.warning("get_last_filled_buy failed | %s: %s", symbol, e)
+            return None
+        fills = [o for o in orders
+                 if str(o.side).lower().endswith("buy") and getattr(o, "filled_at", None)]
+        if not fills:
+            return None
+        o = max(fills, key=lambda x: x.filled_at)
+        return {
+            "filled_at":        o.filled_at.isoformat(),
+            "filled_avg_price": float(o.filled_avg_price) if getattr(o, "filled_avg_price", None) else None,
+            "qty":              float(o.filled_qty) if getattr(o, "filled_qty", None) else None,
+        }
+
     def cancel_stop_orders(self, symbol: str) -> int:
         """Cancel all resting sell stop orders for a symbol. Returns count cancelled."""
         cancelled = 0

@@ -86,6 +86,11 @@ def log_snapshot(portfolio_value: float, cash: float, spy_price: float):
         "cash":            round(cash, 2),
         "spy_price":       round(spy_price, 2),
     })
+    # Cap snapshot history so the frequent dashboard-snapshot job (snapshot.yml, ~every
+    # 15 min in market hours) can't grow data.json without bound — 20000 keeps well over a
+    # year of market-hours points for the equity curve.
+    if len(data["snapshots"]) > 20000:
+        data["snapshots"] = data["snapshots"][-20000:]
     _save(data)
     logger.debug("Snapshot logged: $%.2f", portfolio_value)
 

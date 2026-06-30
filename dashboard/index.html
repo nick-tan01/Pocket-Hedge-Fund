@@ -747,7 +747,7 @@
   <div class="header-meta">
     <div>ACCOUNT <span id="hdr-account">—</span></div>
     <div>BENCHMARK <span>SPY</span></div>
-    <div>LAST RUN <span id="hdr-last-run">—</span></div>
+    <div>UPDATED <span id="hdr-last-run">—</span></div>
     <button class="refresh-btn" onclick="loadData()">↻ REFRESH</button>
   </div>
 </header>
@@ -971,10 +971,11 @@ function renderStats() {
 
   // Header
   set('hdr-account', '$' + fmt(pv));
-  const runs = DATA.runs || [];
-  if (runs.length) {
-    const last_run = runs[runs.length - 1];
-	    set('hdr-last-run', fmtPacificTime(last_run.ts));
+  // "UPDATED" reflects the freshest data point (last snapshot) — the dashboard-snapshot
+  // job refreshes it every ~15 min from the live broker even between full pipeline runs.
+  // The decision-run history still lives in the Recent Runs table below.
+  if (snaps.length) {
+    set('hdr-last-run', fmtPacificTime(snaps[snaps.length - 1].ts));
   }
 }
 

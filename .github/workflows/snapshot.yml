@@ -1,0 +1,61 @@
+name: Pocket Hedge Fund — Dashboard Snapshot
+
+# Keeps the dashboard's top-line (portfolio value, return, cash, open positions) current
+# between full pipeline runs. Reads the LIVE broker portfolio value + per-position
+# mark-to-market and commits a snapshot. NO LLM, NO trading decisions, NO orders — it
+# only refreshes displayed numbers. Cheap (~30s) and safe to run frequently.
+
+on:
+  schedule:
+    - cron: '*/15 13-20 * * 1-5'   # every 15 min during US market hours (UTC)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# Shares the journal-writer serialization group (A9/A10) so it never races the trade,
+# after-close, or decision-quality jobs that also write dashboard/data.json.
+concurrency:
+  group: pipeline-data-json
+  cancel-in-progress: false
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+          ref: main   # A10: start from the latest journal so the pre-push pull fast-forwards
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Refresh portfolio snapshot from broker
+        env:
+          ALPACA_API_KEY:    ${{ secrets.ALPACA_API_KEY }}
+          ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
+        run: python scripts/refresh_snapshot.py
+
+      - name: Push updated dashboard data
+        run: |
+          git config user.name "nick-tan01"
+          git config user.email "${{ secrets.GIT_EMAIL }}"
+          git add dashboard/data.json
+          if git diff --cached --quiet; then
+            echo "No changes to push"
+          else
+            git commit -m "Auto: dashboard snapshot $(date -u +'%Y-%m-%d %H:%M UTC')"
+            git pull --no-rebase origin main
+            git push
+          fi

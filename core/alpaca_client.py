@@ -37,6 +37,14 @@ class AlpacaClient:
             api_key=config.ALPACA_API_KEY,
             secret_key=config.ALPACA_SECRET_KEY,
         )
+        # LIVE trading must never happen silently. Make it loud so a misconfigured
+        # PAPER_TRADING=false is impossible to miss in the logs.
+        if not config.PAPER_TRADING:
+            logger.warning(
+                "=" * 60 + "\n"
+                "!!! LIVE TRADING ENABLED (PAPER_TRADING=false) — REAL MONEY !!!\n"
+                + "=" * 60
+            )
         logger.info("Alpaca client initialised (paper=%s)", config.PAPER_TRADING)
 
     # ── Account ───────────────────────────────────────────────────────────────
@@ -93,7 +101,8 @@ class AlpacaClient:
     # ── Orders ────────────────────────────────────────────────────────────────
 
     def submit_market_order(
-        self, symbol: str, qty: float, side: str, reason: str = ""
+        self, symbol: str, qty: float, side: str, reason: str = "",
+        ref_price: float | None = None
     ) -> dict | None:
         """
         Submit a market order. side = 'buy' | 'sell'.
@@ -104,7 +113,20 @@ class AlpacaClient:
         so a raised exception propagated out of analyse_symbol and aborted the whole
         run before log_run/push — a genuine buy vanished with no journal trace. We now
         mirror close_position() and return None on failure so the guard works.
+
+        Safety backstop: when a BUY passes ref_price, reject it here if its notional
+        (qty × ref_price) exceeds config.MAX_ORDER_NOTIONAL_USD — an independent guard
+        against an upstream sizing bug. Sells are never capped so an exit can't be
+        blocked. Disabled if ref_price is omitted or the cap is 0.
         """
+        cap = getattr(config, "MAX_ORDER_NOTIONAL_USD", 0)
+        if side.lower() == "buy" and ref_price and cap and qty * ref_price > cap:
+            logger.error(
+                "Order BLOCKED by notional cap | BUY %s %.4f × $%.2f = $%.0f > $%.0f | reason: %s",
+                symbol, qty, ref_price, qty * ref_price, cap, reason,
+            )
+            return None
+
         order_side = OrderSide.BUY if side.lower() == "buy" else OrderSide.SELL
         req = MarketOrderRequest(
             symbol=symbol,

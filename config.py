@@ -14,7 +14,10 @@ ALPACA_SECRET_KEY = os.getenv("ALPACA_SECRET_KEY")
 ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")
 
 # ── Alpaca ────────────────────────────────────────────────────────────────────
-PAPER_TRADING     = True          # Never flip to False without careful review
+# Paper trading is the default and must stay a DELIBERATE, deploy-time choice:
+# going live requires BOTH setting PAPER_TRADING=false in the environment AND
+# supplying live-account keys. A source edit alone can no longer route real money.
+PAPER_TRADING     = os.getenv("PAPER_TRADING", "true").strip().lower() not in ("false", "0", "no")
 STARTING_CAPITAL  = 100_000.0     # Paper account starting value
 
 # ── Universe filters (applied before any LLM call) ───────────────────────────
@@ -101,6 +104,13 @@ CONVICTION_SIZE_MAP = {
 # check_open_positions() remains as a fallback/reconciler. Set False to restore
 # the legacy software-sampled stop behavior.
 BROKER_NATIVE_STOPS  = True
+# Last-line safety cap at the broker boundary: reject any single BUY whose
+# notional (qty × price) exceeds this, as an independent backstop against an
+# upstream sizing bug. Set generously above any legitimate order (max position
+# is 10% of NAV ≈ $10k on the $100k paper account) so it never blocks real
+# trades — it only catches a runaway. Set 0 to disable. Sells are never capped
+# (you must always be able to exit).
+MAX_ORDER_NOTIONAL_USD = 50_000
 ATR_PERIOD           = 14         # 14-day ATR
 ATR_MULTIPLIER       = 2.5        # Stop = entry - (2.5 × ATR), widened for momentum names
 HARD_STOP_PCT        = 0.08       # Never lose more than 8% on any single trade

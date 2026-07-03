@@ -986,6 +986,7 @@ def analyse_symbol(
     order = alpaca.submit_market_order(
         symbol=symbol, qty=proposal.shares, side="buy",
         reason=f"conviction={proposal.conviction} | {pm.get('verdict','')}",
+        ref_price=current_price,
     )
 
     if order:

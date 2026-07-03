@@ -18,6 +18,17 @@ import config
 
 logger = logging.getLogger(__name__)
 
+
+def _sanitize_news_text(text: str, limit: int = 240) -> str:
+    """Defense-in-depth against prompt injection via third-party news text:
+    drop control characters/newlines and cap length so a crafted headline can't
+    smuggle a large instruction block into an LLM prompt. Real headlines are
+    short, single-line, plain text, so this leaves normal inputs unchanged."""
+    if not text:
+        return ""
+    cleaned = "".join(ch if (ch >= " " and ch != "\x7f") else " " for ch in text)
+    return " ".join(cleaned.split())[:limit]
+
 # Audit §7.5: yfinance on shared CI runners is the most common silent-degradation
 # point (rate limits). One cheap retry with jittered backoff recovers transient
 # failures without masking a real outage (the screener's probe check still catches
@@ -135,8 +146,8 @@ class DataFetcher:
             articles = r.json().get("news", [])
             return [
                 {
-                    "headline": a.get("headline", ""),
-                    "source":   a.get("source", ""),
+                    "headline": _sanitize_news_text(a.get("headline", "")),
+                    "source":   _sanitize_news_text(a.get("source", ""), limit=64),
                     "datetime": a.get("created_at", "")[:16],
                 }
                 for a in articles

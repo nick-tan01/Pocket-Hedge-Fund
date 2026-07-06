@@ -341,6 +341,41 @@ def _safe_review_decision(review: dict, fallback_conviction) -> tuple[str, int]:
     return action, conviction
 
 
+def _debate_round_two(symbol: str, bull_r1: dict, bear_r1: dict) -> tuple[dict, dict]:
+    """Round 2 of the debate, or its measured prior when DEBATE_ROUNDS == 1.
+
+    Audit 2026-07-06: across 670 logged debates R2's modal effect was exactly
+    "bull −1" (441/670 in the (−1,0)/(−1,±1) cells) and the PM echoed bull R2 54%
+    of the time — two LLM calls per debate reproducing a constant. Single-round
+    mode applies that constant (DEBATE_R2_BULL_PRIOR) and carries R1 forward in
+    R2's shape so every downstream consumer (PM, risk shading, reviewer, journal)
+    is unchanged. DEBATE_ROUNDS=2 restores the live rebuttals.
+    """
+    if getattr(config, "DEBATE_ROUNDS", 2) >= 2:
+        bull_r2 = bull_agent.rebuttal(symbol, bull_r1, bear_r1)
+        bear_r2 = bear_agent.rebuttal(symbol, bear_r1, bull_r2)
+        return bull_r2, bear_r2
+
+    prior = int(getattr(config, "DEBATE_R2_BULL_PRIOR", -1))
+    bull_r2 = dict(bull_r1)
+    bull_r2["conviction"] = max(1, min(10, int(bull_r1.get("conviction", 5)) + prior))
+    bull_r2["final_thesis"] = bull_r1.get("thesis", "")
+    bull_r2["conviction_change"] = (
+        f"single-round mode: R1 {bull_r1.get('conviction', 5)} {prior:+d} prior "
+        "(measured modal R2 effect)")
+    bull_r2.setdefault("concessions", [])
+
+    bear_r2 = dict(bear_r1)
+    bear_r2["final_thesis"] = bear_r1.get("thesis", "")
+    bear_r2["conviction_change"] = "single-round mode: R1 carried forward"
+    bear_r2.setdefault("concessions", [])
+    if bear_r1.get("primary_risk"):
+        bear_r2.setdefault("unresolved_risks", [bear_r1["primary_risk"]])
+    else:
+        bear_r2.setdefault("unresolved_risks", [])
+    return bull_r2, bear_r2
+
+
 def _review_target_pct(conviction: int) -> float:
     """
     Convert a review conviction into target exposure.
@@ -408,15 +443,25 @@ def review_open_positions(
         live_pos      = alpaca_positions.get(symbol)
         unrealized_plpc = live_pos["unrealized_plpc"] if live_pos else None
 
-        # ── Re-run full analyst + debate pipeline ──────────────────────────────
+        # ── Fresh evidence for the reviewer ────────────────────────────────────
+        # Audit 2026-07-06: reviews were 49% of ALL LLM calls (8 per position per
+        # run: tech/fund/sent + a full 4-call re-debate feeding ONE reviewer call)
+        # for 89% "hold" and ≤35% trim precision. REVIEW_LITE keeps the decision
+        # thesis-driven — fresh tech + sentiment vs the STORED entry debate —
+        # without re-litigating fundamentals/debate every run (3 calls).
         tech = technical_agent.analyse(symbol, bars)
-        fund = fundamental_agent.analyse(symbol)
         sent = sentiment_agent.analyse(symbol, news)
-
-        bull_r1 = bull_agent.opening_argument(symbol, tech, fund, sent)
-        bear_r1 = bear_agent.opening_argument(symbol, tech, fund, sent, bull_r1)
-        bull_r2 = bull_agent.rebuttal(symbol, bull_r1, bear_r1)
-        bear_r2 = bear_agent.rebuttal(symbol, bear_r1, bull_r2)
+        if getattr(config, "REVIEW_LITE", True):
+            _na = "not re-run in lite review mode"
+            fund = {"signal": "neutral", "strength": "n/a", "rationale": _na}
+            _skip = {"conviction": "n/a", "thesis": _na, "final_thesis": _na,
+                     "primary_risk": "", "concessions": [], "unresolved_risks": []}
+            bull_r1 = bear_r1 = bull_r2 = bear_r2 = _skip
+        else:
+            fund = fundamental_agent.analyse(symbol)
+            bull_r1 = bull_agent.opening_argument(symbol, tech, fund, sent)
+            bear_r1 = bear_agent.opening_argument(symbol, tech, fund, sent, bull_r1)
+            bull_r2, bear_r2 = _debate_round_two(symbol, bull_r1, bear_r1)
 
         original_debate = get_debate_by_id(trade.get("debate_id", ""))
 
@@ -822,9 +867,8 @@ def analyse_symbol(
     logger.info("%s R1 → bull=%d bear=%d",
                 symbol, bull_r1["conviction"], bear_r1["conviction"])
 
-    # ── Debate Round 2 ────────────────────────────────────────────────────────
-    bull_r2 = bull_agent.rebuttal(symbol, bull_r1, bear_r1)
-    bear_r2 = bear_agent.rebuttal(symbol, bear_r1, bull_r2)
+    # ── Debate Round 2 (or its measured prior — see _debate_round_two) ───────
+    bull_r2, bear_r2 = _debate_round_two(symbol, bull_r1, bear_r1)
 
     logger.info("%s R2 → bull=%d (%s) bear=%d (%s)",
                 symbol,
@@ -1411,7 +1455,8 @@ def _select_candidates(
     # EXP-006: extend the static core list with dynamically discovered names
     # (market-wide most-actives + filtered gainers). Discovery is skipped for
     # sentinel runs (those use a narrow event universe) and is fail-safe — any
-    # error leaves the core watchlist untouched.
+    # error leaves the core watchlist untouched. PAUSED via DISCOVERY_ENABLED
+    # (checked inside discover_universe) — audit 2026-07-06, see config.py.
     from agents.discovery import discover_universe
     discovered = discover_universe(screener.fetcher, screener.WATCHLIST) \
         if trigger_reason != "sentinel_trigger" else []

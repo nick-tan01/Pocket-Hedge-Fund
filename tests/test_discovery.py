@@ -3,9 +3,18 @@ so most tests assert REJECTION."""
 
 import json
 
+import pytest
+
 import config
 from agents.discovery import discover_universe
 from tests.conftest import make_bars
+
+
+@pytest.fixture(autouse=True)
+def _enable_discovery(monkeypatch):
+    # Discovery is PAUSED by default (DISCOVERY_ENABLED=False, audit 2026-07-06).
+    # These tests exercise the anti-blow-off guard logic itself, so force-enable.
+    monkeypatch.setattr(config, "DISCOVERY_ENABLED", True)
 
 
 def down_bars(n=60, start=150.0, step=-0.5):

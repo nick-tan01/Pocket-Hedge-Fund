@@ -74,7 +74,11 @@ SCREENER_WEIGHTS = {
 #   - 5-day gain > DISCOVERY_MAX_5D_GAIN  (parabolic — Daniel-Moskowitz crash zone)
 #   - EMA10 <= EMA30 (no established uptrend — dead-cat bounces, falling knives)
 #   - fails the existing universe floors (MIN_PRICE / MIN_MARKET_CAP / MIN_VOLUME)
-DISCOVERY_ENABLED        = True
+# PAUSED (audit 2026-07-06): 29 discovery runs accepted 128 slots covering only
+# 15 unique symbols (AAL 29x — never once debated), fed 9 debates, produced 1
+# trade (MU, now a dust remnant). Re-enable only if it can pass its own EXP-006
+# gate (≥1 new name DEBATED per week).
+DISCOVERY_ENABLED        = False
 DISCOVERY_SOURCE_TOP     = 50     # names pulled per source before filtering
 DISCOVERY_MAX_SYMBOLS    = 25     # hard cap on additions per run (screener cost)
 DISCOVERY_MAX_DAY_GAIN   = 0.12   # reject > +12% today
@@ -83,7 +87,11 @@ DISCOVERY_MAX_5D_GAIN    = 0.25   # reject > +25% over 5 sessions
 # ── After-close market memory ────────────────────────────────────────────────
 AFTER_CLOSE_WATCHLIST_MAX = 20     # Logged evidence cards; not all become candidates
 WATCHLIST_HISTORY_LIMIT   = 30     # Keep recent lists for audit without bloating data.json
-WATCHLIST_MEMORY_BONUS    = 0.06   # Small tie-breaker after next-run revalidation
+WATCHLIST_MEMORY_BONUS    = 0.0    # Audit 2026-07-06: the buy-side memory bonus produced exactly
+                                   # ONE attributable entry in 8 weeks — SMCI 6/9, the fund's worst
+                                   # closed trade (-16.7%). Zeroed; the overnight position-ALERT half
+                                   # of the watchlist (targeted reviews) is unaffected and stays on.
+                                   # Restore 0.06 to re-enable the bonus.
 WATCHLIST_EXPIRE_HOUR_ET  = 14     # C6: expire 14:00 ET so the 13:00 ET midday run still
 WATCHLIST_EXPIRE_MINUTE_ET= 0      #     sees overnight memory (was 10:15, which locked it out);
                                    #     still expires before the next open, never carried overnight.
@@ -201,6 +209,21 @@ SENTINEL_EVENT_MAX_CANDIDATES = 4                 # Narrow reruns after symbol e
 # next migration so this never silently recurs.
 ANALYST_MODEL   = "claude-sonnet-4-6"   # Fast, cheap — analysts
 DEBATE_MODEL    = "claude-sonnet-4-6"   # Debate agents
+
+# ── LLM call-volume controls (audit 2026-07-06, process-cost, freeze-exempt) ──
+# Across 670 logged debates, R2's modal effect was exactly "bull −1" (441/670 in
+# the (−1,0)/(−1,±1) cells); only 24% moved any score ≥2, and the PM echoed bull
+# R2 54% of the time. DEBATE_ROUNDS=1 replaces the two R2 calls with that measured
+# prior (DEBATE_R2_BULL_PRIOR applied to bull R1). Set DEBATE_ROUNDS=2 to restore
+# the live rebuttal round.
+DEBATE_ROUNDS        = 1
+DEBATE_R2_BULL_PRIOR = -1
+
+# Position reviews were 49% of ALL LLM calls (647 reviews × 8 calls) for 89% "hold"
+# and ≤35% trim precision. REVIEW_LITE reviews with fresh tech+sentiment+reviewer
+# (3 calls) against the STORED entry debate instead of re-running fundamental +
+# a full 4-call re-debate per position per run. Set False to restore the 8-call path.
+REVIEW_LITE = True
 MAX_TOKENS         = 700    # Screener / analyst agents (structured JSON, short output)
 # Raised 1000→1500 (2026-06-19): the bull/bear/PM JSON was truncating at the 1000-token
 # cap mid-object (the 6/17 bear failure at char 4061), producing unparseable output that

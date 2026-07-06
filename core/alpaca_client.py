@@ -5,6 +5,10 @@ All order submission goes through here so risk checks are centrally enforced.
 """
 
 import logging
+import random
+import time
+
+import requests
 from alpaca.trading.client import TradingClient
 from alpaca.trading.requests import (
     MarketOrderRequest,
@@ -26,24 +30,64 @@ logger = logging.getLogger(__name__)
 ET = pytz.timezone("America/New_York")
 
 
+def _f(v, default=0.0):
+    """None/garbage-tolerant float(). Every numeric field read off a broker payload
+    must go through this (or _i) — a degraded API response must degrade the numbers,
+    never crash the run. int(None) on ONE field took the whole pipeline, the snapshot
+    job and the health checks down on 2026-07-06."""
+    try:
+        return float(v)
+    except (TypeError, ValueError):
+        return default
+
+
+def _i(v, default=0):
+    try:
+        return int(v)
+    except (TypeError, ValueError):
+        return default
+
+
+def _is_transient(e: Exception) -> bool:
+    """Connect/read timeouts and broker 5xx are transient; everything else
+    (auth errors, validation, 'position does not exist') is not worth retrying."""
+    if isinstance(e, (requests.exceptions.ConnectionError, requests.exceptions.Timeout)):
+        return True
+    status = getattr(e, "status_code", None)
+    return isinstance(status, int) and status >= 500
+
+
+_READ_RETRIES = 2      # total attempts = _READ_RETRIES + 1
+_READ_BACKOFF_S = 2.0
+
+
+def _retry_read(fn, what: str):
+    """Retry a READ-ONLY broker call on transient failures.
+
+    The Jun 11 / Jun 19 / Jun 30 pipeline outages were each a single TCP connect
+    timeout on the first broker call of the run — alpaca-py does not retry
+    connection errors and this client had no retry of its own. Reads are safe to
+    retry. Order submission/cancel/replace must NEVER be routed through here:
+    retrying a write after an ambiguous failure can double-submit.
+    """
+    for attempt in range(_READ_RETRIES + 1):
+        try:
+            return fn()
+        except Exception as e:
+            if not _is_transient(e) or attempt == _READ_RETRIES:
+                raise
+            delay = _READ_BACKOFF_S * (2 ** attempt) + random.uniform(0, 0.5)
+            logger.warning(
+                "Transient broker error in %s (attempt %d/%d): %s — retrying in %.1fs",
+                what, attempt + 1, _READ_RETRIES + 1, e, delay,
+            )
+            time.sleep(delay)
+
+
 def _account_dict(acct) -> dict:
     """Coerce a raw Alpaca account object into our plain dict, tolerating None fields.
-    Alpaca returns None for daytrade_count / pattern_day_trader on paper accounts, and a
-    bare int(None) took the WHOLE pipeline down on 2026-07-06 — get_account() is the first
-    broker call every run (and the snapshot job) makes, so a single null field crashed
-    trading, snapshots, and health checks. A null field must never crash the run."""
-    def _f(v, default=0.0):
-        try:
-            return float(v)
-        except (TypeError, ValueError):
-            return default
-
-    def _i(v, default=0):
-        try:
-            return int(v)
-        except (TypeError, ValueError):
-            return default
-
+    Alpaca returns None for daytrade_count / pattern_day_trader on paper accounts —
+    see _f for the 2026-07-06 incident this guards against."""
     return {
         "portfolio_value": _f(getattr(acct, "portfolio_value", None)),
         "cash":            _f(getattr(acct, "cash", None)),
@@ -51,6 +95,33 @@ def _account_dict(acct) -> dict:
         "buying_power":    _f(getattr(acct, "buying_power", None)),
         "daytrade_count":  _i(getattr(acct, "daytrade_count", None)),
     }
+
+
+def _position_dict(p) -> dict:
+    """Coerce a raw Alpaca position into our plain dict, tolerating None fields.
+    Same failure class as _account_dict: get_positions() feeds the pipeline, the
+    snapshot job AND the reconcile self-healer, so one degraded position payload
+    crashing here has the widest blast radius in the system."""
+    side_raw = getattr(p, "side", None)
+    d = {
+        "symbol":          str(getattr(p, "symbol", "") or ""),
+        "qty":             _f(getattr(p, "qty", None)),
+        "avg_entry":       _f(getattr(p, "avg_entry_price", None)),
+        "current_price":   _f(getattr(p, "current_price", None)),
+        "market_value":    _f(getattr(p, "market_value", None)),
+        "unrealized_pl":   _f(getattr(p, "unrealized_pl", None)),
+        "unrealized_plpc": _f(getattr(p, "unrealized_plpc", None)),
+        "side":            str(getattr(side_raw, "value", side_raw) or "long"),
+    }
+    degraded = [k for k, attr in (("qty", "qty"), ("avg_entry", "avg_entry_price"),
+                                  ("current_price", "current_price"))
+                if getattr(p, attr, None) is None]
+    if degraded:
+        logger.warning(
+            "Position %s: broker returned None for %s — coerced to 0; sizing/review "
+            "math for this symbol is degraded this run", d["symbol"], degraded,
+        )
+    return d
 
 
 class AlpacaClient:
@@ -78,43 +149,24 @@ class AlpacaClient:
 
     def get_account(self) -> dict:
         """Return key account fields as a plain dict (None-tolerant — see _account_dict)."""
-        return _account_dict(self.trading.get_account())
+        return _account_dict(_retry_read(self.trading.get_account, "get_account"))
 
     def get_portfolio_value(self) -> float:
-        return float(self.trading.get_account().portfolio_value)
+        return self.get_account()["portfolio_value"]
 
     # ── Positions ─────────────────────────────────────────────────────────────
 
     def get_positions(self) -> list[dict]:
-        """Return all open positions as plain dicts."""
-        raw = self.trading.get_all_positions()
-        return [
-            {
-                "symbol":      p.symbol,
-                "qty":         float(p.qty),
-                "avg_entry":   float(p.avg_entry_price),
-                "current_price": float(p.current_price),
-                "market_value":  float(p.market_value),
-                "unrealized_pl": float(p.unrealized_pl),
-                "unrealized_plpc": float(p.unrealized_plpc),
-                "side":        p.side.value,
-            }
-            for p in raw
-        ]
+        """Return all open positions as plain dicts (None-tolerant — see _position_dict)."""
+        raw = _retry_read(self.trading.get_all_positions, "get_positions")
+        return [_position_dict(p) for p in raw]
 
     def get_position(self, symbol: str) -> dict | None:
         """Return a single position or None if not held."""
         try:
-            p = self.trading.get_open_position(symbol)
-            return {
-                "symbol":      p.symbol,
-                "qty":         float(p.qty),
-                "avg_entry":   float(p.avg_entry_price),
-                "current_price": float(p.current_price),
-                "market_value":  float(p.market_value),
-                "unrealized_pl": float(p.unrealized_pl),
-                "unrealized_plpc": float(p.unrealized_plpc),
-            }
+            p = _retry_read(lambda: self.trading.get_open_position(symbol),
+                            f"get_position {symbol}")
+            return _position_dict(p)
         except Exception:
             return None
 
@@ -284,14 +336,15 @@ class AlpacaClient:
     def get_order(self, order_id: str) -> dict | None:
         """Return key fields of an order by id (status, filled qty/price)."""
         try:
-            o = self.trading.get_order_by_id(order_id)
+            o = _retry_read(lambda: self.trading.get_order_by_id(order_id),
+                            f"get_order {order_id}")
             return {
                 "id":               str(o.id),
                 "symbol":           o.symbol,
                 "status":           str(o.status.value if hasattr(o.status, "value") else o.status),
-                "qty":              float(o.qty or 0),
-                "filled_qty":       float(o.filled_qty or 0),
-                "filled_avg_price": float(o.filled_avg_price) if o.filled_avg_price else None,
+                "qty":              _f(getattr(o, "qty", None)),
+                "filled_qty":       _f(getattr(o, "filled_qty", None)),
+                "filled_avg_price": _f(o.filled_avg_price) if getattr(o, "filled_avg_price", None) else None,
             }
         except Exception as e:
             logger.warning("get_order failed | id=%s: %s", order_id, e)
@@ -301,7 +354,8 @@ class AlpacaClient:
         """Return open sell STOP orders for a symbol."""
         try:
             req = GetOrdersRequest(status=QueryOrderStatus.OPEN, symbols=[symbol])
-            orders = self.trading.get_orders(req)
+            orders = _retry_read(lambda: self.trading.get_orders(req),
+                                 f"get_open_stop_orders {symbol}")
             out = []
             for o in orders:
                 otype = str(getattr(o, "type", "") or getattr(o, "order_type", ""))
@@ -309,8 +363,8 @@ class AlpacaClient:
                     out.append({
                         "id":         str(o.id),
                         "symbol":     o.symbol,
-                        "qty":        float(o.qty or 0),
-                        "stop_price": float(o.stop_price) if getattr(o, "stop_price", None) else None,
+                        "qty":        _f(getattr(o, "qty", None)),
+                        "stop_price": _f(o.stop_price) if getattr(o, "stop_price", None) else None,
                     })
             return out
         except Exception as e:
@@ -329,7 +383,8 @@ class AlpacaClient:
             after = datetime.now(pytz.UTC) - timedelta(days=lookback_days)
             req = GetOrdersRequest(status=QueryOrderStatus.ALL, after=after,
                                    symbols=[symbol], limit=500)
-            orders = self.trading.get_orders(req)
+            orders = _retry_read(lambda: self.trading.get_orders(req),
+                                 f"get_last_filled_buy {symbol}")
         except Exception as e:
             logger.warning("get_last_filled_buy failed | %s: %s", symbol, e)
             return None
@@ -340,8 +395,8 @@ class AlpacaClient:
         o = max(fills, key=lambda x: x.filled_at)
         return {
             "filled_at":        o.filled_at.isoformat(),
-            "filled_avg_price": float(o.filled_avg_price) if getattr(o, "filled_avg_price", None) else None,
-            "qty":              float(o.filled_qty) if getattr(o, "filled_qty", None) else None,
+            "filled_avg_price": _f(o.filled_avg_price) if getattr(o, "filled_avg_price", None) else None,
+            "qty":              _f(o.filled_qty) if getattr(o, "filled_qty", None) else None,
         }
 
     def cancel_stop_orders(self, symbol: str) -> int:
@@ -375,17 +430,17 @@ class AlpacaClient:
             start=start,
             end=end,
         )
-        bars = self.data.get_stock_bars(req)
+        bars = _retry_read(lambda: self.data.get_stock_bars(req), f"get_bars {symbol}")
         result = []
         if symbol in bars.data:
             for b in bars.data[symbol]:
                 result.append({
                     "date":   b.timestamp.strftime("%Y-%m-%d"),
-                    "open":   float(b.open),
-                    "high":   float(b.high),
-                    "low":    float(b.low),
-                    "close":  float(b.close),
-                    "volume": int(b.volume),
+                    "open":   _f(getattr(b, "open", None)),
+                    "high":   _f(getattr(b, "high", None)),
+                    "low":    _f(getattr(b, "low", None)),
+                    "close":  _f(getattr(b, "close", None)),
+                    "volume": _i(getattr(b, "volume", None)),
                 })
         return sorted(result, key=lambda x: x["date"])[-days:]
 
@@ -393,7 +448,8 @@ class AlpacaClient:
         """Return latest trade price for a symbol."""
         try:
             req = StockLatestQuoteRequest(symbol_or_symbols=symbol)
-            quote = self.data.get_stock_latest_quote(req)
+            quote = _retry_read(lambda: self.data.get_stock_latest_quote(req),
+                                f"get_latest_price {symbol}")
             return float(quote[symbol].ask_price)
         except Exception as e:
             logger.warning("Could not get price for %s: %s", symbol, e)
@@ -401,19 +457,22 @@ class AlpacaClient:
 
     # ── Market hours check ────────────────────────────────────────────────────
 
+    def _get_clock(self):
+        return _retry_read(self.trading.get_clock, "get_clock")
+
     def is_market_open(self) -> bool:
-        clock = self.trading.get_clock()
+        clock = self._get_clock()
         return clock.is_open
 
     def minutes_to_open(self) -> int:
-        clock = self.trading.get_clock()
+        clock = self._get_clock()
         if clock.is_open:
             return 0
         delta = clock.next_open - datetime.now(ET)
         return max(0, int(delta.total_seconds() / 60))
 
     def minutes_to_close(self) -> int:
-        clock = self.trading.get_clock()
+        clock = self._get_clock()
         if not clock.is_open:
             return 0
         delta = clock.next_close - datetime.now(ET)
@@ -421,7 +480,7 @@ class AlpacaClient:
 
     def minutes_since_open(self) -> int:
         """Return minutes elapsed since today's market open, or 0 if closed."""
-        clock = self.trading.get_clock()
+        clock = self._get_clock()
         if not clock.is_open:
             return 0
         delta = datetime.now(ET) - clock.next_open

@@ -14,6 +14,26 @@ import config
 
 logger = logging.getLogger(__name__)
 
+# Caps for the append-heavy observability arrays (audit 2026-07-06: debate_logs /
+# runs / risk_decisions / position_reviews were unbounded and dominated data.json's
+# 5.9 MB — a wholesale-rewritten multi-MB JSON committed 10-14x/day). Sized to keep
+# months of history at current run rates. Consumers only need recent windows
+# (sentinel cooldowns, open-trade debate lookups, forward-return scoring). The
+# closed-trades ledger ("trades") is the real P&L record and is NEVER capped;
+# full history stays recoverable from git either way.
+_ARRAY_CAPS = {
+    "debate_logs":      500,
+    "runs":             1000,
+    "risk_decisions":   1500,
+    "position_reviews": 1500,
+}
+
+
+def _cap(data: dict, key: str):
+    cap = _ARRAY_CAPS.get(key)
+    if cap and len(data.get(key, [])) > cap:
+        data[key] = data[key][-cap:]
+
 
 class JournalCorrupt(RuntimeError):
     """Raised when the journal exists but cannot be parsed. NEVER auto-reset."""
@@ -185,6 +205,7 @@ def log_debate(
         "final_conviction": final_conviction,
         "decision":         decision,
     })
+    _cap(data, "debate_logs")
     _save(data)
     return debate_id
 
@@ -226,6 +247,7 @@ def log_run(
     if vix_regime:
         entry["vix_regime"] = vix_regime
     data["runs"].append(entry)
+    _cap(data, "runs")
     _save(data)
 
 
@@ -250,6 +272,7 @@ def log_risk_decision(
     }
     entry.update({k: v for k, v in extra.items() if v not in (None, "")})
     data["risk_decisions"].append(entry)
+    _cap(data, "risk_decisions")
     _save(data)
 
 
@@ -391,6 +414,7 @@ def log_position_review(
     }
     entry.update({k: v for k, v in extra.items() if v is not None})
     data["position_reviews"].append(entry)
+    _cap(data, "position_reviews")
     _save(data)
     logger.info("Position review logged: %s → %s (%s)", symbol, action, thesis_status)
 

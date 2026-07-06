@@ -59,3 +59,19 @@ def test_baseline_shadow_capped_append(tmp_journal):
     data = json.loads(tmp_journal.read_text())
     assert len(data["baseline_shadow"]) == 1
     assert data["baseline_shadow"][0]["would_buy"][0]["symbol"] == "ABC"
+
+
+def test_debate_and_run_logs_are_capped(tmp_journal, monkeypatch):
+    # Audit 2026-07-06: debate_logs/runs/risk_decisions/position_reviews grew without
+    # bound and dominated the 5.9 MB data.json. Caps must trim oldest-first on append.
+    from core import journal
+    monkeypatch.setitem(journal._ARRAY_CAPS, "debate_logs", 5)
+    monkeypatch.setitem(journal._ARRAY_CAPS, "runs", 5)
+    for i in range(8):
+        journal.log_debate(f"SYM{i}", "bull", "bear", 6, 5, 7, "buy")
+        journal.log_run("midday", [f"SYM{i}"], 0)
+    data = journal._load()
+    assert len(data["debate_logs"]) == 5
+    assert len(data["runs"]) == 5
+    assert data["debate_logs"][0]["symbol"] == "SYM3"  # oldest trimmed first
+    assert data["runs"][-1]["candidates"] == ["SYM7"]

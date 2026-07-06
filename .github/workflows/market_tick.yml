@@ -9,7 +9,10 @@ name: Pocket Hedge Fund — Market Tick
 
 on:
   schedule:
-    - cron: '*/15 13-20 * * 1-5'   # US market hours (UTC); GitHub throttles this heavily
+    # Hourly (audit 2026-07-06): the old */15 cadence was throttled by GitHub to
+    # ~every 75-100 min anyway, and a book that trades ~3x/week does not need
+    # sub-hourly snapshots. :05 offset avoids top-of-hour scheduler congestion.
+    - cron: '5 13-20 * * 1-5'
   workflow_dispatch:
 
 permissions:

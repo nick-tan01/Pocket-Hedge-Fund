@@ -43,6 +43,19 @@ SEVERE_POSITION_MOVE = 0.05
 SEVERE_VOLUME_SPIKE = 8.0
 SEVERE_STOP_PROXIMITY = 0.95
 
+# Audit 2026-07-06 (efficiency): sentinel-triggered runs were 65% of ALL pipeline
+# runs with a ~8% trade rate — overwhelmingly ordinary intraday noise
+# (intraday_move fired 1,169x) re-running full LLM pipelines and re-debating the
+# same held names (AMD 80x, DDOG 76x, LLY reviewed 98x). near_stop is redundant
+# now that broker-native GTC stops rest at Alpaca between runs. Default trigger
+# whitelist: earnings only. Re-expand deliberately via
+#   SENTINEL_ENABLED_TRIGGERS="earnings_today,intraday_move,position_move,..."
+ENABLED_TRIGGERS = {
+    t.strip()
+    for t in os.getenv("SENTINEL_ENABLED_TRIGGERS", "earnings_today").split(",")
+    if t.strip()
+}
+
 
 def load_open_trades() -> list[dict]:
     path = Path("dashboard/data.json")
@@ -305,12 +318,19 @@ def main():
     open_symbols = [t["symbol"] for t in open_trades]
     all_symbols = sorted(set(WATCHLIST + MARKET_SENTINELS + open_symbols))
 
+    logger.info("Enabled triggers: %s", sorted(ENABLED_TRIGGERS))
     events = []
-    events.extend(check_intraday_moves(all_symbols))
-    events.extend(check_position_moves(open_trades))
-    events.extend(check_volume_spikes(open_trades))
-    events.extend(check_position_proximity_to_stop(open_trades))
-    events.extend(check_earnings_today(all_symbols))
+    if {"intraday_move", "intraday_rebound"} & ENABLED_TRIGGERS:
+        events.extend(check_intraday_moves(all_symbols))
+    if "position_move" in ENABLED_TRIGGERS:
+        events.extend(check_position_moves(open_trades))
+    if "volume_spike" in ENABLED_TRIGGERS:
+        events.extend(check_volume_spikes(open_trades))
+    if "near_stop" in ENABLED_TRIGGERS:
+        events.extend(check_position_proximity_to_stop(open_trades))
+    if "earnings_today" in ENABLED_TRIGGERS:
+        events.extend(check_earnings_today(all_symbols))
+    events = [e for e in events if e.get("trigger_type") in ENABLED_TRIGGERS]
     events = apply_cooldown(events, recent_runs)
 
     unique = sorted({evt["symbol"] for evt in events})

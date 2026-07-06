@@ -26,6 +26,33 @@ logger = logging.getLogger(__name__)
 ET = pytz.timezone("America/New_York")
 
 
+def _account_dict(acct) -> dict:
+    """Coerce a raw Alpaca account object into our plain dict, tolerating None fields.
+    Alpaca returns None for daytrade_count / pattern_day_trader on paper accounts, and a
+    bare int(None) took the WHOLE pipeline down on 2026-07-06 — get_account() is the first
+    broker call every run (and the snapshot job) makes, so a single null field crashed
+    trading, snapshots, and health checks. A null field must never crash the run."""
+    def _f(v, default=0.0):
+        try:
+            return float(v)
+        except (TypeError, ValueError):
+            return default
+
+    def _i(v, default=0):
+        try:
+            return int(v)
+        except (TypeError, ValueError):
+            return default
+
+    return {
+        "portfolio_value": _f(getattr(acct, "portfolio_value", None)),
+        "cash":            _f(getattr(acct, "cash", None)),
+        "equity":          _f(getattr(acct, "equity", None)),
+        "buying_power":    _f(getattr(acct, "buying_power", None)),
+        "daytrade_count":  _i(getattr(acct, "daytrade_count", None)),
+    }
+
+
 class AlpacaClient:
     def __init__(self):
         self.trading = TradingClient(
@@ -50,15 +77,8 @@ class AlpacaClient:
     # ── Account ───────────────────────────────────────────────────────────────
 
     def get_account(self) -> dict:
-        """Return key account fields as a plain dict."""
-        acct = self.trading.get_account()
-        return {
-            "portfolio_value": float(acct.portfolio_value),
-            "cash":            float(acct.cash),
-            "equity":          float(acct.equity),
-            "buying_power":    float(acct.buying_power),
-            "daytrade_count":  int(acct.daytrade_count),
-        }
+        """Return key account fields as a plain dict (None-tolerant — see _account_dict)."""
+        return _account_dict(self.trading.get_account())
 
     def get_portfolio_value(self) -> float:
         return float(self.trading.get_account().portfolio_value)

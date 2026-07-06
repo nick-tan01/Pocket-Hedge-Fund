@@ -16,13 +16,11 @@ Output schema:
 
 import json
 import logging
-import anthropic
 
 import config
-from core.llm_json import complete_json
+from core.llm_json import complete_json, get_client
 
 logger = logging.getLogger(__name__)
-client = anthropic.Anthropic(api_key=config.ANTHROPIC_API_KEY)
 
 
 def analyse(symbol: str, news: list[dict]) -> dict:
@@ -67,7 +65,7 @@ Return ONLY this JSON, no other text:
 
     try:
         result = complete_json(
-            client, model=config.ANALYST_MODEL, max_tokens=config.MAX_TOKENS,
+            get_client(), model=config.ANALYST_MODEL, max_tokens=config.MAX_TOKENS,
             prompt=prompt, label=f"sentiment:{symbol}",
         )
         result["headline_count"] = len(news)

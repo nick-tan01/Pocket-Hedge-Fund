@@ -72,4 +72,5 @@ def main():
 
 
 if __name__ == "__main__":
+    config.validate_required_env(require_llm=False)
     main()

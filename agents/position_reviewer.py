@@ -19,12 +19,10 @@ Output schema:
 
 import json
 import logging
-import anthropic
 import config
-from core.llm_json import complete_json
+from core.llm_json import complete_json, get_client
 
 logger = logging.getLogger(__name__)
-client = anthropic.Anthropic(api_key=config.ANTHROPIC_API_KEY)
 
 
 def review(
@@ -125,7 +123,7 @@ Return ONLY this JSON:
 
     try:
         result = complete_json(
-            client, model=config.DEBATE_MODEL, max_tokens=config.DEBATE_MAX_TOKENS,
+            get_client(), model=config.DEBATE_MODEL, max_tokens=config.DEBATE_MAX_TOKENS,
             prompt=prompt, label=f"reviewer:{symbol}",
         )
         logger.info(

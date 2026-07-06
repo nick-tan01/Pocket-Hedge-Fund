@@ -1,26 +1,27 @@
-name: Pocket Hedge Fund — Dashboard Snapshot
+name: Pocket Hedge Fund — Market Tick
 
-# Keeps the dashboard's top-line (portfolio value, return, cash, open positions) current
-# between full pipeline runs. Reads the LIVE broker portfolio value + per-position
-# mark-to-market and commits a snapshot. NO LLM, NO trading decisions, NO orders — it
-# only refreshes displayed numbers. Cheap (~30s) and safe to run frequently.
+# Merged sentinel + dashboard snapshot (audit 2026-07-06). The two jobs shared an
+# identical cron and each spun its own runner/checkout/pip-install every tick just
+# to hit the same Alpaca API. One runner now does both:
+#   1. sentinel check (read-only) — may dispatch the Trading Pipeline
+#   2. portfolio snapshot refresh — commits to the `data` branch
+# NO LLM, NO trading decisions, NO orders happen here.
 
 on:
   schedule:
-    - cron: '*/15 13-20 * * 1-5'   # every 15 min during US market hours (UTC)
+    - cron: '*/15 13-20 * * 1-5'   # US market hours (UTC); GitHub throttles this heavily
   workflow_dispatch:
 
 permissions:
   contents: write
-  actions: read   # guard job lists trade.yml runs
+  actions: write   # sentinel dispatches trade.yml; guard lists its runs
 
 jobs:
-  # Audit 2026-07-06: GitHub keeps at most ONE pending run per concurrency group, so a
-  # snapshot tick that enqueued behind a running pipeline would EVICT a queued
-  # sentinel-triggered trade run. This guard runs OUTSIDE the concurrency group and
-  # skips the snapshot entirely while any trade run is queued or in progress — the
-  # queue slot stays reserved for trade runs, whose loss actually matters. The next
-  # 15-min tick refreshes the snapshot instead.
+  # GitHub keeps at most ONE pending run per concurrency group, so a tick that
+  # enqueued behind a running pipeline would EVICT a queued sentinel-triggered
+  # trade run. This guard runs OUTSIDE the concurrency group and skips the tick
+  # while any trade run is queued or in progress — the queue slot stays reserved
+  # for trade runs, whose loss actually matters. The next tick catches up.
   guard:
     runs-on: ubuntu-latest
     timeout-minutes: 3
@@ -38,19 +39,18 @@ jobs:
                      --status queued --json databaseId --jq length)
           if [ "${active:-0}" != "0" ] || [ "${queued:-0}" != "0" ]; then
             echo "skip=true" >> "$GITHUB_OUTPUT"
-            echo "Trading pipeline active/queued ($active running, $queued queued) — yielding this snapshot tick."
+            echo "Trading pipeline active/queued ($active running, $queued queued) — yielding this tick."
           else
             echo "skip=false" >> "$GITHUB_OUTPUT"
           fi
 
-  snapshot:
+  tick:
     needs: guard
     if: needs.guard.outputs.skip != 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 10
-    # Shares the journal-writer serialization group (A9/A10) so it never races the trade,
-    # after-close, or decision-quality jobs that also write dashboard/data.json.
-    # Job-level (not workflow-level) so the guard above runs before we enter the queue.
+    # Shares the journal-writer serialization group (A9/A10). Job-level (not
+    # workflow-level) so the guard above runs before we enter the queue.
     concurrency:
       group: pipeline-data-json
       cancel-in-progress: false
@@ -80,6 +80,25 @@ jobs:
 
       - name: Install dependencies
         run: pip install -r requirements.txt
+
+      - name: Run sentinel check
+        id: check
+        env:
+          ALPACA_API_KEY:    ${{ secrets.ALPACA_API_KEY }}
+          ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
+        run: python sentinel.py
+
+      - name: Trigger main pipeline if event detected
+        if: steps.check.outputs.trigger == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "Event detected for: ${{ steps.check.outputs.trigger_symbols }}"
+          gh workflow run "Pocket Hedge Fund — Trading Pipeline" \
+            --ref main \
+            --field reason="sentinel_trigger" \
+            --field symbols="${{ steps.check.outputs.trigger_symbols }}" \
+            --field event_details='${{ steps.check.outputs.trigger_details }}'
 
       - name: Refresh portfolio snapshot from broker
         env:

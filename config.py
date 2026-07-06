@@ -13,6 +13,24 @@ ALPACA_API_KEY    = os.getenv("ALPACA_API_KEY")
 ALPACA_SECRET_KEY = os.getenv("ALPACA_SECRET_KEY")
 ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")
 
+
+def validate_required_env(*, require_llm: bool = True) -> None:
+    """Fail fast, at entrypoint, with a clear message — instead of an SDK stack
+    trace halfway through a run (or at import time, as the old module-level
+    Anthropic clients did). Call from every executable entrypoint."""
+    required = {
+        "ALPACA_API_KEY":    ALPACA_API_KEY,
+        "ALPACA_SECRET_KEY": ALPACA_SECRET_KEY,
+    }
+    if require_llm:
+        required["ANTHROPIC_API_KEY"] = ANTHROPIC_API_KEY
+    missing = [name for name, val in required.items() if not val]
+    if missing:
+        raise SystemExit(
+            f"Missing required environment variable(s): {', '.join(missing)} — "
+            "set them in .env (local) or the workflow secrets (CI)."
+        )
+
 # ── Alpaca ────────────────────────────────────────────────────────────────────
 # Paper trading is the default and must stay a DELIBERATE, deploy-time choice:
 # going live requires BOTH setting PAPER_TRADING=false in the environment AND

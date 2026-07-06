@@ -56,6 +56,26 @@ def extract_json(text: str) -> dict:
     raise ValueError("no JSON object found in response")
 
 
+_client = None
+
+
+def get_client():
+    """Shared, lazily-constructed Anthropic client.
+
+    The agent modules used to each build their own client at IMPORT time, so a
+    missing/empty ANTHROPIC_API_KEY killed the whole process at `import agents.*`
+    — before even the mechanical stop checks that need no LLM could run. Lazy
+    construction defers that failure to the first actual LLM call, which every
+    agent already guards with a neutral fallback.
+    """
+    global _client
+    if _client is None:
+        import anthropic
+        import config
+        _client = anthropic.Anthropic(api_key=config.ANTHROPIC_API_KEY)
+    return _client
+
+
 def complete_json(
     client,
     *,

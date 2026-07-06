@@ -330,4 +330,8 @@ def main():
 
 
 if __name__ == "__main__":
+    # Fail fast with a clear message (sentinel stays config-free: minimal deps).
+    _missing = [k for k in ("ALPACA_API_KEY", "ALPACA_SECRET_KEY") if not os.getenv(k)]
+    if _missing:
+        raise SystemExit(f"Missing required environment variable(s): {', '.join(_missing)}")
     main()

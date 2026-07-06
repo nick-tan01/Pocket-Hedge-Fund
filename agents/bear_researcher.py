@@ -6,13 +6,11 @@ Round 2: Bear responds to bull's rebuttal.
 
 import json
 import logging
-import anthropic
 import config
 from agents.performance_context import get_performance_context
-from core.llm_json import complete_json
+from core.llm_json import complete_json, get_client
 
 logger = logging.getLogger(__name__)
-client = anthropic.Anthropic(api_key=config.ANTHROPIC_API_KEY)
 
 
 def opening_argument(
@@ -79,7 +77,7 @@ Return ONLY this JSON:
 
     try:
         result = complete_json(
-            client, model=config.DEBATE_MODEL, max_tokens=config.DEBATE_MAX_TOKENS,
+            get_client(), model=config.DEBATE_MODEL, max_tokens=config.DEBATE_MAX_TOKENS,
             prompt=prompt, label=f"bear_r1:{symbol}",
         )
         logger.info("Bear R1 | %s | conviction=%s | %s",
@@ -140,7 +138,7 @@ Return ONLY this JSON:
 
     try:
         result = complete_json(
-            client, model=config.DEBATE_MODEL, max_tokens=config.DEBATE_MAX_TOKENS,
+            get_client(), model=config.DEBATE_MODEL, max_tokens=config.DEBATE_MAX_TOKENS,
             prompt=prompt, label=f"bear_r2:{symbol}",
         )
         logger.info("Bear R2 | %s | updated conviction=%s | %s",

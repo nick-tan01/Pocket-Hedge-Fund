@@ -1469,6 +1469,31 @@ def _select_candidates(
     return selected
 
 
+def _llm_preflight() -> str | None:
+    """Cheap 1-token ping of the pinned model(s) BEFORE burning a run on silent
+    fallbacks. The 2026-06-15 model EOL produced 3 days of conviction-1
+    'skip — error' decisions before a human noticed — check_llm_health.py catches
+    that post-hoc; this prevents it. Retries once per model so a single transient
+    529 doesn't fail the preflight. Returns an error string, or None if healthy."""
+    from core.llm_json import get_client
+    for model in sorted({config.ANALYST_MODEL, config.DEBATE_MODEL}):
+        last = None
+        for attempt in range(2):
+            try:
+                get_client().messages.create(
+                    model=model, max_tokens=1,
+                    messages=[{"role": "user", "content": "ping"}],
+                )
+                last = None
+                break
+            except Exception as e:
+                last = e
+                time.sleep(5)
+        if last is not None:
+            return f"{model}: {last}"
+    return None
+
+
 def run_pipeline(
     dry_run: bool = False,
     reason: str = "scheduled",
@@ -1517,6 +1542,20 @@ def run_pipeline(
         logger.error("auto-reconcile failed (non-fatal): %s", e)
 
     check_open_positions(alpaca)
+
+    # Model-EOL / LLM-outage preflight: mechanical safety (stops, reconcile,
+    # position checks) is already done above and needs no LLM. If the pinned
+    # models don't respond, record a LOUD run entry and fail the job red instead
+    # of running 30 debates that all silently fall back to neutral conviction.
+    llm_err = _llm_preflight()
+    if llm_err:
+        logger.error("LLM PREFLIGHT FAILED — skipping all LLM stages this run: %s", llm_err)
+        log_run(run_type, [], 0,
+                skipped_reason=f"llm_preflight_failed: {llm_err[:300]}",
+                regime=regime, vix_regime=vix_regime, reason=trigger_reason,
+                event_symbols=sorted(event_symbols), event_details=event_details)
+        raise SystemExit(2)  # red job; the salvage push still commits this run record
+
     broad_event = trigger_reason == "sentinel_trigger" and _is_broad_market_event(event_symbols)
     review_symbols = None
     if trigger_reason == "sentinel_trigger" and event_symbols and not broad_event:
@@ -1721,6 +1760,7 @@ def run_scheduled(dry_run: bool = False):
 
 
 if __name__ == "__main__":
+    config.validate_required_env()
     parser = argparse.ArgumentParser()
     parser.add_argument("--now",    action="store_true")
     parser.add_argument("--test",   action="store_true")

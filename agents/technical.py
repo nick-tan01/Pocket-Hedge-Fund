@@ -15,15 +15,13 @@ Output schema:
 
 import json
 import logging
-import anthropic
 import pandas as pd
 
 import config
 from core.journal import log_tech_shadow
-from core.llm_json import complete_json
+from core.llm_json import complete_json, get_client
 
 logger = logging.getLogger(__name__)
-client = anthropic.Anthropic(api_key=config.ANTHROPIC_API_KEY)
 
 
 def _deterministic_signal(ind: dict) -> dict:
@@ -267,7 +265,7 @@ Return ONLY this JSON, no other text:
 
     try:
         result = complete_json(
-            client, model=config.ANALYST_MODEL, max_tokens=config.MAX_TOKENS,
+            get_client(), model=config.ANALYST_MODEL, max_tokens=config.MAX_TOKENS,
             prompt=prompt, label=f"technical:{symbol}",
         )
         result["indicators"] = indicators

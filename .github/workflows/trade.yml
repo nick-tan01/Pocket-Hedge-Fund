@@ -26,7 +26,11 @@ permissions:
 # sentinel-triggered workflows both mutate the same append-only journal; running them
 # concurrently let one run's `cp`-overwrite erase another run's just-appended trades,
 # desyncing the journal from Alpaca and triggering spurious 24h orphan-closes.
-# cancel-in-progress:false => queue, never drop, an overlapping run.
+# NOTE (audit 2026-07-06): cancel-in-progress:false does NOT mean "queue, never drop".
+# GitHub keeps at most ONE pending run per concurrency group — a newer arrival evicts
+# the older pending run. That is why snapshot.yml checks for queued/running trade runs
+# and yields instead of enqueueing: a queued TRADE run must never be evicted by a
+# snapshot tick. Losing a pending snapshot is harmless; losing a trade run is not.
 concurrency:
   group: pipeline-data-json
   cancel-in-progress: false
@@ -63,6 +67,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Run trading pipeline
+        id: pipeline
         env:
           ALPACA_API_KEY:    ${{ secrets.ALPACA_API_KEY }}
           ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
@@ -73,6 +78,13 @@ jobs:
         run: python main.py --now --reason "$RUN_REASON" --symbols "$EVENT_SYMBOLS" --event-details "$EVENT_DETAILS"
 
       - name: Push updated dashboard data
+        # Journal salvage (audit 2026-07-06): this step used to run only on success, so
+        # a crash AFTER trades executed discarded every log_trade_open/log_debate/
+        # log_risk_decision written that run — reconcile then re-adopted the positions
+        # with conviction=6 and no debate record, silently biasing the decision-quality
+        # scorecard. Push whatever the journal contains even when the pipeline step
+        # fails; the job still goes red because the pipeline step itself failed.
+        if: ${{ !cancelled() && contains(fromJSON('["success","failure"]'), steps.pipeline.outcome) }}
         run: |
           git config user.name "nick-tan01"
           git config user.email "${{ secrets.GIT_EMAIL }}"
@@ -86,7 +98,11 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes to push"
           else
-            git commit -m "Auto: pipeline run $(date -u +'%Y-%m-%d %H:%M UTC')"
+            MSG="Auto: pipeline run $(date -u +'%Y-%m-%d %H:%M UTC')"
+            if [ "${{ steps.pipeline.outcome }}" != "success" ]; then
+              MSG="$MSG (journal salvage after failed run)"
+            fi
+            git commit -m "$MSG"
             # A9 (audit): NO -X theirs and NO '|| true'. '-X theirs' silently threw
             # away THIS run's just-written journal records whenever the merge hit a
             # data.json conflict. All journal-writing workflows now share the

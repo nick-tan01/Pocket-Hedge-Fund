@@ -12,17 +12,48 @@ on:
 
 permissions:
   contents: write
-
-# Shares the journal-writer serialization group (A9/A10) so it never races the trade,
-# after-close, or decision-quality jobs that also write dashboard/data.json.
-concurrency:
-  group: pipeline-data-json
-  cancel-in-progress: false
+  actions: read   # guard job lists trade.yml runs
 
 jobs:
+  # Audit 2026-07-06: GitHub keeps at most ONE pending run per concurrency group, so a
+  # snapshot tick that enqueued behind a running pipeline would EVICT a queued
+  # sentinel-triggered trade run. This guard runs OUTSIDE the concurrency group and
+  # skips the snapshot entirely while any trade run is queued or in progress — the
+  # queue slot stays reserved for trade runs, whose loss actually matters. The next
+  # 15-min tick refreshes the snapshot instead.
+  guard:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    outputs:
+      skip: ${{ steps.check.outputs.skip }}
+    steps:
+      - name: Check for queued/running trading pipeline runs
+        id: check
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          active=$(gh run list --repo "$GITHUB_REPOSITORY" --workflow trade.yml \
+                     --status in_progress --json databaseId --jq length)
+          queued=$(gh run list --repo "$GITHUB_REPOSITORY" --workflow trade.yml \
+                     --status queued --json databaseId --jq length)
+          if [ "${active:-0}" != "0" ] || [ "${queued:-0}" != "0" ]; then
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            echo "Trading pipeline active/queued ($active running, $queued queued) — yielding this snapshot tick."
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
   snapshot:
+    needs: guard
+    if: needs.guard.outputs.skip != 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    # Shares the journal-writer serialization group (A9/A10) so it never races the trade,
+    # after-close, or decision-quality jobs that also write dashboard/data.json.
+    # Job-level (not workflow-level) so the guard above runs before we enter the queue.
+    concurrency:
+      group: pipeline-data-json
+      cancel-in-progress: false
 
     steps:
       - name: Checkout repo

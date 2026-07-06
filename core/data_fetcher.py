@@ -64,9 +64,14 @@ class DataFetcher:
         """Return current price, volume, market cap for one symbol."""
         def _fetch():
             info = yf.Ticker(symbol).fast_info
+            # A missing last_price must yield None (treated as "no quote"), not a
+            # truthy dict with price=0.0 — a zero price passes `if not quote:` guards
+            # and reaches sizing math / percent-change division downstream.
+            if not info.last_price:
+                raise ValueError(f"no last_price for {symbol}")
             return {
                 "symbol":     symbol,
-                "price":      round(float(info.last_price or 0), 2),
+                "price":      round(float(info.last_price), 2),
                 "volume":     int(info.three_month_average_volume or 0),
                 "market_cap": float(info.market_cap or 0),
             }

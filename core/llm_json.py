@@ -67,21 +67,23 @@ def complete_json(
 ) -> dict:
     """
     Call the Anthropic API and return a parsed JSON dict, retrying once on a parse
-    failure (handles transient truncation/garbling). Raises the last error if every
-    attempt fails — callers keep their existing fallback for that case.
+    failure OR an API error. The API call sits inside the try — previously a
+    transient 529/timeout on attempt 1 escaped the retry loop entirely while a
+    garbled response got retried. Raises the last error if every attempt fails —
+    callers keep their existing fallback for that case.
     """
     last_exc = None
     for attempt in range(retries + 1):
-        resp = client.messages.create(
-            model=model,
-            max_tokens=max_tokens,
-            messages=[{"role": "user", "content": prompt}],
-        )
-        raw = resp.content[0].text if resp.content else ""
         try:
+            resp = client.messages.create(
+                model=model,
+                max_tokens=max_tokens,
+                messages=[{"role": "user", "content": prompt}],
+            )
+            raw = resp.content[0].text if resp.content else ""
             return extract_json(raw)
         except Exception as exc:
             last_exc = exc
-            logger.warning("JSON parse failed for %s (attempt %d/%d): %s",
+            logger.warning("LLM call/parse failed for %s (attempt %d/%d): %s",
                            label or "agent", attempt + 1, retries + 1, exc)
     raise last_exc

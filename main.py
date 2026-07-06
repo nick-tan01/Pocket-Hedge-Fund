@@ -386,7 +386,12 @@ def review_open_positions(
     portfolio_value  = account["portfolio_value"]
     alpaca_positions = {p["symbol"]: p for p in alpaca.get_positions()}
 
-    for trade in open_trades:
+    def _review_one(trade):
+        """One position's full review + action. Extracted so each position is
+        isolated (same C3 pattern as the candidate loop): one bad payload or
+        agent error must not abort the reviews of every other position AND the
+        entire downstream pipeline (screener, log_run, journal push).
+        `continue` in the old loop body became `return`."""
         symbol   = trade["symbol"]
         trade_id = trade["id"]
 
@@ -397,7 +402,7 @@ def review_open_positions(
 
         if not bars or not quote:
             logger.warning("Position review: no data for %s — skipping", symbol)
-            continue
+            return
 
         current_price = quote["price"]
         live_pos      = alpaca_positions.get(symbol)
@@ -585,7 +590,7 @@ def review_open_positions(
         elif action == "exit":
             if dry_run:
                 logger.info("DRY RUN — would EXIT %s | %s", symbol, exit_reason_str)
-                continue
+                return
 
             if not ok_to_trade:
                 logger.info("Market closed — EXIT queued for %s (will re-review next run)", symbol)
@@ -596,7 +601,7 @@ def review_open_positions(
                     "time_stop_flagged":         False,
                     "consecutive_weakened_count": consec_weakened,
                 })
-                continue
+                return
 
             order = alpaca.close_position(symbol, reason=exit_reason_str)
             if order:
@@ -607,7 +612,7 @@ def review_open_positions(
             if dry_run:
                 logger.info("DRY RUN — would TRIM %s | %s",
                             symbol, review.get("trim_reason", "conviction reduced"))
-                continue
+                return
 
             if not ok_to_trade:
                 logger.info("Market closed — TRIM queued for %s (will re-review next run)", symbol)
@@ -619,7 +624,7 @@ def review_open_positions(
                     "time_stop_flagged":         False,
                     "consecutive_weakened_count": consec_weakened,
                 })
-                continue
+                return
 
             # Conviction-resize: map new conviction to target position %
             target_pct = _review_target_pct(conviction)
@@ -642,7 +647,7 @@ def review_open_positions(
                     "consecutive_weakened_count": consec_weakened,
                 })
                 clear_queued_action(trade_id)
-                continue
+                return
 
             trim_qty = round(excess_value / current_price, 4)
             new_qty  = round(current_qty_act - trim_qty, 4)
@@ -660,7 +665,7 @@ def review_open_positions(
                     "consecutive_weakened_count": consec_weakened,
                 })
                 clear_queued_action(trade_id)
-                continue
+                return
 
             # S1: shrink the resting broker stop FIRST — Alpaca holds the full qty
             # against the open sell stop, so the trim sell would otherwise be
@@ -702,6 +707,14 @@ def review_open_positions(
                     "TRIM executed | %s sold %.4f shares @ $%.2f | remaining qty=%.4f",
                     symbol, trim_qty, current_price, new_qty,
                 )
+
+    for trade in open_trades:
+        try:
+            _review_one(trade)
+        except Exception as exc:
+            logger.exception(
+                "Position review CRASHED for %s — isolating and continuing with "
+                "remaining positions: %s", trade.get("symbol", "?"), exc)
 
 
 # ── Per-symbol analysis ───────────────────────────────────────────────────────

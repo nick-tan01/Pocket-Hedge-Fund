@@ -891,9 +891,21 @@ const debateState = {
 };
 
 // ── Load data ──────────────────────────────────────────────────────────────
+// The canonical journal lives on the repo's `data` branch (data-branch split,
+// audit 2026-07-06) so journal refreshes no longer trigger Vercel rebuilds.
+// The cache-busting query param defeats the raw CDN's ~5-min cache. Falls back
+// to the deploy-local data.json (stale snapshot) for local dev / first deploy.
+const DATA_URL = 'https://raw.githubusercontent.com/nick-tan01/Pocket-Hedge-Fund/data/dashboard/data.json';
 async function loadData() {
   try {
-    const r = await fetch('data.json?t=' + Date.now());
+    let r;
+    try {
+      r = await fetch(DATA_URL + '?t=' + Date.now());
+      if (!r.ok) throw new Error('data branch fetch: HTTP ' + r.status);
+    } catch(e) {
+      console.warn('Falling back to deploy-local data.json:', e);
+      r = await fetch('data.json?t=' + Date.now());
+    }
     DATA = await r.json();
     render();
   } catch(e) {

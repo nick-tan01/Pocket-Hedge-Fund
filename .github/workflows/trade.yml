@@ -41,21 +41,28 @@ jobs:
     timeout-minutes: 30
 
     steps:
-      - name: Checkout repo
+      # DATA-BRANCH SPLIT (audit 2026-07-06): code comes from main, the journal
+      # (dashboard/data.json) lives on the dedicated `data` branch. Auto-commits no
+      # longer land on main, so pushing code can't race the journal, main's history
+      # stays pure code, and Vercel stops rebuilding the site 10-14x/day just to
+      # ship a JSON refresh (the dashboard fetches the data branch directly).
+      - name: Checkout repo (code from main)
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          fetch-depth: 0
-          # A10: start from the LATEST journal, not the trigger-time SHA. actions/checkout
-          # defaults to github.sha, so a run queued behind another (via the
-          # pipeline-data-json concurrency group) used to run main.py against a stale
-          # data.json; by push time the remote had the earlier run's commit and the
-          # `git pull --no-rebase` below could not line-merge two divergent edits to the
-          # same in-place position/price fields -> "CONFLICT (content)" -> red job with the
-          # run's journal discarded (runs #155/#163/#166/#172, 6/19-6/24). Because runs are
-          # serialized, checking out `main` here yields the prior run's just-pushed commit,
-          # so the pre-push pull fast-forwards instead of merging.
+          # A10: latest code, not the trigger-time SHA — a run queued behind another
+          # (pipeline-data-json group) must see its predecessor's world, not a stale one.
           ref: main
+
+      - name: Checkout data branch (canonical journal)
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          ref: data
+          path: data-branch
+
+      - name: Use latest journal from data branch
+        run: cp data-branch/dashboard/data.json dashboard/data.json
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -86,14 +93,14 @@ jobs:
         # fails; the job still goes red because the pipeline step itself failed.
         if: ${{ !cancelled() && contains(fromJSON('["success","failure"]'), steps.pipeline.outcome) }}
         run: |
+          # C5: this step is the SINGLE push authority. main.py's push_to_github()
+          # skips its own commit/push under GitHub Actions (GITHUB_ACTIONS env).
+          # A9: no -X theirs / no '|| true' — a genuine conflict fails LOUDLY.
+          # Journal commits go to the `data` branch, never main.
+          cp dashboard/data.json data-branch/dashboard/data.json
+          cd data-branch
           git config user.name "nick-tan01"
           git config user.email "${{ secrets.GIT_EMAIL }}"
-          # C5: this step is the SINGLE push authority. main.py's push_to_github()
-          # skips its own commit/push under GitHub Actions (GITHUB_ACTIONS env), so
-          # there is no longer a competing in-process push with no rebase.
-          # Because runs are serialized by the `concurrency` group, the remote cannot
-          # move between our commit and push, so a plain commit -> rebase -> push
-          # cleanly replays our single-file change with NO destructive cp-overwrite.
           git add dashboard/data.json
           if git diff --cached --quiet; then
             echo "No changes to push"
@@ -103,14 +110,8 @@ jobs:
               MSG="$MSG (journal salvage after failed run)"
             fi
             git commit -m "$MSG"
-            # A9 (audit): NO -X theirs and NO '|| true'. '-X theirs' silently threw
-            # away THIS run's just-written journal records whenever the merge hit a
-            # data.json conflict. All journal-writing workflows now share the
-            # pipeline-data-json concurrency group, so the remote cannot move under
-            # us in normal operation; if a conflict still happens, fail LOUDLY so the
-            # run shows red instead of quietly losing records.
-            git pull --no-rebase origin main
-            git push
+            git pull --no-rebase origin data
+            git push origin HEAD:data
           fi
 
       # Recommendation #1: alert on LLM outages. Runs AFTER the push so the journal

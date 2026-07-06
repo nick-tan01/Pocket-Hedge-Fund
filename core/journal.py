@@ -526,50 +526,30 @@ def clear_queued_action(trade_id: str):
 
 def push_to_github(commit_message: str = None):
     """
-    Commit and push the updated data.json to GitHub after every run.
-    Requires the repo to already have a remote origin configured (git push -u origin main).
-    Called automatically at the end of each pipeline run.
+    Publication hook called at the end of each pipeline run.
+
+    Under GitHub Actions this is a no-op — the workflow's "Push updated dashboard
+    data" step is the single push authority (C5), serialized by the
+    pipeline-data-json concurrency group and committing to the `data` branch.
+
+    Outside CI this is ALSO a no-op, deliberately (data-branch split, audit
+    2026-07-06). The old local path did a bare `git push` to main with no pull:
+    it silently diverged whenever CI had pushed first, and it re-opened the exact
+    push race the Jun 30 fix closed. The canonical journal now lives on
+    origin/data, which a local checkout of main cannot safely update in-process.
+    A local live run therefore logs its results to the LOCAL data.json only, and
+    says so loudly — run via CI (workflow_dispatch) when the record must persist.
     """
-    import subprocess
     import os
 
-    # C5: under GitHub Actions the workflow's "Push updated dashboard data" step is the
-    # single push authority (it serializes via the concurrency group and rebases safely).
-    # Doing a second commit+push here had no rebase and raced the workflow step, so we
-    # defer entirely in CI. Local/scheduled runs still commit+push as before.
     if os.getenv("GITHUB_ACTIONS"):
         logger.info("GitHub push: under GitHub Actions — deferring to workflow push step")
         return
 
-    repo_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    journal   = os.path.join(repo_root, config.JOURNAL_PATH)
-    msg       = commit_message or f"Auto: pipeline run {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M')} UTC"
-
-    try:
-        # Stage only the dashboard data file — nothing else
-        subprocess.run(
-            ["git", "add", journal],
-            cwd=repo_root, check=True, capture_output=True,
-        )
-        # Check if there's actually anything to commit
-        result = subprocess.run(
-            ["git", "diff", "--cached", "--quiet"],
-            cwd=repo_root, capture_output=True,
-        )
-        if result.returncode == 0:
-            logger.info("GitHub push: no changes to data.json, skipping")
-            return
-
-        subprocess.run(
-            ["git", "commit", "-m", msg],
-            cwd=repo_root, check=True, capture_output=True,
-        )
-        subprocess.run(
-            ["git", "push"],
-            cwd=repo_root, check=True, capture_output=True,
-        )
-        logger.info("GitHub push: data.json pushed — Vercel will redeploy shortly")
-    except subprocess.CalledProcessError as e:
-        logger.warning("GitHub push failed: %s", e.stderr.decode() if e.stderr else str(e))
-    except Exception as e:
-        logger.warning("GitHub push failed: %s", e)
+    logger.warning(
+        "LOCAL RUN — journal changes were written to the local dashboard/data.json "
+        "but NOT published. The canonical journal lives on origin/data (CI is the "
+        "single writer). Trigger the Trading Pipeline workflow (workflow_dispatch) "
+        "for runs that must be recorded, or manually reconcile local changes into "
+        "the data branch."
+    )

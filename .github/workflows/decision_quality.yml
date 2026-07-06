@@ -24,12 +24,21 @@ jobs:
     timeout-minutes: 15
 
     steps:
-      - name: Checkout repo
+      - name: Checkout repo (code from main)
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          fetch-depth: 0
-          ref: main   # A10: start from latest journal so the pre-push pull fast-forwards (see trade.yml)
+          ref: main
+
+      - name: Checkout data branch (canonical journal)
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          ref: data
+          path: data-branch
+
+      - name: Use latest journal from data branch
+        run: cp data-branch/dashboard/data.json dashboard/data.json
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -46,8 +55,10 @@ jobs:
           ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
         run: python scripts/decision_quality.py --save --verbose
 
-      - name: Push updated dashboard data
+      - name: Push updated dashboard data (data branch)
         run: |
+          cp dashboard/data.json data-branch/dashboard/data.json
+          cd data-branch
           git config user.name "nick-tan01"
           git config user.email "${{ secrets.GIT_EMAIL }}"
           git add dashboard/data.json
@@ -55,6 +66,6 @@ jobs:
             echo "No changes to push"
           else
             git commit -m "Auto: weekly decision-quality scorecard $(date -u +'%Y-%m-%d')"
-            git pull --no-rebase origin main
-            git push
+            git pull --no-rebase origin data
+            git push origin HEAD:data
           fi

@@ -77,7 +77,13 @@ Status values: `proposed` → `running` → `accepted` / `rejected` / `inconclus
 - **Failure:** missed-alpha skips rise on the scorecard → shorten cooldown to 1 day.
 
 ## EXP-006 — Dynamic universe discovery
-- **Status:** running (started 2026-06-10)
+- **Status:** rejected (2026-07-06 audit) — failed its own gate (b): in 29 runs it
+  accepted 128 candidate-slots covering only 15 unique symbols (AAL accepted 29×,
+  never once debated), fed 9 debates (8 of them MU), and produced exactly 1 trade
+  (MU, now a dust remnant). ~0.3 discovered candidates/week reached debate vs the
+  ≥1/week gate. `DISCOVERY_ENABLED=False`. Re-propose only with a mechanism that
+  surfaces NEW names (e.g. exclude already-accepted symbols for N days).
+- **Original status:** running (started 2026-06-10)
 - **Change:** `DISCOVERY_ENABLED=True` — each non-sentinel run pulls market-wide
   most-actives + top gainers (Alpaca screener API) and adds up to 25 names that
   pass ALL guards to the screener universe: core floors (price/mcap/volume),
@@ -141,6 +147,73 @@ Status values: `proposed` → `running` → `accepted` / `rejected` / `inconclus
   registered experiment with a pre-stated drawdown failure threshold.
 
 ---
+
+## EXP-010 — Single-round debate (R2 → measured prior)
+- **Status:** running (started 2026-07-07)
+- **Change:** `DEBATE_ROUNDS=1` — the two R2 rebuttal calls are replaced by the
+  measured prior (`DEBATE_R2_BULL_PRIOR=-1` applied to bull R1; bear R1 carried
+  forward). Rationale: across 670 logged debates R2's modal effect was exactly
+  "bull −1" (441/670 in the (−1,0)/(−1,±1) cells), only 24% moved any score ≥2,
+  and the PM echoed bull R2 54% of the time.
+- **Hypothesis:** R2 carries ~no decision information; removing it cuts 2 of 8
+  debate calls with no change in what gets bought.
+- **Metric / success (next review + weekly scorecard):** over ≥40 post-change
+  debates, buy rate within ±5pp of the pre-change rate (~15%); conviction
+  distribution shape comparable (conviction-7 still the buy threshold); scorecard
+  pipeline-vs-baseline forward-return gap does not widen.
+- **Failure:** buy rate shifts >10pp, or the pipeline-vs-baseline 10d excess gap
+  widens by >2pp vs the 2026-07-03 reading → restore live R2.
+- **Min sample:** 40 debates / 4 weeks. **Rollback:** `DEBATE_ROUNDS=2`.
+
+## EXP-011 — Lite position reviews (3 calls, stored entry debate)
+- **Status:** running (started 2026-07-07)
+- **Change:** `REVIEW_LITE=True` — reviews use fresh technical + sentiment + the
+  reviewer call, judged against the STORED entry debate, instead of re-running
+  fundamental + a full 4-call re-debate per position per run. Reviews were 49%
+  of all LLM calls for 89% "hold" and ≤35% trim precision.
+- **Hypothesis:** the reviewer's hold/trim/exit decision quality does not depend
+  on re-litigating fundamentals and a fresh debate every run; broker stops carry
+  the real downside protection.
+- **Metric / success (weekly scorecard, ≥25 post-change reviews):** trim precision
+  ≥ the pre-change baseline (~24–35%); hold rate stays in the 80–95% band; exits
+  still fire on genuinely broken theses (spot-check any stop-outs for a review
+  that said "hold" within 3 days prior).
+- **Failure:** trim precision < 20%, or two incidents where a position rode
+  through its stop after a lite review said "hold" on visibly broken thesis
+  evidence the full path would have surfaced (fundamental deterioration).
+- **Min sample:** 25 reviews / 4 weeks. **Rollback:** `REVIEW_LITE=False`.
+
+## EXP-012 — Sentinel earnings-only trigger whitelist
+- **Status:** running (started 2026-07-07)
+- **Change:** `SENTINEL_ENABLED_TRIGGERS` defaults to `earnings_today`;
+  intraday_move / intraday_rebound / position_move / volume_spike / near_stop
+  disabled. Sentinel-triggered runs were 65% of all runs (129/199) with a ~8%
+  trade rate; near_stop is redundant with broker-native GTC stops. Tick cadence
+  also dropped to hourly.
+- **Hypothesis:** the noise triggers produced re-reviews and re-debates (LLY 98×,
+  AMD 80×), not trades; removing them cuts ~60% of run volume with no P&L cost.
+- **Metric / success (next review, then 4 weeks):** runs/day drops to ~3-4;
+  trades/week and scorecard forward returns unchanged; no adverse-move incident
+  where an intraday trigger would plausibly have exited materially better than
+  the resting broker stop did.
+- **Failure:** two incidents where a position gapped through its stop and the
+  disabled intraday trigger had ≥1 tick of lead time to act → re-enable
+  `position_move` (not the full set) via the env var.
+- **Min sample:** 4 weeks. **Rollback:** `SENTINEL_ENABLED_TRIGGERS` env var.
+
+## EXP-013 — Watchlist buy-side memory bonus zeroed
+- **Status:** running (started 2026-07-07)
+- **Change:** `WATCHLIST_MEMORY_BONUS` 0.06 → 0.0. The bonus produced exactly one
+  attributable entry in 8 weeks: SMCI 6/9, the fund's worst closed trade (−16.7%).
+  Overnight position ALERTS (targeted reviews) are unchanged.
+- **Hypothesis:** a +0.06 composite tie-breaker on overnight-momentum names
+  selects for gap-chasing entries; removing it loses nothing.
+- **Metric / success:** nothing to gain — success is the absence of evidence that
+  watchlist-tagged names the screener now ranks just below the cutoff would have
+  outperformed (check `candidate_details` scores near the cutoff at review).
+- **Failure:** ≥3 watchlist-revalidated names miss the candidate cut by < 0.06
+  and go on to +10% 10d excess → restore a smaller bonus (0.03) as a new entry.
+- **Min sample:** 4 weeks. **Rollback:** `WATCHLIST_MEMORY_BONUS=0.06`.
 
 ## Template
 

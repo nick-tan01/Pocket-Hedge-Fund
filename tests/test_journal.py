@@ -75,3 +75,23 @@ def test_debate_and_run_logs_are_capped(tmp_journal, monkeypatch):
     assert len(data["runs"]) == 5
     assert data["debate_logs"][0]["symbol"] == "SYM3"  # oldest trimmed first
     assert data["runs"][-1]["candidates"] == ["SYM7"]
+
+
+def test_log_snapshot_rejects_degraded_broker_reading(tmp_journal):
+    # Regression for the 2026-07-07 -41% equity-curve spike: Alpaca briefly reported
+    # portfolio_value == cash (positions valued at $0), which log_snapshot recorded and
+    # the chart plotted as a fake cliff. A >25% single-step drop (or a non-positive value)
+    # must be rejected, not recorded.
+    journal.log_snapshot(103_000.0, 58_000.0, 740.0)          # baseline
+    assert len(journal._load()["snapshots"]) == 1
+
+    journal.log_snapshot(58_562.78, 58_562.78, 744.0)         # degraded (-43%) -> REJECT
+    assert len(journal._load()["snapshots"]) == 1
+
+    journal.log_snapshot(0.0, 0.0, 744.0)                     # non-positive -> REJECT
+    assert len(journal._load()["snapshots"]) == 1
+
+    journal.log_snapshot(103_500.0, 58_000.0, 744.0)          # normal -> record
+    snaps = journal._load()["snapshots"]
+    assert len(snaps) == 2
+    assert snaps[-1]["portfolio_value"] == 103_500.0

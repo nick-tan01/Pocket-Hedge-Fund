@@ -95,22 +95,43 @@ def _save(data: dict):
 # ── Public API ────────────────────────────────────────────────────────────────
 
 def log_snapshot(portfolio_value: float, cash: float, spy_price: float):
-    """Record a portfolio value snapshot for the equity curve."""
+    """Record a portfolio value snapshot for the equity curve.
+
+    Guards against degraded broker readings: Alpaca can transiently report
+    portfolio_value == cash (open positions momentarily valued at $0 during an account-API
+    hiccup), which plots as a fake cliff on the equity curve — the 2026-07-07 -41% spike.
+    A book with 8% stops and <60% deployment cannot drop >25% between ticks, so an
+    implausible single-step collapse (or a non-positive value) is REJECTED, not recorded.
+    """
     data = _load()
     # Keep config-derived display values fresh so the dashboard reflects them with no code
     # edit (e.g. the "of N max" positions sub-line). Refreshed every run from config.
     data.setdefault("meta", {})["max_positions"] = config.MAX_POSITIONS
-    data["snapshots"].append({
+    snaps = data.setdefault("snapshots", [])
+
+    if portfolio_value <= 0:
+        logger.warning("Snapshot REJECTED: non-positive portfolio_value=%.2f", portfolio_value)
+        return
+    if snaps:
+        prev = snaps[-1].get("portfolio_value", 0) or 0
+        if prev > 0 and portfolio_value < prev * 0.75:
+            logger.warning(
+                "Snapshot REJECTED: portfolio_value $%.2f is %.1f%% below the previous "
+                "snapshot $%.2f — a degraded broker reading (positions under-valued), not a "
+                "real loss. Skipping to keep the equity curve clean.",
+                portfolio_value, (1 - portfolio_value / prev) * 100, prev)
+            return
+
+    snaps.append({
         "ts":              datetime.now(timezone.utc).isoformat(),
         "portfolio_value": round(portfolio_value, 2),
         "cash":            round(cash, 2),
         "spy_price":       round(spy_price, 2),
     })
-    # Cap snapshot history so the frequent dashboard-snapshot job (snapshot.yml, ~every
-    # 15 min in market hours) can't grow data.json without bound — 20000 keeps well over a
-    # year of market-hours points for the equity curve.
-    if len(data["snapshots"]) > 20000:
-        data["snapshots"] = data["snapshots"][-20000:]
+    # Cap snapshot history so the frequent Market-Tick snapshot (~every 15 min in market
+    # hours) can't grow data.json without bound — 20000 keeps well over a year of points.
+    if len(snaps) > 20000:
+        data["snapshots"] = snaps[-20000:]
     _save(data)
     logger.debug("Snapshot logged: $%.2f", portfolio_value)
 

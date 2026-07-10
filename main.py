@@ -1766,8 +1766,11 @@ def run_pipeline(
         if executed:
             trades_executed += 1
 
+    # SPY for the benchmark curve — use the SAME source as the Market-Tick snapshot
+    # (alpaca.get_latest_price → last trade) so the two writers never disagree and zigzag
+    # the SPY line; fall back to the daily close only if the live price is unavailable.
     spy_bars  = fetcher.get_ohlcv("SPY", days=2)
-    spy_price = spy_bars[-1]["close"] if spy_bars else 0.0
+    spy_price = alpaca.get_latest_price("SPY") or (spy_bars[-1]["close"] if spy_bars else 0.0)
     log_snapshot(account["portfolio_value"], account["cash"], spy_price)
     log_run(run_type, [c.symbol for c in candidates], trades_executed,
             regime=regime, vix_regime=vix_regime, reason=trigger_reason,

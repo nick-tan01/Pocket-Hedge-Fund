@@ -445,15 +445,33 @@ class AlpacaClient:
         return sorted(result, key=lambda x: x["date"])[-days:]
 
     def get_latest_price(self, symbol: str) -> float | None:
-        """Return latest trade price for a symbol."""
+        """Return the latest TRADE price for a symbol.
+
+        Previously returned the quote ASK price, which is far from value when the spread is
+        wide (outside regular hours / thin quotes) — that logged fake SPY spikes on the
+        equity curve (~$769 ask vs a real ~$751). The last trade is robust; fall back to the
+        quote MID (never the raw ask) only if no trade is available.
+        """
+        try:
+            from alpaca.data.requests import StockLatestTradeRequest
+            req = StockLatestTradeRequest(symbol_or_symbols=symbol)
+            trade = _retry_read(lambda: self.data.get_stock_latest_trade(req),
+                                f"get_latest_price {symbol}")
+            price = float(trade[symbol].price)
+            if price > 0:
+                return price
+        except Exception as e:
+            logger.warning("Last-trade price for %s failed (%s); trying quote mid", symbol, e)
         try:
             req = StockLatestQuoteRequest(symbol_or_symbols=symbol)
-            quote = _retry_read(lambda: self.data.get_stock_latest_quote(req),
-                                f"get_latest_price {symbol}")
-            return float(quote[symbol].ask_price)
+            q = _retry_read(lambda: self.data.get_stock_latest_quote(req),
+                            f"get_latest_price quote {symbol}")
+            bid, ask = float(q[symbol].bid_price), float(q[symbol].ask_price)
+            if bid > 0 and ask > 0:
+                return round((bid + ask) / 2, 4)   # mid, never the raw ask
         except Exception as e:
             logger.warning("Could not get price for %s: %s", symbol, e)
-            return None
+        return None
 
     # ── Market hours check ────────────────────────────────────────────────────
 

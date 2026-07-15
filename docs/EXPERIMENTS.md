@@ -149,7 +149,24 @@ Status values: `proposed` → `running` → `accepted` / `rejected` / `inconclus
 ---
 
 ## EXP-010 — Single-round debate (R2 → measured prior)
-- **Status:** running (started 2026-07-07)
+- **Status:** **REJECTED (2026-07-15)** — failed its own pre-stated failure line; rolled
+  back to `DEBATE_ROUNDS=2` (ran 2026-07-07 → 2026-07-15).
+- **Result (n=55 post-change debates, min sample met):**
+  - **Buy rate 24.3% → 41.8% (+17.5pp)** — and +26.8pp vs the ~15% baseline this entry
+    named. The failure line was **">10pp"**. Breached decisively.
+  - **The buy threshold slid from conviction-7 to conviction-6:** conv-7 fell to 7.0% of
+    debates while conv-6 rose to 55.4%, and **97 of 131 buys came from conv ≤6** — the
+    entry required "conviction-7 still the buy threshold". Not met.
+  - Avg conviction drifted 5.18 → 5.64.
+  - The one criterion it PASSED: the pipeline-vs-baseline 10d gap did not widen (it
+    narrowed — baseline −2.00% vs pipeline −1.89% at review).
+- **Why the hypothesis was wrong:** R2's *modal* effect being "bull −1" is not the same as
+  R2 carrying no decision information. The bear's live rebuttal was acting as the **brake
+  on the PM** — replacing it with a static −1 prior removed the adversarial pressure that
+  was suppressing marginal conv-6 buys, and the funnel nearly doubled its buy rate. A
+  measured average is not a substitute for an argument that has to be answered.
+- **If re-tested:** hold the buy rate fixed as the control (e.g. raise `MIN_CONVICTION_SCORE`
+  to compensate) so the call-volume saving can be isolated from the behaviour change.
 - **Change:** `DEBATE_ROUNDS=1` — the two R2 rebuttal calls are replaced by the
   measured prior (`DEBATE_R2_BULL_PRIOR=-1` applied to bull R1; bear R1 carried
   forward). Rationale: across 670 logged debates R2's modal effect was exactly

@@ -213,11 +213,17 @@ DEBATE_MODEL    = "claude-sonnet-4-6"   # Debate agents
 # ── LLM call-volume controls (audit 2026-07-06, process-cost, freeze-exempt) ──
 # Across 670 logged debates, R2's modal effect was exactly "bull −1" (441/670 in
 # the (−1,0)/(−1,±1) cells); only 24% moved any score ≥2, and the PM echoed bull
-# R2 54% of the time. DEBATE_ROUNDS=1 replaces the two R2 calls with that measured
-# prior (DEBATE_R2_BULL_PRIOR applied to bull R1). Set DEBATE_ROUNDS=2 to restore
-# the live rebuttal round.
-DEBATE_ROUNDS        = 1
-DEBATE_R2_BULL_PRIOR = -1
+# R2 54% of the time. DEBATE_ROUNDS=1 replaced the two R2 calls with that measured
+# prior (DEBATE_R2_BULL_PRIOR applied to bull R1). DEBATE_ROUNDS=2 = live rebuttals.
+#
+# EXP-010 ROLLED BACK 2026-07-15 — the prior was WRONG about R2 carrying no decision
+# information. Over 55 post-change debates the buy rate went 24.3% -> 41.8% (+17.5pp;
+# +26.8pp vs the registry's ~15% baseline), far past EXP-010's own ">10pp = failure"
+# line, and the effective buy threshold slid from conviction-7 to conviction-6 (97 of
+# 131 buys came from conv<=6). R2 was not noise — the bear's live rebuttal was the
+# BRAKE on the PM. Restored to 2 per the registry's pre-stated rollback.
+DEBATE_ROUNDS        = 2
+DEBATE_R2_BULL_PRIOR = -1   # inert while DEBATE_ROUNDS=2; kept for a future re-test
 
 # Position reviews were 49% of ALL LLM calls (647 reviews × 8 calls) for 89% "hold"
 # and ≤35% trim precision. REVIEW_LITE reviews with fresh tech+sentiment+reviewer

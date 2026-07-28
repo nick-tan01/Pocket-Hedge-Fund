@@ -1890,6 +1890,12 @@
       "portfolio_value": 102101.47,
       "cash": 73606.98,
       "spy_price": 740.93
+    },
+    {
+      "ts": "2026-07-28T17:47:14.651884+00:00",
+      "portfolio_value": 102099.29,
+      "cash": 73606.98,
+      "spy_price": 740.98
     }
   ],
   "trades": [
@@ -3190,9 +3196,9 @@
           "reason": "Private credit contagion risk has escalated from theoretical to active (Blue Owl, Apollo, Ares stress), the bull conceded TYPE A pipeline threat, institutional bid absence below $216 leaves a 5%+ gap to $205.83 support with no technical anchor, and the 502x leveraged balance sheet introduces non-linear downside risk under simultaneous credit stress and client redemption pressure \u2014 all of which materially weaken but do not break the core thesis."
         }
       ],
-      "current_price": 211.825,
-      "unrealized_pl": 185.42,
-      "unrealized_plpc": 0.04697,
+      "current_price": 211.765,
+      "unrealized_pl": 184.25,
+      "unrealized_plpc": 0.04668,
       "avg_entry": 202.3212,
       "trim_pnl": 668.66,
       "stop_order_id": "405fa70a-08e3-4d96-b12a-25f7098b7a4a"
@@ -3241,13 +3247,13 @@
       "status": "open",
       "key_risk": "Next earnings call capex guidance \u2014 any formal 2025 capex raise with quantified FCF yield compression below the threshold that justified PEG-0.8 entry remains the sole legitimate exit trigger and must be evaluated immediately upon disclosure.",
       "position_usd": 6242.95,
-      "position_pct": 0.0587,
+      "position_pct": 0.0586,
       "sector": "Communication Services",
       "trim_pnl": 0.0,
       "is_remnant": false,
-      "current_price": 593.81,
-      "unrealized_pl": -253.96,
-      "unrealized_plpc": -0.04068,
+      "current_price": 593.5535,
+      "unrealized_pl": -256.54,
+      "unrealized_plpc": -0.04109,
       "avg_entry": 618.99,
       "last_review_ts": "2026-07-28T15:42:21.527628+00:00",
       "last_review_conviction": 6,
@@ -3274,8 +3280,8 @@
       "sector": "Financial Services",
       "trim_pnl": 0.0,
       "is_remnant": false,
-      "current_price": 62.3603,
-      "unrealized_pl": 159.12,
+      "current_price": 62.36,
+      "unrealized_pl": 159.1,
       "unrealized_plpc": 0.03838,
       "avg_entry": 60.0554,
       "last_review_ts": "2026-07-27T18:21:58.375451+00:00",
@@ -3303,9 +3309,9 @@
       "sector": "Financial Services",
       "trim_pnl": 0.0,
       "is_remnant": false,
-      "current_price": 105.63,
-      "unrealized_pl": 128.46,
-      "unrealized_plpc": 0.03104,
+      "current_price": 105.64,
+      "unrealized_pl": 128.86,
+      "unrealized_plpc": 0.03114,
       "avg_entry": 102.45,
       "last_review_ts": "2026-07-27T18:22:13.316393+00:00",
       "last_review_conviction": 6,
@@ -3328,13 +3334,13 @@
       "status": "open",
       "key_risk": "The next MLR print or any Medicare Advantage membership/enrollment update remains the single thesis-breaking event \u2014 combined with a sustained close below the hard stop at $408.89, which would trigger mandatory exit regardless of thesis status.",
       "position_usd": 2771.61,
-      "position_pct": 0.0265,
+      "position_pct": 0.0264,
       "sector": "Healthcare",
       "trim_pnl": 0.0,
       "is_remnant": true,
-      "current_price": 429.23,
-      "unrealized_pl": -70.42,
-      "unrealized_plpc": -0.02541,
+      "current_price": 429.035,
+      "unrealized_pl": -71.65,
+      "unrealized_plpc": -0.02585,
       "avg_entry": 440.42,
       "last_review_ts": "2026-07-28T15:42:35.225691+00:00",
       "last_review_conviction": 5,
@@ -49653,31 +49659,92 @@
       ],
       "regime": "bull",
       "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-07-28T17:47:14.823493+00:00",
+      "run_type": "midday",
+      "candidates": [
+        "KO",
+        "V"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "sentinel_trigger",
+      "candidate_details": [
+        {
+          "symbol": "KO",
+          "composite_score": 0.4865,
+          "signals": {
+            "growth_quality": "unknown",
+            "rs_vs_sector_pct": 2.8,
+            "sector": "Consumer Defensive",
+            "sector_etf": "XLP",
+            "pct_of_52wk_range": 0.9,
+            "52wk_high": 90.22,
+            "volume_spike_ratio": 1.42,
+            "volume_spike": false,
+            "rsi": 65.9,
+            "macd_crossover": "True",
+            "bb_pct": 1.24,
+            "news_count": 10,
+            "top_headline": "Nasdaq 100 Enters Correction, SanDisk Sinks Over 50% From Peak: Stock Market Today",
+            "news_quality": 0.75,
+            "pe_trailing": 27.6,
+            "pe_forward": 25.2,
+            "earnings_growth": 18.2
+          }
+        },
+        {
+          "symbol": "V",
+          "composite_score": 0.442,
+          "signals": {
+            "eps_growth": 35.5,
+            "rev_growth": 17.1,
+            "growth_quality": "moderate",
+            "rs_vs_sector_pct": 1.1,
+            "sector": "Financial Services",
+            "sector_etf": "XLF",
+            "pct_of_52wk_range": 1.0,
+            "52wk_high": 369.26,
+            "volume_spike_ratio": 0.55,
+            "volume_spike": false,
+            "rsi": 66.6,
+            "macd_crossover": "True",
+            "bb_pct": 1.03,
+            "news_count": 4,
+            "top_headline": "Nasdaq 100 Enters Correction, SanDisk Sinks Over 50% From Peak: Stock Market Today",
+            "news_quality": 0.0,
+            "pe_trailing": 32.2,
+            "pe_forward": 24.8,
+            "earnings_growth": 35.5
+          }
+        }
+      ],
+      "event_symbols": [
+        "KO",
+        "V"
+      ],
+      "event_details": [
+        {
+          "symbol": "KO",
+          "trigger_type": "earnings_today",
+          "value": 1.0,
+          "threshold": 1.0,
+          "severity": "high"
+        },
+        {
+          "symbol": "V",
+          "trigger_type": "earnings_today",
+          "value": 1.0,
+          "threshold": 1.0,
+          "severity": "high"
+        }
+      ],
+      "regime": "bull",
+      "vix_regime": "normal"
     }
   ],
   "debate_logs": [
-    {
-      "id": "debate_MS_20260615180009",
-      "symbol": "MS",
-      "ts": "2026-06-15T18:00:09.757238+00:00",
-      "bull_case": "R1 Bull(1): Bull case unavailable | R1 Bear(1): Bear case unavailable | R2 Bull(1): Bull case unavailable | R2 Bear(1): Bear case unavailable",
-      "bear_case": "Primary risk: unknown | Unresolved: ['unknown']",
-      "bull_score": 1,
-      "bear_score": 1,
-      "final_conviction": 1,
-      "decision": "skip"
-    },
-    {
-      "id": "debate_AMD_20260615180011",
-      "symbol": "AMD",
-      "ts": "2026-06-15T18:00:11.718757+00:00",
-      "bull_case": "R1 Bull(1): Bull case unavailable | R1 Bear(1): Bear case unavailable | R2 Bull(1): Bull case unavailable | R2 Bear(1): Bear case unavailable",
-      "bear_case": "Primary risk: unknown | Unresolved: ['unknown']",
-      "bull_score": 1,
-      "bear_score": 1,
-      "final_conviction": 1,
-      "decision": "skip"
-    },
     {
       "id": "debate_LLY_20260615180014",
       "symbol": "LLY",
@@ -55155,6 +55222,28 @@
       "bear_score": 8,
       "final_conviction": 4,
       "decision": "skip"
+    },
+    {
+      "id": "debate_KO_20260728174544",
+      "symbol": "KO",
+      "ts": "2026-07-28T17:45:44.784744+00:00",
+      "bull_case": "R1 Bull(4): KO's strongest earnings beat in years \u2014 $0.97 vs $0.93 EPS, best quarterly volume growth in 17 years \u2014 combined with a guidance raise and technical breakout on 1.42x average volume creates a momentum window before consensus fully reprices the stock. | R1 Bear(8): KO's earnings-driven breakout is a one-time event catalyst masking a structurally overvalued, over-leveraged business approaching hard resistance \u2014 and our fund's 0% win rate on identical momentum setups in this sideways regime makes entering here an act of institutional self-harm. | R2 Bull(3): KO's strongest fundamental beat in years provides a short-window re-rating opportunity, but the trade is high-risk given ADX at 15.5, $90.22 resistance overhead, and fund-specific regime data \u2014 size small, stop tight, exit on any volume collapse below 0.5x average. | R2 Bear(8): With ADX at 15.5, $90.22 resistance unbroken, a 0% fund win rate in this regime, and the bull himself capping conviction at 3/10 while conceding every structural concern, KO's post-earnings momentum is insufficient to justify entry \u2014 the asymmetry favors a failed-breakout flush, not a sustained re-rating.",
+      "bear_case": "Primary risk: Price stalls or reverses at the $90.22 resistance ceiling \u2014 the exact level where the bull's own technical analyst flagged caution \u2014 volume normalizes as the post-earnings window closes, ADX confirms no real trend exists, and we exit at our stop for another -6% loss in a sideways regime that has produced nothing but losses from identical setups. | Unresolved: [\"The bull's 'catalyst quality is different' argument remains speculative \u2014 1.42x volume on a single post-earnings session does not establish a regime shift and has not been validated over the 5-7 session window the bull himself requires for confirmation, meaning the trade is still being entered before the thesis is proven.\", '$90.22 hard resistance ceiling remains unbroken and the bull provided no mechanism by which it clears \u2014 only a conditional hope that volume holds, which is precisely the failure mode the bear identified.', \"The fund's 0% win rate on identical setups is an institutional-level empirical constraint that a single earnings beat cannot override without out-of-sample evidence of regime change.\", 'World Cup volume comparison creates a structural Q-over-Q headwind that caps the re-rating duration the bull needs to justify the risk/reward.']",
+      "bull_score": 3,
+      "bear_score": 8,
+      "final_conviction": 4,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_V_20260728174714",
+      "symbol": "V",
+      "ts": "2026-07-28T17:47:14.286957+00:00",
+      "bull_case": "R1 Bull(3): Visa's exceptional fundamental quality \u2014 51.7% margins, 60.3% ROE, confirmed MACD breakout above $369.62 resistance \u2014 offers a structurally sound long setup, but the bear case on execution risk, low volume, and a 0% win rate in this regime demands reduced position sizing and strict stop discipline. | R1 Bear(7): A low-volume breakout entering directly into earnings binary risk, inside a sideways regime where our fund has a 0% win rate and -6.1% average loss, is not a risk management oversight \u2014 it is the entire trade. | R2 Bull(2): Visa's elite fundamental quality and confirmed MACD breakout above $369.62 offer a structurally differentiated long setup, but the imminent earnings binary, 0.56x breakout volume, and fund's 0% win rate in this regime reduce conviction to a minimal-size, hard-stop position that should not be entered without explicit acceptance that the most likely outcome is another small loss. | R2 Bear(6): Even with surgical sizing and a hard stop, entering a low-volume false breakout into an imminent earnings binary inside a regime where our fund has never won this trade is not a risk management solution \u2014 it is a smaller version of the same losing trade, and the bull's own 2/10 conviction is the most honest argument for not taking it.",
+      "bear_case": "Primary risk: Visa reports earnings imminently, sentiment flags elevated implied volatility and downside skew, volume on the breakout is anemic at 0.56x \u2014 if earnings disappoint or guidance is cut during an active restructuring, price collapses back through $369.62 resistance on high volume, the stop triggers, and we book another -6% loss in a sideways regime where we have never once won this trade. | Unresolved: [\"The fund's 0% win rate in this sideways regime is not resolved by position sizing \u2014 smaller losses are still losses, and no fundamental quality argument changes the regime execution record that defines our actual edge here\", \"The earnings binary risk remains fully live: elevated implied volatility skew and downside options pricing reflect market consensus that the risk is asymmetrically to the downside, and Visa's 51.7% margins do not protect price from a guidance cut during active workforce restructuring\", 'The 0.56x breakout volume failure is structural, not correctable by stop discipline \u2014 a false breakout on anemic volume that reverses on earnings-driven selling will gap through $369.62, rendering the hard stop theoretical rather than executable at the defined level']",
+      "bull_score": 2,
+      "bear_score": 6,
+      "final_conviction": 5,
+      "decision": "watch"
     }
   ],
   "position_reviews": [
@@ -80076,6 +80165,40 @@
       "correlation": 0.0,
       "pm_action": "skip",
       "pm_verdict": "PLTR's fundamental quality is genuine but irrelevant to the timing decision: the fund carries a demonstrated 0% win rate in the current sideways regime, technicals are bearish (RSI 44.8, -DI > +DI, MACD below signal, ADX 13.2), and no trade-specific catalyst or volume confirmation exists to differentiate this entry from the prior losing pattern. The bull conceded every material point, leaving an unresolved TYPE-A bear argument \u2014 the fund-specific regime constraint \u2014 that the Conviction Rubric explicitly scores at \u22645.",
+      "risk_category": "conviction"
+    },
+    {
+      "ts": "2026-07-28T17:45:44.620926+00:00",
+      "symbol": "KO",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 ADX at 15.5 \u2014 a TYPE-A structural deficiency the bull explicitly conceded \u2014 means this is a breakout without confirmed trend, making the failed-breakout flush at $90.22 resistance the highest-probability near-term outcome in a sideways regime where identical setups have produced zero wins.",
+      "conviction": 4,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 87.63,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "KO's post-earnings momentum is real but insufficient to overcome two unresolved TYPE-A bear points \u2014 ADX at 15.5 confirms no established trend structure into hard resistance at $90.22, and the fund's 0% win rate in this exact sideways regime is an empirical constraint that a single earnings beat cannot override. The bull's own concessions seal the case against entry.",
+      "risk_category": "pm_decision"
+    },
+    {
+      "ts": "2026-07-28T17:47:14.121363+00:00",
+      "symbol": "V",
+      "action": "watch",
+      "reason": "PM decision: watch \u2014 Imminent earnings binary risk combined with anemic 0.56x breakout volume: per the Conviction Rubric, an unresolved TYPE-A bear point caps conviction at \u22645 regardless of technical or fundamental strength, and the bear correctly noted that a gap-down on earnings will render the $369.62 hard stop theoretical rather than executable \u2014 eliminating the bull's primary mitigation argument.",
+      "conviction": 5,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 369.45,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "watch",
+      "pm_verdict": "Visa's fundamental quality (51.7% margins, 60.3% ROE) and confirmed technical breakout (ADX 32.6, MACD crossover) are genuine, but two unresolved TYPE-A bear points \u2014 imminent earnings binary with elevated downside implied volatility skew and a 0.56x volume failure on the breakout \u2014 are not systemic noise and were not concretely rebutted by the bull, whose own conviction collapsed to 2/10. The tied-debate rule does not apply because unresolved TYPE-A points remain standing.",
       "risk_category": "conviction"
     }
   ],
@@ -106334,24 +106457,6 @@
   ],
   "tech_shadow": [
     {
-      "ts": "2026-07-02T21:54:00.493147+00:00",
-      "symbol": "META",
-      "llm_signal": "bullish",
-      "llm_strength": 6,
-      "det_signal": "neutral",
-      "det_strength": 6,
-      "agree": false
-    },
-    {
-      "ts": "2026-07-02T21:55:31.018851+00:00",
-      "symbol": "VRTX",
-      "llm_signal": "bullish",
-      "llm_strength": 8,
-      "det_signal": "bullish",
-      "det_strength": 10,
-      "agree": true
-    },
-    {
       "ts": "2026-07-02T21:57:30.352768+00:00",
       "symbol": "DDOG",
       "llm_signal": "bullish",
@@ -110831,6 +110936,24 @@
       "llm_strength": 6,
       "det_signal": "bearish",
       "det_strength": 3,
+      "agree": true
+    },
+    {
+      "ts": "2026-07-28T17:44:16.240270+00:00",
+      "symbol": "KO",
+      "llm_signal": "bullish",
+      "llm_strength": 7,
+      "det_signal": "neutral",
+      "det_strength": 7,
+      "agree": false
+    },
+    {
+      "ts": "2026-07-28T17:45:48.707936+00:00",
+      "symbol": "V",
+      "llm_signal": "bullish",
+      "llm_strength": 8,
+      "det_signal": "bullish",
+      "det_strength": 10,
       "agree": true
     }
   ],
@@ -115604,6 +115727,34 @@
           "size_pct": 0.06,
           "position_usd": 6125.04,
           "stop_price": 371.57,
+          "sector": "Financial Services"
+        }
+      ],
+      "skipped": []
+    },
+    {
+      "ts": "2026-07-28T17:44:11.338339+00:00",
+      "regime": "bull",
+      "vix_regime": "normal",
+      "run_reason": "sentinel_trigger",
+      "n_candidates": 2,
+      "would_buy": [
+        {
+          "symbol": "KO",
+          "composite_score": 0.4865,
+          "price": 87.64,
+          "size_pct": 0.06,
+          "position_usd": 6125.96,
+          "stop_price": 82.66,
+          "sector": "Consumer Defensive"
+        },
+        {
+          "symbol": "V",
+          "composite_score": 0.442,
+          "price": 369.14,
+          "size_pct": 0.06,
+          "position_usd": 6125.96,
+          "stop_price": 351.6,
           "sector": "Financial Services"
         }
       ],

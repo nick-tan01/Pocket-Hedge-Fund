@@ -1920,6 +1920,12 @@
       "portfolio_value": 102119.05,
       "cash": 73606.98,
       "spy_price": 740.67
+    },
+    {
+      "ts": "2026-07-28T21:20:51.847947+00:00",
+      "portfolio_value": 102117.89,
+      "cash": 73606.98,
+      "spy_price": 740.67
     }
   ],
   "trades": [
@@ -49990,31 +49996,92 @@
       ],
       "regime": "bull",
       "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-07-28T21:20:52.031209+00:00",
+      "run_type": "midday",
+      "candidates": [
+        "KO",
+        "V"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "sentinel_trigger",
+      "candidate_details": [
+        {
+          "symbol": "KO",
+          "composite_score": 0.503,
+          "signals": {
+            "growth_quality": "unknown",
+            "rs_vs_sector_pct": 3.6,
+            "sector": "Consumer Defensive",
+            "sector_etf": "XLP",
+            "pct_of_52wk_range": 0.92,
+            "52wk_high": 90.22,
+            "volume_spike_ratio": 1.94,
+            "volume_spike": false,
+            "rsi": 67.1,
+            "macd_crossover": "True",
+            "bb_pct": 1.29,
+            "news_count": 10,
+            "top_headline": "Nasdaq 100 Enters Correction, SanDisk Sinks Over 50% From Peak: Stock Market Today",
+            "news_quality": 0.75,
+            "pe_trailing": 27.8,
+            "pe_forward": 25.3,
+            "earnings_growth": 18.2
+          }
+        },
+        {
+          "symbol": "V",
+          "composite_score": 0.4627,
+          "signals": {
+            "eps_growth": 35.5,
+            "rev_growth": 17.1,
+            "growth_quality": "moderate",
+            "rs_vs_sector_pct": 0.1,
+            "sector": "Financial Services",
+            "sector_etf": "XLF",
+            "pct_of_52wk_range": 0.94,
+            "52wk_high": 371.16,
+            "volume_spike_ratio": 1.38,
+            "volume_spike": false,
+            "rsi": 65.2,
+            "macd_crossover": "False",
+            "bb_pct": 0.95,
+            "news_count": 7,
+            "top_headline": "Visa Posts Strong Q3 Results: CEO Says 'Consumer and Business Spending Remains Resilient'",
+            "news_quality": 0.5,
+            "pe_trailing": 32.0,
+            "pe_forward": 24.6,
+            "earnings_growth": 35.5
+          }
+        }
+      ],
+      "event_symbols": [
+        "KO",
+        "V"
+      ],
+      "event_details": [
+        {
+          "symbol": "KO",
+          "trigger_type": "earnings_today",
+          "value": 1.0,
+          "threshold": 1.0,
+          "severity": "high"
+        },
+        {
+          "symbol": "V",
+          "trigger_type": "earnings_today",
+          "value": 1.0,
+          "threshold": 1.0,
+          "severity": "high"
+        }
+      ],
+      "regime": "bull",
+      "vix_regime": "normal"
     }
   ],
   "debate_logs": [
-    {
-      "id": "debate_MS_20260615211314",
-      "symbol": "MS",
-      "ts": "2026-06-15T21:13:14.600611+00:00",
-      "bull_case": "R1 Bull(1): Bull case unavailable | R1 Bear(1): Bear case unavailable | R2 Bull(1): Bull case unavailable | R2 Bear(1): Bear case unavailable",
-      "bear_case": "Primary risk: unknown | Unresolved: ['unknown']",
-      "bull_score": 1,
-      "bear_score": 1,
-      "final_conviction": 1,
-      "decision": "skip"
-    },
-    {
-      "id": "debate_LLY_20260615211317",
-      "symbol": "LLY",
-      "ts": "2026-06-15T21:13:17.527160+00:00",
-      "bull_case": "R1 Bull(1): Bull case unavailable | R1 Bear(1): Bear case unavailable | R2 Bull(1): Bull case unavailable | R2 Bear(1): Bear case unavailable",
-      "bear_case": "Primary risk: unknown | Unresolved: ['unknown']",
-      "bull_score": 1,
-      "bear_score": 1,
-      "final_conviction": 1,
-      "decision": "skip"
-    },
     {
       "id": "debate_C_20260615211319",
       "symbol": "C",
@@ -55489,6 +55556,28 @@
       "bull_case": "R1 Bull(3): Visa's rare combination of 51.7% profit margins, 35.5% EPS growth, and technically confirmed momentum with ADX at 32.7 offers ~8.6% upside to consensus target, but a 0% win rate across 25 trades in a sideways regime demands brutal position sizing discipline before acting on any signal. | R1 Bear(8): In a sideways regime with a 0% win rate across 25 trades and -6.08% average expectancy per trade, adding a position approaching resistance ahead of an earnings catalyst with active workforce restructuring is not a calculated risk \u2014 it is a documented path to another loss. | R2 Bull(2): Visa's fundamental quality (51.7% margins, 35.5% EPS growth) and technical structure (ADX 32.7, MACD crossover) remain intact, but the earnings binary tonight with restructuring overhang is a genuine TYPE A risk, the 0-for-25 regime record is an honest disqualifier for full positioning, and at best this is a watch-and-react situation post-earnings rather than a pre-earnings entry. | R2 Bear(7): With the bull conceding the earnings binary, restructuring overhang, and 0-for-25 regime record as legitimate disqualifiers, the bear case is effectively unopposed \u2014 no position should be initiated pre-earnings, and the burden of proof for any post-earnings entry remains squarely on demonstrated regime change, not a single clean technical signal.",
       "bear_case": "Primary risk: Earnings disappointment \u2014 if the workforce restructuring signals slowing network volume or weak guidance, price breaks through $371.16 resistance in reverse, technical thesis inverts exactly as in prior losing trades, and the fund takes another -6%+ loss with no structural edge to justify the exposure. | Unresolved: ['Regime change remains unconfirmed \u2014 no structural evidence that the sideways losing regime has ended, meaning any post-earnings bounce that tempts re-entry still carries the same prior unless win rate data updates']",
       "bull_score": 2,
+      "bear_score": 7,
+      "final_conviction": 5,
+      "decision": "watch"
+    },
+    {
+      "id": "debate_KO_20260728211917",
+      "symbol": "KO",
+      "ts": "2026-07-28T21:19:17.392966+00:00",
+      "bull_case": "R1 Bull(4): KO's best quarterly volume growth in 17 years paired with a guidance raise has ignited a technically confirmed breakout that institutional money is validating with nearly 2x average volume \u2014 but stretched valuation and a 0% win rate in this regime demand tight risk management. | R1 Bear(8): KO is a momentum trade built on a one-time event catalyst entering a proven capital-destruction regime where we have a 0% win rate and -6.1% average loss \u2014 the bull's 'manageable' valuation stretch is actually a structural trap that removes any margin of safety when momentum fades. | R2 Bull(3): KO's once-in-17-years volume growth and institutional-validated breakout represent a genuinely differentiated fundamental catalyst that marginally justifies a minimum-size long position, but the 0% regime win rate, Bollinger %B of 1.29, and non-recurring World Cup catalyst demand treating this as a high-risk speculative entry with a hard stop and no conviction to add on weakness. | R2 Bear(8): KO remains a structural bear case because the bull's own concessions \u2014 non-recurring catalyst, objectively overbought Bollinger %B, and proven stop failure in this regime \u2014 confirm every pillar of the original thesis, and a 'minimum size with hard stop' is simply a smaller version of the same trade that has produced a 0% win rate and -6.1% average loss with no valuation support to slow the drawdown.",
+      "bear_case": "Primary risk: Momentum reversal from an overextended Bollinger %B of 1.29 at a 52-week high, with a 4.1 PEG providing zero valuation support on the way down, in a regime where 100% of our momentum trades have hit their stops \u2014 producing an immediate -6%+ loss with no fundamental backstop to slow the drawdown. | Unresolved: [\"0% regime win rate is a population-level fact the bull cannot escape with a single-trade distinctiveness argument \u2014 every prior loss also had 'distinguishing' features at entry\", 'PEG of 4.1 provides zero valuation support on drawdown \u2014 if momentum fades post-World Cup, there is no fundamental floor to arrest the decline before the stop triggers', 'Q3 guidance bar has been raised against a non-recurring volume catalyst, meaning the next earnings print carries asymmetric downside risk precisely when the trade needs fundamental confirmation to sustain the breakout', 'Institutional volume confirmation at a non-recurring catalyst is historically unreliable as a regime override \u2014 smart money exits into the same liquidity event that created the signal']",
+      "bull_score": 3,
+      "bear_score": 8,
+      "final_conviction": 4,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_V_20260728212051",
+      "symbol": "V",
+      "ts": "2026-07-28T21:20:51.427377+00:00",
+      "bull_case": "R1 Bull(4): Visa's rare trifecta of confirmed technical momentum (ADX 32.7), fundamental quality (51.7% margins, 35.5% EPS growth), and a fresh earnings beat creates a high-probability breakout setup toward the $403 consensus target \u2014 but the 0% win rate in this sideways regime demands strict stop discipline. | R1 Bear(7): In a sideways regime where this fund has a 0% win rate and a -6.08% average expectancy per trade, adding a position approaching resistance with a Bollinger %B of 0.95 is not a breakout setup \u2014 it's buying the top of a range and waiting to be stopped out for another -6% loss. | R2 Bull(3): Visa's ADX 32.7 momentum, 35.5% EPS growth, and fresh earnings beat create a genuine breakout setup toward $403, but the fund's documented 0% win rate in this sideways SPY regime demands either a fractional position with a hard stop at $362 or patience for a confirmed SPY regime shift before scaling in \u2014 quality alone does not overcome systematic execution failure in the wrong macro environment. | R2 Bear(7): With a 0% win rate in 25 same-regime trades, a Bollinger %B of 0.95 entering near resistance, and a bull who has self-reduced conviction to 3/10 while conceding the regime risk, the fractional-position compromise does not change the probability of another losing trade \u2014 it only changes the magnitude, making this a clear no-edge, wrong-regime, wrong-entry-location pass.",
+      "bear_case": "Primary risk: The fund enters near resistance at Bollinger %B 0.95, resistance holds or marginally breaks then fails, volume dries up to the 0.2x levels seen in prior losing trades, and the position bleeds to the hard stop for another -6% loss \u2014 extending a 0% win rate streak in a regime this fund has demonstrably not learned to trade profitably. | Unresolved: [\"The fund's 0% win rate across 25 sideways-regime trades is a systematic execution failure that a smaller position size does not fix \u2014 it simply produces a smaller loss, not a different outcome probability\", 'Bollinger %B at 0.95 entering near resistance means the risk/reward at entry is structurally broken regardless of ADX momentum, and no stop placement resolves the fact that you are buying the top of a range', \"The bull's SPY regime shift thesis is speculative timing \u2014 waiting 2-4 weeks for a macro catalyst that may not materialize is not a trade thesis, it is a hope thesis, and the position bleeds carry risk while waiting\", 'ADX 32.7 in a sideways SPY regime may reflect Visa-specific range momentum rather than a genuine breakout impulse, making the breakout above $371.16 on volume a confirmation that has not yet occurred']",
+      "bull_score": 3,
       "bear_score": 7,
       "final_conviction": 5,
       "decision": "watch"
@@ -80566,6 +80655,40 @@
       "correlation": 0.0,
       "pm_action": "watch",
       "pm_verdict": "Visa's fundamental quality and technical momentum are genuine, but an unresolved TYPE-A bear point \u2014 earnings binary tonight with active workforce restructuring overhang \u2014 disqualifies a pre-earnings entry under the rubric, and the 0-for-25 win rate in this unchanged sideways regime eliminates the benefit of the doubt that would otherwise apply to a quality compounder.",
+      "risk_category": "conviction"
+    },
+    {
+      "ts": "2026-07-28T21:19:17.218099+00:00",
+      "symbol": "KO",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 The 0% regime win rate is a TYPE-A, trade-specific structural condition in the exact market environment we are operating in now \u2014 not a systemic background factor \u2014 and the bull explicitly conceded it cannot be dismissed with a single-trade distinctiveness argument, triggering the EXHAUSTION/CROWDING GUARDRAIL (bear raised a TYPE-A point the bull did not concretely rebut: -1 mandatory conviction haircut, landing at \u22645).",
+      "conviction": 4,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 88.27,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "A genuine earnings catalyst and volume-confirmed breakout are materially undermined by an unresolved TYPE-A bear point \u2014 a 0% win rate with -6.1% average expectancy in the current sideways regime \u2014 combined with an overbought Bollinger %B of 1.29 at a 52-week high built on a non-recurring World Cup catalyst; the bull conceded all three of the bear's strongest pillars in Round 2, leaving no rebuttal standing.",
+      "risk_category": "conviction"
+    },
+    {
+      "ts": "2026-07-28T21:20:51.249744+00:00",
+      "symbol": "V",
+      "action": "watch",
+      "reason": "PM decision: watch \u2014 The 0% win rate in 25 documented same-regime trades is a TYPE-A fund-execution risk \u2014 not systemic noise \u2014 and per the Conviction Rubric any unresolved TYPE-A bear point caps conviction at \u22645 regardless of analyst signal quality; the bull's only rebuttal was position-sizing, which changes loss magnitude but not loss probability.",
+      "conviction": 5,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 366.59,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "watch",
+      "pm_verdict": "Visa's fundamental and technical quality is genuine \u2014 two analyst signals at 8/10 and ADX 32.7 with above-average volume are real \u2014 but the fund's 0% win rate across 25 sideways-regime trades is an unresolved TYPE-A bear point that the bull never concretely rebutted beyond 'size down,' and the Bollinger %B of 0.95 entering at resistance creates structurally broken risk/reward at this exact moment; a confirmed breakout above $371.16 on volume would resolve both the entry-location problem and partially address the regime-execution concern.",
       "risk_category": "conviction"
     }
   ],
@@ -106824,24 +106947,6 @@
   ],
   "tech_shadow": [
     {
-      "ts": "2026-07-03T15:19:03.391698+00:00",
-      "symbol": "AMD",
-      "llm_signal": "neutral",
-      "llm_strength": 4,
-      "det_signal": "neutral",
-      "det_strength": 6,
-      "agree": true
-    },
-    {
-      "ts": "2026-07-03T15:20:28.613568+00:00",
-      "symbol": "DDOG",
-      "llm_signal": "bullish",
-      "llm_strength": 8,
-      "det_signal": "bullish",
-      "det_strength": 10,
-      "agree": true
-    },
-    {
       "ts": "2026-07-03T15:22:03.972332+00:00",
       "symbol": "HOOD",
       "llm_signal": "bullish",
@@ -111321,6 +111426,24 @@
       "llm_strength": 8,
       "det_signal": "bullish",
       "det_strength": 10,
+      "agree": true
+    },
+    {
+      "ts": "2026-07-28T21:17:50.906483+00:00",
+      "symbol": "KO",
+      "llm_signal": "bullish",
+      "llm_strength": 7,
+      "det_signal": "bullish",
+      "det_strength": 8,
+      "agree": true
+    },
+    {
+      "ts": "2026-07-28T21:19:21.835529+00:00",
+      "symbol": "V",
+      "llm_signal": "bullish",
+      "llm_strength": 8,
+      "det_signal": "bullish",
+      "det_strength": 9,
       "agree": true
     }
   ],
@@ -116187,6 +116310,34 @@
           "size_pct": 0.06,
           "position_usd": 6129.52,
           "stop_price": 351.36,
+          "sector": "Financial Services"
+        }
+      ],
+      "skipped": []
+    },
+    {
+      "ts": "2026-07-28T21:17:45.968026+00:00",
+      "regime": "bull",
+      "vix_regime": "normal",
+      "run_reason": "sentinel_trigger",
+      "n_candidates": 2,
+      "would_buy": [
+        {
+          "symbol": "KO",
+          "composite_score": 0.503,
+          "price": 88.27,
+          "size_pct": 0.06,
+          "position_usd": 6127.07,
+          "stop_price": 83.29,
+          "sector": "Consumer Defensive"
+        },
+        {
+          "symbol": "V",
+          "composite_score": 0.4627,
+          "price": 366.59,
+          "size_pct": 0.06,
+          "position_usd": 6127.07,
+          "stop_price": 348.71,
           "sector": "Financial Services"
         }
       ],

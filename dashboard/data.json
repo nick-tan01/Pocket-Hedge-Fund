@@ -1968,6 +1968,12 @@
       "portfolio_value": 101651.99,
       "cash": 76278.07,
       "spy_price": 733.08
+    },
+    {
+      "ts": "2026-07-29T19:45:00.816791+00:00",
+      "portfolio_value": 101624.37,
+      "cash": 76278.07,
+      "spy_price": 731.28
     }
   ],
   "trades": [
@@ -3224,9 +3230,9 @@
       "time_stop_flagged": false,
       "consecutive_weakened_count": 0,
       "is_remnant": false,
-      "current_price": 1207.355,
-      "unrealized_pl": 651.83,
-      "unrealized_plpc": 0.18893,
+      "current_price": 1207.29,
+      "unrealized_pl": 651.61,
+      "unrealized_plpc": 0.18886,
       "avg_entry": 1015.5,
       "trim_history": [
         {
@@ -3281,7 +3287,7 @@
       "last_review_ts": "2026-07-29T18:03:25.004932+00:00",
       "last_review_conviction": 5,
       "thesis_status": "intact",
-      "time_stop_flagged": false,
+      "time_stop_flagged": true,
       "consecutive_weakened_count": 0,
       "is_remnant": false,
       "trim_history": [
@@ -3314,9 +3320,9 @@
           "reason": "Private credit contagion risk has escalated from theoretical to active (Blue Owl, Apollo, Ares stress), the bull conceded TYPE A pipeline threat, institutional bid absence below $216 leaves a 5%+ gap to $205.83 support with no technical anchor, and the 502x leveraged balance sheet introduces non-linear downside risk under simultaneous credit stress and client redemption pressure \u2014 all of which materially weaken but do not break the core thesis."
         }
       ],
-      "current_price": 204.39,
-      "unrealized_pl": 40.36,
-      "unrealized_plpc": 0.01023,
+      "current_price": 204.2,
+      "unrealized_pl": 36.66,
+      "unrealized_plpc": 0.00929,
       "avg_entry": 202.3212,
       "trim_pnl": 668.66,
       "stop_order_id": "405fa70a-08e3-4d96-b12a-25f7098b7a4a"
@@ -3345,9 +3351,9 @@
       "time_stop_flagged": false,
       "consecutive_weakened_count": 1,
       "is_remnant": true,
-      "current_price": 106.55,
-      "unrealized_pl": 118.31,
-      "unrealized_plpc": 0.04256,
+      "current_price": 106.51,
+      "unrealized_pl": 117.22,
+      "unrealized_plpc": 0.04217,
       "avg_entry": 102.2
     },
     {
@@ -3363,17 +3369,17 @@
       "conviction": 7,
       "debate_id": "debate_META_20260701160344",
       "status": "open",
-      "key_risk": "Q2 earnings release \u2014 specifically any formal upward revision to 2025 capex guidance paired with management disclosure of FCF yield compression, which is the pre-defined and sole legitimate exit trigger for this position.",
+      "key_risk": "Upcoming Q2 earnings release: specifically watch for any formal upward revision to 2025 capex guidance accompanied by management acknowledgment of FCF yield compression, which remains the sole pre-defined and legitimate exit trigger for this position.",
       "position_usd": 6242.95,
       "position_pct": 0.0583,
       "sector": "Communication Services",
       "trim_pnl": 0.0,
       "is_remnant": false,
-      "current_price": 588.035,
-      "unrealized_pl": -312.2,
-      "unrealized_plpc": -0.05001,
+      "current_price": 587.7325,
+      "unrealized_pl": -315.25,
+      "unrealized_plpc": -0.0505,
       "avg_entry": 618.99,
-      "last_review_ts": "2026-07-29T18:04:00.945793+00:00",
+      "last_review_ts": "2026-07-29T19:38:25.326314+00:00",
       "last_review_conviction": 6,
       "thesis_status": "intact",
       "time_stop_flagged": false,
@@ -3398,9 +3404,9 @@
       "sector": "Financial Services",
       "trim_pnl": 0.0,
       "is_remnant": false,
-      "current_price": 61.09,
-      "unrealized_pl": 71.43,
-      "unrealized_plpc": 0.01723,
+      "current_price": 61.028,
+      "unrealized_pl": 67.15,
+      "unrealized_plpc": 0.0162,
       "avg_entry": 60.0554,
       "last_review_ts": "2026-07-29T18:04:16.553806+00:00",
       "last_review_conviction": 6,
@@ -3427,9 +3433,9 @@
       "sector": "Financial Services",
       "trim_pnl": 0.0,
       "is_remnant": false,
-      "current_price": 104.92,
-      "unrealized_pl": 99.78,
-      "unrealized_plpc": 0.02411,
+      "current_price": 104.86,
+      "unrealized_pl": 97.36,
+      "unrealized_plpc": 0.02352,
       "avg_entry": 102.45,
       "last_review_ts": "2026-07-29T18:04:31.901872+00:00",
       "last_review_conviction": 6,
@@ -50774,53 +50780,170 @@
       ],
       "regime": "bull",
       "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-07-29T19:45:00.977307+00:00",
+      "run_type": "midday",
+      "candidates": [
+        "MSFT",
+        "META",
+        "QCOM",
+        "ARM"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "sentinel_trigger",
+      "candidate_details": [
+        {
+          "symbol": "MSFT",
+          "composite_score": 0.427,
+          "signals": {
+            "eps_growth": 23.4,
+            "rev_growth": 18.3,
+            "growth_quality": "moderate",
+            "rs_vs_sector_pct": 17.4,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.22,
+            "52wk_high": 555.45,
+            "volume_spike_ratio": 0.88,
+            "volume_spike": false,
+            "rsi": 52.4,
+            "macd_crossover": "False",
+            "bb_pct": 0.68,
+            "news_count": 10,
+            "top_headline": "'Sam Altman To Meet With White House\u2019s Wiles This Week Ahead Of AI Framework Deadline' - CNBC",
+            "news_quality": 0.25,
+            "pe_trailing": 23.5,
+            "pe_forward": 20.4,
+            "earnings_growth": 23.4
+          }
+        },
+        {
+          "symbol": "META",
+          "composite_score": 0.39,
+          "signals": {
+            "eps_growth": 62.4,
+            "rev_growth": 33.1,
+            "growth_quality": "strong",
+            "rs_vs_sector_pct": 1.9,
+            "sector": "Communication Services",
+            "sector_etf": "XLC",
+            "pct_of_52wk_range": 0.24,
+            "52wk_high": 796.25,
+            "volume_spike_ratio": 0.58,
+            "volume_spike": false,
+            "rsi": 41.8,
+            "macd_crossover": "False",
+            "bb_pct": 0.18,
+            "news_count": 10,
+            "top_headline": "Hims & Hers May Face FTC Lawsuit for Allegedly Sharing Sensitive User Data With Advertisers: Report",
+            "news_quality": 0.05,
+            "pe_trailing": 21.4,
+            "pe_forward": 15.9,
+            "earnings_growth": 62.4
+          }
+        },
+        {
+          "symbol": "QCOM",
+          "composite_score": 0.3083,
+          "signals": {
+            "eps_growth": 173.0,
+            "rev_growth": -3.5,
+            "growth_quality": "moderate",
+            "rs_vs_sector_pct": -1.9,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.27,
+            "52wk_high": 259.92,
+            "volume_spike_ratio": 0.8,
+            "volume_spike": false,
+            "rsi": 33.8,
+            "macd_crossover": "False",
+            "bb_pct": 0.02,
+            "news_count": 4,
+            "top_headline": "BMW Selects Qualcomm As Its Lead Compute Silicon Provider For Digital Cockpit, Advanced Driver Assistance, Automated Driving Systems",
+            "news_quality": 0.0,
+            "pe_trailing": 17.2,
+            "pe_forward": 14.5,
+            "earnings_growth": 173.0
+          }
+        },
+        {
+          "symbol": "ARM",
+          "composite_score": 0.2473,
+          "signals": {
+            "eps_growth": 47.9,
+            "rev_growth": 20.1,
+            "growth_quality": "moderate",
+            "rs_vs_sector_pct": -23.8,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.37,
+            "52wk_high": 452.7,
+            "volume_spike_ratio": 1.01,
+            "volume_spike": false,
+            "rsi": 32.9,
+            "macd_crossover": "False",
+            "bb_pct": -0.0,
+            "news_count": 1,
+            "top_headline": "What Is Going on With Arm Holdings Stock on Tuesday?",
+            "news_quality": 0.0,
+            "pe_trailing": 266.4,
+            "pe_forward": 74.5,
+            "earnings_growth": 47.9
+          }
+        }
+      ],
+      "event_symbols": [
+        "ARM",
+        "META",
+        "MSFT",
+        "PG",
+        "QCOM"
+      ],
+      "event_details": [
+        {
+          "symbol": "ARM",
+          "trigger_type": "earnings_today",
+          "value": 1.0,
+          "threshold": 1.0,
+          "severity": "high"
+        },
+        {
+          "symbol": "META",
+          "trigger_type": "earnings_today",
+          "value": 1.0,
+          "threshold": 1.0,
+          "severity": "high"
+        },
+        {
+          "symbol": "MSFT",
+          "trigger_type": "earnings_today",
+          "value": 1.0,
+          "threshold": 1.0,
+          "severity": "high"
+        },
+        {
+          "symbol": "PG",
+          "trigger_type": "earnings_today",
+          "value": 1.0,
+          "threshold": 1.0,
+          "severity": "high"
+        },
+        {
+          "symbol": "QCOM",
+          "trigger_type": "earnings_today",
+          "value": 1.0,
+          "threshold": 1.0,
+          "severity": "high"
+        }
+      ],
+      "regime": "bull",
+      "vix_regime": "normal"
     }
   ],
   "debate_logs": [
-    {
-      "id": "debate_ARM_20260617165225",
-      "symbol": "ARM",
-      "ts": "2026-06-17T16:52:25.470579+00:00",
-      "bull_case": "R1 Bull(1): Bull case unavailable | R1 Bear(1): Bear case unavailable | R2 Bull(1): Bull case unavailable | R2 Bear(1): Bear case unavailable",
-      "bear_case": "Primary risk: unknown | Unresolved: ['unknown']",
-      "bull_score": 1,
-      "bear_score": 1,
-      "final_conviction": 1,
-      "decision": "skip"
-    },
-    {
-      "id": "debate_LRCX_20260617165228",
-      "symbol": "LRCX",
-      "ts": "2026-06-17T16:52:28.270017+00:00",
-      "bull_case": "R1 Bull(1): Bull case unavailable | R1 Bear(1): Bear case unavailable | R2 Bull(1): Bull case unavailable | R2 Bear(1): Bear case unavailable",
-      "bear_case": "Primary risk: unknown | Unresolved: ['unknown']",
-      "bull_score": 1,
-      "bear_score": 1,
-      "final_conviction": 1,
-      "decision": "skip"
-    },
-    {
-      "id": "debate_JPM_20260617165230",
-      "symbol": "JPM",
-      "ts": "2026-06-17T16:52:30.918221+00:00",
-      "bull_case": "R1 Bull(1): Bull case unavailable | R1 Bear(1): Bear case unavailable | R2 Bull(1): Bull case unavailable | R2 Bear(1): Bear case unavailable",
-      "bear_case": "Primary risk: unknown | Unresolved: ['unknown']",
-      "bull_score": 1,
-      "bear_score": 1,
-      "final_conviction": 1,
-      "decision": "skip"
-    },
-    {
-      "id": "debate_AFRM_20260617165233",
-      "symbol": "AFRM",
-      "ts": "2026-06-17T16:52:33.203754+00:00",
-      "bull_case": "R1 Bull(1): Bull case unavailable | R1 Bear(1): Bear case unavailable | R2 Bull(1): Bull case unavailable | R2 Bear(1): Bear case unavailable",
-      "bear_case": "Primary risk: unknown | Unresolved: ['unknown']",
-      "bull_score": 1,
-      "bear_score": 1,
-      "final_conviction": 1,
-      "decision": "skip"
-    },
     {
       "id": "debate_AMAT_20260617191431",
       "symbol": "AMAT",
@@ -56275,6 +56398,50 @@
       "bull_score": 2,
       "bear_score": 9,
       "final_conviction": 4,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_MSFT_20260729194025",
+      "symbol": "MSFT",
+      "ts": "2026-07-29T19:40:25.043690+00:00",
+      "bull_case": "R1 Bull(3): MSFT's exceptional fundamentals \u2014 23.4% EPS growth, 39.3% margins, and a PEG of 1.2 at 29% below its 52-week high \u2014 offer genuine intrinsic value, but weak technicals, a 0% win rate in this regime, and elevated short interest demand strict position sizing and honest humility about near-term timing. | R1 Bear(7): In a sideways regime where this desk has gone 0-for-26 with an average loss of -6.6%, buying MSFT ahead of earnings into the highest short interest since 2015 and a looming Fed decision is not a value play \u2014 it is a disciplined capital destruction machine dressed in quality fundamentals. | R2 Bull(2): MSFT's pristine fundamentals and asymmetric short-squeeze potential at 29% below highs create a lottery-ticket optionality case around earnings, but the -6.61% regime expectancy and macro headwinds (Fed, oil spike, rate pressure on multiples) mean the honest position is to hold minimal exposure and wait for either a confirmed earnings-driven regime break or a technical reset before building conviction. | R2 Bear(8): With the bull reduced to a 2/10 conviction and conceding the negative edge is real and unrehabilitated, MSFT entering earnings in a confirmed sideways regime with 0-for-26 historical precedent, peak short interest creating two-sided volatility risk, below-average volume, and imminent Fed pressure on a rate-sensitive multiple remains a high-conviction short or avoid \u2014 the regime-change optionality argument is speculative by the bull's own admission and insufficient to override a demonstrated capital destruction pattern.",
+      "bear_case": "Primary risk: Earnings disappointment or cautious guidance into peak short interest triggers accelerated selling rather than a squeeze, with below-average volume (0.88x) providing no buying support, and the stock \u2014 already 29% off highs in a confirmed sideways regime \u2014 reprices another 6-10% lower, consistent with this desk's demonstrated average loss in identical conditions. | Unresolved: ['The bull never adequately addressed why elevated short interest is a net positive when the more probable outcome of an earnings miss or cautious guidance is accelerated forced selling by longs into thin short-covering demand \u2014 the squeeze narrative requires a clean beat, which the bull admitted is low-probability in a pre-Fed, oil-spike environment', 'Below-average volume (0.88x) as a structural lack of buying support was never directly rebutted \u2014 a regime-change catalyst requires institutional accumulation, which is absent by the volume data', \"The bull's 'transitional regime' argument is unfalsifiable pre-earnings and therefore not actionable evidence against a demonstrated 0% win rate across 26 comparable setups\"]",
+      "bull_score": 2,
+      "bear_score": 8,
+      "final_conviction": 5,
+      "decision": "watch"
+    },
+    {
+      "id": "debate_META_20260729194155",
+      "symbol": "META",
+      "ts": "2026-07-29T19:41:55.883281+00:00",
+      "bull_case": "R1 Bull(3): META's fundamentally absurd mispricing \u2014 PEG 0.9, 62.4% EPS growth, 15.9x forward P/E \u2014 creates a asymmetric earnings catalyst, but technical deterioration and a 0% win rate in this regime demand we acknowledge the setup is early and painful before it's profitable. | R1 Bear(7): In a sideways regime with a 0% win rate and -6.61% expectancy per trade, entering META before earnings on the promise of 'fundamental re-rating' repeats the exact pattern that has destroyed capital 26 consecutive times \u2014 compelling fundamentals mean nothing when the execution context systematically eats the thesis alive. | R2 Bull(2): META's valuation dislocation is historically extreme and the earnings catalyst is real, but the TYPE A weight of a 0% win rate in this technical regime, -DI dominance at 30.9, and 0.58x volume with no institutional accumulation signal forces an honest reduction in near-term conviction \u2014 this is a position sized for optionality on a regime break, not a high-conviction directional trade. | R2 Bear(8): With the bull conceding the 0% win rate is non-reframeable TYPE A evidence, the -DI regime is genuine distribution, and the FTC risk is structurally material \u2014 while offering only a self-described hope-based distinction as rebuttal \u2014 the bear case is now stronger post-debate: entering META here risks replicating a -6.6% average loss for the 27th consecutive time in a regime that has never once rewarded this thesis.",
+      "bear_case": "Primary risk: Earnings disappoint or guide cautiously into the regulatory environment, technical momentum accelerates to the downside on above-average volume, and the position hits its initial stop within days \u2014 replicating the -6.6% average loss pattern for the 27th consecutive time in a regime that has never once produced a winner. | Unresolved: [\"The primary risk is fully unaddressed: a 0% win rate across 26 consecutive trades in this exact technical regime means the earnings catalyst mechanism the bull relies on has already been present in prior entries and failed every time \u2014 one more 'compelling catalyst' does not break a regime, it replicates the loss pattern\", 'Volume at 0.58x average with -DI dominance at 30.9 shows no institutional positioning ahead of earnings, meaning even if the print is strong, there is no pre-positioned buying pressure to drive a sustained breakout', \"FTC probe into META's core ad data pipeline is an unquantified but material overhang that could suppress multiple expansion regardless of EPS beat, and the bull conceded they glossed over this\"]",
+      "bull_score": 2,
+      "bear_score": 8,
+      "final_conviction": 4,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_QCOM_20260729194327",
+      "symbol": "QCOM",
+      "ts": "2026-07-29T19:43:27.661534+00:00",
+      "bull_case": "R1 Bull(3): QCOM's BMW automotive design-win signals a durable revenue diversification story that the market has missed while punishing it on cyclical semiconductor fears, creating a PEG 0.5 value trap that earnings could spring. | R1 Bear(7): The bull's entire thesis rests on a PEG-0.5 valuation that is built on 173% EPS growth that the fundamental report itself flags as likely non-recurring, meaning the apparent cheapness is a mirage that earnings could shatter rather than spring. | R2 Bull(2): QCOM's structural margin improvement and BMW automotive optionality create a real but highly asymmetric setup where conviction must remain low given legitimate TYPE A earnings risk that the non-recurring EPS narrative could be confirmed, making this a small-size, eyes-open speculative position rather than a high-conviction value entry. | R2 Bear(8): The bull's own 2/10 conviction concession validates the bear case: QCOM faces an imminent earnings catalyst that could confirm non-recurring EPS inflation, break $157.85 support in a fund with no capacity to absorb momentum-accelerated losses, while the only counter-thesis \u2014 structural margin durability \u2014 remains an unproven assertion against a report that explicitly flags the 173% EPS growth as non-sustainable.",
+      "bear_case": "Primary risk: Earnings release confirms that 173% EPS growth was driven by non-recurring items, forward guidance reflects the -3.5% revenue trend, and the stock breaks the $157.85 support level in a confirmed downtrend with no buyers \u2014 turning a 'value' entry into a momentum accelerated loss in a fund that has never recorded a winning trade. | Unresolved: [\"The bull never demonstrated that QCOM's margin expansion is structurally durable with evidence \u2014 asserting that licensing mix shift and Snapdragon ASP improvement are 'not purely one-time' is a claim, not a proof, and the fundamental report itself flags the 173% EPS growth as likely non-recurring, which the bull cannot override with optimism\", 'The -3.5% revenue trend remains unaddressed as a forward guidance anchor \u2014 even if margins partially hold, flat-to-declining revenue with elevated EPS creates a mean-reversion setup that forward guidance will crystallize at the imminent earnings print', \"The fund's 0% win rate and -6.6% average loss creates an asymmetric risk context the bull acknowledged but did not resolve \u2014 a 2/10 conviction long in a confirmed downtrend into an earnings binary is functionally a coin flip with a hard stop on the wrong side of support\"]",
+      "bull_score": 2,
+      "bear_score": 8,
+      "final_conviction": 3,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_ARM_20260729194500",
+      "symbol": "ARM",
+      "ts": "2026-07-29T19:45:00.240575+00:00",
+      "bull_case": "R1 Bull(2): ARM's 47.9% EPS growth and a ~50% drawdown from its 52-week high create a mean-reversion setup at technical oversold extremes, but the evidence stack is too hostile to hold high conviction. | R1 Bear(8): ARM is a structurally dangerous trade where a 0% win rate across 26 closed trades in this exact regime, a Debt/Equity of 5.9x that is catastrophically mismatched to an 18.4% margin business priced at 73.6x forward earnings, and confirmed momentum deterioration (ADX>25, -DI 36.3 vs +DI 14.4) combine to make every dollar risked here expected to return negative 6.6 cents. | R2 Bull(1): ARM's 47.9% EPS growth remains a genuine fundamental anchor, but with a 0% historical win rate in this regime, confirmed institutional distribution (ADX 25+, -DI 36.3 vs +DI 14.4, no volume climax), and a 5.9x Debt/Equity structure that provides no margin of safety at 73.6x forward P/E, the honest conclusion is that this setup has no executable edge for this fund and should not be entered. | R2 Bear(9): With the bull conceding the 0% win rate, confirmed strong downtrend, and structural leverage fragility at 73.6x forward P/E, ARM presents a fully validated negative expected value trade where the only remaining question is not whether to be long but how quickly the next negative catalyst converts 5.9x Debt/Equity into a gap-down repricing event that far exceeds the already-documented -6.6% average loss.",
+      "bear_case": "Primary risk: The primary risk of entering long here is not a gradual grind lower \u2014 it is that the 5.9x Debt/Equity structure means any negative catalyst (earnings miss, royalty rate dispute, customer concentration news) triggers not just multiple compression from a still-extreme 73.6x forward P/E, but potential credit concern repricing in a company with thin 18.4% margins, generating a gap-down loss that far exceeds the -6.6% average loss this strategy has already been delivering with 100% consistency. | Unresolved: ['The bull never explained how 47.9% EPS growth justifies 73.6x forward P/E when margins are 18.4% and Debt/Equity is 5.9x \u2014 the growth anchor they cited is already priced in with zero error margin', 'The TYPE A vs TYPE B regime distinction the bull introduced is intellectually interesting but operationally irrelevant \u2014 it does not change that a negative catalyst triggers credit-concern repricing at this leverage, which remains the primary unaddressed gap-down risk', 'Customer concentration risk and royalty rate dispute optionality were never addressed by the bull despite being the most plausible negative catalyst that converts leverage into a structural crisis']",
+      "bull_score": 1,
+      "bear_score": 9,
+      "final_conviction": 2,
       "decision": "skip"
     }
   ],
@@ -67878,6 +68045,19 @@
       "key_risk_to_monitor": "Any revision to UNH's Medicare segment margin guidance or a disclosed decline in Medicare Part D enrollment figures \u2014 per the original entry thesis, this remains the single thesis-breaking event; a sustained close below the hard stop at $408.89 mandates full exit regardless of trim.",
       "trim_reason": "The thesis has materially weakened on two dimensions simultaneously \u2014 the technical momentum confirmation that was a key entry signal has deteriorated to neutral, and the original key risk (Medicare Part D subsidy/enrollment impact) has crystallized from hypothetical to confirmed policy reality \u2014 warranting a size reduction while retaining exposure to the still-intact fundamental repricing anchor from the Q2 beat and raised guidance.",
       "exit_reason": "remnant_cleanup: 1.0% position, thesis=weakened for 2 consecutive reviews",
+      "current_bull_case": "R1 Bull(n/a): not re-run in lite review mode | R2 Bull(n/a): not re-run in lite review mode",
+      "current_bear_case": "R1 Bear(n/a): not re-run in lite review mode | R2 Bear(n/a): not re-run in lite review mode"
+    },
+    {
+      "trade_id": "META_20260701160347",
+      "symbol": "META",
+      "ts": "2026-07-29T19:38:25.193444+00:00",
+      "action": "hold",
+      "conviction": 6,
+      "thesis_status": "intact",
+      "rationale": "The original thesis \u2014 that META is a high-EPS-growth compounder mispriced at a PEG of 0.8 with a low forward P/E \u2014 has not been invalidated; the pre-defined exit trigger (formal upward Q2 capex revision paired with disclosed FCF yield compression) has not yet occurred, as earnings have not been released. Bearish technicals and soft sentiment are noise relative to the thesis, not thesis-breakers.",
+      "original_thesis_check": "Still true \u2014 no Q2 earnings release has occurred, no formal capex guidance revision has been disclosed, and no FCF yield compression has been confirmed by management; the fundamental mispricing thesis remains unrefuted by the sole defined exit criterion.",
+      "key_risk_to_monitor": "Upcoming Q2 earnings release: specifically watch for any formal upward revision to 2025 capex guidance accompanied by management acknowledgment of FCF yield compression, which remains the sole pre-defined and legitimate exit trigger for this position.",
       "current_bull_case": "R1 Bull(n/a): not re-run in lite review mode | R2 Bull(n/a): not re-run in lite review mode",
       "current_bear_case": "R1 Bear(n/a): not re-run in lite review mode | R2 Bear(n/a): not re-run in lite review mode"
     }
@@ -81920,6 +82100,74 @@
       "pm_action": "skip",
       "pm_verdict": "The 7.6% surge on 0.24x average volume is a confirmed distribution signal \u2014 the bull conceded this himself \u2014 and earnings normalization of 60%+ into a 24.4x forward P/E on 4.3% revenue growth was never rebutted, leaving two unresolved TYPE-A bear points that independently disqualify a long entry under the conviction rubric.",
       "risk_category": "conviction"
+    },
+    {
+      "ts": "2026-07-29T19:40:24.840609+00:00",
+      "symbol": "MSFT",
+      "action": "watch",
+      "reason": "PM decision: watch \u2014 The 0% win rate across 26 trades in an identical sideways regime is an unresolved TYPE-A bear point: it is not systemic background noise but a demonstrated, regime-specific capital destruction pattern directly applicable to this setup, and the bull explicitly conceded it cannot be rehabilitated by position sizing alone.",
+      "conviction": 5,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 394.43,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "watch",
+      "pm_verdict": "MSFT's fundamental case is genuinely compelling (PEG 1.2, 23.4% EPS growth, 39.3% margins) but the combination of a 0-for-26 sideways regime track record, an imminent earnings binary with peak short interest creating two-sided vol, a looming Fed decision, and ADX at 11 confirming no trend conviction means there is no edge to extract right now \u2014 this is a quality compounder worth owning, but not at this exact moment before the catalyst clears.",
+      "risk_category": "pm_decision"
+    },
+    {
+      "ts": "2026-07-29T19:41:55.724540+00:00",
+      "symbol": "META",
+      "action": "hold",
+      "reason": "Already holding META",
+      "conviction": 4,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 587.16,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "Despite a genuinely compelling fundamental case (9/10, PEG 0.9, 62% EPS growth), the fund has a 0% win rate across 26 consecutive trades in this exact sideways regime \u2014 a TYPE-A, trade-specific failure pattern the bull explicitly conceded cannot be reframed \u2014 and the technical picture (RSI 41.8, -DI 30.9 vs +DI 19.7, 0.58x volume, ADX 16.9) confirms quiet distribution with no institutional accumulation ahead of a binary earnings event that carries unquantified FTC regulatory overhang on META's core ad data pipeline.",
+      "risk_category": "already_holding"
+    },
+    {
+      "ts": "2026-07-29T19:43:27.455137+00:00",
+      "symbol": "QCOM",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 The 173% EPS growth driving the PEG-0.5 valuation thesis is flagged by the fundamental report itself as likely non-sustainable, and the imminent earnings print is a TYPE-A binary that could simultaneously confirm non-recurring earnings, reset forward guidance to reflect -3.5% revenue trends, and break $157.85 support in a confirmed downtrend \u2014 all before any structural thesis (automotive, licensing mix) has time to play out.",
+      "conviction": 3,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 159.53,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "An imminent earnings binary sits directly on top of a confirmed technical downtrend, the fund's own track record shows zero wins and negative expectancy, and the bull's core valuation anchor \u2014 PEG 0.5 on 173% EPS growth \u2014 is explicitly flagged as likely non-recurring by the fundamental analyst, making the apparent cheapness a mirage that the catalyst could shatter rather than unlock.",
+      "risk_category": "pm_decision"
+    },
+    {
+      "ts": "2026-07-29T19:45:00.081263+00:00",
+      "symbol": "ARM",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 The 0% win rate across 26 closed trades in this exact regime is a TYPE-A fund-specific execution signal that directly invalidates any long thesis here, compounded by a confirmed strong downtrend with no volume climax to suggest exhaustion \u2014 there is no entry condition that rehabilitates expected value.",
+      "conviction": 2,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 226.5,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "ARM presents a fully negative expected-value trade: the fund's own 0% win rate across 26 closed trades in this exact sideways regime, a confirmed strong downtrend (ADX>25, -DI 36.3 vs +DI 14.4), and a 5.9x Debt/Equity structure at 73.6x forward P/E create asymmetric gap-down risk on any negative catalyst \u2014 and the bull conceded every material structural risk by Round 2, leaving zero executable edge.",
+      "risk_category": "pm_decision"
     }
   ],
   "watchlists": [
@@ -108176,51 +108424,6 @@
   ],
   "tech_shadow": [
     {
-      "ts": "2026-07-03T18:30:01.182003+00:00",
-      "symbol": "DDOG",
-      "llm_signal": "bullish",
-      "llm_strength": 8,
-      "det_signal": "bullish",
-      "det_strength": 10,
-      "agree": true
-    },
-    {
-      "ts": "2026-07-03T18:31:41.006131+00:00",
-      "symbol": "VRTX",
-      "llm_signal": "bullish",
-      "llm_strength": 8,
-      "det_signal": "bullish",
-      "det_strength": 10,
-      "agree": true
-    },
-    {
-      "ts": "2026-07-03T18:33:24.434430+00:00",
-      "symbol": "LLY",
-      "llm_signal": "bullish",
-      "llm_strength": 8,
-      "det_signal": "bullish",
-      "det_strength": 10,
-      "agree": true
-    },
-    {
-      "ts": "2026-07-03T18:35:02.471472+00:00",
-      "symbol": "DUOL",
-      "llm_signal": "bullish",
-      "llm_strength": 6,
-      "det_signal": "neutral",
-      "det_strength": 7,
-      "agree": false
-    },
-    {
-      "ts": "2026-07-03T19:59:09.059681+00:00",
-      "symbol": "LLY",
-      "llm_signal": "bullish",
-      "llm_strength": 8,
-      "det_signal": "bullish",
-      "det_strength": 10,
-      "agree": true
-    },
-    {
       "ts": "2026-07-03T20:00:42.319366+00:00",
       "symbol": "MS",
       "llm_signal": "bearish",
@@ -112674,6 +112877,51 @@
       "det_signal": "neutral",
       "det_strength": 6,
       "agree": false
+    },
+    {
+      "ts": "2026-07-29T19:38:14.428384+00:00",
+      "symbol": "META",
+      "llm_signal": "bearish",
+      "llm_strength": 6,
+      "det_signal": "bearish",
+      "det_strength": 3,
+      "agree": true
+    },
+    {
+      "ts": "2026-07-29T19:38:45.905296+00:00",
+      "symbol": "MSFT",
+      "llm_signal": "bullish",
+      "llm_strength": 5,
+      "det_signal": "neutral",
+      "det_strength": 6,
+      "agree": false
+    },
+    {
+      "ts": "2026-07-29T19:40:29.293032+00:00",
+      "symbol": "META",
+      "llm_signal": "bearish",
+      "llm_strength": 6,
+      "det_signal": "bearish",
+      "det_strength": 3,
+      "agree": true
+    },
+    {
+      "ts": "2026-07-29T19:42:01.190053+00:00",
+      "symbol": "QCOM",
+      "llm_signal": "bearish",
+      "llm_strength": 7,
+      "det_signal": "bearish",
+      "det_strength": 2,
+      "agree": true
+    },
+    {
+      "ts": "2026-07-29T19:43:32.419323+00:00",
+      "symbol": "ARM",
+      "llm_signal": "bearish",
+      "llm_strength": 8,
+      "det_signal": "bearish",
+      "det_strength": 2,
+      "agree": true
     }
   ],
   "pre_debate_gates": [
@@ -117729,6 +117977,48 @@
         }
       ],
       "skipped": []
+    },
+    {
+      "ts": "2026-07-29T19:38:37.691746+00:00",
+      "regime": "bull",
+      "vix_regime": "normal",
+      "run_reason": "sentinel_trigger",
+      "n_candidates": 4,
+      "would_buy": [
+        {
+          "symbol": "MSFT",
+          "composite_score": 0.427,
+          "price": 394.51,
+          "size_pct": 0.06,
+          "position_usd": 6097.57,
+          "stop_price": 365.14,
+          "sector": "Technology"
+        },
+        {
+          "symbol": "QCOM",
+          "composite_score": 0.3083,
+          "price": 159.78,
+          "size_pct": 0.06,
+          "position_usd": 6097.57,
+          "stop_price": 147.0,
+          "sector": "Technology"
+        },
+        {
+          "symbol": "ARM",
+          "composite_score": 0.2473,
+          "price": 229.09,
+          "size_pct": 0.06,
+          "position_usd": 6097.57,
+          "stop_price": 210.76,
+          "sector": "Technology"
+        }
+      ],
+      "skipped": [
+        {
+          "symbol": "META",
+          "reason": "held"
+        }
+      ]
     }
   ],
   "universe_discovery": [

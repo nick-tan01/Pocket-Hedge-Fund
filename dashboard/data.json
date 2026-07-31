@@ -2100,6 +2100,12 @@
       "portfolio_value": 101038.15,
       "cash": 81453.64,
       "spy_price": 746.79
+    },
+    {
+      "ts": "2026-07-31T21:18:50.381304+00:00",
+      "portfolio_value": 101038.15,
+      "cash": 81453.64,
+      "spy_price": 746.79
     }
   ],
   "trades": [
@@ -52762,20 +52768,60 @@
       ],
       "regime": "bull",
       "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-07-31T21:18:50.517710+00:00",
+      "run_type": "midday",
+      "candidates": [
+        "ABBV"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "sentinel_trigger",
+      "candidate_details": [
+        {
+          "symbol": "ABBV",
+          "composite_score": 0.125,
+          "signals": {
+            "eps_growth": -46.2,
+            "rev_growth": 12.4,
+            "growth_quality": "negative",
+            "rs_vs_sector_pct": -2.5,
+            "sector": "Healthcare",
+            "sector_etf": "XLV",
+            "pct_of_52wk_range": 0.79,
+            "52wk_high": 267.47,
+            "volume_spike_ratio": 0.82,
+            "volume_spike": false,
+            "rsi": 51.9,
+            "macd_crossover": "False",
+            "bb_pct": 0.4,
+            "news_count": 9,
+            "top_headline": "Here's How Much $1000 Invested In AbbVie 5 Years Ago Would Be Worth Today",
+            "news_quality": 0.05,
+            "pe_trailing": 123.6,
+            "pe_forward": 15.4,
+            "earnings_growth": -46.2
+          }
+        }
+      ],
+      "event_symbols": [
+        "ABBV"
+      ],
+      "event_details": [
+        {
+          "symbol": "ABBV",
+          "trigger_type": "earnings_today",
+          "value": 1.0,
+          "threshold": 1.0,
+          "severity": "high"
+        }
+      ],
+      "regime": "bull",
+      "vix_regime": "normal"
     }
   ],
   "debate_logs": [
-    {
-      "id": "debate_LRCX_20260622181703",
-      "symbol": "LRCX",
-      "ts": "2026-06-22T18:17:03.065873+00:00",
-      "bull_case": "R1 Bull(6): LRCX's confirmed uptrend backed by ADX>25, 40.8% EPS growth, and 66.8% ROE creates a momentum continuation setup where the bear's valuation concern is already priced into institutional consensus and a Wells Fargo $450 PT. | R1 Bear(7): LRCX's 8.4% five-day rally on 0.42x average volume into hard resistance at $402 is a low-conviction breakout attempt in a sideways market regime with a 40% win rate context \u2014 the bull is asking us to buy exhaustion, not strength. | R2 Bull(5): LRCX's intact ADX>25 trend structure and 40.8% EPS growth justify holding a reduced position with a hard $370 stop, requiring volume expansion through $402 resistance as the necessary confirmation before adding size \u2014 the setup is unconfirmed, not broken. | R2 Bear(7): LRCX's low-conviction 8.4% rally into $402 hard resistance on 0.42x volume remains an unconfirmed breakout in a negative-expectancy SPY regime, and the bull's own concessions validate that the asymmetric risk of a -15% to -20% failed breakout unwind \u2014 unsupported by a PEG of 2.3 with no valuation floor \u2014 outweighs the speculative case for trend continuation until volume expansion through resistance is demonstrably achieved.",
-      "bear_case": "Primary risk: LRCX fails to break $402 on volume, reverses sharply from the upper Bollinger Band in a sideways SPY regime, and the 8.4% five-day gain fully unwinds \u2014 with a PEG of 2.3 and no valuation floor nearby, a failed breakout at these levels could see -15% to -20% before any technical support structure, consistent with our average loser of -13.7% hitting the initial stop before the thesis resolves. | Unresolved: [\"0.42x volume breakout attempt at $402 hard resistance remains unconfirmed and the bull's own concession validates that full entry is unjustified \u2014 partial size still carries full downside exposure to a -15% to -20% failed breakout scenario\", 'Sideways SPY regime with 40% win rate and negative expectancy has not been resolved \u2014 the bull acknowledged it suppresses conviction but offered no mechanism by which LRCX decorrelates from the broader regime', \"PEG of 2.3 in a cyclical semiconductor equipment name with no valuation floor identified provides no structural support in a drawdown \u2014 the bull's argument that it is a TYPE B risk 'priced in' by the 49.6x forward multiple assumes the market multiple is stable, which is precisely what a failed breakout in a risk-off regime would challenge\", \"ADX>25 trend structure persistence is contingent on price holding above the trend's definition level \u2014 a reversal from $402 that breaks $370 would itself invalidate the ADX argument, making it circular rather than independently supportive\"]",
-      "bull_score": 5,
-      "bear_score": 7,
-      "final_conviction": 6,
-      "decision": "watch"
-    },
     {
       "id": "debate_BAC_20260622181835",
       "symbol": "BAC",
@@ -58260,6 +58306,17 @@
       "ts": "2026-07-31T19:49:09.540797+00:00",
       "bull_case": "R1 Bull(3): ABBV's PEG of 0.4 and forward P/E of 15.5 versus a TTM P/E of 124.5 signal transitory EPS depression masking a fundamentally undervalued growth story, but the guidance cut and weak technicals demand patience before the setup matures. | R1 Bear(7): The bull's 'transitory EPS depression' narrative is a story built on forward estimates that management just explicitly undermined by cutting guidance, while balance sheet opacity, a 5.8% profit margin, and a fund with a -6.47% expectancy make this a capital-destruction setup dressed in value clothing. | R2 Bull(2): ABBV remains a structurally undervalued compounder with a PEG of 0.4 anchored to pipeline assets the guidance cut did not touch, but the trade is not enterable today \u2014 conviction requires a Q3 volume-backed technical reclaim and evidence that estimate revisions are stabilizing before this fund's loss profile justifies exposure. | R2 Bear(6): With the bull conceding the forward P/E is not a fixed anchor, leverage is unmeasurable, and entry is premature by their own process standards, the bear case is now the consensus near-term posture \u2014 the remaining disagreement is whether Skyrizi and Botox pipeline optionality justifies holding through a Q3 estimate revision gauntlet in a fund that statistically destroys capital in exactly this setup, and that bet is not yet paid for by the current risk/reward structure.",
       "bear_case": "Primary risk: Forward EPS estimates \u2014 the sole foundation of the bull's valuation case \u2014 continue to be revised downward through Q3 guidance season, exposing the 15.5x forward P/E as a moving target, while the unquantifiable balance sheet leverage (Debt/Equity unavailable) amplifies downside if margin pressure persists, trapping this fund in another -8.8% average-loss scenario with no technical floor established. | Unresolved: ['Forward EPS revision velocity is unresolved \u2014 the bull argues the rate of cuts will slow enough for PEG 0.4 to reassert, but provides no mechanism or evidence for why Q3 guidance season will mark peak pessimism rather than accelerate the walk-down, leaving the 15.5x forward P/E still exposed as a moving target', 'Balance sheet opacity remains fully unresolved \u2014 the bull withdrew the leverage argument rather than rebutting it, meaning Debt/Equity risk is unquantified and still a live amplifier of downside if margin pressure persists', 'The 5.8% net profit margin was never addressed \u2014 no bull argument explained how thin-margin execution supports a compounder narrative under cost pressure without pipeline revenue acceleration that is not yet in the numbers']",
+      "bull_score": 2,
+      "bear_score": 6,
+      "final_conviction": 5,
+      "decision": "watch"
+    },
+    {
+      "id": "debate_ABBV_20260731211849",
+      "symbol": "ABBV",
+      "ts": "2026-07-31T21:18:49.914861+00:00",
+      "bull_case": "R1 Bull(3): ABBV's forward P/E of 15.4 and PEG of 0.4 price in Humira headwinds as permanent when they are transitory, creating a fundamental mispricing that 12.4% revenue growth and analyst targets near 52-week highs will ultimately close. | R1 Bear(7): The bull's 'transitory' framing collapses under the weight of simultaneous EPS guidance cuts, balance sheet opacity, razor-thin 5.8% margins, and a fund with a -6.47% expectancy that cannot afford to bet on pipeline execution timing it cannot verify. | R2 Bull(2): ABBV remains a structurally sound platform transition story where management is deliberately compressing near-term EPS to accelerate Skyrizi and Rinvoq dominance, but the FY2026 guidance cut and our fund's poor track record on transitory-headwind theses make this a reduced-size, monitor-only position until Q3 data clarifies the cost trajectory. | R2 Bear(6): AbbVie's bull case rests on an unfalsifiable 'deliberate compression' narrative that the fund's own -6.47% expectancy, a descending EPS floor, and an unresolved leveraged balance sheet make structurally uninvestable at full size regardless of Skyrizi/Rinvoq revenue momentum.",
+      "bear_case": "Primary risk: Management cuts FY2026 EPS guidance again in Q3 as Skyrizi/Rinvoq ramp costs continue to outpace revenue growth, the balance sheet reveals leverage stress that was hidden by unavailable metrics, and we exit at our stop having paid the -8.8% average loss this fund has repeatedly absorbed on exactly this class of 'transitory headwind' thesis trades. | Unresolved: [\"Primary risk NOT addressed: Management may cut FY2026 EPS guidance again in Q3 as Skyrizi/Rinvoq ramp costs continue to outpace revenue growth \u2014 the bull offered no mechanism to disprove this trajectory, only the assertion that spending is 'productive'\", 'Balance sheet leverage stress remains unquantified \u2014 Debt/Equity and ROE are still unavailable, and the bull conceded this gap without resolving it, meaning position risk-sizing remains impossible', \"Fund-level systematic risk: 20% win rate and -8.8% average loss on transitory-headwind theses is a structural expectancy problem the bull fully conceded but did not solve \u2014 'size defensively' is not a rebuttal to negative expectancy, it is acceptance of it\", \"The 'deliberate investment acceleration' narrative is unfalsifiable until Q3 data \u2014 management can always retroactively frame cost overruns as strategic, and this fund cannot verify pipeline execution timing\"]",
       "bull_score": 2,
       "bear_score": 6,
       "final_conviction": 5,
@@ -85006,6 +85063,23 @@
       "pm_action": "watch",
       "pm_verdict": "ABBV has a credible multi-quarter fundamental thesis anchored in Skyrizi/Botox pipeline durability and a PEG of 0.4, but the forward P/E anchor is actively being walked down by management guidance cuts \u2014 a TYPE-A unresolved bear point \u2014 while technicals are neutral at best (MACD below signal, 0.68x volume, no ADX-confirmed uptrend), leaving no analyst signal above 7/10 and no dated catalyst within 4 weeks to qualify for even the quality-compounder lane at conviction 6.",
       "risk_category": "conviction"
+    },
+    {
+      "ts": "2026-07-31T21:18:49.781698+00:00",
+      "symbol": "ABBV",
+      "action": "watch",
+      "reason": "PM decision: watch \u2014 The FY2026 EPS guidance cut is a TYPE-A, insider-confirmed signal that the forward P/E floor is a moving target \u2014 not a static valuation anchor \u2014 and the bull explicitly conceded this point without a concrete rebuttal, triggering the Exhaustion/Crowding Guardrail's TYPE-A condition and preventing a score above 5 regardless of the revenue story.",
+      "conviction": 5,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 250.94,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "watch",
+      "pm_verdict": "ABBV has a credible multi-quarter fundamental story \u2014 12.4% revenue growth, 0.4 PEG, Skyrizi at $3.6B run rate \u2014 but the management-confirmed FY2026 EPS guidance cut is an unresolved TYPE-A bear point that directly undermines the forward P/E floor the bull thesis depends on, and technicals are neutral at best (MACD below signal, below-average volume, RSI 52) with no confirmed uptrend to satisfy the Tied Debate Rule's regime condition. This is a watch, not a buy, pending Q3 data that either validates or further erodes the EPS floor.",
+      "risk_category": "pm_decision"
     }
   ],
   "watchlists": [
@@ -111275,15 +111349,6 @@
   ],
   "tech_shadow": [
     {
-      "ts": "2026-07-08T15:40:59.236745+00:00",
-      "symbol": "HOOD",
-      "llm_signal": "bullish",
-      "llm_strength": 7,
-      "det_signal": "bullish",
-      "det_strength": 10,
-      "agree": true
-    },
-    {
       "ts": "2026-07-08T15:41:14.735037+00:00",
       "symbol": "AFRM",
       "llm_signal": "bullish",
@@ -115767,6 +115832,15 @@
     },
     {
       "ts": "2026-07-31T19:47:33.794924+00:00",
+      "symbol": "ABBV",
+      "llm_signal": "neutral",
+      "llm_strength": 4,
+      "det_signal": "neutral",
+      "det_strength": 7,
+      "agree": true
+    },
+    {
+      "ts": "2026-07-31T21:17:20.643852+00:00",
       "symbol": "ABBV",
       "llm_signal": "neutral",
       "llm_strength": 4,
@@ -121276,6 +121350,25 @@
           "size_pct": 0.06,
           "position_usd": 6065.17,
           "stop_price": 236.86,
+          "sector": "Healthcare"
+        }
+      ],
+      "skipped": []
+    },
+    {
+      "ts": "2026-07-31T21:17:15.774637+00:00",
+      "regime": "bull",
+      "vix_regime": "normal",
+      "run_reason": "sentinel_trigger",
+      "n_candidates": 1,
+      "would_buy": [
+        {
+          "symbol": "ABBV",
+          "composite_score": 0.125,
+          "price": 250.94,
+          "size_pct": 0.06,
+          "position_usd": 6062.29,
+          "stop_price": 234.93,
           "sector": "Healthcare"
         }
       ],

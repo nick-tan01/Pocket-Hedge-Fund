@@ -2070,6 +2070,12 @@
       "portfolio_value": 101029.67,
       "cash": 81453.64,
       "spy_price": 745.38
+    },
+    {
+      "ts": "2026-07-31T17:50:24.240869+00:00",
+      "portfolio_value": 101024.78,
+      "cash": 81453.64,
+      "spy_price": 745.32
     }
   ],
   "trades": [
@@ -3412,9 +3418,9 @@
       "time_stop_flagged": false,
       "consecutive_weakened_count": 0,
       "is_remnant": false,
-      "current_price": 1143.205,
-      "unrealized_pl": 433.88,
-      "unrealized_plpc": 0.12576,
+      "current_price": 1142.52,
+      "unrealized_pl": 431.55,
+      "unrealized_plpc": 0.12508,
       "avg_entry": 1015.5,
       "trim_history": [
         {
@@ -3502,9 +3508,9 @@
           "reason": "Private credit contagion risk has escalated from theoretical to active (Blue Owl, Apollo, Ares stress), the bull conceded TYPE A pipeline threat, institutional bid absence below $216 leaves a 5%+ gap to $205.83 support with no technical anchor, and the 502x leveraged balance sheet introduces non-linear downside risk under simultaneous credit stress and client redemption pressure \u2014 all of which materially weaken but do not break the core thesis."
         }
       ],
-      "current_price": 210.81,
-      "unrealized_pl": 165.62,
-      "unrealized_plpc": 0.04196,
+      "current_price": 210.7845,
+      "unrealized_pl": 165.12,
+      "unrealized_plpc": 0.04183,
       "avg_entry": 202.3212,
       "trim_pnl": 668.66,
       "stop_order_id": "405fa70a-08e3-4d96-b12a-25f7098b7a4a"
@@ -3528,9 +3534,9 @@
       "sector": "Financial Services",
       "trim_pnl": 0.0,
       "is_remnant": false,
-      "current_price": 62.11,
-      "unrealized_pl": 141.84,
-      "unrealized_plpc": 0.03421,
+      "current_price": 62.1,
+      "unrealized_pl": 141.15,
+      "unrealized_plpc": 0.03405,
       "avg_entry": 60.0554,
       "last_review_ts": "2026-07-31T15:37:46.008444+00:00",
       "last_review_conviction": 6,
@@ -3586,9 +3592,9 @@
       "sector": "Healthcare",
       "trim_pnl": 0.0,
       "is_remnant": false,
-      "current_price": 65.16,
-      "unrealized_pl": 11.67,
-      "unrealized_plpc": 0.00385,
+      "current_price": 65.13,
+      "unrealized_pl": 10.27,
+      "unrealized_plpc": 0.00339,
       "avg_entry": 64.91,
       "last_review_ts": "2026-07-31T15:38:14.055981+00:00",
       "last_review_conviction": 7,
@@ -52513,20 +52519,60 @@
       ],
       "regime": "bull",
       "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-07-31T17:50:24.421363+00:00",
+      "run_type": "midday",
+      "candidates": [
+        "ABBV"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "sentinel_trigger",
+      "candidate_details": [
+        {
+          "symbol": "ABBV",
+          "composite_score": 0.125,
+          "signals": {
+            "eps_growth": -46.2,
+            "rev_growth": 12.4,
+            "growth_quality": "negative",
+            "rs_vs_sector_pct": -2.3,
+            "sector": "Healthcare",
+            "sector_etf": "XLV",
+            "pct_of_52wk_range": 0.79,
+            "52wk_high": 267.47,
+            "volume_spike_ratio": 0.51,
+            "volume_spike": false,
+            "rsi": 52.5,
+            "macd_crossover": "False",
+            "bb_pct": 0.42,
+            "news_count": 8,
+            "top_headline": "Stock Market Today: Amazon Jumps 15%, Apple Wipes Out $475 Billion",
+            "news_quality": 0.05,
+            "pe_trailing": 123.9,
+            "pe_forward": 15.4,
+            "earnings_growth": -46.2
+          }
+        }
+      ],
+      "event_symbols": [
+        "ABBV"
+      ],
+      "event_details": [
+        {
+          "symbol": "ABBV",
+          "trigger_type": "earnings_today",
+          "value": 1.0,
+          "threshold": 1.0,
+          "severity": "high"
+        }
+      ],
+      "regime": "bull",
+      "vix_regime": "normal"
     }
   ],
   "debate_logs": [
-    {
-      "id": "debate_AMAT_20260619214940",
-      "symbol": "AMAT",
-      "ts": "2026-06-19T21:49:40.584654+00:00",
-      "bull_case": "R1 Bull(7): AMAT is in a confirmed momentum continuation driven by institutional accumulation and an AI-adjacent product catalyst, with technical structure pointing to $638.90 before any meaningful resistance. | R1 Bear(7): AMAT is priced for perfection at a TTM P/E of 58.1 with only 5% upside to consensus target, while revenue growth of 11.4% structurally cannot sustain 33.5% EPS growth \u2014 and we are entering on a +11.7% 5-day spike in a sideways market regime where our recent conviction-7 trades are losing at 67%. | R2 Bull(6): AMAT remains a technically confirmed momentum continuation trade with ADX 31 and institutional volume support, where the forward P/E compression thesis is structurally sound given services-mix gross margin durability, with risk explicitly capped by the $480 stop and position sizing adjusted for a sideways SPY regime. | R2 Bear(7): AMAT remains a structurally overvalued momentum trade where the bull's own concession of $527.20 as a near-term ceiling confirms 15%+ mean-reversion risk from post-spike levels, while the EPS-to-revenue growth gap of 22 percentage points was deflected but never arithmetically resolved, and the regime-adjusted loss pattern in conviction-7 trades argues against entering on exhausted momentum regardless of stop placement.",
-      "bear_case": "Primary risk: AMAT mean-reverts toward the $527.20 analyst consensus target from current elevated levels after the momentum spike exhausts, producing a loss of 15-18% that mirrors our recent stopped-out trades \u2014 driven by the structural impossibility of sustaining 33.5% EPS growth on 11.4% revenue, which one disappointing earnings quarter will expose. | Unresolved: ['No quantitative mechanism was provided showing how services-mix gross margin expansion alone bridges the 22pp gap between 11.4% revenue growth and 33.5% EPS growth \u2014 assertion without arithmetic is not a rebuttal', \"The bull conceded the $527.20 consensus target is a real near-term ceiling, which is precisely the bear's mean-reversion target, meaning the bull's own concession confirms 15%+ downside risk from current elevated post-spike levels\", 'ADX 31 as a continuation signal is a probabilistic argument, not a certainty \u2014 in a sideways SPY regime with recent 2W/3L conviction-7 losses, the base rate for momentum continuation in semis specifically degrades materially and the bull provided no regime-adjusted backtest', 'The Citigroup outlier-to-consensus-upgrade historical precedent is anecdotal and directionally convenient \u2014 no evidence was provided that semi outlier targets during AI capex cycles have a statistically significant upgrade-lag pattern versus simply being wrong']",
-      "bull_score": 6,
-      "bear_score": 7,
-      "final_conviction": 6,
-      "decision": "watch"
-    },
     {
       "id": "debate_AMAT_20260622175140",
       "symbol": "AMAT",
@@ -58015,6 +58061,17 @@
       "bear_score": 7,
       "final_conviction": 5,
       "decision": "watch"
+    },
+    {
+      "id": "debate_ABBV_20260731175023",
+      "symbol": "ABBV",
+      "ts": "2026-07-31T17:50:23.910298+00:00",
+      "bull_case": "R1 Bull(3): ABBV's forward P/E of 15.4 and PEG of 0.4 against 12.4% revenue growth represent a genuine valuation disconnect that the market is misreading as structural decay when it is almost certainly transient amortization distortion \u2014 but weak technicals, a guidance cut, and a brutal track record demand minimal position sizing. | R1 Bear(7): The bull's 'transient amortization' thesis is an unverifiable narrative masking a real, forward-looking earnings deterioration signal \u2014 a deliberate FY2026 adjusted EPS guidance cut that excludes amortization by definition, meaning the weakness is operational, not accounting. | R2 Bull(2): ABBV's revenue growth and valuation discount remain structurally intact but the adjusted EPS guidance cut confirms the earnings recovery timeline is longer than modeled, the balance sheet opacity and the fund's catastrophic win-rate in this exact sideways-regime setup make any position larger than a token starter genuinely imprudent until a clean re-rating catalyst emerges. | R2 Bear(6): With the bull conceding the EPS cut is a genuine TYPE A earnings signal, dropping to near-zero conviction, and offering no verifiable re-rating catalyst within the fund's demonstrated -8.8% average-loss sideways regime, ABBV remains a high-risk avoid where the operational earnings deterioration signal is confirmed, the recovery timeline is indeterminate, and the pattern match to prior losing trades is exact.",
+      "bear_case": "Primary risk: The adjusted EPS guidance cut signals that the earnings recovery timeline the bull is betting on \u2014 the catalyst of amortization normalization restoring EPS visibility \u2014 may be longer or shallower than modeled, meaning the stock could drift or decline for multiple quarters with no clear re-rating trigger, while our fund's -8.8% average loss on failed theses in this exact sideways regime compounds the damage. | Unresolved: [\"The bull's claim that the $0.21 EPS cut is partially attributable to front-loaded Skyrizi/Rinvoq ramp costs rather than permanent impairment is management-narrative-dependent and unverifiable from current disclosures, leaving the earnings recovery timeline indeterminate\", \"No clean re-rating catalyst has been identified, and the fund's 20% win rate in sideways SPY regimes means the multi-quarter drift scenario \u2014 our primary risk \u2014 remains fully live with no volume or momentum evidence to suggest the slow grind lower has completed\", 'Balance sheet opacity around intangible amortization layering and acquisition integration costs was never resolved, leaving true cash-earning power ambiguous even as revenue growth appears strong']",
+      "bull_score": 2,
+      "bear_score": 6,
+      "final_conviction": 4,
+      "decision": "skip"
     }
   ],
   "position_reviews": [
@@ -84655,6 +84712,23 @@
       "pm_action": "watch",
       "pm_verdict": "TRV has genuine quality attributes \u2014 10.2x TTM P/E, 26.5% ROE, ADX-confirmed uptrend \u2014 but the unresolved TYPE-A risk of forward earnings normalization (12.6x forward P/E on what may be a one-time 57.1% EPS spike with only 0.3% revenue growth) combines with institutional thinning (0.2x average volume during consolidation near 52-week highs) to leave the reward/risk ratio insufficient in a sideways regime where this fund's systematic expectancy is -5.31% per trade. The quality-compounder lane at conviction 6 requires analyst signals to be constructive, but volume contraction concurrent with price sitting near highs is a TYPE-A exhaustion/distribution signal per the Exhaustion Guardrail \u2014 dropping conviction below the 6 threshold for entry.",
       "risk_category": "conviction"
+    },
+    {
+      "ts": "2026-07-31T17:50:23.730565+00:00",
+      "symbol": "ABBV",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 The adjusted EPS guidance cut is TYPE-A and unanswered: adjusted EPS by definition strips out amortization, so a cut there confirms the weakness is operational, not accounting \u2014 this directly kills the bull's core thesis and per the Conviction Rubric any unresolved TYPE-A point caps conviction at \u22645.",
+      "conviction": 4,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 251.52,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "The adjusted EPS guidance cut is an unresolved TYPE-A bear point \u2014 it signals genuine near-term operational earnings deterioration that cannot be explained away by amortization accounting, the bull conceded this explicitly and collapsed to 2/10 conviction, and the fund's demonstrated -8.8% average loss in this exact sideways regime with no dated re-rating catalyst within 4 weeks makes the risk/reward clearly negative.",
+      "risk_category": "conviction"
     }
   ],
   "watchlists": [
@@ -110924,15 +110998,6 @@
   ],
   "tech_shadow": [
     {
-      "ts": "2026-07-06T22:14:55.499366+00:00",
-      "symbol": "MU",
-      "llm_signal": "bearish",
-      "llm_strength": 6,
-      "det_signal": "neutral",
-      "det_strength": 6,
-      "agree": false
-    },
-    {
       "ts": "2026-07-06T22:16:33.006584+00:00",
       "symbol": "DUOL",
       "llm_signal": "bullish",
@@ -115421,6 +115486,15 @@
       "llm_strength": 6,
       "det_signal": "bullish",
       "det_strength": 10,
+      "agree": true
+    },
+    {
+      "ts": "2026-07-31T17:48:56.374519+00:00",
+      "symbol": "ABBV",
+      "llm_signal": "neutral",
+      "llm_strength": 4,
+      "det_signal": "neutral",
+      "det_strength": 7,
       "agree": true
     }
   ],
@@ -120854,6 +120928,25 @@
           "reason": "held"
         }
       ]
+    },
+    {
+      "ts": "2026-07-31T17:48:52.164269+00:00",
+      "regime": "bull",
+      "vix_regime": "normal",
+      "run_reason": "sentinel_trigger",
+      "n_candidates": 1,
+      "would_buy": [
+        {
+          "symbol": "ABBV",
+          "composite_score": 0.125,
+          "price": 251.52,
+          "size_pct": 0.06,
+          "position_usd": 6061.49,
+          "stop_price": 235.51,
+          "sector": "Healthcare"
+        }
+      ],
+      "skipped": []
     }
   ],
   "universe_discovery": [

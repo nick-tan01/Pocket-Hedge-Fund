@@ -2088,6 +2088,12 @@
       "portfolio_value": 101089.25,
       "cash": 81453.64,
       "spy_price": 748.4
+    },
+    {
+      "ts": "2026-07-31T19:49:10.148749+00:00",
+      "portfolio_value": 101085.83,
+      "cash": 81453.64,
+      "spy_price": 748.24
     }
   ],
   "trades": [
@@ -3430,9 +3436,9 @@
       "time_stop_flagged": false,
       "consecutive_weakened_count": 0,
       "is_remnant": false,
-      "current_price": 1149.88,
-      "unrealized_pl": 456.56,
-      "unrealized_plpc": 0.13233,
+      "current_price": 1149.87,
+      "unrealized_pl": 456.52,
+      "unrealized_plpc": 0.13232,
       "avg_entry": 1015.5,
       "trim_history": [
         {
@@ -3520,9 +3526,9 @@
           "reason": "Private credit contagion risk has escalated from theoretical to active (Blue Owl, Apollo, Ares stress), the bull conceded TYPE A pipeline threat, institutional bid absence below $216 leaves a 5%+ gap to $205.83 support with no technical anchor, and the 502x leveraged balance sheet introduces non-linear downside risk under simultaneous credit stress and client redemption pressure \u2014 all of which materially weaken but do not break the core thesis."
         }
       ],
-      "current_price": 211.46,
-      "unrealized_pl": 178.3,
-      "unrealized_plpc": 0.04517,
+      "current_price": 211.3,
+      "unrealized_pl": 175.17,
+      "unrealized_plpc": 0.04438,
       "avg_entry": 202.3212,
       "trim_pnl": 668.66,
       "stop_order_id": "405fa70a-08e3-4d96-b12a-25f7098b7a4a"
@@ -3546,9 +3552,9 @@
       "sector": "Financial Services",
       "trim_pnl": 0.0,
       "is_remnant": false,
-      "current_price": 62.105,
-      "unrealized_pl": 141.49,
-      "unrealized_plpc": 0.03413,
+      "current_price": 62.1101,
+      "unrealized_pl": 141.85,
+      "unrealized_plpc": 0.03421,
       "avg_entry": 60.0554,
       "last_review_ts": "2026-07-31T15:37:46.008444+00:00",
       "last_review_conviction": 6,
@@ -3575,9 +3581,9 @@
       "sector": "Financial Services",
       "trim_pnl": 0.0,
       "is_remnant": false,
-      "current_price": 105.515,
-      "unrealized_pl": 123.81,
-      "unrealized_plpc": 0.02992,
+      "current_price": 105.52,
+      "unrealized_pl": 124.02,
+      "unrealized_plpc": 0.02997,
       "avg_entry": 102.45,
       "last_review_ts": "2026-07-31T15:37:58.291678+00:00",
       "last_review_conviction": 6,
@@ -3604,9 +3610,9 @@
       "sector": "Healthcare",
       "trim_pnl": 0.0,
       "is_remnant": false,
-      "current_price": 65.395,
-      "unrealized_pl": 22.65,
-      "unrealized_plpc": 0.00747,
+      "current_price": 65.445,
+      "unrealized_pl": 24.98,
+      "unrealized_plpc": 0.00824,
       "avg_entry": 64.91,
       "last_review_ts": "2026-07-31T15:38:14.055981+00:00",
       "last_review_conviction": 7,
@@ -52699,20 +52705,60 @@
       ],
       "regime": "bull",
       "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-07-31T19:49:10.323562+00:00",
+      "run_type": "midday",
+      "candidates": [
+        "ABBV"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "sentinel_trigger",
+      "candidate_details": [
+        {
+          "symbol": "ABBV",
+          "composite_score": 0.1525,
+          "signals": {
+            "eps_growth": -46.2,
+            "rev_growth": 12.4,
+            "growth_quality": "negative",
+            "rs_vs_sector_pct": -2.1,
+            "sector": "Healthcare",
+            "sector_etf": "XLV",
+            "pct_of_52wk_range": 0.81,
+            "52wk_high": 267.47,
+            "volume_spike_ratio": 0.68,
+            "volume_spike": false,
+            "rsi": 54.0,
+            "macd_crossover": "False",
+            "bb_pct": 0.48,
+            "news_count": 8,
+            "top_headline": "Stock Market Today: Amazon Jumps 15%, Apple Wipes Out $475 Billion",
+            "news_quality": 0.05,
+            "pe_trailing": 124.6,
+            "pe_forward": 15.5,
+            "earnings_growth": -46.2
+          }
+        }
+      ],
+      "event_symbols": [
+        "ABBV"
+      ],
+      "event_details": [
+        {
+          "symbol": "ABBV",
+          "trigger_type": "earnings_today",
+          "value": 1.0,
+          "threshold": 1.0,
+          "severity": "high"
+        }
+      ],
+      "regime": "bull",
+      "vix_regime": "normal"
     }
   ],
   "debate_logs": [
-    {
-      "id": "debate_CVS_20260622181515",
-      "symbol": "CVS",
-      "ts": "2026-06-22T18:15:15.825982+00:00",
-      "bull_case": "R1 Bull(6): CVS is a deeply undervalued compounder with a PEG of 0.3 and ADX-confirmed bullish momentum that the market has yet to reprice toward its $105 analyst consensus target. | R1 Bear(7): CVS's 0.7% profit margin on a 101 debt/equity capital structure means any execution stumble in its healthcare integration destroys equity value disproportionately, and the TTM P/E of 44.8 versus forward P/E of 12.2 signals the earnings 'growth' the bull is pricing is largely a normalization bet on a business that hasn't proven it can generate clean earnings. | R2 Bull(5): CVS remains a structurally undervalued healthcare compounder at forward P/E 12.2 with ADX-confirmed trend momentum, where the primary near-term risk is a low-volume rejection at $103.12 resistance that the defined stop at $99 manages, and where the systemic leverage and margin concerns are sector-standard and already reflected in the depressed multiple \u2014 not incremental bearish information. | R2 Bear(7): CVS's forward P/E normalization story remains a conviction bet on clean execution the company has not yet demonstrated, while its 101 debt/equity and 0.7% net margin create asymmetric downside where any reimbursement pressure or integration cost recurrence collapses equity value far faster than the 12.2x multiple implies safety.",
-      "bear_case": "Primary risk: CVS misses forward EPS estimates due to integration cost overruns or reimbursement pressure \u2014 on a 0.7% net margin with 101 debt/equity, even a modest earnings disappointment collapses the entire forward P/E thesis simultaneously, triggering a sharp de-rating with no margin safety net to cushion the drawdown. | Unresolved: [\"Forward EPS consensus assumes clean execution on a multi-segment integration that has already missed \u2014 the bull's 'non-recurring charges' argument is circular: it assumes the charges are done without demonstrating why integration friction stops here\", \"Reimbursement pressure from CMS and PBM margin compression are structural, not episodic, and the bull's sector-comparison defense (UNH, HUM, CI) ignores that CVS carries this leverage while simultaneously executing the most complex healthcare vertical integration in the sector\", 'At 0.7% net margin and 101 debt/equity, the denominator argument ($370B revenue) actually amplifies the risk \u2014 a 10-15bps margin deterioration from reimbursement cuts wipes a disproportionate share of equity earnings, and the bull offered no sensitivity analysis on this leverage effect', 'The stop at $99 manages trade risk but does not address fundamental equity value destruction if forward EPS of ~$7 disappoints \u2014 de-rating from 12.2x to 9-10x on a miss puts the stock at $63-70, a drawdown no stop-loss at $99 captures if held as an investment thesis']",
-      "bull_score": 5,
-      "bear_score": 7,
-      "final_conviction": 6,
-      "decision": "buy"
-    },
     {
       "id": "debate_LRCX_20260622181703",
       "symbol": "LRCX",
@@ -58198,6 +58244,17 @@
       "bull_case": "R1 Bull(3): NVDA's PEG of 0.5 against 214.5% EPS growth represents genuine fundamental mispricing, but weak technicals, a 20% win rate, and -6.47% expectancy in this sideways regime make acting on that mispricing now a poor risk-reward proposition. | R1 Bear(7): The bull's 'manageable' debt and concentration risk is a catastrophic tail risk dressed in reassuring language \u2014 a Debt/Equity of 6.6 combined with peak-cycle revenue concentration in a single segment means any demand softening doesn't produce a gentle deceleration, it produces a leverage-amplified collapse in the exact earnings figures the 0.5 PEG thesis depends on. | R2 Bull(3): NVDA's fundamental mispricing via a 0.5 PEG against 214.5% EPS growth remains intact, the bear's strongest structural risks are TYPE B and already market-known, but the confirmed sideways regime, weak technicals, and our -6.47% historical expectancy mean the correct posture is disciplined patience \u2014 not capitulation on the thesis and not initiating new risk until momentum confirms. | R2 Bear(6): The bull's own concessions confirm my primary risk: NVDA's leverage structure guarantees non-linear earnings deterioration if AI capex softens, the sideways regime with negative historical expectancy provides no technical buffer, and a thesis that is 'wait for a catalyst' while sitting on 6.6 D/E concentration risk is not patience \u2014 it is uncompensated exposure to a left-tail event the bull himself cannot quantify.",
       "bear_case": "Primary risk: The Debt/Equity of 6.6 becomes a trap: if AI capex demand softens even modestly, NVDA's concentrated revenue base contracts while fixed debt obligations do not, causing forward EPS estimates to collapse, the PEG to re-rate upward rapidly, and the stock to reprice well below current levels \u2014 precisely as our -8.8% average loss pattern in this regime predicts. | Unresolved: [\"The bull identified no specific catalyst threshold that would falsify his 'wait for confirmation' posture, meaning his thesis is structurally unfalsifiable and provides no actionable exit from the risk window\", 'Debt/Equity of 6.6 against a single-segment revenue base remains unaddressed as a structural amplifier \u2014 the bull conceded non-linearity but offered no mechanism by which fixed obligations shrink if datacenter demand softens', 'The 0.5 PEG thesis depends entirely on forward EPS estimates that are themselves downstream of the AI capex cycle the bull admits could turn \u2014 he has not demonstrated those estimates are stress-tested against even a 20% datacenter revenue contraction']",
       "bull_score": 3,
+      "bear_score": 6,
+      "final_conviction": 5,
+      "decision": "watch"
+    },
+    {
+      "id": "debate_ABBV_20260731194909",
+      "symbol": "ABBV",
+      "ts": "2026-07-31T19:49:09.540797+00:00",
+      "bull_case": "R1 Bull(3): ABBV's PEG of 0.4 and forward P/E of 15.5 versus a TTM P/E of 124.5 signal transitory EPS depression masking a fundamentally undervalued growth story, but the guidance cut and weak technicals demand patience before the setup matures. | R1 Bear(7): The bull's 'transitory EPS depression' narrative is a story built on forward estimates that management just explicitly undermined by cutting guidance, while balance sheet opacity, a 5.8% profit margin, and a fund with a -6.47% expectancy make this a capital-destruction setup dressed in value clothing. | R2 Bull(2): ABBV remains a structurally undervalued compounder with a PEG of 0.4 anchored to pipeline assets the guidance cut did not touch, but the trade is not enterable today \u2014 conviction requires a Q3 volume-backed technical reclaim and evidence that estimate revisions are stabilizing before this fund's loss profile justifies exposure. | R2 Bear(6): With the bull conceding the forward P/E is not a fixed anchor, leverage is unmeasurable, and entry is premature by their own process standards, the bear case is now the consensus near-term posture \u2014 the remaining disagreement is whether Skyrizi and Botox pipeline optionality justifies holding through a Q3 estimate revision gauntlet in a fund that statistically destroys capital in exactly this setup, and that bet is not yet paid for by the current risk/reward structure.",
+      "bear_case": "Primary risk: Forward EPS estimates \u2014 the sole foundation of the bull's valuation case \u2014 continue to be revised downward through Q3 guidance season, exposing the 15.5x forward P/E as a moving target, while the unquantifiable balance sheet leverage (Debt/Equity unavailable) amplifies downside if margin pressure persists, trapping this fund in another -8.8% average-loss scenario with no technical floor established. | Unresolved: ['Forward EPS revision velocity is unresolved \u2014 the bull argues the rate of cuts will slow enough for PEG 0.4 to reassert, but provides no mechanism or evidence for why Q3 guidance season will mark peak pessimism rather than accelerate the walk-down, leaving the 15.5x forward P/E still exposed as a moving target', 'Balance sheet opacity remains fully unresolved \u2014 the bull withdrew the leverage argument rather than rebutting it, meaning Debt/Equity risk is unquantified and still a live amplifier of downside if margin pressure persists', 'The 5.8% net profit margin was never addressed \u2014 no bull argument explained how thin-margin execution supports a compounder narrative under cost pressure without pipeline revenue acceleration that is not yet in the numbers']",
+      "bull_score": 2,
       "bear_score": 6,
       "final_conviction": 5,
       "decision": "watch"
@@ -84926,6 +84983,23 @@
       "pm_action": "watch",
       "pm_verdict": "NVDA's fundamental case (PEG 0.5, 214.5% EPS growth, 63% margins) is genuinely compelling, but the technical signal is bearish (3/10), the regime is sideways with a -5.31% historical expectancy, ADX is below 25 with no confirmed trend, and the fund's own trade log offers no basis for acting on a fundamental thesis without technical confirmation \u2014 the correct posture is waiting for momentum or a catalyst, not buying into a slow bleed.",
       "risk_category": "conviction"
+    },
+    {
+      "ts": "2026-07-31T19:49:09.319756+00:00",
+      "symbol": "ABBV",
+      "action": "watch",
+      "reason": "PM decision: watch \u2014 The forward EPS revision velocity is an unresolved TYPE-A bear point: management just cut FY2026 EPS guidance and Q3 sales guidance below consensus, the bull explicitly conceded the 15.5x forward P/E is not a fixed anchor, and no mechanism was offered for why Q3 revision season marks peak pessimism \u2014 meaning the sole valuation pillar of the bull case is actively deteriorating with no stabilization evidence, disqualifying conviction \u22656 per the rubric.",
+      "conviction": 5,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 252.81,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "watch",
+      "pm_verdict": "ABBV has a credible multi-quarter fundamental thesis anchored in Skyrizi/Botox pipeline durability and a PEG of 0.4, but the forward P/E anchor is actively being walked down by management guidance cuts \u2014 a TYPE-A unresolved bear point \u2014 while technicals are neutral at best (MACD below signal, 0.68x volume, no ADX-confirmed uptrend), leaving no analyst signal above 7/10 and no dated catalyst within 4 weeks to qualify for even the quality-compounder lane at conviction 6.",
+      "risk_category": "conviction"
     }
   ],
   "watchlists": [
@@ -111195,15 +111269,6 @@
   ],
   "tech_shadow": [
     {
-      "ts": "2026-07-08T15:40:42.839215+00:00",
-      "symbol": "DDOG",
-      "llm_signal": "bullish",
-      "llm_strength": 6,
-      "det_signal": "bullish",
-      "det_strength": 10,
-      "agree": true
-    },
-    {
       "ts": "2026-07-08T15:40:59.236745+00:00",
       "symbol": "HOOD",
       "llm_signal": "bullish",
@@ -115693,6 +115758,15 @@
       "det_signal": "neutral",
       "det_strength": 4,
       "agree": false
+    },
+    {
+      "ts": "2026-07-31T19:47:33.794924+00:00",
+      "symbol": "ABBV",
+      "llm_signal": "neutral",
+      "llm_strength": 4,
+      "det_signal": "neutral",
+      "det_strength": 7,
+      "agree": true
     }
   ],
   "pre_debate_gates": [
@@ -121178,6 +121252,25 @@
           "position_usd": 6061.67,
           "stop_price": 349.61,
           "sector": "Financial Services"
+        }
+      ],
+      "skipped": []
+    },
+    {
+      "ts": "2026-07-31T19:47:28.732752+00:00",
+      "regime": "bull",
+      "vix_regime": "normal",
+      "run_reason": "sentinel_trigger",
+      "n_candidates": 1,
+      "would_buy": [
+        {
+          "symbol": "ABBV",
+          "composite_score": 0.1525,
+          "price": 252.87,
+          "size_pct": 0.06,
+          "position_usd": 6065.17,
+          "stop_price": 236.86,
+          "sector": "Healthcare"
         }
       ],
       "skipped": []

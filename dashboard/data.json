@@ -2052,6 +2052,12 @@
       "portfolio_value": 101011.0,
       "cash": 78590.8,
       "spy_price": 740.88
+    },
+    {
+      "ts": "2026-07-31T15:27:40.248705+00:00",
+      "portfolio_value": 101013.94,
+      "cash": 78590.8,
+      "spy_price": 740.44
     }
   ],
   "trades": [
@@ -3351,7 +3357,7 @@
       "status": "open",
       "key_risk": "Price behavior as LLY approaches the $1,249.45 resistance zone \u2014 watch for a failed breakout or high-volume reversal candle at that level, and any emerging adverse developments in GLP-1 litigation or IRA/Medicare drug pricing policy, which are the only conditions that would warrant exit per the original trade plan.",
       "position_usd": 4112.88,
-      "position_pct": 0.0384,
+      "position_pct": 0.0383,
       "sector": "Healthcare",
       "last_review_ts": "2026-07-30T18:11:55.519448+00:00",
       "last_review_conviction": 6,
@@ -3359,9 +3365,9 @@
       "time_stop_flagged": false,
       "consecutive_weakened_count": 0,
       "is_remnant": false,
-      "current_price": 1140.495,
-      "unrealized_pl": 424.67,
-      "unrealized_plpc": 0.12309,
+      "current_price": 1139.33,
+      "unrealized_pl": 420.71,
+      "unrealized_plpc": 0.12194,
       "avg_entry": 1015.5,
       "trim_history": [
         {
@@ -3449,9 +3455,9 @@
           "reason": "Private credit contagion risk has escalated from theoretical to active (Blue Owl, Apollo, Ares stress), the bull conceded TYPE A pipeline threat, institutional bid absence below $216 leaves a 5%+ gap to $205.83 support with no technical anchor, and the 502x leveraged balance sheet introduces non-linear downside risk under simultaneous credit stress and client redemption pressure \u2014 all of which materially weaken but do not break the core thesis."
         }
       ],
-      "current_price": 211.225,
-      "unrealized_pl": 173.71,
-      "unrealized_plpc": 0.04401,
+      "current_price": 211.3,
+      "unrealized_pl": 175.17,
+      "unrealized_plpc": 0.04438,
       "avg_entry": 202.3212,
       "trim_pnl": 668.66,
       "stop_order_id": "405fa70a-08e3-4d96-b12a-25f7098b7a4a"
@@ -3480,9 +3486,9 @@
       "time_stop_flagged": true,
       "consecutive_weakened_count": 1,
       "is_remnant": true,
-      "current_price": 105.19,
-      "unrealized_pl": 81.32,
-      "unrealized_plpc": 0.02926,
+      "current_price": 105.175,
+      "unrealized_pl": 80.91,
+      "unrealized_plpc": 0.02911,
       "avg_entry": 102.2
     },
     {
@@ -3504,9 +3510,9 @@
       "sector": "Financial Services",
       "trim_pnl": 0.0,
       "is_remnant": false,
-      "current_price": 62.085,
-      "unrealized_pl": 140.11,
-      "unrealized_plpc": 0.0338,
+      "current_price": 62.11,
+      "unrealized_pl": 141.84,
+      "unrealized_plpc": 0.03421,
       "avg_entry": 60.0554,
       "last_review_ts": "2026-07-30T18:12:44.365950+00:00",
       "last_review_conviction": 6,
@@ -3533,9 +3539,9 @@
       "sector": "Financial Services",
       "trim_pnl": 0.0,
       "is_remnant": false,
-      "current_price": 105.4,
-      "unrealized_pl": 119.17,
-      "unrealized_plpc": 0.02879,
+      "current_price": 105.44,
+      "unrealized_pl": 120.78,
+      "unrealized_plpc": 0.02918,
       "avg_entry": 102.45,
       "last_review_ts": "2026-07-30T18:12:57.385801+00:00",
       "last_review_conviction": 6,
@@ -3562,9 +3568,9 @@
       "sector": "Healthcare",
       "trim_pnl": 0.0,
       "is_remnant": true,
-      "current_price": 64.67,
-      "unrealized_pl": -11.21,
-      "unrealized_plpc": -0.0037,
+      "current_price": 64.675,
+      "unrealized_pl": -10.97,
+      "unrealized_plpc": -0.00362,
       "avg_entry": 64.91,
       "last_review_ts": "2026-07-30T21:20:46.301697+00:00",
       "last_review_conviction": 7,
@@ -52263,20 +52269,60 @@
       ],
       "regime": "bull",
       "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-07-31T15:27:40.423123+00:00",
+      "run_type": "pre_market",
+      "candidates": [
+        "ABBV"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "sentinel_trigger",
+      "candidate_details": [
+        {
+          "symbol": "ABBV",
+          "composite_score": 0.2735,
+          "signals": {
+            "eps_growth": -46.2,
+            "rev_growth": 12.4,
+            "growth_quality": "negative",
+            "rs_vs_sector_pct": -1.1,
+            "sector": "Healthcare",
+            "sector_etf": "XLV",
+            "pct_of_52wk_range": 0.82,
+            "52wk_high": 267.47,
+            "volume_spike_ratio": 0.35,
+            "volume_spike": false,
+            "rsi": 54.9,
+            "macd_crossover": "False",
+            "bb_pct": 0.51,
+            "news_count": 5,
+            "top_headline": "AbbVie Stock Falls as Guidance Cut Overshadows Strong Q2 Earnings Beat",
+            "news_quality": 0.8,
+            "pe_trailing": 124.9,
+            "pe_forward": 15.6,
+            "earnings_growth": -46.2
+          }
+        }
+      ],
+      "event_symbols": [
+        "ABBV"
+      ],
+      "event_details": [
+        {
+          "symbol": "ABBV",
+          "trigger_type": "earnings_today",
+          "value": 1.0,
+          "threshold": 1.0,
+          "severity": "high"
+        }
+      ],
+      "regime": "bull",
+      "vix_regime": "normal"
     }
   ],
   "debate_logs": [
-    {
-      "id": "debate_C_20260619201459",
-      "symbol": "C",
-      "ts": "2026-06-19T20:14:59.196816+00:00",
-      "bull_case": "R1 Bull(7): Citigroup's technical breakout \u2014 ADX 41.4 with 2.57x volume confirmation and 56.1% EPS growth at an 11.4x forward P/E \u2014 represents a momentum continuation trade where the DOJ headline risk is already priced into the bearish sentiment reading, not the price action. | R1 Bear(6): Citigroup's technically overbought breakout near 52-week highs is built on structurally weak fundamentals \u2014 a 7.6% ROE, unavailable debt data, and an active DOJ probe \u2014 while our fund's 40% win rate and three initial-stop exits in recent trades demand we stop funding momentum chases with unquantifiable tail risk. | R2 Bull(6): Citigroup remains a momentum continuation trade at reduced size \u2014 the ADX 41.4 breakout with 2.57x volume confirmation and 0.8 PEG on 56.1% EPS growth justifies a half-position entry with a disciplined stop below the breakout level, acknowledging the DOJ headline risk as a live TYPE A threat that demands position sizing discipline rather than avoidance. | R2 Bear(7): The bull's concessions on TYPE A DOJ risk, sub-cost-of-equity ROE, and debt opacity collectively dismantle the reward side of the trade while leaving the primary gap-down tail risk fully intact, making a half-position entry at 52-week highs \u2014 where the stop is most likely to be gapped through rather than triggered cleanly \u2014 an unfavorable asymmetry that our fund's loss history cannot support regardless of ADX momentum confirmation.",
-      "bear_case": "Primary risk: The DOJ probe produces a headline settlement figure or escalation to criminal charges during our holding period, triggering a gap-down through all technical support levels at a moment when the stock is already extended at 52-week highs with no buffer \u2014 a scenario the bull structurally cannot handicap because the liability is unquantified, producing an asymmetric loss that our -13.7% average loser history confirms this fund is ill-equipped to absorb. | Unresolved: [\"The DOJ liability remains entirely unquantified \u2014 the bull's timeline argument confirms it persists through the holding period, meaning any adverse headline (escalation, criminal referral, surprise settlement size) produces a gap-down through the 20-day EMA stop, rendering the hard stop operationally useless in a gap scenario exactly as our -13.7% average loser history illustrates\", \"The bull's claim that institutions have 'already discounted a baseline settlement scenario' is unfalsifiable and contradicted by the bull's own TYPE A concession that the risk is not priced in \u2014 these two positions cannot coexist\", 'Debt/Equity data absence for a leveraged financial institution means the hard stop loss dollar amount cannot be anchored to a worst-case leverage-driven drawdown scenario, so the half-position sizing discipline is built on an incomplete risk model']",
-      "bull_score": 6,
-      "bear_score": 7,
-      "final_conviction": 6,
-      "decision": "watch"
-    },
     {
       "id": "debate_ARM_20260619201637",
       "symbol": "ARM",
@@ -57765,6 +57811,17 @@
       "bear_score": 7,
       "final_conviction": 5,
       "decision": "watch"
+    },
+    {
+      "id": "debate_ABBV_20260731152739",
+      "symbol": "ABBV",
+      "ts": "2026-07-31T15:27:39.680093+00:00",
+      "bull_case": "R1 Bull(3): ABBV's PEG of 0.4 and forward P/E of 15.6 against 12.4% revenue growth signal a deeply mispriced recovery story \u2014 but the setup is too technically weak and operationally murky to warrant high conviction right now. | R1 Bear(7): The forward P/E of 15.6x is a fiction built on earnings recovery assumptions that management itself just undermined by cutting FY2026 EPS guidance, while critical balance sheet data needed to stress-test that recovery is entirely missing. | R2 Bull(2): ABBV's valuation remains mathematically compelling on a PEG of 0.4 and 12.4% revenue growth, but a confirmed EPS guidance cut below consensus, structurally thin 5.8% margins, invisible leverage data, and a fund track record of -8.77% per-trade expectancy in exactly this low-volume neutral-technical setup collectively make this a thesis to watch rather than a position to own today. | R2 Bear(7): With the bull conceding the EPS guidance cut is a genuine TYPE A risk, leverage data structurally absent, institutional money refusing to accumulate despite an apparent PEG discount, and no identifiable catalyst to validate the forward earnings recovery, ABBV's 15.6x forward P/E remains a conditional fiction that the fund has no edge in pricing \u2014 and entering here replicates the exact structural mistake the fund's -8.77% per-trade expectancy in this regime already indicts.",
+      "bear_case": "Primary risk: The forward earnings recovery that justifies the 15.6x P/E never materializes \u2014 either because the EPS guidance cuts continue as margin pressure proves structural rather than transitory, or because undisclosed leverage (Debt/Equity unavailable) constrains financial flexibility \u2014 leaving the stock trapped at a TTM P/E of 124.9x with no catalyst to compress it, while the fund absorbs another stop-loss exit consistent with its current -8.77% per-trade expectancy. | Unresolved: ['Debt/Equity remains unavailable, leaving balance sheet stress-test capacity entirely unquantifiable during a period of active EPS deterioration', 'The bull concedes they cannot prove margin compression reverses \u2014 the structural vs. transitory question is unresolved, not neutralized by labeling it epistemically symmetric', 'Institutional non-accumulation at 35% of average volume persists with no identified near-term catalyst to unlock the PEG discount, meaning cheap can stay cheap indefinitely', 'TTM P/E of 124.9x remains the operative multiple if forward EPS estimates continue to be cut, and the guidance trajectory has not stabilized']",
+      "bull_score": 2,
+      "bear_score": 7,
+      "final_conviction": 4,
+      "decision": "skip"
     }
   ],
   "position_reviews": [
@@ -84206,6 +84263,23 @@
       "pm_action": "watch",
       "pm_verdict": "MA's fundamental quality and technical momentum are genuine \u2014 all three analyst signals are constructive at 8/10 \u2014 but the 0% win rate across 27 trades in this exact setup archetype (RSI >70, Bollinger %B >1.0, post-surge entry at resistance, sideways SPY) is an unresolved TYPE-A bear point that the bull acknowledged without concretely rebutting; entering now risks booking loss #28 for structural reasons unrelated to MA's merit.",
       "risk_category": "conviction"
+    },
+    {
+      "ts": "2026-07-31T15:27:39.506340+00:00",
+      "symbol": "ABBV",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 The EPS guidance cut below consensus is a confirmed TYPE-A risk that the bull conceded and could not rebut \u2014 this directly invalidates the reliability of the forward P/E anchor, collapsing the valuation thesis to a conditional fiction with no near-term catalyst to resolve it.",
+      "conviction": 4,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 253.62,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "The FY2026 EPS guidance cut below consensus is an unresolved TYPE-A bear point \u2014 a near-term, stock-specific event actively undermining the 15.6x forward P/E that anchors the entire bull thesis \u2014 and the bull explicitly conceded it at conviction 2/10, leaving no credible rebuttal standing. With institutional money refusing to accumulate at 35% of average volume, balance sheet leverage unquantifiable, and the fund carrying a -5.30% expectancy in this exact sideways regime with weak technicals, there is no identifiable edge to capture here.",
+      "risk_category": "pm_decision"
     }
   ],
   "watchlists": [
@@ -110475,15 +110549,6 @@
   ],
   "tech_shadow": [
     {
-      "ts": "2026-07-06T20:42:15.384796+00:00",
-      "symbol": "DDOG",
-      "llm_signal": "bullish",
-      "llm_strength": 8,
-      "det_signal": "bullish",
-      "det_strength": 10,
-      "agree": true
-    },
-    {
       "ts": "2026-07-06T20:43:53.525794+00:00",
       "symbol": "MU",
       "llm_signal": "bearish",
@@ -114972,6 +115037,15 @@
       "llm_strength": 8,
       "det_signal": "bullish",
       "det_strength": 10,
+      "agree": true
+    },
+    {
+      "ts": "2026-07-31T15:26:15.745193+00:00",
+      "symbol": "ABBV",
+      "llm_signal": "neutral",
+      "llm_strength": 4,
+      "det_signal": "neutral",
+      "det_strength": 7,
       "agree": true
     }
   ],
@@ -120344,6 +120418,25 @@
           "reason": "held"
         }
       ]
+    },
+    {
+      "ts": "2026-07-31T15:26:10.695933+00:00",
+      "regime": "bull",
+      "vix_regime": "normal",
+      "run_reason": "sentinel_trigger",
+      "n_candidates": 1,
+      "would_buy": [
+        {
+          "symbol": "ABBV",
+          "composite_score": 0.2735,
+          "price": 253.62,
+          "size_pct": 0.06,
+          "position_usd": 6060.84,
+          "stop_price": 237.61,
+          "sector": "Healthcare"
+        }
+      ],
+      "skipped": []
     }
   ],
   "universe_discovery": [

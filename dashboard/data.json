@@ -2190,6 +2190,12 @@
       "portfolio_value": 101255.12,
       "cash": 81453.62,
       "spy_price": 771.9
+    },
+    {
+      "ts": "2026-08-04T18:01:46.471447+00:00",
+      "portfolio_value": 101252.62,
+      "cash": 81453.62,
+      "spy_price": 771.66
     }
   ],
   "trades": [
@@ -3532,9 +3538,9 @@
       "time_stop_flagged": false,
       "consecutive_weakened_count": 0,
       "is_remnant": false,
-      "current_price": 1115.15,
-      "unrealized_pl": 338.56,
-      "unrealized_plpc": 0.09813,
+      "current_price": 1115.33,
+      "unrealized_pl": 339.17,
+      "unrealized_plpc": 0.09831,
       "avg_entry": 1015.5,
       "trim_history": [
         {
@@ -3648,9 +3654,9 @@
       "sector": "Financial Services",
       "trim_pnl": 0.0,
       "is_remnant": false,
-      "current_price": 63.21,
-      "unrealized_pl": 217.78,
-      "unrealized_plpc": 0.05253,
+      "current_price": 63.18,
+      "unrealized_pl": 215.71,
+      "unrealized_plpc": 0.05203,
       "avg_entry": 60.0554,
       "last_review_ts": "2026-08-03T18:47:01.469835+00:00",
       "last_review_conviction": 6,
@@ -3677,9 +3683,9 @@
       "sector": "Financial Services",
       "trim_pnl": 0.0,
       "is_remnant": false,
-      "current_price": 106.57,
-      "unrealized_pl": 166.43,
-      "unrealized_plpc": 0.04021,
+      "current_price": 106.6,
+      "unrealized_pl": 167.64,
+      "unrealized_plpc": 0.04051,
       "avg_entry": 102.45,
       "last_review_ts": "2026-08-03T18:47:26.301936+00:00",
       "last_review_conviction": 6,
@@ -3702,13 +3708,13 @@
       "status": "open",
       "key_risk": "Watch for any official denial or collapse of the AstraZeneca M&A speculation \u2014 specifically a daily close below $65.21 on above-average volume, which per the original thesis would signal the fundamental re-rating thesis alone cannot hold the technical structure and would mandate an exit.",
       "position_usd": 3030.95,
-      "position_pct": 0.0306,
+      "position_pct": 0.0305,
       "sector": "Healthcare",
       "trim_pnl": 0.0,
       "is_remnant": false,
-      "current_price": 66.25,
-      "unrealized_pl": 62.57,
-      "unrealized_plpc": 0.02064,
+      "current_price": 66.24,
+      "unrealized_pl": 62.1,
+      "unrealized_plpc": 0.02049,
       "avg_entry": 64.91,
       "last_review_ts": "2026-08-04T15:54:43.256764+00:00",
       "last_review_conviction": 6,
@@ -53625,20 +53631,60 @@
       ],
       "regime": "bull",
       "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-08-04T18:01:46.644963+00:00",
+      "run_type": "midday",
+      "candidates": [
+        "AMD"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "sentinel_trigger",
+      "candidate_details": [
+        {
+          "symbol": "AMD",
+          "composite_score": 0.3525,
+          "signals": {
+            "eps_growth": 91.2,
+            "rev_growth": 37.8,
+            "growth_quality": "strong",
+            "rs_vs_sector_pct": -2.5,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.87,
+            "52wk_high": 584.73,
+            "volume_spike_ratio": 0.84,
+            "volume_spike": false,
+            "rsi": 53.2,
+            "macd_crossover": "False",
+            "bb_pct": 0.6,
+            "news_count": 10,
+            "top_headline": "Trillion-Dollar Countdown: The Math Behind AMD's Next Big Milestone",
+            "news_quality": 0.25,
+            "pe_trailing": 175.4,
+            "pe_forward": 37.8,
+            "earnings_growth": 91.2
+          }
+        }
+      ],
+      "event_symbols": [
+        "AMD"
+      ],
+      "event_details": [
+        {
+          "symbol": "AMD",
+          "trigger_type": "earnings_today",
+          "value": 1.0,
+          "threshold": 1.0,
+          "severity": "high"
+        }
+      ],
+      "regime": "bull",
+      "vix_regime": "normal"
     }
   ],
   "debate_logs": [
-    {
-      "id": "debate_AMAT_20260623203840",
-      "symbol": "AMAT",
-      "ts": "2026-06-23T20:38:40.381914+00:00",
-      "bull_case": "R1 Bull(6): AMAT's earnings acceleration story \u2014 33.5% EPS growth with forward P/E compressing from 55x to 36x \u2014 is intact and technically confirmed, meaning the sector noise is a buying opportunity, not a thesis break. | R1 Bear(7): AMAT's EPS growth story has a structural crack the bull ignored: revenue growing at only 11.4% while EPS grows 33.5% is a margin-expansion or buyback-driven illusion, not an earnings acceleration, and in a sector selloff that distinction gets punished violently. | R2 Bull(5): AMAT's structurally improving margin mix, earnings acceleration confirmed by two analyst upgrades, and technically intact trend (ADX 33, RSI 63.6) justify holding a reduced-size long position with disciplined stop management, acknowledging that sector contagion risk warrants smaller exposure until macro headwinds from the South Korean rout show signs of stabilization. | R2 Bear(7): AMAT's structurally improving margins are real but already priced into a 36x forward multiple that has no cushion against a South Korean contagion-driven sector re-rating, where 11.4% revenue growth becomes the anchor that pulls estimates and multiples down together in a correlated selloff the bull's TYPE A catalyst framework will recognize only after the damage is done.",
-      "bear_case": "Primary risk: Macro contagion from the South Korean tech rout triggers a sector-wide multiple compression event where AMAT's revenue growth reality (11.4%) is re-rated against its current multiple (36x forward), causing estimate cuts and price collapse toward the mid-range of its 52-week band \u2014 hitting our initial stop and becoming loss number four in the last five trades. | Unresolved: [\"The bull never addressed how a 36x forward multiple survives a sector-wide re-rating when revenue growth is confirmed at 11.4% \u2014 the 'market has already discounted this via P/E compression from 55x to 36x' argument assumes the compression is complete, not that it has further to run\", 'The PEG 2.1 peer-equivalence argument (ASML, LRCX, KLAC) ignores that a macro contagion event compresses the entire peer group simultaneously, making peer parity a reason for correlated downside, not a defense', \"The fund's 40% win rate with losers exceeding winners makes the asymmetry of this trade \u2014 limited upside at 36x vs. historic drawdown to $154 \u2014 a position-sizing crisis the bull acknowledged but did not resolve\"]",
-      "bull_score": 5,
-      "bear_score": 7,
-      "final_conviction": 6,
-      "decision": "buy"
-    },
     {
       "id": "debate_MS_20260623220647",
       "symbol": "MS",
@@ -59127,6 +59173,17 @@
       "bear_score": 7,
       "final_conviction": 5,
       "decision": "watch"
+    },
+    {
+      "id": "debate_AMD_20260804180146",
+      "symbol": "AMD",
+      "ts": "2026-08-04T18:01:46.054709+00:00",
+      "bull_case": "R1 Bull(4): AMD's PEG of 1.1 on 91.2% EPS growth makes it genuinely undervalued relative to its AI/data center growth trajectory, and an imminent Q2 earnings catalyst \u2014 amplified by $1.2T in hyperscaler AI capex commitments \u2014 could force a rapid consensus re-rating before skeptics can react. | R1 Bear(7): AMD is a high-expectation earnings trade dressed up as a valuation story, entering at a 252.7% rally from its 52-week low with thin 13.4% margins, a debt/equity of 6.0, and a fund running a -6.47% per-trade expectancy in the exact sideways regime this stock is trading in \u2014 the asymmetry is brutally wrong. | R2 Bull(3): AMD's PEG of 1.1 on 91.2% EPS growth provides a real valuation floor, but with ADX at 11.7 confirming a trendless, institution-light pre-earnings rally and a sideways SPY regime matching the fund's historically destructive conditions, position sizing must be sharply reduced \u2014 the thesis is valid but the setup is fragile, making this a small-conviction lottery on Lisa Su delivering unambiguous MI300X demand validation. | R2 Bear(8): With the bull conceding ADX at 11.7, a destructive sideways SPY regime, and thin-margin/high-leverage fragility, AMD's entire bull case collapses to a single binary lottery on Lisa Su's exact tone \u2014 a catastrophically unfavorable asymmetry for a stock already up 252.7% from its low, replicating the precise conditions that have generated a -6.47% per-trade expectancy for this fund.",
+      "bear_case": "Primary risk: AMD misses on forward AI GPU guidance or Lisa Su's commentary underwhelms relative to elevated pre-earnings expectations, triggering a sharp reversal from a stock already up 252.7% from its 52-week low \u2014 with thin margins and high leverage leaving no fundamental floor to arrest the drawdown, directly replicating the loss pattern that has driven this fund to a -6.47% per-trade expectancy. | Unresolved: [\"The bull's PEG 1.1 valuation floor assumes 91.2% EPS growth is achievable and already partially priced \u2014 but if MI300X guidance disappoints or hyperscaler capex commentary is even marginally ambiguous, forward estimates compress simultaneously with the multiple, eliminating the supposed valuation anchor in the exact moment it is needed\", \"The bull has not addressed the asymmetry of the setup: a 252.7% rally from the 52-week low means the stock has already priced a substantial portion of the AI upside, so even an in-line print may not be sufficient to force institutional chasing \u2014 the 'launchpad' thesis requires institutions to be caught underweight, but the prior rally suggests they have already repositioned\", \"The fund's -6.47% per-trade expectancy in sideways SPY regimes remains a process-level kill switch the bull explicitly acknowledged but did not neutralize \u2014 'reduce size' is not a refutation of the regime-risk, it is a capitulation to it\"]",
+      "bull_score": 3,
+      "bear_score": 8,
+      "final_conviction": 4,
+      "decision": "skip"
     }
   ],
   "position_reviews": [
@@ -86412,6 +86469,23 @@
       "pm_action": "watch",
       "pm_verdict": "AVGO's fundamental case is real \u2014 PEG 0.4 on 85.4% EPS growth with 38.8% margins is genuinely attractive \u2014 but the breakout is low-conviction (0.53x volume, ADX 15.1, non-trending EMA structure), the bull's own catalyst is a future hyperscaler earnings cycle that hasn't arrived yet, and the fund's -6.47% expectancy in this exact sideways regime is not resolved by sizing small. This is a watch until either volume confirms institutional accumulation or a hyperscaler capex confirmation event provides the dated catalyst.",
       "risk_category": "pm_decision"
+    },
+    {
+      "ts": "2026-08-04T18:01:45.883336+00:00",
+      "symbol": "AMD",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 TYPE-A: Imminent binary earnings catalyst with elevated, already-priced expectations combined with zero institutional sponsorship (ADX 11.7 + 0.84x volume) \u2014 the exact setup where this fund's sideways-regime destruction (-6.47% per-trade expectancy) is most acute and where the bull conceded every structural pillar of the bear's case.",
+      "conviction": 4,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 526.26,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "AMD is a binary earnings lottery \u2014 not an edge-based trade \u2014 entering ahead of a high-expectation catalyst with no institutional sponsorship (ADX 11.7, 0.84x volume), a fund regime that has produced -6.47% per-trade expectancy in exactly these conditions, and a stock already up 252.7% from its 52-week low pricing substantial AI optimism; the fundamental PEG argument is real but does not survive as a floor if forward estimates compress simultaneously with the multiple on any guidance disappointment.",
+      "risk_category": "pm_decision"
     }
   ],
   "watchlists": [
@@ -112684,15 +112758,6 @@
   ],
   "tech_shadow": [
     {
-      "ts": "2026-07-13T16:04:33.177981+00:00",
-      "symbol": "CVS",
-      "llm_signal": "bullish",
-      "llm_strength": 7,
-      "det_signal": "bullish",
-      "det_strength": 9,
-      "agree": true
-    },
-    {
       "ts": "2026-07-13T16:04:49.573212+00:00",
       "symbol": "DDOG",
       "llm_signal": "bullish",
@@ -117181,6 +117246,15 @@
       "llm_strength": 6,
       "det_signal": "neutral",
       "det_strength": 6,
+      "agree": false
+    },
+    {
+      "ts": "2026-08-04T18:00:13.287302+00:00",
+      "symbol": "AMD",
+      "llm_signal": "bullish",
+      "llm_strength": 5,
+      "det_signal": "bearish",
+      "det_strength": 2,
       "agree": false
     }
   ],
@@ -122919,6 +122993,25 @@
           "reason": "held"
         }
       ]
+    },
+    {
+      "ts": "2026-08-04T18:00:08.743437+00:00",
+      "regime": "bull",
+      "vix_regime": "normal",
+      "run_reason": "sentinel_trigger",
+      "n_candidates": 1,
+      "would_buy": [
+        {
+          "symbol": "AMD",
+          "composite_score": 0.3525,
+          "price": 526.08,
+          "size_pct": 0.06,
+          "position_usd": 6075.16,
+          "stop_price": 483.99,
+          "sector": "Technology"
+        }
+      ],
+      "skipped": []
     }
   ],
   "universe_discovery": [

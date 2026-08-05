@@ -2280,6 +2280,12 @@
       "portfolio_value": 101414.75,
       "cash": 79423.82,
       "spy_price": 770.6
+    },
+    {
+      "ts": "2026-08-05T21:26:56.999990+00:00",
+      "portfolio_value": 101414.75,
+      "cash": 79423.82,
+      "spy_price": 770.6
     }
   ],
   "trades": [
@@ -3612,11 +3618,11 @@
       "conviction": 7,
       "debate_id": "debate_LLY_20260519190455",
       "status": "open",
-      "key_risk": "Price behavior as LLY approaches the $1,232\u2013$1,249.45 resistance zone \u2014 specifically watch for a failed breakout or high-volume reversal candle at that level, as the MACD remaining below signal and the 2x volume spike without directional confirmation suggest the next test of that zone will be decisive.",
+      "key_risk": "Price behavior as LLY approaches and tests the $1,232\u2013$1,249.45 resistance zone \u2014 specifically watch for a failed breakout, a high-volume reversal candle, or MACD remaining below signal at that level, any of which would constitute the thesis-breaking signal identified at entry.",
       "position_usd": 4112.88,
       "position_pct": 0.0392,
       "sector": "Healthcare",
-      "last_review_ts": "2026-08-05T19:49:23.317969+00:00",
+      "last_review_ts": "2026-08-05T21:22:20.100483+00:00",
       "last_review_conviction": 7,
       "thesis_status": "intact",
       "time_stop_flagged": false,
@@ -54700,42 +54706,126 @@
       ],
       "regime": "bull",
       "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-08-05T21:26:57.176770+00:00",
+      "run_type": "midday",
+      "candidates": [
+        "LLY",
+        "DUOL",
+        "IONQ"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "sentinel_trigger",
+      "candidate_details": [
+        {
+          "symbol": "LLY",
+          "composite_score": 0.5281,
+          "signals": {
+            "eps_growth": 169.9,
+            "rev_growth": 55.5,
+            "growth_quality": "strong",
+            "rs_vs_sector_pct": -4.9,
+            "sector": "Healthcare",
+            "sector_etf": "XLV",
+            "pct_of_52wk_range": 0.87,
+            "52wk_high": 1249.45,
+            "volume_spike_ratio": 2.26,
+            "volume_spike": true,
+            "rsi": 51.2,
+            "macd_crossover": "False",
+            "bb_pct": 0.48,
+            "news_count": 10,
+            "top_headline": "Gold Jumps 4%, Dow Jones Smashes Record Highs: Stock Market Today",
+            "news_quality": 0.75,
+            "pe_trailing": 41.6,
+            "pe_forward": 25.9,
+            "earnings_growth": 169.9
+          }
+        },
+        {
+          "symbol": "DUOL",
+          "composite_score": 0.446,
+          "signals": {
+            "eps_growth": 23.6,
+            "rev_growth": 26.5,
+            "growth_quality": "moderate",
+            "rs_vs_sector_pct": 3.6,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.12,
+            "52wk_high": 468.0,
+            "volume_spike_ratio": 1.59,
+            "volume_spike": false,
+            "rsi": 55.9,
+            "macd_crossover": "False",
+            "bb_pct": 0.67,
+            "news_count": 6,
+            "top_headline": "12 Consumer Discretionary Stocks Moving In Wednesday's After-Market Session",
+            "news_quality": 0.75,
+            "pe_trailing": 15.5,
+            "pe_forward": 17.2,
+            "earnings_growth": 23.6
+          }
+        },
+        {
+          "symbol": "IONQ",
+          "composite_score": 0.213,
+          "signals": {
+            "growth_quality": "unknown",
+            "rs_vs_sector_pct": -13.9,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.24,
+            "52wk_high": 84.64,
+            "volume_spike_ratio": 1.0,
+            "volume_spike": false,
+            "rsi": 48.3,
+            "macd_crossover": "False",
+            "bb_pct": 0.72,
+            "news_count": 4,
+            "top_headline": "IonQ Posts Q2 Double Beat, Raises 2026 Outlook, Shares Rise",
+            "news_quality": 0.75,
+            "pe_trailing": 102.4,
+            "pe_forward": -35.5,
+            "earnings_growth": null
+          }
+        }
+      ],
+      "event_symbols": [
+        "DUOL",
+        "IONQ",
+        "LLY"
+      ],
+      "event_details": [
+        {
+          "symbol": "DUOL",
+          "trigger_type": "earnings_today",
+          "value": 1.0,
+          "threshold": 1.0,
+          "severity": "high"
+        },
+        {
+          "symbol": "IONQ",
+          "trigger_type": "earnings_today",
+          "value": 1.0,
+          "threshold": 1.0,
+          "severity": "high"
+        },
+        {
+          "symbol": "LLY",
+          "trigger_type": "earnings_today",
+          "value": 1.0,
+          "threshold": 1.0,
+          "severity": "high"
+        }
+      ],
+      "regime": "bull",
+      "vix_regime": "normal"
     }
   ],
   "debate_logs": [
-    {
-      "id": "debate_AFRM_20260625160836",
-      "symbol": "AFRM",
-      "ts": "2026-06-25T16:08:36.758006+00:00",
-      "bull_case": "R1 Bull(5): AFRM is structurally undervalued at a 0.7 PEG with 32.6% revenue growth, and a volume-backed breakout above $79.97 resistance would confirm the technical setup and compress that valuation gap toward the $83.3 consensus target. | R1 Bear(7): AFRM's 9.6% profit margin sitting on a 240.3 Debt/Equity ratio in a sustained high-rate environment means any credit loss deterioration doesn't just compress earnings \u2014 it structurally threatens solvency, and the bull's framing of leverage as 'normal for BNPL' is precisely the rationalization that precedes catastrophic drawdowns in credit-sensitive lenders. | R2 Bull(4): AFRM remains structurally undervalued at a 0.7 PEG with 32.6% revenue growth and a demonstrated credit improvement trajectory, but conviction is held at reduced levels pending a high-volume breakout confirmation above $79.97 that would validate institutional participation and de-risk the technical setup. | R2 Bear(6): AFRM's backward-looking credit improvement story does not neutralize the forward solvency risk embedded in a 240.3 D/E structure against a 9.6% profit margin in a still-elevated rate environment, and with weak technical confirmation and a base-effect-distorted PEG, the asymmetric downside of a credit cycle turn remains structurally underpriced.",
-      "bear_case": "Primary risk: Credit loss deterioration in a high-rate consumer environment pierces AFRM's 9.6% profit margin, triggering an earnings reversal that exposes the D/E of 240.3 as existential rather than structural \u2014 causing a swift re-rating well below current levels with no technical support until significantly lower prices. | Unresolved: [\"The bull's credit defense is entirely retrospective \u2014 citing improvement from 2022 peaks says nothing about forward deterioration if the consumer credit cycle turns in a sustained high-rate environment, which remains unaddressed\", \"The 'merchant-funded revenue model protects unit economics' argument does not quantify how much of the margin is actually insulated at various charge-off shock levels \u2014 it is qualitative reassurance, not stress-tested arithmetic\", 'A 240.3 D/E ratio means even a modest adverse credit event has non-linear capital structure consequences that analyst consensus targets almost certainly do not model under tail scenarios', \"No evidence was provided that institutional participation is materializing \u2014 the bull's own technical concession confirms the breakout thesis is unconfirmed, removing the near-term catalyst that would re-rate the stock toward the $83.3 consensus\"]",
-      "bull_score": 4,
-      "bear_score": 6,
-      "final_conviction": 6,
-      "decision": "watch"
-    },
-    {
-      "id": "debate_JPM_20260625161009",
-      "symbol": "JPM",
-      "ts": "2026-06-25T16:10:09.821285+00:00",
-      "bull_case": "R1 Bull(7): JPM's $50B buyback and dividend raise \u2014 backed by Fed stress test approval \u2014 create a durable, management-endorsed floor under the stock that technicals and fundamentals are now confirming with price breaking toward new highs. | R1 Bear(6): JPM's breakout narrative rests on a buyback catalyst that the market has already fully priced, leaving a volume-starved move near hard resistance with essentially zero analyst upside and a fund win rate that punishes 7-conviction entries in sideways regimes. | R2 Bull(6): JPM's structurally superior fundamentals \u2014 16.5% ROE, $50B buyback mechanical bid, and ADX-confirmed momentum \u2014 justify a reduced-size initial position with a defined breakout trigger at $343.45 on normalized volume, where the trade converts from anticipation to confirmation and fund process discipline is preserved. | R2 Bear(6): JPM's reduced-size entry framework is process-improved but thesis-unchanged: with consensus implying only 1% upside, a sideways macro regime, and a buyback bid too diffuse to defend near-term resistance, the risk-reward remains unfavorable and the breakout trigger at $343.45 on normalized volume has not yet fired \u2014 patience or avoidance dominates a reduced long here.",
-      "bear_case": "Primary risk: Entering at resistance ($343.45) on 0.43x volume in a sideways SPY regime with only 1% upside to consensus means the stop-loss gets hit before the buyback mechanics provide any meaningful price support, delivering another -13%+ loss that further degrades fund performance and confirms the conviction-7 calibration failure. | Unresolved: ['1% upside to consensus leaves zero fundamental margin of safety \u2014 buyback mechanical bid cannot offset a credit quality or NII miss that reprices fair value below $343', 'SPY sideways regime historically degrades breakout follow-through probability regardless of ADX reading, and the bull provided no regime-adjusted base rate to counter this', 'Fund-level conviction-7 calibration failure in sideways regimes is a process risk the bull reframed as sizing discipline but never actually refuted \u2014 a smaller bad trade is still a bad trade if the regime is wrong', 'The $50B buyback authorization is a multi-year program, not a near-term price floor; treasury desk execution is spread across quarters and cannot mechanically defend $343 as a support level in the next 30-day window']",
-      "bull_score": 6,
-      "bear_score": 6,
-      "final_conviction": 6,
-      "decision": "watch"
-    },
-    {
-      "id": "debate_CVS_20260625161152",
-      "symbol": "CVS",
-      "ts": "2026-06-25T16:11:52.176785+00:00",
-      "bull_case": "R1 Bull(6): CVS is a deeply undervalued earnings recovery story with confirmed trend momentum, and the bear's regulatory narrative is already priced into a stock trading at a 0.3 PEG \u2014 the asymmetry favors longs. | R1 Bear(7): CVS's 'earnings normalization' story rests entirely on a 63.1% EPS growth figure that the TTM-to-forward P/E gap exposes as a one-time accounting artifact rather than operational recovery, and at 0.7% net margin with debt/equity of 100.9, there is zero financial cushion if that inflection fails to materialize. | R2 Bull(4): CVS remains a credible earnings recovery trade at a trough valuation, but the Florida AG antitrust overhang and 0.34x volume non-confirmation in a sideways regime reduce the risk-reward enough to warrant a smaller position size and tighter stop discipline rather than abandonment of the long thesis. | R2 Bear(6): CVS is a value trap masquerading as a recovery trade \u2014 the bull's own concessions confirm that the EPS growth story is trough math, the breakout lacks institutional conviction, and the Florida AG antitrust risk sits on top of a balance sheet with no capacity to absorb the multi-year legal and operational drag that structural remedy investigations historically impose, leaving the stock vulnerable to simultaneous estimate cuts and multiple compression with no catalyst pathway to prevent it.",
-      "bear_case": "Primary risk: The forward EPS estimate \u2014 the entire foundation of the re-rating thesis \u2014 is revised down or missed due to Florida AG legal costs, settlement charges, or antitrust-driven operational constraints, leaving CVS stranded at a TTM P/E near 46 with sub-1% margins, 100.9 debt/equity, no financial flexibility to absorb the shock, and a stock that re-prices violently downward with no earnings story left to tell. | Unresolved: [\"The bull's '70% of $7 forward EPS is still cheap' argument assumes estimate cuts are moderate and orderly, but at sub-1% net margins any legal cost acceleration or insurance segment deterioration creates non-linear downside where estimate cuts compound with multiple compression simultaneously\", \"The claim that 'worst-case legal scenarios are embedded in price' is unsubstantiated \u2014 the stock being down 50% from highs reflects general business deterioration, not specifically antitrust structural remedy risk which has not been priced because charges have not been filed\", 'Debt/equity of 100.9 means CVS cannot use the balance sheet as a shock absorber if forward estimates miss \u2014 refinancing risk in a still-elevated rate environment adds a second non-operational pressure the bull did not address']",
-      "bull_score": 4,
-      "bear_score": 6,
-      "final_conviction": 6,
-      "decision": "watch"
-    },
     {
       "id": "debate_LRCX_20260625161326",
       "symbol": "LRCX",
@@ -60202,6 +60292,39 @@
       "bear_score": 6,
       "final_conviction": 5,
       "decision": "watch"
+    },
+    {
+      "id": "debate_LLY_20260805212357",
+      "symbol": "LLY",
+      "ts": "2026-08-05T21:23:57.230719+00:00",
+      "bull_case": "R1 Bull(4): LLY's massive Q2 earnings beat, guidance raise to $85-87B, and 2.26x volume surge signal institutional accumulation in a fundamentally exceptional business \u2014 but the weak technical trend and a 20% win rate in this sideways regime demand strict position sizing. | R1 Bear(7): In a sideways regime where our fund is destroying capital at -6.47% expectancy per trade, buying LLY near 52-week highs with no technical confirmation and a 139% debt/equity ratio is a bet that this time will be different \u2014 and our track record says it won't be. | R2 Bull(3): LLY's fundamental quality and GLP-1 franchise remain exceptional, but the combination of a 20% win rate in the current sideways regime, near-52-week-high entry with no technical confirmation, and genuine TYPE A comp-trap risk at the next earnings event justifies maintaining a small, strictly risk-managed position rather than a full conviction long. | R2 Bear(7): With our fund at -6.47% expectancy per trade in a sideways regime, entering LLY near 52-week highs into an unresolved 169.9% EPS comp trap \u2014 on a stock carrying 139% debt/equity and zero technical confirmation \u2014 remains a negative-expectancy bet that the bull's own 3/10 conviction effectively concedes.",
+      "bear_case": "Primary risk: LLY reports a 'good but not great' quarter against its own 169.9% EPS growth comps, the stock re-rates down 15-20% from near 52-week highs with 139% debt/equity providing no fundamental floor, and we take another -8.8% average-loss hit in a regime where we are already at -6.47% expectancy \u2014 exactly replicating the pattern that produced our current 20% win rate. | Unresolved: [\"The 169.9% EPS growth comp remains a structural mathematical problem regardless of management guidance optimism \u2014 guidance raises are issued for consensus management, not as guarantees against a 'good but not great' beat that disappoints a high-multiple stock near 52-week highs\", 'The 139% debt/equity ratio still provides no fundamental floor if the growth narrative cracks, meaning a sentiment-driven re-rate has no balance sheet cushion to arrest the decline', \"Our fund's 20% win rate in the current sideways regime means even a 'small, strictly risk-managed' long position is deploying capital into a negative-expectancy environment, and the bull offered no mechanism to change that regime dynamic\"]",
+      "bull_score": 3,
+      "bear_score": 7,
+      "final_conviction": 5,
+      "decision": "watch"
+    },
+    {
+      "id": "debate_DUOL_20260805212518",
+      "symbol": "DUOL",
+      "ts": "2026-08-05T21:25:18.618704+00:00",
+      "bull_case": "R1 Bull(2): Duolingo's 26.5% revenue growth and 38.4% profit margins represent genuine fundamental quality that the market is temporarily discounting on guidance noise, but the weight of technical, sentiment, and performance evidence makes this a low-conviction speculative call at best. | R1 Bear(7): DUOL's guidance cuts signal genuine earnings deceleration, and entering this trade in a fund with a -6.47% expectancy and 20% win rate in this exact sideways regime is capital destruction on a probabilistic basis regardless of the fundamental story. | R2 Bull(1): DUOL's genuine fundamental quality \u2014 26.5% revenue growth and 38.4% margins \u2014 provides a real business floor, but with guidance deceleration confirmed, Debt/Equity of 6.6 amplifying downside risk, no near-term catalyst identified, and the fund's own track record showing a -6.47% expectancy in this exact market regime, the honest bull case is a speculative, minimal-size watch-list position contingent on a positive Q3 user-growth datapoint that does not yet exist. | R2 Bear(8): With the bull conceding guidance deceleration, structural fund-level negative expectancy, and the absence of any reversal catalyst, DUOL represents a high-leverage, decelerating-growth stock trading at a premium multiple with no cushion \u2014 making the bear case not merely higher-probability but the only intellectually defensible position until a positive Q3 user-growth datapoint materially changes the evidence set.",
+      "bear_case": "Primary risk: Guidance deceleration proves structural rather than temporary: if Q3 results confirm the revenue miss embedded in management's own guidance, the elevated forward P/E multiple collapses further, the high debt load becomes a tangible refinancing concern, and the stock \u2014 already 71% off its high with no technical momentum \u2014 has no multiple-expansion cushion to absorb the blow, producing a loss that far exceeds the -8.8% average loss this fund is already sustaining. | Unresolved: ['Guidance deceleration remains unresolved as structural vs. temporary \u2014 no Q3 datapoint yet exists to confirm or deny, and the elevated forward P/E with Debt/Equity of 6.6 means the cost of being wrong is asymmetrically large', 'No named catalyst identified by the bull to reverse 71%-off-high technical deterioration, leaving the stock exposed to continued multiple compression with no floor', \"Fund's -6.47% expectancy in this exact sideways regime is a probabilistic disqualifier the bull fully conceded but does not eliminate\"]",
+      "bull_score": 1,
+      "bear_score": 8,
+      "final_conviction": 3,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_IONQ_20260805212656",
+      "symbol": "IONQ",
+      "ts": "2026-08-05T21:26:56.446864+00:00",
+      "bull_case": "R1 Bull(4): IonQ's 61% revenue beat and guidance raise to $280-290M against a $235.7M consensus represents a genuine fundamental inflection that the market is only beginning to reprice, with RSI at 48 leaving significant technical room before overbought territory. | R1 Bear(7): IonQ's revenue beat is real but irrelevant to valuation when the company trades at extreme speculative multiples, is expected to return to losses (negative Forward P/E), and sits 53% below its 52-week high in a fund that is already destroying capital at -6.47% expectancy per trade. | R2 Bull(3): IonQ's clean 61% revenue beat and guidance raise represent genuine commercial acceleration in quantum-as-a-service bookings that the market has not yet fully repriced, but the non-cash profit distortion, confirmed EMA downtrend, and our fund's -6.47% expectancy in the current sideways regime limit conviction to a small speculative position with hard stop discipline rather than a high-confidence trade. | R2 Bear(6): The revenue beat is genuine but insufficient to justify holding a name 53% off its high with a negative Forward P/E, confirmed EMA downtrend, and extreme speculative valuation in a fund already generating -6.47% expectancy per trade where the bull himself concedes conviction at 3/10 \u2014 the asymmetric downside is unresolved.",
+      "bear_case": "Primary risk: The 174.9% profit margin collapses in forward quarters as it is a non-cash distortion, the negative Forward P/E materializes as expected losses resume, and institutional re-rating reverses into multiple compression \u2014 leaving us long a 53%-off-high speculative name in a sideways market with a fund already running at -6.47% expectancy per trade and no stop discipline to contain the -8.8% average loss pattern. | Unresolved: ['The bull never addresses how the negative Forward P/E resolves \u2014 real revenue growth does not prevent the expected return to operating losses from triggering multiple compression when the market regime is already sideways and institutional holders are de-risking speculative names', \"The 53% drawdown from highs with confirmed EMA10/30 downtrend means the 'unpriced delta' argument requires a catalyst strong enough to reverse institutional sentiment in a fund environment with -6.47% expectancy \u2014 the bull provides no mechanism for that re-rating\", 'Position sizing and stop discipline are acknowledged as constraints by the bull but are fund execution risks, not thesis validators \u2014 a 3/10 conviction bull effectively agrees the risk/reward does not justify the trade in current conditions']",
+      "bull_score": 3,
+      "bear_score": 6,
+      "final_conviction": 4,
+      "decision": "skip"
     }
   ],
   "position_reviews": [
@@ -72302,6 +72425,19 @@
       "rationale": "The original thesis remains intact: sentiment is strongly bullish (9/10) driven by a massive Q2 earnings beat, raised FY2026 guidance, and expanding GLP-1 distribution channels, while price remains well above the hard stop at $1,073.69 and has not shown a confirmed failed breakout at the $1,232\u2013$1,249.45 resistance zone yet.",
       "original_thesis_check": "Original thesis was not recorded, but the original key risk centered on price behavior near the $1,232\u2013$1,249.45 resistance zone and whether the pullback would threaten the hard stop \u2014 neither condition has triggered; the hard stop has not been threatened, and price has not yet reached the resistance zone to test for a failed breakout.",
       "key_risk_to_monitor": "Price behavior as LLY approaches the $1,232\u2013$1,249.45 resistance zone \u2014 specifically watch for a failed breakout or high-volume reversal candle at that level, as the MACD remaining below signal and the 2x volume spike without directional confirmation suggest the next test of that zone will be decisive.",
+      "current_bull_case": "R1 Bull(n/a): not re-run in lite review mode | R2 Bull(n/a): not re-run in lite review mode",
+      "current_bear_case": "R1 Bear(n/a): not re-run in lite review mode | R2 Bear(n/a): not re-run in lite review mode"
+    },
+    {
+      "trade_id": "LLY_20260519190455",
+      "symbol": "LLY",
+      "ts": "2026-08-05T21:22:19.943545+00:00",
+      "action": "hold",
+      "conviction": 7,
+      "thesis_status": "intact",
+      "rationale": "The original thesis remains intact: price is advancing toward the $1,232\u2013$1,249.45 resistance zone that was identified as the decisive test level, and the massive Q2 earnings beat with raised FY2026 guidance strengthens the fundamental underpinning of that move. The original key risk \u2014 a failed breakout or high-volume reversal at that zone \u2014 has not yet been triggered.",
+      "original_thesis_check": "Cannot fully verify the original thesis as it was not recorded, but the original key risk explicitly defined the $1,232\u2013$1,249.45 resistance zone as the critical decision point; price at $1,169.86 has not yet reached that zone, so no exit or trim trigger has been fired. The noted MACD-below-signal and unconfirmed volume spike risks flagged at entry remain present per today's technical read, consistent with the original caution.",
+      "key_risk_to_monitor": "Price behavior as LLY approaches and tests the $1,232\u2013$1,249.45 resistance zone \u2014 specifically watch for a failed breakout, a high-volume reversal candle, or MACD remaining below signal at that level, any of which would constitute the thesis-breaking signal identified at entry.",
       "current_bull_case": "R1 Bull(n/a): not re-run in lite review mode | R2 Bull(n/a): not re-run in lite review mode",
       "current_bear_case": "R1 Bear(n/a): not re-run in lite review mode | R2 Bear(n/a): not re-run in lite review mode"
     }
@@ -88028,6 +88164,57 @@
       "correlation": 0.0,
       "pm_action": "watch",
       "pm_verdict": "IonQ has real catalyst material in the EPB contract and Sandia MoU, but the 25% surge on 0.93x average volume into hard resistance at $46 is an unresolved TYPE-A bear point \u2014 the bull conceded it directly, and the exhaustion/crowding guardrail requires a -1 conviction adjustment for distribution-pattern volume on a parabolic move; with fund expectancy at -5.31% and a sideways regime, the rubric places this at \u22645 with one unresolved TYPE-A point, making this a watch until volume confirms and resistance breaks.",
+      "risk_category": "conviction"
+    },
+    {
+      "ts": "2026-08-05T21:23:57.050787+00:00",
+      "symbol": "LLY",
+      "action": "hold",
+      "reason": "Already holding LLY",
+      "conviction": 5,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 1169.86,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "watch",
+      "pm_verdict": "LLY's fundamental and sentiment signals are genuinely exceptional (8/10 and 9/10 respectively), but an unresolved TYPE-A comp-trap risk on the next earnings print \u2014 against 169.9% EPS growth comps on a stock sitting near 52-week highs with no technical confirmation (ADX below 25, MACD below signal) \u2014 keeps this below the 6/10 threshold required for even the quality-compounder lane, and our fund's -6.47% expectancy in the current sideways regime provides zero margin for faith-based entries.",
+      "risk_category": "already_holding"
+    },
+    {
+      "ts": "2026-08-05T21:25:18.440524+00:00",
+      "symbol": "DUOL",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 Management's own Q3 revenue guidance came in below consensus immediately after the Q2 beat \u2014 this is a trade-specific, dated, TYPE-A deceleration signal that the bull fully conceded and could not rebut with any named upcoming catalyst, placing the conviction score firmly in the \u22645 band per the rubric regardless of DUOL's genuine margin quality.",
+      "conviction": 3,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 135.32,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "Every structural condition for a skip is met simultaneously: a TYPE-A guidance-deceleration signal confirmed by management's own Q3 guidance miss, no named near-term catalyst to reverse it, analyst signals that are neutral-to-bearish across all three dimensions, and a fund-level expectancy of -5.31% in this exact sideways regime \u2014 making a position here capital destruction on a probabilistic basis, not an edge.",
+      "risk_category": "conviction"
+    },
+    {
+      "ts": "2026-08-05T21:26:56.213294+00:00",
+      "symbol": "IONQ",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 The bull's own Round 2 concession that this is a counter-trend bounce in a confirmed EMA downtrend with a 3/10 conviction level is the single most disqualifying signal \u2014 when the advocate for the trade explicitly agrees the risk/reward does not justify entry under current fund conditions, the debate is effectively resolved against the trade.",
+      "conviction": 4,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 39.93,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "The 61% revenue beat is real and the sentiment signal is genuinely bullish (9/10), but an unresolved TYPE-A bear point \u2014 negative Forward P/E with no mechanism for multiple expansion in a sideways regime \u2014 combines with a confirmed EMA10/30 downtrend, a fund running -5.31% expectancy per trade, and a bull who self-reduced to 3/10 conviction after conceding the core structural risks; the evidence does not clear the 6/10 threshold required to deploy capital here.",
       "risk_category": "conviction"
     }
   ],
@@ -114312,42 +114499,6 @@
   ],
   "tech_shadow": [
     {
-      "ts": "2026-07-14T15:02:29.449564+00:00",
-      "symbol": "BAC",
-      "llm_signal": "bullish",
-      "llm_strength": 8,
-      "det_signal": "bullish",
-      "det_strength": 10,
-      "agree": true
-    },
-    {
-      "ts": "2026-07-14T15:03:44.399147+00:00",
-      "symbol": "GS",
-      "llm_signal": "bullish",
-      "llm_strength": 7,
-      "det_signal": "neutral",
-      "det_strength": 7,
-      "agree": false
-    },
-    {
-      "ts": "2026-07-14T15:05:07.868671+00:00",
-      "symbol": "JPM",
-      "llm_signal": "bullish",
-      "llm_strength": 7,
-      "det_signal": "bullish",
-      "det_strength": 10,
-      "agree": true
-    },
-    {
-      "ts": "2026-07-14T15:06:11.671452+00:00",
-      "symbol": "C",
-      "llm_signal": "bullish",
-      "llm_strength": 5,
-      "det_signal": "neutral",
-      "det_strength": 5,
-      "agree": false
-    },
-    {
       "ts": "2026-07-14T15:07:47.509285+00:00",
       "symbol": "HOOD",
       "llm_signal": "neutral",
@@ -118804,6 +118955,42 @@
     },
     {
       "ts": "2026-08-05T19:52:31.733688+00:00",
+      "symbol": "IONQ",
+      "llm_signal": "bullish",
+      "llm_strength": 6,
+      "det_signal": "neutral",
+      "det_strength": 4,
+      "agree": false
+    },
+    {
+      "ts": "2026-08-05T21:22:08.479769+00:00",
+      "symbol": "LLY",
+      "llm_signal": "neutral",
+      "llm_strength": 4,
+      "det_signal": "neutral",
+      "det_strength": 4,
+      "agree": true
+    },
+    {
+      "ts": "2026-08-05T21:22:30.877865+00:00",
+      "symbol": "LLY",
+      "llm_signal": "neutral",
+      "llm_strength": 4,
+      "det_signal": "neutral",
+      "det_strength": 4,
+      "agree": true
+    },
+    {
+      "ts": "2026-08-05T21:24:01.446615+00:00",
+      "symbol": "DUOL",
+      "llm_signal": "neutral",
+      "llm_strength": 4,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": false
+    },
+    {
+      "ts": "2026-08-05T21:25:23.010213+00:00",
       "symbol": "IONQ",
       "llm_signal": "bullish",
       "llm_strength": 6,
@@ -124815,6 +125002,39 @@
           "size_pct": 0.06,
           "position_usd": 6084.19,
           "stop_price": 36.89,
+          "sector": "Technology"
+        }
+      ],
+      "skipped": [
+        {
+          "symbol": "LLY",
+          "reason": "held"
+        }
+      ]
+    },
+    {
+      "ts": "2026-08-05T21:22:25.944182+00:00",
+      "regime": "bull",
+      "vix_regime": "normal",
+      "run_reason": "sentinel_trigger",
+      "n_candidates": 3,
+      "would_buy": [
+        {
+          "symbol": "DUOL",
+          "composite_score": 0.446,
+          "price": 135.32,
+          "size_pct": 0.06,
+          "position_usd": 6084.89,
+          "stop_price": 124.49,
+          "sector": "Technology"
+        },
+        {
+          "symbol": "IONQ",
+          "composite_score": 0.213,
+          "price": 39.93,
+          "size_pct": 0.06,
+          "position_usd": 6084.89,
+          "stop_price": 36.74,
           "sector": "Technology"
         }
       ],

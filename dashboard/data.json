@@ -138683,6 +138683,43 @@
         }
       },
       "ts": "2026-07-31T23:32:15.841918+00:00"
+    },
+    {
+      "as_of": "2026-08-07",
+      "lookback_days": 45,
+      "primary_window_days": 10,
+      "conviction_calibration": {
+        "6": {
+          "n": 19,
+          "avg_pnl_pct": -0.4,
+          "win_rate": 37.0
+        },
+        "7": {
+          "n": 11,
+          "avg_pnl_pct": 5.4,
+          "win_rate": 36.0
+        }
+      },
+      "closed_trades": 30,
+      "skip_precision_pct": 68.4,
+      "trim_precision_pct": 35.7,
+      "baseline_vs_pipeline": {
+        "baseline": {
+          "label": "baseline_topN",
+          "n": 146,
+          "n_decided": 94,
+          "avg_excess_pct": -1.42,
+          "hit_rate_pct": 47.9
+        },
+        "pipeline": {
+          "label": "live_pipeline",
+          "n": 15,
+          "n_decided": 13,
+          "avg_excess_pct": -0.66,
+          "hit_rate_pct": 61.5
+        }
+      },
+      "ts": "2026-08-07T23:07:40.843253+00:00"
     }
   ]
 }

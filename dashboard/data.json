@@ -2382,6 +2382,12 @@
       "portfolio_value": 101457.67,
       "cash": 90769.44,
       "spy_price": 773.39
+    },
+    {
+      "ts": "2026-08-10T19:13:34.354390+00:00",
+      "portfolio_value": 101458.05,
+      "cash": 90769.44,
+      "spy_price": 773.36
     }
   ],
   "trades": [
@@ -3928,9 +3934,9 @@
           "reason": "Private credit contagion risk has escalated from theoretical to active (Blue Owl, Apollo, Ares stress), the bull conceded TYPE A pipeline threat, institutional bid absence below $216 leaves a 5%+ gap to $205.83 support with no technical anchor, and the 502x leveraged balance sheet introduces non-linear downside risk under simultaneous credit stress and client redemption pressure \u2014 all of which materially weaken but do not break the core thesis."
         }
       ],
-      "current_price": 215.43,
-      "unrealized_pl": 255.75,
-      "unrealized_plpc": 0.06479,
+      "current_price": 215.4496,
+      "unrealized_pl": 256.13,
+      "unrealized_plpc": 0.06489,
       "avg_entry": 202.3212,
       "trim_pnl": 668.66,
       "stop_order_id": "405fa70a-08e3-4d96-b12a-25f7098b7a4a"
@@ -3954,9 +3960,9 @@
       "sector": "Financial Services",
       "trim_pnl": 0.0,
       "is_remnant": false,
-      "current_price": 108.32,
-      "unrealized_pl": 237.13,
-      "unrealized_plpc": 0.0573,
+      "current_price": 108.325,
+      "unrealized_pl": 237.33,
+      "unrealized_plpc": 0.05735,
       "avg_entry": 102.45,
       "last_review_ts": "2026-08-10T17:46:40.410652+00:00",
       "last_review_conviction": 6,
@@ -55956,31 +55962,90 @@
       ],
       "regime": "bull",
       "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-08-10T19:13:34.533023+00:00",
+      "run_type": "midday",
+      "candidates": [
+        "RKLB",
+        "HIMS"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "sentinel_trigger",
+      "candidate_details": [
+        {
+          "symbol": "RKLB",
+          "composite_score": 0.2907,
+          "signals": {
+            "growth_quality": "unknown",
+            "rs_vs_sector_pct": 2.5,
+            "sector": "Industrials",
+            "sector_etf": "XLI",
+            "pct_of_52wk_range": 0.38,
+            "52wk_high": 151.0,
+            "volume_spike_ratio": 1.16,
+            "volume_spike": false,
+            "rsi": 53.2,
+            "macd_crossover": "False",
+            "bb_pct": 0.9,
+            "news_count": 5,
+            "top_headline": "Rocket Lab Reports Earnings Tonight: What Do Prediction Markets Say About Neutron Launches in 2026?",
+            "news_quality": 0.0,
+            "pe_trailing": null,
+            "pe_forward": 9663.9,
+            "earnings_growth": null
+          }
+        },
+        {
+          "symbol": "HIMS",
+          "composite_score": 0.138,
+          "signals": {
+            "growth_quality": "unknown",
+            "rs_vs_sector_pct": -11.7,
+            "sector": "Healthcare",
+            "sector_etf": "XLV",
+            "pct_of_52wk_range": 0.35,
+            "52wk_high": 65.3,
+            "volume_spike_ratio": 0.54,
+            "volume_spike": false,
+            "rsi": 51.4,
+            "macd_crossover": "False",
+            "bb_pct": 0.55,
+            "news_count": 2,
+            "top_headline": "Hims & Hers Stock Missed Estimates Last Quarter \u2014 Can It Turn the Page Tonight?",
+            "news_quality": 0.0,
+            "pe_trailing": null,
+            "pe_forward": 24.3,
+            "earnings_growth": null
+          }
+        }
+      ],
+      "event_symbols": [
+        "HIMS",
+        "RKLB"
+      ],
+      "event_details": [
+        {
+          "symbol": "HIMS",
+          "trigger_type": "earnings_today",
+          "value": 1.0,
+          "threshold": 1.0,
+          "severity": "high"
+        },
+        {
+          "symbol": "RKLB",
+          "trigger_type": "earnings_today",
+          "value": 1.0,
+          "threshold": 1.0,
+          "severity": "high"
+        }
+      ],
+      "regime": "bull",
+      "vix_regime": "normal"
     }
   ],
   "debate_logs": [
-    {
-      "id": "debate_AMAT_20260626211644",
-      "symbol": "AMAT",
-      "ts": "2026-06-26T21:16:44.401134+00:00",
-      "bull_case": "R1 Bull(7): AMAT is experiencing a rare confluence of institutional accumulation, earnings acceleration, and a genuine product catalyst in 3D chip architecture \u2014 the kind of setup that breaks out to new highs before consensus catches up. | R1 Bear(6): AMAT's bull case rests on a forward P/E compression narrative that requires flawless earnings acceleration to justify \u2014 but the revenue growth of 11.4% versus 33.5% EPS growth exposes a margin-expansion story that is mathematically unsustainable, and in a sideways market regime with a 40% win rate on recent trades, paying 59x TTM for that fragility is how capital gets quietly destroyed. | R2 Bull(6): AMAT's margin expansion is product-mix-driven and has a multi-year runway in Gate-All-Around and advanced packaging transitions, the 3D chip architecture catalyst is real and underpenetrated in analyst models, and institutional accumulation signals are genuine \u2014 but the optimal entry was before the 9% surge, and current buyers must accept elevated near-term drawdown risk at hard technical resistance while the thesis plays out over 2-3 quarters. | R2 Bear(7): AMAT's bull case requires simultaneous execution of margin expansion, buyback continuation, and GAA/advanced packaging mix shift over 2-3 quarters at a 59x TTM multiple after a 9% gap-up at hard technical resistance \u2014 the bull's own concessions confirm that the entry is tactically indefensible and the EPS math is fragile, making this a thesis that is right to hold but wrong to buy here, which in a stop-prone fund context is functionally the same as being wrong.",
-      "bear_case": "Primary risk: A single quarter of earnings disappointment \u2014 entirely plausible given revenue growth of only 11.4% cannot sustainably support 33.5% EPS growth \u2014 collapses the forward P/E compression narrative and exposes investors to the full weight of a 59x TTM multiple at the top of a 300%+ multi-year run, with no fundamental floor until significantly lower prices. | Unresolved: [\"The bull's 52%+ gross margin path to 2-3 node transitions is a projection built on a projection \u2014 AMAT must win GAA and advanced packaging tool share at higher ASPs while facing intensifying competition from KLAC and LRCX for the same transition dollars, and no evidence was provided that AMAT's win rates in these specific categories justify the incremental margin assumption\", \"The forward 38.5x P/E being 'consensus undermodeling' is unfalsifiable until earnings \u2014 if consensus has historically undermodeled AMAT, it is equally possible the current consensus has overcorrected upward after the 300% run, meaning the forward multiple is not a floor but a ceiling\", \"A 40% fund win rate in a sideways SPY regime with three recent stop-outs means the position sizing and stop discipline required to survive 'right in 2-3 quarters' will likely force an exit at the wrong time before the thesis resolves \u2014 the bull acknowledged this and provided no solution\"]",
-      "bull_score": 6,
-      "bear_score": 7,
-      "final_conviction": 6,
-      "decision": "watch"
-    },
-    {
-      "id": "debate_LLY_20260626211819",
-      "symbol": "LLY",
-      "ts": "2026-06-26T21:18:19.597601+00:00",
-      "bull_case": "R1 Bull(8): LLY is a rare convergence of fundamental quality and technical momentum \u2014 170% EPS growth trading at a PEG of 1.5 with institutional volume surging 2.35x confirms this breakout has real buyers, not noise. | R1 Bear(6): LLY's 139% debt/equity ratio combined with 169.9% EPS growth that is explicitly flagged as unsustainable creates a lethal combination: when the growth rate normalizes, the market re-rates the multiple downward while rising debt service costs compress the margins that justified the premium \u2014 the valuation math breaks simultaneously from two directions. | R2 Bull(7): LLY remains a high-conviction growth compounder where the combination of ADX 31.7-confirmed momentum, 2.35x institutional volume accumulation, and a pipeline with multiple independent revenue drivers justifies holding through near-term technical extension, with the only legitimate caution being entry timing at resistance rather than thesis integrity. | R2 Bear(5): While the forward P/E partially discounts EPS deceleration, LLY's 139% debt/equity ratio still creates asymmetric downside if GLP-1 pricing pressure or a single earnings miss forces the market to reassess whether durable above-market growth justifies a premium multiple during a period of constrained balance sheet flexibility.",
-      "bear_case": "Primary risk: EPS growth deceleration triggers simultaneous multiple compression and debt cost pressure: when year-over-year comparisons expose the unsustainability of 169.9% growth, the market re-rates from a growth premium to a transitional multiple while the 139% debt/equity ratio limits the balance sheet buffer \u2014 a 30-40% drawdown from current levels is plausible before a new floor is established. | Unresolved: [\"The bull asserts EBITDA coverage makes debt manageable but did not address the specific scenario where revenue growth disappoints consensus \u2014 if analyst estimates keep getting revised upward and LLY misses even a modestly elevated bar, the debt/equity ratio of 139% leaves far less margin for error than the bull's base-case cash generation implies\", 'Pipeline diversification into oncology and immunology is real but revenue contribution timelines are uncertain, meaning near-term earnings are still heavily concentrated in GLP-1 competitive dynamics where Novo Nordisk and emerging entrants could compress pricing power before the pipeline matures', 'The bull conceded entry timing risk at $1,215 resistance in a sideways SPY regime but did not resolve whether institutional accumulation at 2.35x volume is front-running a catalyst or distributing into retail momentum \u2014 that ambiguity is unresolved']",
-      "bull_score": 7,
-      "bear_score": 5,
-      "final_conviction": 7,
-      "decision": "buy"
-    },
     {
       "id": "debate_DDOG_20260626211952",
       "symbol": "DDOG",
@@ -61457,6 +61522,28 @@
       "bull_score": 4,
       "bear_score": 7,
       "final_conviction": 5,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_RKLB_20260810191133",
+      "symbol": "RKLB",
+      "ts": "2026-08-10T19:11:33.727338+00:00",
+      "bull_case": "R1 Bull(4): RKLB is in a technically confirmed momentum breakout \u2014 ADX 31.6, 14% surge on 1.16x volume, 41% off July lows \u2014 heading directly into an earnings catalyst that could rerate the stock if Neutron milestones are affirmed, but the valuation is genuinely indefensible and this is a trade, not an investment. | R1 Bear(7): RKLB is a binary earnings gamble with catastrophically asymmetric payoff structure \u2014 a fund with negative expectancy (-1.35% per trade, avg loss -8.0% vs avg win +3.1%) cannot afford to hold a pre-profit, Debt/Equity 6.1 momentum name into a high-IV earnings event where disappointment on Neutron timelines could trigger a gap-down that dwarfs any technical upside target. | R2 Bull(3): RKLB remains a technically confirmed momentum trade into a binary earnings catalyst with genuine upside if Neutron milestones hold, but the gap-down risk from timeline slippage and the fund's negative expectancy regime reduce this to a sub-1% position-size speculation, not a conviction long \u2014 enter small, define the exit as the post-earnings open, and treat it as an event trade rather than a momentum continuation. | R2 Bear(5): The bull's position-sizing concession is correct but self-defeating \u2014 reducing to 0.5% allocation is not a trade thesis, it is a confession that the risk-reward does not justify standard sizing, and in a negative-expectancy fund even a properly-sized speculative loss on a high-IV binary event with 6.1 Debt/Equity downside leverage is a drag without a demonstrated edge to offset it.",
+      "bear_case": "Primary risk: Neutron timeline delay or cash burn escalation disclosed at earnings triggers a gap-down that bypasses any reasonable stop, converting what the bull frames as a 'binary catalyst in either direction' into a realized -15% to -25% loss on a fund that already runs negative expectancy \u2014 with Debt/Equity of 6.1 adding the secondary risk that bad earnings accelerate dilutive financing speculation, removing the technical floor entirely. | Unresolved: [\"Position sizing does not resolve the negative expectancy math \u2014 even at 0.5% allocation, a -20% gap still produces a realized loss in a fund that already loses more than it wins, and the bull's reframe accepts the trade rather than justifying it on edge\", 'Debt/Equity of 6.1 means a disappointing earnings print could simultaneously trigger dilutive financing speculation that removes the technical floor and extends the drawdown well beyond the initial gap, a dynamic the bull did not address beyond acknowledging gap risk', 'The bull concedes IV is elevated but still advocates entry without an options structure to define downside \u2014 paying rich premium for undefined risk on a pre-profit name is an unresolved cost that degrades the already-negative expectancy of this specific setup']",
+      "bull_score": 3,
+      "bear_score": 5,
+      "final_conviction": 4,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_HIMS_20260810191333",
+      "symbol": "HIMS",
+      "ts": "2026-08-10T19:13:33.570962+00:00",
+      "bull_case": "R1 Bull(2): HIMS offers a speculative mean-reversion setup from deeply oversold levels (-51% off 52-week high) with a reasonable forward valuation, but the evidence base is too weak to support meaningful conviction. | R1 Bear(7): HIMS is a capital destruction trap: a company with a 253.7 Debt/Equity ratio, near-zero margins, and decelerating revenue growth heading into a confirmed expected loss quarter \u2014 where the 'cheap valuation' narrative collapses the moment you realize there are no TTM earnings to anchor the P/E. | R2 Bull(1): HIMS remains a speculative mean-reversion candidate on a longer time horizon given its oversold technical positioning, but the imminent Q2 earnings event with consensus forecasting a loss, absent institutional accumulation, and no identifiable short-squeeze structure reduces near-term conviction to minimal \u2014 this is a watch-and-reassess situation post-earnings rather than an actionable entry today. | R2 Bear(8): HIMS is an actionable short into Q2 earnings: the bull's own capitulation to 1/10 conviction confirms that the capital structure risk, binary loss event, decelerating growth multiple, and absent institutional accumulation collectively leave no credible near-term floor \u2014 making the -51% drawdown an ongoing trend rather than a mean-reversion opportunity.",
+      "bear_case": "Primary risk: Q2 earnings confirm the expected loss with no upside guidance revision, triggering a second leg down in a stock already -51% off highs \u2014 with no technical support visible, no institutional accumulation evident, and a capital structure that forecloses the ability to buy back stock or signal confidence, leaving retail holders with no floor and a fund with an -8.0% average loss on losing trades against a -1.35% expectancy backdrop. | Unresolved: ['Q2 confirmed loss with no upside guidance revision triggering a second leg down from already -51% off highs with no technical floor', '253.7 Debt/Equity ratio foreclosing any management confidence signal via buybacks, leaving retail holders structurally exposed', 'Revenue growth deceleration to 3.8% rendering the 24.3x Forward P/E and 2.1 PEG entirely indefensible even on a beat-and-raise scenario', 'Absence of institutional accumulation (0.54x volume ratio) meaning no identified buyer of size exists to absorb post-earnings selling pressure', 'No short-squeeze structure confirmed, eliminating the only plausible near-term bull catalyst']",
+      "bull_score": 1,
+      "bear_score": 8,
+      "final_conviction": 2,
       "decision": "skip"
     }
   ],
@@ -90152,6 +90239,40 @@
       "pm_action": "skip",
       "pm_verdict": "MSFT's technical and fundamental quality is genuine, but two unresolved TYPE-A bear points \u2014 a low-volume breakout (0.45x) into RSI 79.4 with a partially-priced September catalyst that introduces explicit sell-the-news risk \u2014 combine with this fund's documented -8.0% average loss to create a mathematically negative expectancy setup that no position-sizing adjustment can rehabilitate at this entry point.",
       "risk_category": "pm_decision"
+    },
+    {
+      "ts": "2026-08-10T19:11:33.547119+00:00",
+      "symbol": "RKLB",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 The unresolved TYPE-A bear point: a binary earnings event with elevated IV, Debt/Equity 6.1, and a pre-profit business model creates a credible -15% to -25% gap risk that bypasses stop discipline entirely \u2014 and the bull's only rebuttal was to shrink the position, which concedes the absence of edge rather than demonstrating it. Per the Conviction Rubric, an unresolved TYPE-A point caps the score at \u22645 regardless of technical regime.",
+      "conviction": 4,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 80.5,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "RKLB has real technical momentum (ADX 31.6, volume-confirmed breakout) and a genuine earnings catalyst, but an unresolved TYPE-A bear point \u2014 gap-down risk from Neutron timeline disappointment at an imminent binary event, in a fund running negative expectancy with no ability to stop out of a gap \u2014 is not neutralized by position-sizing concessions; it is merely made survivable, which is not the same as having edge.",
+      "risk_category": "conviction"
+    },
+    {
+      "ts": "2026-08-10T19:13:33.394912+00:00",
+      "symbol": "HIMS",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 The imminent Q2 earnings event with consensus forecasting a confirmed loss is an unresolved TYPE-A bear point that was never concretely rebutted \u2014 the bull explicitly conceded it, eliminating the only near-term catalyst that could justify entry and leaving only downside optionality.",
+      "conviction": 2,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 31.8,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "HIMS presents a TYPE-A binary earnings event with analyst consensus forecasting a confirmed Q2 loss, no institutional accumulation at 0.54x volume, and a bull who capitulated to 1/10 conviction \u2014 there is no credible near-term floor and the fund's own negative expectancy (-3.98%) makes speculative binary bets structurally indefensible.",
+      "risk_category": "pm_decision"
     }
   ],
   "watchlists": [
@@ -116411,24 +116532,6 @@
   ],
   "tech_shadow": [
     {
-      "ts": "2026-07-15T15:08:58.983093+00:00",
-      "symbol": "META",
-      "llm_signal": "bullish",
-      "llm_strength": 7,
-      "det_signal": "bullish",
-      "det_strength": 8,
-      "agree": true
-    },
-    {
-      "ts": "2026-07-15T15:09:16.524978+00:00",
-      "symbol": "PLTR",
-      "llm_signal": "bullish",
-      "llm_strength": 5,
-      "det_signal": "neutral",
-      "det_strength": 7,
-      "agree": false
-    },
-    {
       "ts": "2026-07-15T15:09:37.138757+00:00",
       "symbol": "BAC",
       "llm_signal": "bullish",
@@ -120908,6 +121011,24 @@
       "llm_strength": 7,
       "det_signal": "bullish",
       "det_strength": 10,
+      "agree": true
+    },
+    {
+      "ts": "2026-08-10T19:09:43.322036+00:00",
+      "symbol": "RKLB",
+      "llm_signal": "bullish",
+      "llm_strength": 7,
+      "det_signal": "neutral",
+      "det_strength": 5,
+      "agree": false
+    },
+    {
+      "ts": "2026-08-10T19:11:45.631340+00:00",
+      "symbol": "HIMS",
+      "llm_signal": "neutral",
+      "llm_strength": 4,
+      "det_signal": "neutral",
+      "det_strength": 6,
       "agree": true
     }
   ],
@@ -127209,6 +127330,34 @@
           "position_usd": 6087.21,
           "stop_price": 113.01,
           "sector": "Energy"
+        }
+      ],
+      "skipped": []
+    },
+    {
+      "ts": "2026-08-10T19:09:38.345593+00:00",
+      "regime": "bull",
+      "vix_regime": "normal",
+      "run_reason": "sentinel_trigger",
+      "n_candidates": 2,
+      "would_buy": [
+        {
+          "symbol": "RKLB",
+          "composite_score": 0.2907,
+          "price": 80.5,
+          "size_pct": 0.06,
+          "position_usd": 6087.48,
+          "stop_price": 74.06,
+          "sector": "Industrials"
+        },
+        {
+          "symbol": "HIMS",
+          "composite_score": 0.138,
+          "price": 31.73,
+          "size_pct": 0.06,
+          "position_usd": 6087.48,
+          "stop_price": 29.19,
+          "sector": "Healthcare"
         }
       ],
       "skipped": []

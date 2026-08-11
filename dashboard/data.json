@@ -2454,6 +2454,12 @@
       "portfolio_value": 101407.51,
       "cash": 90769.37,
       "spy_price": 770.57
+    },
+    {
+      "ts": "2026-08-11T20:59:50.506477+00:00",
+      "portfolio_value": 101407.51,
+      "cash": 90769.37,
+      "spy_price": 770.57
     }
   ],
   "trades": [
@@ -56681,20 +56687,60 @@
       ],
       "regime": "bull",
       "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-08-11T20:59:50.693620+00:00",
+      "run_type": "midday",
+      "candidates": [
+        "SMCI"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "sentinel_trigger",
+      "candidate_details": [
+        {
+          "symbol": "SMCI",
+          "composite_score": 0.482,
+          "signals": {
+            "eps_growth": 326.0,
+            "rev_growth": 122.7,
+            "growth_quality": "strong",
+            "rs_vs_sector_pct": 12.9,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.31,
+            "52wk_high": 58.78,
+            "volume_spike_ratio": 1.37,
+            "volume_spike": false,
+            "rsi": 56.0,
+            "macd_crossover": "False",
+            "bb_pct": 0.79,
+            "news_count": 10,
+            "top_headline": "Super Micro Stock Pops On Q4 Print \u2014 Here's Why",
+            "news_quality": 0.05,
+            "pe_trailing": 16.6,
+            "pe_forward": 9.5,
+            "earnings_growth": 326.0
+          }
+        }
+      ],
+      "event_symbols": [
+        "SMCI"
+      ],
+      "event_details": [
+        {
+          "symbol": "SMCI",
+          "trigger_type": "earnings_today",
+          "value": 1.0,
+          "threshold": 1.0,
+          "severity": "high"
+        }
+      ],
+      "regime": "bull",
+      "vix_regime": "normal"
     }
   ],
   "debate_logs": [
-    {
-      "id": "debate_AMD_20260629204603",
-      "symbol": "AMD",
-      "ts": "2026-06-29T20:46:03.401119+00:00",
-      "bull_case": "R1 Bull(6): AMD's 91.2% EPS growth and PEG of 1.2 make it one of the few large-cap AI plays where the growth rate genuinely justifies the forward multiple, and the market hasn't priced that in yet \u2014 RSI at 59.1 with room to run and resistance at $562.99 as the next clear trigger. | R1 Bear(7): AMD's 178x TTM P/E paired with only 13.4% profit margins and 8.1% ROE reveals a company still burning capital to chase growth \u2014 one earnings miss away from a violent multiple compression that no forward PEG ratio can protect against. | R2 Bull(5): AMD's PEG of 1.2 against 91.2% forward EPS growth remains structurally undervalued for a large-cap AI semiconductor name, the 178x TTM P/E is fully visible and priced by institutions rather than a hidden risk, and with RSI at 59.1 and a confirmed technical trigger at $562.99 the setup offers asymmetric upside \u2014 provided position sizing accounts for the real but overstated single-quarter earnings de-rating risk the bear correctly flags. | R2 Bear(6): AMD's 178x TTM P/E resting entirely on 91.2% forward EPS growth creates a structurally fragile setup where any guidance revision triggers simultaneous EPS and multiple compression that institutional awareness of the valuation cannot prevent, leaving downside risk of 20-30% with no margin cushion to absorb execution errors.",
-      "bear_case": "Primary risk: AMD misses or guides conservatively on a single earnings print \u2014 given 178x TTM P/E and 13.4% margins there is zero cushion \u2014 triggering a forced de-rating of the forward multiple that cascades into a 20-30% drawdown before any stop-loss can protect the position meaningfully. | Unresolved: [\"The bull's 'fully priced by institutions' argument does not neutralize the mechanical de-rating risk \u2014 when a 91.2% forward EPS growth estimate is the consensus load-bearing pillar, any guidance cut that revises that estimate downward forces a simultaneous EPS and multiple compression, a double-body-blow that institutional awareness cannot prevent\", '13.4% profit margins provide no buffer for cost overruns, yield issues, or hyperscaler capex slowdowns \u2014 AMD has not demonstrated the margin durability that justifies a 178x earnings multiple even on a forward-normalized basis', \"Below-average volume at 0.82x near resistance remains unresolved and the bull conceded this \u2014 entering without volume confirmation means the 'technical trigger at $562.99' is unconfirmed and the risk/reward on timing is unfavorable\", 'Multi-quarter hyperscaler procurement visibility is real but was also true for Intel at prior cycle peaks \u2014 committed capex can be deferred or redirected, and a single large customer re-prioritization (e.g., NVIDIA MI300X share shift) would crack the forward EPS consensus']",
-      "bull_score": 5,
-      "bear_score": 6,
-      "final_conviction": 6,
-      "decision": "watch"
-    },
     {
       "id": "debate_C_20260629204738",
       "symbol": "C",
@@ -62181,6 +62227,17 @@
       "bear_case": "Primary risk: Earnings disappoint or guidance disappoints against now-elevated expectations, and the market re-prices the still-unresolved accounting credibility discount simultaneously \u2014 creating a compounded de-rating where both the multiple and the earnings estimate compress in the same print, with high leverage amplifying the fundamental damage and no technical trend support to slow the decline. | Unresolved: [\"The bull's 'low bar' argument assumes a clean print is sufficient for marginal credibility improvement, but does not address the compounded de-rating scenario where earnings disappoint AND accounting credibility discount widens simultaneously \u2014 the bar is only low if earnings actually clear it, which is not guaranteed with 3.7% margins under cost and supply chain pressure\", \"120.8% debt/equity means a miss doesn't just compress the multiple \u2014 it activates solvency optics in a market already primed for distrust, and the bull has not shown how the current balance sheet buffers against that cascade\", \"The fund's negative expectancy (-1.35% per trade) in a sideways regime with ADX 15.5 is a structural overlay that applies regardless of valuation discount \u2014 the bull conceded this but did not resolve it, meaning the expected value of any long position remains negative on a probabilistic basis even if the fundamental asymmetry argument is valid\"]",
       "bull_score": 4,
       "bear_score": 6,
+      "final_conviction": 5,
+      "decision": "watch"
+    },
+    {
+      "id": "debate_SMCI_20260811205949",
+      "symbol": "SMCI",
+      "ts": "2026-08-11T20:59:49.875000+00:00",
+      "bull_case": "R1 Bull(6): SMCI's audited $60B backlog validation paired with a catastrophic earnings beat ($1.70 vs $0.62 EPS) directly neutralizes the accounting overhang that caused the 46% discount, creating a repricing event the market has not yet fully priced at a 9.5x forward P/E. | R1 Bear(7): SMCI's 3.7% profit margin at hypergrowth scale is a structural capital destruction machine \u2014 a single supply chain misstep, customer concentration shift, or margin compression from Nvidia pricing power converts explosive revenue into catastrophic losses, and no audit validation changes that arithmetic. | R2 Bull(5): SMCI's 9.5x forward P/E represents a durable mispricing relative to the now-audited $60B backlog and blowout EPS validation, but the TYPE A technical setup in a sideways regime warrants reduced position sizing and a disciplined entry rather than full conviction deployment until ADX strengthens above 20 to confirm directional trend resumption. | R2 Bear(7): SMCI's 3.7% net margin remains a structural fragility that no backlog audit or P/E discount resolves \u2014 one quarter of Nvidia pricing pressure, supply chain cost inflation, or adverse order mix converts hypergrowth revenue into a catastrophic earnings miss on a stock with no technical support and institutional holders who have not cleared governance concerns.",
+      "bear_case": "Primary risk: Margin compression in a single quarter \u2014 driven by Nvidia component pricing pressure, supply chain scaling costs, or customer order mix shift \u2014 collapses SMCI's already 3.7% net margin into negative territory, triggering a multi-sigma earnings miss on a stock the sentiment crowd just bought as a governance-cleared hypergrowth compounder, producing an -8% to -15% drawdown with no technical support below current price given the weak ADX trend structure. | Unresolved: ['No structural defense against Nvidia component pricing pressure compressing an already 3.7% net margin into negative territory \u2014 the bull acknowledged fragility but provided no margin floor mechanism', 'Customer concentration risk and order mix deterioration remain unaddressed; backlog size tells you nothing about the margin profile of the orders within it', \"'Hold' analyst consensus post-blowout beat signals institutional skepticism on governance remediation that a single audit validation does not fully clear, and the bull conceded this point without resolving it\", \"The bull's position-sizing reduction argument implicitly validates the bear case \u2014 a thesis that requires reduced sizing due to its own acknowledged risks is a diminished bull thesis, not a rebuttal\"]",
+      "bull_score": 5,
+      "bear_score": 7,
       "final_conviction": 5,
       "decision": "watch"
     }
@@ -91227,6 +91284,23 @@
       "pm_action": "watch",
       "pm_verdict": "SMCI's 9.5x forward P/E and audited backlog create a genuine asymmetric setup, but an unresolved TYPE-A bear point \u2014 the compounded de-rating scenario where earnings disappoint AND accounting credibility discount widens simultaneously \u2014 combined with ADX at 15.5 (no confirmed trend) and a fund running negative expectancy in a sideways regime make the probability-weighted outcome negative before entry. The setup is worth owning post-earnings confirmation, not into the binary.",
       "risk_category": "pm_decision"
+    },
+    {
+      "ts": "2026-08-11T20:59:49.692299+00:00",
+      "symbol": "SMCI",
+      "action": "watch",
+      "reason": "PM decision: watch \u2014 The bear raised a concrete, trade-specific TYPE-A risk \u2014 a single quarter of Nvidia component cost inflation collapsing a 3.7% margin into negative territory \u2014 and the bull explicitly conceded margin fragility without providing any mechanism of containment. An unresolved TYPE-A point mandates a conviction ceiling of \u22645 per the rubric, regardless of how compelling the valuation discount appears.",
+      "conviction": 5,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 31.6,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "watch",
+      "pm_verdict": "The fundamental repricing thesis is real \u2014 a 9.5x forward P/E on audited $60B backlog and 174% EPS beat is genuine asymmetry \u2014 but the unresolved TYPE-A bear point (3.7% net margin with no structural floor against Nvidia pricing pressure) combined with ADX 15.5 in a sideways regime and a fund running -3.98% expectancy means this setup does not clear the minimum 6/10 threshold for entry today.",
+      "risk_category": "conviction"
     }
   ],
   "watchlists": [
@@ -117484,15 +117558,6 @@
   ],
   "tech_shadow": [
     {
-      "ts": "2026-07-15T18:03:20.288535+00:00",
-      "symbol": "META",
-      "llm_signal": "bullish",
-      "llm_strength": 7,
-      "det_signal": "bullish",
-      "det_strength": 8,
-      "agree": true
-    },
-    {
       "ts": "2026-07-15T18:03:35.114365+00:00",
       "symbol": "PLTR",
       "llm_signal": "bullish",
@@ -121979,6 +122044,15 @@
       "symbol": "SMCI",
       "llm_signal": "bullish",
       "llm_strength": 5,
+      "det_signal": "neutral",
+      "det_strength": 7,
+      "agree": false
+    },
+    {
+      "ts": "2026-08-11T20:58:15.919305+00:00",
+      "symbol": "SMCI",
+      "llm_signal": "bullish",
+      "llm_strength": 6,
       "det_signal": "neutral",
       "det_strength": 7,
       "agree": false
@@ -128468,6 +128542,25 @@
           "size_pct": 0.06,
           "position_usd": 6083.89,
           "stop_price": 28.82,
+          "sector": "Technology"
+        }
+      ],
+      "skipped": []
+    },
+    {
+      "ts": "2026-08-11T20:58:11.154114+00:00",
+      "regime": "bull",
+      "vix_regime": "normal",
+      "run_reason": "sentinel_trigger",
+      "n_candidates": 1,
+      "would_buy": [
+        {
+          "symbol": "SMCI",
+          "composite_score": 0.482,
+          "price": 31.6,
+          "size_pct": 0.06,
+          "position_usd": 6084.45,
+          "stop_price": 29.07,
           "sector": "Technology"
         }
       ],

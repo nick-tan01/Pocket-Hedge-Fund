@@ -2442,6 +2442,12 @@
       "portfolio_value": 101400.2,
       "cash": 90769.37,
       "spy_price": 770.3
+    },
+    {
+      "ts": "2026-08-11T19:16:50.761378+00:00",
+      "portfolio_value": 101398.13,
+      "cash": 90769.37,
+      "spy_price": 770.32
     }
   ],
   "trades": [
@@ -3889,9 +3895,9 @@
       "time_stop_flagged": false,
       "consecutive_weakened_count": 0,
       "is_remnant": true,
-      "current_price": 1216.7899,
-      "unrealized_pl": 346.02,
-      "unrealized_plpc": 0.19822,
+      "current_price": 1216.775,
+      "unrealized_pl": 345.99,
+      "unrealized_plpc": 0.1982,
       "avg_entry": 1015.5,
       "trim_history": [
         {
@@ -3988,9 +3994,9 @@
           "reason": "Private credit contagion risk has escalated from theoretical to active (Blue Owl, Apollo, Ares stress), the bull conceded TYPE A pipeline threat, institutional bid absence below $216 leaves a 5%+ gap to $205.83 support with no technical anchor, and the 502x leveraged balance sheet introduces non-linear downside risk under simultaneous credit stress and client redemption pressure \u2014 all of which materially weaken but do not break the core thesis."
         }
       ],
-      "current_price": 215.09,
-      "unrealized_pl": 249.12,
-      "unrealized_plpc": 0.06311,
+      "current_price": 215.05,
+      "unrealized_pl": 248.34,
+      "unrealized_plpc": 0.06291,
       "avg_entry": 202.3212,
       "trim_pnl": 668.66,
       "stop_order_id": "405fa70a-08e3-4d96-b12a-25f7098b7a4a"
@@ -4014,9 +4020,9 @@
       "sector": "Financial Services",
       "trim_pnl": 0.0,
       "is_remnant": false,
-      "current_price": 107.505,
-      "unrealized_pl": 204.2,
-      "unrealized_plpc": 0.04934,
+      "current_price": 107.47,
+      "unrealized_pl": 202.79,
+      "unrealized_plpc": 0.049,
       "avg_entry": 102.45,
       "last_review_ts": "2026-08-10T17:46:40.410652+00:00",
       "last_review_conviction": 6,
@@ -56618,20 +56624,60 @@
       ],
       "regime": "bull",
       "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-08-11T19:16:50.952732+00:00",
+      "run_type": "midday",
+      "candidates": [
+        "SMCI"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "sentinel_trigger",
+      "candidate_details": [
+        {
+          "symbol": "SMCI",
+          "composite_score": 0.477,
+          "signals": {
+            "eps_growth": 326.0,
+            "rev_growth": 122.7,
+            "growth_quality": "strong",
+            "rs_vs_sector_pct": 12.1,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.3,
+            "52wk_high": 58.78,
+            "volume_spike_ratio": 0.95,
+            "volume_spike": false,
+            "rsi": 55.3,
+            "macd_crossover": "False",
+            "bb_pct": 0.77,
+            "news_count": 9,
+            "top_headline": "Supermicro's $60 Billion Backlog Meets its Audited Truth Test",
+            "news_quality": 0.0,
+            "pe_trailing": 16.5,
+            "pe_forward": 9.5,
+            "earnings_growth": 326.0
+          }
+        }
+      ],
+      "event_symbols": [
+        "SMCI"
+      ],
+      "event_details": [
+        {
+          "symbol": "SMCI",
+          "trigger_type": "earnings_today",
+          "value": 1.0,
+          "threshold": 1.0,
+          "severity": "high"
+        }
+      ],
+      "regime": "bull",
+      "vix_regime": "normal"
     }
   ],
   "debate_logs": [
-    {
-      "id": "debate_AMAT_20260629204420",
-      "symbol": "AMAT",
-      "ts": "2026-06-29T20:44:20.220078+00:00",
-      "bull_case": "R1 Bull(7): AMAT is in a confirmed momentum continuation phase \u2014 ADX 35 plus institutional price target upgrades to $750-$850 create a technical-fundamental alignment that historically resolves higher before consensus fully catches up. | R1 Bear(6): AMAT is a valuation-stretched momentum trade entering hard resistance in a sideways market regime with a documented 40% win rate \u2014 the bull's 'partially justified' P/E of 65.2 with a PEG of 2.1 is not a footnote, it's the entire risk profile compressed into one number. | R2 Bull(6): AMAT's ADX-35 confirmed trend with institutional price target upgrades to $750-$850 creates a high-probability breakout setup above $708.99 resistance, where a volume-confirmed close above that level resolves the near-term timing risk and re-opens the path to prior analyst targets with a defined stop protecting downside. | R2 Bear(6): AMAT remains a negative-expected-value trade in the current sideways regime where the fund's empirical 33% win rate on this exact setup, combined with a 65.2 P/E and PEG of 2.1 offering no valuation support on a failed breakout, means the bull's 'defined stop' framing is a process illusion rather than a genuine risk control against a documented pattern of compounding losses.",
-      "bear_case": "Primary risk: AMAT fails to break $708.99 resistance on this attempt, Bollinger %B mean-reverts from 0.98 toward the midband (~$650-660), and the fund takes another initial-stop loss in a conviction-7 momentum trade \u2014 exactly the pattern that has produced a 33% win rate in this bucket and -13.7% average losses, compounding the documented calibration problem rather than resolving it. | Unresolved: [\"The bull's 'defined stop protects downside' argument assumes the stop discipline is actually executed at the stated level, but the documented -13.7% average loss in conviction-7 momentum trades suggests stops are either set too wide, moved, or the regime itself produces gap-through losses that invalidate the risk-reward math\", 'Analyst price target upgrades to $750-$850 are a lagging signal that often cluster at resistance tops, not breakout confirmation \u2014 the bull treats institutional sponsorship as an independent bullish variable when it may be colinear with the very overbought condition being flagged', 'The PEG of 2.1 at a 65.2 P/E remains entirely unaddressed in the rebuttal \u2014 if the breakout fails and mean-reversion accelerates, the valuation floor is not $650-660 but potentially much lower given no earnings support at current multiples']",
-      "bull_score": 6,
-      "bear_score": 6,
-      "final_conviction": 6,
-      "decision": "watch"
-    },
     {
       "id": "debate_AMD_20260629204603",
       "symbol": "AMD",
@@ -62118,6 +62164,17 @@
       "bear_case": "Primary risk: The catalyst never arrives in the holding window: AVGO sits in sideways chop on thin volume while VMware integration costs pressure near-term earnings, the forward P/E re-rating doesn't occur, and the fund exits at the -8% average loss that its own historical stats predict for trades that go wrong in this regime. | Unresolved: ['The bull has not identified a specific, imminent catalyst \u2014 VMware normalization and AI capex confirmation remain vague, unbounded events that could take multiple quarters to materialize, meaning time decay in a sideways regime continues to erode expectancy regardless of stop tightness', 'A 0.5 PEG only resolves to intrinsic value if earnings growth is realized on schedule; VMware integration cost overruns or a delay in AI capex deployment can compress realized EPS well below the 85.4% forward estimate that anchors the entire valuation argument', 'Reducing position size and tightening stops improves loss containment but does not improve win probability \u2014 in a 3/10 sentiment, 0.28x volume regime the base rate of the ignition event occurring within a disciplined holding window remains unquantified and likely low']",
       "bull_score": 4,
       "bear_score": 7,
+      "final_conviction": 5,
+      "decision": "watch"
+    },
+    {
+      "id": "debate_SMCI_20260811191650",
+      "symbol": "SMCI",
+      "ts": "2026-08-11T19:16:50.342538+00:00",
+      "bull_case": "R1 Bull(5): A validated $60B backlog, 326% EPS growth, and a 9.5 forward P/E create a mispriced earnings catalyst setup \u2014 but execution risk and a negative expectancy track record demand tight position sizing. | R1 Bear(7): SMCI's 'resolved' accounting overhang is structurally unresolved \u2014 a validated backlog is not a clean audit, and entering into an earnings catalyst with 3.7% margins, 120.8% debt/equity, and a fund running negative expectancy (-1.35% per trade) in a sideways regime is capital destruction waiting to happen. | R2 Bull(4): SMCI's 9.5x forward P/E already prices in substantial accounting credibility risk, and a clean earnings print \u2014 even without full audit resolution \u2014 could trigger a violent mean-reversion toward peer multiples, but the binary nature of the catalyst in a weak-trend regime (ADX 15.5) with negative fund expectancy demands position sizing at or below 50% of standard allocation to manage the asymmetric loss scenario. | R2 Bear(6): At 9.5x forward P/E, SMCI carries a meaningful valuation cushion, but the unresolved audit credibility gap, leverage fragility at 120.8% debt/equity, structurally thin 3.7% margins, and a fund operating at negative expectancy in a weak-trend regime combine to make the probability-weighted outcome of entering this binary catalyst negative \u2014 the bull's asymmetric upside case requires both a clean earnings print AND marginal credibility improvement, and failure of either leg triggers the compounded de-rating scenario that remains the primary unrebutted risk.",
+      "bear_case": "Primary risk: Earnings disappoint or guidance disappoints against now-elevated expectations, and the market re-prices the still-unresolved accounting credibility discount simultaneously \u2014 creating a compounded de-rating where both the multiple and the earnings estimate compress in the same print, with high leverage amplifying the fundamental damage and no technical trend support to slow the decline. | Unresolved: [\"The bull's 'low bar' argument assumes a clean print is sufficient for marginal credibility improvement, but does not address the compounded de-rating scenario where earnings disappoint AND accounting credibility discount widens simultaneously \u2014 the bar is only low if earnings actually clear it, which is not guaranteed with 3.7% margins under cost and supply chain pressure\", \"120.8% debt/equity means a miss doesn't just compress the multiple \u2014 it activates solvency optics in a market already primed for distrust, and the bull has not shown how the current balance sheet buffers against that cascade\", \"The fund's negative expectancy (-1.35% per trade) in a sideways regime with ADX 15.5 is a structural overlay that applies regardless of valuation discount \u2014 the bull conceded this but did not resolve it, meaning the expected value of any long position remains negative on a probabilistic basis even if the fundamental asymmetry argument is valid\"]",
+      "bull_score": 4,
+      "bear_score": 6,
       "final_conviction": 5,
       "decision": "watch"
     }
@@ -91147,6 +91204,23 @@
       "pm_action": "watch",
       "pm_verdict": "AVGO is a genuinely high-quality compounder with real fundamental undervaluation (PEG 0.5, 85.4% EPS growth), but the trade fails the entry threshold today: ADX at 16.2 confirms no trend conviction, volume at 0.28x average signals absent institutional participation, sentiment is 3/10 with no dated company-specific catalyst, and the fund's own negative expectancy in a sideways regime (-3.98% per trade, 30% win rate) makes entering a catalyst-dependent thesis into thin tape a timing bet, not a value unlock.",
       "risk_category": "conviction"
+    },
+    {
+      "ts": "2026-08-11T19:16:50.156412+00:00",
+      "symbol": "SMCI",
+      "action": "watch",
+      "reason": "PM decision: watch \u2014 The unresolved TYPE-A risk: earnings disappointment and accounting credibility deterioration are not mutually exclusive events \u2014 they can compound in the same print, and 3.7% margins with 120.8% debt/equity provide no buffer against that cascade. Neither analyst rebutted this concretely, and the bull explicitly conceded it.",
+      "conviction": 5,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 31.33,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "watch",
+      "pm_verdict": "SMCI's 9.5x forward P/E and audited backlog create a genuine asymmetric setup, but an unresolved TYPE-A bear point \u2014 the compounded de-rating scenario where earnings disappoint AND accounting credibility discount widens simultaneously \u2014 combined with ADX at 15.5 (no confirmed trend) and a fund running negative expectancy in a sideways regime make the probability-weighted outcome negative before entry. The setup is worth owning post-earnings confirmation, not into the binary.",
+      "risk_category": "pm_decision"
     }
   ],
   "watchlists": [
@@ -117404,15 +117478,6 @@
   ],
   "tech_shadow": [
     {
-      "ts": "2026-07-15T18:03:00.885532+00:00",
-      "symbol": "HOOD",
-      "llm_signal": "bullish",
-      "llm_strength": 7,
-      "det_signal": "bullish",
-      "det_strength": 10,
-      "agree": true
-    },
-    {
       "ts": "2026-07-15T18:03:20.288535+00:00",
       "symbol": "META",
       "llm_signal": "bullish",
@@ -121902,6 +121967,15 @@
       "det_signal": "bullish",
       "det_strength": 9,
       "agree": true
+    },
+    {
+      "ts": "2026-08-11T19:15:13.135458+00:00",
+      "symbol": "SMCI",
+      "llm_signal": "bullish",
+      "llm_strength": 5,
+      "det_signal": "neutral",
+      "det_strength": 7,
+      "agree": false
     }
   ],
   "pre_debate_gates": [
@@ -128369,6 +128443,25 @@
           "size_pct": 0.06,
           "position_usd": 6086.55,
           "stop_price": 162.01,
+          "sector": "Technology"
+        }
+      ],
+      "skipped": []
+    },
+    {
+      "ts": "2026-08-11T19:15:09.104312+00:00",
+      "regime": "bull",
+      "vix_regime": "normal",
+      "run_reason": "sentinel_trigger",
+      "n_candidates": 1,
+      "would_buy": [
+        {
+          "symbol": "SMCI",
+          "composite_score": 0.477,
+          "price": 31.33,
+          "size_pct": 0.06,
+          "position_usd": 6083.89,
+          "stop_price": 28.82,
           "sector": "Technology"
         }
       ],

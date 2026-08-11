@@ -2424,6 +2424,12 @@
       "portfolio_value": 101425.21,
       "cash": 90769.37,
       "spy_price": 772.37
+    },
+    {
+      "ts": "2026-08-11T16:08:34.715729+00:00",
+      "portfolio_value": 101422.63,
+      "cash": 90769.37,
+      "spy_price": 772.25
     }
   ],
   "trades": [
@@ -3863,7 +3869,7 @@
       "status": "open",
       "key_risk": "Watch for any of the three original exit triggers as price enters $1,232\u2013$1,249.45: a failed breakout, a high-volume reversal candle, or MACD crossing back below signal at that zone \u2014 compounded by the fact that volume remains below average (0.45x) which makes a convincing breakout less likely and a reversal signal more meaningful if it occurs.",
       "position_usd": 2026.13,
-      "position_pct": 0.0208,
+      "position_pct": 0.0207,
       "sector": "Healthcare",
       "last_review_ts": "2026-08-10T17:46:06.178979+00:00",
       "last_review_conviction": 6,
@@ -3871,9 +3877,9 @@
       "time_stop_flagged": false,
       "consecutive_weakened_count": 0,
       "is_remnant": true,
-      "current_price": 1224.805,
-      "unrealized_pl": 359.8,
-      "unrealized_plpc": 0.20611,
+      "current_price": 1224.21,
+      "unrealized_pl": 358.77,
+      "unrealized_plpc": 0.20552,
       "avg_entry": 1015.5,
       "trim_history": [
         {
@@ -3970,9 +3976,9 @@
           "reason": "Private credit contagion risk has escalated from theoretical to active (Blue Owl, Apollo, Ares stress), the bull conceded TYPE A pipeline threat, institutional bid absence below $216 leaves a 5%+ gap to $205.83 support with no technical anchor, and the 502x leveraged balance sheet introduces non-linear downside risk under simultaneous credit stress and client redemption pressure \u2014 all of which materially weaken but do not break the core thesis."
         }
       ],
-      "current_price": 214.91,
-      "unrealized_pl": 245.61,
-      "unrealized_plpc": 0.06222,
+      "current_price": 214.85,
+      "unrealized_pl": 244.43,
+      "unrealized_plpc": 0.06193,
       "avg_entry": 202.3212,
       "trim_pnl": 668.66,
       "stop_order_id": "405fa70a-08e3-4d96-b12a-25f7098b7a4a"
@@ -56380,20 +56386,60 @@
       ],
       "regime": "bull",
       "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-08-11T16:08:34.899044+00:00",
+      "run_type": "midday",
+      "candidates": [
+        "SMCI"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "sentinel_trigger",
+      "candidate_details": [
+        {
+          "symbol": "SMCI",
+          "composite_score": 0.477,
+          "signals": {
+            "eps_growth": 326.0,
+            "rev_growth": 122.7,
+            "growth_quality": "strong",
+            "rs_vs_sector_pct": 13.0,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.31,
+            "52wk_high": 58.78,
+            "volume_spike_ratio": 0.59,
+            "volume_spike": false,
+            "rsi": 56.1,
+            "macd_crossover": "False",
+            "bb_pct": 0.79,
+            "news_count": 9,
+            "top_headline": "Supermicro's $60 Billion Backlog Meets its Audited Truth Test",
+            "news_quality": 0.0,
+            "pe_trailing": 16.7,
+            "pe_forward": 9.6,
+            "earnings_growth": 326.0
+          }
+        }
+      ],
+      "event_symbols": [
+        "SMCI"
+      ],
+      "event_details": [
+        {
+          "symbol": "SMCI",
+          "trigger_type": "earnings_today",
+          "value": 1.0,
+          "threshold": 1.0,
+          "severity": "high"
+        }
+      ],
+      "regime": "bull",
+      "vix_regime": "normal"
     }
   ],
   "debate_logs": [
-    {
-      "id": "debate_ABBV_20260629171630",
-      "symbol": "ABBV",
-      "ts": "2026-06-29T17:16:30.123306+00:00",
-      "bull_case": "R1 Bull(7): ABBV is mid-breakout on a re-rating trade as Skyrizi/Rinvoq replace Humira faster than consensus expected, with dual regulatory wins and a 0.4 PEG on 12.4% revenue growth making the 123x TTM P/E a distraction, not a deterrent. | R1 Bear(6): The bull's re-rating thesis depends entirely on forward earnings estimates that are structurally fragile \u2014 built on two drugs with unknown competitive durability, financed by a balance sheet so leveraged that equity metrics are literally unavailable, while the stock is already up 9.6% in five days on below-average volume at the top of its Bollinger Band. | R2 Bull(6): ABBV remains a re-rating trade on Skyrizi/Rinvoq revenue acceleration with a 0.4 PEG and 15.5x forward earnings offering fundamental support, but the near-term position should be sized defensively given the low-volume breakout at 52-week highs in a sideways macro regime, with conviction contingent on a high-volume follow-through confirmation or a constructive pullback retest of the breakout level. | R2 Bear(7): ABBV's re-rating thesis is a fragile single-path outcome requiring simultaneous earnings estimate durability, no adverse label or competitive events for Skyrizi/Rinvoq, and continued institutional tolerance of an overleveraged balance sheet \u2014 all while the stock sits at 52-week highs on low-volume momentum with a TTM-to-forward P/E gap that collapses entirely on a single estimate cut, offering asymmetric downside the bull cannot stress-test because the balance sheet opacity prevents visible quantification of the floor.",
-      "bear_case": "Primary risk: Skyrizi or Rinvoq receives a label restriction, safety update, or faces accelerated competitive entry while ABBV is priced at 52-week highs on a 15.5x forward P/E with a leveraged, equity-metric-obscured balance sheet \u2014 triggering simultaneous estimate cuts and multiple compression with no balance sheet buffer visible to absorb the drawdown. | Unresolved: [\"The bull never quantified debt-service coverage or free cash flow adequacy under a downside scenario where Skyrizi/Rinvoq growth decelerates 20-30% \u2014 asserting institutions 'find it manageable' is not a stress test\", 'The 46.2% YoY EPS decline and 5.8% net margin mean the forward multiple re-rating is entirely contingent on a massive earnings inflection with zero margin for error \u2014 the bull conceded this but did not explain what the downside multiple is if estimates get cut, which is the actual risk quantification needed', \"The bull's ADX defense is conditional ('if ADX is above 25') but ADX confirmation was not provided in the data, meaning the technical risk remains unresolved by the bull's own framing\", \"Concentration risk in two drugs post-Humira-cliff is structurally different from generic large-cap pharma pipeline diversification \u2014 the bull's TYPE B dismissal understates idiosyncratic tail risk\"]",
-      "bull_score": 6,
-      "bear_score": 7,
-      "final_conviction": 6,
-      "decision": "watch"
-    },
     {
       "id": "debate_AMAT_20260629184544",
       "symbol": "AMAT",
@@ -61882,6 +61928,17 @@
       "bear_score": 9,
       "final_conviction": 4,
       "decision": "watch"
+    },
+    {
+      "id": "debate_SMCI_20260811160834",
+      "symbol": "SMCI",
+      "ts": "2026-08-11T16:08:34.367992+00:00",
+      "bull_case": "R1 Bull(5): SMCI's $60B backlog validation surviving audit scrutiny, combined with a forward P/E of 9.5 on 326% EPS growth, creates a asymmetric earnings catalyst setup where the market is pricing in fraud risk that has materially diminished. | R1 Bear(7): SMCI's 3.7% profit margin on a 120.8 debt/equity capital structure means the bull's earnings catalyst bet is a leveraged wager on a business that converts revenue brilliantly but retains almost nothing \u2014 and any margin compression, customer concentration miss, or financing stress destroys the earnings power the 9.5x P/E is premised on. | R2 Bull(3): SMCI's structural discount on verified AI infrastructure demand remains compelling on a 3-6 month horizon, but the pre-earnings entry with unresolved audit flags, low-volume momentum, and the fund's demonstrated negative expectancy in sideways regimes makes tonight a high-risk catalyst event where the asymmetry favors waiting for audit resolution confirmation before sizing into a position. | R2 Bear(8): With the bull conceding audit binary risk, absent institutional accumulation, and the fund's negative expectancy in sideways regimes, SMCI into tonight's earnings represents an uncompensated leveraged bet on a 3.7% margin business where the primary catalyst \u2014 audit resolution \u2014 is explicitly on a different and later timeline than the event creating the stop-loss gap risk tonight.",
+      "bear_case": "Primary risk: Earnings or accompanying disclosures reveal that margin compression has continued or worsened, or that audit progress is less advanced than sentiment implies \u2014 triggering a narrative reset where the fraud discount re-expands, the 46% drawdown deepens materially, and the fund is holding a leveraged, thin-margin business with no technical support and an active stop-loss gap risk that far exceeds the +3.1% average win this setup could realistically deliver. | Unresolved: [\"Full financial statement audit remains unresolved and tonight's earnings could trigger re-expansion of the fraud discount regardless of operational backlog strength\", 'Stop-loss gap risk on a low-liquidity, high-short-interest name entering a binary event structurally exceeds the realistic average win, and the bull offered no mechanism to cap downside', '120.8 debt/equity leverage means any financing stress or covenant pressure triggered by audit delay compounds margin compression risk in a way a 9.5x P/E multiple does not adequately compensate for']",
+      "bull_score": 3,
+      "bear_score": 8,
+      "final_conviction": 4,
+      "decision": "skip"
     }
   ],
   "position_reviews": [
@@ -90777,6 +90834,23 @@
       "pm_action": "watch",
       "pm_verdict": "The fundamental mispricing is real and uncontested \u2014 PEG 0.5 against 85.4% EPS growth is a genuine edge \u2014 but the trade is not executable today because volume at 0.13x average at resistance is a self-documented TYPE-A disqualifier that this fund has already codified and acted on in an identical prior setup; entering now would be a rules violation, not a calculated risk. Re-entry is conditional on volume recovering above 0.75x average with a named Broadcom-specific catalyst.",
       "risk_category": "conviction"
+    },
+    {
+      "ts": "2026-08-11T16:08:34.183514+00:00",
+      "symbol": "SMCI",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 The full financial statement audit remains unresolved and tonight is the binary event \u2014 the catalyst that could destroy the thesis (fraud discount re-expansion on disclosure) arrives before the catalyst that could validate it (audit resolution), making entry here a structurally uncompensated bet.",
+      "conviction": 4,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 31.63,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "An unresolved TYPE-A bear point \u2014 tonight's earnings could trigger re-expansion of the fraud discount before the financial statement audit is complete \u2014 is not answered by backlog validation alone, and the fund's negative expectancy in a sideways regime with no institutional accumulation signal (ADX 15.8, 0.59x volume) means there is no edge to justify absorbing binary gap-down risk that structurally exceeds the average win.",
+      "risk_category": "pm_decision"
     }
   ],
   "watchlists": [
@@ -117034,15 +117108,6 @@
   ],
   "tech_shadow": [
     {
-      "ts": "2026-07-15T16:42:15.104041+00:00",
-      "symbol": "MS",
-      "llm_signal": "bullish",
-      "llm_strength": 7,
-      "det_signal": "bullish",
-      "det_strength": 10,
-      "agree": true
-    },
-    {
       "ts": "2026-07-15T16:43:49.085116+00:00",
       "symbol": "PGR",
       "llm_signal": "bearish",
@@ -121532,6 +121597,15 @@
       "det_signal": "bullish",
       "det_strength": 9,
       "agree": true
+    },
+    {
+      "ts": "2026-08-11T16:07:06.039815+00:00",
+      "symbol": "SMCI",
+      "llm_signal": "bullish",
+      "llm_strength": 5,
+      "det_signal": "neutral",
+      "det_strength": 7,
+      "agree": false
     }
   ],
   "pre_debate_gates": [
@@ -127944,6 +128018,25 @@
           "position_usd": 6082.28,
           "stop_price": 114.73,
           "sector": "Energy"
+        }
+      ],
+      "skipped": []
+    },
+    {
+      "ts": "2026-08-11T16:07:01.450979+00:00",
+      "regime": "bull",
+      "vix_regime": "normal",
+      "run_reason": "sentinel_trigger",
+      "n_candidates": 1,
+      "would_buy": [
+        {
+          "symbol": "SMCI",
+          "composite_score": 0.477,
+          "price": 31.65,
+          "size_pct": 0.06,
+          "position_usd": 6085.36,
+          "stop_price": 29.12,
+          "sector": "Technology"
         }
       ],
       "skipped": []

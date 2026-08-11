@@ -2406,6 +2406,12 @@
       "portfolio_value": 101381.36,
       "cash": 90769.37,
       "spy_price": 773.59
+    },
+    {
+      "ts": "2026-08-11T14:25:53.455911+00:00",
+      "portfolio_value": 101383.96,
+      "cash": 90769.37,
+      "spy_price": 773.41
     }
   ],
   "trades": [
@@ -3853,9 +3859,9 @@
       "time_stop_flagged": false,
       "consecutive_weakened_count": 0,
       "is_remnant": true,
-      "current_price": 1214.01,
-      "unrealized_pl": 341.24,
-      "unrealized_plpc": 0.19548,
+      "current_price": 1212.0301,
+      "unrealized_pl": 337.84,
+      "unrealized_plpc": 0.19353,
       "avg_entry": 1015.5,
       "trim_history": [
         {
@@ -3952,9 +3958,9 @@
           "reason": "Private credit contagion risk has escalated from theoretical to active (Blue Owl, Apollo, Ares stress), the bull conceded TYPE A pipeline threat, institutional bid absence below $216 leaves a 5%+ gap to $205.83 support with no technical anchor, and the 502x leveraged balance sheet introduces non-linear downside risk under simultaneous credit stress and client redemption pressure \u2014 all of which materially weaken but do not break the core thesis."
         }
       ],
-      "current_price": 214.09,
-      "unrealized_pl": 229.61,
-      "unrealized_plpc": 0.05817,
+      "current_price": 214.14,
+      "unrealized_pl": 230.58,
+      "unrealized_plpc": 0.05842,
       "avg_entry": 202.3212,
       "trim_pnl": 668.66,
       "stop_order_id": "405fa70a-08e3-4d96-b12a-25f7098b7a4a"
@@ -56142,20 +56148,60 @@
       ],
       "regime": "bull",
       "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-08-11T14:25:53.642954+00:00",
+      "run_type": "pre_market",
+      "candidates": [
+        "SMCI"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "sentinel_trigger",
+      "candidate_details": [
+        {
+          "symbol": "SMCI",
+          "composite_score": 0.477,
+          "signals": {
+            "eps_growth": 326.0,
+            "rev_growth": 122.7,
+            "growth_quality": "strong",
+            "rs_vs_sector_pct": 13.5,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.32,
+            "52wk_high": 58.78,
+            "volume_spike_ratio": 0.39,
+            "volume_spike": false,
+            "rsi": 56.7,
+            "macd_crossover": "False",
+            "bb_pct": 0.81,
+            "news_count": 8,
+            "top_headline": "Stock Market Today: Dow, S&P 500, Nasdaq 100 Futures Rise as Trump Demands Compensation From Iran\u2014 Rocket Lab, ASTS SpaceMobile, Plug Power in Focus (UPDATED)",
+            "news_quality": 0.0,
+            "pe_trailing": 16.8,
+            "pe_forward": 9.6,
+            "earnings_growth": 326.0
+          }
+        }
+      ],
+      "event_symbols": [
+        "SMCI"
+      ],
+      "event_details": [
+        {
+          "symbol": "SMCI",
+          "trigger_type": "earnings_today",
+          "value": 1.0,
+          "threshold": 1.0,
+          "severity": "high"
+        }
+      ],
+      "regime": "bull",
+      "vix_regime": "normal"
     }
   ],
   "debate_logs": [
-    {
-      "id": "debate_AMAT_20260629165152",
-      "symbol": "AMAT",
-      "ts": "2026-06-29T16:51:52.685983+00:00",
-      "bull_case": "R1 Bull(6): AMAT is in a confirmed, powerful trend backed by elite fundamentals, and the bear's valuation objection misreads a 33.5% EPS grower with 39.7% ROE \u2014 this is not speculative froth, it is earned multiple expansion. | R1 Bear(6): AMAT's EPS growth is built on unsustainable margin expansion rather than revenue, the multiple already prices perfection at P/E 65.6, and the fund is entering at maximum technical extension with 0.65x volume \u2014 a setup that historically precedes mean reversion, not breakout, in a sideways market regime. | R2 Bull(5): AMAT's structural bull case \u2014 elite ROE, dominant WFE market positioning, and AI-driven capex tailwinds \u2014 remains intact, but near-term entry risk is real at current resistance levels on thin volume, making the trade tactically better on a confirmed volume breakout above $708.99 or a pullback to support rather than chasing the current extended setup. | R2 Bear(7): The bull's own concessions confirm that AMAT's 65.6x P/E embeds an unsustainable margin-expansion assumption, and with revenue growth of only 11.4% as the normalized earnings anchor, a de-rating to 40x P/E implies 35-40% downside that ADX trends and ROE quality cannot absorb in a sideways market regime \u2014 making this a risk-reward setup that favors the bear until either the multiple compresses or revenue growth accelerates to justify current pricing.",
-      "bear_case": "Primary risk: Revenue growth of 11.4% is exposed as the true earnings growth rate when margin expansion exhausts, triggering a rapid de-rating of the 65.6x P/E multiple \u2014 a contraction to even 40x P/E on normalized growth implies 35-40% downside from current levels, and in a sideways market regime there is no rising tide to absorb that repricing. | Unresolved: ['The bull never quantitatively defended the 65.6x P/E multiple against a margin plateau scenario \u2014 citing ROE and ADX does not answer what the multiple should be if EPS growth reverts toward revenue growth of 11.4%', 'Low-volume consolidation near hard resistance in a sideways market regime is not proven to be coiling \u2014 the bull asserted it without showing that ADX-trending stocks with 0.65x volume at resistance break out more often than they reverse', 'The AI capex supercycle tailwind is a consensus narrative already embedded in the 65.6x multiple, offering no margin of safety if WFE spend timing slips or DOGE/macro headwinds compress customer capex budgets']",
-      "bull_score": 5,
-      "bear_score": 7,
-      "final_conviction": 6,
-      "decision": "watch"
-    },
     {
       "id": "debate_AMD_20260629165327",
       "symbol": "AMD",
@@ -61643,6 +61689,17 @@
       "bull_score": 2,
       "bear_score": 7,
       "final_conviction": 3,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_SMCI_20260811142552",
+      "symbol": "SMCI",
+      "ts": "2026-08-11T14:25:52.904052+00:00",
+      "bull_case": "R1 Bull(4): SMCI's 326% EPS growth and 9.6x forward P/E represent a rare mispricing where governance fear \u2014 not fundamentals \u2014 is the primary headwind, and imminent earnings offer a binary catalyst to close that gap. | R1 Bear(7): SMCI's accounting and auditor concerns are not a sentiment discount to be arbitraged \u2014 they are a structural integrity risk that makes every reported earnings number fundamentally unverifiable, turning the 'binary catalyst' into a binary coin flip on numbers the market cannot trust. | R2 Bull(3): SMCI remains a high-risk, asymmetric earnings catalyst where the audit resolution arc \u2014 not margin expansion \u2014 is the true re-rating driver, and tonight's print offers a binary first step toward closing a governance discount that has been the primary, not fundamental, source of the 46% drawdown; position sizing must reflect the TYPE A audit risk, not the TYPE B margin concerns the bear conflates with structural impairment. | R2 Bear(7): SMCI's audit resolution arc is not a catalyst you can trade tonight \u2014 it is a multi-quarter process where any disclosure language short of an unequivocal clean opinion will be read as governance discount confirmation, and with a 3.7% margin providing zero fundamental support and institutional volume absent, the downside scenario remains structurally unhedged regardless of headline revenue.",
+      "bear_case": "Primary risk: Earnings deliver strong headline revenue but the audit narrative fails to meaningfully resolve \u2014 or worse, introduces new disclosure language \u2014 causing the stock to gap down sharply on the realization that the governance discount is permanent, not temporary, and the 3.7% margin leaves no fundamental floor to catch the fall. | Unresolved: [\"The bull never explains what specific language in tonight's filing would constitute 'clean' versus 'ambiguous' \u2014 the binary framing assumes a Goldilocks outcome without defining the threshold, leaving the downside scenario fully intact\", 'BDO auditor continuity confirms process but not conclusion \u2014 a new auditor relationship in its early quarters is statistically more likely to introduce new disclosure language or material weakness flags, not fewer', 'The 3.7% margin with no fundamental floor remains undefended as a catch mechanism if the governance narrative disappoints \u2014 the bull conceded this but offered no structural offset', 'Collapsed volume at 0.39x confirms informed money is absent \u2014 the bull conceded this, meaning the asymmetric re-rating catalyst has no institutional sponsorship to actually drive the gap-up scenario']",
+      "bull_score": 3,
+      "bear_score": 7,
+      "final_conviction": 4,
       "decision": "skip"
     }
   ],
@@ -90407,6 +90464,23 @@
       "pm_action": "skip",
       "pm_verdict": "With analyst signals in direct conflict (technical 5/10, fundamental 4/10, sentiment 6/10 bearish), ADX at 14.6 confirming no trend, volume below average, and an unresolved TYPE-A liquidity risk in an unknown covenant/maturity structure on 253.7x debt/equity, this setup fails every threshold for a buy \u2014 and our fund's demonstrated negative expectancy in exactly this low-ADX, below-average-volume sideways regime makes entry statistically indefensible.",
       "risk_category": "pm_decision"
+    },
+    {
+      "ts": "2026-08-11T14:25:52.715177+00:00",
+      "symbol": "SMCI",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 The audit uncertainty is a TYPE-A, stock-specific, near-term catalyst risk: earnings tonight could produce disclosure language short of a clean, unqualified opinion, causing a gap down with no fundamental floor (3.7% margin) and no institutional sponsorship (0.39x volume) to arrest the move \u2014 the bull never defined what 'clean' looks like, leaving the downside scenario fully intact and unhedged.",
+      "conviction": 4,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 31.86,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "An unresolved TYPE-A audit risk \u2014 where tonight's filing could introduce new disclosure language or material weakness flags on numbers the market cannot independently verify \u2014 combined with collapsed volume (0.39x), a weak trend (ADX 15.8), and a fund expectancy of -3.98% in this exact sideways-low-volume regime make this a structurally disqualified setup regardless of the compelling valuation optics.",
+      "risk_category": "pm_decision"
     }
   ],
   "watchlists": [
@@ -116664,15 +116738,6 @@
   ],
   "tech_shadow": [
     {
-      "ts": "2026-07-15T15:10:16.373611+00:00",
-      "symbol": "AMAT",
-      "llm_signal": "bullish",
-      "llm_strength": 5,
-      "det_signal": "neutral",
-      "det_strength": 6,
-      "agree": false
-    },
-    {
       "ts": "2026-07-15T15:10:32.531646+00:00",
       "symbol": "CRWD",
       "llm_signal": "bullish",
@@ -121161,6 +121226,15 @@
       "llm_strength": 5,
       "det_signal": "neutral",
       "det_strength": 6,
+      "agree": false
+    },
+    {
+      "ts": "2026-08-11T14:24:23.935222+00:00",
+      "symbol": "SMCI",
+      "llm_signal": "bullish",
+      "llm_strength": 5,
+      "det_signal": "neutral",
+      "det_strength": 7,
       "agree": false
     }
   ],
@@ -127518,6 +127592,25 @@
           "position_usd": 6087.23,
           "stop_price": 29.23,
           "sector": "Healthcare"
+        }
+      ],
+      "skipped": []
+    },
+    {
+      "ts": "2026-08-11T14:24:19.003676+00:00",
+      "regime": "bull",
+      "vix_regime": "normal",
+      "run_reason": "sentinel_trigger",
+      "n_candidates": 1,
+      "would_buy": [
+        {
+          "symbol": "SMCI",
+          "composite_score": 0.477,
+          "price": 31.91,
+          "size_pct": 0.06,
+          "position_usd": 6083.04,
+          "stop_price": 29.36,
+          "sector": "Technology"
         }
       ],
       "skipped": []

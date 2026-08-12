@@ -2484,6 +2484,12 @@
       "portfolio_value": 101514.57,
       "cash": 90769.37,
       "spy_price": 772.24
+    },
+    {
+      "ts": "2026-08-12T16:06:48.222037+00:00",
+      "portfolio_value": 101514.08,
+      "cash": 90769.37,
+      "spy_price": 772.22
     }
   ],
   "trades": [
@@ -3931,9 +3937,9 @@
       "time_stop_flagged": false,
       "consecutive_weakened_count": 0,
       "is_remnant": true,
-      "current_price": 1225.69,
-      "unrealized_pl": 361.32,
-      "unrealized_plpc": 0.20698,
+      "current_price": 1226.17,
+      "unrealized_pl": 362.14,
+      "unrealized_plpc": 0.20745,
       "avg_entry": 1015.5,
       "trim_history": [
         {
@@ -4030,9 +4036,9 @@
           "reason": "Private credit contagion risk has escalated from theoretical to active (Blue Owl, Apollo, Ares stress), the bull conceded TYPE A pipeline threat, institutional bid absence below $216 leaves a 5%+ gap to $205.83 support with no technical anchor, and the 502x leveraged balance sheet introduces non-linear downside risk under simultaneous credit stress and client redemption pressure \u2014 all of which materially weaken but do not break the core thesis."
         }
       ],
-      "current_price": 218.17,
-      "unrealized_pl": 309.21,
-      "unrealized_plpc": 0.07833,
+      "current_price": 218.07,
+      "unrealized_pl": 307.26,
+      "unrealized_plpc": 0.07784,
       "avg_entry": 202.3212,
       "trim_pnl": 668.66,
       "stop_order_id": "405fa70a-08e3-4d96-b12a-25f7098b7a4a"
@@ -4056,7 +4062,7 @@
       "sector": "Financial Services",
       "trim_pnl": 0.0,
       "is_remnant": false,
-      "current_price": 108.4701,
+      "current_price": 108.47,
       "unrealized_pl": 243.19,
       "unrealized_plpc": 0.05876,
       "avg_entry": 102.45,
@@ -56986,20 +56992,58 @@
       ],
       "regime": "bull",
       "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-08-12T16:06:48.395210+00:00",
+      "run_type": "midday",
+      "candidates": [
+        "COHR"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "sentinel_trigger",
+      "candidate_details": [
+        {
+          "symbol": "COHR",
+          "composite_score": 0.3587,
+          "signals": {
+            "growth_quality": "unknown",
+            "rs_vs_sector_pct": 15.7,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.77,
+            "52wk_high": 440.0,
+            "volume_spike_ratio": 0.82,
+            "volume_spike": false,
+            "rsi": 57.5,
+            "macd_crossover": "False",
+            "bb_pct": 0.87,
+            "news_count": 8,
+            "top_headline": "Sandisk, Bloom Energy and 8 Other Stocks Rallied After the CPI Report: Here\u2019s Why",
+            "news_quality": 0.0,
+            "pe_trailing": 170.4,
+            "pe_forward": 42.8,
+            "earnings_growth": null
+          }
+        }
+      ],
+      "event_symbols": [
+        "COHR"
+      ],
+      "event_details": [
+        {
+          "symbol": "COHR",
+          "trigger_type": "earnings_today",
+          "value": 1.0,
+          "threshold": 1.0,
+          "severity": "high"
+        }
+      ],
+      "regime": "bull",
+      "vix_regime": "normal"
     }
   ],
   "debate_logs": [
-    {
-      "id": "debate_AMAT_20260630155144",
-      "symbol": "AMAT",
-      "ts": "2026-06-30T15:51:44.236493+00:00",
-      "bull_case": "R1 Bull(7): AMAT is in a confirmed momentum breakout backed by the strongest semiconductor sector rebound in nearly 50 years, with institutional-grade trend strength (ADX 36.6) and 33.5% EPS growth justifying continuation toward $739 resistance before any meaningful exhaustion signal. | R1 Bear(7): AMAT's 24.5% five-day surge on 0.48x average volume is a low-conviction breakout approaching hard resistance at $739, where the combination of a 68.6 TTM P/E, zero margin for earnings error, and a sideways SPY regime creates asymmetric downside that the bull's momentum narrative completely obscures. | R2 Bull(6): AMAT's ADX-confirmed trend structure and 33.5% EPS growth remain intact, but the 0.48x volume breakout warrants sizing discipline \u2014 the trade plan is to hold toward $739 resistance with a defined stop, treating any high-volume consolidation above prior breakout levels as the institutional accumulation confirmation the initial move lacked | R2 Bear(7): AMAT's low-volume breakout into hard resistance at $739 with a 68.6 P/E, analyst consensus 20%+ below current price, and no institutional accumulation confirmation creates a high-probability rejection scenario where the bull's 'healthy consolidation' thesis depends entirely on large buyers materializing with no evidence they are present \u2014 a bet this fund's stop-out history cannot afford.",
-      "bear_case": "Primary risk: AMAT rejects $739 resistance on continued low volume, triggering a momentum unwind back toward pre-breakout levels \u2014 a 15-20% reversal in a sideways macro tape where this fund's recent history shows three consecutive initial-stop exits, with no volume cushion to slow the descent. | Unresolved: [\"Low-volume breakout lacks institutional sponsorship to defend $739 resistance on a failed test \u2014 'buying the pullback' thesis assumes large players will step in, but there is no evidence of accumulation and three prior consecutive stop-outs in this fund suggest the tape does not reward that assumption\", 'Analyst consensus at $578.9 creates a fundamental gravity well that makes any rejection at $739 resistance a high-velocity reversion event with no valuation floor until well below current price', \"Sideways SPY regime provides no sector tailwind to bail out a stock-specific momentum unwind \u2014 the 'strongest sector rebound since 1975' macro narrative is backward-looking and not a forward catalyst at this price level\", '68.6 TTM P/E leaves zero margin for earnings disappointment, and the bull offered no earnings risk mitigation']",
-      "bull_score": 6,
-      "bear_score": 7,
-      "final_conviction": 6,
-      "decision": "watch"
-    },
     {
       "id": "debate_MU_20260630155331",
       "symbol": "MU",
@@ -62488,6 +62532,17 @@
       "bear_score": 6,
       "final_conviction": 5,
       "decision": "watch"
+    },
+    {
+      "id": "debate_COHR_20260812160647",
+      "symbol": "COHR",
+      "ts": "2026-08-12T16:06:47.640833+00:00",
+      "bull_case": "R1 Bull(5): COHR is a pre-earnings momentum setup where analyst estimate revisions, a PEG of 0.9 on 20.5% revenue growth, and a 9% five-day surge converging into a known catalyst create an asymmetric near-term opportunity \u2014 if you can tolerate the leverage risk. | R1 Bear(7): COHR's Debt/Equity of 31.1 combined with 7.1% profit margins and a TTM P/E of 170.4 means the bull is holding a lit match next to a leveraged powder keg \u2014 any earnings miss or guidance softness doesn't just disappoint, it triggers a structural re-rating that the balance sheet cannot absorb. | R2 Bull(4): COHR remains a structurally valid pre-earnings momentum setup on analyst revision velocity and a reasonable forward PEG, but the entry timing is degraded by a below-average volume surge into upper-band resistance, and position sizing must reflect both a 5/10 underlying conviction and a regime where our average loss is 2.6x our average win \u2014 this is a half-position trade at best, not a full conviction deployment. | R2 Bear(7): COHR's 31.1 Debt/Equity and 7.1% margins leave it structurally unable to absorb the multiple compression triggered by even a modest earnings disappointment against upward-revised consensus, the bull's own concessions on volume confirmation, ADX weakness, and adverse fund regime statistics validate a capped-upside, fat-left-tail risk profile that justifies sustained bearish conviction regardless of the forward PEG narrative.",
+      "bear_case": "Primary risk: COHR reports Q4 earnings that meet but don't dramatically exceed the upward-revised analyst consensus, triggering a sell-the-news reaction in a high-leverage, thin-margin stock where the TTM P/E of 170.4 has already priced in perfection \u2014 the resulting drawdown is amplified by forced deleveraging from any investors who used margin to play the momentum, and with our fund's -8.0% average loss in a sideways regime, this trade has the exact profile of our worst historical outcomes. | Unresolved: ['A meet-or-modest-beat earnings outcome against upward-revised consensus still produces a sell-the-news reaction at TTM P/E 170.4, and the bull offered no mechanism by which the Debt/Equity of 31.1 absorbs the resulting multiple compression without balance sheet stress', \"The bull's own concession that 'the trade was better two weeks ago' confirms the pre-earnings drift alpha has already been partially captured, leaving asymmetric downside at current entry with no compensating catalyst specificity\", 'Forced deleveraging risk from margin-long momentum players into upper-band resistance on sub-average volume remains entirely unaddressed \u2014 the bull did not contest the amplification mechanism, only the valuation framing']",
+      "bull_score": 4,
+      "bear_score": 7,
+      "final_conviction": 5,
+      "decision": "skip"
     }
   ],
   "position_reviews": [
@@ -91695,6 +91750,23 @@
       "pm_action": "watch",
       "pm_verdict": "JPM's fundamental quality (8/10, 17.8% ROE, forward P/E 14.6x) is real but the 0.13x volume breakout is a TYPE-A disqualifier that directly mirrors this fund's documented loss conditions \u2014 both sides explicitly conceded this point, and entering without volume confirmation would repeat a pattern the fund has already paid for. With ADX at 16.6 (below the 25 threshold required for momentum-regime scoring) and volume in active distribution, the tied-debate buy rule does not unlock: condition (ii) fails because there is no named dated catalyst within 4 weeks and the momentum regime is not confirmed.",
       "risk_category": "pm_decision"
+    },
+    {
+      "ts": "2026-08-12T16:06:47.468830+00:00",
+      "symbol": "COHR",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 The bull conceded the volume failure (0.82x on BB%B of 0.87) AND the ADX weakness (20.2, below the 25 threshold required for momentum confirmation), which together classify the momentum signal as unconfirmed \u2014 this alone blocks a 7+ conviction score under the rubric, and the unrefuted sell-the-news mechanism on upward-revised consensus makes the left tail structurally fat heading into a binary event.",
+      "conviction": 5,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 358.08,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "The pre-earnings momentum setup has two unresolved TYPE-A bear points \u2014 a meet-or-modest-beat print on upward-revised consensus triggers a structural sell-the-news reaction the bull never mechanistically refuted, and the 0.82x volume confirmation failure on a near-upper-band surge with ADX at 20.2 disqualifies this as a clean momentum entry \u2014 and our fund's -3.98% negative expectancy in a sideways regime with a 2.6x loss-to-win ratio makes deploying capital into a binary catalyst with fat-left-tail leverage risk an unforced error regardless of the forward PEG narrative.",
+      "risk_category": "conviction"
     }
   ],
   "watchlists": [
@@ -117934,15 +118006,6 @@
   ],
   "tech_shadow": [
     {
-      "ts": "2026-07-15T18:14:33.881385+00:00",
-      "symbol": "AAPL",
-      "llm_signal": "bullish",
-      "llm_strength": 7,
-      "det_signal": "bullish",
-      "det_strength": 10,
-      "agree": true
-    },
-    {
       "ts": "2026-07-15T20:17:44.146392+00:00",
       "symbol": "MS",
       "llm_signal": "bullish",
@@ -122432,6 +122495,15 @@
       "det_signal": "bullish",
       "det_strength": 9,
       "agree": true
+    },
+    {
+      "ts": "2026-08-12T16:05:12.109938+00:00",
+      "symbol": "COHR",
+      "llm_signal": "bullish",
+      "llm_strength": 6,
+      "det_signal": "neutral",
+      "det_strength": 6,
+      "agree": false
     }
   ],
   "pre_debate_gates": [
@@ -128994,6 +129066,25 @@
           "position_usd": 6090.91,
           "stop_price": 61.99,
           "sector": "Financial Services"
+        }
+      ],
+      "skipped": []
+    },
+    {
+      "ts": "2026-08-12T16:05:07.143067+00:00",
+      "regime": "bull",
+      "vix_regime": "normal",
+      "run_reason": "sentinel_trigger",
+      "n_candidates": 1,
+      "would_buy": [
+        {
+          "symbol": "COHR",
+          "composite_score": 0.3587,
+          "price": 358.08,
+          "size_pct": 0.06,
+          "position_usd": 6090.84,
+          "stop_price": 329.43,
+          "sector": "Technology"
         }
       ],
       "skipped": []

@@ -2466,6 +2466,12 @@
       "portfolio_value": 101500.09,
       "cash": 90769.37,
       "spy_price": 772.81
+    },
+    {
+      "ts": "2026-08-12T14:26:02.308637+00:00",
+      "portfolio_value": 101506.76,
+      "cash": 90769.37,
+      "spy_price": 772.8
     }
   ],
   "trades": [
@@ -3974,7 +3980,7 @@
       "status": "open",
       "key_risk": "A high-volume daily close back below the $203.31\u2013$204.51 support zone, particularly if driven by escalating yen intervention, bond market stress, or a broader capital markets risk-off move that impairs MS revenue visibility and triggers institutional selling.",
       "position_usd": 4172.17,
-      "position_pct": 0.0422,
+      "position_pct": 0.0423,
       "sector": "Financial Services",
       "last_review_ts": "2026-08-11T17:53:28.179765+00:00",
       "last_review_conviction": 6,
@@ -4012,9 +4018,9 @@
           "reason": "Private credit contagion risk has escalated from theoretical to active (Blue Owl, Apollo, Ares stress), the bull conceded TYPE A pipeline threat, institutional bid absence below $216 leaves a 5%+ gap to $205.83 support with no technical anchor, and the 502x leveraged balance sheet introduces non-linear downside risk under simultaneous credit stress and client redemption pressure \u2014 all of which materially weaken but do not break the core thesis."
         }
       ],
-      "current_price": 219.62,
-      "unrealized_pl": 337.5,
-      "unrealized_plpc": 0.0855,
+      "current_price": 219.865,
+      "unrealized_pl": 342.28,
+      "unrealized_plpc": 0.08671,
       "avg_entry": 202.3212,
       "trim_pnl": 668.66,
       "stop_order_id": "405fa70a-08e3-4d96-b12a-25f7098b7a4a"
@@ -4038,9 +4044,9 @@
       "sector": "Financial Services",
       "trim_pnl": 0.0,
       "is_remnant": false,
-      "current_price": 108.29,
-      "unrealized_pl": 235.91,
-      "unrealized_plpc": 0.057,
+      "current_price": 108.31,
+      "unrealized_pl": 236.72,
+      "unrealized_plpc": 0.0572,
       "avg_entry": 102.45,
       "last_review_ts": "2026-08-10T17:46:40.410652+00:00",
       "last_review_conviction": 6,
@@ -56744,20 +56750,58 @@
       ],
       "regime": "bull",
       "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-08-12T14:26:02.491808+00:00",
+      "run_type": "pre_market",
+      "candidates": [
+        "COHR"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "sentinel_trigger",
+      "candidate_details": [
+        {
+          "symbol": "COHR",
+          "composite_score": 0.344,
+          "signals": {
+            "growth_quality": "unknown",
+            "rs_vs_sector_pct": 10.5,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.73,
+            "52wk_high": 440.0,
+            "volume_spike_ratio": 0.49,
+            "volume_spike": false,
+            "rsi": 55.1,
+            "macd_crossover": "False",
+            "bb_pct": 0.79,
+            "news_count": 8,
+            "top_headline": "Sandisk, Bloom Energy and 8 Other Stocks Rallied After the CPI Report: Here\u2019s Why",
+            "news_quality": 0.0,
+            "pe_trailing": 163.4,
+            "pe_forward": 41.0,
+            "earnings_growth": null
+          }
+        }
+      ],
+      "event_symbols": [
+        "COHR"
+      ],
+      "event_details": [
+        {
+          "symbol": "COHR",
+          "trigger_type": "earnings_today",
+          "value": 1.0,
+          "threshold": 1.0,
+          "severity": "high"
+        }
+      ],
+      "regime": "bull",
+      "vix_regime": "normal"
     }
   ],
   "debate_logs": [
-    {
-      "id": "debate_C_20260629204738",
-      "symbol": "C",
-      "ts": "2026-06-29T20:47:38.208122+00:00",
-      "bull_case": "R1 Bull(6): Citigroup's 56.1% EPS growth at a PEG of 0.7 makes it one of the cheapest transformation stories in large-cap financials, and the market hasn't fully priced the efficiency gains yet. | R1 Bear(6): Citigroup's headline EPS growth is a one-time restructuring artifact masking persistently poor capital efficiency, and without a near-term catalyst in a sideways market regime, the valuation discount is a value trap, not a repricing opportunity. | R2 Bull(5): Citigroup's PEG of 0.7 against a multi-quarter efficiency-driven EPS revision cycle represents a structural undervaluation that the market has not yet closed, and while the near-term technical entry is imperfect in a sideways regime, the fundamental re-rating catalyst is a quarterly earnings beat away \u2014 not a decade away. | R2 Bear(6): Citigroup's apparent PEG undervaluation is built on a restructuring-inflated EPS base that will normalize well below consensus in subsequent quarters, ROE remains structurally capped with no peer-convergence pathway demonstrated, and with the stock near 52-week highs in a directionless market, the bull's entire repricing thesis reduces to a single binary earnings event \u2014 an insufficient foundation to close a multi-year valuation discount and a setup that offers asymmetric downside if that catalyst disappoints.",
-      "bear_case": "Primary risk: The EPS growth normalizes well below consensus expectations as restructuring benefits are fully absorbed, ROE remains structurally capped below peer levels with no visible path to re-rating, and the stock de-rates from its current near-52-week-high level back toward its historical discount \u2014 with no catalyst present to arrest the decline and a sideways market providing no index tailwind to bail out the position. | Unresolved: ['ROE remaining structurally capped below peer levels with no demonstrated mechanism for re-rating beyond efficiency gains that are one-time in nature and already partially priced in', 'EPS growth of 56.1% front-loaded by restructuring benefits that normalize materially lower in subsequent quarters, making the PEG of 0.7 a misleading anchor built on a non-recurring earnings base', 'Binary dependence on a single earnings print in a sideways SPY regime where index tailwind is absent and sentiment is flat \u2014 a miss or in-line result produces asymmetric downside from near-52-week-high levels with no technical support buffer', 'No addressed mechanism explaining why the market discount that has persisted for years closes now rather than continuing to reflect genuine structural capital efficiency deficits relative to JPM and BAC']",
-      "bull_score": 5,
-      "bear_score": 6,
-      "final_conviction": 6,
-      "decision": "watch"
-    },
     {
       "id": "debate_LLY_20260629221206",
       "symbol": "LLY",
@@ -62243,6 +62287,17 @@
       "bull_case": "R1 Bull(6): SMCI's audited $60B backlog validation paired with a catastrophic earnings beat ($1.70 vs $0.62 EPS) directly neutralizes the accounting overhang that caused the 46% discount, creating a repricing event the market has not yet fully priced at a 9.5x forward P/E. | R1 Bear(7): SMCI's 3.7% profit margin at hypergrowth scale is a structural capital destruction machine \u2014 a single supply chain misstep, customer concentration shift, or margin compression from Nvidia pricing power converts explosive revenue into catastrophic losses, and no audit validation changes that arithmetic. | R2 Bull(5): SMCI's 9.5x forward P/E represents a durable mispricing relative to the now-audited $60B backlog and blowout EPS validation, but the TYPE A technical setup in a sideways regime warrants reduced position sizing and a disciplined entry rather than full conviction deployment until ADX strengthens above 20 to confirm directional trend resumption. | R2 Bear(7): SMCI's 3.7% net margin remains a structural fragility that no backlog audit or P/E discount resolves \u2014 one quarter of Nvidia pricing pressure, supply chain cost inflation, or adverse order mix converts hypergrowth revenue into a catastrophic earnings miss on a stock with no technical support and institutional holders who have not cleared governance concerns.",
       "bear_case": "Primary risk: Margin compression in a single quarter \u2014 driven by Nvidia component pricing pressure, supply chain scaling costs, or customer order mix shift \u2014 collapses SMCI's already 3.7% net margin into negative territory, triggering a multi-sigma earnings miss on a stock the sentiment crowd just bought as a governance-cleared hypergrowth compounder, producing an -8% to -15% drawdown with no technical support below current price given the weak ADX trend structure. | Unresolved: ['No structural defense against Nvidia component pricing pressure compressing an already 3.7% net margin into negative territory \u2014 the bull acknowledged fragility but provided no margin floor mechanism', 'Customer concentration risk and order mix deterioration remain unaddressed; backlog size tells you nothing about the margin profile of the orders within it', \"'Hold' analyst consensus post-blowout beat signals institutional skepticism on governance remediation that a single audit validation does not fully clear, and the bull conceded this point without resolving it\", \"The bull's position-sizing reduction argument implicitly validates the bear case \u2014 a thesis that requires reduced sizing due to its own acknowledged risks is a diminished bull thesis, not a rebuttal\"]",
       "bull_score": 5,
+      "bear_score": 7,
+      "final_conviction": 5,
+      "decision": "watch"
+    },
+    {
+      "id": "debate_COHR_20260812142601",
+      "symbol": "COHR",
+      "ts": "2026-08-12T14:26:01.931114+00:00",
+      "bull_case": "R1 Bull(4): COHR's PEG of 0.9 with 20.5% revenue growth driven by AI/datacom demand creates a rare valuation anomaly into a catalyst-rich earnings event where analysts are actively revising estimates higher. | R1 Bear(7): COHR's bull case requires simultaneous execution of margin expansion, debt servicing, and earnings beats under a 163x TTM P/E with no margin for error \u2014 the 'manageable' debt/equity of 31.1 is actually a structural trap that converts any revenue disappointment into an equity destruction event. | R2 Bull(3): COHR remains a structurally sound bull thesis on AI/datacom demand and PEG 0.9 mispricing, but the earnings binary risk combined with the fund's demonstrated negative expectancy on this exact low-volume, near-Bollinger-Band trade profile argues for minimal position sizing rather than full conviction deployment. | R2 Bear(7): COHR's PEG and AI narrative are real but irrelevant at a 163x TTM P/E earnings binary where the fund's own track record, the debt amplification structure, and a stock already 22% off highs create asymmetric ruin risk that disciplined sizing mitigates but cannot neutralize.",
+      "bear_case": "Primary risk: COHR misses or guides conservatively on margin expansion at the earnings call \u2014 with a 163x TTM P/E, 31.1 debt/equity, and the stock already 22% off highs, even a modest disappointment triggers a violent re-rating that our -8.0% average loss profile cannot absorb without serious capital damage. | Unresolved: [\"The bull conceded 163x TTM P/E means zero margin for error on margin expansion guidance but never explained what specific catalyst prevents a guide-down given COHR's ongoing integration complexity and cost structure\", 'Debt/equity 31.1 as structural equity destruction amplifier under any revenue disappointment \u2014 the bull never quantified downside leverage or addressed how the capital structure survives a miss', \"The 'low volume reflects rotation hesitation not distribution' claim is unfalsifiable speculation \u2014 the fund's TYPE B signal in this exact setup has negative expectancy and the bull offered no evidence this instance is structurally different\", \"22% off highs with elevated short interest means a miss triggers not just rerating but forced deleveraging cascade \u2014 the bull's 'disciplined sizing' answer is a risk management patch, not a thesis defense\"]",
+      "bull_score": 3,
       "bear_score": 7,
       "final_conviction": 5,
       "decision": "watch"
@@ -91307,6 +91362,23 @@
       "pm_action": "watch",
       "pm_verdict": "The fundamental repricing thesis is real \u2014 a 9.5x forward P/E on audited $60B backlog and 174% EPS beat is genuine asymmetry \u2014 but the unresolved TYPE-A bear point (3.7% net margin with no structural floor against Nvidia pricing pressure) combined with ADX 15.5 in a sideways regime and a fund running -3.98% expectancy means this setup does not clear the minimum 6/10 threshold for entry today.",
       "risk_category": "conviction"
+    },
+    {
+      "ts": "2026-08-12T14:26:01.746139+00:00",
+      "symbol": "COHR",
+      "action": "watch",
+      "reason": "PM decision: watch \u2014 Unresolved TYPE-A bear point: an imminent earnings event where a guide-down on margin expansion \u2014 given COHR's integration complexity and cost structure \u2014 could trigger a violent re-rating from 163x TTM P/E with debt amplification, and the bull offered no concrete mechanism preventing that outcome beyond 'thesis is margin expansion.'",
+      "conviction": 5,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 343.17,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "watch",
+      "pm_verdict": "The AI/datacom structural thesis and PEG 0.9 are legitimate, but an imminent earnings binary on a 163x TTM P/E stock with debt/equity of 31.1 constitutes an unresolved TYPE-A trade-specific catalyst that the bull never concretely defused \u2014 the fund's own negative expectancy track record (-3.98% per trade) in this exact low-volume, near-Bollinger-Band setup makes this a disciplined pass until the earnings event clears.",
+      "risk_category": "pm_decision"
     }
   ],
   "watchlists": [
@@ -117546,15 +117618,6 @@
   ],
   "tech_shadow": [
     {
-      "ts": "2026-07-15T18:03:35.114365+00:00",
-      "symbol": "PLTR",
-      "llm_signal": "bullish",
-      "llm_strength": 5,
-      "det_signal": "neutral",
-      "det_strength": 6,
-      "agree": false
-    },
-    {
       "ts": "2026-07-15T18:03:47.297729+00:00",
       "symbol": "BAC",
       "llm_signal": "bullish",
@@ -122039,6 +122102,15 @@
     {
       "ts": "2026-08-11T20:58:15.919305+00:00",
       "symbol": "SMCI",
+      "llm_signal": "bullish",
+      "llm_strength": 6,
+      "det_signal": "neutral",
+      "det_strength": 7,
+      "agree": false
+    },
+    {
+      "ts": "2026-08-12T14:24:34.388958+00:00",
+      "symbol": "COHR",
       "llm_signal": "bullish",
       "llm_strength": 6,
       "det_signal": "neutral",
@@ -128549,6 +128621,25 @@
           "size_pct": 0.06,
           "position_usd": 6084.45,
           "stop_price": 29.07,
+          "sector": "Technology"
+        }
+      ],
+      "skipped": []
+    },
+    {
+      "ts": "2026-08-12T14:24:30.319513+00:00",
+      "regime": "bull",
+      "vix_regime": "normal",
+      "run_reason": "sentinel_trigger",
+      "n_candidates": 1,
+      "would_buy": [
+        {
+          "symbol": "COHR",
+          "composite_score": 0.344,
+          "price": 343.17,
+          "size_pct": 0.06,
+          "position_usd": 6090.41,
+          "stop_price": 315.72,
           "sector": "Technology"
         }
       ],

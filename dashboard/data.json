@@ -2514,6 +2514,12 @@
       "portfolio_value": 101532.91,
       "cash": 90769.37,
       "spy_price": 773.12
+    },
+    {
+      "ts": "2026-08-12T19:16:25.695303+00:00",
+      "portfolio_value": 101531.05,
+      "cash": 90769.37,
+      "spy_price": 773.12
     }
   ],
   "trades": [
@@ -3953,7 +3959,7 @@
       "status": "open",
       "key_risk": "Watch intently for any of the three original exit signals \u2014 a failed breakout, a high-volume reversal candle, or MACD crossing back below signal \u2014 as price enters the $1,238\u2013$1,249.45 trigger zone; persistently low volume (0.32x average) means any reversal signal at that zone carries elevated significance and should be acted upon immediately.",
       "position_usd": 2026.13,
-      "position_pct": 0.0207,
+      "position_pct": 0.0206,
       "sector": "Healthcare",
       "last_review_ts": "2026-08-12T17:53:58.629111+00:00",
       "last_review_conviction": 6,
@@ -3961,9 +3967,9 @@
       "time_stop_flagged": false,
       "consecutive_weakened_count": 0,
       "is_remnant": true,
-      "current_price": 1219.87,
-      "unrealized_pl": 351.31,
-      "unrealized_plpc": 0.20125,
+      "current_price": 1219.48,
+      "unrealized_pl": 350.64,
+      "unrealized_plpc": 0.20087,
       "avg_entry": 1015.5,
       "trim_history": [
         {
@@ -4060,9 +4066,9 @@
           "reason": "Private credit contagion risk has escalated from theoretical to active (Blue Owl, Apollo, Ares stress), the bull conceded TYPE A pipeline threat, institutional bid absence below $216 leaves a 5%+ gap to $205.83 support with no technical anchor, and the 502x leveraged balance sheet introduces non-linear downside risk under simultaneous credit stress and client redemption pressure \u2014 all of which materially weaken but do not break the core thesis."
         }
       ],
-      "current_price": 218.07,
-      "unrealized_pl": 307.26,
-      "unrealized_plpc": 0.07784,
+      "current_price": 217.92,
+      "unrealized_pl": 304.33,
+      "unrealized_plpc": 0.0771,
       "avg_entry": 202.3212,
       "trim_pnl": 668.66,
       "stop_order_id": "405fa70a-08e3-4d96-b12a-25f7098b7a4a"
@@ -4086,9 +4092,9 @@
       "sector": "Financial Services",
       "trim_pnl": 0.0,
       "is_remnant": false,
-      "current_price": 109.22,
-      "unrealized_pl": 273.48,
-      "unrealized_plpc": 0.06608,
+      "current_price": 109.235,
+      "unrealized_pl": 274.09,
+      "unrealized_plpc": 0.06623,
       "avg_entry": 102.45,
       "last_review_ts": "2026-08-10T17:46:40.410652+00:00",
       "last_review_conviction": 6,
@@ -57283,20 +57289,58 @@
       ],
       "regime": "bull",
       "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-08-12T19:16:25.874695+00:00",
+      "run_type": "midday",
+      "candidates": [
+        "COHR"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "sentinel_trigger",
+      "candidate_details": [
+        {
+          "symbol": "COHR",
+          "composite_score": 0.3837,
+          "signals": {
+            "growth_quality": "unknown",
+            "rs_vs_sector_pct": 15.5,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.77,
+            "52wk_high": 440.0,
+            "volume_spike_ratio": 1.2,
+            "volume_spike": false,
+            "rsi": 57.4,
+            "macd_crossover": "False",
+            "bb_pct": 0.87,
+            "news_count": 7,
+            "top_headline": "Stock Market Today: Nasdaq 100 Rises on Strong AI Earnings, Benign Inflation",
+            "news_quality": 0.25,
+            "pe_trailing": 170.4,
+            "pe_forward": 42.8,
+            "earnings_growth": null
+          }
+        }
+      ],
+      "event_symbols": [
+        "COHR"
+      ],
+      "event_details": [
+        {
+          "symbol": "COHR",
+          "trigger_type": "earnings_today",
+          "value": 1.0,
+          "threshold": 1.0,
+          "severity": "high"
+        }
+      ],
+      "regime": "bull",
+      "vix_regime": "normal"
     }
   ],
   "debate_logs": [
-    {
-      "id": "debate_AMAT_20260630174126",
-      "symbol": "AMAT",
-      "ts": "2026-06-30T17:41:26.098732+00:00",
-      "bull_case": "R1 Bull(8): AMAT is in the early stages of a historically rare momentum event driven by structural AI infrastructure demand, with technical confirmation of trend strength \u2014 not exhaustion \u2014 making the asymmetric case for continuation over the next several weeks. | R1 Bear(6): AMAT's 25% 5-day surge at a 69x TTM P/E with below-average volume and revenue growth of only 11.4% creates a fragile valuation structure where any growth deceleration triggers a catastrophic multiple compression the bull has no answer for. | R2 Bull(6): AMAT remains structurally bullish driven by AI infrastructure capex demand and confirmed trend momentum (ADX>25), but the TYPE A risk of below-average volume at hard resistance in a sideways SPY regime demands a half-sized, disciplined entry with a defined stop rather than full conviction \u2014 the edge is real but the entry timing is imperfect, and position sizing is the variable that makes this trade viable. | R2 Bear(7): AMAT's earnings engine is a margin and buyback story masquerading as a demand story at a 69x TTM multiple where the bull conceded the forward valuation is unquantified, the win-rate environment is structurally degraded, and position sizing is the only risk tool offered \u2014 none of which addresses the core vulnerability that a single quarter of margin pressure or capex deceleration collapses EPS growth toward 11.4% revenue reality and triggers a 30-40% multiple compression with no technical floor.",
-      "bear_case": "Primary risk: Revenue growth of 11.4% versus EPS growth of 33.5% means AMAT's earnings engine is driven by margin expansion and financial engineering rather than true demand acceleration \u2014 if a single quarter shows margin pressure or a hyperscaler capex pause, EPS growth collapses toward revenue reality, the 69x multiple unwinds violently, and we are holding a stock that can lose 30-40% before any technical stop saves us, entering at the top of a parabolic move on below-average volume. | Unresolved: ['Revenue growth of 11.4% versus EPS growth of 33.5% gap remains entirely unaddressed \u2014 the bull never explained what sustains the multiple if margin expansion plateaus or reverses', 'The 69x TTM P/E with no confirmed forward P/E creates a valuation air pocket the bull explicitly conceded was unquantified, meaning downside in a multiple compression event is unbounded by their own admission', 'A hyperscaler capex pause or single quarter of margin pressure collapsing EPS growth toward revenue reality \u2014 the mechanism of catastrophic unwind \u2014 was never rebutted, only deflected via position sizing', 'Entering at the top of a 25% 5-day parabolic move in a sideways SPY regime with a 33% live win rate in the conviction-7 bucket means positive expected value is not confirmed \u2014 the bull assumed win size matches loss size without demonstrating that asymmetry exists at this specific entry']",
-      "bull_score": 6,
-      "bear_score": 7,
-      "final_conviction": 6,
-      "decision": "watch"
-    },
     {
       "id": "debate_LLY_20260630174313",
       "symbol": "LLY",
@@ -62785,6 +62829,17 @@
       "bear_score": 7,
       "final_conviction": 5,
       "decision": "watch"
+    },
+    {
+      "id": "debate_COHR_20260812191625",
+      "symbol": "COHR",
+      "ts": "2026-08-12T19:16:25.167310+00:00",
+      "bull_case": "R1 Bull(5): COHR is a mispriced AI infrastructure play where a PEG of 0.9 and imminent earnings catalyst create asymmetric upside, with technicals confirming institutional accumulation before consensus catches up. | R1 Bear(7): COHR's Debt/Equity of 31.1 combined with 7.1% profit margins and a trailing P/E of 170.4 means the company has virtually zero financial cushion to absorb any earnings disappointment, and a ~$9-10 billion market cap swing on earnings is not 'optionality' \u2014 it is a landmine in a sideways regime where our fund's average loss of -8.0% already dwarfs our average win of +3.1%. | R2 Bull(4): COHR remains a structurally mispriced AI infrastructure compounder where the datacom revenue inflection is supply-chain corroborated and margin normalization toward peer levels makes the 0.9 PEG defensible, but position sizing must reflect the binary earnings event tonight which creates genuine asymmetric downside on any guidance softness given the thin-margin, leveraged balance sheet leaving no valuation floor on a miss | R2 Bear(7): COHR's binary earnings event tonight exposes a structurally indefensible risk/reward: a trailing P/E of 170.4 on 7.1% margins with Debt/Equity of 31.1 means any guidance softness produces a violent, unfloorable de-rating, and in a fund regime where average losses already dwarf average wins by 2.6x, this is a capital-preservation landmine that the bull's own concessions on PEG validity, technical weakness, and sizing risk have only further confirmed.",
+      "bear_case": "Primary risk: COHR misses or guides cautiously on Q4 earnings \u2014 even modestly \u2014 triggering a violent de-rating: a trailing P/E of 170.4 with Debt/Equity of 31.1 and 7.1% margins has no valuation floor to cushion a disappointment, and in a sideways regime where our fund loses -8.0% on average losing trades, a post-earnings gap down on this setup could represent a catastrophic asymmetric loss that dwarfs any pre-earnings technical upside. | Unresolved: ['No valuation floor on a miss: forward PEG argument rests entirely on unvalidated margin normalization estimates that the bull themselves conceded are not historically anchored, meaning any guidance disappointment tonight leaves no mathematical support level in the multiple', \"Asymmetric loss profile in a sideways regime: fund's -8.0% average loss vs +3.1% average win means even a partially correct bear thesis creates catastrophic P&L damage that the bull never quantified or offset with a credible stop-loss framework\", 'Debt/Equity of 31.1 as a compounding risk: the bull did not address how a leveraged balance sheet interacts with a margin-trough company in a potential macro slowdown \u2014 interest burden constrains the margin normalization thesis itself', \"Supply-chain corroboration is necessary but not sufficient: Nvidia capex and hyperscaler commentary confirm demand exists in the ecosystem but do not validate COHR's specific share capture, pricing power, or execution timeline at the segment level\"]",
+      "bull_score": 4,
+      "bear_score": 7,
+      "final_conviction": 4,
+      "decision": "skip"
     }
   ],
   "position_reviews": [
@@ -92154,6 +92209,23 @@
       "pm_action": "watch",
       "pm_verdict": "JPM has genuine fundamental quality (8/10 fundamental signal, 17.8% ROE, strong EPS growth at reasonable valuation) that places it in the quality-compounder lane, but two unresolved TYPE-A bear points \u2014 volume at 0.28x versus the bull's own required 0.75x threshold, and ADX at 16.6 below the 20 floor needed for any momentum defense \u2014 prevent a positive-expectancy entry today under this fund's documented -3.98% expectancy and -7.0% average loss profile against only ~2.2% remaining upside to consensus.",
       "risk_category": "pm_decision"
+    },
+    {
+      "ts": "2026-08-12T19:16:24.987103+00:00",
+      "symbol": "COHR",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 Earnings report tonight is a TYPE-A trade-specific catalyst with asymmetric downside: the bull themselves conceded that the PEG rests on unvalidated forward estimates and that the valuation offers no floor on a miss \u2014 this single unresolved TYPE-A point disqualifies a buy per the conviction rubric regardless of the bullish technical setup.",
+      "conviction": 4,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 357.92,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "A binary earnings event tonight on a trailing P/E of 170.4 with Debt/Equity of 31.1 and 7.1% margins is an unresolved TYPE-A bear point \u2014 the bull conceded the PEG is unvalidated, the technical setup is ambiguous, and any guidance softness creates a mathematically floored de-rating that our fund's -7.0% average loss cannot absorb. The technicals and fundamentals are constructive in isolation, but the earnings landmine tonight renders this a skip, not a buy.",
+      "risk_category": "conviction"
     }
   ],
   "watchlists": [
@@ -118393,15 +118465,6 @@
   ],
   "tech_shadow": [
     {
-      "ts": "2026-07-16T15:18:03.681098+00:00",
-      "symbol": "AMD",
-      "llm_signal": "bearish",
-      "llm_strength": 6,
-      "det_signal": "neutral",
-      "det_strength": 7,
-      "agree": false
-    },
-    {
       "ts": "2026-07-16T15:18:20.158844+00:00",
       "symbol": "CVS",
       "llm_signal": "bullish",
@@ -122891,6 +122954,15 @@
       "det_signal": "bullish",
       "det_strength": 9,
       "agree": true
+    },
+    {
+      "ts": "2026-08-12T19:14:47.155430+00:00",
+      "symbol": "COHR",
+      "llm_signal": "bullish",
+      "llm_strength": 7,
+      "det_signal": "neutral",
+      "det_strength": 6,
+      "agree": false
     }
   ],
   "pre_debate_gates": [
@@ -129527,6 +129599,25 @@
           "size_pct": 0.06,
           "position_usd": 6090.9,
           "stop_price": 311.0,
+          "sector": "Technology"
+        }
+      ],
+      "skipped": []
+    },
+    {
+      "ts": "2026-08-12T19:14:42.453461+00:00",
+      "regime": "bull",
+      "vix_regime": "normal",
+      "run_reason": "sentinel_trigger",
+      "n_candidates": 1,
+      "would_buy": [
+        {
+          "symbol": "COHR",
+          "composite_score": 0.3837,
+          "price": 357.92,
+          "size_pct": 0.06,
+          "position_usd": 6091.86,
+          "stop_price": 329.29,
           "sector": "Technology"
         }
       ],

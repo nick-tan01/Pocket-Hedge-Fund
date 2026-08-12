@@ -2496,6 +2496,12 @@
       "portfolio_value": 101498.85,
       "cash": 90769.37,
       "spy_price": 773.27
+    },
+    {
+      "ts": "2026-08-12T17:10:28.584135+00:00",
+      "portfolio_value": 101499.23,
+      "cash": 90769.37,
+      "spy_price": 773.01
     }
   ],
   "trades": [
@@ -3943,9 +3949,9 @@
       "time_stop_flagged": false,
       "consecutive_weakened_count": 0,
       "is_remnant": true,
-      "current_price": 1216.6207,
-      "unrealized_pl": 345.73,
-      "unrealized_plpc": 0.19805,
+      "current_price": 1216.5577,
+      "unrealized_pl": 345.62,
+      "unrealized_plpc": 0.19799,
       "avg_entry": 1015.5,
       "trim_history": [
         {
@@ -4042,9 +4048,9 @@
           "reason": "Private credit contagion risk has escalated from theoretical to active (Blue Owl, Apollo, Ares stress), the bull conceded TYPE A pipeline threat, institutional bid absence below $216 leaves a 5%+ gap to $205.83 support with no technical anchor, and the 502x leveraged balance sheet introduces non-linear downside risk under simultaneous credit stress and client redemption pressure \u2014 all of which materially weaken but do not break the core thesis."
         }
       ],
-      "current_price": 217.925,
-      "unrealized_pl": 304.43,
-      "unrealized_plpc": 0.07712,
+      "current_price": 217.9419,
+      "unrealized_pl": 304.76,
+      "unrealized_plpc": 0.07721,
       "avg_entry": 202.3212,
       "trim_pnl": 668.66,
       "stop_order_id": "405fa70a-08e3-4d96-b12a-25f7098b7a4a"
@@ -4068,9 +4074,9 @@
       "sector": "Financial Services",
       "trim_pnl": 0.0,
       "is_remnant": false,
-      "current_price": 108.585,
-      "unrealized_pl": 247.83,
-      "unrealized_plpc": 0.05988,
+      "current_price": 108.57,
+      "unrealized_pl": 247.23,
+      "unrealized_plpc": 0.05974,
       "avg_entry": 102.45,
       "last_review_ts": "2026-08-10T17:46:40.410652+00:00",
       "last_review_conviction": 6,
@@ -57047,20 +57053,58 @@
       ],
       "regime": "bull",
       "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-08-12T17:10:28.764095+00:00",
+      "run_type": "midday",
+      "candidates": [
+        "COHR"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "sentinel_trigger",
+      "candidate_details": [
+        {
+          "symbol": "COHR",
+          "composite_score": 0.3587,
+          "signals": {
+            "growth_quality": "unknown",
+            "rs_vs_sector_pct": 15.2,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.77,
+            "52wk_high": 440.0,
+            "volume_spike_ratio": 0.95,
+            "volume_spike": false,
+            "rsi": 57.4,
+            "macd_crossover": "False",
+            "bb_pct": 0.87,
+            "news_count": 7,
+            "top_headline": "Sandisk, Bloom Energy and 8 Other Stocks Rallied After the CPI Report: Here\u2019s Why",
+            "news_quality": 0.0,
+            "pe_trailing": 170.2,
+            "pe_forward": 42.7,
+            "earnings_growth": null
+          }
+        }
+      ],
+      "event_symbols": [
+        "COHR"
+      ],
+      "event_details": [
+        {
+          "symbol": "COHR",
+          "trigger_type": "earnings_today",
+          "value": 1.0,
+          "threshold": 1.0,
+          "severity": "high"
+        }
+      ],
+      "regime": "bull",
+      "vix_regime": "normal"
     }
   ],
   "debate_logs": [
-    {
-      "id": "debate_MU_20260630155331",
-      "symbol": "MU",
-      "ts": "2026-06-30T15:53:31.694237+00:00",
-      "bull_case": "R1 Bull(7): MU is a deeply undervalued AI/HBM cyclical recovery trading at a forward P/E of 7.6 with 1368% YoY EPS growth \u2014 the market is still sleeping on this inflection, and the price action confirms early accumulation. | R1 Bear(6): MU's bull case rests entirely on a forward earnings ramp that must materialize perfectly in the world's most cyclical semiconductor segment \u2014 but the TTM-to-forward P/E gap of 25.8x to 7.6x isn't a hidden discount, it's the market pricing in peak-cycle earnings that historically mean-revert violently, and a Debt/Equity of 6.3 ensures that reversion is existential, not merely painful. | R2 Bull(6): MU remains a structurally undervalued AI/HBM cyclical at a forward P/E of 7.6 with credible earnings inflection driven by HBM3E ramp and DRAM price recovery \u2014 the near-term technical entry is weakened by low-volume price action and warrants a smaller position or a wait for volume confirmation, but the 12-month fundamental risk/reward remains skewed significantly to the upside. | R2 Bear(6): MU's bull case remains hostage to a consensus earnings ramp in the world's most mean-reverting commodity cycle, where the 7.6x forward P/E provides no valuation floor if the 'E' deteriorates \u2014 a scenario the bull dismisses as 'priced in' but which history shows is structurally underpriced as a tail risk at cycle peaks, leaving the risk/reward asymmetry far less favorable than the headline multiple implies.",
-      "bear_case": "Primary risk: The consensus forward earnings ramp fails to materialize \u2014 either because memory pricing softens earlier than expected or HBM share goes disproportionately to Samsung/SK Hynix \u2014 collapsing the forward P/E back toward the TTM multiple of 25.8x and triggering a 30-40% drawdown in a stock carrying Debt/Equity of 6.3, with no valuation floor to cushion the landing. | Unresolved: [\"The forward P/E of 7.6x is only protective if forward earnings prove durable \u2014 in prior DRAM cycles (2019, 2022), forward estimates were similarly optimistic at cycle peaks before collapsing 50-70%, meaning the 'priced in' argument fails precisely when it is most needed\", \"HBM share concentration risk remains unresolved \u2014 MU's HBM3E production with Nvidia is real but Nvidia is actively qualifying Samsung and SK Hynix to avoid single-source dependency, and any share rebalancing hits MU's highest-margin product line disproportionately\", \"The bull's claim that net leverage is 'materially lower' than Debt/Equity of 6.3 was asserted without quantification \u2014 MU's actual net debt position and covenant structure under a pricing downturn scenario was not addressed\", 'Channel check optimism on DRAM pricing is a lagging and sell-side-biased signal that has historically preceded, not preceded, pricing inflections \u2014 real-time inventory builds at hyperscalers are not yet fully visible in spot data']",
-      "bull_score": 6,
-      "bear_score": 6,
-      "final_conviction": 6,
-      "decision": "watch"
-    },
     {
       "id": "debate_LRCX_20260630160918",
       "symbol": "LRCX",
@@ -62545,6 +62589,17 @@
       "ts": "2026-08-12T16:06:47.640833+00:00",
       "bull_case": "R1 Bull(5): COHR is a pre-earnings momentum setup where analyst estimate revisions, a PEG of 0.9 on 20.5% revenue growth, and a 9% five-day surge converging into a known catalyst create an asymmetric near-term opportunity \u2014 if you can tolerate the leverage risk. | R1 Bear(7): COHR's Debt/Equity of 31.1 combined with 7.1% profit margins and a TTM P/E of 170.4 means the bull is holding a lit match next to a leveraged powder keg \u2014 any earnings miss or guidance softness doesn't just disappoint, it triggers a structural re-rating that the balance sheet cannot absorb. | R2 Bull(4): COHR remains a structurally valid pre-earnings momentum setup on analyst revision velocity and a reasonable forward PEG, but the entry timing is degraded by a below-average volume surge into upper-band resistance, and position sizing must reflect both a 5/10 underlying conviction and a regime where our average loss is 2.6x our average win \u2014 this is a half-position trade at best, not a full conviction deployment. | R2 Bear(7): COHR's 31.1 Debt/Equity and 7.1% margins leave it structurally unable to absorb the multiple compression triggered by even a modest earnings disappointment against upward-revised consensus, the bull's own concessions on volume confirmation, ADX weakness, and adverse fund regime statistics validate a capped-upside, fat-left-tail risk profile that justifies sustained bearish conviction regardless of the forward PEG narrative.",
       "bear_case": "Primary risk: COHR reports Q4 earnings that meet but don't dramatically exceed the upward-revised analyst consensus, triggering a sell-the-news reaction in a high-leverage, thin-margin stock where the TTM P/E of 170.4 has already priced in perfection \u2014 the resulting drawdown is amplified by forced deleveraging from any investors who used margin to play the momentum, and with our fund's -8.0% average loss in a sideways regime, this trade has the exact profile of our worst historical outcomes. | Unresolved: ['A meet-or-modest-beat earnings outcome against upward-revised consensus still produces a sell-the-news reaction at TTM P/E 170.4, and the bull offered no mechanism by which the Debt/Equity of 31.1 absorbs the resulting multiple compression without balance sheet stress', \"The bull's own concession that 'the trade was better two weeks ago' confirms the pre-earnings drift alpha has already been partially captured, leaving asymmetric downside at current entry with no compensating catalyst specificity\", 'Forced deleveraging risk from margin-long momentum players into upper-band resistance on sub-average volume remains entirely unaddressed \u2014 the bull did not contest the amplification mechanism, only the valuation framing']",
+      "bull_score": 4,
+      "bear_score": 7,
+      "final_conviction": 5,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_COHR_20260812171028",
+      "symbol": "COHR",
+      "ts": "2026-08-12T17:10:28.252499+00:00",
+      "bull_case": "R1 Bull(5): COHR is a high-growth AI/datacom compounder entering earnings with upward analyst revisions, a PEG of 0.9 signaling undervaluation relative to its 20.5% revenue growth, and momentum that has not yet reached overbought territory \u2014 creating a defined pre-earnings window where the risk/reward skews long. | R1 Bear(7): COHR's debt/equity of 31.1 combined with 7.1% profit margins and a TTM P/E of 170x creates a catastrophic asymmetry into earnings \u2014 where a miss doesn't just trim the position, it detonates it, and our own fund's loss profile of -8.0% average losers versus +3.1% average winners makes this exact risk profile the one that has been quietly destroying our capital all year. | R2 Bull(4): COHR remains a structurally well-positioned AI datacom beneficiary with a sub-1.0 PEG and genuine analyst revision momentum, but the 8.9% pre-earnings price appreciation has compressed the asymmetry enough that position sizing should be reduced to reflect the binary risk \u2014 the thesis is intact but the entry is no longer as clean. | R2 Bear(7): COHR enters earnings with a 170x TTM P/E, 31.1 debt/equity, 7.1% margins, and 8.9% of speculative premium already baked in \u2014 the bull's concessions effectively confirm the asymmetry is broken, making this a position where the fund's documented -8.0% average loss profile is the most likely outcome on any disappointment, with no structural floor to stop it there.",
+      "bear_case": "Primary risk: Earnings miss or guidance disappointment triggers a violent unwind of the 8.9% pre-earnings price run, with a leveraged balance sheet and 7.1% margins leaving no fundamental floor to arrest the sell-off \u2014 replicating the -18.8% drawdown pattern already visible in the 52-week history, and landing squarely in our fund's -8.0% average loss bucket with zero structural stop to prevent it from going further. | Unresolved: [\"The bull's 'COHR is special' argument for why the fund's -8.0% average loser base rate doesn't apply is unfalsifiable pre-earnings and does nothing to change the loss distribution if the miss occurs \u2014 selectivity bias in self-assessment is exactly what precedes the worst losses\", 'A sub-1.0 PEG and analyst revision momentum are entirely forward-looking constructs that collapse instantly on a guidance cut, and with 31.1 debt/equity and 7.1% margins there is no balance sheet or earnings quality floor to catch the stock', 'The bull conceded no YoY EPS growth data exists, meaning the entire forward P/E compression to 42.7x is an unanchored projection \u2014 the 170x TTM P/E is the only real number and it is indefensible on a miss', 'Hyperscaler capex tailwinds are a sector tailwind, not a COHR-specific earnings guarantee, and the market has already priced the tailwind into the 8.9% pre-earnings run leaving no margin for execution error']",
       "bull_score": 4,
       "bear_score": 7,
       "final_conviction": 5,
@@ -91773,6 +91828,23 @@
       "pm_action": "skip",
       "pm_verdict": "The pre-earnings momentum setup has two unresolved TYPE-A bear points \u2014 a meet-or-modest-beat print on upward-revised consensus triggers a structural sell-the-news reaction the bull never mechanistically refuted, and the 0.82x volume confirmation failure on a near-upper-band surge with ADX at 20.2 disqualifies this as a clean momentum entry \u2014 and our fund's -3.98% negative expectancy in a sideways regime with a 2.6x loss-to-win ratio makes deploying capital into a binary catalyst with fat-left-tail leverage risk an unforced error regardless of the forward PEG narrative.",
       "risk_category": "conviction"
+    },
+    {
+      "ts": "2026-08-12T17:10:28.069196+00:00",
+      "symbol": "COHR",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 Earnings tonight is a dated, trade-specific TYPE-A catalyst that the bull explicitly conceded amplifies downside asymmetry on a miss, and the Conviction Rubric v2 mandates that one unresolved TYPE-A bear point caps conviction at \u22645 \u2014 the tied-debate buy rule does not override this because condition (iii) fails: the primary unresolved bear point is TYPE-A, not TYPE-B.",
+      "conviction": 5,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 357.33,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "COHR has a credible long-term structural thesis anchored by a sub-1.0 PEG and genuine AI/datacom tailwinds, but an earnings print tonight on a stock that has already run 8.9% pre-event is an unresolved TYPE-A bear point \u2014 the bull conceded it directly and never provided a concrete structural rebuttal, only a request for smaller sizing, which is capitulation dressed as risk management.",
+      "risk_category": "conviction"
     }
   ],
   "watchlists": [
@@ -118012,15 +118084,6 @@
   ],
   "tech_shadow": [
     {
-      "ts": "2026-07-15T20:17:44.146392+00:00",
-      "symbol": "MS",
-      "llm_signal": "bullish",
-      "llm_strength": 8,
-      "det_signal": "bullish",
-      "det_strength": 10,
-      "agree": true
-    },
-    {
       "ts": "2026-07-15T20:18:08.175831+00:00",
       "symbol": "MS",
       "llm_signal": "bullish",
@@ -122504,6 +122567,15 @@
     },
     {
       "ts": "2026-08-12T16:05:12.109938+00:00",
+      "symbol": "COHR",
+      "llm_signal": "bullish",
+      "llm_strength": 6,
+      "det_signal": "neutral",
+      "det_strength": 6,
+      "agree": false
+    },
+    {
+      "ts": "2026-08-12T17:08:58.477229+00:00",
       "symbol": "COHR",
       "llm_signal": "bullish",
       "llm_strength": 6,
@@ -129090,6 +129162,25 @@
           "size_pct": 0.06,
           "position_usd": 6090.84,
           "stop_price": 329.43,
+          "sector": "Technology"
+        }
+      ],
+      "skipped": []
+    },
+    {
+      "ts": "2026-08-12T17:08:53.752157+00:00",
+      "regime": "bull",
+      "vix_regime": "normal",
+      "run_reason": "sentinel_trigger",
+      "n_candidates": 1,
+      "would_buy": [
+        {
+          "symbol": "COHR",
+          "composite_score": 0.3587,
+          "price": 357.43,
+          "size_pct": 0.06,
+          "position_usd": 6089.95,
+          "stop_price": 328.84,
           "sector": "Technology"
         }
       ],

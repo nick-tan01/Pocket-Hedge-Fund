@@ -2586,6 +2586,12 @@
       "portfolio_value": 101561.13,
       "cash": 90769.37,
       "spy_price": 777.95
+    },
+    {
+      "ts": "2026-08-13T19:17:27.935794+00:00",
+      "portfolio_value": 101559.13,
+      "cash": 90769.37,
+      "spy_price": 777.86
     }
   ],
   "trades": [
@@ -4033,9 +4039,9 @@
       "time_stop_flagged": false,
       "consecutive_weakened_count": 0,
       "is_remnant": true,
-      "current_price": 1211.64,
-      "unrealized_pl": 337.16,
-      "unrealized_plpc": 0.19315,
+      "current_price": 1211.39,
+      "unrealized_pl": 336.73,
+      "unrealized_plpc": 0.1929,
       "avg_entry": 1015.5,
       "trim_history": [
         {
@@ -4132,9 +4138,9 @@
           "reason": "Private credit contagion risk has escalated from theoretical to active (Blue Owl, Apollo, Ares stress), the bull conceded TYPE A pipeline threat, institutional bid absence below $216 leaves a 5%+ gap to $205.83 support with no technical anchor, and the 502x leveraged balance sheet introduces non-linear downside risk under simultaneous credit stress and client redemption pressure \u2014 all of which materially weaken but do not break the core thesis."
         }
       ],
-      "current_price": 218.885,
-      "unrealized_pl": 323.16,
-      "unrealized_plpc": 0.08187,
+      "current_price": 218.815,
+      "unrealized_pl": 321.79,
+      "unrealized_plpc": 0.08152,
       "avg_entry": 202.3212,
       "trim_pnl": 668.66,
       "stop_order_id": "405fa70a-08e3-4d96-b12a-25f7098b7a4a"
@@ -4158,9 +4164,9 @@
       "sector": "Financial Services",
       "trim_pnl": 0.0,
       "is_remnant": false,
-      "current_price": 109.875,
-      "unrealized_pl": 299.94,
-      "unrealized_plpc": 0.07247,
+      "current_price": 109.86,
+      "unrealized_pl": 299.34,
+      "unrealized_plpc": 0.07233,
       "avg_entry": 102.45,
       "last_review_ts": "2026-08-10T17:46:40.410652+00:00",
       "last_review_conviction": 6,
@@ -57952,20 +57958,60 @@
       ],
       "regime": "bull",
       "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-08-13T19:17:28.122624+00:00",
+      "run_type": "midday",
+      "candidates": [
+        "AMAT"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "sentinel_trigger",
+      "candidate_details": [
+        {
+          "symbol": "AMAT",
+          "composite_score": 0.24,
+          "signals": {
+            "eps_growth": 33.5,
+            "rev_growth": 11.4,
+            "growth_quality": "moderate",
+            "rs_vs_sector_pct": -9.9,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.67,
+            "52wk_high": 739.67,
+            "volume_spike_ratio": 0.79,
+            "volume_spike": false,
+            "rsi": 52.1,
+            "macd_crossover": "False",
+            "bb_pct": 0.69,
+            "news_count": 10,
+            "top_headline": "10 Information Technology Stocks Whale Activity In Today\u2019s Session",
+            "news_quality": 0.0,
+            "pe_trailing": 51.6,
+            "pe_forward": 31.6,
+            "earnings_growth": 33.5
+          }
+        }
+      ],
+      "event_symbols": [
+        "AMAT"
+      ],
+      "event_details": [
+        {
+          "symbol": "AMAT",
+          "trigger_type": "earnings_today",
+          "value": 1.0,
+          "threshold": 1.0,
+          "severity": "high"
+        }
+      ],
+      "regime": "bull",
+      "vix_regime": "normal"
     }
   ],
   "debate_logs": [
-    {
-      "id": "debate_CB_20260701162305",
-      "symbol": "CB",
-      "ts": "2026-07-01T16:23:05.198487+00:00",
-      "bull_case": "R1 Bull(6): CB offers a rare combination of genuine earnings power \u2014 15.4% ROE, 78.7% EPS growth \u2014 and modest valuation at 12.0x forward P/E, with technical momentum confirming rather than contradicting the fundamental re-rating case. | R1 Bear(6): CB is a structurally sound insurer priced for perfection at resistance, with a PEG of 3.0 exposing the 'cheap' valuation narrative as a cyclical earnings mirage \u2014 and 0.37x volume confirms nobody serious is buying this breakout. | R2 Bull(5): CB remains a legitimate hold at current levels given durable underwriting quality and reasonable normalized earnings power, but the near-52-week-high entry with ADX below 25, volume at 0.37x average, and analyst targets below spot price compress the risk-reward enough to warrant reduced position sizing rather than full conviction. | R2 Bear(6): CB's underwriting quality is real but already priced in at a 52-week-high entry with no analyst target support, sub-threshold momentum, and a PEG of 3.0 that leaves the stock acutely vulnerable to an EPS normalization that even the bull now concedes is partially cyclical \u2014 the asymmetry favors the downside.",
-      "bear_case": "Primary risk: EPS normalization hits faster than expected as P&C pricing softens \u2014 CB reports a quarter with EPS reverting toward revenue growth rates, the 'cheap' 12x multiple re-rates to 18-20x on normalized earnings, and the stock drops 20-30% from a 52-week high entry with no institutional support and no analyst target above current price to cushion the fall. | Unresolved: ['Analyst consensus targets below spot price remain unresolved \u2014 the bull conceded this is a headwind but offered no mechanism by which sell-side upgrades or target raises close that gap before normalization hits', \"Speed of EPS normalization remains unaddressed \u2014 the bull argues it won't happen 'overnight' but provides no timeline, leaving the core risk of a near-52-week-high entry ahead of a re-rating event intact\", \"0.37x volume confirming absent institutional sponsorship at this level was not rebutted \u2014 the bull's concession on technicals actually reinforces this risk rather than resolving it\"]",
-      "bull_score": 5,
-      "bear_score": 6,
-      "final_conviction": 6,
-      "decision": "watch"
-    },
     {
       "id": "debate_LRCX_20260701162442",
       "symbol": "LRCX",
@@ -63454,6 +63500,17 @@
       "bear_score": 6,
       "final_conviction": 5,
       "decision": "watch"
+    },
+    {
+      "id": "debate_AMAT_20260813191727",
+      "symbol": "AMAT",
+      "ts": "2026-08-13T19:17:27.380952+00:00",
+      "bull_case": "R1 Bull(5): AMAT's 33.5% EPS growth with a PEG of 1.2 makes it fundamentally mispriced at 26% off highs, and an imminent earnings print against a cooling inflation backdrop is the specific catalyst to close that gap toward the $633 analyst target. | R1 Bear(7): The 33.5% EPS growth driving AMAT's bull case is structurally undermined by only 11.4% revenue growth \u2014 a gap this wide in a capital equipment business signals margin expansion that is cyclically fragile, not durable, and an earnings print against that backdrop is as likely to expose the crack as close it. | R2 Bull(4): AMAT's 33.5% EPS growth supported by legitimate operating leverage, a forward P/E compressing to 31.7 against a 1.2 PEG, and a 26%-off-highs entry that has already discounted cyclical risk, positions the upcoming earnings print as a catalyst to begin closing the gap to the $633 analyst target \u2014 provided position sizing reflects the genuine TYPE A technical risk of a trendless tape with below-average volume near resistance. | R2 Bear(7): AMAT's 33.5% EPS growth on only 11.4% revenue expansion reflects margin levels that are cyclically peak rather than structurally earned, and an earnings print into a TTM P/E of 51.7 on a stock already 26% off highs with no technical trend or volume conviction is the precise setup where decelerating revenue exposes the crack in the EPS story, triggering multiple compression with no technical floor to arrest the decline.",
+      "bear_case": "Primary risk: AMAT reports earnings that reveal revenue growth decelerating further below 11.4% \u2014 confirming that the EPS growth story was margin-peak driven rather than structurally supported \u2014 triggering a multiple compression event from TTM P/E 51.7 in a stock already 26% off highs with no technical trend or volume support to slow the decline, producing a loss consistent with our fund's -8.0% average loss profile in a sideways regime. | Unresolved: ['Revenue growth deceleration below 11.4% confirming EPS expansion was margin-peak driven rather than operationally sustainable \u2014 the bull offered no counter-data on revenue trajectory', 'TTM P/E of 51.7 remaining vulnerable to multiple compression even if forward P/E is 31.7, since the earnings print could reset forward estimates downward rather than validate them', 'The short-covering-as-fuel argument requires a positive surprise catalyst that the bull assumed but did not demonstrate is probable given the revenue growth structural gap', 'Analyst target of $633 as a valuation anchor is undermined if the earnings print resets forward estimates \u2014 the bull treated the target as durable without addressing estimate revision risk']",
+      "bull_score": 4,
+      "bear_score": 7,
+      "final_conviction": 5,
+      "decision": "skip"
     }
   ],
   "position_reviews": [
@@ -93139,6 +93196,23 @@
       "pm_action": "watch",
       "pm_verdict": "MDB's technical structure is genuinely strong below $463 resistance, but the thesis-validation trigger (volume expansion through $463.14) has not fired, the fund carries negative expectancy (-3.98% per trade, -7.0% avg loss), and the Exhaustion/Crowding Guardrail fires on a parabolic 24% move in 5 days with RSI 78.9 \u2014 making this a watch for confirmed breakout, not a buy ahead of it.",
       "risk_category": "conviction"
+    },
+    {
+      "ts": "2026-08-13T19:17:27.195494+00:00",
+      "symbol": "AMAT",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 The revenue-to-EPS growth gap (11.4% vs 33.5%) is a TYPE-A unresolved bear point \u2014 it represents a trade-specific risk that THIS earnings print could expose margin-peak dynamics and trigger estimate revisions downward, not a systemic sector headwind; the bull conceded the fragility exists and offered no forward revenue trajectory data to counter it.",
+      "conviction": 5,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 548.92,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "AMAT's fundamental quality is real but the earnings print is a binary TYPE-A event sitting on top of an unresolved structural crack \u2014 11.4% revenue growth driving 33.5% EPS growth is a margin-peak fragility the bull never concretely rebutted, and the technical setup (ADX 11.2, volume 0.79x, resistance at $576.49) provides no floor if the print disappoints; with a fund expectancy of -3.98% and a 70% loss rate, we cannot afford to pay for optionality on a coin-flip earnings event with no trend confirmation.",
+      "risk_category": "pm_decision"
     }
   ],
   "watchlists": [
@@ -119374,15 +119448,6 @@
   ],
   "tech_shadow": [
     {
-      "ts": "2026-07-16T18:01:06.163790+00:00",
-      "symbol": "LLY",
-      "llm_signal": "neutral",
-      "llm_strength": 4,
-      "det_signal": "neutral",
-      "det_strength": 7,
-      "agree": true
-    },
-    {
       "ts": "2026-07-16T18:01:21.736256+00:00",
       "symbol": "MS",
       "llm_signal": "neutral",
@@ -123872,6 +123937,15 @@
       "det_signal": "bullish",
       "det_strength": 10,
       "agree": true
+    },
+    {
+      "ts": "2026-08-13T19:15:30.135680+00:00",
+      "symbol": "AMAT",
+      "llm_signal": "bullish",
+      "llm_strength": 5,
+      "det_signal": "neutral",
+      "det_strength": 6,
+      "agree": false
     }
   ],
   "pre_debate_gates": [
@@ -130677,6 +130751,25 @@
           "size_pct": 0.06,
           "position_usd": 6092.42,
           "stop_price": 162.3,
+          "sector": "Technology"
+        }
+      ],
+      "skipped": []
+    },
+    {
+      "ts": "2026-08-13T19:15:21.566441+00:00",
+      "regime": "bull",
+      "vix_regime": "normal",
+      "run_reason": "sentinel_trigger",
+      "n_candidates": 1,
+      "would_buy": [
+        {
+          "symbol": "AMAT",
+          "composite_score": 0.24,
+          "price": 548.82,
+          "size_pct": 0.06,
+          "position_usd": 6093.55,
+          "stop_price": 504.91,
           "sector": "Technology"
         }
       ],

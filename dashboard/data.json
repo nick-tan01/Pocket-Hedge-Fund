@@ -2556,6 +2556,12 @@
       "portfolio_value": 101541.66,
       "cash": 90769.37,
       "spy_price": 775.86
+    },
+    {
+      "ts": "2026-08-13T16:06:55.939856+00:00",
+      "portfolio_value": 101541.39,
+      "cash": 90769.37,
+      "spy_price": 776.12
     }
   ],
   "trades": [
@@ -4003,9 +4009,9 @@
       "time_stop_flagged": false,
       "consecutive_weakened_count": 0,
       "is_remnant": true,
-      "current_price": 1218.81,
-      "unrealized_pl": 349.49,
-      "unrealized_plpc": 0.20021,
+      "current_price": 1218.405,
+      "unrealized_pl": 348.79,
+      "unrealized_plpc": 0.19981,
       "avg_entry": 1015.5,
       "trim_history": [
         {
@@ -4064,7 +4070,7 @@
       "status": "open",
       "key_risk": "Watch for a high-volume daily close back below the $203.31\u2013$204.51 support zone, particularly if accompanied by escalating yen intervention or bond market dislocation \u2014 this remains the precise and only exit trigger; additionally, the current resistance at $221.99 combined with very low volume (0.1x average) and weak ADX (11.1) warrants close observation for a potential reversal toward that support zone.",
       "position_usd": 4172.17,
-      "position_pct": 0.0421,
+      "position_pct": 0.042,
       "sector": "Financial Services",
       "last_review_ts": "2026-08-13T14:35:54.916011+00:00",
       "last_review_conviction": 6,
@@ -4102,9 +4108,9 @@
           "reason": "Private credit contagion risk has escalated from theoretical to active (Blue Owl, Apollo, Ares stress), the bull conceded TYPE A pipeline threat, institutional bid absence below $216 leaves a 5%+ gap to $205.83 support with no technical anchor, and the 502x leveraged balance sheet introduces non-linear downside risk under simultaneous credit stress and client redemption pressure \u2014 all of which materially weaken but do not break the core thesis."
         }
       ],
-      "current_price": 218.86,
-      "unrealized_pl": 322.67,
-      "unrealized_plpc": 0.08175,
+      "current_price": 218.81,
+      "unrealized_pl": 321.69,
+      "unrealized_plpc": 0.0815,
       "avg_entry": 202.3212,
       "trim_pnl": 668.66,
       "stop_order_id": "405fa70a-08e3-4d96-b12a-25f7098b7a4a"
@@ -4128,9 +4134,9 @@
       "sector": "Financial Services",
       "trim_pnl": 0.0,
       "is_remnant": false,
-      "current_price": 109.1,
-      "unrealized_pl": 268.64,
-      "unrealized_plpc": 0.06491,
+      "current_price": 109.1498,
+      "unrealized_pl": 270.65,
+      "unrealized_plpc": 0.0654,
       "avg_entry": 102.45,
       "last_review_ts": "2026-08-10T17:46:40.410652+00:00",
       "last_review_conviction": 6,
@@ -57647,20 +57653,60 @@
       ],
       "regime": "bull",
       "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-08-13T16:06:56.131229+00:00",
+      "run_type": "midday",
+      "candidates": [
+        "AMAT"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "sentinel_trigger",
+      "candidate_details": [
+        {
+          "symbol": "AMAT",
+          "composite_score": 0.24,
+          "signals": {
+            "eps_growth": 33.5,
+            "rev_growth": 11.4,
+            "growth_quality": "moderate",
+            "rs_vs_sector_pct": -8.6,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.68,
+            "52wk_high": 739.67,
+            "volume_spike_ratio": 0.39,
+            "volume_spike": false,
+            "rsi": 53.1,
+            "macd_crossover": "False",
+            "bb_pct": 0.74,
+            "news_count": 10,
+            "top_headline": "Smart Money Sells #1 Dow Stock; Hidden Inflation In PPI; Applied Materials Earnings To Tell A Key AI Story",
+            "news_quality": 0.0,
+            "pe_trailing": 50.1,
+            "pe_forward": 32.0,
+            "earnings_growth": 33.5
+          }
+        }
+      ],
+      "event_symbols": [
+        "AMAT"
+      ],
+      "event_details": [
+        {
+          "symbol": "AMAT",
+          "trigger_type": "earnings_today",
+          "value": 1.0,
+          "threshold": 1.0,
+          "severity": "high"
+        }
+      ],
+      "regime": "bull",
+      "vix_regime": "normal"
     }
   ],
   "debate_logs": [
-    {
-      "id": "debate_AMD_20260630213352",
-      "symbol": "AMD",
-      "ts": "2026-06-30T21:33:52.106667+00:00",
-      "bull_case": "R1 Bull(6): AMD's 91.2% EPS growth at a PEG of 1.2 is driving a technically confirmed momentum breakout toward $615-$700 institutional targets, and the bears' valuation objection is already priced into a forward P/E of 44.1 that the earnings trajectory is actively compressing. | R1 Bear(6): AMD's bull case rests entirely on a PEG ratio that papers over a structurally broken return profile \u2014 8.1% ROE and 13.4% margins at a 44x forward multiple means any earnings deceleration triggers a violent re-rating with no valuation floor beneath it. | R2 Bull(5): AMD's 91.2% EPS growth compressing a 44.1x forward P/E, anchored by institutional targets at $615-$700 and an intact momentum structure, remains a valid breakout thesis contingent on a confirmed daily close above $584.73 with MACD signal crossover \u2014 the stop is defined, the asymmetry is acceptable if the confirmation arrives, and the bear's strongest points are technical timing risks, not fundamental thesis killers. | R2 Bear(6): With no confirmed volume-backed close above $584.73, a structurally weak return profile (8.1% ROE, 13.4% margins) priced at 44x forward earnings, and a fund context where average losers already exceed average winners, AMD offers negative expected value until technical confirmation the bull explicitly admits has not yet arrived.",
-      "bear_case": "Primary risk: AMD fails to close above $584.73 resistance, reverses on the 'AI valuation premium' narrative headwind already documented in sentiment, and retraces toward pre-surge levels \u2014 a 10-13% drawdown that mirrors the fund's recent average loser, hitting initial stop-loss as the third such exit in five trades. | Unresolved: [\"No confirmed daily close above $584.73 with volume expansion \u2014 the bull's 'magnet effect' thesis is speculative forward reasoning, not present evidence, and MACD approaching crossover is not a crossover\", 'Structural ROE (8.1%) and margin (13.4%) weakness at 44x forward P/E creates an asymmetric downside if EPS growth decelerates even modestly \u2014 the bull offered no rebuttal to this fundamental return-profile concern', 'Fund-level context: 40% win rate with average losers exceeding average winners means this trade enters with a negative expected value skew that the thin 5.9% reward-to-target does not overcome']",
-      "bull_score": 5,
-      "bear_score": 6,
-      "final_conviction": 6,
-      "decision": "watch"
-    },
     {
       "id": "debate_MU_20260630213529",
       "symbol": "MU",
@@ -63149,6 +63195,17 @@
       "bear_score": 7,
       "final_conviction": 5,
       "decision": "watch"
+    },
+    {
+      "id": "debate_AMAT_20260813160655",
+      "symbol": "AMAT",
+      "ts": "2026-08-13T16:06:55.524237+00:00",
+      "bull_case": "R1 Bull(4): AMAT's imminent earnings event offers a asymmetric recovery setup \u2014 a stock with 33.5% EPS growth and a 1.2 PEG sitting 25% off highs into a confirmed AI demand catalyst \u2014 but low volume and negative fund expectancy demand tight risk discipline. | R1 Bear(7): AMAT into earnings is a negative-expectancy earnings gamble dressed as a value recovery, entering on 0.39x volume with a fund that already loses -1.35% per trade and an 8.0% average loss that would devastate the position if guidance disappoints. | R2 Bull(3): AMAT offers a fundamentally grounded earnings catalyst with 33.5% EPS growth and a 1.2 PEG at 25% off highs, but the fund's negative expectancy record, pre-earnings institutional volume absence, and the fragility of the margin expansion story into a cyclical print demand minimum position sizing with a hard stop \u2014 this is a speculative participation trade, not a conviction hold. | R2 Bear(7): The bull's own concessions \u2014 that margin expansion must hold flawlessly, that volume absence is a demonstrated thesis-breaker, and that fund expectancy requires materially reduced sizing \u2014 collectively describe a trade where the primary risk (guidance disappointment triggering multiple compression from 32x on a stock 25% off highs with no technical floor) remains fully intact and unaddressed, making AMAT a negative-expectancy earnings gamble regardless of position size.",
+      "bear_case": "Primary risk: Earnings guidance disappoints on forward demand or margins, exposing the 33.5% EPS growth as a cyclical peak artifact, triggering a multiple compression event in a stock already 25% off highs with no technical trend support and no institutional volume cushion \u2014 producing an -8%+ loss that the fund's negative expectancy record cannot absorb. | Unresolved: [\"The bull never adequately addressed what happens on a guidance miss \u2014 the asymmetry argument assumes an earnings beat, but 33.5% EPS growth driven by margin expansion rather than revenue velocity (11.4%) is precisely the configuration most vulnerable to a forward guidance cut, and a 32x P/E with no institutional volume cushion and no technical support produces violent downside that 'tight position sizing' mitigates in dollar terms but does not change the negative-expectancy calculus\", \"The bull's own concession that 'margin expansion must hold flawlessly or the bull case collapses' is an admission that the trade has asymmetric fragility \u2014 the upside requires a perfect print AND sustained forward guidance, while the downside requires only one crack in a margin story that is already arithmetically suspicious given the revenue/EPS growth divergence\", \"Reduced position sizing does not resolve negative fund expectancy as a system \u2014 it reduces the loss magnitude on this trade but does not change the probability distribution of outcomes, and the bull offered no evidence that AMAT's specific setup has historically outperformed the fund's base rate, making the 'not random variance' claim an assertion rather than a demonstrated edge\"]",
+      "bull_score": 3,
+      "bear_score": 7,
+      "final_conviction": 4,
+      "decision": "skip"
     }
   ],
   "position_reviews": [
@@ -92685,6 +92742,23 @@
       "pm_action": "watch",
       "pm_verdict": "MDB presents a momentum setup with real technical confirmation (ADX 27, MACD above signal, EMAs trending up) but fails the conviction rubric on three simultaneous grounds: RSI 79.4 with a 25% move in 5 days triggers the parabolic exhaustion guardrail, volume at 0.46x average is falling as price rises constituting a TYPE-A distribution signal, and the only named catalyst is a volume-confirmed breakout through $462.94 that has not yet occurred \u2014 meaning the bull's own entry logic demands we wait, not enter.",
       "risk_category": "conviction"
+    },
+    {
+      "ts": "2026-08-13T16:06:55.332657+00:00",
+      "symbol": "AMAT",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 An unresolved TYPE-A bear point: a guidance miss on a 32x forward P/E stock where EPS growth (33.5%) is structurally decoupled from revenue growth (11.4%) \u2014 with no technical floor (ADX 11.1, sideways EMAs) and no institutional volume present to absorb downside \u2014 produces exactly the -8%+ loss pattern the fund's own exit record demonstrates is its primary destruction mode. The bull never concretely addressed what happens on a guidance disappointment; it only addressed what happens on a beat.",
+      "conviction": 4,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 555.26,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "AMAT into earnings is a binary event with a Type-A unresolved bear point \u2014 guidance disappointment on a 32x forward P/E stock with margin-driven (not revenue-driven) EPS growth, no institutional volume cushion, and no technical trend (ADX 11.1) \u2014 entering a fund that already runs -3.98% expectancy per trade. The bull's own concessions on margin fragility, volume absence, and expectancy make this a speculative gamble, not an edge.",
+      "risk_category": "pm_decision"
     }
   ],
   "watchlists": [
@@ -118920,15 +118994,6 @@
   ],
   "tech_shadow": [
     {
-      "ts": "2026-07-16T15:23:38.765686+00:00",
-      "symbol": "DDOG",
-      "llm_signal": "neutral",
-      "llm_strength": 4,
-      "det_signal": "bullish",
-      "det_strength": 8,
-      "agree": false
-    },
-    {
       "ts": "2026-07-16T15:25:03.941990+00:00",
       "symbol": "SBUX",
       "llm_signal": "bullish",
@@ -123418,6 +123483,15 @@
       "det_signal": "bullish",
       "det_strength": 10,
       "agree": true
+    },
+    {
+      "ts": "2026-08-13T16:05:23.309083+00:00",
+      "symbol": "AMAT",
+      "llm_signal": "bullish",
+      "llm_strength": 5,
+      "det_signal": "neutral",
+      "det_strength": 6,
+      "agree": false
     }
   ],
   "pre_debate_gates": [
@@ -130148,6 +130222,25 @@
           "size_pct": 0.06,
           "position_usd": 6097.61,
           "stop_price": 311.48,
+          "sector": "Technology"
+        }
+      ],
+      "skipped": []
+    },
+    {
+      "ts": "2026-08-13T16:05:18.405351+00:00",
+      "regime": "bull",
+      "vix_regime": "normal",
+      "run_reason": "sentinel_trigger",
+      "n_candidates": 1,
+      "would_buy": [
+        {
+          "symbol": "AMAT",
+          "composite_score": 0.24,
+          "price": 555.02,
+          "size_pct": 0.06,
+          "position_usd": 6092.48,
+          "stop_price": 510.62,
           "sector": "Technology"
         }
       ],

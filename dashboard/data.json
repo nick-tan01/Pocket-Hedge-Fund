@@ -2538,6 +2538,12 @@
       "portfolio_value": 101645.74,
       "cash": 90769.37,
       "spy_price": 779.07
+    },
+    {
+      "ts": "2026-08-13T14:28:09.996047+00:00",
+      "portfolio_value": 101647.76,
+      "cash": 90769.37,
+      "spy_price": 779.02
     }
   ],
   "trades": [
@@ -3985,9 +3991,9 @@
       "time_stop_flagged": false,
       "consecutive_weakened_count": 0,
       "is_remnant": true,
-      "current_price": 1222.565,
-      "unrealized_pl": 355.94,
-      "unrealized_plpc": 0.2039,
+      "current_price": 1222.905,
+      "unrealized_pl": 356.53,
+      "unrealized_plpc": 0.20424,
       "avg_entry": 1015.5,
       "trim_history": [
         {
@@ -4084,9 +4090,9 @@
           "reason": "Private credit contagion risk has escalated from theoretical to active (Blue Owl, Apollo, Ares stress), the bull conceded TYPE A pipeline threat, institutional bid absence below $216 leaves a 5%+ gap to $205.83 support with no technical anchor, and the 502x leveraged balance sheet introduces non-linear downside risk under simultaneous credit stress and client redemption pressure \u2014 all of which materially weaken but do not break the core thesis."
         }
       ],
-      "current_price": 221.835,
-      "unrealized_pl": 380.71,
-      "unrealized_plpc": 0.09645,
+      "current_price": 221.84,
+      "unrealized_pl": 380.81,
+      "unrealized_plpc": 0.09647,
       "avg_entry": 202.3212,
       "trim_pnl": 668.66,
       "stop_order_id": "405fa70a-08e3-4d96-b12a-25f7098b7a4a"
@@ -4106,13 +4112,13 @@
       "status": "open",
       "key_risk": "Price is now approaching and testing the $109.05\u2013$109.32 resistance zone on persistently very low volume (0.27x average); a high-volume bearish rejection candle at this level or any decisive close back below $106.72 would constitute the exact scenario flagged at entry and would require immediate reassessment of the thesis.",
       "position_usd": 4138.6,
-      "position_pct": 0.0437,
+      "position_pct": 0.0438,
       "sector": "Financial Services",
       "trim_pnl": 0.0,
       "is_remnant": false,
-      "current_price": 110.08,
-      "unrealized_pl": 308.22,
-      "unrealized_plpc": 0.07448,
+      "current_price": 110.16,
+      "unrealized_pl": 311.46,
+      "unrealized_plpc": 0.07526,
       "avg_entry": 102.45,
       "last_review_ts": "2026-08-10T17:46:40.410652+00:00",
       "last_review_conviction": 6,
@@ -57405,20 +57411,60 @@
       ],
       "regime": "bull",
       "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-08-13T14:28:10.180055+00:00",
+      "run_type": "pre_market",
+      "candidates": [
+        "AMAT"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "sentinel_trigger",
+      "candidate_details": [
+        {
+          "symbol": "AMAT",
+          "composite_score": 0.24,
+          "signals": {
+            "eps_growth": 33.5,
+            "rev_growth": 11.4,
+            "growth_quality": "moderate",
+            "rs_vs_sector_pct": -8.9,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.68,
+            "52wk_high": 739.67,
+            "volume_spike_ratio": 0.2,
+            "volume_spike": false,
+            "rsi": 53.1,
+            "macd_crossover": "False",
+            "bb_pct": 0.74,
+            "news_count": 10,
+            "top_headline": "Stock Market Today: S&P 500, Dow Futures Rise, Nasdaq Falls as July Inflation Cools\u2014Cisco Systems, Netflix, Applied Materials in Focus (UPDATED)",
+            "news_quality": 0.0,
+            "pe_trailing": 52.2,
+            "pe_forward": 32.0,
+            "earnings_growth": 33.5
+          }
+        }
+      ],
+      "event_symbols": [
+        "AMAT"
+      ],
+      "event_details": [
+        {
+          "symbol": "AMAT",
+          "trigger_type": "earnings_today",
+          "value": 1.0,
+          "threshold": 1.0,
+          "severity": "high"
+        }
+      ],
+      "regime": "bull",
+      "vix_regime": "normal"
     }
   ],
   "debate_logs": [
-    {
-      "id": "debate_AMD_20260630174507",
-      "symbol": "AMD",
-      "ts": "2026-06-30T17:45:07.880775+00:00",
-      "bull_case": "R1 Bull(6): AMD's 91.2% EPS growth and PEG of 1.2 make the 44x forward multiple genuinely defensible, and with Wells Fargo at $615 and Cantor at $700, the analyst community is telling you the current $582 price is still catching up to fundamentals \u2014 not running ahead of them. | R1 Bear(6): AMD is priced at 191.7x trailing earnings with a 13.4% profit margin, a Debt/Equity of 6.0, and an 8.1% ROE \u2014 meaning the market is paying a luxury valuation for a business that is not efficiently converting its AI revenue surge into durable shareholder returns, and any execution stumble at this multiple is catastrophic. | R2 Bull(5): AMD's fundamental re-rating toward data center dominance remains intact and the PEG of 1.2 is defensible on 91.2% EPS growth, but the near-term entry is technically compromised by Bollinger exhaustion on thin volume \u2014 the thesis is right, the timing requires confirmation before adding risk. | R2 Bear(7): AMD's 191.7x trailing P/E and 44x forward multiple create a catastrophic asymmetric risk profile where any conservative data center margin guidance \u2014 not a revenue miss, but a margin guidance miss \u2014 triggers a violent derating with no earnings cushion, no valuation floor, and now confirmed technical exhaustion providing zero near-term price support on the way down.",
-      "bear_case": "Primary risk: AMD misses or guides conservatively on data center margin expansion \u2014 not revenue \u2014 causing the market to reprice the 44x forward multiple downward sharply, with a 191.7x trailing P/E providing zero valuation support on the way down and the 13.4% profit margin offering no earnings cushion to absorb the shock. | Unresolved: ['The bull never addressed the core asymmetry: at 191.7x trailing P/E and 44x forward, a conservative data center margin guide \u2014 not a revenue miss \u2014 is sufficient to trigger a catastrophic repricing with no valuation floor to slow the decline', \"The bull's 'reinvestment phase' framing for 6.0 Debt/Equity and 8.1% ROE provides no timeline or catalyst for mechanical improvement, leaving capital structure risk open-ended\", 'The $76 premium to median consensus was conceded as a caution signal but never reconciled with why the risk/reward is favorable at current prices versus waiting for a pullback to consensus', \"The bull's PEG of 1.2 defense relies entirely on sustaining 91.2% EPS growth, which is a high-base-effect number that becomes structurally harder to replicate \u2014 this regression risk was never addressed\"]",
-      "bull_score": 5,
-      "bear_score": 7,
-      "final_conviction": 6,
-      "decision": "watch"
-    },
     {
       "id": "debate_MU_20260630174657",
       "symbol": "MU",
@@ -62907,6 +62953,17 @@
       "bear_score": 7,
       "final_conviction": 6,
       "decision": "buy"
+    },
+    {
+      "id": "debate_AMAT_20260813142809",
+      "symbol": "AMAT",
+      "ts": "2026-08-13T14:28:09.174009+00:00",
+      "bull_case": "R1 Bull(5): AMAT's 33.5% EPS growth, 39.7% ROE, and PEG of 1.2 make it fundamentally mispriced at 25% below its 52-week high, with earnings as the catalyst to close that gap toward the $633 consensus target. | R1 Bear(7): AMAT's 33.5% EPS growth is a margin-expansion mirage built on only 11.4% revenue growth, entering an earnings binary in a sideways regime where our fund's loss asymmetry (-8.0% avg loss vs +3.1% avg win) makes earnings-catalyst bets structurally ruinous regardless of fundamental quality. | R2 Bull(3): AMAT's fundamental case \u2014 39.7% ROE, PEG of 1.2, and mid-cycle operating leverage driving EPS acceleration \u2014 remains structurally intact, but the combination of zero technical momentum base, an earnings binary as sole catalyst, and our fund's documented -8.0% average loss in sideways SPY regimes makes this a thesis to monitor rather than a trade to enter tonight. | R2 Bear(6): The bull has conceded every actionable risk that matters tonight \u2014 regime loss asymmetry, absent technical sponsorship, and earnings-binary exposure \u2014 validating the bear case not as a fundamental verdict on AMAT's quality but as a structural indictment of the trade's risk-reward math in this specific regime and timing context.",
+      "bear_case": "Primary risk: Earnings disappointment or cautious forward guidance in a zero-technical-support environment triggers a sharp mean-reversion toward the lower end of the $154\u2013$739 range, and given our fund's -8.0% average loss in a sideways regime, this trade's loss scenario is structurally disproportionate to the +3.1% average win we could realistically capture even on a beat. | Unresolved: ['Revenue growth acceleration required to sustain EPS leverage has not materialized and remains a forward assumption, not a confirmed trend \u2014 if H2 WFE demand disappoints, the margin-expansion story collapses into multiple compression with no technical floor to slow the drawdown']",
+      "bull_score": 3,
+      "bear_score": 6,
+      "final_conviction": 4,
+      "decision": "skip"
     }
   ],
   "position_reviews": [
@@ -92311,6 +92368,23 @@
       "pm_action": "buy",
       "pm_verdict": "COHR qualifies for a reduced-size entry under the quality-compounder lane: three analyst signals are constructive (Technical 7/10, Sentiment 7/10, Fundamental 6/10), all unresolved bear points are TYPE-B systemic risks already embedded in market price, and the technical structure \u2014 1.73x volume, RSI 57.1, MACD above signal, +DI leading \u2014 confirms momentum without exhaustion. No dated 4-week catalyst exists, so conviction stays at 6, not 7+, and position size must reflect that ceiling.",
       "risk_category": "approved"
+    },
+    {
+      "ts": "2026-08-13T14:28:08.995510+00:00",
+      "symbol": "AMAT",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 Unresolved TYPE-A risk: ADX at 11 and 0.2x average volume confirm zero technical support structure entering an earnings binary, meaning any disappointment faces no cushion \u2014 combined with the fund's regime-specific loss asymmetry, the risk-reward math is structurally negative and no amount of fundamental quality overrides that tonight.",
+      "conviction": 4,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 554.77,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "The fundamental quality of AMAT is not in dispute, but the trade construct fails on structural grounds: an earnings binary as the sole catalyst lands in a sideways SPY regime where this fund's documented loss asymmetry (-7.0% avg loss vs +3.1% avg win, -3.98% expectancy) makes entering tonight a negative-expectancy bet regardless of thesis quality. ADX at 11 and volume at 0.2x average constitute an unresolved TYPE-A bear point \u2014 there is no institutional sponsorship or technical base to absorb a guidance miss \u2014 and the bull conceded this explicitly in Round 2.",
+      "risk_category": "pm_decision"
     }
   ],
   "watchlists": [
@@ -118546,15 +118620,6 @@
   ],
   "tech_shadow": [
     {
-      "ts": "2026-07-16T15:18:36.103990+00:00",
-      "symbol": "HOOD",
-      "llm_signal": "neutral",
-      "llm_strength": 5,
-      "det_signal": "bullish",
-      "det_strength": 8,
-      "agree": false
-    },
-    {
       "ts": "2026-07-16T15:18:49.936784+00:00",
       "symbol": "META",
       "llm_signal": "bullish",
@@ -123043,6 +123108,15 @@
       "llm_strength": 7,
       "det_signal": "neutral",
       "det_strength": 7,
+      "agree": false
+    },
+    {
+      "ts": "2026-08-13T14:26:35.572852+00:00",
+      "symbol": "AMAT",
+      "llm_signal": "bullish",
+      "llm_strength": 5,
+      "det_signal": "neutral",
+      "det_strength": 6,
       "agree": false
     }
   ],
@@ -129718,6 +129792,25 @@
           "size_pct": 0.06,
           "position_usd": 6092.51,
           "stop_price": 327.19,
+          "sector": "Technology"
+        }
+      ],
+      "skipped": []
+    },
+    {
+      "ts": "2026-08-13T14:26:30.828040+00:00",
+      "regime": "bull",
+      "vix_regime": "normal",
+      "run_reason": "sentinel_trigger",
+      "n_candidates": 1,
+      "would_buy": [
+        {
+          "symbol": "AMAT",
+          "composite_score": 0.24,
+          "price": 554.82,
+          "size_pct": 0.06,
+          "position_usd": 6098.96,
+          "stop_price": 510.43,
           "sector": "Technology"
         }
       ],

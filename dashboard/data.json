@@ -2610,6 +2610,12 @@
       "portfolio_value": 101505.89,
       "cash": 90769.37,
       "spy_price": 777.93
+    },
+    {
+      "ts": "2026-08-14T14:45:29.966048+00:00",
+      "portfolio_value": 101478.23,
+      "cash": 90769.37,
+      "spy_price": 777.09
     }
   ],
   "trades": [
@@ -4047,19 +4053,19 @@
       "conviction": 7,
       "debate_id": "debate_LLY_20260519190455",
       "status": "open",
-      "key_risk": "Watch intently for any of the three original exit signals \u2014 a failed breakout, a high-volume reversal candle, or MACD crossing back below signal \u2014 as price enters the $1,238\u2013$1,249.45 trigger zone; persistently low volume (0.32x average) means any reversal signal at that zone carries elevated significance and should be acted upon immediately.",
+      "key_risk": "Price approaching the $1,238\u2013$1,249.45 trigger zone \u2014 monitor intently for the three original exit signals: failed breakout, high-volume reversal candle, or MACD crossing back below signal; current ultra-low volume (0.19x average) means any such signal at that zone carries even greater significance than originally anticipated.",
       "position_usd": 2026.13,
       "position_pct": 0.02,
       "sector": "Healthcare",
-      "last_review_ts": "2026-08-12T17:53:58.629111+00:00",
-      "last_review_conviction": 6,
+      "last_review_ts": "2026-08-14T14:30:24.726522+00:00",
+      "last_review_conviction": 5,
       "thesis_status": "intact",
       "time_stop_flagged": false,
       "consecutive_weakened_count": 0,
       "is_remnant": true,
-      "current_price": 1182.9035,
-      "unrealized_pl": 287.77,
-      "unrealized_plpc": 0.16485,
+      "current_price": 1182.14,
+      "unrealized_pl": 286.45,
+      "unrealized_plpc": 0.1641,
       "avg_entry": 1015.5,
       "trim_history": [
         {
@@ -4116,11 +4122,11 @@
       "conviction": 8,
       "debate_id": "debate_MS_20260522185742",
       "status": "open",
-      "key_risk": "A high-volume daily close back below the $203.31\u2013$204.51 support zone, particularly if accompanied by yen intervention or bond market dislocation \u2014 this remains the precise and sole exit trigger; also monitor price action around the $222.00 resistance level given weak ADX (11.1) and persistently low volume (0.26x average), which could signal a reversal back toward support.",
+      "key_risk": "Price action approaching the $222.00 resistance level on persistently ultralow volume (0.14x average) and a still-weak ADX (11.6) \u2014 a failure to break through $222 with conviction, especially on any macro shock (yen intervention, bond dislocation), could precipitate a reversal back toward the $203\u2013$204 support zone and trigger the hard exit criterion.",
       "position_usd": 4172.17,
-      "position_pct": 0.0419,
+      "position_pct": 0.0418,
       "sector": "Financial Services",
-      "last_review_ts": "2026-08-13T17:53:03.138778+00:00",
+      "last_review_ts": "2026-08-14T14:30:53.585830+00:00",
       "last_review_conviction": 6,
       "thesis_status": "intact",
       "time_stop_flagged": false,
@@ -4156,9 +4162,9 @@
           "reason": "Private credit contagion risk has escalated from theoretical to active (Blue Owl, Apollo, Ares stress), the bull conceded TYPE A pipeline threat, institutional bid absence below $216 leaves a 5%+ gap to $205.83 support with no technical anchor, and the 502x leveraged balance sheet introduces non-linear downside risk under simultaneous credit stress and client redemption pressure \u2014 all of which materially weaken but do not break the core thesis."
         }
       ],
-      "current_price": 217.975,
-      "unrealized_pl": 305.4,
-      "unrealized_plpc": 0.07737,
+      "current_price": 217.32,
+      "unrealized_pl": 292.62,
+      "unrealized_plpc": 0.07413,
       "avg_entry": 202.3212,
       "trim_pnl": 668.66,
       "stop_order_id": "405fa70a-08e3-4d96-b12a-25f7098b7a4a"
@@ -4182,9 +4188,9 @@
       "sector": "Financial Services",
       "trim_pnl": 0.0,
       "is_remnant": false,
-      "current_price": 110.17,
-      "unrealized_pl": 311.86,
-      "unrealized_plpc": 0.07535,
+      "current_price": 110.15,
+      "unrealized_pl": 311.05,
+      "unrealized_plpc": 0.07516,
       "avg_entry": 102.45,
       "last_review_ts": "2026-08-10T17:46:40.410652+00:00",
       "last_review_conviction": 6,
@@ -58078,75 +58084,178 @@
       ],
       "regime": "bull",
       "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-08-14T14:45:30.149270+00:00",
+      "run_type": "pre_market",
+      "candidates": [
+        "ONTO",
+        "COP",
+        "AMGN",
+        "PLTR",
+        "C",
+        "BAC"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "scheduled",
+      "candidate_details": [
+        {
+          "symbol": "ONTO",
+          "composite_score": 0.5262,
+          "signals": {
+            "eps_growth": 75.4,
+            "rev_growth": 35.3,
+            "growth_quality": "strong",
+            "rs_vs_sector_pct": 11.8,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.83,
+            "52wk_high": 386.46,
+            "volume_spike_ratio": 0.17,
+            "volume_spike": false,
+            "rsi": 60.1,
+            "macd_crossover": "False",
+            "bb_pct": 0.91,
+            "news_count": 1,
+            "top_headline": "Here's How Much $1000 Invested In Onto Innovation 5 Years Ago Would Be Worth Today",
+            "news_quality": 0.0,
+            "pe_trailing": 126.6,
+            "pe_forward": 29.2,
+            "earnings_growth": 75.4
+          }
+        },
+        {
+          "symbol": "COP",
+          "composite_score": 0.5172,
+          "signals": {
+            "eps_growth": 107.0,
+            "rev_growth": 35.5,
+            "growth_quality": "strong",
+            "rs_vs_sector_pct": 3.1,
+            "sector": "Energy",
+            "sector_etf": "XLE",
+            "pct_of_52wk_range": 0.82,
+            "52wk_high": 135.87,
+            "volume_spike_ratio": 0.14,
+            "volume_spike": false,
+            "rsi": 65.4,
+            "macd_crossover": "False",
+            "bb_pct": 0.96,
+            "news_count": 0,
+            "top_headline": "",
+            "news_quality": 0.0,
+            "pe_trailing": 16.8,
+            "pe_forward": 13.5,
+            "earnings_growth": 107.0
+          }
+        },
+        {
+          "symbol": "AMGN",
+          "composite_score": 0.515,
+          "signals": {
+            "eps_growth": 64.9,
+            "rev_growth": 9.5,
+            "growth_quality": "moderate",
+            "rs_vs_sector_pct": 7.4,
+            "sector": "Healthcare",
+            "sector_etf": "XLV",
+            "pct_of_52wk_range": 0.94,
+            "52wk_high": 421.79,
+            "volume_spike_ratio": 0.07,
+            "volume_spike": false,
+            "rsi": 67.9,
+            "macd_crossover": "False",
+            "bb_pct": 0.77,
+            "news_count": 2,
+            "top_headline": "Barclays Maintains Equal-Weight on Amgen, Raises Price Target to $380",
+            "news_quality": 0.25,
+            "pe_trailing": 25.7,
+            "pe_forward": 17.0,
+            "earnings_growth": 64.9
+          }
+        },
+        {
+          "symbol": "PLTR",
+          "composite_score": 0.506,
+          "signals": {
+            "eps_growth": 215.4,
+            "rev_growth": 92.8,
+            "growth_quality": "strong",
+            "rs_vs_sector_pct": 25.5,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.7,
+            "52wk_high": 207.52,
+            "volume_spike_ratio": 0.17,
+            "volume_spike": false,
+            "rsi": 71.2,
+            "macd_crossover": "False",
+            "bb_pct": 0.84,
+            "news_count": 10,
+            "top_headline": "AI Killing Software? Analyst Says \u2018I Don\u2019t See a Software Apocalypse\u2019",
+            "news_quality": 0.0,
+            "pe_trailing": 152.7,
+            "pe_forward": 76.5,
+            "earnings_growth": 215.4
+          }
+        },
+        {
+          "symbol": "C",
+          "composite_score": 0.4912,
+          "signals": {
+            "eps_growth": 61.0,
+            "rev_growth": 15.5,
+            "growth_quality": "moderate",
+            "rs_vs_sector_pct": 5.0,
+            "sector": "Financial Services",
+            "sector_etf": "XLF",
+            "pct_of_52wk_range": 0.85,
+            "52wk_high": 147.96,
+            "volume_spike_ratio": 0.15,
+            "volume_spike": false,
+            "rsi": 59.8,
+            "macd_crossover": "False",
+            "bb_pct": 0.93,
+            "news_count": 2,
+            "top_headline": "JBIC, Citibank, And JPMorgan Chase Co-Finance $2.397B For Pennsylvania Natural Gas Plant Powering AI Data Centers",
+            "news_quality": 0.0,
+            "pe_trailing": 14.9,
+            "pe_forward": 10.8,
+            "earnings_growth": 61.0
+          }
+        },
+        {
+          "symbol": "BAC",
+          "composite_score": 0.4877,
+          "signals": {
+            "eps_growth": 34.1,
+            "rev_growth": 16.8,
+            "growth_quality": "moderate",
+            "rs_vs_sector_pct": 1.7,
+            "sector": "Financial Services",
+            "sector_etf": "XLF",
+            "pct_of_52wk_range": 0.96,
+            "52wk_high": 65.2,
+            "volume_spike_ratio": 0.1,
+            "volume_spike": false,
+            "rsi": 68.1,
+            "macd_crossover": "False",
+            "bb_pct": 0.86,
+            "news_count": 5,
+            "top_headline": "JPMorgan Debanked Polymarket Over Regulatory Concerns, But Eyes Role in Potential IPO: Report",
+            "news_quality": 0.5,
+            "pe_trailing": 14.9,
+            "pe_forward": 12.2,
+            "earnings_growth": 34.1
+          }
+        }
+      ],
+      "regime": "bull",
+      "vix_regime": "normal"
     }
   ],
   "debate_logs": [
-    {
-      "id": "debate_CAT_20260701162618",
-      "symbol": "CAT",
-      "ts": "2026-07-01T16:26:18.103375+00:00",
-      "bull_case": "R1 Bull(6): CAT's momentum structure \u2014 ADX 31.7 confirming trend strength, EMA10 above EMA30, MACD above signal, and 30.2% EPS growth \u2014 sets up a technical continuation trade toward the $1073 resistance breakout, with fundamentals strong enough to sustain the move in the near term. | R1 Bear(7): CAT is a deeply cyclical industrial trading at a P/E of 50.6 with 230.8% Debt/Equity and only 13.3% profit margins \u2014 a valuation structure that prices in perfection while carrying the fragility of a leveraged cyclical at peak earnings, in a sideways market regime where our recent win rate is 40% and losers are already outpacing winners. | R2 Bull(5): CAT's trend structure remains technically valid with ADX 31.7 and constructive EMA/MACD alignment, but the trade only executes on a volume-confirmed break above $1073 \u2014 without that confirmation, the negative-expectancy regime and stretched valuation (TYPE B) mean we hold powder and wait rather than anticipate. | R2 Bear(7): CAT remains a structurally dangerous long at P/E 50.6 with 230.8% leverage and 13.3% margins in a negative-expectancy regime \u2014 the bull's entry discipline framework addresses timing but cannot cushion the valuation re-rating risk that materializes the moment forward guidance or macro data disappoints.",
-      "bear_case": "Primary risk: CAT disappoints on forward guidance or macro data (PMI, construction spending, commodity demand) triggers a re-rating from P/E 50.6 toward historical cyclical norms \u2014 with 230.8% leverage and 13.3% margins providing zero cushion, the drawdown would be swift and deep, hitting our initial stop in a regime where 3 of our last 5 trades already exited that way. | Unresolved: ['P/E 50.6 on a cyclical with 230.8% Debt/Equity remains structurally vulnerable to any guidance miss or macro softness regardless of breakout confirmation \u2014 entry discipline manages timing risk, not valuation compression risk', 'Analyst consensus target of $951 implying downside from current levels was conceded by the bull but never reconciled with the bullish price target thesis \u2014 this asymmetry persists', \"A volume-confirmed breakout above $1073 in a negative-expectancy regime (40% win rate, losers outpacing winners) is still a below-50% probability event by the fund's own base rate, meaning the expected value of waiting for the trigger is also negative under current regime statistics\"]",
-      "bull_score": 5,
-      "bear_score": 7,
-      "final_conviction": 6,
-      "decision": "watch"
-    },
-    {
-      "id": "debate_HIMS_20260701162751",
-      "symbol": "HIMS",
-      "ts": "2026-07-01T16:27:51.936731+00:00",
-      "bull_case": "R1 Bull(5): HIMS is experiencing a technically confirmed momentum breakout \u2014 ADX 28.3 + RSI 71.7 + 16% surge in 5 days \u2014 that argues for short-term continuation regardless of fundamental noise, but serious balance sheet concerns cap conviction at a tactical rather than strategic level. | R1 Bear(7): HIMS is a technically overextended breakout built on collapsing fundamentals \u2014 a 253.7 Debt/Equity ratio combined with 3.8% revenue growth and negative margins means this is not a momentum continuation story but a short-squeeze or speculative spike running out of fuel, occurring in a sideways market regime where our recent win rate is 40% and losers match winners tick-for-tick. | R2 Bull(4): HIMS offers a time-limited tactical momentum long supported by ADX 28.3 and RSI 71.7 with genuine breakout volume, warranting a small, tightly-stopped position over 5-7 days while acknowledging that secular downtrend context, structural leverage (TYPE B), and the absence of a hard catalyst demand strict risk controls and reduced sizing relative to a clean-trend setup. | R2 Bear(7): HIMS remains a structurally fragile short candidate \u2014 the bull's concessions on downtrend quality degradation, non-actionable institutional narrative, and sizing reduction effectively confirm the bear case, and repackaging those concessions as a 'disciplined tactical long' does not create positive expected value when the fund's own recent win rate is 40% and the stock carries leverage and margin risk that makes gap-downs non-linear and stop-loss execution unreliable.",
-      "bear_case": "Primary risk: A gap-down reversal of 10-15% triggered by any negative fundamental development \u2014 credit concern, insider selling disclosure, or simply the absence of a follow-through catalyst \u2014 in a stock that is structurally fragile (D/E 253.7, negative margins) and already in a long-term downtrend, leaving no technical support to arrest the move before our stop is blown through, mirroring the -13.7% average loser pattern we are already experiencing. | Unresolved: ['The bull has not demonstrated positive expected value for a momentum long in a secular downtrend context with a 40% fund win rate \u2014 position sizing addresses loss magnitude but cannot fix a degraded probability of success', \"D/E of 253.7 with negative margins means any adverse credit or macro event produces a non-linear gap-down that no tight stop can reliably catch in pre/post-market, making the 'tightly-stopped' framing operationally fragile\", 'No hard catalyst identified \u2014 the bull conceded the institutional accumulation narrative was noise, leaving the entire thesis dependent on momentum continuation in a regime where our base rate argues against it', \"ADX 28.3 is above 25 but not decisively strong, and RSI 71.7 in a downtrend context historically resolves via mean reversion faster than in clean uptrend environments \u2014 the bull's ADX/RSI argument applies cleanly to uptrends, not to counter-trend momentum spikes\"]",
-      "bull_score": 4,
-      "bear_score": 7,
-      "final_conviction": 5,
-      "decision": "skip"
-    },
-    {
-      "id": "debate_META_20260701181512",
-      "symbol": "META",
-      "ts": "2026-07-01T18:15:12.282710+00:00",
-      "bull_case": "R1 Bull(8): META is a fundamentally mispriced AI infrastructure compounder \u2014 trading at a PEG of 0.8 and 22% off highs \u2014 now breaking out on volume with a genuine new revenue vector that consensus has not yet repriced. | R1 Bear(6): META has already repriced 10.9% in five days on an unquantified cloud narrative with zero revenue, meaning the bull's 'unpriced catalyst' is actually priced \u2014 and the downside risk is a sentiment reversal back to fundamentals that never changed. | R2 Bull(6): META remains a structurally mispriced AI infrastructure compounder at PEG 0.8 with a credible and near-zero-incremental-cost new revenue vector in cloud compute monetization \u2014 the appropriate response to legitimate near-term execution risk is reduced position sizing and a tighter stop, not abandonment of a thesis that consensus has still not fully repriced. | R2 Bear(6): META's 10.9% surge is a sentiment event dressed as a fundamental re-rating \u2014 the bull's own concessions (no revenue, no contracts, technical non-confirmation) confirm the primary risk is unresolved, and a tighter stop changes the loss profile but does not change the base-case probability that an unmonetized press-release narrative deflates before generating disclosed revenue, returning the stock to pre-surge levels into persistent overhead supply.",
-      "bear_case": "Primary risk: The cloud/AI compute monetization narrative deflates before generating disclosed revenue \u2014 META reports a quarter with no quantifiable cloud business contribution, the CDO hire fades as noise, and the stock gives back the entire 10.9% news-driven surge plus more as overhead supply from investors 22% underwater reasserts, hitting our initial stop in a regime where that has been the most common exit. | Unresolved: ['The cloud compute monetization narrative remains press-release stage with zero disclosed revenue, margins, or contracts \u2014 a 10.9% re-rating on this foundation is sentiment, not fundamental repricing, and one earnings report with no quantifiable cloud contribution collapses the narrative with overhead supply from investors 22% underwater providing persistent selling pressure on any reversal', 'EMA10/EMA30 non-confirmation in a formally defined downtrend was conceded by the bull but not resolved \u2014 the technical structure has not confirmed a trend reversal and the probability of a failed breakout remains elevated', \"The PEG 0.8 valuation floor is not a true floor if consensus earnings estimates embed cloud optionality that has not yet been stress-tested against a 'no revenue disclosed' outcome in 1-2 quarters\"]",
-      "bull_score": 6,
-      "bear_score": 6,
-      "final_conviction": 6,
-      "decision": "buy"
-    },
-    {
-      "id": "debate_AMD_20260701181647",
-      "symbol": "AMD",
-      "ts": "2026-07-01T18:16:47.033277+00:00",
-      "bull_case": "R1 Bull(6): AMD's 91.2% EPS growth and Forward P/E compression to 41.7x make the TTM valuation defensible while ADX-confirmed momentum at 25.3 signals a trend with room to run toward the $506 analyst consensus target. | R1 Bear(6): AMD's 181.8x TTM P/E rests on forward earnings estimates that are structurally undermined by a 13.4% profit margin and 8.1% ROE \u2014 the valuation requires flawless execution that the company's own capital efficiency metrics say it cannot deliver. | R2 Bull(5): AMD's directionally improving margins on an AI-driven revenue mix shift, combined with ADX-confirmed momentum at 25.3 and a Forward P/E compressing toward 41.7x on credible 91.2% EPS growth, justify a measured bullish position with disciplined stop-loss protection against a near-term earnings miss. | R2 Bear(6): AMD's bull case rests on a margin expansion trajectory that is directionally plausible but not yet financially demonstrated, while the 181.8x TTM P/E and D/E 6.0 create a binary risk structure where a single earnings shortfall produces a violent, unhedged re-rating with no balance sheet flexibility to arrest the decline.",
-      "bear_case": "Primary risk: AMD misses forward earnings estimates due to margin compression or pricing pressure from NVIDIA, triggering a violent multiple re-rating from an already elevated 181.8x TTM P/E base, with the leveraged balance sheet (D/E 6.0) eliminating the financial flexibility to reassure the market \u2014 producing a loss that mirrors or exceeds the fund's recent -13.7% average loser in a sideways regime with no momentum to cushion the fall. | Unresolved: ['The D/E of 6.0 combined with a 181.8x TTM P/E means a single earnings miss or guidance cut removes all financial and multiple buffer simultaneously \u2014 the bull acknowledged this but offered no mechanism that prevents it', \"ROE expansion from 8.1% is asserted as inevitable due to AI reinvestment cycle, but AMD has not yet demonstrated the pricing power or margin floor that would make this trajectory durable against NVIDIA's continued ecosystem lock-in\", 'The 91.2% EPS growth estimate embeds MI300X volume ramp assumptions that remain unverified by sustained customer reorder data \u2014 hyperscaler diversification away from NVIDIA has not yet produced sticky, recurring GPU revenue at scale', 'Sideways SPY regime with sub-0.6 volume confirmation and MACD below signal means there is no momentum cushion if the fundamental thesis disappoints \u2014 the loss scenario is asymmetrically severe']",
-      "bull_score": 5,
-      "bear_score": 6,
-      "final_conviction": 6,
-      "decision": "buy"
-    },
-    {
-      "id": "debate_DDOG_20260701181833",
-      "symbol": "DDOG",
-      "ts": "2026-07-01T18:18:33.112723+00:00",
-      "bull_case": "R1 Bull(7): DDOG's rare combination of 104% EPS growth, a PEG of 1.5, and ADX-confirmed momentum at 34.3 marks a fundamentally justified breakout \u2014 not a frothy top \u2014 with the Adaptive ML acquisition acting as a near-term re-rating catalyst before consensus catches up. | R1 Bear(6): DDOG's 104% EPS growth is a profitability mirage built on a 3.7% GAAP margin and a trailing P/E of 679 \u2014 one growth deceleration print collapses the entire PEG argument the bull is betting the fund on, and the technicals confirm we are buying into an already-extended, low-conviction move. | R2 Bull(6): DDOG's 104% EPS growth, PEG of 1.5, and ADX-confirmed trend remain fundamentally intact with the Adaptive ML acquisition as an unpriced re-rating catalyst \u2014 but the low-volume nature of the breakout warrants a reduced position size with a hard stop at $271 to manage the genuine TYPE A risk of near-term mean reversion before the institutional accumulation phase begins. | R2 Bear(6): DDOG's 104% EPS growth remains a profitability mirage built on a 3.7% GAAP margin at a 679 trailing P/E, the Adaptive ML acquisition introduces unquantified integration costs that are one earnings print away from collapsing the PEG thesis, and the bull's own concessions confirm both the technical and fundamental fragility \u2014 repackaging these as position-sizing problems rather than thesis-level risks does not change the asymmetric downside at current levels.",
-      "bear_case": "Primary risk: The next earnings print reveals that Adaptive ML integration costs and continued investment in AI/ML R&D compress the already-thin 3.7% GAAP margin, causing EPS growth to decelerate sharply \u2014 the PEG re-rates violently upward, the forward P/E of 92.7 becomes indefensible, and the stock gives back the entire post-acquisition surge plus more, with our entry point sitting at the top of a low-volume, extended breakout above resistance with no technical support nearby. | Unresolved: ['The bull never quantified the Adaptive ML deal size or modeled the integration cost impact on GAAP margin \u2014 conceding the risk exists is not the same as demonstrating the 3.7% margin can absorb it without triggering violent PEG re-rating', \"RSI at 72.1 on 0.37x normal volume is cited as 'consistent with continuation' but the bull provides no base rate data for this claim in low-volume breakout conditions specifically \u2014 ADX confirming trend strength does not rescue a breakout that never had institutional participation\", 'The $271 hard stop is structurally weak: it sits just below the breakout level with no technical support cluster beneath it, meaning a gap-down on a margin-compressing earnings print blows straight through the stop and the half-sized position still suffers the full percentage drawdown the bear outlined']",
-      "bull_score": 6,
-      "bear_score": 6,
-      "final_conviction": 6,
-      "decision": "watch"
-    },
-    {
-      "id": "debate_MU_20260701182013",
-      "symbol": "MU",
-      "ts": "2026-07-01T18:20:13.355155+00:00",
-      "bull_case": "R1 Bull(7): MU is a fundamentally mispriced AI/HBM beneficiary trading at a Forward P/E of 7.0 with 1368% EPS growth \u2014 a valuation gap this wide doesn't persist once institutional attention locks onto the political and automotive catalysts now publicly surfacing. | R1 Bear(7): MU's apparent valuation cheapness is a cyclical peak illusion \u2014 a Debt/Equity of 6.3 in a capital-intensive, highly cyclical industry means the next downcycle doesn't just compress the multiple, it threatens the balance sheet itself. | R2 Bull(6): MU remains a structurally mispriced HBM beneficiary at Forward P/E 7.0 with defensible EPS growth from margin-accretive HBM contracts, but near-term entry requires volume confirmation that is not yet present \u2014 the thesis is intact, the timing requires patience. | R2 Bear(7): MU's HBM narrative provides a plausible bull story but not a proven cycle-break, and with Debt/Equity of 6.3 leaving no balance sheet cushion, any demand or pricing disappointment in HBM converts a seemingly cheap Forward P/E of 7.0 into a dangerous trough-earnings repricing event with limited financial flexibility to absorb it.",
-      "bear_case": "Primary risk: EPS normalization hits faster and harder than expected \u2014 earnings revert toward prior-cycle levels while the Debt/Equity of 6.3 forces continued capex spending, free cash flow evaporates, and what looked like a Forward P/E of 7.0 reprices to 30x+ trough earnings with no balance sheet cushion to absorb the multiple compression. | Unresolved: [\"HBM pricing durability is unproven across a full cycle \u2014 hyperscaler customers have both pricing power and the option to internalize or diversify supply, meaning MU's margin-accretive HBM contracts are not locked-in and could compress sharply in a demand air pocket\", \"Debt/Equity of 6.3 in a downcycle forces capex continuation regardless of FCF generation, creating a liquidity squeeze the bull acknowledged but dismissed as 'sector-wide' without explaining how MU specifically survives it with less balance sheet cushion than Samsung or SK Hynix\", 'Forward P/E of 7.0 repricing to 30x+ trough earnings remains the mathematical core of the bear case and the bull offered no quantitative counter-scenario \u2014 only the qualitative assertion that this cycle is structurally different', 'Volume and technical deterioration the bull conceded as genuine near-term headwinds suggest institutional money is not yet convinced by the HBM structural narrative, which is real-time market evidence against the mispricing thesis']",
-      "bull_score": 6,
-      "bear_score": 7,
-      "final_conviction": 6,
-      "decision": "watch"
-    },
     {
       "id": "debate_AFRM_20260701190137",
       "symbol": "AFRM",
@@ -63578,6 +63687,72 @@
       "bear_case": "Primary risk: A single quarter of chipmaker capex guidance reduction or push-out \u2014 entirely possible given memory cycle dynamics or export control escalation \u2014 collapses the 'eight-quarter commitment' narrative simultaneously with forward EPS estimates, leaving the fund long a 30.8x P/E cyclical equipment stock mid-drawdown with no technical floor, in a regime where this fund's average loss is -8.0%. | Unresolved: [\"The 'Q4 confirmation add trigger' assumes Q4 guidance is additive \u2014 but if memory capex push-outs or export control escalation hit before Q4 reports, the defined add trigger never fires and the initial position absorbs the full drawdown with no re-entry discipline to recover it\", 'A 30.8x P/E on a cyclical equipment name with no technical floor and ADX at 11 still prices in a rerating that requires sustained capex commitment \u2014 now explicitly acknowledged as non-contractual \u2014 making downside EPS revision the base case in any demand softening scenario, not a tail risk', \"The bull's 'asymmetric upside' claim is unquantified against a -8.0% fund loss average in this exact regime type \u2014 the PEG of 1.2 is only attractive if the 'G' in the denominator doesn't compress, which is precisely what non-binding commitments cannot guarantee\"]",
       "bull_score": 5,
       "bear_score": 6,
+      "final_conviction": 5,
+      "decision": "watch"
+    },
+    {
+      "id": "debate_ONTO_20260814143640",
+      "symbol": "ONTO",
+      "ts": "2026-08-14T14:36:40.552482+00:00",
+      "bull_case": "R1 Bull(4): ONTO's 75.4% EPS growth and 35.3% revenue growth are repricing a transitional TTM multiple lower in real time, with technicals confirming upward momentum and analyst consensus targeting near 52-week highs \u2014 but the near-anemic 0.17x volume on the recent 9.6% surge is a serious structural warning that demands disciplined position sizing. | R1 Bear(8): ONTO's 9.6% surge on 0.17x average volume is a phantom move with no institutional backing, and entering it forces us to bet against a fund track record that already destroys -1.35% per trade in expectancy \u2014 the bull's own risk acknowledgment is a confession, not a mitigation. | R2 Bull(3): ONTO's fundamental repricing from TTM 126.6x to forward 29.2x P/E on 75.4% EPS growth remains a structurally valid thesis, but entry is only justified on confirmed 0.75x+ volume participation \u2014 until that trigger fires, the position is a watchlist hold, not an active trade, because the bear is correct that the fund cannot size its way out of a pre-confirmation entry in a negative-expectancy regime. | R2 Bear(6): The bull has correctly self-neutralized the immediate entry risk by conceding the volume confirmation requirement, but the unresolved questions of whether the 0.75x trigger will ever arrive at an acceptable risk/reward, combined with the fund's unproven ability to generate positive expectancy even on confirmed setups, keeps this a avoid until proven otherwise rather than a conditional buy.",
+      "bear_case": "Primary risk: The 9.6% surge on 0.17x volume reverses sharply the moment any real seller emerges \u2014 with 11.8% profit margins, 126.6 TTM P/E, and no institutional buyers confirmed, the stock has no fundamental support level between current price and a -8% drawdown that our historical loss average has already shown is exactly how this fund's losing trades resolve. | Unresolved: [\"The bull's conditional limit order framework assumes the 0.75x volume trigger will arrive as a clean confirmation event, but provides no analysis of what drives real institutional accumulation into a stock already up 9.6% on no volume \u2014 the trigger may never fire, or may fire on a secondary move 5-8% higher, meaning the risk/reward at confirmation entry could already be structurally degraded\", 'The forward 29.2x P/E valuation depends entirely on the 75.4% EPS growth materializing, and with 11.8% TTM profit margins leaving zero buffer for execution miss, any guidance cut collapses the thesis simultaneously on both the earnings and multiple legs', \"The fund's -1.35% per-trade expectancy average remains unaddressed as a selection bias problem \u2014 the bull has not demonstrated that the fund's historical process successfully identified and captured volume-confirmed breakouts at a positive expectancy rate, so the regime concern persists even if this specific setup is conditionally valid\"]",
+      "bull_score": 3,
+      "bear_score": 6,
+      "final_conviction": 5,
+      "decision": "watch"
+    },
+    {
+      "id": "debate_COP_20260814143833",
+      "symbol": "COP",
+      "ts": "2026-08-14T14:38:33.698902+00:00",
+      "bull_case": "R1 Bull(4): COP's 13.5x forward P/E with 107% YoY EPS growth and 35.5% revenue expansion represents a fundamentally undervalued energy major approaching a momentum inflection \u2014 but the volume collapse is a real problem that caps conviction until confirmed by institutional participation. | R1 Bear(7): COP's entire bull case rests on a 107% EPS growth figure that is explicitly flagged as cyclical energy price tailwind \u2014 meaning the 'growth-neutral' PEG of 1.0 is being applied to earnings that are likely near-peak, not inflecting, making the valuation anchor the bull is leaning hardest on structurally fraudulent. | R2 Bull(3): COP remains a conditional long with materially reduced conviction \u2014 the valuation setup and technical structure are intact, but position sizing must be minimal and a hard TYPE A exit trigger at 0.12x volume or $125.50 rejection must be pre-defined, because the fund is one session away from either institutional confirmation that unlocks the thesis or a documented pattern repeat that ends it. | R2 Bear(7): COP's bull case has narrowed to a momentum trade requiring institutional confirmation that has not arrived, applied to a valuation framework the bull himself concedes is broken, with a reward-to-risk ratio that is structurally unfavorable given the fund's documented loss profile \u2014 the honest summary is that reduced conviction and hard stops make the position survivable, not investable.",
+      "bear_case": "Primary risk: Commodity price softening triggers simultaneous EPS multiple expansion (13.5x becomes expensive), margin compression on an already thin 14.4% margin, and debt servicing concern on 35.6 D/E \u2014 all while price is pinned at upper Bollinger Band resistance on 0.15x volume with no institutional confirmation, creating a setup where the exit is crowded and the downside given the fund's -8.0% average loss on losing trades is deeply asymmetric relative to the 8% analyst upside on the bull case. | Unresolved: [\"The bull concedes PEG=1.0 is intellectually incomplete on cyclical earnings but never quantifies what the correct multiple IS \u2014 without a defensible normalized EPS and a fair multiple applied to it, the valuation anchor remains broken, not merely 'thinner than implied'\", \"The 'one session away from confirmation' framing assumes institutional volume will arrive at all \u2014 there is no catalyst identified that would drive 0.5x-0.75x volume, meaning the thesis depends on hope rather than a named mechanism\", \"The -8.0% average loss on fund losing trades versus 8% analyst upside creates a 1:1 reward-to-risk ratio BEFORE accounting for the cyclical earnings headwind, which is not a trade this fund's historical loss profile supports regardless of position sizing\", 'Hard exit triggers at 0.12x volume or $125.50 rejection protect against catastrophic loss but do not address the base case: a slow bleed on commodity softening where neither trigger fires but EPS estimates are quietly revised down over two quarters']",
+      "bull_score": 3,
+      "bear_score": 7,
+      "final_conviction": 5,
+      "decision": "watch"
+    },
+    {
+      "id": "debate_AMGN_20260814144004",
+      "symbol": "AMGN",
+      "ts": "2026-08-14T14:40:04.351058+00:00",
+      "bull_case": "R1 Bull(3): AMGN's forward P/E compression from 25.6x to 17.0x signals a genuine earnings inflection driven by 64.9% EPS expansion, but the volume collapse to 0.08x average near $421.79 resistance is a pre-defined thesis-killer that caps conviction severely. | R1 Bear(7): AMGN's 64.9% EPS expansion is arithmetically unsustainable given revenue growth that significantly lags it, meaning the forward P/E compression the bull is banking on is built on earnings that cannot persist \u2014 and a Debt/Equity of 490.3 means there is no balance sheet buffer when that realization hits. | R2 Bull(2): AMGN's 64.9% EPS expansion and P/E compression from 25.6x to 17.0x represent a legitimate earnings inflection, but the EPS-revenue divergence is a valid quality concern, the Debt/Equity of 490.3 is a structural TYPE B risk that limits shock absorption, and most critically the 0.08x volume reading at $421.79 resistance is a TYPE A disqualifier that this fund's own history confirms \u2014 the trade does not meet minimum entry standards at current participation levels regardless of the fundamental case. | R2 Bear(8): AMGN's bear case is now strengthened by the bull's own concessions \u2014 hollow EPS quality, a TYPE A volume disqualifier below the fund's empirical exit threshold, and 490.3 Debt/Equity combine to make the 17.0x forward P/E compression a trap, not an opportunity, with asymmetric downside risk and no institutional cushion at current resistance levels.",
+      "bear_case": "Primary risk: EPS growth prints below the street's forward estimates because revenue growth cannot support it, collapsing the 17.0x forward P/E thesis and triggering a multiple contraction at a stock near its 52-week high with a leveraged balance sheet and no institutional volume to cushion the unwind. | Unresolved: ['EPS growth driven by debt-funded buybacks rather than organic revenue expansion makes the 17.0x forward P/E compression structurally unsustainable \u2014 the bull conceded this but offered no mechanism by which it resolves', \"0.08x volume at $421.79 resistance is below the fund's own 0.12x exit threshold, meaning institutional participation is insufficient to support the multiple even if the fundamental case were sound\", 'Debt/Equity of 490.3 leaves no balance sheet buffer if EPS misses forward estimates, amplifying downside velocity at a stock already near its 52-week high']",
+      "bull_score": 2,
+      "bear_score": 8,
+      "final_conviction": 4,
+      "decision": "watch"
+    },
+    {
+      "id": "debate_PLTR_20260814144151",
+      "symbol": "PLTR",
+      "ts": "2026-08-14T14:41:51.588496+00:00",
+      "bull_case": "R1 Bull(4): PLTR's blowout earnings \u2014 215% EPS growth, 93% revenue growth, 49% profit margins \u2014 represent a genuine fundamental re-rating moment where the market is still price-discovering fair value, with technical momentum confirming the move, but the ultra-low volume (0.19x average) and negative expectancy track record (-1.35% per trade) demand tight risk controls and humility about position sizing. | R1 Bear(7): The bull's entire case rests on a volume-less momentum move approaching hard resistance in a fund with negative expectancy, where the asymmetric loss profile (-8.0% avg loss vs +3.1% avg win) means a single stop-out at current levels destroys the expected return from multiple winning trades. | R2 Bull(3): PLTR's 215% EPS growth represents a genuine fundamental re-rating that technical momentum (ADX 29.5, +DI dominance) is confirming in a strong-trend regime where RSI above 70 is continuation rather than exhaustion, but the TYPE A risk of 0.19x volume at $180.18 resistance demands this be treated as a reduced-size, tight-stop speculative entry \u2014 not a conviction trade \u2014 with the Debt/Equity and macro rate concerns classified as TYPE B factors already absorbed by a market that nonetheless repriced PLTR sharply higher post-earnings. | R2 Bear(7): The bull's concessions on volume, Cathie Wood distribution, and position sizing inadvertently validate the bear case \u2014 a trade the bull himself reduces to speculative, reduced-size with tight stops in a fund with negative expectancy and -8.0% average losses is not a trade worth taking, and no ADX reading changes the math that one stop-out here requires three wins just to break even.",
+      "bear_case": "Primary risk: Price stalls or reverses at the $180.18 resistance on continued low volume, triggering our stop in a stock where the historical drawdown profile suggests 15%+ downside \u2014 a loss that, given our fund's -8.0% average loss and negative expectancy baseline, would require roughly three winning trades just to recover. | Unresolved: [\"The negative expectancy baseline (-8.0% avg loss vs +3.1% avg win) is structural to the fund and is not resolved by position-sizing discipline \u2014 smaller size preserves capital but does not improve the trade's expected value\", \"Cathie Wood distribution at current levels remains unreconciled with the bull's momentum continuation narrative \u2014 a high-conviction, fundamental-first holder exiting is a qualitatively different signal than IBD SwingTrader adding, and the bull conceded this asymmetry without resolving it\", 'The ADX 29.5 momentum defense, while technically valid, does not address what happens when the trend breaks AT resistance on sub-0.2x volume \u2014 the bear case is precisely about the transition risk at $180.18, not the trend that preceded it', '15%+ historical drawdown asymmetry in PLTR remains unaddressed; the bull offered no probability-weighted scenario for downside magnitude, only a position-sizing concession']",
+      "bull_score": 3,
+      "bear_score": 7,
+      "final_conviction": 5,
+      "decision": "watch"
+    },
+    {
+      "id": "debate_C_20260814144336",
+      "symbol": "C",
+      "ts": "2026-08-14T14:43:36.437173+00:00",
+      "bull_case": "R1 Bull(4): Citigroup's deeply discounted valuation (forward P/E 10.8, PEG 0.7) combined with 61% YoY EPS growth creates a fundamental floor that justifies buying the current breakout attempt toward analyst consensus targets \u2014 but only if volume confirms. | R1 Bear(7): A 0.15x volume move into hard resistance, generated by a fund with negative expectancy and a documented history of exiting identical setups, is not a trade \u2014 it's a repeat of prior mistakes dressed in fundamental clothing. | R2 Bull(3): Citigroup's discounted valuation creates genuine fundamental support, but the position should not be entered until volume confirms institutional participation above the $140.27 resistance level \u2014 absent that confirmation, the bear is right that our fund's loss profile makes the risk/reward untenable. | R2 Bear(5): The bull has correctly deferred entry, but a disciplined rule from a fund with a documented history of breaking identical rules is not a trade thesis \u2014 it is an aspiration, and until volume confirmation is live and position sizing is explicitly capped to neutralize negative expectancy, the bear case remains structurally intact.",
+      "bear_case": "Primary risk: Price stalls or reverses at the $140.27 resistance level on continued low volume, the catalyst never materializes, and the position decays into a stop-out that follows our historical -8.0% average loss \u2014 a loss profile nearly three times our average win that the fund's negative expectancy cannot absorb. | Unresolved: [\"The volume-confirmation rule is a pre-trade intention, not a structural constraint \u2014 our fund's documented history shows identical discipline frameworks were overridden in NVDA and BAC, meaning the rule's enforceability remains unproven and the behavioral risk persists.\", 'Even with a confirmed breakout above $140.27, the -8.0% average loss versus sub-3% average win creates negative expectancy that a valuation floor alone cannot arithmetically rehabilitate without meaningful position-size reduction that was never quantified.', 'The debt/equity visibility gap in a bank undergoing structural transformation remains unresolved and caps the credibility of the fundamental downside compression argument the bull uses to partially offset the loss profile.']",
+      "bull_score": 3,
+      "bear_score": 5,
+      "final_conviction": 5,
+      "decision": "watch"
+    },
+    {
+      "id": "debate_BAC_20260814144529",
+      "symbol": "BAC",
+      "ts": "2026-08-14T14:45:29.328865+00:00",
+      "bull_case": "R1 Bull(4): BAC offers a rare convergence of fundamental value and a concrete emerging-market catalyst at 12.2x forward P/E with 34% EPS growth, but the volume vacuum demands we treat this as a measured, not aggressive, entry. | R1 Bear(7): BAC's bull case rests on a volume-starved price near resistance, an unverifiable balance sheet, and a speculative emerging-market deal that has not yet been modeled into earnings \u2014 in a fund with negative expectancy (-1.35% per trade) that cannot afford another -8% average loser. | R2 Bull(3): BAC remains a value-supported position at 12.2x forward P/E with a real emerging-market optionality catalyst, but the low-volume approach to $65.20 resistance in a sideways regime combined with unavailable balance sheet data warrants minimum position sizing with a pre-committed stop, making this a hold-and-monitor rather than an add at current levels. | R2 Bear(7): With the bull conceding both the volume and balance sheet risks while dropping to 3/10 conviction, BAC near $65.20 resistance remains a high-uncertainty trade with no verifiable fundamental floor, no volume confirmation, and a fund-level negative expectancy that makes the risk-reward structurally unattractive regardless of stop placement.",
+      "bear_case": "Primary risk: Price reverses from resistance at $65.20 on a volume surge \u2014 the exact scenario the current low-volume setup enables \u2014 with no balance sheet data to anchor a fundamental floor, producing a swift -8% loss consistent with this fund's average losing trade in a sideways regime where there is no macro tailwind to absorb the drawdown. | Unresolved: [\"The fund's negative expectancy (-1.35% per trade) means even a properly stop-managed -8% loss compounds the existing structural edge problem \u2014 the bull's stop discipline argument does not address whether this trade has positive expectancy in the first place\", 'The emerging-market optionality catalyst remains unmodeled, unquantified, and unverifiable \u2014 the bull accepted this as speculation, not a priced catalyst, so it cannot serve as a fundamental floor', \"Missing Debt/Equity data for a leveraged bank in a sideways macro regime means the 12.2x P/E anchor is floating on an incomplete balance sheet \u2014 book value support is unverifiable, so the 'value' framing is structurally unsound\", \"ADX at 39.9 confirms trend strength but does not specify direction of resolution at resistance \u2014 the bull conceded they cannot predict the breakout direction, which is precisely the bear's point about asymmetric risk at $65.20\"]",
+      "bull_score": 3,
+      "bear_score": 7,
       "final_conviction": 5,
       "decision": "watch"
     }
@@ -76023,6 +76198,33 @@
       "rationale": "The original exit trigger \u2014 a high-volume daily close back below the $203.31\u2013$204.51 support zone accompanied by yen intervention or bond market dislocation \u2014 has not been triggered; price remains well above that zone at $218.39 with no such catalysts materializing.",
       "original_thesis_check": "The specific exit condition (high-volume close below $203.31\u2013$204.51 support with macro dislocation) remains unbroken, so the thesis is treated as intact by the framework's own defined criteria.",
       "key_risk_to_monitor": "A high-volume daily close back below the $203.31\u2013$204.51 support zone, particularly if accompanied by yen intervention or bond market dislocation \u2014 this remains the precise and sole exit trigger; also monitor price action around the $222.00 resistance level given weak ADX (11.1) and persistently low volume (0.26x average), which could signal a reversal back toward support.",
+      "current_bull_case": "R1 Bull(n/a): not re-run in lite review mode | R2 Bull(n/a): not re-run in lite review mode",
+      "current_bear_case": "R1 Bear(n/a): not re-run in lite review mode | R2 Bear(n/a): not re-run in lite review mode"
+    },
+    {
+      "trade_id": "LLY_20260519190455",
+      "symbol": "LLY",
+      "ts": "2026-08-14T14:30:24.554251+00:00",
+      "action": "hold",
+      "conviction": 5,
+      "thesis_status": "intact",
+      "rationale": "The original thesis cannot be confirmed broken or materially weakened because it was not recorded; however, none of the three explicitly defined exit signals (failed breakout, high-volume reversal candle, MACD crossing below signal) have been triggered, and price has not yet entered the $1,238\u2013$1,249.45 trigger zone where those signals would carry maximum weight.",
+      "original_thesis_check": "Indeterminate \u2014 the original thesis was not recorded, making a precise validity check impossible; however, the three concrete exit conditions specified in the original key risk have not been met, so there is no affirmative evidence the thesis is broken.",
+      "key_risk_to_monitor": "Price approaching the $1,238\u2013$1,249.45 trigger zone \u2014 monitor intently for the three original exit signals: failed breakout, high-volume reversal candle, or MACD crossing back below signal; current ultra-low volume (0.19x average) means any such signal at that zone carries even greater significance than originally anticipated.",
+      "trim_reason": "N/A",
+      "current_bull_case": "R1 Bull(n/a): not re-run in lite review mode | R2 Bull(n/a): not re-run in lite review mode",
+      "current_bear_case": "R1 Bear(n/a): not re-run in lite review mode | R2 Bear(n/a): not re-run in lite review mode"
+    },
+    {
+      "trade_id": "MS_20260522185742",
+      "symbol": "MS",
+      "ts": "2026-08-14T14:30:53.348981+00:00",
+      "action": "hold",
+      "conviction": 6,
+      "thesis_status": "intact",
+      "rationale": "The original exit trigger \u2014 a high-volume daily close back below the $203.31\u2013$204.51 support zone \u2014 has not been triggered; price remains well above that zone at $217.16 with no yen intervention or bond market dislocation evident. The thesis has not been broken by any of the specified criteria, so we hold.",
+      "original_thesis_check": "The precise exit condition (high-volume daily close below $203.31\u2013$204.51 support) remains unmet; price is trading ~$13 above that zone, so the original entry thesis as defined by its risk parameters is still intact.",
+      "key_risk_to_monitor": "Price action approaching the $222.00 resistance level on persistently ultralow volume (0.14x average) and a still-weak ADX (11.6) \u2014 a failure to break through $222 with conviction, especially on any macro shock (yen intervention, bond dislocation), could precipitate a reversal back toward the $203\u2013$204 support zone and trigger the hard exit criterion.",
       "current_bull_case": "R1 Bull(n/a): not re-run in lite review mode | R2 Bull(n/a): not re-run in lite review mode",
       "current_bear_case": "R1 Bear(n/a): not re-run in lite review mode | R2 Bear(n/a): not re-run in lite review mode"
     }
@@ -93299,6 +93501,108 @@
       "pm_action": "watch",
       "pm_verdict": "AMAT has genuine fundamental quality (sentiment 9/10, fundamental 7/10) and a credible multi-quarter thesis, but the technical signal is weak (ADX 11, RSI 49.5 \u2014 no confirmed trend), the fund carries negative expectancy in sideways regimes, and the bear's TYPE-A point \u2014 that a single non-contractual capex guidance cut simultaneously collapses forward EPS and the rerating narrative on a 30.8x P/E cyclical mid-drawdown \u2014 was never concretely rebutted, only partially mitigated by sizing language. The Conviction Rubric requires ADX > 25 and volume confirmation for a 7-8 band, and the quality-compounder lane at 6 requires all unresolved bear points to be TYPE-B; here, one TYPE-A remains standing.",
       "risk_category": "conviction"
+    },
+    {
+      "ts": "2026-08-14T14:36:40.393041+00:00",
+      "symbol": "ONTO",
+      "action": "watch",
+      "reason": "PM decision: watch \u2014 Volume divergence: price up 9.6% on 0.17x average volume is a named TYPE-A bear point (distribution signal per the Exhaustion Guardrail rule) that the bull explicitly conceded and did not rebut with contrary evidence \u2014 this alone prevents the score from reaching the 6+ threshold required for a buy, and the fund's negative expectancy regime makes waiting for confirmation the only rational posture.",
+      "conviction": 5,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 337.98,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "watch",
+      "pm_verdict": "The fundamental repricing thesis (TTM 126.6x \u2192 forward 29.2x on 75.4% EPS growth) is structurally sound and both analysts are constructive (Technical 6/10, Fundamental 7/10), but the 9.6% surge on 0.17x average volume is a TYPE-A unresolved bear point \u2014 volume divergence as price rises is an explicit exhaustion guardrail trigger, and neither side has answered what drives institutional accumulation into a stock already up this much on no volume. Entry before 0.75x volume confirmation violates the fund's own discipline and this fund's -3.98% expectancy makes pre-confirmation entries indefensible.",
+      "risk_category": "pm_decision"
+    },
+    {
+      "ts": "2026-08-14T14:38:33.539761+00:00",
+      "symbol": "COP",
+      "action": "watch",
+      "reason": "PM decision: watch \u2014 Unresolved TYPE-A bear point: 0.15x volume at upper Bollinger Band resistance ($127.38) with no named catalyst to drive institutional re-engagement \u2014 this is not a systemic concern but a trade-specific setup failure risk that the bull conceded and could not rebut with a concrete mechanism, triggering the Exhaustion/Crowding Guardrail for volume divergence (price rising, volume falling).",
+      "conviction": 5,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 126.9,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "watch",
+      "pm_verdict": "COP has a real technical momentum structure and credible fundamental backdrop, but the 0.15x volume at 0.96 Bollinger %B with immediate resistance at $127.38 is an unresolved TYPE-A bear point \u2014 one the bull explicitly conceded and which directly mirrors a prior forced-exit pattern in this fund's history \u2014 preventing the score from reaching the 6 minimum for a buy.",
+      "risk_category": "pm_decision"
+    },
+    {
+      "ts": "2026-08-14T14:40:04.193293+00:00",
+      "symbol": "AMGN",
+      "action": "watch",
+      "reason": "PM decision: watch \u2014 Volume at 0.08x average near key resistance is a TYPE-A bear point the bull explicitly conceded and could not rebut \u2014 it directly mirrors the fund's own precedent exit condition (0.12x threshold triggered a prior exit), making it a disqualifier for entry, not merely a flag to monitor.",
+      "conviction": 4,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 411.62,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "watch",
+      "pm_verdict": "The fundamental re-rating thesis (64.9% EPS expansion, 25.6x\u219217.0x P/E compression) has structural merit, but the 0.08x volume at $421.79 resistance is a TYPE-A disqualifier \u2014 it sits below this fund's own empirically validated 0.12x exit threshold and signals the institutional participation required to confirm any breakout is simply absent. Without volume normalization, there is no edge to capture.",
+      "risk_category": "pm_decision"
+    },
+    {
+      "ts": "2026-08-14T14:41:51.429507+00:00",
+      "symbol": "PLTR",
+      "action": "watch",
+      "reason": "PM decision: watch \u2014 The EXHAUSTION/CROWDING GUARDRAIL is triggered: volume is falling while price rises (0.19x average = distribution signal), and the bear raised a concrete TYPE-A point \u2014 sub-0.2x volume at a named resistance level \u2014 that the bull conceded but only answered with 'reduced position sizing,' which does not rebut the signal, only manages the consequence. Per the rubric, conviction drops by \u22651 and cannot reach 6+ with an unresolved TYPE-A point.",
+      "conviction": 5,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 176.36,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "watch",
+      "pm_verdict": "PLTR has genuine fundamental momentum (215% EPS growth, ADX 29.5 trend confirmed) but the combination of an unresolved TYPE-A bear point \u2014 0.19x volume approaching hard resistance at $180.18 with Cathie Wood distributing \u2014 and a fund with negative expectancy (-3.98%) where avg losses are 2.3x avg wins means this setup fails the 6/10 minimum threshold; the edge does not justify the risk at this exact entry point.",
+      "risk_category": "conviction"
+    },
+    {
+      "ts": "2026-08-14T14:43:36.278796+00:00",
+      "symbol": "C",
+      "action": "watch",
+      "reason": "PM decision: watch \u2014 0.15x average volume into hard resistance with ADX 17.4 \u2014 an unresolved TYPE-A bear point the bull explicitly conceded and that directly mirrors prior documented exit conditions in our own fund's trade history, disqualifying the Tied Debate BUY rule.",
+      "conviction": 5,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 139.64,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "watch",
+      "pm_verdict": "The fundamental case (PEG 0.7, forward P/E 10.8, 61% YoY EPS growth) is genuine and analyst signals are constructive across all three dimensions, but the 0.15x volume reading into hard resistance at $140.27 is a TYPE-A trade-specific structural failure \u2014 our own fund's exit history documents this exact pattern as a disciplined trigger, not background noise. ADX at 17.4 confirms no established trend, making the Tied Debate Rule inapplicable (condition ii fails: no named dated catalyst within 4 weeks, and condition iii fails: the volume TYPE-A point is unresolved). Entry here is premature; the setup becomes actionable only on volume-confirmed breakout above $140.27.",
+      "risk_category": "pm_decision"
+    },
+    {
+      "ts": "2026-08-14T14:45:29.169470+00:00",
+      "symbol": "BAC",
+      "action": "watch",
+      "reason": "PM decision: watch \u2014 Volume at 0.13x the 20-day average approaching known resistance at $65.20 is a TYPE-A trade-specific setup risk \u2014 this fund's own exit history already contains a BAC trade closed exactly on this signal (closed at $63.03 on 0.28x volume per the exit log), meaning we have direct empirical evidence that low-volume BAC price moves near key levels are not reliable entries; repeating the setup without volume confirmation is pattern-blindness, not edge.",
+      "conviction": 5,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 64.44,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "watch",
+      "pm_verdict": "BAC has genuine fundamental value (12.2x forward P/E, 34% EPS growth, PEG 1.1) and a confirmed strong uptrend (ADX 39.9), but a TYPE-A unresolved bear point \u2014 0.13x volume approaching hard resistance at $65.20 with missing balance sheet data for a leveraged bank \u2014 prevents me from meeting the minimum 6/10 conviction threshold required to deploy capital, especially in a fund with negative expectancy that cannot absorb another average -8% loser without a demonstrable edge.",
+      "risk_category": "pm_decision"
     }
   ],
   "watchlists": [
@@ -119541,78 +119845,6 @@
   ],
   "tech_shadow": [
     {
-      "ts": "2026-07-16T18:01:35.850521+00:00",
-      "symbol": "C",
-      "llm_signal": "bearish",
-      "llm_strength": 7,
-      "det_signal": "neutral",
-      "det_strength": 4,
-      "agree": false
-    },
-    {
-      "ts": "2026-07-16T18:01:51.595750+00:00",
-      "symbol": "AMD",
-      "llm_signal": "bearish",
-      "llm_strength": 6,
-      "det_signal": "neutral",
-      "det_strength": 7,
-      "agree": false
-    },
-    {
-      "ts": "2026-07-16T18:02:09.246760+00:00",
-      "symbol": "CVS",
-      "llm_signal": "bullish",
-      "llm_strength": 7,
-      "det_signal": "bullish",
-      "det_strength": 9,
-      "agree": true
-    },
-    {
-      "ts": "2026-07-16T18:02:23.087437+00:00",
-      "symbol": "HOOD",
-      "llm_signal": "neutral",
-      "llm_strength": 4,
-      "det_signal": "neutral",
-      "det_strength": 7,
-      "agree": true
-    },
-    {
-      "ts": "2026-07-16T18:02:37.992010+00:00",
-      "symbol": "META",
-      "llm_signal": "bullish",
-      "llm_strength": 7,
-      "det_signal": "bullish",
-      "det_strength": 8,
-      "agree": true
-    },
-    {
-      "ts": "2026-07-16T18:02:54.623554+00:00",
-      "symbol": "PLTR",
-      "llm_signal": "bullish",
-      "llm_strength": 5,
-      "det_signal": "neutral",
-      "det_strength": 6,
-      "agree": false
-    },
-    {
-      "ts": "2026-07-16T18:03:09.251125+00:00",
-      "symbol": "BAC",
-      "llm_signal": "bullish",
-      "llm_strength": 7,
-      "det_signal": "bullish",
-      "det_strength": 10,
-      "agree": true
-    },
-    {
-      "ts": "2026-07-16T18:03:26.000215+00:00",
-      "symbol": "SCHW",
-      "llm_signal": "bullish",
-      "llm_strength": 7,
-      "det_signal": "bullish",
-      "det_strength": 10,
-      "agree": true
-    },
-    {
       "ts": "2026-07-16T18:03:41.280513+00:00",
       "symbol": "UNH",
       "llm_signal": "bullish",
@@ -124039,6 +124271,78 @@
       "det_signal": "neutral",
       "det_strength": 6,
       "agree": false
+    },
+    {
+      "ts": "2026-08-14T14:30:13.656038+00:00",
+      "symbol": "LLY",
+      "llm_signal": "neutral",
+      "llm_strength": 4,
+      "det_signal": "neutral",
+      "det_strength": 6,
+      "agree": true
+    },
+    {
+      "ts": "2026-08-14T14:30:37.103980+00:00",
+      "symbol": "MS",
+      "llm_signal": "neutral",
+      "llm_strength": 4,
+      "det_signal": "neutral",
+      "det_strength": 6,
+      "agree": true
+    },
+    {
+      "ts": "2026-08-14T14:34:56.297326+00:00",
+      "symbol": "ONTO",
+      "llm_signal": "bullish",
+      "llm_strength": 6,
+      "det_signal": "bullish",
+      "det_strength": 8,
+      "agree": true
+    },
+    {
+      "ts": "2026-08-14T14:36:49.492757+00:00",
+      "symbol": "COP",
+      "llm_signal": "bullish",
+      "llm_strength": 6,
+      "det_signal": "bullish",
+      "det_strength": 8,
+      "agree": true
+    },
+    {
+      "ts": "2026-08-14T14:38:38.837559+00:00",
+      "symbol": "AMGN",
+      "llm_signal": "bullish",
+      "llm_strength": 7,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": true
+    },
+    {
+      "ts": "2026-08-14T14:40:09.505877+00:00",
+      "symbol": "PLTR",
+      "llm_signal": "bullish",
+      "llm_strength": 7,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": true
+    },
+    {
+      "ts": "2026-08-14T14:41:59.990562+00:00",
+      "symbol": "C",
+      "llm_signal": "bullish",
+      "llm_strength": 6,
+      "det_signal": "neutral",
+      "det_strength": 6,
+      "agree": false
+    },
+    {
+      "ts": "2026-08-14T14:43:48.030568+00:00",
+      "symbol": "BAC",
+      "llm_signal": "bullish",
+      "llm_strength": 7,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": true
     }
   ],
   "pre_debate_gates": [
@@ -130883,6 +131187,43 @@
           "position_usd": 6092.89,
           "stop_price": 491.78,
           "sector": "Technology"
+        }
+      ],
+      "skipped": []
+    },
+    {
+      "ts": "2026-08-14T14:34:49.122383+00:00",
+      "regime": "bull",
+      "vix_regime": "normal",
+      "run_reason": "scheduled",
+      "n_candidates": 6,
+      "would_buy": [
+        {
+          "symbol": "ONTO",
+          "composite_score": 0.5262,
+          "price": 337.98,
+          "size_pct": 0.06,
+          "position_usd": 6088.69,
+          "stop_price": 310.94,
+          "sector": "Technology"
+        },
+        {
+          "symbol": "COP",
+          "composite_score": 0.5172,
+          "price": 126.97,
+          "size_pct": 0.06,
+          "position_usd": 6088.69,
+          "stop_price": 117.68,
+          "sector": "Energy"
+        },
+        {
+          "symbol": "AMGN",
+          "composite_score": 0.515,
+          "price": 413.04,
+          "size_pct": 0.06,
+          "position_usd": 6088.69,
+          "stop_price": 381.44,
+          "sector": "Healthcare"
         }
       ],
       "skipped": []

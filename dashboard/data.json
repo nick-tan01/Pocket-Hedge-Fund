@@ -2844,6 +2844,12 @@
       "portfolio_value": 101642.96,
       "cash": 90769.37,
       "spy_price": 769.13
+    },
+    {
+      "ts": "2026-08-19T20:38:43.928601+00:00",
+      "portfolio_value": 101642.96,
+      "cash": 90769.37,
+      "spy_price": 769.13
     }
   ],
   "trades": [
@@ -59957,6 +59963,52 @@
             "news_count": 1,
             "top_headline": "BILL Stock Could Swing $699 Million After Earnings",
             "news_quality": 0.0
+          }
+        }
+      ],
+      "event_symbols": [
+        "BILL"
+      ],
+      "event_details": [
+        {
+          "symbol": "BILL",
+          "trigger_type": "earnings_today",
+          "value": 1.0,
+          "threshold": 1.0,
+          "severity": "high"
+        }
+      ],
+      "regime": "bull",
+      "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-08-19T20:38:44.117653+00:00",
+      "run_type": "midday",
+      "candidates": [
+        "BILL"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "sentinel_trigger",
+      "candidate_details": [
+        {
+          "symbol": "BILL",
+          "composite_score": 0.348,
+          "signals": {
+            "growth_quality": "unknown",
+            "rs_vs_sector_pct": 4.8,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.63,
+            "52wk_high": 57.21,
+            "volume_spike_ratio": 1.65,
+            "volume_spike": false,
+            "rsi": 55.2,
+            "macd_crossover": "False",
+            "bb_pct": 0.54,
+            "news_count": 5,
+            "top_headline": "Bill Holdings Shares Climb on Strong Q4 Report: Details",
+            "news_quality": 0.5
           }
         }
       ],
@@ -122444,15 +122496,6 @@
   ],
   "tech_shadow": [
     {
-      "ts": "2026-07-20T15:37:39.443743+00:00",
-      "symbol": "AMD",
-      "llm_signal": "bearish",
-      "llm_strength": 4,
-      "det_signal": "neutral",
-      "det_strength": 4,
-      "agree": false
-    },
-    {
       "ts": "2026-07-20T15:39:22.952862+00:00",
       "symbol": "AAPL",
       "llm_signal": "bullish",
@@ -126942,6 +126985,15 @@
       "det_signal": "neutral",
       "det_strength": 7,
       "agree": true
+    },
+    {
+      "ts": "2026-08-19T20:38:42.875931+00:00",
+      "symbol": "BILL",
+      "llm_signal": "neutral",
+      "llm_strength": 5,
+      "det_signal": "bullish",
+      "det_strength": 9,
+      "agree": false
     }
   ],
   "pre_debate_gates": [
@@ -134195,6 +134247,25 @@
           "size_pct": 0.06,
           "position_usd": 6098.88,
           "stop_price": 43.47,
+          "sector": "Technology"
+        }
+      ],
+      "skipped": []
+    },
+    {
+      "ts": "2026-08-19T20:38:37.031240+00:00",
+      "regime": "bull",
+      "vix_regime": "normal",
+      "run_reason": "sentinel_trigger",
+      "n_candidates": 1,
+      "would_buy": [
+        {
+          "symbol": "BILL",
+          "composite_score": 0.348,
+          "price": 47.71,
+          "size_pct": 0.06,
+          "position_usd": 6098.58,
+          "stop_price": 43.89,
           "sector": "Technology"
         }
       ],

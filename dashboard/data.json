@@ -2802,6 +2802,12 @@
       "portfolio_value": 101644.4,
       "cash": 90769.37,
       "spy_price": 770.51
+    },
+    {
+      "ts": "2026-08-19T16:40:48.146561+00:00",
+      "portfolio_value": 101640.87,
+      "cash": 90769.37,
+      "spy_price": 770.42
     }
   ],
   "trades": [
@@ -4249,7 +4255,7 @@
       "time_stop_flagged": false,
       "consecutive_weakened_count": 0,
       "is_remnant": true,
-      "current_price": 1266.62,
+      "current_price": 1266.6201,
       "unrealized_pl": 431.68,
       "unrealized_plpc": 0.24729,
       "avg_entry": 1015.5,
@@ -4348,9 +4354,9 @@
           "reason": "Private credit contagion risk has escalated from theoretical to active (Blue Owl, Apollo, Ares stress), the bull conceded TYPE A pipeline threat, institutional bid absence below $216 leaves a 5%+ gap to $205.83 support with no technical anchor, and the 502x leveraged balance sheet introduces non-linear downside risk under simultaneous credit stress and client redemption pressure \u2014 all of which materially weaken but do not break the core thesis."
         }
       ],
-      "current_price": 215.4,
-      "unrealized_pl": 255.17,
-      "unrealized_plpc": 0.06464,
+      "current_price": 215.3,
+      "unrealized_pl": 253.21,
+      "unrealized_plpc": 0.06415,
       "avg_entry": 202.3212,
       "trim_pnl": 668.66,
       "stop_order_id": "405fa70a-08e3-4d96-b12a-25f7098b7a4a"
@@ -4374,9 +4380,9 @@
       "sector": "Financial Services",
       "trim_pnl": 0.0,
       "is_remnant": false,
-      "current_price": 111.28,
-      "unrealized_pl": 356.7,
-      "unrealized_plpc": 0.08619,
+      "current_price": 111.26,
+      "unrealized_pl": 355.89,
+      "unrealized_plpc": 0.08599,
       "avg_entry": 102.45,
       "last_review_ts": "2026-08-18T17:21:28.196848+00:00",
       "last_review_conviction": 7,
@@ -59603,6 +59609,52 @@
             "rsi": 60.9,
             "macd_crossover": "False",
             "bb_pct": 0.71,
+            "news_count": 1,
+            "top_headline": "BILL Stock Could Swing $699 Million After Earnings",
+            "news_quality": 0.0
+          }
+        }
+      ],
+      "event_symbols": [
+        "BILL"
+      ],
+      "event_details": [
+        {
+          "symbol": "BILL",
+          "trigger_type": "earnings_today",
+          "value": 1.0,
+          "threshold": 1.0,
+          "severity": "high"
+        }
+      ],
+      "regime": "bull",
+      "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-08-19T16:40:48.382153+00:00",
+      "run_type": "midday",
+      "candidates": [
+        "BILL"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "sentinel_trigger",
+      "candidate_details": [
+        {
+          "symbol": "BILL",
+          "composite_score": 0.344,
+          "signals": {
+            "growth_quality": "unknown",
+            "rs_vs_sector_pct": 9.5,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.7,
+            "52wk_high": 57.21,
+            "volume_spike_ratio": 0.42,
+            "volume_spike": false,
+            "rsi": 61.7,
+            "macd_crossover": "False",
+            "bb_pct": 0.73,
             "news_count": 1,
             "top_headline": "BILL Stock Could Swing $699 Million After Earnings",
             "news_quality": 0.0
@@ -121991,15 +122043,6 @@
   ],
   "tech_shadow": [
     {
-      "ts": "2026-07-20T15:28:55.954385+00:00",
-      "symbol": "CVS",
-      "llm_signal": "bullish",
-      "llm_strength": 7,
-      "det_signal": "bullish",
-      "det_strength": 9,
-      "agree": true
-    },
-    {
       "ts": "2026-07-20T15:29:06.976549+00:00",
       "symbol": "HOOD",
       "llm_signal": "bearish",
@@ -126483,6 +126526,15 @@
     },
     {
       "ts": "2026-08-19T15:40:34.628986+00:00",
+      "symbol": "BILL",
+      "llm_signal": "bullish",
+      "llm_strength": 6,
+      "det_signal": "bullish",
+      "det_strength": 8,
+      "agree": true
+    },
+    {
+      "ts": "2026-08-19T16:40:47.369254+00:00",
       "symbol": "BILL",
       "llm_signal": "bullish",
       "llm_strength": 6,
@@ -133648,6 +133700,25 @@
           "size_pct": 0.06,
           "position_usd": 6097.7,
           "stop_price": 45.48,
+          "sector": "Technology"
+        }
+      ],
+      "skipped": []
+    },
+    {
+      "ts": "2026-08-19T16:40:42.122303+00:00",
+      "regime": "bull",
+      "vix_regime": "normal",
+      "run_reason": "sentinel_trigger",
+      "n_candidates": 1,
+      "would_buy": [
+        {
+          "symbol": "BILL",
+          "composite_score": 0.344,
+          "price": 49.56,
+          "size_pct": 0.06,
+          "position_usd": 6098.55,
+          "stop_price": 45.6,
           "sector": "Technology"
         }
       ],

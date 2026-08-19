@@ -2760,6 +2760,12 @@
       "portfolio_value": 101691.22,
       "cash": 90769.37,
       "spy_price": 768.72
+    },
+    {
+      "ts": "2026-08-19T13:52:00.985831+00:00",
+      "portfolio_value": 101692.51,
+      "cash": 90769.37,
+      "spy_price": 768.29
     }
   ],
   "trades": [
@@ -4193,7 +4199,7 @@
       "qty": 1.719,
       "entry_price": 1015.67,
       "entry_ts": "2026-05-19T19:04:55.850350",
-      "stop_price": 1073.69,
+      "stop_price": 1115.48,
       "conviction": 7,
       "debate_id": "debate_LLY_20260519190455",
       "status": "open",
@@ -4207,9 +4213,9 @@
       "time_stop_flagged": false,
       "consecutive_weakened_count": 0,
       "is_remnant": true,
-      "current_price": 1283.7699,
-      "unrealized_pl": 461.16,
-      "unrealized_plpc": 0.26418,
+      "current_price": 1282.16,
+      "unrealized_pl": 458.39,
+      "unrealized_plpc": 0.26259,
       "avg_entry": 1015.5,
       "trim_history": [
         {
@@ -4252,7 +4258,7 @@
         }
       ],
       "trim_pnl": 496.65,
-      "stop_order_id": "5368aea0-ea00-4ae9-8ea7-295f4bfe4cd7",
+      "stop_order_id": "bb156cb2-048f-4f9d-8740-dbbba010fbfd",
       "stop_ratcheted": true
     },
     {
@@ -4268,7 +4274,7 @@
       "status": "open",
       "key_risk": "A decisive rejection candle at the $222 resistance zone followed by a confirmed close back below $219 on continued ultra-low volume (ADX remaining sub-12) \u2014 this is the exact pre-defined thesis-break trigger and must be watched closely on any approach to that level.",
       "position_usd": 4172.17,
-      "position_pct": 0.0413,
+      "position_pct": 0.0414,
       "sector": "Financial Services",
       "last_review_ts": "2026-08-18T17:21:12.532668+00:00",
       "last_review_conviction": 6,
@@ -4306,9 +4312,9 @@
           "reason": "Private credit contagion risk has escalated from theoretical to active (Blue Owl, Apollo, Ares stress), the bull conceded TYPE A pipeline threat, institutional bid absence below $216 leaves a 5%+ gap to $205.83 support with no technical anchor, and the 502x leveraged balance sheet introduces non-linear downside risk under simultaneous credit stress and client redemption pressure \u2014 all of which materially weaken but do not break the core thesis."
         }
       ],
-      "current_price": 215.481,
-      "unrealized_pl": 256.75,
-      "unrealized_plpc": 0.06504,
+      "current_price": 215.615,
+      "unrealized_pl": 259.36,
+      "unrealized_plpc": 0.06571,
       "avg_entry": 202.3212,
       "trim_pnl": 668.66,
       "stop_order_id": "405fa70a-08e3-4d96-b12a-25f7098b7a4a"
@@ -59266,6 +59272,52 @@
             "watchlist_reason": "relative strength leader: close location 84%, day +5.9%, volume 0.9x, RS vs SPY +22.0%",
             "watchlist_memory_bonus": 0.0
           }
+        }
+      ],
+      "regime": "bull",
+      "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-08-19T13:52:01.219987+00:00",
+      "run_type": "pre_market",
+      "candidates": [
+        "BILL"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "sentinel_trigger",
+      "candidate_details": [
+        {
+          "symbol": "BILL",
+          "composite_score": 0.344,
+          "signals": {
+            "growth_quality": "unknown",
+            "rs_vs_sector_pct": 8.1,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.68,
+            "52wk_high": 57.21,
+            "volume_spike_ratio": 0.05,
+            "volume_spike": false,
+            "rsi": 59.9,
+            "macd_crossover": "False",
+            "bb_pct": 0.67,
+            "news_count": 1,
+            "top_headline": "BILL Stock Could Swing $699 Million After Earnings",
+            "news_quality": 0.0
+          }
+        }
+      ],
+      "event_symbols": [
+        "BILL"
+      ],
+      "event_details": [
+        {
+          "symbol": "BILL",
+          "trigger_type": "earnings_today",
+          "value": 1.0,
+          "threshold": 1.0,
+          "severity": "high"
         }
       ],
       "regime": "bull",
@@ -121536,15 +121588,6 @@
   ],
   "tech_shadow": [
     {
-      "ts": "2026-07-17T18:07:28.472601+00:00",
-      "symbol": "DDOG",
-      "llm_signal": "bullish",
-      "llm_strength": 6,
-      "det_signal": "bullish",
-      "det_strength": 8,
-      "agree": true
-    },
-    {
       "ts": "2026-07-17T18:09:03.971090+00:00",
       "symbol": "AAPL",
       "llm_signal": "bullish",
@@ -126034,6 +126077,15 @@
       "det_signal": "bullish",
       "det_strength": 8,
       "agree": false
+    },
+    {
+      "ts": "2026-08-19T13:51:59.883758+00:00",
+      "symbol": "BILL",
+      "llm_signal": "bullish",
+      "llm_strength": 6,
+      "det_signal": "bullish",
+      "det_strength": 8,
+      "agree": true
     }
   ],
   "pre_debate_gates": [
@@ -133099,6 +133151,25 @@
           "size_pct": 0.06,
           "position_usd": 6096.15,
           "stop_price": 159.0,
+          "sector": "Technology"
+        }
+      ],
+      "skipped": []
+    },
+    {
+      "ts": "2026-08-19T13:51:55.589351+00:00",
+      "regime": "bull",
+      "vix_regime": "normal",
+      "run_reason": "sentinel_trigger",
+      "n_candidates": 1,
+      "would_buy": [
+        {
+          "symbol": "BILL",
+          "composite_score": 0.344,
+          "price": 49.07,
+          "size_pct": 0.06,
+          "position_usd": 6101.63,
+          "stop_price": 45.14,
           "sector": "Technology"
         }
       ],

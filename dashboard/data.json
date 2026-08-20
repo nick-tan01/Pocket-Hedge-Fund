@@ -2940,6 +2940,12 @@
       "portfolio_value": 101395.0,
       "cash": 90769.37,
       "spy_price": 763.38
+    },
+    {
+      "ts": "2026-08-20T19:40:13.970530+00:00",
+      "portfolio_value": 101397.88,
+      "cash": 90769.37,
+      "spy_price": 763.52
     }
   ],
   "trades": [
@@ -4387,9 +4393,9 @@
       "time_stop_flagged": false,
       "consecutive_weakened_count": 0,
       "is_remnant": true,
-      "current_price": 1244.9183,
-      "unrealized_pl": 394.37,
-      "unrealized_plpc": 0.22592,
+      "current_price": 1245.79,
+      "unrealized_pl": 395.87,
+      "unrealized_plpc": 0.22677,
       "avg_entry": 1015.5,
       "trim_history": [
         {
@@ -4453,7 +4459,7 @@
       "last_review_ts": "2026-08-20T17:23:06.652451+00:00",
       "last_review_conviction": 6,
       "thesis_status": "intact",
-      "time_stop_flagged": false,
+      "time_stop_flagged": true,
       "consecutive_weakened_count": 0,
       "is_remnant": false,
       "trim_history": [
@@ -4486,9 +4492,9 @@
           "reason": "Private credit contagion risk has escalated from theoretical to active (Blue Owl, Apollo, Ares stress), the bull conceded TYPE A pipeline threat, institutional bid absence below $216 leaves a 5%+ gap to $205.83 support with no technical anchor, and the 502x leveraged balance sheet introduces non-linear downside risk under simultaneous credit stress and client redemption pressure \u2014 all of which materially weaken but do not break the core thesis."
         }
       ],
-      "current_price": 207.8,
-      "unrealized_pl": 106.89,
-      "unrealized_plpc": 0.02708,
+      "current_price": 207.87,
+      "unrealized_pl": 108.26,
+      "unrealized_plpc": 0.02743,
       "avg_entry": 202.3212,
       "trim_pnl": 668.66,
       "stop_order_id": "405fa70a-08e3-4d96-b12a-25f7098b7a4a"
@@ -4512,9 +4518,9 @@
       "sector": "Financial Services",
       "trim_pnl": 0.0,
       "is_remnant": false,
-      "current_price": 109.7,
-      "unrealized_pl": 292.87,
-      "unrealized_plpc": 0.07077,
+      "current_price": 109.71,
+      "unrealized_pl": 293.28,
+      "unrealized_plpc": 0.07086,
       "avg_entry": 102.45,
       "last_review_ts": "2026-08-20T17:23:23.847264+00:00",
       "last_review_conviction": 6,
@@ -60758,20 +60764,58 @@
       ],
       "regime": "bull",
       "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-08-20T19:40:14.161891+00:00",
+      "run_type": "midday",
+      "candidates": [
+        "WMT"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "sentinel_trigger",
+      "candidate_details": [
+        {
+          "symbol": "WMT",
+          "composite_score": 0.3873,
+          "signals": {
+            "growth_quality": "unknown",
+            "rs_vs_sector_pct": -7.7,
+            "sector": "Consumer Defensive",
+            "sector_etf": "XLP",
+            "pct_of_52wk_range": 0.19,
+            "52wk_high": 135.16,
+            "volume_spike_ratio": 3.09,
+            "volume_spike": true,
+            "rsi": 28.8,
+            "macd_crossover": "False",
+            "bb_pct": -0.32,
+            "news_count": 10,
+            "top_headline": "Walmart's Outlook Signals Cautious Spending Ahead; Treasury Euphoria Fades; Samsung Soars; Bitcoin Shorts Crushed",
+            "news_quality": 0.0,
+            "pe_trailing": 36.4,
+            "pe_forward": 31.4,
+            "earnings_growth": 19.4
+          }
+        }
+      ],
+      "event_symbols": [
+        "WMT"
+      ],
+      "event_details": [
+        {
+          "symbol": "WMT",
+          "trigger_type": "earnings_today",
+          "value": 1.0,
+          "threshold": 1.0,
+          "severity": "high"
+        }
+      ],
+      "regime": "bull",
+      "vix_regime": "normal"
     }
   ],
   "debate_logs": [
-    {
-      "id": "debate_DDOG_20260703201645",
-      "symbol": "DDOG",
-      "ts": "2026-07-03T20:16:45.188707+00:00",
-      "bull_case": "R1 Bull(7): DDOG is a high-growth SaaS compounder with 32.2% revenue growth and 104% EPS growth now accelerating into AI/ML expansion, confirmed by strong technical momentum with ADX at 34.4 \u2014 a setup where price pressing the upper Bollinger Band signals trend continuation, not exhaustion. | R1 Bear(6): DDOG's fatal flaw is a 667x TTM P/E built on a 3.7% profit margin that the bull rebranded as an 'inflection story' \u2014 but at 91x forward earnings with below-average volume on a 17.8% 5-day surge in a sideways market regime, the fund is being asked to pay a maximum premium for a minimum-margin business at the exact moment participation is thinning. | R2 Bull(6): DDOG's 32.2% revenue growth, accelerating AI/ML TAM expansion via Adaptive ML, and intact ADX-confirmed trend structure justify a bullish position at reduced size with a defined stop below $271 resistance, accepting the near-term volume risk while owning the multi-quarter compounding story that a 91x forward P/E \u2014 elevated but not irrational for a best-in-class observability platform with improving margin trajectory \u2014 continues to reward. | R2 Bear(7): The bull's own concessions \u2014 thin volume on a breakout and a margin structure with zero buffer for error \u2014 confirm the bear case: DDOG remains a maximum-premium, minimum-margin setup where tighter position sizing protects the bull's book but leaves the stock itself exposed to a drawdown that far exceeds any reasonable risk-reward threshold at 91x forward P/E.",
-      "bear_case": "Primary risk: A single earnings miss or margin disappointment at 91x forward P/E and 3.7% net margin triggers a violent multiple compression \u2014 the stock has no fundamental floor near current prices, and the 17.8% run into resistance on thin volume means there is no institutional support base below to absorb the selloff, leaving the position exposed to a drawdown that far exceeds the trailing stop's ability to protect capital. | Unresolved: [\"The bull did NOT adequately address the primary risk: a single earnings miss or cost-pressure quarter at 91x forward P/E with 3.7% net margin still produces violent multiple compression with no institutional support base below current prices to absorb the selloff \u2014 tighter sizing protects the bull's capital but does not change the stock's drawdown exposure\", 'ADX trend confirmation is a momentum descriptor, not a valuation floor \u2014 an intact trend at extreme multiples has historically accelerated the selloff when the trend breaks, making ADX a double-edged signal that the bull is treating as one-directional protection', 'The Benchmark $330 upgrade as a catalyst is circular logic: institutional attention drawn to the name at current prices still requires institutions to buy at 91x forward earnings, and below-average volume suggests they are not yet doing so at scale', \"The 'accumulation pause' narrative for low-volume consolidation near upper Bollinger Band is indistinguishable from distribution at this stage \u2014 the bull asserts one interpretation without resolving the ambiguity, which is precisely the risk at maximum premium pricing\"]",
-      "bull_score": 6,
-      "bear_score": 7,
-      "final_conviction": 6,
-      "decision": "watch"
-    },
     {
       "id": "debate_AAPL_20260703201830",
       "symbol": "AAPL",
@@ -66258,6 +66302,17 @@
       "bear_case": "Primary risk: The fatal risk the bull glossed over as 'manageable' is valuation gravity: a 3.1% margin consumer defensive business at P/E 36.5 has almost no earnings cushion to absorb tariff cost persistence, pharmacy headwinds, or any consumer spending softness \u2014 and if the multiple compresses even partially toward sector-appropriate norms (20-25x), the stock has 30%+ downside that no technical support level or oversold RSI reading can arrest, because the repricing is fundamental, not emotional. | Unresolved: [\"P/E 36.5x on a 3.1% margin business with decelerating US comps and tariff cost uncertainty still implies 30%+ downside if the multiple reverts even partially toward 25x \u2014 the bull's 'persistent premium is deserved' argument relies on continuation of conditions (eCommerce growth, margin expansion trajectory) that the very earnings miss and guide cut call into question\", 'The bull conceded the guide cut is a TYPE A earnings-driven breakdown with shallow bounce history, yet never explained what fundamental catalyst arrests multiple compression \u2014 RSI 29 and volume at support are sentiment signals, not valuation floors', 'Pharmacy headwinds are structural (reimbursement pressure, GLP-1 disruption to consumables) and were not addressed as a multi-year drag on the margin expansion narrative that justifies the premium multiple']",
       "bull_score": 2,
       "bear_score": 8,
+      "final_conviction": 3,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_WMT_20260820194013",
+      "symbol": "WMT",
+      "ts": "2026-08-20T19:40:13.449213+00:00",
+      "bull_case": "R1 Bull(2): WMT's 11% five-day crash and RSI of 28.8 create a technical mean-reversion setup in a defensive name, but the bear case is too entrenched in fundamentals and sentiment to justify more than a speculative bounce trade. | R1 Bear(8): WMT's 'manageable' margin compression is actually an existential valuation threat \u2014 a stock priced at P/E 36.4 with 3.1% profit margins has zero cushion for the demand deterioration and tariff-driven cost pressures already manifesting in results, meaning the 11% drop is likely the beginning of a re-rating, not a capitulation bottom. | R2 Bull(2): WMT's RSI of 28.8 and 3x volume spike offer a narrow, stop-disciplined speculative mean-reversion trade to the low-$110s with an explicit exit at $102.85, acknowledging that the valuation, margin, and tariff-buffer arguments are all legitimate structural headwinds that make this a trade \u2014 not an investment \u2014 with conviction firmly capped at 2/10. | R2 Bear(7): WMT remains a structural short candidate given indefensible P/E 36 valuation on 3.1% margins with a tariff binary that has no clean resolution, and while the bull's tight-stop bounce trade is intellectually coherent, the broader re-rating thesis is intact and the 11% decline is more likely the beginning of multiple compression than a tradeable capitulation floor.",
+      "bear_case": "Primary risk: The $102.85 support level fails on continued heavy volume, triggering systematic stop-outs and momentum-chaser exits that cascade the stock toward unanchored downside \u2014 with no valuation floor credible at current multiples and margins, a break there has no obvious technical or fundamental support to arrest the move, turning a 'defined risk' trade into an open-ended loss in a market regime where our average loss already runs at -8.0%. | Unresolved: ['The stop at $102.85 assumes orderly execution in a high-volatility, momentum-driven tape \u2014 gap-down opens on macro catalysts or tariff escalation news can blow through stops and deliver exactly the open-ended loss the bull claims is managed away', 'Even a successful bounce to low-$110s leaves WMT structurally overvalued at P/E ~34 with 3.1% margins and unresolved tariff binary \u2014 the next leg of re-rating risk is merely deferred, not resolved', 'Distribution volume interpretation remains contested \u2014 if this is institutional selling into a dead-cat bounce rather than capitulation, the RSI mean-reversion thesis fails before reaching the $110 target, and the risk/reward degrades asymmetrically']",
+      "bull_score": 2,
+      "bear_score": 7,
       "final_conviction": 3,
       "decision": "skip"
     }
@@ -97336,6 +97391,23 @@
       "pm_action": "skip",
       "pm_verdict": "WMT's earnings-driven breakdown \u2014 weakest US comp growth since 2020, pharmacy headwinds, and a conservative tariff-dependent guide on a 3.1% margin business trading at 36.5x \u2014 constitutes an unresolved TYPE-A fundamental deterioration event that no oversold RSI or volume-at-support reading can technically floor; the bull's own concession that this is a legitimate TYPE-A repricing with historically shallow bounces, combined with the fund's -3.98% expectancy in sideways regimes, makes deploying capital here a discipline violation.",
       "risk_category": "conviction"
+    },
+    {
+      "ts": "2026-08-20T19:40:13.259348+00:00",
+      "symbol": "WMT",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 Two independent analyst signals are strongly bearish (8/10 technical, 8/10 sentiment) with a confirmed downtrend (ADX 30.7, -DI 39.0 dominating), meaning the Conviction Rubric anchors this at \u22645 \u2014 the bullish case does not meet any band threshold for a buy, and the fund's own performance statistics (-7.0% avg loss, 30% win rate) make a low-conviction trade in a bearish technical regime a capital destruction event.",
+      "conviction": 3,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 103.01,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "The bull's own conviction is 2/10 on a speculative mean-reversion bounce in a confirmed structural downtrend \u2014 that is not a fund-grade edge, it is a coin flip with asymmetric loss risk. With two of three analyst signals bearish (8/10 technical, 8/10 sentiment), ADX confirming trend strength to the downside, and our fund running -3.98% expectancy in this exact sideways regime, there is no justification to deploy capital here.",
+      "risk_category": "conviction"
     }
   ],
   "watchlists": [
@@ -123592,15 +123664,6 @@
   ],
   "tech_shadow": [
     {
-      "ts": "2026-07-21T15:22:34.795656+00:00",
-      "symbol": "AMD",
-      "llm_signal": "neutral",
-      "llm_strength": 4,
-      "det_signal": "neutral",
-      "det_strength": 4,
-      "agree": true
-    },
-    {
       "ts": "2026-07-21T15:22:52.288351+00:00",
       "symbol": "HOOD",
       "llm_signal": "neutral",
@@ -128087,6 +128150,15 @@
       "symbol": "WMT",
       "llm_signal": "bearish",
       "llm_strength": 7,
+      "det_signal": "neutral",
+      "det_strength": 7,
+      "agree": false
+    },
+    {
+      "ts": "2026-08-20T19:38:33.002034+00:00",
+      "symbol": "WMT",
+      "llm_signal": "bearish",
+      "llm_strength": 8,
       "det_signal": "neutral",
       "det_strength": 7,
       "agree": false
@@ -135550,6 +135622,25 @@
           "size_pct": 0.06,
           "position_usd": 6087.06,
           "stop_price": 95.82,
+          "sector": "Consumer Defensive"
+        }
+      ],
+      "skipped": []
+    },
+    {
+      "ts": "2026-08-20T19:38:26.849854+00:00",
+      "regime": "bull",
+      "vix_regime": "normal",
+      "run_reason": "sentinel_trigger",
+      "n_candidates": 1,
+      "would_buy": [
+        {
+          "symbol": "WMT",
+          "composite_score": 0.3873,
+          "price": 103.01,
+          "size_pct": 0.06,
+          "position_usd": 6083.87,
+          "stop_price": 95.65,
           "sector": "Consumer Defensive"
         }
       ],

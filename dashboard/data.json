@@ -2856,6 +2856,12 @@
       "portfolio_value": 101604.24,
       "cash": 90769.37,
       "spy_price": 766.57
+    },
+    {
+      "ts": "2026-08-20T13:55:21.543687+00:00",
+      "portfolio_value": 101611.83,
+      "cash": 90769.37,
+      "spy_price": 767.05
     }
   ],
   "trades": [
@@ -4303,9 +4309,9 @@
       "time_stop_flagged": false,
       "consecutive_weakened_count": 0,
       "is_remnant": true,
-      "current_price": 1270.27,
-      "unrealized_pl": 437.95,
-      "unrealized_plpc": 0.25088,
+      "current_price": 1269.35,
+      "unrealized_pl": 436.37,
+      "unrealized_plpc": 0.24998,
       "avg_entry": 1015.5,
       "trim_history": [
         {
@@ -4402,9 +4408,9 @@
           "reason": "Private credit contagion risk has escalated from theoretical to active (Blue Owl, Apollo, Ares stress), the bull conceded TYPE A pipeline threat, institutional bid absence below $216 leaves a 5%+ gap to $205.83 support with no technical anchor, and the 502x leveraged balance sheet introduces non-linear downside risk under simultaneous credit stress and client redemption pressure \u2014 all of which materially weaken but do not break the core thesis."
         }
       ],
-      "current_price": 213.31,
-      "unrealized_pl": 214.39,
-      "unrealized_plpc": 0.05431,
+      "current_price": 213.66,
+      "unrealized_pl": 221.22,
+      "unrealized_plpc": 0.05604,
       "avg_entry": 202.3212,
       "trim_pnl": 668.66,
       "stop_order_id": "405fa70a-08e3-4d96-b12a-25f7098b7a4a"
@@ -4428,9 +4434,9 @@
       "sector": "Financial Services",
       "trim_pnl": 0.0,
       "is_remnant": false,
-      "current_price": 111.14,
-      "unrealized_pl": 351.04,
-      "unrealized_plpc": 0.08482,
+      "current_price": 111.215,
+      "unrealized_pl": 354.07,
+      "unrealized_plpc": 0.08555,
       "avg_entry": 102.45,
       "last_review_ts": "2026-08-18T17:21:28.196848+00:00",
       "last_review_conviction": 7,
@@ -60032,20 +60038,58 @@
       ],
       "regime": "bull",
       "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-08-20T13:55:21.737245+00:00",
+      "run_type": "pre_market",
+      "candidates": [
+        "WMT"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "sentinel_trigger",
+      "candidate_details": [
+        {
+          "symbol": "WMT",
+          "composite_score": 0.1873,
+          "signals": {
+            "growth_quality": "unknown",
+            "rs_vs_sector_pct": -7.1,
+            "sector": "Consumer Defensive",
+            "sector_etf": "XLP",
+            "pct_of_52wk_range": 0.22,
+            "52wk_high": 135.16,
+            "volume_spike_ratio": 1.04,
+            "volume_spike": false,
+            "rsi": 30.1,
+            "macd_crossover": "False",
+            "bb_pct": -0.28,
+            "news_count": 10,
+            "top_headline": "Walmart\u2019s US Sales Growth Hits Weakest Pace Since 2020 \u2014 Pharmacy Drag Packs A Punch",
+            "news_quality": 0.0,
+            "pe_trailing": 36.8,
+            "pe_forward": 31.8,
+            "earnings_growth": 19.4
+          }
+        }
+      ],
+      "event_symbols": [
+        "WMT"
+      ],
+      "event_details": [
+        {
+          "symbol": "WMT",
+          "trigger_type": "earnings_today",
+          "value": 1.0,
+          "threshold": 1.0,
+          "severity": "high"
+        }
+      ],
+      "regime": "bull",
+      "vix_regime": "normal"
     }
   ],
   "debate_logs": [
-    {
-      "id": "debate_VRTX_20260703153539",
-      "symbol": "VRTX",
-      "ts": "2026-07-03T15:35:39.860609+00:00",
-      "bull_case": "R1 Bull(7): VRTX is a rare alignment of confirmed institutional momentum, elite earnings quality, and a fresh regulatory catalyst that materially expands its addressable market \u2014 this is a breakout with a fundamental engine behind it, not a speculative chase. | R1 Bear(6): VRTX is a buy-the-news trap: the Casgevy pediatric expansion catalyst is real but structurally limited, the earnings quality flag the bull dismissed as 'overstated' reveals a top-line growth crisis that a 5,500-patient market extension cannot fix, and entering at RSI 81.5 with price up 10% in 5 days and volume ratio at 0.99x means you are paying peak price with average conviction behind the move. | R2 Bull(6): VRTX remains a buy on any volume-confirmed consolidation above $520, with the core thesis resting not on Casgevy alone but on a multi-year pipeline refresh across CF, pain, and kidney disease that will reaccelerate the revenue line the bear correctly identifies as the single variable that must improve \u2014 and which pipeline probability strongly suggests will. | R2 Bear(6): VRTX at $529 on flat volume at hard resistance remains a buy-the-news trap where the bull's legitimate pipeline optionality (CF refresh, suzetrigine) is real but too early-stage to prevent a near-term multiple compression if the next 2-3 earnings cycles confirm that trailing 7.8% revenue growth is the operative figure while the market is currently pricing forward pipeline success that has not yet produced analyst consensus upgrades.",
-      "bear_case": "Primary risk: Revenue growth at 7.8% fails to reaccelerate post-catalyst, exposing the EPS growth story as non-operational and triggering a de-rating of the forward P/E multiple at exactly the moment the stock is priced for perfection near 52-week highs \u2014 producing a sharp mean-reversion through resistance turned support with no fundamental floor nearby. | Unresolved: [\"The bull asserts forward revenue estimates 'embed' pipeline contributions but provides no probability-weighted timeline for vanzacaftor or suzetrigine revenue inflection \u2014 if those contributions are 18-24+ months from meaningful P&L impact, the trailing 7.8% growth figure is the operative number for the next several earnings cycles and the forward P/E compression risk remains fully intact\", \"The bull never quantified the buyback runway against the pace of EPS growth manufacturing \u2014 citing '$11B+ cash' is not a rebuttal to the finite-lever argument when the question is whether buybacks can sustain double-digit EPS growth long enough to avoid a de-rating if revenue does not reaccelerate within 2-3 quarters\", \"ADX-regime pullback statistics are probabilistic, not deterministic \u2014 the bull's '3-5% from the high finds buyers' framing does not account for the scenario where the first resistance failure at flat volume is coincident with a negative pipeline readout or macro risk-off, which would break the ADX regime assumption entirely\"]",
-      "bull_score": 6,
-      "bear_score": 6,
-      "final_conviction": 6,
-      "decision": "watch"
-    },
     {
       "id": "debate_LLY_20260703153725",
       "symbol": "LLY",
@@ -65533,6 +65577,17 @@
       "bull_score": 2,
       "bear_score": 8,
       "final_conviction": 4,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_WMT_20260820135521",
+      "symbol": "WMT",
+      "ts": "2026-08-20T13:55:21.193500+00:00",
+      "bull_case": "R1 Bull(2): WMT's 9.9% five-day flush to RSI 30.1 and price below the lower Bollinger Band represents a technically oversold washout in a structurally sound business, but the evidence does not yet support a high-conviction entry. | R1 Bear(7): WMT is a structurally overvalued, thin-margin retailer facing a guidance-driven earnings revision cycle with no technical floor confirmed, in a fund with a negative expectancy record that cannot afford asymmetric losses. | R2 Bull(2): WMT's technical washout and structural business quality create a watching brief, not an entry \u2014 the TYPE A analyst revision cycle risk is real and unresolved, but the TYPE B valuation and leverage arguments are priced-in features of a stock the market has consistently re-rated higher on narrative, and a patient buyer waits for RSI confirmation above 35 with volume stabilization before committing capital in this fund's negative-expectancy regime. | R2 Bear(7): WMT remains a structurally dangerous trade for a negative-expectancy fund because the bull's own concessions confirm the two most critical risks \u2014 unresolved analyst revision cycle and absent technical confirmation \u2014 while the residual bull case rests on speculative institutional timing that cannot be sized into without violating the fund's risk survival imperative.",
+      "bear_case": "Primary risk: The fund's own performance data is the most damning input: -1.35% expectancy per trade with avg losses of -8.0% against avg wins of +3.1% means this fund structurally cannot afford asymmetric downside bets \u2014 and WMT with its thin margins, high leverage, guidance cut, and unconfirmed technical reversal is precisely the kind of trade where the loss scenario (continued derating toward fair value, multiple compression, further guidance cuts) is far larger than the gain scenario (a tactical bounce to resistance), making entry here a direct violation of the fund's own risk survival imperative. | Unresolved: [\"The fund's -1.35% expectancy per trade with -8.0% avg loss vs +3.1% avg win means even a 'watching brief' framing does not resolve the entry trigger problem \u2014 RSI above 35 with volume stabilization is not a sufficient edge signal in a negative-expectancy regime where the loss scenario remains 2.5x the gain scenario\", \"The bull's institutional front-running argument assumes sophisticated buyers correctly price the floor of the revision cycle, but multi-week analyst downgrade cascades are historically nonlinear and the clustering of revised targets above current price is an assertion, not evidence \u2014 WMT's 29x forward multiple still embeds premium that fair-value models do not support post-guidance-cut\", \"WMT's thin operating margins (~4%) mean any macro deterioration, tariff cost pass-through friction, or consumer trade-down acceleration creates a non-linear earnings impact that the bull's narrative anchors \u2014 e-commerce run-rate, advertising growth \u2014 do not structurally protect against\"]",
+      "bull_score": 2,
+      "bear_score": 7,
+      "final_conviction": 3,
       "decision": "skip"
     }
   ],
@@ -96252,6 +96307,23 @@
       "pm_action": "skip",
       "pm_verdict": "KO's momentum signals are technically real but untriggered \u2014 volume at 0.49x has already failed to confirm the breakout catalyst, ADX sits below the 25 threshold, and the fund's documented negative expectancy (-3.98%) combined with a behavioral history of not executing clean exits makes the proposed mechanical-stop safeguard non-credible. The asymmetric payoff (5% upside vs. 8% average loss) on an absent catalyst in a sideways regime produces negative expected value.",
       "risk_category": "pm_decision"
+    },
+    {
+      "ts": "2026-08-20T13:55:21.001262+00:00",
+      "symbol": "WMT",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 An active post-guidance earnings revision cycle is a dated, trade-specific TYPE-A catalyst that will sustain institutional selling pressure for 2-4 weeks with no confirmed technical floor \u2014 this is not a systemic/priced-in risk, it is a live mechanism currently driving price action, and it cannot be dismissed as background noise.",
+      "conviction": 3,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 104.15,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "WMT has two unresolved TYPE-A bear points \u2014 an active post-guidance analyst revision cycle (2-4 weeks of downgrade pressure) and a confirmed bearish technical structure (price below lower Bollinger Band, -DI 37.2 >> +DI 22.8, MACD below signal, ADX 17 with no reversal confirmation) \u2014 in a fund with negative expectancy where average losses run 2.5x average wins, making asymmetric downside the dominant outcome probability. The bull's own concessions at conviction 2/10 effectively close the debate.",
+      "risk_category": "pm_decision"
     }
   ],
   "watchlists": [
@@ -122508,15 +122580,6 @@
   ],
   "tech_shadow": [
     {
-      "ts": "2026-07-20T15:39:22.952862+00:00",
-      "symbol": "AAPL",
-      "llm_signal": "bullish",
-      "llm_strength": 7,
-      "det_signal": "bullish",
-      "det_strength": 10,
-      "agree": true
-    },
-    {
       "ts": "2026-07-20T15:40:58.476498+00:00",
       "symbol": "NET",
       "llm_signal": "bullish",
@@ -127005,6 +127068,15 @@
       "llm_strength": 5,
       "det_signal": "bullish",
       "det_strength": 9,
+      "agree": false
+    },
+    {
+      "ts": "2026-08-20T13:53:42.316289+00:00",
+      "symbol": "WMT",
+      "llm_signal": "bearish",
+      "llm_strength": 7,
+      "det_signal": "neutral",
+      "det_strength": 4,
       "agree": false
     }
   ],
@@ -134279,6 +134351,25 @@
           "position_usd": 6098.58,
           "stop_price": 43.89,
           "sector": "Technology"
+        }
+      ],
+      "skipped": []
+    },
+    {
+      "ts": "2026-08-20T13:53:37.030818+00:00",
+      "regime": "bull",
+      "vix_regime": "normal",
+      "run_reason": "sentinel_trigger",
+      "n_candidates": 1,
+      "would_buy": [
+        {
+          "symbol": "WMT",
+          "composite_score": 0.1873,
+          "price": 104.16,
+          "size_pct": 0.06,
+          "position_usd": 6096.71,
+          "stop_price": 97.02,
+          "sector": "Consumer Defensive"
         }
       ],
       "skipped": []

@@ -2952,6 +2952,12 @@
       "portfolio_value": 101403.11,
       "cash": 90769.37,
       "spy_price": 762.72
+    },
+    {
+      "ts": "2026-08-20T20:40:57.414309+00:00",
+      "portfolio_value": 101403.11,
+      "cash": 90769.37,
+      "spy_price": 762.72
     }
   ],
   "trades": [
@@ -60819,20 +60825,58 @@
       ],
       "regime": "bull",
       "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-08-20T20:40:57.616577+00:00",
+      "run_type": "midday",
+      "candidates": [
+        "WMT"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "sentinel_trigger",
+      "candidate_details": [
+        {
+          "symbol": "WMT",
+          "composite_score": 0.3873,
+          "signals": {
+            "growth_quality": "unknown",
+            "rs_vs_sector_pct": -6.7,
+            "sector": "Consumer Defensive",
+            "sector_etf": "XLP",
+            "pct_of_52wk_range": 0.21,
+            "52wk_high": 135.16,
+            "volume_spike_ratio": 3.79,
+            "volume_spike": true,
+            "rsi": 29.8,
+            "macd_crossover": "False",
+            "bb_pct": -0.29,
+            "news_count": 10,
+            "top_headline": "QUICK SPARK: Dow Falls 700 Points, Nasdaq Drops 1% As Yields Rise Again",
+            "news_quality": 0.0,
+            "pe_trailing": 36.7,
+            "pe_forward": 31.7,
+            "earnings_growth": 19.4
+          }
+        }
+      ],
+      "event_symbols": [
+        "WMT"
+      ],
+      "event_details": [
+        {
+          "symbol": "WMT",
+          "trigger_type": "earnings_today",
+          "value": 1.0,
+          "threshold": 1.0,
+          "severity": "high"
+        }
+      ],
+      "regime": "bull",
+      "vix_regime": "normal"
     }
   ],
   "debate_logs": [
-    {
-      "id": "debate_AAPL_20260703201830",
-      "symbol": "AAPL",
-      "ts": "2026-07-03T20:18:30.384665+00:00",
-      "bull_case": "R1 Bull(6): A confirmed momentum regime \u2014 MACD crossover, ADX above 25, and 1.11x volume on a 12% five-day surge \u2014 is pointing directly at a clear technical target of $317.40, and 21.8% EPS growth with 141.5% ROE gives that momentum fundamental credibility. | R1 Bear(6): AAPL is a momentum trade built on a cracking foundation: hardware price hikes driven by supply constraints are simultaneously compressing addressable demand and masking cost inflation, while a PEG of 2.3 at a forward P/E of 32.1 leaves zero cushion for any growth disappointment in a sideways macro regime where this fund is already losing 60% of its trades. | R2 Bull(5): AAPL's confirmed momentum regime \u2014 ADX above 25, MACD crossover, 21.8% EPS growth \u2014 remains structurally intact targeting $317.40, but the near-term entry risk from Bollinger overextension and sub-institutional volume warrants a reduced position size with a disciplined stop, while the valuation and pricing-power critiques are TYPE B systemic concerns already reflected in the market's premium multiple rather than new trade-specific catalysts. | R2 Bear(7): With volume confirmation absent by the bull's own concession, resistance at the bull's own price target unbroken, hardware demand destruction data still incoming, and a 32x forward multiple offering no valuation support, AAPL's momentum trade is structurally overextended at precisely the moment its fundamental tailwinds are set to reverse \u2014 making the risk-reward decisively negative.",
-      "bear_case": "Primary risk: A rejection at the $317.40 resistance level \u2014 which is the bull's own stated target \u2014 triggers a technical reversal from an overextended position precisely as hardware demand data begins reflecting the impact of forced price hikes, collapsing both the momentum and fundamental narratives simultaneously with no valuation floor to catch the fall at 32x forward earnings. | Unresolved: ['The bull offers no fundamental catalyst to sustain momentum through $317.40 resistance \u2014 ADX trend confirmation is backward-looking and the volume concession means institutional conviction for a breakout is explicitly absent, leaving the resistance test underpowered', \"Hardware price hike demand destruction is a lagging data signal that has not yet fully appeared in reported numbers, meaning the fundamental narrative deterioration is ahead of us, not priced in, contrary to the bull's TYPE B systemic-already-reflected argument\", 'Debt/Equity of 79.5 in a rising-cost supply-constrained environment creates a compounding vulnerability the bull acknowledged but dismissed as monitoring-worthy rather than trade-relevant, which is inadequate given the macro regime described']",
-      "bull_score": 5,
-      "bear_score": 7,
-      "final_conviction": 6,
-      "decision": "watch"
-    },
     {
       "id": "debate_VRTX_20260703202009",
       "symbol": "VRTX",
@@ -66320,6 +66364,17 @@
       "bull_score": 2,
       "bear_score": 7,
       "final_conviction": 3,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_WMT_20260820204056",
+      "symbol": "WMT",
+      "ts": "2026-08-20T20:40:56.979798+00:00",
+      "bull_case": "R1 Bull(2): WMT's RSI of 29.8 and price sitting 10% below its 5-day prior level near $102.85 support creates a tactical mean-reversion setup, but the data stack is too hostile to warrant meaningful conviction. | R1 Bear(8): WMT is not oversold \u2014 it is in a confirmed fundamental breakdown with a 3.1% margin business trading at P/E 36.7 and PEG 4.4 while simultaneously absorbing $4 gas headwinds, pharmacy drag, and redirecting $2.9B in tariff refunds away from earnings, leaving no margin of safety and no credible catalyst to arrest the decline. | R2 Bull(1): WMT's RSI of 29.8 and proximity to $102.85 support offer a theoretical mean-reversion setup, but confirmed institutional distribution at 3.79x average volume, a -1.35% fund expectancy regime, and no identifiable time-bound catalyst reduce conviction to near-zero \u2014 this trade should not be entered. | R2 Bear(9): With the bull conceding every structural bear argument \u2014 confirmed institutional distribution at 3.79x volume, a PEG of 4.4 on a 3.1% margin business absorbing tariff and pharmacy headwinds, and a -1.35% fund expectancy regime with no time-bound catalyst \u2014 WMT faces an uncontested path toward re-rating lower, with $102.85 support the last line before a technical void and no fundamental floor to arrest the decline.",
+      "bear_case": "Primary risk: Support at $102.85 fails on continued institutional distribution volume, triggering a further leg down toward the next technical void with no fundamental floor to arrest the decline \u2014 a 3.1% margin business at PEG 4.4 has substantial room to re-rate lower before reaching fair value, and in a -1.35% expectancy regime the resulting loss would likely reach the fund's historical -8.0% average loss threshold. | Unresolved: ['The $102.85 technical support level has not yet failed on a closing basis, meaning a brief consolidation or dead-cat bounce could trigger premature stop-outs before the full re-rating lower materializes', 'Systematic rebalancing flows from index-weight buyers or dividend-focused institutions could temporarily absorb distribution volume near support, delaying but not preventing the breakdown', 'A macro regime shift \u2014 Fed pivot signal, tariff reversal, or energy price collapse \u2014 could abruptly change the -1.35% expectancy environment and alter the institutional flow dynamic before the thesis plays out']",
+      "bull_score": 1,
+      "bear_score": 9,
+      "final_conviction": 2,
       "decision": "skip"
     }
   ],
@@ -97414,6 +97469,23 @@
       "pm_action": "skip",
       "pm_verdict": "The bull's own conviction is 2/10 on a speculative mean-reversion bounce in a confirmed structural downtrend \u2014 that is not a fund-grade edge, it is a coin flip with asymmetric loss risk. With two of three analyst signals bearish (8/10 technical, 8/10 sentiment), ADX confirming trend strength to the downside, and our fund running -3.98% expectancy in this exact sideways regime, there is no justification to deploy capital here.",
       "risk_category": "conviction"
+    },
+    {
+      "ts": "2026-08-20T20:40:56.784943+00:00",
+      "symbol": "WMT",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 Institutional distribution volume at 3.79x average with ADX-confirmed downtrend momentum \u2014 this is organized selling, not retail panic, which structurally invalidates the only viable bull thesis (RSI mean-reversion bounce) and constitutes a TYPE-A trade-specific bear point with zero credible rebuttal.",
+      "conviction": 2,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 103.84,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "Every structural bear argument stands uncontested: confirmed institutional distribution at 3.79x average volume with -DI (39.0) dominating +DI (22.1) is a TYPE-A trade-specific breakdown signal, the bull conceded all primary arguments by Round 2, and the fund's negative expectancy regime provides no statistical buffer for a low-conviction mean-reversion attempt in a confirmed downtrend.",
+      "risk_category": "pm_decision"
     }
   ],
   "watchlists": [
@@ -123670,15 +123742,6 @@
   ],
   "tech_shadow": [
     {
-      "ts": "2026-07-21T15:22:52.288351+00:00",
-      "symbol": "HOOD",
-      "llm_signal": "neutral",
-      "llm_strength": 4,
-      "det_signal": "neutral",
-      "det_strength": 6,
-      "agree": true
-    },
-    {
       "ts": "2026-07-21T15:23:08.773168+00:00",
       "symbol": "BAC",
       "llm_signal": "bullish",
@@ -128162,6 +128225,15 @@
     },
     {
       "ts": "2026-08-20T19:38:33.002034+00:00",
+      "symbol": "WMT",
+      "llm_signal": "bearish",
+      "llm_strength": 8,
+      "det_signal": "neutral",
+      "det_strength": 7,
+      "agree": false
+    },
+    {
+      "ts": "2026-08-20T20:39:22.328812+00:00",
       "symbol": "WMT",
       "llm_signal": "bearish",
       "llm_strength": 8,
@@ -135647,6 +135719,25 @@
           "size_pct": 0.06,
           "position_usd": 6083.87,
           "stop_price": 95.65,
+          "sector": "Consumer Defensive"
+        }
+      ],
+      "skipped": []
+    },
+    {
+      "ts": "2026-08-20T20:39:17.442868+00:00",
+      "regime": "bull",
+      "vix_regime": "normal",
+      "run_reason": "sentinel_trigger",
+      "n_candidates": 1,
+      "would_buy": [
+        {
+          "symbol": "WMT",
+          "composite_score": 0.3873,
+          "price": 103.84,
+          "size_pct": 0.06,
+          "position_usd": 6084.19,
+          "stop_price": 96.48,
           "sector": "Consumer Defensive"
         }
       ],

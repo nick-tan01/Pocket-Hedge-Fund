@@ -2898,6 +2898,12 @@
       "portfolio_value": 101561.31,
       "cash": 90769.37,
       "spy_price": 766.35
+    },
+    {
+      "ts": "2026-08-20T16:46:37.497604+00:00",
+      "portfolio_value": 101560.99,
+      "cash": 90769.37,
+      "spy_price": 766.48
     }
   ],
   "trades": [
@@ -4345,9 +4351,9 @@
       "time_stop_flagged": false,
       "consecutive_weakened_count": 0,
       "is_remnant": true,
-      "current_price": 1263.61,
-      "unrealized_pl": 426.5,
-      "unrealized_plpc": 0.24432,
+      "current_price": 1263.36,
+      "unrealized_pl": 426.07,
+      "unrealized_plpc": 0.24408,
       "avg_entry": 1015.5,
       "trim_history": [
         {
@@ -4444,9 +4450,9 @@
           "reason": "Private credit contagion risk has escalated from theoretical to active (Blue Owl, Apollo, Ares stress), the bull conceded TYPE A pipeline threat, institutional bid absence below $216 leaves a 5%+ gap to $205.83 support with no technical anchor, and the 502x leveraged balance sheet introduces non-linear downside risk under simultaneous credit stress and client redemption pressure \u2014 all of which materially weaken but do not break the core thesis."
         }
       ],
-      "current_price": 211.51,
-      "unrealized_pl": 179.27,
-      "unrealized_plpc": 0.04542,
+      "current_price": 211.465,
+      "unrealized_pl": 178.39,
+      "unrealized_plpc": 0.04519,
       "avg_entry": 202.3212,
       "trim_pnl": 668.66,
       "stop_order_id": "405fa70a-08e3-4d96-b12a-25f7098b7a4a"
@@ -4470,9 +4476,9 @@
       "sector": "Financial Services",
       "trim_pnl": 0.0,
       "is_remnant": false,
-      "current_price": 111.23,
-      "unrealized_pl": 354.68,
-      "unrealized_plpc": 0.0857,
+      "current_price": 111.235,
+      "unrealized_pl": 354.88,
+      "unrealized_plpc": 0.08575,
       "avg_entry": 102.45,
       "last_review_ts": "2026-08-20T14:07:55.124592+00:00",
       "last_review_conviction": 6,
@@ -60396,20 +60402,58 @@
       ],
       "regime": "bull",
       "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-08-20T16:46:37.668957+00:00",
+      "run_type": "midday",
+      "candidates": [
+        "WMT"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "sentinel_trigger",
+      "candidate_details": [
+        {
+          "symbol": "WMT",
+          "composite_score": 0.3164,
+          "signals": {
+            "growth_quality": "unknown",
+            "rs_vs_sector_pct": -7.1,
+            "sector": "Consumer Defensive",
+            "sector_etf": "XLP",
+            "pct_of_52wk_range": 0.22,
+            "52wk_high": 135.16,
+            "volume_spike_ratio": 2.29,
+            "volume_spike": true,
+            "rsi": 30.1,
+            "macd_crossover": "False",
+            "bb_pct": -0.28,
+            "news_count": 10,
+            "top_headline": "Stock of the Day: Is Nebius About to Reverse?",
+            "news_quality": 0.0,
+            "pe_trailing": 36.8,
+            "pe_forward": 31.7,
+            "earnings_growth": 19.4
+          }
+        }
+      ],
+      "event_symbols": [
+        "WMT"
+      ],
+      "event_details": [
+        {
+          "symbol": "WMT",
+          "trigger_type": "earnings_today",
+          "value": 1.0,
+          "threshold": 1.0,
+          "severity": "high"
+        }
+      ],
+      "regime": "bull",
+      "vix_regime": "normal"
     }
   ],
   "debate_logs": [
-    {
-      "id": "debate_DUOL_20260703170531",
-      "symbol": "DUOL",
-      "ts": "2026-07-03T17:05:31.141670+00:00",
-      "bull_case": "R1 Bull(4): DUOL's 5-day momentum breakout with RSI at 57.3 and upward EMA trend offers a technically clean entry into a fundamentally misunderstood compounder, but low volume and a sideways macro regime cap near-term conviction. | R1 Bear(7): DUOL's 6.6 Debt/Equity ratio is not a theoretical footnote \u2014 it is a structural vulnerability that, combined with forward P/E expansion signaling earnings deceleration, means the bull is paying a premium multiple for a deteriorating earnings trajectory in a sideways macro regime with no catalyst news to justify the risk. | R2 Bull(3): DUOL's technically clean 5-day momentum setup with RSI at 57.3 and rising EMAs remains a valid speculative entry at reduced size, with the ADX-25 breakout on rising volume as the required confirmation trigger before adding exposure, acknowledging that forward P/E expansion and low-volume momentum in a sideways macro regime cap conviction at the lower end of the scale. | R2 Bear(7): DUOL's 6.6x leveraged balance sheet combined with forward P/E expansion signaling earnings deceleration, low-volume unconfirmed momentum, and analyst consensus price targets already near current price creates a structurally asymmetric risk/reward skewed to the downside, where the bull's own position-sizing concessions implicitly validate the bear case without resolving it.",
-      "bear_case": "Primary risk: Earnings deceleration \u2014 already telegraphed by forward P/E expanding above trailing P/E \u2014 hitting a 6.6x leveraged balance sheet causes a cascading re-rating that technical support levels cannot contain, particularly with no sentiment catalysts or news flow to provide a counter-narrative, in a sideways macro regime where momentum breakouts statistically fail. | Unresolved: ['Forward P/E expanding above trailing P/E in a 6.6x leveraged capital structure remains unaddressed as a compounding re-rating risk \u2014 the bull reframed it as possible multiple expansion on margin quality but offered no earnings estimate revision data or margin trajectory evidence to substantiate that interpretation', 'Low-volume 5% move with no sentiment catalyst or news flow means the momentum signal lacks institutional validation, and the bull conceded this directly without resolving it', 'Sideways macro regime statistically suppresses momentum breakout success rates, and the ADX-25 trigger the bull proposes as a risk management tool does not address the structural bear thesis \u2014 it merely delays the entry without changing the risk/reward math']",
-      "bull_score": 3,
-      "bear_score": 7,
-      "final_conviction": 6,
-      "decision": "watch"
-    },
     {
       "id": "debate_V_20260703181353",
       "symbol": "V",
@@ -65897,6 +65941,17 @@
       "bull_score": 2,
       "bear_score": 7,
       "final_conviction": 3,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_WMT_20260820164636",
+      "symbol": "WMT",
+      "ts": "2026-08-20T16:46:36.961137+00:00",
+      "bull_case": "R1 Bull(3): WMT's 10% five-day flush to RSI 30.1 with price sitting just above $102.85 support creates a technical mean-reversion setup, but the fundamental and sentiment backdrop means this is a trade, not a conviction buy. | R1 Bear(7): WMT's 'oversold bounce' setup is a value trap dressed in technical clothing \u2014 a premium multiple (PEG 4.4) sitting on a structurally thin 3.1% margin business with tariff-dependent guidance is not a mean-reversion opportunity, it's a compression waiting for its next leg down. | R2 Bull(2): WMT's RSI 30.1 flush to tested $102.85 support remains a mechanical mean-reversion opportunity only if traded with a hard stop below $102.00 and half-sized position to neutralize the fund's documented negative expectancy pattern in sideways regimes \u2014 this is a lottery ticket with tight risk management, not a conviction buy. | R2 Bear(6): Even with disciplined stop placement, WMT's mean-reversion setup is a low-probability lottery ticket against a still-deteriorating fundamental backdrop \u2014 a PEG of 4.4 on a structurally thin-margin business with unresolved tariff guidance risk means that if support breaks, the subsequent multiple compression produces losses that no half-sized position fully neutralizes at the portfolio level.",
+      "bear_case": "Primary risk: Support at $102.85 fails on continued elevated volume as tariff-dependent H2 guidance disappoints, triggering a multiple de-rating on a stock with a PEG of 4.4 \u2014 producing the exact -8.0% average loss scenario our fund's own track record identifies as its capital-destroying pattern. | Unresolved: ['The PEG of 4.4 on a 3.1% margin business remains structurally unjustifiable \u2014 tight stops do not re-rate a multiple, and if H2 tariff-dependent guidance disappoints, the compression leg down resumes regardless of how cleanly this trade is entered or exited', 'Institutional distribution at 2.29x average volume with -DI 39.0 vs +DI 22.1 is not addressed by stop discipline \u2014 it signals that the $102.85 support level itself may be under active supply, meaning the stop at $102.00 gets triggered at elevated probability, making the trade a negative-expectancy lottery ticket even at half-size', 'The comp sales miss and tariff-dependent H2 guidance represent a still-developing fundamental deterioration \u2014 the bull conceded this is unresolved, yet the mean-reversion thesis requires the bad news to be priced in, a condition the bull explicitly abandoned']",
+      "bull_score": 2,
+      "bear_score": 6,
+      "final_conviction": 4,
       "decision": "skip"
     }
   ],
@@ -96795,6 +96850,23 @@
       "pm_action": "skip",
       "pm_verdict": "The bull conceded every structural pillar that would justify entry now \u2014 PEG 4.4 on 3.1% margins offers no valuation floor, analyst targets are stale anchors still unwinding, and $103.06 support is being tested not confirmed \u2014 leaving zero edge to exploit against a fund with -3.98% expectancy and -8.0% average losses on losers. The technical signal is bearish (8/10), fundamental is neutral (5/10), sentiment is neutral (5/10): no two analyst signals are constructive at \u22656/10, which alone disqualifies the 6-conviction quality-compounder lane.",
       "risk_category": "pm_decision"
+    },
+    {
+      "ts": "2026-08-20T16:46:36.791030+00:00",
+      "symbol": "WMT",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 The bull explicitly conceded that the fundamental bear case is 'still developing, not resolved' \u2014 which directly destroys the mean-reversion thesis's required condition that downside is priced in. A mean-reversion trade whose anchor assumption the bull abandoned mid-debate has no thesis left to trade.",
+      "conviction": 4,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 104.12,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "WMT's oversold technical setup (RSI 30.1, Bollinger %B -0.28) is real but insufficient to overcome two unresolved TYPE-A bear points: active institutional distribution at 2.29x volume with -DI 39.0 dominating signals the $102.85 support is under active supply, and the still-developing fundamental deterioration (tariff-dependent H2 guidance, comp sales miss) means the bull's core premise \u2014 that bad news is priced in \u2014 was explicitly conceded and never restored. In this fund's sideways-regime negative-expectancy environment, a lottery ticket with elevated stop-trigger probability is not a trade worth taking.",
+      "risk_category": "pm_decision"
     }
   ],
   "watchlists": [
@@ -123051,15 +123123,6 @@
   ],
   "tech_shadow": [
     {
-      "ts": "2026-07-20T18:52:52.215243+00:00",
-      "symbol": "SCHW",
-      "llm_signal": "bullish",
-      "llm_strength": 7,
-      "det_signal": "bullish",
-      "det_strength": 10,
-      "agree": true
-    },
-    {
       "ts": "2026-07-20T18:53:09.601840+00:00",
       "symbol": "UNH",
       "llm_signal": "neutral",
@@ -127548,6 +127611,15 @@
       "llm_strength": 8,
       "det_signal": "neutral",
       "det_strength": 7,
+      "agree": false
+    },
+    {
+      "ts": "2026-08-20T16:45:04.341319+00:00",
+      "symbol": "WMT",
+      "llm_signal": "bearish",
+      "llm_strength": 7,
+      "det_signal": "neutral",
+      "det_strength": 4,
       "agree": false
     }
   ],
@@ -134915,6 +134987,25 @@
           "size_pct": 0.06,
           "position_usd": 6094.1,
           "stop_price": 95.73,
+          "sector": "Consumer Defensive"
+        }
+      ],
+      "skipped": []
+    },
+    {
+      "ts": "2026-08-20T16:44:58.951693+00:00",
+      "regime": "bull",
+      "vix_regime": "normal",
+      "run_reason": "sentinel_trigger",
+      "n_candidates": 1,
+      "would_buy": [
+        {
+          "symbol": "WMT",
+          "composite_score": 0.3164,
+          "price": 104.12,
+          "size_pct": 0.06,
+          "position_usd": 6093.66,
+          "stop_price": 96.76,
           "sector": "Consumer Defensive"
         }
       ],

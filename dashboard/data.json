@@ -3180,6 +3180,12 @@
       "portfolio_value": 101430.89,
       "cash": 90769.37,
       "spy_price": 767.0
+    },
+    {
+      "ts": "2026-08-26T19:16:56.473335+00:00",
+      "portfolio_value": 101426.12,
+      "cash": 90769.37,
+      "spy_price": 767.12
     }
   ],
   "trades": [
@@ -4627,9 +4633,9 @@
       "time_stop_flagged": false,
       "consecutive_weakened_count": 0,
       "is_remnant": true,
-      "current_price": 1197.005,
-      "unrealized_pl": 312.01,
-      "unrealized_plpc": 0.17873,
+      "current_price": 1196.785,
+      "unrealized_pl": 311.63,
+      "unrealized_plpc": 0.17852,
       "avg_entry": 1015.5,
       "trim_history": [
         {
@@ -4726,9 +4732,9 @@
           "reason": "Private credit contagion risk has escalated from theoretical to active (Blue Owl, Apollo, Ares stress), the bull conceded TYPE A pipeline threat, institutional bid absence below $216 leaves a 5%+ gap to $205.83 support with no technical anchor, and the 502x leveraged balance sheet introduces non-linear downside risk under simultaneous credit stress and client redemption pressure \u2014 all of which materially weaken but do not break the core thesis."
         }
       ],
-      "current_price": 213.665,
-      "unrealized_pl": 221.32,
-      "unrealized_plpc": 0.05607,
+      "current_price": 213.61,
+      "unrealized_pl": 220.24,
+      "unrealized_plpc": 0.0558,
       "avg_entry": 202.3212,
       "trim_pnl": 668.66,
       "stop_order_id": "405fa70a-08e3-4d96-b12a-25f7098b7a4a"
@@ -4752,9 +4758,9 @@
       "sector": "Financial Services",
       "trim_pnl": 0.0,
       "is_remnant": false,
-      "current_price": 109.795,
-      "unrealized_pl": 296.71,
-      "unrealized_plpc": 0.07169,
+      "current_price": 109.7,
+      "unrealized_pl": 292.87,
+      "unrealized_plpc": 0.07077,
       "avg_entry": 102.45,
       "last_review_ts": "2026-08-26T14:11:07.954793+00:00",
       "last_review_conviction": 5,
@@ -62733,31 +62739,92 @@
       ],
       "regime": "bull",
       "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-08-26T19:16:56.676313+00:00",
+      "run_type": "midday",
+      "candidates": [
+        "NVDA",
+        "CRWD"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "sentinel_trigger",
+      "candidate_details": [
+        {
+          "symbol": "NVDA",
+          "composite_score": 0.397,
+          "signals": {
+            "eps_growth": 214.5,
+            "rev_growth": 85.2,
+            "growth_quality": "strong",
+            "rs_vs_sector_pct": 1.0,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.65,
+            "52wk_high": 236.54,
+            "volume_spike_ratio": 0.69,
+            "volume_spike": false,
+            "rsi": 47.3,
+            "macd_crossover": "False",
+            "bb_pct": 0.36,
+            "news_count": 10,
+            "top_headline": "How Does Congress Feel About Nvidia Stock Ahead of Q2 Earnings? Here\u2019s How Many Have Sold in 2026",
+            "news_quality": 0.05,
+            "pe_trailing": 32.3,
+            "pe_forward": 16.1,
+            "earnings_growth": 214.5
+          }
+        },
+        {
+          "symbol": "CRWD",
+          "composite_score": 0.16,
+          "signals": {
+            "growth_quality": "unknown",
+            "rs_vs_sector_pct": -3.7,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.74,
+            "52wk_high": 227.5,
+            "volume_spike_ratio": 0.82,
+            "volume_spike": false,
+            "rsi": 42.9,
+            "macd_crossover": "False",
+            "bb_pct": 0.23,
+            "news_count": 5,
+            "top_headline": "Crowdstrike Earnings Prediction Market Preview: What Will George Kurtz Say About AI?",
+            "news_quality": 0.0,
+            "pe_trailing": null,
+            "pe_forward": 121.6,
+            "earnings_growth": null
+          }
+        }
+      ],
+      "event_symbols": [
+        "CRWD",
+        "NVDA"
+      ],
+      "event_details": [
+        {
+          "symbol": "CRWD",
+          "trigger_type": "earnings_today",
+          "value": 1.0,
+          "threshold": 1.0,
+          "severity": "high"
+        },
+        {
+          "symbol": "NVDA",
+          "trigger_type": "earnings_today",
+          "value": 1.0,
+          "threshold": 1.0,
+          "severity": "high"
+        }
+      ],
+      "regime": "bull",
+      "vix_regime": "normal"
     }
   ],
   "debate_logs": [
-    {
-      "id": "debate_GS_20260714151538",
-      "symbol": "GS",
-      "ts": "2026-07-14T15:15:38.215935+00:00",
-      "bull_case": "R1 Bull(7): Goldman Sachs just delivered one of the most explosive earnings beats in its recent history \u2014 $20.98 vs $14.40 EPS expected \u2014 and the market hasn't fully repriced it yet, with a Forward P/E of 16.7 and analyst targets still above current price creating a structural gap that momentum is beginning to close. | R1 Bear(6): Goldman Sachs is a leveraged cyclical trading near 52-week highs after a massive earnings beat in a sideways market regime, with 678.6x Debt/Equity that transforms any macro credit shock into an existential capital event \u2014 and the bull's entire case depends on a deal pipeline converting in an environment where analyst consensus still won't upgrade. | R2 Bull(6): Goldman Sachs just delivered one of the most explosive earnings beats in its recent history \u2014 $20.98 vs $14.40 EPS expected \u2014 and the market hasn't fully repriced it yet, with a Forward P/E of 16.7 and analyst targets still above current price creating a structural gap that momentum is beginning to close. | R2 Bear(6): Goldman Sachs is a leveraged cyclical trading near 52-week highs after a massive earnings beat in a sideways market regime, with 678.6x Debt/Equity that transforms any macro credit shock into an existential capital event \u2014 and the bull's entire case depends on a deal pipeline converting in an environment where analyst consensus still won't upgrade.",
-      "bear_case": "Primary risk: A credit market disruption or risk-off macro shift triggers non-linear book value impairment at 678x Debt/Equity precisely as GS is priced for sustained deal pipeline conversion \u2014 the stock retraces the entire post-earnings move and more, while the fund enters at 52-week highs in a sideways regime with documented low-volume resistance failure patterns. | Unresolved: ['A credit market disruption or risk-off macro shift triggers non-linear book value impairment at 678x Debt/Equity precisely as GS is priced for sustained deal pipeline conversion \u2014 the stock retraces the entire post-earnings move and more, while the fund enters at 52-week highs in a sideways regime with documented low-volume resistance failure patterns.']",
-      "bull_score": 6,
-      "bear_score": 6,
-      "final_conviction": 6,
-      "decision": "buy"
-    },
-    {
-      "id": "debate_V_20260714151642",
-      "symbol": "V",
-      "ts": "2026-07-14T15:16:42.493006+00:00",
-      "bull_case": "R1 Bull(6): Visa's exceptional fundamental quality \u2014 51.7% margins, 60.3% ROE, 35.5% EPS growth at a 24x forward P/E \u2014 combined with confirmed technical momentum via ADX(32.2) and bullish EMA alignment creates a high-probability continuation trade with ~10% upside to analyst targets, with the critical caveat that 0.12x volume demands a strict low-volume resistance tripwire at entry. | R1 Bear(4): In a sideways market regime with 0.12x volume, price near all-time highs, and a 40% win rate on recent trades, Visa's bullish technical structure is a ghost trend \u2014 confirmed by ADX but sustained by nobody, and the fund's own trade history proves that low-volume resistance approaches are exactly where we lose money. | R2 Bull(5): Visa's exceptional fundamental quality \u2014 51.7% margins, 60.3% ROE, 35.5% EPS growth at a 24x forward P/E \u2014 combined with confirmed technical momentum via ADX(32.2) and bullish EMA alignment creates a high-probability continuation trade with ~10% upside to analyst targets, with the critical caveat that 0.12x volume demands a strict low-volume resistance tripwire at entry. | R2 Bear(4): In a sideways market regime with 0.12x volume, price near all-time highs, and a 40% win rate on recent trades, Visa's bullish technical structure is a ghost trend \u2014 confirmed by ADX but sustained by nobody, and the fund's own trade history proves that low-volume resistance approaches are exactly where we lose money.",
-      "bear_case": "Primary risk: We enter near all-time highs in a sideways regime on 0.12x volume, the catalyst never materializes, sentiment remains dead, and the position slowly bleeds as the fund's recent 40% win rate and -3.7% average loser pattern repeats \u2014 with no high-volume flush to exit cleanly against, just gradual thesis erosion until the remnant-cleanup rule triggers at a loss. | Unresolved: [\"We enter near all-time highs in a sideways regime on 0.12x volume, the catalyst never materializes, sentiment remains dead, and the position slowly bleeds as the fund's recent 40% win rate and -3.7% average loser pattern repeats \u2014 with no high-volume flush to exit cleanly against, just gradual thesis erosion until the remnant-cleanup rule triggers at a loss.\"]",
-      "bull_score": 5,
-      "bear_score": 4,
-      "final_conviction": 6,
-      "decision": "watch"
-    },
     {
       "id": "debate_MA_20260714151746",
       "symbol": "MA",
@@ -68235,6 +68302,28 @@
       "bear_score": 6,
       "final_conviction": 5,
       "decision": "watch"
+    },
+    {
+      "id": "debate_NVDA_20260826191504",
+      "symbol": "NVDA",
+      "ts": "2026-08-26T19:15:04.775735+00:00",
+      "bull_case": "R1 Bull(5): NVDA's PEG of 0.6 against 214.5% EPS growth and a forward P/E of 16.1 versus TTM P/E of 32.3 represents genuine fundamental undervaluation that the current technical softness is obscuring, with a Q2 earnings catalyst capable of collapsing that gap violently to the upside. | R1 Bear(6): The bull's 'manageable' debt/equity of 6.6 combined with hot PCE data and a binary pre-earnings entry creates an asymmetric loss setup that our fund's own track record \u2014 negative expectancy at -1.35% with average losses of -8.0% versus average wins of +3.1% \u2014 proves we cannot afford to absorb. | R2 Bull(4): NVDA's forward P/E of 16.1 and PEG of 0.6 provide a genuine valuation floor that partially insulates against the binary earnings risk, making a disciplined half-sized long position into Q2 earnings the correct expression of a thesis where the fundamental undervaluation is real but the near-term catalyst asymmetry demands respect through position sizing rather than avoidance. | R2 Bear(6): Despite a conceded valuation case, NVDA's pre-earnings entry combines three simultaneously unmanageable risks \u2014 China export restrictions, HBM supply constraints, and a technically confirmed low-conviction drift \u2014 against a fund whose own track record of -8.0% average losses and negative expectancy produces a capital-destroying outcome that position sizing scales but does not solve.",
+      "bear_case": "Primary risk: NVDA misses or guides conservatively on Q2 data center revenue due to China export restrictions or HBM supply constraints, triggering a gap-down earnings reaction that, combined with the fund's demonstrated -8.0% average loss on losing trades and our current negative expectancy, produces a capital-destroying outcome that no PEG ratio retroactively justifies. | Unresolved: [\"The bull provides no empirical evidence that a 16.1x forward P/E actually compresses gap-down magnitude on an earnings miss \u2014 this is an assertion, not a proof, and NVDA's stock has historically moved on revenue guidance surprises regardless of entry multiple\", 'China export restrictions represent a binary, unknowable regulatory risk that no position sizing discipline can hedge \u2014 a miss caused by a new export rule would gap through any defined stop before execution', \"The fund's negative expectancy of -1.35% is a structural fact about this fund's execution in this type of setup; the bull offers no mechanism by which a half-sized position changes the win-rate or the loss-to-win ratio, only the absolute dollar loss\"]",
+      "bull_score": 4,
+      "bear_score": 6,
+      "final_conviction": 4,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_CRWD_20260826191655",
+      "symbol": "CRWD",
+      "ts": "2026-08-26T19:16:55.896985+00:00",
+      "bull_case": "R1 Bull(4): CRWD's imminent Q2 earnings report is a binary sentiment reset catalyst where bullish analyst previews, AI narrative momentum, and CEO commentary on Falcon platform adoption can overwhelm the current technical weakness and drive a sharp mean-reversion from oversold levels. | R1 Bear(7): CRWD is a leveraged bet on near-perfect earnings execution at a 121.7x forward P/E with a Debt/Equity of 17.6 and near-zero profitability \u2014 a combination where any disappointment produces catastrophic downside, not a manageable dip. | R2 Bull(3): CRWD remains a binary earnings catalyst trade where a beat-and-raise print could ignite a sharp short-covering rally from a volume vacuum, but the absence of pre-earnings accumulation and the extreme multiple mean conviction must be held at minimal size given the fund's unfavorable loss-to-win asymmetry if the catalyst fails to materialize. | R2 Bear(7): CRWD remains a structurally dangerous short candidate into earnings: a 121.7x forward P/E with near-zero profitability, no institutional accumulation, and a fund loss profile that makes any miss a fund-damaging event \u2014 and the bull's own concessions (minimal sizing, lower beat probability, withdrawn technical thesis) confirm rather than refute the bear case.",
+      "bear_case": "Primary risk: CRWD misses Q2 earnings or issues cautious forward guidance, triggering a re-rating of a stock with no profitability floor, extreme leverage, and a valuation that has already priced near-perfect execution \u2014 producing a loss that, per our fund's -8.0% average loss history, could far exceed any realistic upside from the trade. | Unresolved: ['A miss or guidance haircut at 121.7x forward P/E with near-zero profitability produces catastrophic asymmetric downside with no valuation floor \u2014 the bull never resolved what the stock is worth if ARR growth decelerates even modestly.', \"The 'structurally priced in' argument for extreme valuation is circular \u2014 it explains past price action but provides no downside protection if consensus resets, which is precisely the binary risk tonight.\", 'Falcon Flex adoption commentary is unverifiable pre-print and represents a qualitative catalyst the market has not confirmed; CEO optimism at elevated multiples historically precedes sharp re-ratings when execution disappoints.', \"The fund's own -8.0% average loss history versus +3.1% average win makes this a negative expected-value trade even if the bull's beat probability is weighted at historical 7-of-8 quarters \u2014 the magnitude asymmetry is never resolved.\"]",
+      "bull_score": 3,
+      "bear_score": 7,
+      "final_conviction": 4,
+      "decision": "skip"
     }
   ],
   "position_reviews": [
@@ -100445,6 +100534,40 @@
       "pm_action": "watch",
       "pm_verdict": "PFE's technical structure is genuinely exceptional (ADX 50.5, +DI 38.4 vs -DI 6.1) and warrants attention, but the bull's own concessions gutted the fundamental floor argument \u2014 forward earnings are unverifiable, ROE recovery thesis is absent, and no material near-term catalyst was identified \u2014 leaving momentum as the sole remaining bull argument, which the Exhaustion/Crowding Guardrail explicitly penalizes. Volume at 0.55x average as price approaches resistance is a distribution warning, not a coiling signal.",
       "risk_category": "conviction"
+    },
+    {
+      "ts": "2026-08-26T19:15:04.577594+00:00",
+      "symbol": "NVDA",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 China export restrictions represent a binary, unknowable regulatory risk that can gap through a defined stop before execution \u2014 a TYPE-A catalyst-specific risk the bull never concretely rebutted, only scaled around \u2014 making the pre-earnings entry indefensible given this fund's demonstrated loss profile.",
+      "conviction": 4,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 210.92,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "The fundamental case is genuinely compelling \u2014 PEG 0.6, forward P/E 16.1, 63% margins \u2014 but this is a pre-earnings binary entry with three simultaneous unresolved TYPE-A risks (China export restrictions capable of gapping through any stop, HBM supply constraints directly threatening Q2 data center revenue, and a technically weak low-conviction drift with ADX 18.5 below the 20 threshold and -DI dominating) against a fund operating at negative expectancy (-3.98% per trade, -7.0% average loss) in a sideways regime; the valuation floor is an assertion, not a demonstrated gap-down compressor, and no position sizing discipline converts negative expectancy into edge.",
+      "risk_category": "pm_decision"
+    },
+    {
+      "ts": "2026-08-26T19:16:55.699403+00:00",
+      "symbol": "CRWD",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 An unresolved TYPE-A bear point: a miss or guidance haircut at 121.7x forward P/E tonight produces asymmetric catastrophic downside, the bull never provided a valuation floor or rebuttable downside scenario, and the fund's loss magnitude history (-7.0% avg) makes this a provably negative-expected-value trade even assuming a historically favorable beat rate \u2014 magnitude asymmetry was never resolved, not merely raised.",
+      "conviction": 4,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 190.83,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "CRWD into earnings is a binary event with a structurally negative payoff profile: the fund's own -7.0% average loss versus +3.1% average win creates deeply negative expected value against a 121.7x forward P/E with no profitability floor, confirmed bearish technicals (ADX 30.7, -DI dominating, MACD below signal), and sub-average volume showing zero pre-earnings accumulation \u2014 the bull's own Round 2 concessions gutted the thesis faster than the bear did.",
+      "risk_category": "pm_decision"
     }
   ],
   "watchlists": [
@@ -126687,24 +126810,6 @@
   ],
   "tech_shadow": [
     {
-      "ts": "2026-07-24T18:20:46.680316+00:00",
-      "symbol": "T",
-      "llm_signal": "bullish",
-      "llm_strength": 7,
-      "det_signal": "bullish",
-      "det_strength": 9,
-      "agree": true
-    },
-    {
-      "ts": "2026-07-24T18:22:13.564292+00:00",
-      "symbol": "NVDA",
-      "llm_signal": "bullish",
-      "llm_strength": 5,
-      "det_signal": "neutral",
-      "det_strength": 6,
-      "agree": false
-    },
-    {
       "ts": "2026-07-27T15:58:53.377347+00:00",
       "symbol": "LLY",
       "llm_signal": "bullish",
@@ -131184,6 +131289,24 @@
       "llm_strength": 7,
       "det_signal": "bullish",
       "det_strength": 10,
+      "agree": true
+    },
+    {
+      "ts": "2026-08-26T19:13:28.718477+00:00",
+      "symbol": "NVDA",
+      "llm_signal": "bearish",
+      "llm_strength": 4,
+      "det_signal": "neutral",
+      "det_strength": 4,
+      "agree": false
+    },
+    {
+      "ts": "2026-08-26T19:15:09.066689+00:00",
+      "symbol": "CRWD",
+      "llm_signal": "bearish",
+      "llm_strength": 6,
+      "det_signal": "bearish",
+      "det_strength": 3,
       "agree": true
     }
   ],
@@ -139063,6 +139186,34 @@
           "size_pct": 0.06,
           "position_usd": 6084.98,
           "stop_price": 443.36,
+          "sector": "Technology"
+        }
+      ],
+      "skipped": []
+    },
+    {
+      "ts": "2026-08-26T19:13:23.825382+00:00",
+      "regime": "bull",
+      "vix_regime": "normal",
+      "run_reason": "sentinel_trigger",
+      "n_candidates": 2,
+      "would_buy": [
+        {
+          "symbol": "NVDA",
+          "composite_score": 0.397,
+          "price": 210.92,
+          "size_pct": 0.06,
+          "position_usd": 6085.57,
+          "stop_price": 197.37,
+          "sector": "Technology"
+        },
+        {
+          "symbol": "CRWD",
+          "composite_score": 0.16,
+          "price": 190.57,
+          "size_pct": 0.06,
+          "position_usd": 6085.57,
+          "stop_price": 175.32,
           "sector": "Technology"
         }
       ],

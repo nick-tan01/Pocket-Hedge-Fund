@@ -3162,6 +3162,12 @@
       "portfolio_value": 101390.91,
       "cash": 90769.37,
       "spy_price": 764.92
+    },
+    {
+      "ts": "2026-08-26T16:29:34.815446+00:00",
+      "portfolio_value": 101389.99,
+      "cash": 90769.37,
+      "spy_price": 764.85
     }
   ],
   "trades": [
@@ -4609,9 +4615,9 @@
       "time_stop_flagged": false,
       "consecutive_weakened_count": 0,
       "is_remnant": true,
-      "current_price": 1188.5,
-      "unrealized_pl": 297.39,
-      "unrealized_plpc": 0.17036,
+      "current_price": 1188.8,
+      "unrealized_pl": 297.9,
+      "unrealized_plpc": 0.17065,
       "avg_entry": 1015.5,
       "trim_history": [
         {
@@ -4708,9 +4714,9 @@
           "reason": "Private credit contagion risk has escalated from theoretical to active (Blue Owl, Apollo, Ares stress), the bull conceded TYPE A pipeline threat, institutional bid absence below $216 leaves a 5%+ gap to $205.83 support with no technical anchor, and the 502x leveraged balance sheet introduces non-linear downside risk under simultaneous credit stress and client redemption pressure \u2014 all of which materially weaken but do not break the core thesis."
         }
       ],
-      "current_price": 213.37,
-      "unrealized_pl": 215.56,
-      "unrealized_plpc": 0.05461,
+      "current_price": 213.34,
+      "unrealized_pl": 214.97,
+      "unrealized_plpc": 0.05446,
       "avg_entry": 202.3212,
       "trim_pnl": 668.66,
       "stop_order_id": "405fa70a-08e3-4d96-b12a-25f7098b7a4a"
@@ -4730,13 +4736,13 @@
       "status": "open",
       "key_risk": "A high-volume bearish reversal or distribution candle on a daily close at or near resistance ($114.53) remains the primary exit trigger; additionally, the persistently very low volume (0.47x 20-day average) leaves the position vulnerable to a sharp sentiment-driven reversal, and the Vanguard-Altruist competitive dynamic should be monitored for any escalation that materially threatens Schwab's RIA custody franchise.",
       "position_usd": 4138.6,
-      "position_pct": 0.0436,
+      "position_pct": 0.0435,
       "sector": "Financial Services",
       "trim_pnl": 0.0,
       "is_remnant": false,
-      "current_price": 109.3095,
-      "unrealized_pl": 277.1,
-      "unrealized_plpc": 0.06695,
+      "current_price": 109.29,
+      "unrealized_pl": 276.31,
+      "unrealized_plpc": 0.06676,
       "avg_entry": 102.45,
       "last_review_ts": "2026-08-26T14:11:07.954793+00:00",
       "last_review_conviction": 5,
@@ -62465,31 +62471,92 @@
       ],
       "regime": "bull",
       "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-08-26T16:29:35.017701+00:00",
+      "run_type": "midday",
+      "candidates": [
+        "NVDA",
+        "CRWD"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "sentinel_trigger",
+      "candidate_details": [
+        {
+          "symbol": "NVDA",
+          "composite_score": 0.392,
+          "signals": {
+            "eps_growth": 214.5,
+            "rev_growth": 85.2,
+            "growth_quality": "strong",
+            "rs_vs_sector_pct": 1.3,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.64,
+            "52wk_high": 236.54,
+            "volume_spike_ratio": 0.42,
+            "volume_spike": false,
+            "rsi": 46.5,
+            "macd_crossover": "False",
+            "bb_pct": 0.33,
+            "news_count": 10,
+            "top_headline": "EXCLUSIVE: Nvidia's $2 Billion Synopsys Bet Signals AI's Next Frontier",
+            "news_quality": 0.0,
+            "pe_trailing": 32.1,
+            "pe_forward": 16.0,
+            "earnings_growth": 214.5
+          }
+        },
+        {
+          "symbol": "CRWD",
+          "composite_score": 0.185,
+          "signals": {
+            "growth_quality": "unknown",
+            "rs_vs_sector_pct": -4.5,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.72,
+            "52wk_high": 227.5,
+            "volume_spike_ratio": 0.52,
+            "volume_spike": false,
+            "rsi": 40.6,
+            "macd_crossover": "False",
+            "bb_pct": 0.19,
+            "news_count": 4,
+            "top_headline": "CrowdStrike Q2 Preview: 'Stock Poised to Rally Back to Old Highs and Earnings Could be the Catalyst' (CORRECTED)",
+            "news_quality": 0.25,
+            "pe_trailing": null,
+            "pe_forward": 119.9,
+            "earnings_growth": null
+          }
+        }
+      ],
+      "event_symbols": [
+        "CRWD",
+        "NVDA"
+      ],
+      "event_details": [
+        {
+          "symbol": "CRWD",
+          "trigger_type": "earnings_today",
+          "value": 1.0,
+          "threshold": 1.0,
+          "severity": "high"
+        },
+        {
+          "symbol": "NVDA",
+          "trigger_type": "earnings_today",
+          "value": 1.0,
+          "threshold": 1.0,
+          "severity": "high"
+        }
+      ],
+      "regime": "bull",
+      "vix_regime": "normal"
     }
   ],
   "debate_logs": [
-    {
-      "id": "debate_AAPL_20260713183744",
-      "symbol": "AAPL",
-      "ts": "2026-07-13T18:37:44.111430+00:00",
-      "bull_case": "R1 Bull(5): Apple's fundamental quality \u2014 21.8% EPS growth, 141.5% ROE, 27.2% margins \u2014 anchors a technically intact uptrend with analyst consensus pointing to $315.60, but anemic 0.41x volume demands strict entry discipline and pre-defined resistance tripwires. | R1 Bear(7): AAPL is a high-quality business priced for perfection at a P/E of 38.4 and PEG of 2.5, pressing into 52-week highs on 0.41x volume in a sideways market regime \u2014 a combination that historically precedes distribution, not accumulation, and this fund's recent 40% win rate in exactly these low-volume momentum setups demands we stop buying the story. | R2 Bull(4): Apple's fundamental quality \u2014 21.8% EPS growth, 141.5% ROE, 27.2% margins \u2014 anchors a technically intact uptrend with analyst consensus pointing to $315.60, but anemic 0.41x volume demands strict entry discipline and pre-defined resistance tripwires. | R2 Bear(7): AAPL is a high-quality business priced for perfection at a P/E of 38.4 and PEG of 2.5, pressing into 52-week highs on 0.41x volume in a sideways market regime \u2014 a combination that historically precedes distribution, not accumulation, and this fund's recent 40% win rate in exactly these low-volume momentum setups demands we stop buying the story.",
-      "bear_case": "Primary risk: AAPL fails to attract institutional volume as it presses into 52-week high territory, stalls at the upper Bollinger Band on continued sub-0.5x volume, and rolls over in a sideways macro regime \u2014 triggering the same low-volume resistance rejection pattern that forced rules-based exits in three of the fund's last five trades, with a PEG of 2.5 and no valuation cushion to arrest the drawdown. | Unresolved: [\"AAPL fails to attract institutional volume as it presses into 52-week high territory, stalls at the upper Bollinger Band on continued sub-0.5x volume, and rolls over in a sideways macro regime \u2014 triggering the same low-volume resistance rejection pattern that forced rules-based exits in three of the fund's last five trades, with a PEG of 2.5 and no valuation cushion to arrest the drawdown.\"]",
-      "bull_score": 4,
-      "bear_score": 7,
-      "final_conviction": 5,
-      "decision": "watch"
-    },
-    {
-      "id": "debate_NET_20260713183858",
-      "symbol": "NET",
-      "ts": "2026-07-13T18:38:58.157026+00:00",
-      "bull_case": "R1 Bull(5): NET is in a developing momentum breakout with 33.5% revenue growth and multiple analyst target raises to $300 pointing toward the next resistance level, but the trade is volume-gated \u2014 conviction only firms if volume confirms above the $280.14 resistance. | R1 Bear(7): NET's volume-gated breakout thesis is self-defeating: the bull explicitly requires volume confirmation above $280.14 to enter with conviction, yet current volume sits at 0.46x average \u2014 meaning the trigger condition for the trade doesn't exist yet, and entering now means buying near 52-week highs at 170.7x Forward P/E on anemic volume that the bull's own framework identifies as insufficient. | R2 Bull(4): NET is in a developing momentum breakout with 33.5% revenue growth and multiple analyst target raises to $300 pointing toward the next resistance level, but the trade is volume-gated \u2014 conviction only firms if volume confirms above the $280.14 resistance. | R2 Bear(7): NET's volume-gated breakout thesis is self-defeating: the bull explicitly requires volume confirmation above $280.14 to enter with conviction, yet current volume sits at 0.46x average \u2014 meaning the trigger condition for the trade doesn't exist yet, and entering now means buying near 52-week highs at 170.7x Forward P/E on anemic volume that the bull's own framework identifies as insufficient.",
-      "bear_case": "Primary risk: A failed breakout at $280.14 resistance on continued low volume triggers a sharp mean-reversion in a stock trading at 170.7x Forward P/E with no earnings support \u2014 the downside is not orderly because there is no fundamental floor to catch the multiple compression, and our recent trade history shows this fund has repeatedly been on the wrong side of exactly this low-volume resistance failure pattern. | Unresolved: ['A failed breakout at $280.14 resistance on continued low volume triggers a sharp mean-reversion in a stock trading at 170.7x Forward P/E with no earnings support \u2014 the downside is not orderly because there is no fundamental floor to catch the multiple compression, and our recent trade history shows this fund has repeatedly been on the wrong side of exactly this low-volume resistance failure pattern.']",
-      "bull_score": 4,
-      "bear_score": 7,
-      "final_conviction": 5,
-      "decision": "watch"
-    },
     {
       "id": "debate_BAC_20260714150339",
       "symbol": "BAC",
@@ -67965,6 +68032,28 @@
       "bear_case": "Primary risk: An earnings miss or any guidance reduction sends CRWD down 10-15% or more from an already technically weak setup, and the fund's own -8.0% average loss profile means this single trade could consume multiple winning trades worth of gains \u2014 with no balance sheet strength in CRWD and no volume support in the tape to slow the decline. | Unresolved: [\"The 'institutional positioning silence' reframe for low volume remains speculative \u2014 there is no evidence distinguishing pre-earnings accumulation from quiet distribution, and the fund's own -8.0% average loss profile in sideways regimes means this ambiguity is not a neutral coin flip but a negatively skewed one.\", 'A D/E of 17.6 with negative margins still creates asymmetric downside on a miss that a minimum position size mitigates but does not eliminate \u2014 the bull never quantified the stop-loss level relative to typical post-earnings gap risk exceeding 10-15%, meaning the hard stop may be structurally insufficient.', \"The mean-reversion thesis at %B=0.19 is technically valid in trending regimes but has reduced reliability in the fund's documented sideways regime, which the bull acknowledged but did not resolve.\"]",
       "bull_score": 2,
       "bear_score": 5,
+      "final_conviction": 3,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_NVDA_20260826162758",
+      "symbol": "NVDA",
+      "ts": "2026-08-26T16:27:58.966306+00:00",
+      "bull_case": "R1 Bull(5): NVDA's PEG of 0.6 against 214.5% EPS growth represents a fundamental mispricing that a Q2 earnings beat is positioned to correct, while the bear case is undermined by historically weak volume on the selloff. | R1 Bear(6): The bull's entire case rests on a Q2 earnings catalyst repricing a 'misvalued' stock, but with a Debt/Equity of 6.6, a -8.0% average loss on our losing trades, and a fund expectancy of -1.35% per trade, buying into a pre-earnings binary event on a highly leveraged hypergrowth stock in a sideways regime is a textbook asymmetric loss setup. | R2 Bull(4): NVDA's PEG of 0.6 against 214.5% EPS growth remains a genuine fundamental mispricing that a Q2 beat can correct, but the Debt/Equity of 6.6 and our fund's negative expectancy regime demand the position be sized small enough that the real gap-down risk is contained \u2014 the bull case is valid, but only at a fraction of standard size. | R2 Bear(5): Even conceding the bull's position-sizing reframe, a negative-expectancy fund with a -8.0% average loss taking any pre-earnings binary exposure on a D/E 6.6 hypergrowth name in a sideways regime is adding vol to a book that cannot absorb it, and the PEG mispricing \u2014 if real \u2014 is equally capturable post-print without gap risk, making the risk-reward of pre-earnings entry unjustifiable regardless of size.",
+      "bear_case": "Primary risk: NVDA misses Q2 earnings or delivers guidance implying growth deceleration \u2014 with Debt/Equity at 6.6 and the market already pricing a 16x forward P/E that assumes continued acceleration, even a modest guidance trim triggers a gap-down that bypasses our stop, and given our fund's -8.0% average loss already exceeds our +3.1% average win, a gap event on a high-leverage hypergrowth name in a sideways regime could produce a loss that materially worsens an already negative-expectancy book. | Unresolved: [\"The bull has not resolved that a negative-expectancy fund (-1.35% per trade) should be adding any pre-earnings binary optionality on a D/E 6.6 name regardless of size, since the fund's edge deficit means the PEG mispricing argument only pays off if NVDA actually beats AND guides up AND the market rewards it \u2014 three sequential conditions in a sideways regime that are individually uncertain and jointly unlikely to compensate for the existing book drag.\", \"Position-sizing to 'survivable' does not address that a sideways market regime systematically suppresses the magnitude of upside repricing even on a strong print, meaning the asymmetric upside the bull is counting on to justify the binary risk is itself regime-compressed.\", 'The bull has not demonstrated that the 0.6 PEG mispricing is actionable pre-earnings rather than a post-earnings entry once the binary event resolves \u2014 waiting costs the fund nothing and eliminates gap risk entirely.']",
+      "bull_score": 4,
+      "bear_score": 5,
+      "final_conviction": 5,
+      "decision": "watch"
+    },
+    {
+      "id": "debate_CRWD_20260826162934",
+      "symbol": "CRWD",
+      "ts": "2026-08-26T16:29:34.026277+00:00",
+      "bull_case": "R1 Bull(3): CRWD is a pre-earnings sentiment play where Jefferies' $230 price target upgrade and analyst consensus for an upside earnings surprise offer a narrow, time-boxed catalyst window \u2014 but the setup is fraught with structural risk that demands strict position discipline. | R1 Bear(8): CRWD's Debt/Equity ratio of 17.6 combined with near-zero GAAP profitability and a 120x forward earnings multiple creates a structure where any earnings miss \u2014 or even a beat with cautious guidance \u2014 triggers violent multiple compression with no fundamental floor to catch the fall. | R2 Bull(2): CRWD remains a narrow, small-size speculative pre-earnings play on analyst consensus for an upside surprise, but the bear's negative-expectancy and binary-event arguments are structurally sound and demand position sizing of no more than 1-2% of portfolio with a hard pre-defined stop, and any rational actor should be prepared to exit immediately if earnings disappoint rather than averaging down into a collapsing growth multiple. | R2 Bear(7): CRWD's 120x forward multiple, Debt/Equity of 17.6, negative ROE, and -DI-dominant technical structure create a binary trap where even a 1-2% speculative position represents a negative-expectancy bet with an illusory stop in a gap-risk environment \u2014 position sizing does not manufacture edge where none statistically exists.",
+      "bear_case": "Primary risk: An earnings miss or guidance cut triggers simultaneous multiple compression and growth-story impairment on a stock with no GAAP profitability floor, a Debt/Equity of 17.6, and negative ROE \u2014 producing a loss that could dwarf the fund's already-damaging -8.0% average loss, with no fundamental support level to define a rational stop. | Unresolved: [\"Position sizing at 1-2% is a portfolio management solution, not an answer to the asset-level risk: the stock itself still faces simultaneous multiple compression and growth-narrative impairment with no GAAP floor, and a 15-20% gap-down on earnings miss cannot be stopped out of in real-time in a pre-market binary event \u2014 the 'hard stop' the bull cites is illusory in a gap scenario.\", \"The fund's negative expectancy profile (-1.35% per trade) means even a 1-2% position in a negative-expectancy strategy is not 'survivable risk management' but rather a smaller expected loss on a structurally losing bet \u2014 the bull conflated position sizing with edge, and these are not the same thing.\", 'ADX at 23.6 with -DI dominant at 30.2 and low-volume selloff heading into a binary event remains unresolved as a directional signal \u2014 the bull conceded this is TYPE A but offered no counter-argument, only smaller size.']",
+      "bull_score": 2,
+      "bear_score": 7,
       "final_conviction": 3,
       "decision": "skip"
     }
@@ -100041,6 +100130,40 @@
       "pm_action": "skip",
       "pm_verdict": "CRWD is a binary earnings lottery ticket with no volume support (0.35x average), confirmed bearish technicals (ADX-driven downtrend, RSI 41, -DI dominating), and a fund track record showing -7.0% average losses in exactly this sideways regime \u2014 the setup fails every threshold required for entry, and even the bull voluntarily collapsed to 2/10 conviction after conceding the TYPE-A volume and expectancy arguments.",
       "risk_category": "pm_decision"
+    },
+    {
+      "ts": "2026-08-26T16:27:58.763468+00:00",
+      "symbol": "NVDA",
+      "action": "watch",
+      "reason": "PM decision: watch \u2014 The Q2 earnings event is a TYPE-A, trade-specific, near-term catalyst that the bull never rebutted \u2014 both sides explicitly acknowledged gap-down risk is real, binary, and stop-bypassing, and the bear correctly identified that waiting post-print captures the same PEG mispricing without any of the binary exposure. The identical thesis is available after the event at no incremental cost.",
+      "conviction": 5,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 210.12,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "watch",
+      "pm_verdict": "The fundamental case (PEG 0.6, 9/10 bullish) is real, but the Q2 earnings event is an unresolved TYPE-A bear point \u2014 a miss or guidance trim on a D/E 6.6 name produces a gap-down that bypasses stops, and the post-print entry eliminates this risk at zero cost to the thesis. With ADX at 18.4 (no confirmed trend), volume at 0.42x (no institutional conviction), and a fund running -3.98% expectancy in a sideways regime, adding pre-earnings binary exposure on a leveraged hypergrowth name fails the minimum threshold.",
+      "risk_category": "pm_decision"
+    },
+    {
+      "ts": "2026-08-26T16:29:33.826465+00:00",
+      "symbol": "CRWD",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 The earnings event is simultaneously the bull's only catalyst and an unresolved TYPE-A bear point: a miss or cautious guidance triggers simultaneous multiple compression and growth-narrative impairment with no GAAP floor, and the pre-market gap risk renders any pre-defined stop illusory \u2014 position sizing does not manufacture edge where none statistically exists.",
+      "conviction": 3,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 188.49,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "A binary earnings event on a 120x forward multiple stock with negative ROE, Debt/Equity of 17.6, and a -DI-dominant technical structure heading into the report creates a TYPE-A trap where the 'hard stop' is illusory in a gap scenario \u2014 the fund's own negative-expectancy track record (-3.98% per trade) makes this a smaller expected loss, not a defensible edge. No analyst signal reaches 8/10, momentum is not confirmed (ADX 23.6, below-average volume), and the sole bull catalyst is a binary event the fund cannot stop out of in real time.",
+      "risk_category": "pm_decision"
     }
   ],
   "watchlists": [
@@ -126283,24 +126406,6 @@
   ],
   "tech_shadow": [
     {
-      "ts": "2026-07-24T15:15:00.700011+00:00",
-      "symbol": "TRV",
-      "llm_signal": "bullish",
-      "llm_strength": 8,
-      "det_signal": "bullish",
-      "det_strength": 10,
-      "agree": true
-    },
-    {
-      "ts": "2026-07-24T15:16:20.716955+00:00",
-      "symbol": "NVDA",
-      "llm_signal": "bullish",
-      "llm_strength": 5,
-      "det_signal": "neutral",
-      "det_strength": 6,
-      "agree": false
-    },
-    {
       "ts": "2026-07-24T15:17:54.905725+00:00",
       "symbol": "T",
       "llm_signal": "bullish",
@@ -130775,6 +130880,24 @@
     },
     {
       "ts": "2026-08-26T14:55:49.890250+00:00",
+      "symbol": "CRWD",
+      "llm_signal": "bearish",
+      "llm_strength": 6,
+      "det_signal": "bearish",
+      "det_strength": 3,
+      "agree": true
+    },
+    {
+      "ts": "2026-08-26T16:26:26.483767+00:00",
+      "symbol": "NVDA",
+      "llm_signal": "bearish",
+      "llm_strength": 4,
+      "det_signal": "neutral",
+      "det_strength": 4,
+      "agree": false
+    },
+    {
+      "ts": "2026-08-26T16:28:04.413841+00:00",
       "symbol": "CRWD",
       "llm_signal": "bearish",
       "llm_strength": 6,
@@ -138594,6 +138717,34 @@
           "size_pct": 0.06,
           "position_usd": 6083.19,
           "stop_price": 173.34,
+          "sector": "Technology"
+        }
+      ],
+      "skipped": []
+    },
+    {
+      "ts": "2026-08-26T16:26:21.343591+00:00",
+      "regime": "bull",
+      "vix_regime": "normal",
+      "run_reason": "sentinel_trigger",
+      "n_candidates": 2,
+      "would_buy": [
+        {
+          "symbol": "NVDA",
+          "composite_score": 0.392,
+          "price": 210.07,
+          "size_pct": 0.06,
+          "position_usd": 6083.4,
+          "stop_price": 196.57,
+          "sector": "Technology"
+        },
+        {
+          "symbol": "CRWD",
+          "composite_score": 0.185,
+          "price": 187.96,
+          "size_pct": 0.06,
+          "position_usd": 6083.4,
+          "stop_price": 172.92,
           "sector": "Technology"
         }
       ],

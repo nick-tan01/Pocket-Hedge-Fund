@@ -3270,6 +3270,12 @@
       "portfolio_value": 101283.74,
       "cash": 90769.37,
       "spy_price": 761.63
+    },
+    {
+      "ts": "2026-09-01T17:35:27.736446+00:00",
+      "portfolio_value": 101280.93,
+      "cash": 86717.59,
+      "spy_price": 762.15
     }
   ],
   "trades": [
@@ -4709,7 +4715,7 @@
       "status": "open",
       "key_risk": "A daily close below $1,107.56 on above-average volume accompanied by a confirmed MACD cross below signal is the primary near-term exit trigger \u2014 with RSI at 42.4, MACD already below signal, and price only ~$49 above that level, this line is dangerously close and must be watched session by session; simultaneously, any FDA ruling on Novo Nordisk's oral semaglutide remains the primary fundamental thesis-breaker.",
       "position_usd": 2026.13,
-      "position_pct": 0.0198,
+      "position_pct": 0.0197,
       "sector": "Healthcare",
       "last_review_ts": "2026-08-31T21:43:15.724710+00:00",
       "last_review_conviction": 6,
@@ -4717,9 +4723,9 @@
       "time_stop_flagged": false,
       "consecutive_weakened_count": 0,
       "is_remnant": true,
-      "current_price": 1165.11,
-      "unrealized_pl": 257.18,
-      "unrealized_plpc": 0.14733,
+      "current_price": 1163.515,
+      "unrealized_pl": 254.44,
+      "unrealized_plpc": 0.14576,
       "avg_entry": 1015.5,
       "trim_history": [
         {
@@ -4778,7 +4784,7 @@
       "status": "open",
       "key_risk": "Price behavior in the $219\u2013$222 resistance zone is now the critical watch item \u2014 a rejection candle and close below $219 would constitute the second trigger from the original risk framework and would mandate a reassessment toward exit; simultaneously, any further ADX expansion above 12.2 with sustained -DI dominance would deepen the bearish technical case.",
       "position_usd": 4172.17,
-      "position_pct": 0.0409,
+      "position_pct": 0.0408,
       "sector": "Financial Services",
       "last_review_ts": "2026-08-31T21:43:35.562860+00:00",
       "last_review_conviction": 5,
@@ -4816,9 +4822,9 @@
           "reason": "Private credit contagion risk has escalated from theoretical to active (Blue Owl, Apollo, Ares stress), the bull conceded TYPE A pipeline threat, institutional bid absence below $216 leaves a 5%+ gap to $205.83 support with no technical anchor, and the 502x leveraged balance sheet introduces non-linear downside risk under simultaneous credit stress and client redemption pressure \u2014 all of which materially weaken but do not break the core thesis."
         }
       ],
-      "current_price": 212.11,
-      "unrealized_pl": 190.98,
-      "unrealized_plpc": 0.04838,
+      "current_price": 212.0,
+      "unrealized_pl": 188.83,
+      "unrealized_plpc": 0.04784,
       "avg_entry": 202.3212,
       "trim_pnl": 668.66,
       "stop_order_id": "405fa70a-08e3-4d96-b12a-25f7098b7a4a"
@@ -4842,9 +4848,9 @@
       "sector": "Financial Services",
       "trim_pnl": 0.0,
       "is_remnant": false,
-      "current_price": 108.26,
-      "unrealized_pl": 234.7,
-      "unrealized_plpc": 0.05671,
+      "current_price": 108.24,
+      "unrealized_pl": 233.89,
+      "unrealized_plpc": 0.05652,
       "avg_entry": 102.45,
       "last_review_ts": "2026-08-31T21:43:49.126350+00:00",
       "last_review_conviction": 4,
@@ -4867,9 +4873,14 @@
       "status": "open",
       "key_risk": "MACD crossing below signal on above-average volume, or any management communication walking back FY2027 guidance \u2014 either would invalidate the earnings inflection thesis and trigger immediate exit; also exit if price closes below the pre-breakout consolidation level (hard stop) on volume above 1.0x average.",
       "position_usd": 4051.78,
-      "position_pct": 0.04,
+      "position_pct": 0.0401,
       "sector": "Healthcare",
-      "trim_pnl": 0.0
+      "trim_pnl": 0.0,
+      "is_remnant": false,
+      "current_price": 92.78,
+      "unrealized_pl": 4.81,
+      "unrealized_plpc": 0.00119,
+      "avg_entry": 92.67
     }
   ],
   "runs": [
@@ -64103,75 +64114,178 @@
       ],
       "regime": "bull",
       "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-09-01T17:35:27.937343+00:00",
+      "run_type": "midday",
+      "candidates": [
+        "CRM",
+        "CVX",
+        "COP",
+        "HOOD",
+        "SMCI",
+        "PLTR"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "scheduled",
+      "candidate_details": [
+        {
+          "symbol": "CRM",
+          "composite_score": 0.6047,
+          "signals": {
+            "eps_growth": 118.9,
+            "rev_growth": 10.8,
+            "growth_quality": "moderate",
+            "rs_vs_sector_pct": 31.8,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.91,
+            "52wk_high": 269.11,
+            "volume_spike_ratio": 0.59,
+            "volume_spike": false,
+            "rsi": 81.5,
+            "macd_crossover": "False",
+            "bb_pct": 0.99,
+            "news_count": 5,
+            "top_headline": "What's Going On With Salesforce Stock?",
+            "news_quality": 1.0,
+            "pe_trailing": 23.6,
+            "pe_forward": 16.2,
+            "earnings_growth": 118.9
+          }
+        },
+        {
+          "symbol": "CVX",
+          "composite_score": 0.527,
+          "signals": {
+            "eps_growth": 321.9,
+            "rev_growth": 53.5,
+            "growth_quality": "strong",
+            "rs_vs_sector_pct": 0.7,
+            "sector": "Energy",
+            "sector_etf": "XLE",
+            "pct_of_52wk_range": 0.92,
+            "52wk_high": 214.71,
+            "volume_spike_ratio": 0.51,
+            "volume_spike": false,
+            "rsi": 70.5,
+            "macd_crossover": "True",
+            "bb_pct": 0.88,
+            "news_count": 10,
+            "top_headline": "Next Phase Of Talks Regarding Transition In Venezuela To Resume Middle Of Month; We Continue To Push For Private Sector U.s. Investment; Chevron To Announce Expanding Operations In Venezuela",
+            "news_quality": 0.1,
+            "pe_trailing": 20.2,
+            "pe_forward": 15.8,
+            "earnings_growth": 321.9
+          }
+        },
+        {
+          "symbol": "COP",
+          "composite_score": 0.519,
+          "signals": {
+            "eps_growth": 107.0,
+            "rev_growth": 35.5,
+            "growth_quality": "strong",
+            "rs_vs_sector_pct": 4.1,
+            "sector": "Energy",
+            "sector_etf": "XLE",
+            "pct_of_52wk_range": 0.99,
+            "52wk_high": 135.88,
+            "volume_spike_ratio": 0.43,
+            "volume_spike": false,
+            "rsi": 69.1,
+            "macd_crossover": "False",
+            "bb_pct": 0.82,
+            "news_count": 2,
+            "top_headline": "Trump Presses Refiners on Gas Prices Tuesday \u2014 and He's Been Buying Their Stocks",
+            "news_quality": 0.0,
+            "pe_trailing": 17.9,
+            "pe_forward": 14.2,
+            "earnings_growth": 107.0
+          }
+        },
+        {
+          "symbol": "HOOD",
+          "composite_score": 0.502,
+          "signals": {
+            "eps_growth": 47.6,
+            "rev_growth": 32.3,
+            "growth_quality": "moderate",
+            "rs_vs_sector_pct": 12.4,
+            "sector": "Financial Services",
+            "sector_etf": "XLF",
+            "pct_of_52wk_range": 0.45,
+            "52wk_high": 153.86,
+            "volume_spike_ratio": 0.88,
+            "volume_spike": false,
+            "rsi": 53.8,
+            "macd_crossover": "False",
+            "bb_pct": 0.67,
+            "news_count": 7,
+            "top_headline": "How Did BONER Meme Coin Create One of Robinhood's Biggest Stories?",
+            "news_quality": 1.0,
+            "pe_trailing": 46.1,
+            "pe_forward": 31.7,
+            "earnings_growth": 47.6
+          }
+        },
+        {
+          "symbol": "SMCI",
+          "composite_score": 0.487,
+          "signals": {
+            "eps_growth": 409.4,
+            "rev_growth": 93.2,
+            "growth_quality": "strong",
+            "rs_vs_sector_pct": 11.7,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.43,
+            "52wk_high": 58.78,
+            "volume_spike_ratio": 0.27,
+            "volume_spike": false,
+            "rsi": 54.4,
+            "macd_crossover": "False",
+            "bb_pct": 0.54,
+            "news_count": 1,
+            "top_headline": "10 Information Technology Stocks Whale Activity In Today\u2019s Session",
+            "news_quality": 0.0,
+            "pe_trailing": 11.2,
+            "pe_forward": 6.8,
+            "earnings_growth": 409.4
+          }
+        },
+        {
+          "symbol": "PLTR",
+          "composite_score": 0.484,
+          "signals": {
+            "eps_growth": 215.4,
+            "rev_growth": 92.8,
+            "growth_quality": "strong",
+            "rs_vs_sector_pct": 9.0,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.75,
+            "52wk_high": 207.52,
+            "volume_spike_ratio": 0.33,
+            "volume_spike": false,
+            "rsi": 64.8,
+            "macd_crossover": "False",
+            "bb_pct": 0.73,
+            "news_count": 1,
+            "top_headline": "Cathie Wood Dumps Palantir Shares Worth $26 Million, Bets on Bitcoin-Linked Block and USDC-Issuer Circle Amid Crypto Rally",
+            "news_quality": 0.0,
+            "pe_trailing": 155.8,
+            "pe_forward": 78.8,
+            "earnings_growth": 215.4
+          }
+        }
+      ],
+      "regime": "bull",
+      "vix_regime": "normal"
     }
   ],
   "debate_logs": [
-    {
-      "id": "debate_AAPL_20260716152803",
-      "symbol": "AAPL",
-      "ts": "2026-07-16T15:28:03.954910+00:00",
-      "bull_case": "R1 Bull(4): Apple Intelligence's China approval is a genuine re-rating catalyst that, combined with confirmed technical momentum, can carry AAPL through resistance \u2014 but only if volume materializes to validate the move. | R1 Bear(7): The bull's entire catalyst thesis depends on volume materializing that has demonstrably refused to appear, and our own exit history proves that low-volume approaches to resistance aren't 'manageable' \u2014 they are the exact condition that has forced us to exit five consecutive trades at a loss. | R2 Bull(3): AAPL's China Intelligence approval remains a genuine unpriced catalyst with ADX-confirmed trend strength, but the 0.27x volume is a TYPE A disqualifying condition that must resolve with institutional participation before entry is warranted \u2014 this is a watch-and-wait thesis, not an immediate buy. | R2 Bear(8): The bull's own concessions confirm a TYPE A disqualifying volume condition that mirrors five consecutive forced exits, the conditional 'watch and wait' framing validates that no entry is justified today, and the unresolved PEG of 2.5 with no fundamental floor means downside risk is asymmetric and unmitigated regardless of whether the China catalyst eventually materializes.",
-      "bear_case": "Primary risk: We enter near all-time highs on 0.27x volume \u2014 the identical low-volume resistance approach that triggered mandatory exits in all five of our most recent trades \u2014 and the China AI catalyst proves either already priced in or slower to monetize than expected, triggering multiple compression from a PEG of 2.5 with no fundamental floor to arrest the decline. | Unresolved: [\"The bull provides no mechanism explaining WHY volume would normalize toward 0.7x \u2014 citing 'holiday-light or pre-catalyst quiet period' is speculative rationalization, not evidence, and identical low-volume conditions preceded all five prior mandatory exits without subsequent normalization\", 'PEG of 2.5 at all-time highs with analyst consensus below current price creates a fundamental ceiling with no floor \u2014 the bull conceded this amplifies TYPE A risk but offered no valuation support level if China monetization disappoints', \"The China Intelligence catalyst timeline of '2-4 weeks' for adoption data is unanchored speculation \u2014 regulatory approval does not equal user adoption, and monetization lag at a 2.5 PEG is precisely the multiple compression scenario the bear thesis identifies\"]",
-      "bull_score": 3,
-      "bear_score": 8,
-      "final_conviction": 5,
-      "decision": "watch"
-    },
-    {
-      "id": "debate_GS_20260716152945",
-      "symbol": "GS",
-      "ts": "2026-07-16T15:29:45.814480+00:00",
-      "bull_case": "R1 Bull(5): GS is repricing higher on genuine earnings power \u2014 92.3% EPS growth, record Q2 results, and analyst estimate revisions \u2014 at a forward P/E of 15.7x that still undervalues the cycle, with the bear's strongest counter (low volume at 0.43x) being the primary tripwire that must be monitored rather than a reason to fade the trade today. | R1 Bear(7): The bull's own tripwire \u2014 0.43x volume on a 5.6% five-day surge \u2014 is not a monitoring condition but an immediate disqualifier, because every single one of our last five closed trades was exited precisely because low-volume price advances into resistance proved to be distribution, not accumulation. | R2 Bull(3): GS warrants a reduced, conditional long position sized at 25-30% of normal given genuine fundamental strength \u2014 record Q2, 92.3% EPS growth, forward P/E compression \u2014 but the 0.43x volume TYPE A flag caps conviction and mandates a hard exit tripwire at 0.50x volume within 3 sessions, with the debt leverage and cyclical earnings sustainability concerns acknowledged as real TYPE B risks that are sector-priced but bear watching if macro deteriorates. | R2 Bear(6): Even at 25-30% size, entering GS on a confirmed TYPE A volume failure replicating the exact distribution pattern of our last five closed losses is not a disciplined conditional entry \u2014 it is a framework violation dressed in position-sizing language, and the correct answer remains zero allocation until volume confirms above 0.50x before entry, not after.",
-      "bear_case": "Primary risk: We enter on a narrative of post-earnings momentum, volume stays suppressed as price presses into resistance near all-time highs, the mandatory exit tripwire triggers immediately \u2014 replicating the exact pattern of all five recent exits \u2014 and we absorb a 3%+ loss in a sideways regime on a trade that our own framework should have vetoed at the gate. | Unresolved: ['The bull has not explained why a 25-30% position in a pattern that has triggered mandatory exits in all five recent analogues is a positive expected-value entry rather than a disciplined zero \u2014 sizing down a bad trade is not the same as justifying it.', 'The 0.50x volume confirmation tripwire within 3 sessions has no stated action plan for the scenario where volume confirms but price is already 2-3% extended into resistance near all-time highs, creating a buy-the-confirmation-into-a-top risk.', 'Cyclical earnings sustainability: the bull acknowledged PEG 1.7x and peak-cycle estimate risk but offered no mechanism by which the current macro regime (rates, deal flow sensitivity, credit cycle) fails to erode the Q2 beat narrative over the next 1-2 quarters.']",
-      "bull_score": 3,
-      "bear_score": 6,
-      "final_conviction": 5,
-      "decision": "watch"
-    },
-    {
-      "id": "debate_WFC_20260716153120",
-      "symbol": "WFC",
-      "ts": "2026-07-16T15:31:20.038126+00:00",
-      "bull_case": "R1 Bull(5): WFC's 25% YoY EPS growth at 11.3x forward P/E with a fresh earnings beat creates a fundamental re-rating setup as price coils against $88.90 resistance \u2014 but the trade lives or dies on volume confirmation at breakout. | R1 Bear(7): The bull's own invalidation condition \u2014 volume confirmation above $88.90 \u2014 is already broken before entry, and our fund's track record proves we keep buying these exact low-volume resistance setups and getting systematically stopped out. | R2 Bull(4): WFC's 25% YoY EPS growth, 14% beat, and 11.3x forward P/E create a legitimate re-rating catalyst, but the trade is only executable as a conditional, rules-gated entry that scales to full size exclusively on volume confirmation above threshold at $88.90 \u2014 absent that confirmation, the position stays at minimal starter size or does not exist. | R2 Bear(6): Even restructured as a conditional, volume-gated entry, the WFC trade sits in a low-probability breakout environment where our fund's own execution history proves we do not reliably honor thesis-broken exits at this setup type, and a starter position does not neutralize the expectancy damage of adding another loss to a 40% win-rate fund at a pattern we have repeatedly failed to trade correctly.",
-      "bear_case": "Primary risk: We enter at resistance on 0.4x volume in a sideways regime, the breakout fails to materialize on volume, price reverses from $88.90, and we execute the same thesis-broken exit our last five trades all required \u2014 crystallizing another loss in a fund already running a 40% win rate where every loss matters to expectancy. | Unresolved: [\"The fund's 40% win rate and systematic stop-out history at low-volume resistance setups is a portfolio-level expectancy problem that a 'starter position' framing does not solve \u2014 even small losses at the same recurring setup pattern compound the behavioral and capital drag on the fund\", \"The bull's volume-gated trigger is only protective if the team executes it with discipline, but the fund's own track record demonstrates five consecutive thesis-broken exits at identical setups, suggesting the conditional entry rule will face the same execution pressure that produced those exits\", 'The Fed asset cap constraint on forward earnings growth remains underweighted \u2014 the bull conceded the PEG of 1.6x deserves scrutiny but did not quantitatively revise the re-rating catalyst, leaving the fundamental thesis partially intact but not fully reconstructed', 'A sideways price regime with 0.4x volume does not become a valid breakout environment simply because a trigger rule is defined \u2014 the structural probability of volume confirmation materializing remains low and was not addressed']",
-      "bull_score": 4,
-      "bear_score": 6,
-      "final_conviction": 5,
-      "decision": "watch"
-    },
-    {
-      "id": "debate_PYPL_20260716153257",
-      "symbol": "PYPL",
-      "ts": "2026-07-16T15:32:57.348537+00:00",
-      "bull_case": "R1 Bull(5): An unconfirmed but market-moving $53B acquisition bid from Stripe is repricing PYPL toward a takeout premium on a stock that was already fundamentally cheap at 9.9x forward earnings \u2014 the M&A floor changes the risk/reward calculus even if the deal dies. | R1 Bear(8): The entire bull thesis rests on an unconfirmed acquisition rumor driving a 25.6% surge on below-average volume \u2014 a textbook low-conviction distribution pattern into resistance that this fund's own exit history shows is precisely when we get destroyed. | R2 Bull(3): PYPL retains a structural M&A optionality floor that limits downside relative to a true fundamentals-only repricing, but the 0.72x volume into $57.18 resistance in a sideways regime is a TYPE A invalidation condition that reduces this to a speculative, small-size position with a hard stop below the $52 pre-rumor consolidation zone rather than a high-conviction directional trade. | R2 Bear(8): With the bull conceding every structural pillar \u2014 low-conviction volume, absent momentum confirmation, and fundamentals that provide no support on rumor death \u2014 the bear thesis is intact: PYPL is a high-probability short from $57.18 resistance targeting pre-rumor consolidation, with the M&A optionality floor representing a modest speed bump on downside rather than a genuine thesis-killer.",
-      "bear_case": "Primary risk: The acquisition rumor is denied or goes silent over the next 48-72 hours, triggering a sharp reversion toward pre-rumor prices on a stock that is technically exhausted at RSI 81.7, pressing resistance at $57.18 on 0.72x volume in a sideways market regime \u2014 with no fundamental catalyst to arrest the decline given EPS contraction and a hold-rated analyst consensus. | Unresolved: ['Rumor denial or 48-72 hour silence triggers violent reversion with no fundamental support near $57 given EPS -6.2% YoY and hold-rated consensus \u2014 the M&A optionality floor argument does not prevent the reversion, it only debates its terminal velocity', \"The bull's 'suppressed shorting below $48-50' argument is unquantified and untested \u2014 options market deal-premium dissipates rapidly upon rumor death, and the fund has no evidence this floor holds under a confirmed denial scenario\", 'RSI 81.7 with 0.72x volume remains a documented TYPE A exit trigger with no ADX or volume confirmation to argue momentum continuation, leaving the technical structure fully bear-aligned']",
-      "bull_score": 3,
-      "bear_score": 8,
-      "final_conviction": 4,
-      "decision": "skip"
-    },
-    {
-      "id": "debate_UNH_20260716173824",
-      "symbol": "UNH",
-      "ts": "2026-07-16T17:38:24.941575+00:00",
-      "bull_case": "R1 Bull(5): UNH's Q2 2026 earnings beat has triggered institutional re-rating momentum \u2014 confirmed by ADX of 42.3 and 1.56x volume \u2014 that is carrying price toward $461 resistance before the bear case on thin margins can reassert itself. | R1 Bear(7): The market is paying 20.5x forward earnings for a managed care company running 2.7% profit margins with accelerating membership attrition \u2014 the 'priced in' narrative is a trap, because if forward estimates miss by even a modest margin, the TTM-to-Forward P/E compression unwinds violently. | R2 Bull(4): UNH's post-earnings institutional re-rating \u2014 confirmed by ADX 42.3 and 1.56x volume \u2014 provides sufficient trend energy to carry price to $461 resistance within the 2-4 week trade window before Q3 earnings create the fundamental re-evaluation event the bear correctly identifies as a genuine risk. | R2 Bear(8): The bull's momentum argument narrows its own validation window to the same Q3 earnings event that represents the primary fundamental risk, meaning UNH trades at 20.5x forward earnings with 2.7% margins and ~1 million MA member attrition with no fundamental resolution \u2014 only a technical race against a binary catalyst that the bull itself acknowledges could unwind the thesis violently.",
-      "bear_case": "Primary risk: Forward earnings estimates fail to materialize \u2014 driven by continued Medicare Advantage member attrition, persistently elevated medical cost ratios, and/or CMS reimbursement pressure \u2014 causing the TTM-to-Forward P/E compression to unwind sharply from near 52-week highs, with no margin buffer to cushion the drawdown. | Unresolved: [\"Forward earnings estimates remain unvalidated and Q3 prints before the bull's $461 target has time to become a safe exit, meaning the momentum trade and the fundamental risk event are colliding \u2014 not separated \u2014 in the same 2-4 week window\", 'ADX 42.3 and institutional volume confirm trend energy but do not constitute evidence of forward earnings visibility; institutions can and do chase momentum into deteriorating fundamentals, and the bull has not demonstrated that this volume reflects claims data access rather than technical breakout chasing', 'Medicare Advantage member attrition of ~1 million remains structurally unresolved and compounds MLR risk precisely on the highest-margin business line \u2014 the bull conceded this is a leading indicator, not a resolved issue, which means it is still an active forward earnings headwind']",
-      "bull_score": 4,
-      "bear_score": 8,
-      "final_conviction": 5,
-      "decision": "skip"
-    },
-    {
-      "id": "debate_ISRG_20260716173959",
-      "symbol": "ISRG",
-      "ts": "2026-07-16T17:39:59.076788+00:00",
-      "bull_case": "R1 Bull(4): ISRG's 23% revenue growth and 28.2% margins at 34% off highs with a forward P/E compressing from 48.2 to 33.8 offers a fundamentally anchored entry ahead of a binary earnings catalyst that could reset the bearish narrative. | R1 Bear(7): The bull's 'low bar' earnings catalyst narrative ignores that three major analysts simultaneously cutting targets ahead of July 16 signals informed expectation of fundamental deterioration \u2014 not pessimism to be faded \u2014 making this a value trap dressed as a discount. | R2 Bull(3): ISRG at 52-week lows with a structurally intact da Vinci 5 ramp, analyst targets still 10-15% above current price, and below-average volume suggesting exhaustion rather than panic offers a asymmetric \u2014 if narrow \u2014 risk/reward into July 16 earnings, but position sizing must reflect the genuine TYPE A binary risk the bear has correctly identified. | R2 Bear(7): The bull's concessions on analyst target cuts as a TYPE A signal, PEG fragility at sub-23% growth, and 52-week lows without recovery collectively validate the bear case more than the bull's unverifiable 'exhausted sellers' volume interpretation refutes it, leaving ISRG a value trap into a binary binary earnings event with the probabilistic regime, valuation structure, and informed sell-side signals all aligned against the long.",
-      "bear_case": "Primary risk: ISRG reports July 16 earnings with procedure volume growth below expectations, causing a simultaneous collapse in the growth narrative and P/E multiple re-expansion, with no volume-confirmed demand floor to arrest the decline \u2014 delivering a sharp, sustained leg down from already-distressed 52-week low levels in a sideways regime where the fund's win rate is only 40%. | Unresolved: ['Simultaneous pre-earnings analyst target cuts from desks with management access remain unexplained as anything other than informed expectation of volume disappointment \u2014 the bull conceded this is a TYPE A warning but offered no structural reason to fade it', 'PEG of 2.0 requires 23% growth to be defensible; the bull conceded this collapses at 15-18% growth, meaning the valuation floor is contingent on the exact outcome most at risk on July 16', \"Price making 52-week lows in real-time without recovery on 'low bar' expectations directly contradicts the relief rally setup the bull is counting on \u2014 the bull could not rebut this structurally\", '40% win rate in the current sideways regime means the base case probability is already against the trade regardless of narrative quality']",
-      "bull_score": 3,
-      "bear_score": 7,
-      "final_conviction": 4,
-      "decision": "skip"
-    },
     {
       "id": "debate_DDOG_20260716180808",
       "symbol": "DDOG",
@@ -69605,6 +69719,72 @@
       "bear_score": 6,
       "final_conviction": 6,
       "decision": "buy"
+    },
+    {
+      "id": "debate_CRM_20260901172709",
+      "symbol": "CRM",
+      "ts": "2026-09-01T17:27:09.280862+00:00",
+      "bull_case": "R1 Bull(4): CRM's post-earnings re-rating is structurally justified at a 16.2x forward P/E with 118.9% EPS growth, but the low-volume surge and negative expectancy track record demand tight risk controls before full commitment. | R1 Bear(7): CRM's 118.9% EPS growth is a margin-expansion mirage built on a 110.4% debt-loaded balance sheet, not revenue acceleration \u2014 and a 25% move in 5 days on 0.59x volume into hard resistance means we are being asked to buy the most dangerous moment in the trade at the worst risk/reward ratio. | R2 Bull(3): CRM's structural re-rating is fundamentally justified by its valuation and trend metrics, but the bear has correctly identified that the current entry \u2014 at resistance, on low volume, with near-zero upside to consensus \u2014 demands we wait for a constructive pullback to $245-250 before committing capital rather than chasing a 25% post-earnings surge into a ceiling. | R2 Bear(6): The bull has conceded the entry, the ceiling, and the regime \u2014 leaving a thesis that requires a 6-9% pullback to become valid, which means the bear case plays out first, and with debt-laden fundamentals unresolved and no volume confirmation, CRM remains a fade at current prices with the structural bull case unproven until revenue growth, not margin engineering, drives the next earnings beat.",
+      "bear_case": "Primary risk: CRM stalls or reverses at the $263.53 resistance level \u2014 which is also effectively the analyst consensus target ceiling at $266.50 \u2014 on continued below-average volume, triggering a mean-reversion from RSI 81.5 that erases 10-15% of the post-earnings gain, while the fund's -8.0% average loss on losing trades and -1.35% expectancy in this sideways regime ensure the drawdown is larger than any realistic upside remaining in the trade. | Unresolved: ['The 110.4% debt load and margin-expansion-driven EPS growth remain unaddressed as fundamental concerns \u2014 if revenue growth does not reaccelerate, the structural re-rating thesis the bull preserves collapses entirely on the next earnings miss', \"The bull's 'wait for $245-250 pullback' thesis implicitly requires a 6-9% drawdown from current levels, which validates the bear's mean-reversion case and has not been reconciled with how the fund avoids the -8.0% average loss on the way down to that entry\", \"RSI at 81.5 in a sideways regime with below-average volume has not been statistically validated as benign \u2014 the ADX 34 argument applies to trending markets, and the regime classification as sideways directly contradicts the bull's trend-strength defense\"]",
+      "bull_score": 3,
+      "bear_score": 6,
+      "final_conviction": 5,
+      "decision": "watch"
+    },
+    {
+      "id": "debate_CVX_20260901172846",
+      "symbol": "CVX",
+      "ts": "2026-09-01T17:28:46.107077+00:00",
+      "bull_case": "R1 Bull(5): CVX sits at the intersection of a confirmed technical breakout and a dual fundamental catalyst \u2014 Venezuela expansion plus an oil price surge to $90-92 on geopolitical risk \u2014 creating a momentum trade with real fundamental backing before consensus fully prices it in. | R1 Bear(7): CVX's entire bull case rests on two highly fragile, event-driven catalysts \u2014 a geopolitical risk premium in oil and a Venezuela expansion \u2014 either of which can evaporate overnight, while the fund's own track record shows a -1.35% negative expectancy that makes chasing momentum into thin-volume resistance a capital destruction exercise. | R2 Bull(4): CVX retains a conditional bull case driven by live geopolitical oil pricing and Venezuela optionality, but position size must reflect the TYPE A volume-confirmation risk at resistance, with a hard invalidation below $205 if volume fails to materialize within 3-5 sessions. | R2 Bear(7): CVX's conditional bull case collapses under the weight of its own concessions \u2014 a 9.8% margin with no oil price buffer, a binary Venezuela catalyst the bull admits cannot be hedged, a low-volume breakout the bull flags as a kill condition, and a fund expectancy of -1.35% per trade in exactly the sideways regime this setup risks entering \u2014 making this a negative-expected-value trade dressed in disciplined risk management language.",
+      "bear_case": "Primary risk: Oil prices snap back from the geopolitical fear premium as Iran/Hormuz tensions de-escalate \u2014 a historically routine outcome \u2014 simultaneously collapsing CVX's near-term earnings catalyst, triggering a high-volume reversal from $209.81 resistance, and exposing the fund to an -8.0% average loss in a sideways regime where its own expectancy is already -1.35% per trade. | Unresolved: [\"Geopolitical de-escalation remains the primary unaddressed risk \u2014 the bull offered no mechanism by which CVX's 9.8% margin survives a $10-15 oil mean-reversion, and 'tight stops' do not protect against gap-down risk on a overnight Iran headline\", \"The -1.35% negative expectancy in the fund's own track record in sideways regimes is structurally unresolved \u2014 ADX at 29.3 and MACD confirmation do not override a documented base rate of capital destruction at this setup type\", 'Venezuela binary tail risk of zero-notice license revocation was conceded as understated by the bull but never operationally hedged or priced into the thesis \u2014 it remains a live asymmetric downside with no upside recapture mechanism']",
+      "bull_score": 4,
+      "bear_score": 7,
+      "final_conviction": 5,
+      "decision": "watch"
+    },
+    {
+      "id": "debate_COP_20260901173021",
+      "symbol": "COP",
+      "ts": "2026-09-01T17:30:21.244444+00:00",
+      "bull_case": "R1 Bull(4): COP offers a rare combination of confirmed earnings momentum (PEG 1.0, 107% EPS growth, forward P/E 14.2) and a geopolitical oil price surge that directly benefits upstream producers \u2014 but the trade is capped by a negative expectancy track record and dangerously low volume that fails to validate the technical breakout. | R1 Bear(7): COP's bull case rests on a geopolitical catalyst that is inherently unquantifiable and time-limited, layered onto cycle-dependent earnings with a 14.4% margin that will collapse the moment oil prices revert \u2014 and this fund's own track record of -1.35% expectancy per trade in a sideways regime makes pressing a low-volume, near-resistance setup an act of discipline destruction. | R2 Bull(3): COP's confirmed earnings momentum and active geopolitical tailwind provide a real but narrow bull case that is materially undermined by low-volume resistance testing, a sideways regime with negative historical expectancy, and commodity-cycle-dependent earnings that offer no structural margin cushion if oil reverses \u2014 this remains a position only appropriate at reduced size with strict stop discipline. | R2 Bear(8): With the bull conceding all three structural weaknesses \u2014 margin fragility, volume failure at resistance, and inflated cycle earnings \u2014 and offering only the unfalsifiable assertion that 'this setup might differ from the historical average' against a fund with -1.35% expectancy and -8.0% average loss in this regime, the bear case is now stronger post-debate than pre-debate, and the position has no business being initiated at current size regardless of the geopolitical catalyst.",
+      "bear_case": "Primary risk: A geopolitical de-escalation or demand-side oil price shock causes a rapid crude price reversal, which \u2014 given COP's 14.4% net margin and pure-play upstream exposure \u2014 triggers an immediate earnings estimate cut cycle, collapsing the PEG and forward P/E rationale simultaneously while the fund is sitting at resistance with no volume support to absorb the selling, resulting in a drawdown consistent with this fund's historical average loss of -8.0%. | Unresolved: ['The geopolitical premium mean-reversion risk remains completely unquantified \u2014 the bull offered no timeline, probability, or stop trigger that would contain the downside if Iran escalation de-escalates within the 4-6 week window', \"Low-volume resistance at $135.88 has not been resolved by any institutional accumulation signal that would change the breakout failure probability in this fund's historical regime\", 'The cycle-dependent earnings base means any oil price softness triggers simultaneous EPS estimate cuts AND multiple compression, creating a non-linear drawdown that the 1:1.5 risk-reward ratio does not price']",
+      "bull_score": 3,
+      "bear_score": 8,
+      "final_conviction": 5,
+      "decision": "watch"
+    },
+    {
+      "id": "debate_HOOD_20260901173205",
+      "symbol": "HOOD",
+      "ts": "2026-09-01T17:32:05.127450+00:00",
+      "bull_case": "R1 Bull(4): HOOD's 47.6% EPS growth and 42% profit margin represent rare fundamental quality trading ~32% below its 52-week high, creating a mean-reversion setup toward analyst consensus of $121.5 \u2014 but only if retail volume catalysts materialize to justify the growth premium. | R1 Bear(7): HOOD's fatal flaw is that its 42% profit margin and EPS growth are built on a cyclical retail trading volume engine that the bull treats as durable operating leverage \u2014 but in a sideways market regime with volume ratio already at 0.89x and sentiment only neutral at 3/10, the very catalyst required to justify the 2.4 PEG is visibly absent, meaning we are being asked to pay a growth premium for growth that is not currently materializing. | R2 Bull(3): HOOD remains a conditional bull setup where the 47.6% EPS growth and 42% margins represent genuine operating leverage if retail volume recovers, but the current 0.89x volume ratio and ADX of 19.2 confirm the catalyst is not yet present, reducing this to a small, patient position sized for the risk that a sideways market extends and the cycle-peak margin thesis proves the bear correct | R2 Bear(8): With the bull now conceding the absent volume catalyst, weak trend conviction, and circular margin dependency, HOOD's 2.4 PEG represents an unearned growth premium on cycle-peak margins that face simultaneous revenue compression and multiple contraction risk, amplified by a leveraged balance sheet the bull never credibly defended against a prolonged sideways regime.",
+      "bear_case": "Primary risk: Retail trading volumes roll over in the current sideways market regime, exposing that the 42% margin and 47.6% EPS growth were cycle-peak figures rather than structural, triggering simultaneous revenue compression and multiple contraction from a PEG of 2.4 \u2014 producing a drawdown that our fund's historical average loss of -8.0% per losing trade does not adequately capture given the leverage embedded in a 240.3 Debt/Equity balance sheet. | Unresolved: ['The bull never addressed the 240.3 Debt/Equity balance sheet risk and how leverage amplifies downside if volume compression extends beyond one or two quarters', \"The 'snap-back catalyst' argument (meme cycle, crypto leg, macro vol event) is probabilistic and timing-uncertain \u2014 the bull offers no framework for when to exit if those catalysts fail to materialize, leaving position sizing as the only risk control\", 'PEG of 2.4 remains unjustified at current volume levels \u2014 the bull accepted that the catalyst is absent today but did not explain why the market should maintain a growth premium while growth is demonstrably not materializing', \"The 32% drawdown from highs the bull cites as 'priced-in pessimism' could equally be interpreted as the early phase of a multiple compression cycle, not a mean-reversion floor\"]",
+      "bull_score": 3,
+      "bear_score": 8,
+      "final_conviction": 4,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_SMCI_20260901173350",
+      "symbol": "SMCI",
+      "ts": "2026-09-01T17:33:50.534442+00:00",
+      "bull_case": "R1 Bull(4): SMCI's forward P/E of 6.9 and PEG of 0.9 against 409% EPS growth represents a valuation dislocation that the market has overcorrected on governance fears, creating an asymmetric entry 38% below the 52-week high with analyst targets implying meaningful upside. | R1 Bear(7): SMCI's accounting and governance risk is not 'already priced in' \u2014 it is an unresolved structural flaw that can detonate the entire earnings thesis at any moment, and a 5.7% profit margin on 93% revenue growth means the numerator behind that seductive 6.9x forward P/E is one audit revision or cost shock away from disappearing entirely. | R2 Bull(3): SMCI remains a speculative, low-conviction long at current levels only for risk-tolerant capital, where the 6.9x forward multiple already prices a material restatement probability, creating asymmetric upside if audit resolution occurs \u2014 but position sizing must reflect genuine TYPE A earnings integrity risk and the fund's negative expectancy regime, warranting no more than a half-sized starter position with a hard stop at -8% and no averaging down until a clean audit catalyst confirms the earnings 'E' is real. | R2 Bear(6): SMCI's 6.9x forward multiple is not a margin of safety but a warning \u2014 it prices an 'E' that is structurally unverifiable until audit completion, and with a 5.7% margin and 64.3% debt/equity providing no shock-absorption capacity, any downward earnings revision transforms an apparently cheap valuation into an expensive one while the balance sheet forecloses the recovery options available to better-capitalized peers.",
+      "bear_case": "Primary risk: An audit failure, earnings restatement, or delay in financial filings triggers a gap-down that the 5.7% margin and 64.3% debt/equity ratio cannot absorb, collapsing the forward P/E thesis entirely and producing a loss far exceeding the fund's historical -8.0% average loss on failed trades. | Unresolved: [\"The bull's re-rating asymmetry argument (6.9x to 12x) still assumes the unaudited 'E' survives intact \u2014 if earnings are restated downward, the forward P/E is not cheap at 6.9x but potentially expensive, and a multiple re-rating on revised earnings could produce a loss far worse than the fund's historical -8.0% average\", 'The 64.3% debt/equity ratio combined with 5.7% net margin creates a structural fragility that the bull conceded amplifies TYPE A risk \u2014 this means a negative audit outcome does not produce a modest drawdown but a cascading deterioration where the balance sheet cannot absorb the shock', 'The 2017 audit resolution precedent is analytically weak: the current audit delay involves a different auditor resignation and a more complex revenue recognition environment driven by AI server build complexity \u2014 historical base rates from a simpler audit concern do not transfer cleanly']",
+      "bull_score": 3,
+      "bear_score": 6,
+      "final_conviction": 4,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_PLTR_20260901173527",
+      "symbol": "PLTR",
+      "ts": "2026-09-01T17:35:27.364687+00:00",
+      "bull_case": "R1 Bull(4): PLTR's rare combination of 215% EPS growth and 49% profit margins in a confirmed uptrend justifies a tactical long, but the trade is structurally fragile and demands a tight leash given volume failure at resistance and a negative expectancy track record. | R1 Bear(7): PLTR is a volume-hollow momentum trade at extreme valuation in a sideways regime where this fund's own track record produces -1.35% expectancy per trade \u2014 the bull glossed over the debt/equity of 2.1 as 'elevated' when it is structurally disqualifying for a software company trading at 156x earnings with no margin for error. | R2 Bull(3): PLTR's fundamental case remains structurally intact with elite margin and EPS metrics, but the bull's own entry condition \u2014 a close above $188.37 on volume above 0.75x \u2014 has not been triggered, the debt/equity of 2.1 is a TYPE B concern already embedded in the 156x multiple, and the AI regulatory narrative warrants monitoring, making the correct posture a disciplined watch rather than an active long until volume confirms the breakout. | R2 Bear(6): PLTR remains structurally unattractive at 156x earnings with 2.1 debt/equity in a sideways regime where unconfirmed entries carry -1.35% expectancy and -8.0% average losses \u2014 the bull's honest capitulation to a 3/10 conviction validates the bear case, and the absence of a triggered breakout means the risk/reward is negative until the multiple compresses or the macro regime shifts.",
+      "bear_case": "Primary risk: Multiple compression at 156x P/E triggered by any growth deceleration or AI regulatory headline, amplified by 2.1 debt/equity leverage, in a sideways regime where this fund's loss trades average -8.0% \u2014 the position has no structural floor if the narrative breaks. | Unresolved: [\"156x P/E with 2.1 debt/equity still provides no structural floor if AI narrative or growth decelerates \u2014 the bull's concession that this is 'embedded in the multiple' is circular reasoning, not a resolved risk\", 'Sideways SPY regime with -8.0% average loss trades means the asymmetry remains unfavorable even if a breakout above $188.37 eventually triggers \u2014 confirmation does not retroactively fix the regime context', 'AI regulatory headline risk (Schiff commentary) remains unquantified and interacts multiplicatively with 156x multiple \u2014 monitoring is not mitigation']",
+      "bull_score": 3,
+      "bear_score": 6,
+      "final_conviction": 5,
+      "decision": "watch"
     }
   ],
   "position_reviews": [
@@ -102636,6 +102816,108 @@
       "pm_action": "buy",
       "pm_verdict": "MDT's Q1 beat-and-raise, confirmed technical trend (ADX 29, +DI 33.5 vs -DI 13.7, 1.59x volume), and all three analyst signals constructive (Technical 7/10, Fundamental 7/10, Sentiment 8/10) clear the quality-compounder lane at conviction 6 \u2014 this is a multi-quarter earnings durability thesis with a measurable sell-side repricing gap, not a momentum chase, and the bear's surviving concerns are systemic, not trade-specific near-term catalysts.",
       "risk_category": "approved"
+    },
+    {
+      "ts": "2026-09-01T17:27:09.077254+00:00",
+      "symbol": "CRM",
+      "action": "watch",
+      "reason": "PM decision: watch \u2014 The Exhaustion/Crowding Guardrail fires on two simultaneous conditions: (a) RSI >75 AND >25% move in <15 sessions (parabolic), AND (b) volume falling while price rises (0.59x average = distribution signal) \u2014 both of which mandate a conviction reduction of \u22651, pulling the score below the 6 minimum required to buy, independent of the fundamental merits.",
+      "conviction": 5,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 257.58,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "watch",
+      "pm_verdict": "Both analysts conceded the three controlling variables \u2014 bad entry at resistance, upside capped at consensus ~$266.50, and negative regime expectancy \u2014 leaving a thesis that only becomes valid on a 6-9% pullback to $245-250; buying here violates the fund's own entry discipline and the Exhaustion Guardrail is triggered by RSI 81.5 with a 25%+ move in 5 days on 0.59x volume.",
+      "risk_category": "conviction"
+    },
+    {
+      "ts": "2026-09-01T17:28:45.905984+00:00",
+      "symbol": "CVX",
+      "action": "watch",
+      "reason": "PM decision: watch \u2014 The 0.51x volume at $209.81 resistance is a TYPE-A kill condition the bull explicitly flagged as a mandatory exit trigger and this fund has documented exiting identical setups \u2014 entering before volume confirmation materializes is buying a thesis the bull's own framework says is not yet validated.",
+      "conviction": 5,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 209.59,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "watch",
+      "pm_verdict": "CVX has genuine technical momentum (ADX 29.3, MACD crossover, three constructive analyst signals) and a live geopolitical catalyst, but two unresolved TYPE-A bear points \u2014 low-volume breakout at resistance (0.51x, a pattern this fund has explicitly exited before) and binary Venezuela sanctions tail risk conceded as unhedgeable by the bull \u2014 prevent crossing the conviction threshold required to deploy capital in a sideways regime where fund expectancy is already negative.",
+      "risk_category": "pm_decision"
+    },
+    {
+      "ts": "2026-09-01T17:30:21.043533+00:00",
+      "symbol": "COP",
+      "action": "watch",
+      "reason": "PM decision: watch \u2014 Volume non-confirmation at resistance is a trade-specific, near-term TYPE-A risk: price is testing $135.88 without institutional participation, the bull conceded this explicitly, and the fund's own exit history shows this exact pattern (volume failure at resistance) has been the dominant exit rationale in failed trades \u2014 this is not background noise, it is a named, recurring failure mode of this specific fund.",
+      "conviction": 5,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 135.55,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "watch",
+      "pm_verdict": "COP has genuine fundamental quality and a live geopolitical catalyst, but two unresolved TYPE-A bear points \u2014 volume failure at resistance (0.44x avg at $135.88) and unquantified geopolitical premium mean-reversion risk against a 14.4% net margin \u2014 prevent the setup from clearing the minimum conviction threshold, and this fund's negative expectancy in the current sideways regime adds a systemic penalty that a 3/10 bull cannot overcome.",
+      "risk_category": "pm_decision"
+    },
+    {
+      "ts": "2026-09-01T17:32:04.874192+00:00",
+      "symbol": "HOOD",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 The bull conceded the TYPE-A signal: current volume at 0.89x is below average and the retail volume catalyst \u2014 the singular engine powering the entire EPS growth, margin, and multiple-expansion thesis \u2014 is not materializing in real time. A growth premium at PEG 2.4 with no catalyst present and ADX below 20 fails the conviction rubric at every gate: analyst signals are mixed (Technical 4/10, Sentiment 3/10, Fundamental 6/10 \u2014 only one signal constructive), no named dated catalyst within 4 weeks, and at least one unresolved TYPE-A bear point the bull never structurally rebutted.",
+      "conviction": 4,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 104.24,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "HOOD's fundamental quality is real but the bull's own concessions dismantled the trade thesis: the volume catalyst is absent (0.89x), ADX at 19.2 confirms no trend conviction, and a 2.4 PEG premium is unjustifiable while the growth engine is visibly idling \u2014 this is a quality-compounder argument without the multi-quarter patience framework or reduced-size discipline to back it up in a sideways regime with our fund's -3.98% expectancy hole to dig out of.",
+      "risk_category": "conviction"
+    },
+    {
+      "ts": "2026-09-01T17:33:50.330506+00:00",
+      "symbol": "SMCI",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 The forward P/E of 6.9x and PEG of 0.9 are built entirely on unaudited, unverifiable earnings \u2014 the bull explicitly conceded this is TYPE-A, not TYPE-B \u2014 meaning the single strongest bull argument (compelling valuation) is structurally unreliable until audit completion, which has no dated catalyst within 4 weeks.",
+      "conviction": 4,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 36.53,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "The unaudited 'E' underlying the entire valuation thesis is a TYPE-A structural flaw with no confirmed resolution timeline, and with only one analyst signal constructive (fundamental at 7/10), technicals neutral at 4/10, sentiment near-zero at 2/10, and the fund running negative expectancy in a sideways regime, there is no edge sufficient to justify deployment \u2014 the bull's own concession that this is a TYPE-A earnings integrity problem disqualifies the quality-compounder lane and anchors conviction at \u22645.",
+      "risk_category": "pm_decision"
+    },
+    {
+      "ts": "2026-09-01T17:35:27.161658+00:00",
+      "symbol": "PLTR",
+      "action": "watch",
+      "reason": "PM decision: watch \u2014 Volume failure at 0.33x average at key resistance ($188.37) is a TYPE-A trade-specific signal that the breakout has not been confirmed \u2014 the bull conceded this directly, reducing conviction to 3/10, and the Rubric v2 \u22645 clause applies: an unresolved TYPE-A bear point that the bull did not concretely rebut (only deferred to a future catalyst) disqualifies a buy at this moment regardless of the tied-debate or momentum-regime rules.",
+      "conviction": 5,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 182.57,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "watch",
+      "pm_verdict": "PLTR's fundamental profile is genuinely elite (215% EPS growth, 49% margins, ADX 38.2 confirmed uptrend), but the volume at 0.33x the 20-day average at the $188.37 resistance level is a TYPE-A unresolved bear point \u2014 the bull's own entry condition has not been satisfied, meaning this is a speculative entry, not a confirmed one, and entering now is a framework violation both analysts explicitly acknowledged.",
+      "risk_category": "conviction"
     }
   ],
   "watchlists": [
@@ -128850,60 +129132,6 @@
   ],
   "tech_shadow": [
     {
-      "ts": "2026-07-29T15:15:52.517186+00:00",
-      "symbol": "META",
-      "llm_signal": "bearish",
-      "llm_strength": 6,
-      "det_signal": "bearish",
-      "det_strength": 3,
-      "agree": true
-    },
-    {
-      "ts": "2026-07-29T15:16:19.734828+00:00",
-      "symbol": "META",
-      "llm_signal": "bearish",
-      "llm_strength": 6,
-      "det_signal": "bearish",
-      "det_strength": 3,
-      "agree": true
-    },
-    {
-      "ts": "2026-07-29T15:17:50.308415+00:00",
-      "symbol": "MSFT",
-      "llm_signal": "bullish",
-      "llm_strength": 4,
-      "det_signal": "neutral",
-      "det_strength": 6,
-      "agree": false
-    },
-    {
-      "ts": "2026-07-29T15:19:25.627148+00:00",
-      "symbol": "QCOM",
-      "llm_signal": "bearish",
-      "llm_strength": 7,
-      "det_signal": "bearish",
-      "det_strength": 2,
-      "agree": true
-    },
-    {
-      "ts": "2026-07-29T15:21:01.080169+00:00",
-      "symbol": "ARM",
-      "llm_signal": "bearish",
-      "llm_strength": 8,
-      "det_signal": "bearish",
-      "det_strength": 2,
-      "agree": true
-    },
-    {
-      "ts": "2026-07-29T15:28:10.622057+00:00",
-      "symbol": "LLY",
-      "llm_signal": "bullish",
-      "llm_strength": 6,
-      "det_signal": "bullish",
-      "det_strength": 10,
-      "agree": true
-    },
-    {
       "ts": "2026-07-29T15:28:24.933184+00:00",
       "symbol": "MS",
       "llm_signal": "bearish",
@@ -133347,6 +133575,60 @@
       "llm_strength": 7,
       "det_signal": "bullish",
       "det_strength": 9,
+      "agree": true
+    },
+    {
+      "ts": "2026-09-01T17:25:28.970910+00:00",
+      "symbol": "CRM",
+      "llm_signal": "bullish",
+      "llm_strength": 8,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": true
+    },
+    {
+      "ts": "2026-09-01T17:27:13.785999+00:00",
+      "symbol": "CVX",
+      "llm_signal": "bullish",
+      "llm_strength": 8,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": true
+    },
+    {
+      "ts": "2026-09-01T17:28:50.876421+00:00",
+      "symbol": "COP",
+      "llm_signal": "bullish",
+      "llm_strength": 7,
+      "det_signal": "bullish",
+      "det_strength": 10,
+      "agree": true
+    },
+    {
+      "ts": "2026-09-01T17:30:25.255933+00:00",
+      "symbol": "HOOD",
+      "llm_signal": "neutral",
+      "llm_strength": 4,
+      "det_signal": "bullish",
+      "det_strength": 8,
+      "agree": false
+    },
+    {
+      "ts": "2026-09-01T17:32:09.492659+00:00",
+      "symbol": "SMCI",
+      "llm_signal": "neutral",
+      "llm_strength": 4,
+      "det_signal": "neutral",
+      "det_strength": 7,
+      "agree": true
+    },
+    {
+      "ts": "2026-09-01T17:33:55.922746+00:00",
+      "symbol": "PLTR",
+      "llm_signal": "bullish",
+      "llm_strength": 7,
+      "det_signal": "bullish",
+      "det_strength": 8,
       "agree": true
     }
   ],
@@ -141533,6 +141815,43 @@
           "position_usd": 6077.02,
           "stop_price": 87.44,
           "sector": "Healthcare"
+        }
+      ],
+      "skipped": []
+    },
+    {
+      "ts": "2026-09-01T17:25:24.091117+00:00",
+      "regime": "bull",
+      "vix_regime": "normal",
+      "run_reason": "scheduled",
+      "n_candidates": 6,
+      "would_buy": [
+        {
+          "symbol": "CRM",
+          "composite_score": 0.6047,
+          "price": 257.67,
+          "size_pct": 0.06,
+          "position_usd": 6076.86,
+          "stop_price": 237.06,
+          "sector": "Technology"
+        },
+        {
+          "symbol": "CVX",
+          "composite_score": 0.527,
+          "price": 209.54,
+          "size_pct": 0.06,
+          "position_usd": 6076.86,
+          "stop_price": 200.14,
+          "sector": "Energy"
+        },
+        {
+          "symbol": "COP",
+          "composite_score": 0.519,
+          "price": 135.51,
+          "size_pct": 0.06,
+          "position_usd": 6076.86,
+          "stop_price": 127.98,
+          "sector": "Energy"
         }
       ],
       "skipped": []

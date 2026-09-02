@@ -3324,6 +3324,12 @@
       "portfolio_value": 101300.87,
       "cash": 86717.58,
       "spy_price": 765.2
+    },
+    {
+      "ts": "2026-09-02T20:59:54.474239+00:00",
+      "portfolio_value": 101300.87,
+      "cash": 86717.58,
+      "spy_price": 765.2
     }
   ],
   "trades": [
@@ -64965,20 +64971,58 @@
       ],
       "regime": "bull",
       "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-09-02T20:59:54.607191+00:00",
+      "run_type": "midday",
+      "candidates": [
+        "SNOW"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "sentinel_trigger",
+      "candidate_details": [
+        {
+          "symbol": "SNOW",
+          "composite_score": 0.4272,
+          "signals": {
+            "growth_quality": "unknown",
+            "rs_vs_sector_pct": -1.7,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.84,
+            "52wk_high": 341.95,
+            "volume_spike_ratio": 2.29,
+            "volume_spike": true,
+            "rsi": 46.1,
+            "macd_crossover": "False",
+            "bb_pct": -0.1,
+            "news_count": 10,
+            "top_headline": "Snowflake Stock Surges on Q2 Double Beat as AI Momentum Continues",
+            "news_quality": 0.5,
+            "pe_trailing": null,
+            "pe_forward": 113.0,
+            "earnings_growth": null
+          }
+        }
+      ],
+      "event_symbols": [
+        "SNOW"
+      ],
+      "event_details": [
+        {
+          "symbol": "SNOW",
+          "trigger_type": "earnings_today",
+          "value": 1.0,
+          "threshold": 1.0,
+          "severity": "high"
+        }
+      ],
+      "regime": "bull",
+      "vix_regime": "normal"
     }
   ],
   "debate_logs": [
-    {
-      "id": "debate_TRV_20260717201500",
-      "symbol": "TRV",
-      "ts": "2026-07-17T20:15:00.033712+00:00",
-      "bull_case": "R1 Bull(6): TRV's 87% EPS beat on disciplined underwriting has triggered a volume-confirmed momentum breakout that the market has not yet fully repriced at 11x TTM P/E with 25.3% ROE. | R1 Bear(7): TRV's 87% EPS beat is a base-effect illusion \u2014 357.6% YoY EPS growth off a depressed prior-year base is already fully priced into a stock that has surged 8.9% in 5 days to resistance, leaving a forward P/E of 12.9x that is actually MORE expensive than TTM on earnings that are explicitly expected to normalize. | R2 Bull(5): TRV's disciplined underwriting has produced a genuine margin improvement that the 87% EPS beat and 25.3% ROE reflect, and while the base-effect risk is real and warrants position sizing discipline near $370 resistance, the volume-confirmed momentum breakout with ADX support indicates institutional accumulation that has not fully run its course at a forward multiple still reasonable for franchise quality. | R2 Bear(6): TRV's valuation at 12.9x forward earnings \u2014 entered at 5-day resistance with RSI 75.7 in a sideways macro regime \u2014 depends entirely on a 'new earnings floor' thesis the bull cannot yet substantiate, leaving the stock vulnerable to a significant re-rate if Q3 underwriting margins revert even modestly toward historical norms.",
-      "bear_case": "Primary risk: Earnings normalization hits faster and harder than the market expects: if Q3 underwriting results revert toward historical norms (as the base-effect math and forward P/E discount already imply), the stock re-prices from 11x TTM to 12.9x+ forward on materially lower EPS, turning the 'cheap' valuation argument into a value trap \u2014 while we are holding a position entered at 5-day resistance highs with RSI at 75.7 in a sideways macro regime where our win rate is 40%. | Unresolved: [\"Q3 underwriting normalization has not been demonstrated \u2014 the 'new earnings floor' thesis is forward speculation, not confirmed data, and the base-effect magnitude risk remains fully intact until Q3 results\", 'The forward P/E of 12.9x on potentially normalizing EPS means the stock is priced for sustained outperformance at a 5-day resistance high with RSI 75.7 in a 40% win-rate macro regime \u2014 the bull conceded position sizing discipline but did not resolve the entry timing risk', 'Institutional accumulation via ADX/volume is a lagging confirmation, not a forward indicator \u2014 sophisticated buyers pricing in forward estimates does not eliminate the risk that those estimates prove too optimistic if Q3 combined ratios revert']",
-      "bull_score": 5,
-      "bear_score": 6,
-      "final_conviction": 6,
-      "decision": "watch"
-    },
     {
       "id": "debate_TRV_20260720153554",
       "symbol": "TRV",
@@ -70466,6 +70510,17 @@
       "bull_score": 2,
       "bear_score": 5,
       "final_conviction": 3,
+      "decision": "skip"
+    },
+    {
+      "id": "debate_SNOW_20260902205953",
+      "symbol": "SNOW",
+      "ts": "2026-09-02T20:59:53.993165+00:00",
+      "bull_case": "R1 Bull(4): Snowflake's Q2 double beat \u2014 EPS $0.62 vs $0.45 est, revenue $1.547B vs $1.482B est, and 38% RPO growth \u2014 represents genuine fundamental acceleration that the current technical pullback to support at $303.89 is obscuring, not invalidating. | R1 Bear(7): Snowflake's earnings beat is real but already priced into sentiment while the structural trap \u2014 a 113x forward P/E with negative margins, negative ROE, and a debt/equity of 142.9 \u2014 means any deceleration in growth narrative kills the stock catastrophically with no earnings floor to catch it. | R2 Bull(3): Snowflake's 38% RPO growth and non-GAAP earnings acceleration represent genuine fundamental momentum, but the post-earnings distribution volume signature and sub-25 ADX reduce near-term conviction meaningfully \u2014 this is a hold-at-support thesis, not an aggressive add, until volume pattern normalizes or a clean technical trend re-establishes. | R2 Bear(7): With the bull retreating to 3/10 conviction and conceding the volume signature, trend weakness, and negative book expectancy, Snowflake remains a structural short candidate \u2014 113x forward P/E with no GAAP earnings floor, no confirmed trend, and a post-earnings distribution signature means the collapse scenario requires only a single guidance miss to trigger, and the bull has provided no credible downside price floor.",
+      "bear_case": "Primary risk: A single forward guidance cut or AI infrastructure spending slowdown headline triggers a multiple compression event on a stock with no GAAP earnings floor, no margin of safety at 113x forward P/E, and a leveraged balance sheet at 142.9 debt/equity \u2014 producing the exact -8.0% average loss scenario that is already destroying this fund's expectancy, with no technical support structure strong enough (ADX below 25) to arrest the decline. | Unresolved: ['113x forward P/E with no GAAP earnings floor means any guidance deceleration produces a multiple compression event with no earnings-based price support \u2014 the bull never quantified a downside scenario, only argued the debt structure is manageable', \"Post-earnings 2.29x volume on a decline remains unresolved as directional signal \u2014 the bull withdrew the 'washout' framing but offered no alternative bullish interpretation of that volume, leaving distribution as the standing hypothesis\", 'ADX below 25 means no technical trend structure exists to arrest a selloff triggered by macro or guidance catalyst \u2014 the bull conceded this entirely and never provided a substitute support mechanism', 'Negative-expectancy book context: the -8.0% average loss profile on existing positions makes adding asymmetric downside exposure at peak valuation a portfolio-level risk the bull acknowledged but did not resolve']",
+      "bull_score": 3,
+      "bear_score": 7,
+      "final_conviction": 4,
       "decision": "skip"
     }
   ],
@@ -104009,6 +104064,23 @@
       "pm_action": "skip",
       "pm_verdict": "Both analysts converged on inaction \u2014 the bull capitulated to 2/10 and the bear dropped to 5/10 \u2014 because the trade-specific evidence is unambiguously hostile: a 7.7% drop on 4x average volume in 5 sessions is confirmed institutional distribution (TYPE-A), the technical composite is bearish (RSI 43.6, -DI dominating at 35.4 vs +DI 26.9, Bollinger %B at 0.07), and our fund's demonstrated negative expectancy in this exact sideways SPY regime makes a high-beta, negative-margin, leveraged name the worst possible fit. The earnings catalyst is real but already absorbed into a distribution tape \u2014 sentiment at 8/10 cannot override a TYPE-A structural breakdown with this volume signature.",
       "risk_category": "pm_decision"
+    },
+    {
+      "ts": "2026-09-02T20:59:53.809780+00:00",
+      "symbol": "SNOW",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 The 2.29x volume on a post-earnings price decline is a trade-specific TYPE-A bear point \u2014 not systemic background noise \u2014 that the bull conceded entirely and offered no alternative interpretation for, leaving distribution as the only standing hypothesis at a stock with no earnings-based price floor to catch any multiple compression event.",
+      "conviction": 4,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 305.84,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "The post-earnings 2.29x volume decline is an unresolved TYPE-A distribution signal that the bull explicitly withdrew its counter-framing for, leaving institutional selling as the standing hypothesis on a stock with no GAAP earnings floor; combined with ADX below 25 (no trend structure to arrest a selloff), a negative-expectancy book, and analyst signals that are conflicted (bearish technical, neutral fundamental, bullish sentiment only), the evidence does not clear the 6/10 minimum threshold required to deploy capital.",
+      "risk_category": "pm_decision"
     }
   ],
   "watchlists": [
@@ -130235,15 +130307,6 @@
   ],
   "tech_shadow": [
     {
-      "ts": "2026-07-29T18:08:57.181019+00:00",
-      "symbol": "KO",
-      "llm_signal": "bullish",
-      "llm_strength": 7,
-      "det_signal": "neutral",
-      "det_strength": 7,
-      "agree": false
-    },
-    {
       "ts": "2026-07-29T18:10:27.619081+00:00",
       "symbol": "NVDA",
       "llm_signal": "bearish",
@@ -134732,6 +134795,15 @@
       "llm_strength": 7,
       "det_signal": "neutral",
       "det_strength": 7,
+      "agree": false
+    },
+    {
+      "ts": "2026-09-02T20:58:13.264968+00:00",
+      "symbol": "SNOW",
+      "llm_signal": "bearish",
+      "llm_strength": 6,
+      "det_signal": "bullish",
+      "det_strength": 8,
       "agree": false
     }
   ],
@@ -143108,6 +143180,25 @@
           "size_pct": 0.06,
           "position_usd": 6078.58,
           "stop_price": 155.68,
+          "sector": "Technology"
+        }
+      ],
+      "skipped": []
+    },
+    {
+      "ts": "2026-09-02T20:58:08.291211+00:00",
+      "regime": "bull",
+      "vix_regime": "normal",
+      "run_reason": "sentinel_trigger",
+      "n_candidates": 1,
+      "would_buy": [
+        {
+          "symbol": "SNOW",
+          "composite_score": 0.4272,
+          "price": 305.84,
+          "size_pct": 0.06,
+          "position_usd": 6078.05,
+          "stop_price": 281.37,
           "sector": "Technology"
         }
       ],

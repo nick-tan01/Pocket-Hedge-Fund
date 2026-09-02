@@ -3300,6 +3300,12 @@
       "portfolio_value": 101323.86,
       "cash": 86717.58,
       "spy_price": 765.33
+    },
+    {
+      "ts": "2026-09-02T17:09:15.475105+00:00",
+      "portfolio_value": 101321.94,
+      "cash": 86717.58,
+      "spy_price": 764.76
     }
   ],
   "trades": [
@@ -4739,7 +4745,7 @@
       "status": "open",
       "key_risk": "A daily close below $1,107.56 on above-average volume accompanied by a confirmed MACD cross below signal is the primary near-term exit trigger \u2014 with RSI at 42.4, MACD already below signal, and price only ~$49 above that level, this line is dangerously close and must be watched session by session; simultaneously, any FDA ruling on Novo Nordisk's oral semaglutide remains the primary fundamental thesis-breaker.",
       "position_usd": 2026.13,
-      "position_pct": 0.0198,
+      "position_pct": 0.0197,
       "sector": "Healthcare",
       "last_review_ts": "2026-08-31T21:43:15.724710+00:00",
       "last_review_conviction": 6,
@@ -4747,9 +4753,9 @@
       "time_stop_flagged": false,
       "consecutive_weakened_count": 0,
       "is_remnant": true,
-      "current_price": 1164.355,
-      "unrealized_pl": 255.88,
-      "unrealized_plpc": 0.14658,
+      "current_price": 1164.07,
+      "unrealized_pl": 255.39,
+      "unrealized_plpc": 0.1463,
       "avg_entry": 1015.5,
       "trim_history": [
         {
@@ -4808,7 +4814,7 @@
       "status": "open",
       "key_risk": "Price behavior in the $219\u2013$222 resistance zone is now the critical watch item \u2014 a rejection candle and close below $219 would constitute the second trigger from the original risk framework and would mandate a reassessment toward exit; simultaneously, any further ADX expansion above 12.2 with sustained -DI dominance would deepen the bearish technical case.",
       "position_usd": 4172.17,
-      "position_pct": 0.0407,
+      "position_pct": 0.0406,
       "sector": "Financial Services",
       "last_review_ts": "2026-08-31T21:43:35.562860+00:00",
       "last_review_conviction": 5,
@@ -4846,9 +4852,9 @@
           "reason": "Private credit contagion risk has escalated from theoretical to active (Blue Owl, Apollo, Ares stress), the bull conceded TYPE A pipeline threat, institutional bid absence below $216 leaves a 5%+ gap to $205.83 support with no technical anchor, and the 502x leveraged balance sheet introduces non-linear downside risk under simultaneous credit stress and client redemption pressure \u2014 all of which materially weaken but do not break the core thesis."
         }
       ],
-      "current_price": 211.14,
-      "unrealized_pl": 172.05,
-      "unrealized_plpc": 0.04359,
+      "current_price": 211.05,
+      "unrealized_pl": 170.3,
+      "unrealized_plpc": 0.04314,
       "avg_entry": 202.3212,
       "trim_pnl": 668.66,
       "stop_order_id": "405fa70a-08e3-4d96-b12a-25f7098b7a4a"
@@ -4872,9 +4878,9 @@
       "sector": "Financial Services",
       "trim_pnl": 0.0,
       "is_remnant": false,
-      "current_price": 108.71,
-      "unrealized_pl": 252.88,
-      "unrealized_plpc": 0.0611,
+      "current_price": 108.665,
+      "unrealized_pl": 251.06,
+      "unrealized_plpc": 0.06066,
       "avg_entry": 102.45,
       "last_review_ts": "2026-08-31T21:43:49.126350+00:00",
       "last_review_conviction": 4,
@@ -4901,9 +4907,9 @@
       "sector": "Healthcare",
       "trim_pnl": 0.0,
       "is_remnant": false,
-      "current_price": 93.635,
-      "unrealized_pl": 42.19,
-      "unrealized_plpc": 0.01041,
+      "current_price": 93.61,
+      "unrealized_pl": 41.1,
+      "unrealized_plpc": 0.01014,
       "avg_entry": 92.67,
       "last_review_ts": "2026-09-01T20:59:10.922848+00:00",
       "last_review_conviction": 7,
@@ -64562,20 +64568,58 @@
       ],
       "regime": "bull",
       "vix_regime": "normal"
+    },
+    {
+      "ts": "2026-09-02T17:09:15.672558+00:00",
+      "run_type": "midday",
+      "candidates": [
+        "SNOW"
+      ],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "sentinel_trigger",
+      "candidate_details": [
+        {
+          "symbol": "SNOW",
+          "composite_score": 0.2022,
+          "signals": {
+            "growth_quality": "unknown",
+            "rs_vs_sector_pct": -2.0,
+            "sector": "Technology",
+            "sector_etf": "XLK",
+            "pct_of_52wk_range": 0.83,
+            "52wk_high": 341.95,
+            "volume_spike_ratio": 0.97,
+            "volume_spike": false,
+            "rsi": 45.3,
+            "macd_crossover": "False",
+            "bb_pct": -0.13,
+            "news_count": 8,
+            "top_headline": "Snowflake Stock Could Retest All-Time Highs \u2014 If It Clears This Level First",
+            "news_quality": 0.0,
+            "pe_trailing": null,
+            "pe_forward": 112.4,
+            "earnings_growth": null
+          }
+        }
+      ],
+      "event_symbols": [
+        "SNOW"
+      ],
+      "event_details": [
+        {
+          "symbol": "SNOW",
+          "trigger_type": "earnings_today",
+          "value": 1.0,
+          "threshold": 1.0,
+          "severity": "high"
+        }
+      ],
+      "regime": "bull",
+      "vix_regime": "normal"
     }
   ],
   "debate_logs": [
-    {
-      "id": "debate_TRV_20260717145300",
-      "symbol": "TRV",
-      "ts": "2026-07-17T14:53:00.708963+00:00",
-      "bull_case": "R1 Bull(5): TRV's 87% earnings beat \u2014 Adj. EPS $10.04 vs. $5.38 estimate \u2014 signals a structural repricing event in underwriting that the market has not yet fully absorbed, with technical momentum confirming the breakout. | R1 Bear(7): TRV's 87% EPS beat is a one-time base-effect rebound masquerading as a structural repricing event, and the stock is approaching hard resistance at $366.99 on conspicuously low volume \u2014 precisely the distribution pattern that has triggered mandatory exits in our last five closed trades. | R2 Bull(4): TRV's structural underwriting margin expansion is real even if partly cyclical, the technical trend remains intact above key support with ADX confirming strength, and the trade is worth holding with a hard stop at a volume-confirmed rejection of $366.99 resistance \u2014 not abandoning ahead of the test. | R2 Bear(7): TRV's base-effect EPS beat masks structurally limited earnings compounding given 1.0% organic revenue growth, the forward P/E already prices margin normalization that the bull has conceded, and the low-volume approach to hard $366.99 resistance remains an unresolved distribution risk that has proven deterministic in five consecutive analogous setups regardless of ADX readings.",
-      "bear_case": "Primary risk: TRV tests and fails to break $366.99 resistance on continued low volume, triggering a volume-confirmed distribution signal identical to the pattern that invalidated our last five trades, with the stock repricing back toward the fundamental analyst consensus as the post-earnings euphoria fades and the base-effect nature of the EPS beat becomes consensus understanding. | Unresolved: [\"The bull offers no mechanism to explain why low-volume consolidation near $366.99 should resolve to the upside given the confirmed pattern that triggered exits in the prior five trades \u2014 reframing it as 'supply absorption' is semantically convenient but unsupported by any incremental volume or order flow evidence\", \"Organic revenue growth of 1.0% creates a hard ceiling on earnings compounding \u2014 even if margins hold, the market's forward P/E of 12.7 versus TTM 10.9 reflects rational skepticism about sustainability that the bull has now conceded rather than rebutted\", 'ADX at 32.4 as a structural trump card is circular \u2014 a strong trend reading does not immunize a stock from reversal at hard technical resistance, and the bull provides no price or volume trigger that would distinguish continuation from exhaustion before the loss is realized']",
-      "bull_score": 4,
-      "bear_score": 7,
-      "final_conviction": 5,
-      "decision": "skip"
-    },
     {
       "id": "debate_TRV_20260717150601",
       "symbol": "TRV",
@@ -70064,6 +70108,17 @@
       "bear_score": 6,
       "final_conviction": 6,
       "decision": "watch"
+    },
+    {
+      "id": "debate_SNOW_20260902170914",
+      "symbol": "SNOW",
+      "ts": "2026-09-02T17:09:14.822294+00:00",
+      "bull_case": "R1 Bull(4): SNOW's imminent earnings event, backed by 38% RPO growth and multiple analyst upgrades to $345\u2013$405, creates an asymmetric catalyst opportunity that the current price near support at $303.89 has not yet priced in. | R1 Bear(7): SNOW's 'manageable' valuation risk is actually a structural trap: with negative margins of -23.8%, a PEG of 8.1, and an expectancy-negative track record in this fund, the earnings catalyst the bull is betting on is a binary coin flip with asymmetric downside that the fund's own -8.0% average loss cannot absorb. | R2 Bull(3): SNOW's 38% RPO growth provides a leading fundamental signal that meaningfully tilts the earnings binary toward a beat-and-raise scenario, and with the stock 18% below the low end of upgraded analyst targets at a technically oversold RSI of 45.3, a disciplined small position captures asymmetric upside while acknowledging that a miss on this setup is genuinely dangerous and must be sized accordingly. | R2 Bear(7): SNOW's 38% RPO growth is a real but already-institutionally-discounted signal that fails to resolve the core structural trap: a stock trading at Forward P/E 112.4 with -23.8% margins, deteriorating technicals, and a fund loss profile averaging -8.0% cannot safely absorb the realistic 15-20% downside of an earnings miss or guidance softness, making this an expectancy-negative binary event regardless of position size discipline.",
+      "bear_case": "Primary risk: Earnings miss or in-line results with any softness in forward guidance triggers a violent multiple compression event on a stock with no profitability floor, no technical support below $303.89, and a fund loss profile that averages -8.0% on losing trades \u2014 a scenario where SNOW's downside easily doubles the fund's typical loss. | Unresolved: [\"The fund's negative expectancy profile on binary events is unresolved \u2014 position sizing mitigation does not change the expected value of the trade, it only limits the loss magnitude, and a small position in an expectancy-negative setup is still expectancy-negative\", 'RPO growth as a beat catalyst is a probabilistic argument, not a structural edge \u2014 institutional positioning leaning long ahead of a print means the good news may already be reflected in the current price, and any shortfall in guidance compresses the multiple violently with no valuation floor', \"Technical distribution signals (MACD below signal, -DI exceeding +DI, no volume confirmation) directly contradict the bull's short-squeeze narrative \u2014 a short squeeze requires forced covering, not pre-positioned institutional longs who will sell into disappointment\", 'Forward P/E of 112.4 with negative operating margins means any macro or competitive softness in guidance has no earnings power anchor to limit the drawdown, and 15-20% downside on a fund averaging -8.0% losses is a fund-level solvency event on this position']",
+      "bull_score": 3,
+      "bear_score": 7,
+      "final_conviction": 4,
+      "decision": "skip"
     }
   ],
   "position_reviews": [
@@ -103346,6 +103401,23 @@
       "pm_action": "watch",
       "pm_verdict": "GTLB has a real, quantified fundamental catalyst (33% EPS beat, raised FY2027 guidance) confirmed by institutional volume (2.33x) and a strong trend (ADX 34.4), but the bull's own concession that $43\u201344 would be a materially better entry than the current price near hard resistance at $46.65 (Bollinger %B 0.83) means the optimal entry does not exist yet \u2014 and this fund's negative expectancy in a sideways regime (-3.98% per trade) demands we buy the right level, not the current one.",
       "risk_category": "pm_decision"
+    },
+    {
+      "ts": "2026-09-02T17:09:14.579890+00:00",
+      "symbol": "SNOW",
+      "action": "skip",
+      "reason": "PM decision: skip \u2014 The earnings event is a trade-specific, near-term catalyst that creates asymmetric downside (15-20% realistic miss scenario) against a fund that averages -8.0% losses with 30% win rate \u2014 this is precisely the TYPE-A condition the skip rule was designed for, and the bull's own Round 2 concessions confirmed rather than resolved the structural danger.",
+      "conviction": 4,
+      "rotate_from": "",
+      "position_usd": 0,
+      "shares": 0,
+      "entry_price": 304.17,
+      "stop_price": 0,
+      "stop_pct": 0,
+      "correlation": 0.0,
+      "pm_action": "skip",
+      "pm_verdict": "The imminent earnings binary on a stock with Forward P/E 112.4, -23.8% margins, deteriorating technicals, and a fund averaging -8.0% on losing trades represents an unresolved TYPE-A risk the bull never concretely neutralized \u2014 38% RPO growth tilts probability but does not structurally cap the 15-20% realistic downside, and this fund's negative expectancy profile (-3.98% per trade) makes voluntarily entering an expectancy-negative binary event indefensible regardless of position sizing discipline.",
+      "risk_category": "pm_decision"
     }
   ],
   "watchlists": [
@@ -129572,15 +129644,6 @@
   ],
   "tech_shadow": [
     {
-      "ts": "2026-07-29T15:37:28.735964+00:00",
-      "symbol": "KO",
-      "llm_signal": "bearish",
-      "llm_strength": 6,
-      "det_signal": "neutral",
-      "det_strength": 6,
-      "agree": false
-    },
-    {
       "ts": "2026-07-29T15:38:55.670948+00:00",
       "symbol": "NVDA",
       "llm_signal": "bearish",
@@ -134070,6 +134133,15 @@
       "det_signal": "bullish",
       "det_strength": 10,
       "agree": true
+    },
+    {
+      "ts": "2026-09-02T17:07:37.644865+00:00",
+      "symbol": "SNOW",
+      "llm_signal": "bearish",
+      "llm_strength": 6,
+      "det_signal": "neutral",
+      "det_strength": 7,
+      "agree": false
     }
   ],
   "pre_debate_gates": [
@@ -142356,6 +142428,25 @@
           "reason": "held"
         }
       ]
+    },
+    {
+      "ts": "2026-09-02T17:07:32.897125+00:00",
+      "regime": "bull",
+      "vix_regime": "normal",
+      "run_reason": "sentinel_trigger",
+      "n_candidates": 1,
+      "would_buy": [
+        {
+          "symbol": "SNOW",
+          "composite_score": 0.2022,
+          "price": 304.17,
+          "size_pct": 0.06,
+          "position_usd": 6079.29,
+          "stop_price": 279.84,
+          "sector": "Technology"
+        }
+      ],
+      "skipped": []
     }
   ],
   "universe_discovery": [

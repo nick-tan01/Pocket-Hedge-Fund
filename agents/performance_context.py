@@ -24,6 +24,11 @@ def get_performance_context(lookback: int = 10) -> str:
     Return a formatted performance context block for prompt injection.
     Returns an empty string on any failure so callers need no error handling.
     """
+    # EXP-014: single choke point — all three consumers (bull, bear, PM) route through
+    # here, so this one flag removes the injection everywhere. See config for the
+    # doom-loop rationale.
+    if not getattr(config, "PERFORMANCE_CONTEXT_ENABLED", True):
+        return ""
     try:
         trades = get_all_trades()
         regime = _get_regime_tag()

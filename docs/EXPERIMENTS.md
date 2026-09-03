@@ -117,7 +117,17 @@ Status values: `proposed` → `running` → `accepted` / `rejected` / `inconclus
   explicit decision to run it as a measured experiment with the guardrails above.
 
 ## EXP-008 — Raise MAX_POSITIONS 8 → 11
-- **Status:** running (started 2026-06-30)
+- **Status:** running — **evaluation SUSPENDED 2026-09-02 (confounded), revert deferred**
+- **Why suspended, not rolled back:** the 2026-08-12 review found this entry's failure
+  condition literally met — "slots sit empty (funnel, not slots, is the binding
+  constraint)" — with only 3 of 11 slots filled. But the empty slots were caused by the
+  buy funnel collapsing to a 1.6% buy rate (see EXP-014), NOT by the slot count. Raising
+  the cap cannot itself cause slots to go unfilled. Reverting to 8 now would (a) act on a
+  confounded reading and (b) change two variables at once, making EXP-014's buy-rate
+  measurement uninterpretable — the exact multi-change mistake this registry exists to
+  prevent. Re-evaluate against the ORIGINAL metric (deployment 40–50%, new-slot forward
+  returns ≥ 0) once EXP-014 has ≥40 post-change debates. If the funnel recovers and slots
+  still sit empty, revert to 8 then.
 - **Change:** `MAX_POSITIONS` 8 → 11 (single int). Nothing else. (Operator chose 11 over the
   plan's suggested 10-first step — marginal difference, same diversification rationale.)
 - **Hypothesis:** the 8-slot cap binds ~⅓ of the time and forces idle cash; more slots
@@ -231,6 +241,37 @@ Status values: `proposed` → `running` → `accepted` / `rejected` / `inconclus
 - **Failure:** ≥3 watchlist-revalidated names miss the candidate cut by < 0.06
   and go on to +10% 10d excess → restore a smaller bonus (0.03) as a new entry.
 - **Min sample:** 4 weeks. **Rollback:** `WATCHLIST_MEMORY_BONUS=0.06`.
+
+## EXP-014 — Performance-context injection OFF (break the doom loop)
+- **Status:** running (started 2026-09-02)
+- **Change:** `PERFORMANCE_CONTEXT_ENABLED=False` — `agents/performance_context.py` no
+  longer injects the rolling P&L block into agent prompts. Single flag, single choke point
+  (`get_performance_context()`), so all three consumers — bull, bear AND PM — are affected
+  together. Nothing else changed.
+- **Diagnosis it addresses:** the injection is a one-directional bias amplifier. Every
+  branch pushes conviction DOWN ("⚠ CALIBRATION ALERT … apply extra scrutiny",
+  stop-clustering/overconfidence), and no branch fires for the opposite error — being
+  under-deployed and missing upside. It was fed to three agents at once, triple-counting
+  the same prior. With a 39% win rate in the lookback this closed a loop: losses → timid
+  PM → fewer buys → more cash → miss the recovery → the losses stay in the window.
+- **Observed state that triggered it (2026-08-12 review):** buy rate **1.6%** (5 of 315
+  debates since 7/16), conviction massed at 3-5 against `MIN_CONVICTION_SCORE=6`
+  (conv-6: 14, conv-7: 1), deployment **10.6%** (3 of 11 slots), fund **+1.50% vs SPY
+  +5.07% = −3.57pp**. The PM had begun citing the fund's own exit log as a TYPE-A reason
+  to skip new names.
+- **Hypothesis:** removing the injection restores a normal buy rate WITHOUT lowering entry
+  quality — the suppression was prompt-induced, not opportunity-driven.
+- **Metric / success (≥40 post-change debates or 4 weeks):** buy rate recovers into the
+  **15–25%** band; conviction distribution re-centres so a meaningful share reaches ≥6;
+  deployment climbs back toward the 40–50% band; AND the decision-quality scorer shows
+  post-change entries with 10d SPY-relative excess **≥ 0** (i.e. the extra trades are not
+  junk).
+- **Failure:** buy rate overshoots **>35%** (we removed a legitimate brake, cf. EXP-010),
+  OR post-change entries' 10d excess is materially negative while the pre-change cohort's
+  was not → restore `PERFORMANCE_CONTEXT_ENABLED=True`.
+- **Min sample:** 40 debates / 4 weeks. **Rollback:** `PERFORMANCE_CONTEXT_ENABLED=True`.
+- **Note on confounding:** shipped ALONE, deliberately. The EXP-008 revert that the
+  2026-08-12 review flagged is deferred so this measurement stays clean (see EXP-008).
 
 ## Template
 

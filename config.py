@@ -230,6 +230,20 @@ DEBATE_R2_BULL_PRIOR = -1   # inert while DEBATE_ROUNDS=2; kept for a future re-
 # (3 calls) against the STORED entry debate instead of re-running fundamental +
 # a full 4-call re-debate per position per run. Set False to restore the 8-call path.
 REVIEW_LITE = True
+
+# EXP-014 (2026-09-02): performance-context injection OFF.
+# agents/performance_context.py injected a rolling P&L block into the bull, the bear AND
+# the PM — three agents fed the same bias simultaneously. Its alerts are one-directional
+# ("⚠ CALIBRATION ALERT ... apply extra scrutiny", stop-clustering/overconfidence): every
+# branch pushes conviction DOWN, and none fires for the opposite error of being
+# under-deployed. With a 39% win rate in the window that produced a doom loop — losses →
+# a more timid PM → fewer buys → more cash → miss the recovery → the losses stay in the
+# window. Observed: buy rate fell to 1.6% (5 of 315 debates), conviction massed at 3-5
+# against a MIN_CONVICTION_SCORE of 6, deployment 10.6% while SPY ran +5%. The PM began
+# citing the fund's own exit log as a TYPE-A reason to skip new names.
+# Set True to restore the injection.
+PERFORMANCE_CONTEXT_ENABLED = False
+
 MAX_TOKENS         = 700    # Screener / analyst agents (structured JSON, short output)
 # Raised 1000→1500 (2026-06-19): the bull/bear/PM JSON was truncating at the 1000-token
 # cap mid-object (the 6/17 bear failure at char 4061), producing unparseable output that

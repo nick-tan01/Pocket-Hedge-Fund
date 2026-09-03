@@ -1,0 +1,54 @@
+name: Pocket Hedge Fund — Heartbeat
+
+# Liveness alarm. The 2026-07-06 outage (get_account TypeError) killed the trading
+# pipeline, the market tick AND the health checks in one shot — and because the crash
+# happened BEFORE anything was journaled, check_llm_health kept reporting "healthy" for a
+# full trading day. Only a GitHub failure email caught it.
+#
+# This workflow exists to make SILENCE the alarm. It is deliberately:
+#   - STANDALONE — not a step inside trade.yml or market_tick.yml, so it still fires when
+#     both of those are dead (the exact 2026-07-06 case).
+#   - DEPENDENCY-FREE — stdlib only, no pip install, so it cannot fail for the same
+#     reasons the real pipeline fails.
+#   - READ-ONLY — never writes the journal, never trades.
+# It only alerts while the market is actually open (Alpaca's clock knows holidays), so
+# weekends/holidays/overnight are silent by construction.
+
+on:
+  schedule:
+    # Hourly at :35 through the session (market opens 13:30 UTC). Offset from the market
+    # tick's :05 so the two never collide.
+    - cron: '35 14-20 * * 1-5'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  heartbeat:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout code (main)
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Checkout journal (data branch)
+        uses: actions/checkout@v4
+        with:
+          ref: data
+          path: data-branch
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      # No pip install on purpose — check_heartbeat.py is stdlib-only.
+      - name: Check pipeline liveness
+        env:
+          ALPACA_API_KEY:    ${{ secrets.ALPACA_API_KEY }}
+          ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
+        run: python scripts/check_heartbeat.py --data data-branch/dashboard/data.json

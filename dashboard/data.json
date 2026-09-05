@@ -157192,6 +157192,43 @@
         }
       },
       "ts": "2026-08-29T03:49:08.800719+00:00"
+    },
+    {
+      "as_of": "2026-09-05",
+      "lookback_days": 45,
+      "primary_window_days": 10,
+      "conviction_calibration": {
+        "6": {
+          "n": 20,
+          "avg_pnl_pct": -0.32,
+          "win_rate": 40.0
+        },
+        "7": {
+          "n": 11,
+          "avg_pnl_pct": 5.4,
+          "win_rate": 36.0
+        }
+      },
+      "closed_trades": 31,
+      "skip_precision_pct": 58.0,
+      "trim_precision_pct": 50.0,
+      "baseline_vs_pipeline": {
+        "baseline": {
+          "label": "baseline_topN",
+          "n": 153,
+          "n_decided": 106,
+          "avg_excess_pct": -1.18,
+          "hit_rate_pct": 40.6
+        },
+        "pipeline": {
+          "label": "live_pipeline",
+          "n": 4,
+          "n_decided": 2,
+          "avg_excess_pct": 1.68,
+          "hit_rate_pct": 50.0
+        }
+      },
+      "ts": "2026-09-05T00:18:22.637991+00:00"
     }
   ]
 }

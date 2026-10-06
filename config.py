@@ -102,7 +102,10 @@ MAX_POSITIONS          = 11        # EXP-008: raised 8→11 to lift deployment v
                                    # risk), gated by the unchanged 60% gross and 25% sector caps so it
                                    # cannot over-concentrate. Rollback: set back to 8.
 MAX_POSITION_PCT       = 0.10      # 10% of portfolio hard ceiling per position
-MAX_PORTFOLIO_EXPOSURE = 0.60      # Total equity exposure cap (60% deployed, 40% reserve)
+MAX_PORTFOLIO_EXPOSURE = 0.90      # EXP-017 (operator directive 2026-10-05): raised 0.60 → 0.90 gross.
+                                   # Objective is now to beat SPY with more risk accepted (paper account);
+                                   # the -10% DD breaker, 10% per-name and 25% sector caps are unchanged.
+                                   # Rollback: 0.60 (and PYRAMID_ADDS=False).
 MIN_CONVICTION_SCORE   = 6         # Out of 10 — below this, hold cash
 MAX_SECTOR_PCT         = 0.25      # C11: No single sector > 25% of NAV (raised from 0.20).
                                    # NOTE: measured as a fraction of NAV (sum of position_pct),
@@ -110,6 +113,8 @@ MAX_SECTOR_PCT         = 0.25      # C11: No single sector > 25% of NAV (raised 
                                    # the deployed book — admits a 4th conviction-7 tech name while
                                    # still forcing ≥2 other sectors. The watchlist is ~9/14 tech,
                                    # so 0.20 was structurally capping the book at ~3 tech positions.
+                                   # (At the EXP-017 0.90 gross it is ~28% of the book: the sector cap
+                                   # is now the tighter constraint on a tech-heavy watchlist.)
 CORRELATION_THRESHOLD  = 0.75      # Return-correlation threshold for overlap checks
 ROTATION_SCORE_MARGIN  = 1.0       # Candidate must beat current holding by this much
 MIN_SLOT_PCT           = 0.03      # Positions below 3% don't count against MAX_POSITIONS —
@@ -123,6 +128,25 @@ CONVICTION_SIZE_MAP = {
     9:  0.10,   # 10% of portfolio ($10,000)
     10: 0.10,   # capped at 10%
 }
+
+# ── EXP-017: pyramiding into confirmed winners (supersedes the EXP-007 hold) ──
+# ONE de-risked add to a winner. core/pyramid.py::evaluate_add enforces ALL of:
+#   1. stop ratcheted to >= breakeven on the BLENDED basis BEFORE the add is sent
+#      (add is aborted if the broker stop can't be moved),
+#   2. position after the add <= PYRAMID_MAX_POSITION_PCT of NAV,
+#   3. no add when price is within PYRAMID_52W_BLOCK_PCT of (or beyond) the 52-week high
+#      (fail-closed if the high is unavailable) — journaled in `pyramid_decisions`,
+#   4. every existing cap still applies: MAX_PORTFOLIO_EXPOSURE, MAX_SECTOR_PCT,
+#      MAX_POSITION_PCT, regime/VIX size multipliers and the regime conviction floor.
+# Set PYRAMID_ADDS=False to disable. Does NOT touch CONVICTION_SIZE_MAP.
+PYRAMID_ADDS             = True
+PYRAMID_MAX_ADDS         = 1       # per position
+PYRAMID_TRIGGER_PCT      = 0.08    # price >= +8% above avg_entry (EXP-007 spec)
+PYRAMID_ADD_PCT          = 0.03    # add size, fraction of NAV (before regime/VIX scaling)
+PYRAMID_MIN_ADD_PCT      = 0.01    # a cap-shrunk add smaller than this is not worth sending
+PYRAMID_MAX_POSITION_PCT = 0.08    # guardrail 2: total position <= 8% NAV after the add
+PYRAMID_52W_BLOCK_PCT    = 0.05    # guardrail 3: conservative — block within 5% of the 52w high
+PYRAMID_MIN_STOP_GAP_PCT = 0.01    # breakeven stop must sit >= 1% below price or no add
 
 # ── Risk / Stop loss ──────────────────────────────────────────────────────────
 # S1 (audit): when True, every filled buy gets a real STOP order resting at Alpaca

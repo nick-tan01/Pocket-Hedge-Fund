@@ -66,8 +66,9 @@ def test_already_holding_full_position_holds():
 
 
 def test_exposure_cap_blocks_buy():
-    held = [{"symbol": f"P{i}", "position_pct": 0.085, "sector": "Other"} for i in range(7)]
-    p = evaluate(pm(conviction=7), open_positions=held)  # deployed 59.5%
+    # EXP-017: gross cap 0.60 -> 0.90.
+    held = [{"symbol": f"P{i}", "position_pct": 0.125, "sector": "Other"} for i in range(7)]
+    p = evaluate(pm(conviction=7), open_positions=held)  # deployed 87.5%: 2.5% headroom < 4%
     assert p.action == "skip"
     assert "exposure cap" in p.reason.lower()
 
@@ -98,7 +99,7 @@ def test_size_clamped_to_max_position_pct(monkeypatch):
     # EXP-009 Part A: the per-name MAX_POSITION_PCT (10%) clamp must hold even if a future
     # size-map entry or >1.0 multiplier would otherwise size larger. Inflate the map so
     # conv-9 -> 30% and assert the position is still capped at 10% of NAV (not blocked by
-    # the 60% gross cap, which has ample headroom here).
+    # the gross cap, which has ample headroom here).
     monkeypatch.setattr(config, "CONVICTION_SIZE_MAP",
                         {6: 0.04, 7: 0.20, 8: 0.25, 9: 0.30, 10: 0.30})
     p = evaluate(pm(conviction=9, bull_r2=9, bear_r2=5))

@@ -10,6 +10,11 @@ import config
 
 logger = logging.getLogger(__name__)
 
+# Down-only size scaling (EXP-009). Shared with the EXP-017 pyramid add so an add can never
+# be sized more aggressively than a fresh entry in the same regime.
+REGIME_MULT = {"bull": 1.0, "caution": 0.8, "bear": 0.6}
+VIX_MULT    = {"normal": 1.0, "elevated_vix": 0.75, "high_vix": 0.5}
+
 
 @dataclass
 class TradeProposal:
@@ -103,8 +108,8 @@ def evaluate(
     floored   = max(capped, min(size_map.keys()))
     size_pct  = size_map.get(floored, 0.06)
 
-    regime_mult = {"bull": 1.0, "caution": 0.8, "bear": 0.6}.get(regime, 1.0)
-    vix_mult    = {"normal": 1.0, "elevated_vix": 0.75, "high_vix": 0.5}.get(vix_regime, 1.0)
+    regime_mult = REGIME_MULT.get(regime, 1.0)
+    vix_mult    = VIX_MULT.get(vix_regime, 1.0)
     size_pct    = size_pct * regime_mult * vix_mult
 
     # Fix 4: Bear spread shading.
@@ -190,7 +195,7 @@ def evaluate(
             key_risk=key_risk,
         )
     # A11 (per-name hard cap): clamp to MAX_POSITION_PCT FIRST. The 10% per-position
-    # ceiling was defined in config but enforced nowhere here — only the 60% gross cap
+    # ceiling was defined in config but enforced nowhere here — only the gross cap
     # (remaining_exposure) was applied. With every sizing multiplier ≤1.0 today this is a
     # no-op, but it makes the per-name cap real so a future >1.0 multiplier or a
     # higher-conviction size-map entry can't silently breach the 10% hard ceiling.

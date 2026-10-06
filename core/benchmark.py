@@ -5,8 +5,8 @@ while the dashboard compared raw cumulative return of a ≤60%-deployed book
 against 100% SPY).
 
 Computes, from dashboard/data.json snapshots alone (no network):
-  - fund vs SPY total return, plus a 60/40 SPY/cash blend (the exposure-honest
-    benchmark given MAX_PORTFOLIO_EXPOSURE=0.60)
+  - fund vs SPY total return, plus an SPY/cash blend at MAX_PORTFOLIO_EXPOSURE
+    (the exposure-honest benchmark; 60/40 until EXP-017 raised gross to 90%)
   - peak drawdown for fund and SPY (close-to-close on daily last snapshots;
     intraday DD is not observable from run-time sampling)
   - daily-return Sharpe (annualized, rf=0) and beta vs SPY
@@ -80,7 +80,11 @@ def compute_benchmark(snapshots: list[dict]) -> dict:
 
     fund_ret  = fund[-1] / fund[0] - 1
     spy_ret   = spy[-1] / spy[0] - 1
-    blend_ret = 0.60 * spy_ret  # 60/40 SPY/cash, cash at 0 — exposure-honest baseline
+    # Exposure-honest baseline: SPY at the CONFIGURED gross cap, cash at 0. Was a hardcoded
+    # 0.60 — EXP-017 (gross 0.60 → 0.90) made that a silently wrong benchmark (Principle 1).
+    # The legacy key name "blend_60_40_return_pct" is kept for consumers; it now means
+    # "blend at MAX_PORTFOLIO_EXPOSURE" (see `blend_exposure`).
+    blend_ret = config.MAX_PORTFOLIO_EXPOSURE * spy_ret
 
     return {
         "start": daily[0]["ts"][:10],
@@ -89,6 +93,7 @@ def compute_benchmark(snapshots: list[dict]) -> dict:
         "fund_return_pct":   round(fund_ret * 100, 2),
         "spy_return_pct":    round(spy_ret * 100, 2),
         "blend_60_40_return_pct": round(blend_ret * 100, 2),
+        "blend_exposure": config.MAX_PORTFOLIO_EXPOSURE,
         "excess_vs_spy_pct":   round((fund_ret - spy_ret) * 100, 2),
         "excess_vs_blend_pct": round((fund_ret - blend_ret) * 100, 2),
         "fund_peak_drawdown_pct": round(_peak_drawdown(fund) * 100, 2),

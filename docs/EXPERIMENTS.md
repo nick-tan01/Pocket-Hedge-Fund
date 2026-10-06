@@ -107,7 +107,13 @@ Status values: `proposed` → `running` → `accepted` / `rejected` / `inconclus
 - **Min sample:** 8 weeks or 30 discovered candidates. **Rollback:** `DISCOVERY_ENABLED=False`.
 
 ## EXP-007 — Pyramiding into confirmed winners
-- **Status:** proposed — **HELD 2026-06-30** (do NOT implement yet)
+- **Status:** **SUPERSEDED 2026-10-06 by EXP-017.** The unhold gate (pipeline forward excess ≥
+  baseline at ≥20 paired decisions) was NOT met — the 2026-10-05 review read pipeline n=5,
+  −1.87% vs baseline +0.57%. It is superseded by the operator's objective change of
+  2026-10-05 (beat SPY, accept more risk; paper account), which is the "explicit decision to
+  run it as a measured experiment with the guardrails above" this entry's second unhold
+  clause allowed. The four guardrails below are implemented unchanged in EXP-017.
+- **Prior status:** proposed — **HELD 2026-06-30** (do NOT implement yet)
 - **Change (when unheld):** allow ONE de-risked add to a meaningful winner (≥ +8% above
   `avg_entry`, trend intact), gated by — original stop ratcheted to ≥ breakeven on the
   blended basis BEFORE the add; total position ≤ 8% NAV; no adds to names extended past
@@ -305,6 +311,44 @@ Status values: `proposed` → `running` → `accepted` / `rejected` / `inconclus
   list; (b) debates before 2026-10-06 carry no `context`, so for the first 5 trading days
   only the clock (not a trigger) can lift their cooldown; (c) holidays count as trading
   days (cooldown errs shorter).
+
+## EXP-017 — Aggressive deployment: gross cap 0.60 → 0.90 + guarded pyramiding
+- **Status:** running (started 2026-10-06). **Operator directive 2026-10-05:** the objective
+  is now to beat SPY significantly, accepting more risk (paper trading). This replaces the
+  "test whether the LLM layer adds value" framing for NAV purposes; the name-level scorecard
+  (EXP-002 / R2) is unaffected and stays the LLM-edge test.
+- **Change (one directional bet, two coupled parts):** `MAX_PORTFOLIO_EXPOSURE` 0.60 → 0.90,
+  and `PYRAMID_ADDS=True` — ONE add per winner (+8% over `avg_entry`, thesis intact, trend up,
+  3% NAV before regime/VIX scaling) behind ALL FOUR guardrails, enforced in
+  `core/pyramid.py`: (1) stop ratcheted to ≥ breakeven on the blended basis and confirmed at
+  the broker BEFORE the order (add aborts if it can't be); (2) position ≤ 8% NAV after the
+  add; (3) no add within 5% of — or past — the 52-week high (fail-closed if unknown;
+  distance journaled in `pyramid_decisions`); (4) all existing caps apply (gross, 25% sector,
+  10% per-name clamp, regime/VIX scaling, regime conviction floor).
+  **Unchanged:** −10% DD breaker, 10% per-name clamp, 25% sector cap, correlation tournament,
+  `CONVICTION_SIZE_MAP`, `MIN_CONVICTION_SCORE=6`.
+- **Hypothesis:** the 2026-10-05 review attributes ~4.3pp of the 5.5pp SPY gap to idle cash
+  (17.9% average deployment). Letting the funnel (now fixed by WS-A/B/C/D) deploy through a
+  higher ceiling raises SPY-relative upside; the −10% DD breaker caps the left tail.
+- **Metric / success (8 weeks):** deployment 60–80%; fund-vs-SPY excess > 0 (benchmark.py now
+  blends SPY at the configured gross cap — compare to both `excess_vs_spy` and `excess_vs_blend`);
+  new-cohort 10d SPY-relative excess ≥ 0.
+- **Failure → rollback:** the DD breaker trips, OR the new-cohort forward excess < −2%.
+- **Min sample:** 8 weeks / 20 new entries. **Rollback:** `MAX_PORTFOLIO_EXPOSURE=0.60`,
+  `PYRAMID_ADDS=False`.
+- **Known limit (stated up front):** the cap is a ceiling, not a throttle. With the size map
+  untouched (c6 = 4%, c7 = 6%, 11 slots) the book reaches ~44–66% before adds, so 90% will
+  rarely bind and the 60–80% deployment target is mostly gated by the funnel's buy rate
+  (5.4% since 9/02), not by this change. A deployment miss is therefore NOT evidence against
+  the experiment; the excess-return and DD lines are.
+- **Known limit:** the 5%-of-52w-high block is conservative by design and will veto most adds
+  on names in a clean uptrend; `pyramid_decisions` records every veto so the cost of that
+  conservatism is measurable before it is loosened (as its own entry).
+- **Confounds to log:** EXP-002's baseline twin shares `MAX_PORTFOLIO_EXPOSURE` (more headroom,
+  same fixed 6%/top-3 rule — expected inert); EXP-008's slot cap now co-binds with gross;
+  every deployment/NAV reading from 2026-10-06 is a different regime from EXP-014's window;
+  closed-trade `stop_ratcheted` now includes pyramid breakeven ratchets
+  (`pyramid_breakeven_stop=True` distinguishes them).
 
 ## Process notes & confound log
 Not experiments — freeze-exempt process/reliability changes that move the *conditions*

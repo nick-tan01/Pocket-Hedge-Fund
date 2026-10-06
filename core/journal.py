@@ -26,6 +26,7 @@ _ARRAY_CAPS = {
     "runs":             1000,
     "risk_decisions":   1500,
     "position_reviews": 1500,
+    "pyramid_decisions": 500,    # EXP-017: every evaluated add (taken or blocked)
 }
 
 
@@ -100,7 +101,7 @@ def log_snapshot(portfolio_value: float, cash: float, spy_price: float):
     Guards against degraded broker readings: Alpaca can transiently report
     portfolio_value == cash (open positions momentarily valued at $0 during an account-API
     hiccup), which plots as a fake cliff on the equity curve — the 2026-07-07 -41% spike.
-    A book with 8% stops and <60% deployment cannot drop >25% between ticks, so an
+    A book with 8% stops and <=90% deployment (MAX_PORTFOLIO_EXPOSURE) cannot drop >25% between ticks, so an
     implausible single-step collapse (or a non-positive value) is REJECTED, not recorded.
     """
     data = _load()
@@ -307,6 +308,15 @@ def log_risk_decision(
     data["risk_decisions"].append(entry)
     _cap(data, "risk_decisions")
     _save(data)
+
+
+def log_pyramid_decision(symbol: str, trade_id: str, outcome: str, **facts):
+    """EXP-017: journal one evaluated pyramid add (executed or blocked) with the facts the
+    guardrails used — incl. the 52-week-high distance — so the experiment is auditable."""
+    entry = {"ts": datetime.now(timezone.utc).isoformat(), "symbol": symbol,
+             "trade_id": trade_id, "outcome": outcome}
+    entry.update({k: v for k, v in facts.items() if v is not None})
+    _append_capped("pyramid_decisions", entry, cap=_ARRAY_CAPS["pyramid_decisions"])
 
 
 def _append_capped(key: str, entry: dict, cap: int = 500):

@@ -42,7 +42,7 @@ class _Cand:
 
 
 def test_pre_debate_gate_exposure_maxed():
-    positions = [{"position_pct": 0.57, "sector": "Other"}]
+    positions = [{"position_pct": 0.87, "sector": "Other"}]     # EXP-017: cap 0.90
     gated, reason = main._pre_debate_gate(_Cand("Technology"), positions)
     assert gated and "exposure_maxed" in reason
 

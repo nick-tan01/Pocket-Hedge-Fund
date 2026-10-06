@@ -11,6 +11,7 @@ Usage:
 import argparse
 import json
 import logging
+import math
 import os
 import sys
 import time
@@ -29,7 +30,9 @@ from core.journal import (
     log_trade_trim, set_queued_action, clear_queued_action,
     log_risk_decision, get_latest_watchlist, log_pre_debate_gate,
     log_would_have_traded, get_snapshots, log_baseline_shadow, get_runs,
+    log_pyramid_decision,
 )
+from core import pyramid
 from agents.screener import Screener, ScreenerDataUnavailable
 from agents.after_close_watchlist import LONG_SETUP_TYPES
 import agents.technical        as technical_agent
@@ -688,6 +691,14 @@ def review_open_positions(
                 "consecutive_weakened_count": consec_weakened,
             })
             clear_queued_action(trade_id)
+            # EXP-017: a thesis-intact HOLD on a confirmed winner may earn ONE guarded add.
+            if getattr(config, "PYRAMID_ADDS", False) and live_pos:
+                _maybe_pyramid_add(
+                    alpaca, fetcher, trade_id, live_pos, current_price, portfolio_value,
+                    review.get("thesis_status"),
+                    (tech.get("indicators") or {}).get("trend", "unknown"),
+                    conviction, regime, vix_regime, dry_run,
+                )
 
         elif action == "exit":
             if dry_run:
@@ -817,6 +828,145 @@ def review_open_positions(
             logger.exception(
                 "Position review CRASHED for %s — isolating and continuing with "
                 "remaining positions: %s", trade.get("symbol", "?"), exc)
+
+
+# ── Pyramiding (EXP-017) ──────────────────────────────────────────────────────
+
+def _maybe_pyramid_add(
+    alpaca: AlpacaClient,
+    fetcher: DataFetcher,
+    trade_id: str,
+    live_pos: dict,
+    current_price: float,
+    portfolio_value: float,
+    thesis_status: str | None,
+    trend: str,
+    conviction: int,
+    regime: str,
+    vix_regime: str,
+    dry_run: bool,
+) -> bool:
+    """One guarded add to a confirmed winner. Returns True iff an add order filled.
+
+    Order of operations is the safety property: (1) evaluate every guardrail
+    (core/pyramid.py), (2) ratchet the stop to >= blended-basis breakeven and CONFIRM it
+    rests at the broker, (3) only then buy. A failed stop move aborts the add — a
+    ratcheted stop with no add is harmless (tighter, at breakeven)."""
+    if not can_execute_trades(alpaca)[0]:
+        return False
+    trade = next((t for t in get_open_trades() if t["id"] == trade_id), None)
+    if not trade:
+        return False
+    symbol = trade["symbol"]
+
+    open_trades = get_open_trades()
+    deployed_pct = sum(t.get("position_pct", 0) for t in open_trades)
+    sector = trade.get("sector", "")
+    sector_pct = sum(t.get("position_pct", 0) for t in open_trades
+                     if sector and t.get("sector", "") == sector)
+
+    required = config.MIN_CONVICTION_SCORE
+    if regime == "bear" or vix_regime == "high_vix":
+        required = max(required, 8)          # same floor a fresh entry faces
+    size_mult = (risk_agent.REGIME_MULT.get(regime, 1.0)
+                 * risk_agent.VIX_MULT.get(vix_regime, 1.0))
+    qty = float(live_pos.get("qty") or 0)
+
+    plan = pyramid.evaluate_add(
+        trade,
+        price=current_price,
+        avg_entry=float(live_pos.get("avg_entry") or trade.get("entry_price") or 0),
+        qty=qty,
+        market_value=float(live_pos.get("market_value") or qty * current_price),
+        portfolio_value=portfolio_value,
+        deployed_pct=deployed_pct,
+        sector_pct=sector_pct,
+        conviction=conviction,
+        required_conviction=required,
+        thesis_status=thesis_status or "",
+        trend=trend,
+        size_mult=size_mult,
+        high_52w_fn=lambda: fetcher.get_52w_high(symbol),
+    )
+    facts = {k: v for k, v in plan.items() if k not in ("ok", "reason", "journal")}
+
+    if not plan["ok"]:
+        if plan["journal"]:
+            logger.info("PYRAMID blocked | %s | %s", symbol, plan["reason"])
+            log_pyramid_decision(symbol, trade_id, f"blocked:{plan['reason']}", **facts)
+        return False
+
+    if dry_run:
+        logger.info("DRY RUN — would PYRAMID %s +%.4f sh (%.1f%% NAV) stop→$%.2f",
+                    symbol, plan["add_qty"], plan["add_pct"] * 100, plan["new_stop"])
+        return False
+
+    # ── Guardrail 1: breakeven stop in place BEFORE the add ────────────────────
+    updates = {}
+    if plan["new_stop"] > float(trade.get("stop_price", 0) or 0):
+        updates = {"stop_price": plan["new_stop"], "stop_ratcheted": True,
+                   "pyramid_breakeven_stop": True}
+    if getattr(config, "BROKER_NATIVE_STOPS", False):
+        if not _ensure_broker_stop(alpaca, trade):
+            log_pyramid_decision(symbol, trade_id, "aborted:no_resting_stop", **facts)
+            logger.warning("PYRAMID aborted | %s | no resting broker stop to ratchet", symbol)
+            return False
+        if updates:
+            replaced = alpaca.replace_stop_order(trade["stop_order_id"], plan["new_stop"])
+            if not replaced:
+                log_pyramid_decision(symbol, trade_id, "aborted:stop_ratchet_failed", **facts)
+                logger.warning("PYRAMID aborted | %s | broker stop ratchet failed", symbol)
+                return False
+            updates["stop_order_id"] = replaced["id"]
+            trade["stop_order_id"] = replaced["id"]
+    if updates:
+        update_open_trade(trade_id, updates)
+
+    # ── The add ────────────────────────────────────────────────────────────────
+    order = alpaca.submit_market_order(
+        symbol=symbol, qty=plan["add_qty"], side="buy",
+        reason=(f"pyramid_add | +{plan['gain_pct']}% | blended=${plan['blended_basis']} "
+                f"| stop=${plan['new_stop']}"),
+        ref_price=current_price,
+    )
+    if not order:
+        log_pyramid_decision(symbol, trade_id, "aborted:order_failed", **facts)
+        return False
+    fill_price, fill_qty = _await_fill(alpaca, order.get("id"))
+    px = fill_price or current_price
+    filled = fill_qty or plan["add_qty"]
+
+    old_qty = qty
+    new_qty = round(old_qty + filled, 4)
+    old_basis = float(live_pos.get("avg_entry") or trade.get("entry_price") or px)
+    blended = (old_qty * old_basis + filled * px) / new_qty
+    stop = max(plan["new_stop"], float(trade.get("stop_price", 0) or 0))
+    # A fill above the quote can lift the true blended basis a few cents over the stop.
+    true_be = math.ceil(blended * 100) / 100
+    if true_be > stop and true_be <= px * (1 - config.PYRAMID_MIN_STOP_GAP_PCT):
+        stop = true_be
+    post = {
+        "qty": new_qty, "avg_entry": round(blended, 4), "stop_price": round(stop, 2),
+        "pyramid_adds": int(trade.get("pyramid_adds", 0) or 0) + 1,
+        "last_pyramid_ts": datetime.now(timezone.utc).isoformat(),
+        "last_pyramid_qty": filled,
+        "position_usd": round(new_qty * px, 2),
+        "position_pct": round(new_qty * px / portfolio_value, 4),
+    }
+    if getattr(config, "BROKER_NATIVE_STOPS", False) and trade.get("stop_order_id"):
+        replaced = alpaca.replace_stop_order(trade["stop_order_id"], stop, new_qty)
+        if replaced:
+            post["stop_order_id"] = replaced["id"]
+        else:
+            logger.warning("PYRAMID | %s stop resize failed — reconciler resizes next run", symbol)
+    update_open_trade(trade_id, post)
+    log_pyramid_decision(symbol, trade_id, "executed", fill_price=px, filled_qty=filled,
+                         blended_basis_actual=round(blended, 4), stop_after=round(stop, 2),
+                         new_qty=new_qty, **{k: v for k, v in facts.items()
+                                             if k not in ("price",)})
+    logger.info("✅ PYRAMID ADD | %s +%.4f sh @ $%.2f → qty=%.4f blended=$%.2f stop=$%.2f",
+                symbol, filled, px, new_qty, blended, stop)
+    return True
 
 
 # ── Per-symbol analysis ───────────────────────────────────────────────────────

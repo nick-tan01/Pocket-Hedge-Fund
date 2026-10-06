@@ -81,6 +81,21 @@ class DataFetcher:
             logger.debug("Quote failed %s: %s", symbol, e)
             return None
 
+    def get_52w_high(self, symbol: str) -> float | None:
+        """52-week high, or None if unavailable. Never a valid-looking zero (Principle 2):
+        EXP-017's pyramid guardrail fails CLOSED on None."""
+        def _fetch():
+            hi = yf.Ticker(symbol).fast_info.year_high
+            hi = float(hi) if hi else 0.0
+            if hi <= 0:
+                raise ValueError(f"no year_high for {symbol}")
+            return round(hi, 2)
+        try:
+            return _with_retry(_fetch, f"52w high {symbol}")
+        except Exception as e:
+            logger.debug("52w high failed %s: %s", symbol, e)
+            return None
+
     # ── OHLCV ─────────────────────────────────────────────────────────────────
 
     def get_ohlcv(self, symbol: str, days: int = 60) -> list[dict]:

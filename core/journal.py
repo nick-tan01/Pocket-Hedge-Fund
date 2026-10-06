@@ -238,8 +238,13 @@ def log_run(
     event_details: list[dict] | None = None,
     candidate_details: list[dict] | None = None,
     llm_failures: dict | None = None,
+    run_meta: dict | None = None,
 ):
-    """Log a summary of each pipeline run."""
+    """Log a summary of each pipeline run.
+
+    run_meta (WS-A 2026-10-05): slot / scheduled_for / started_at / github_run_id —
+    makes schedule delay measurable from the journal and keys slot idempotency.
+    """
     data = _load()
     entry = {
         "ts":               datetime.now(timezone.utc).isoformat(),
@@ -249,6 +254,8 @@ def log_run(
         "skipped_reason":   skipped_reason,
         "reason":           reason,
     }
+    if run_meta:
+        entry.update({k: v for k, v in run_meta.items() if v not in (None, "")})
     # C3-OBS: persist the screener composite_score + per-factor signals for each
     # candidate so signal-quality post-mortems and the C18 data-driven score floor
     # become computable. Additive/append-only — the dashboard's `candidates` list is
@@ -366,6 +373,10 @@ def get_all_trades() -> list[dict]:
 
 def get_snapshots() -> list[dict]:
     return _load().get("snapshots", [])
+
+
+def get_runs() -> list[dict]:
+    return _load().get("runs", [])
 
 
 def get_debate_by_id(debate_id: str) -> dict | None:

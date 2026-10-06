@@ -2,10 +2,17 @@ name: Pocket Hedge Fund — Trading Pipeline
 
 on:
   schedule:
-    - cron: '30 13 * * 1-5'   # 9:30am EDT / 8:30am EST (UTC cron does not track DST)
+    # 14:05 UTC = 10:05 EDT: AFTER the 30-min MARKET_OPEN_BUFFER, so the first run can
+    # actually trade (the old 13:30 slot was inside the buffer — 2026-10-06 fix).
+    # UTC cron does not track DST (09:05 EST in winter — still after the buffer).
+    - cron: '5 14 * * 1-5'
     - cron: '0 17 * * 1-5'    # 1:00pm EDT / 12:00pm EST
   workflow_dispatch:
     inputs:
+      slot:
+        description: "Trade slot label, UTC YYYY-MM-DDTHH:MM (idempotency key; set by the external dispatcher)"
+        required: false
+        default: ""
       reason:
         description: "Run trigger reason"
         required: false
@@ -73,16 +80,35 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      # WS-A slot idempotency: label = the cron that fired (schedule) or the dispatched
+      # input. main.py exits 0 if the journal already holds a completed run for it, so the
+      # external dispatcher and the GH-cron backup can both fire without double-running.
+      - name: Compute trade slot
+        id: slot
+        env:
+          EVENT_NAME:     ${{ github.event_name }}
+          EVENT_SCHEDULE: ${{ github.event.schedule }}
+          INPUT_SLOT:     ${{ github.event.inputs.slot }}
+        run: |
+          if [ "$EVENT_NAME" = "schedule" ]; then
+            SLOT=$(python3 scripts/compute_slot.py --cron "$EVENT_SCHEDULE")
+          else
+            SLOT="$INPUT_SLOT"
+          fi
+          echo "Trade slot: '${SLOT}'"
+          echo "slot=$SLOT" >> "$GITHUB_OUTPUT"
+
       - name: Run trading pipeline
         id: pipeline
         env:
+          SLOT:              ${{ steps.slot.outputs.slot }}
           ALPACA_API_KEY:    ${{ secrets.ALPACA_API_KEY }}
           ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           RUN_REASON:        ${{ github.event.inputs.reason || 'scheduled' }}
           EVENT_SYMBOLS:     ${{ github.event.inputs.symbols || '' }}
           EVENT_DETAILS:     ${{ github.event.inputs.event_details || '[]' }}
-        run: python main.py --now --reason "$RUN_REASON" --symbols "$EVENT_SYMBOLS" --event-details "$EVENT_DETAILS"
+        run: python main.py --now --reason "$RUN_REASON" --symbols "$EVENT_SYMBOLS" --event-details "$EVENT_DETAILS" --slot "$SLOT"
 
       - name: Push updated dashboard data
         # Journal salvage (audit 2026-07-06): this step used to run only on success, so

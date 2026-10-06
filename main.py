@@ -11,6 +11,7 @@ Usage:
 import argparse
 import json
 import logging
+import os
 import sys
 import time
 from datetime import datetime, timedelta, timezone
@@ -27,7 +28,7 @@ from core.journal import (
     get_debate_by_id, log_position_review, update_open_trade,
     log_trade_trim, set_queued_action, clear_queued_action,
     log_risk_decision, get_latest_watchlist, log_pre_debate_gate,
-    log_would_have_traded, get_snapshots, log_baseline_shadow,
+    log_would_have_traded, get_snapshots, log_baseline_shadow, get_runs,
 )
 from agents.screener import Screener, ScreenerDataUnavailable
 from agents.after_close_watchlist import LONG_SETUP_TYPES
@@ -101,6 +102,62 @@ def can_execute_trades(alpaca: AlpacaClient) -> tuple[bool, str]:
     if alpaca.minutes_to_close() < config.MARKET_CLOSE_BUFFER:
         return False, "Too close to market close — orders held"
     return True, ""
+
+
+# Runs whose slot must NOT be treated as consumed: a retry (re-dispatch / the GH-cron
+# backup) is exactly what we want after a transient data or LLM outage.
+_RETRYABLE_SKIPS = ("data_unavailable", "llm_preflight_failed")
+
+
+def _slot_already_completed(slot: str) -> bool:
+    """WS-A idempotency: True if the journal holds a completed run for this slot.
+    Both the external dispatcher and the GH cron backup fire for each slot; the
+    second arrival exits 0 instead of double-trading / double-debating."""
+    if not slot:
+        return False
+    try:
+        runs = get_runs()
+    except Exception as e:   # corrupt journal is handled loudly elsewhere; don't gate on it
+        logger.warning("slot idempotency check could not read journal: %s", e)
+        return False
+    for r in runs:
+        if r.get("slot") != slot:
+            continue
+        if str(r.get("skipped_reason", "")).startswith(_RETRYABLE_SKIPS):
+            continue
+        return True
+    return False
+
+
+def _run_meta(slot: str, started_at: datetime) -> dict:
+    """slot / scheduled_for / started_at / github_run_id for every run record."""
+    scheduled_for = ""
+    if slot:
+        try:
+            scheduled_for = datetime.strptime(slot, "%Y-%m-%dT%H:%M") \
+                .replace(tzinfo=timezone.utc).isoformat()
+        except ValueError:
+            logger.warning("Unparseable slot %r — recording label only", slot)
+    return {
+        "slot":          slot,
+        "scheduled_for": scheduled_for,
+        "started_at":    started_at.astimezone(timezone.utc).isoformat(),
+        "github_run_id": os.environ.get("GITHUB_RUN_ID", ""),
+    }
+
+
+def _entry_gate_skip_reason(alpaca: AlpacaClient) -> str:
+    """'' if new entries are possible right now, else the skipped_reason label:
+    market_closed / late_run (past the close buffer) / early_run (before the open
+    buffer). Mirrors can_execute_trades(); in every non-empty case a candidate
+    debate could not end in an order, so the debate phase is skipped (WS-A)."""
+    if not alpaca.is_market_open():
+        return "market_closed"
+    if alpaca.minutes_since_open() < config.MARKET_OPEN_BUFFER:
+        return "early_run"
+    if alpaca.minutes_to_close() < config.MARKET_CLOSE_BUFFER:
+        return "late_run"
+    return ""
 
 
 # ── Stop loss monitor ─────────────────────────────────────────────────────────
@@ -1514,6 +1571,25 @@ def _select_candidates(
     return selected
 
 
+def _snapshot_now(alpaca: AlpacaClient, fetcher: DataFetcher, account: dict) -> None:
+    # SPY for the benchmark curve — use the SAME source as the Market-Tick snapshot
+    # (alpaca.get_latest_price → last trade) so the two writers never disagree and zigzag
+    # the SPY line; fall back to the daily close only if the live price is unavailable.
+    spy_bars  = fetcher.get_ohlcv("SPY", days=2)
+    spy_price = alpaca.get_latest_price("SPY") or (spy_bars[-1]["close"] if spy_bars else 0.0)
+    log_snapshot(account["portfolio_value"], account["cash"], spy_price)
+
+
+def _log_review_only_run(alpaca, fetcher, run_type, skipped_reason, regime, vix_regime,
+                         trigger_reason, event_symbols, event_details, run_meta) -> None:
+    """WS-A: snapshot + run record for a run that skipped the candidate phase."""
+    _snapshot_now(alpaca, fetcher, alpaca.get_account())
+    log_run(run_type, [], 0, skipped_reason=skipped_reason,
+            regime=regime, vix_regime=vix_regime, reason=trigger_reason,
+            event_symbols=sorted(event_symbols), event_details=event_details,
+            run_meta=run_meta)
+
+
 def _llm_preflight() -> str | None:
     """Cheap 1-token ping of the pinned model(s) BEFORE burning a run on silent
     fallbacks. The 2026-06-15 model EOL produced 3 days of conviction-1
@@ -1544,9 +1620,14 @@ def run_pipeline(
     reason: str = "scheduled",
     event_symbols: set[str] | None = None,
     event_details: list[dict] | None = None,
+    slot: str = "",
 ):
     run_start = datetime.now(ET)
     run_type  = "pre_market" if run_start.hour < 12 else "midday"
+    if _slot_already_completed(slot):
+        logger.info("Slot %s already has a completed run — exiting (idempotent)", slot)
+        return
+    run_meta = _run_meta(slot, run_start)
     trigger_reason = reason
     event_symbols = event_symbols or set()
     event_details = event_details or []
@@ -1569,7 +1650,8 @@ def run_pipeline(
         logger.info("Hard stop: %s", skipped_reason)
         log_run(run_type, [], 0, skipped_reason=skipped_reason,
                 regime=regime, vix_regime=vix_regime, reason=trigger_reason,
-                event_symbols=sorted(event_symbols), event_details=event_details)
+                event_symbols=sorted(event_symbols), event_details=event_details,
+                run_meta=run_meta)
         return
 
     # A11: self-heal the journal before anything reads it. The broker is the source of
@@ -1598,7 +1680,8 @@ def run_pipeline(
         log_run(run_type, [], 0,
                 skipped_reason=f"llm_preflight_failed: {llm_err[:300]}",
                 regime=regime, vix_regime=vix_regime, reason=trigger_reason,
-                event_symbols=sorted(event_symbols), event_details=event_details)
+                event_symbols=sorted(event_symbols), event_details=event_details,
+                run_meta=run_meta)
         raise SystemExit(2)  # red job; the salvage push still commits this run record
 
     broad_event = trigger_reason == "sentinel_trigger" and _is_broad_market_event(event_symbols)
@@ -1652,6 +1735,18 @@ def run_pipeline(
     else:
         logger.info("Skipping full thesis review (not Monday) — mechanical stops only")
 
+    # WS-A late-run policy (2026-10-05): GitHub `schedule` delivers hours late, and 7 of
+    # 14 PM buys since 9/02 died at the entry gate after a full LLM debate. If no order
+    # can be placed right now, skip the ENTIRE candidate phase (screener, baseline,
+    # debates — zero debate LLM calls). Stops, reconcile and position reviews above
+    # already ran; record a snapshot and a run entry saying why we stopped.
+    gate_skip = _entry_gate_skip_reason(alpaca)
+    if gate_skip:
+        logger.info("Entry gate closed (%s) — review-only run, no candidate debates", gate_skip)
+        _log_review_only_run(alpaca, fetcher, run_type, gate_skip, regime, vix_regime,
+                             trigger_reason, event_symbols, event_details, run_meta)
+        return
+
     all_open     = get_open_trades()
     min_slot_pct = getattr(config, "MIN_SLOT_PCT", 0.03)
     # Meaningful positions are above MIN_SLOT_PCT — these count against MAX_POSITIONS.
@@ -1687,14 +1782,16 @@ def run_pipeline(
         logger.warning("Screener data unavailable — skipping this run: %s", exc)
         log_run(run_type, [], 0, skipped_reason="data_unavailable",
                 regime=regime, vix_regime=vix_regime, reason=trigger_reason,
-                event_symbols=sorted(event_symbols), event_details=event_details)
+                event_symbols=sorted(event_symbols), event_details=event_details,
+                run_meta=run_meta)
         return
 
     if not candidates:
         logger.info("No screener candidates")
         log_run(run_type, [], 0, skipped_reason="no_candidates",
                 regime=regime, vix_regime=vix_regime, reason=trigger_reason,
-                event_symbols=sorted(event_symbols), event_details=event_details)
+                event_symbols=sorted(event_symbols), event_details=event_details,
+                run_meta=run_meta)
         return
 
     logger.info(screener.format_for_log(candidates))
@@ -1721,8 +1818,17 @@ def run_pipeline(
     open_positions  = get_open_trades()
 
     trades_executed = 0
+    gate_closed_mid_run = False
     llm_diag = {"analyst_fallbacks": 0, "pm_failures": 0}
     for candidate in candidates:
+        # WS-A: the gate can close mid-run (debates take minutes). Stop spending LLM
+        # calls the moment no order could result.
+        if ok_to_trade and not can_execute_trades(alpaca)[0]:
+            logger.info("Entry gate closed mid-run — stopping candidate debates")
+            ok_to_trade = False
+        if not ok_to_trade:
+            gate_closed_mid_run = True
+            break
         meaningful_open = sum(1 for p in open_positions if p.get("position_pct", 0) >= min_slot_pct)
         if meaningful_open + trades_executed >= config.MAX_POSITIONS:
             logger.info("Max positions reached — stopping analysis")
@@ -1769,10 +1875,9 @@ def run_pipeline(
     # SPY for the benchmark curve — use the SAME source as the Market-Tick snapshot
     # (alpaca.get_latest_price → last trade) so the two writers never disagree and zigzag
     # the SPY line; fall back to the daily close only if the live price is unavailable.
-    spy_bars  = fetcher.get_ohlcv("SPY", days=2)
-    spy_price = alpaca.get_latest_price("SPY") or (spy_bars[-1]["close"] if spy_bars else 0.0)
-    log_snapshot(account["portfolio_value"], account["cash"], spy_price)
+    _snapshot_now(alpaca, fetcher, account)
     log_run(run_type, [c.symbol for c in candidates], trades_executed,
+            skipped_reason="late_run" if gate_closed_mid_run else "",
             regime=regime, vix_regime=vix_regime, reason=trigger_reason,
             event_symbols=sorted(event_symbols), event_details=event_details,
             candidate_details=[
@@ -1780,7 +1885,7 @@ def run_pipeline(
                  "signals": c.signals}
                 for c in candidates
             ],
-            llm_failures=llm_diag)
+            llm_failures=llm_diag, run_meta=run_meta)
     if llm_diag.get("analyst_fallbacks") or llm_diag.get("pm_failures"):
         logger.warning("LLM DEGRADATION | %d analyst fallback(s), %d PM failure(s) this run",
                        llm_diag.get("analyst_fallbacks", 0), llm_diag.get("pm_failures", 0))
@@ -1818,10 +1923,13 @@ if __name__ == "__main__":
                         help="Comma-separated symbols that triggered this run")
     parser.add_argument("--event-details", default="[]",
                         help="JSON event metadata from sentinel")
+    parser.add_argument("--slot", default="",
+                        help="Trade slot label (UTC, YYYY-MM-DDTHH:MM) — idempotency key")
     args = parser.parse_args()
     if args.now or args.test:
         run_pipeline(
             dry_run=args.test,
+            slot=args.slot.strip(),
             reason=args.reason,
             event_symbols=_parse_event_symbols(args.symbols),
             event_details=_parse_event_details(args.event_details),

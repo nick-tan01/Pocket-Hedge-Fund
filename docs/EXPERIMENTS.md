@@ -273,6 +273,21 @@ Status values: `proposed` → `running` → `accepted` / `rejected` / `inconclus
 - **Note on confounding:** shipped ALONE, deliberately. The EXP-008 revert that the
   2026-08-12 review flagged is deferred so this measurement stays clean (see EXP-008).
 
+## Process notes & confound log
+Not experiments — freeze-exempt process/reliability changes that move the *conditions*
+under which running experiments are measured. Check this list before reading any metric.
+
+- **2026-10-06 — trade schedule 13:30 → 14:05 UTC (process-cost, freeze-exempt).**
+  `trade.yml` cron `30 13` → `5 14` (10:05 ET; 09:05 EST). The 13:30 UTC run landed
+  inside `MARKET_OPEN_BUFFER` (30 min after the 13:30 open) and so could never trade;
+  14:05 is the first slot that can. `0 17` is unchanged. This restores tradability, it
+  is not a strategy experiment — but **entry hour shifts for every running experiment
+  (EXP-004/005/008/010/014 deployment and buy-rate metrics)**: pre-2026-10-06 first-slot
+  entries were mechanically impossible, so deployment readings before this date are
+  biased low. Same day: late-run policy (WS-A) — runs that start with the entry gate
+  closed skip all candidate debates (`skipped_reason` = `market_closed` / `late_run`),
+  so post-change debate counts per run will drop; compare buy rates per *tradable* run.
+
 ## Template
 
 ```

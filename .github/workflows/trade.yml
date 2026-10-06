@@ -35,9 +35,10 @@ permissions:
 # desyncing the journal from Alpaca and triggering spurious 24h orphan-closes.
 # NOTE (audit 2026-07-06): cancel-in-progress:false does NOT mean "queue, never drop".
 # GitHub keeps at most ONE pending run per concurrency group — a newer arrival evicts
-# the older pending run. That is why snapshot.yml checks for queued/running trade runs
-# and yields instead of enqueueing: a queued TRADE run must never be evicted by a
-# snapshot tick. Losing a pending snapshot is harmless; losing a trade run is not.
+# the older pending run. The market tick therefore has its OWN group (`market-tick`, WS-B
+# 2026-10-05) so it can never evict a queued TRADE run; the two race on the data-branch
+# push instead, handled by scripts/push_data_branch.sh. NOTE: after_close_watchlist and
+# decision_quality still share this group.
 concurrency:
   group: pipeline-data-json
   cancel-in-progress: false
@@ -136,8 +137,9 @@ jobs:
               MSG="$MSG (journal salvage after failed run)"
             fi
             git commit -m "$MSG"
-            git pull --no-rebase origin data
-            git push origin HEAD:data
+            # WS-B: the tick now runs in its own concurrency group and can race this
+            # push. Bounded pull-rebase-retry (3 attempts), loud failure after.
+            bash "$GITHUB_WORKSPACE/scripts/push_data_branch.sh"
           fi
 
       # Recommendation #1: alert on LLM outages. Runs AFTER the push so the journal

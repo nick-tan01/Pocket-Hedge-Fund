@@ -33,7 +33,7 @@ test. The utilities already exist — use them, don't reinvent them:
 | Alpaca REST | `_retry_read`, `_f`/`_i`, `_account_dict`/`_position_dict` in `core/alpaca_client.py` | retry order submission/cancel/replace (double-submit risk) |
 | Yahoo/yfinance | `_with_retry` in `core/data_fetcher.py`; return `None`/`[]` on failure | return a "valid-looking" zero (price=0.0 passed guards and reached division) |
 | Anthropic API | `get_client()` + `complete_json()` in `core/llm_json.py` (call inside the retry try) | construct clients at module import time |
-| git publication | CI workflow push steps only (single writer, `pipeline-data-json` group, `data` branch) | push from library code or local runs |
+| git publication | CI workflow push steps only, via `scripts/push_data_branch.sh` (`data` branch; trade runs in `pipeline-data-json`, tick in `market-tick`) | push from library code or local runs |
 | journal file | `journal._save` (atomic tmp+replace), `JournalCorrupt` halt, `_ARRAY_CAPS` | uncapped `append`; auto-resetting a corrupt journal |
 
 Every numeric field read off a broker/API payload goes through `_f`/`_i`.
@@ -66,8 +66,13 @@ decisions before a human noticed. Silence is the enemy:
   `pipeline-data-json` concurrency group. `journal.push_to_github()` is a
   deliberate no-op everywhere.
 - GitHub keeps at most ONE pending run per concurrency group — a queued run can
-  be evicted. That's why market_tick's guard job yields to trade runs. Don't
-  add a new writer workflow without the guard + group.
+  be evicted. Since 2026-10-05 (WS-B) market_tick has its OWN group (`market-tick`)
+  and no guard job, so it can never evict a queued trade run; tick and trade runs
+  may race on the push, which `scripts/push_data_branch.sh` handles with a bounded
+  (3×) pull-rebase-retry that fails LOUDLY on exhaustion. This is a deliberate
+  Principle-8 trade-off, not a sixth silent patch: the tick's data is regenerable,
+  and exhaustion/conflict turns the job red instead of corrupting the journal.
+  Any new writer workflow must use that script — never an inline `git push`.
 - Local `python3 main.py` runs do not publish. If a run must be recorded,
   trigger the workflow (`gh workflow run`).
 

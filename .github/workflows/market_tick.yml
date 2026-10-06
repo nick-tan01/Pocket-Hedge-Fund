@@ -17,46 +17,26 @@ on:
 
 permissions:
   contents: write
-  actions: write   # sentinel dispatches trade.yml; guard lists its runs
+  actions: write   # sentinel dispatches trade.yml
+
+# WS-B (2026-10-05): the tick has its OWN concurrency group and no guard job.
+# History: the tick shared `pipeline-data-json` with trade runs; GitHub keeps ONE
+# pending run per group and a newer arrival evicts the older pending one, so ticks
+# (and, in theory, trade runs) were cancelled in delayed-cron bursts — 2026-10-05's
+# cancelled tick. The guard job that tried to prevent it had a pending-state blind
+# spot (it listed only in_progress/queued). A lost tick is harmless (the snapshot is
+# regenerated next hour); a lost TRADE run is not, so the tick must never be able to
+# evict one. Cost: tick and trade runs can now race on the data-branch push, handled
+# by scripts/push_data_branch.sh (bounded pull-rebase-retry, loud failure — no
+# `|| true`, no `-X theirs`). The tick's data is regenerable; the trade run's is not.
+concurrency:
+  group: market-tick
+  cancel-in-progress: false
 
 jobs:
-  # GitHub keeps at most ONE pending run per concurrency group, so a tick that
-  # enqueued behind a running pipeline would EVICT a queued sentinel-triggered
-  # trade run. This guard runs OUTSIDE the concurrency group and skips the tick
-  # while any trade run is queued or in progress — the queue slot stays reserved
-  # for trade runs, whose loss actually matters. The next tick catches up.
-  guard:
-    runs-on: ubuntu-latest
-    timeout-minutes: 3
-    outputs:
-      skip: ${{ steps.check.outputs.skip }}
-    steps:
-      - name: Check for queued/running trading pipeline runs
-        id: check
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          active=$(gh run list --repo "$GITHUB_REPOSITORY" --workflow trade.yml \
-                     --status in_progress --json databaseId --jq length)
-          queued=$(gh run list --repo "$GITHUB_REPOSITORY" --workflow trade.yml \
-                     --status queued --json databaseId --jq length)
-          if [ "${active:-0}" != "0" ] || [ "${queued:-0}" != "0" ]; then
-            echo "skip=true" >> "$GITHUB_OUTPUT"
-            echo "Trading pipeline active/queued ($active running, $queued queued) — yielding this tick."
-          else
-            echo "skip=false" >> "$GITHUB_OUTPUT"
-          fi
-
   tick:
-    needs: guard
-    if: needs.guard.outputs.skip != 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 10
-    # Shares the journal-writer serialization group (A9/A10). Job-level (not
-    # workflow-level) so the guard above runs before we enter the queue.
-    concurrency:
-      group: pipeline-data-json
-      cancel-in-progress: false
 
     steps:
       - name: Checkout repo (code from main)
@@ -120,6 +100,5 @@ jobs:
             echo "No changes to push"
           else
             git commit -m "Auto: dashboard snapshot $(date -u +'%Y-%m-%d %H:%M UTC')"
-            git pull --no-rebase origin data
-            git push origin HEAD:data
+            bash "$GITHUB_WORKSPACE/scripts/push_data_branch.sh"
           fi

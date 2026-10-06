@@ -13,6 +13,20 @@ name: Pocket Hedge Fund — Heartbeat
 #   - READ-ONLY — never writes the journal, never trades.
 # It only alerts while the market is actually open (Alpaca's clock knows holidays), so
 # weekends/holidays/overnight are silent by construction.
+#
+# SLOT-BASED (WS-C, 2026-10-05): alarms only if the latest expected trade slot of TODAY
+# (14:05 / 17:00 UTC, see trade.yml) has no journaled run `--grace-min` (90) minutes after
+# it. The old wall-clock "26h since last run" rule was red every Monday (65h weekend gap).
+# Keep `--slots` in sync with the trade.yml cron lines.
+#
+# KNOWN LIMIT / FOLLOW-UP (not implemented — needs the operator's account): this monitor is
+# itself a GitHub `schedule` job, so a GH scheduler stall disables system AND alarm. The only
+# monitor in a different failure domain is an external dead-man's switch, e.g. healthchecks.io:
+#   1. create a check (period 1 day, grace ~3h) and store its ping URL as secret HC_PING_URL;
+#   2. add a final `curl -fsS --retry 3 "$HC_PING_URL"` step to trade.yml (success only), and
+#      optionally to market_tick.yml with a second check;
+#   3. healthchecks.io emails/pages when pings stop — no GitHub involvement.
+# Pair with the Cloudflare dispatcher (docs/EXTERNAL_DISPATCH_SETUP.md).
 
 on:
   schedule:
@@ -51,4 +65,4 @@ jobs:
         env:
           ALPACA_API_KEY:    ${{ secrets.ALPACA_API_KEY }}
           ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
-        run: python scripts/check_heartbeat.py --data data-branch/dashboard/data.json
+        run: python scripts/check_heartbeat.py --data data-branch/dashboard/data.json --slots 14:05,17:00 --grace-min 90

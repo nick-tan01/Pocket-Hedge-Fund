@@ -259,6 +259,17 @@ DEBATE_MAX_TOKENS  = 1500   # Bull, Bear, PM, position reviewer (need nuanced re
 # Set 0 to disable. TYPE-B keywords defined in main._cooled_down_symbols().
 TYPEB_SKIP_COOLDOWN_DAYS = 3
 
+# ── EXP-016: re-debate cooldown for non-buy ("watch"/"skip") names ───────────
+# Max 1 debate per symbol per N trading days (weekdays; holidays ignored, which errs
+# toward a shorter cooldown) unless a material trigger fired since the last debate:
+# earnings date changed, >= WATCH_COOLDOWN_MOVE_PCT price move, or a new top headline.
+# Review 2026-10-05: AMD debated 29x, SMCI 25x, COP 23x in ~24 days — repeated draws
+# from a noisy PM until one says "buy" (optional stopping). A prior "buy" that never
+# executed is NOT cooled (that is a lost fill, not a repeat). Sentinel event runs
+# bypass it (their triggers are material by construction). Set 0 to disable.
+WATCH_COOLDOWN_DAYS     = 5
+WATCH_COOLDOWN_MOVE_PCT = 0.05
+
 # ── Debate calibration (C14/C17) ─────────────────────────────────────────────
 # Experimental fix for the conviction-collapse-to-7 / PM-echoes-bull pathology.
 # ON (trial started 2026-06-02) — evidence-anchored conviction rubric + unresolved-

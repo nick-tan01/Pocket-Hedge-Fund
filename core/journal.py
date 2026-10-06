@@ -210,9 +210,13 @@ def log_trade_close(
 
 def log_debate(
     symbol: str, bull_case: str, bear_case: str,
-    bull_score: int, bear_score: int, final_conviction: int, decision: str
+    bull_score: int, bear_score: int, final_conviction: int, decision: str,
+    context: dict | None = None,
 ) -> str:
-    """Store the full bull/bear debate transcript. Returns debate_id."""
+    """Store the full bull/bear debate transcript. Returns debate_id.
+
+    `context` (EXP-016): price / top_headline / earnings_date at debate time — what the
+    watch cooldown compares against to detect a material change."""
     data = _load()
     debate_id = f"debate_{symbol}_{datetime.now(timezone.utc).strftime('%Y%m%d%H%M%S')}"
     data["debate_logs"].append({
@@ -225,6 +229,7 @@ def log_debate(
         "bear_score":       bear_score,
         "final_conviction": final_conviction,
         "decision":         decision,
+        **({"context": context} if context else {}),
     })
     _cap(data, "debate_logs")
     _save(data)

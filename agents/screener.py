@@ -305,6 +305,9 @@ class Screener:
         signals.update(ta_sig)
         signals.update(news_sig)
         signals.update(val_sig)
+        # EXP-016: stored with each debate so a changed earnings date can lift the cooldown.
+        ed = self._parse_earnings_date(info.get("earningsDate") or info.get("earningsTimestamp"))
+        signals["earnings_date"] = ed.isoformat() if ed else None
 
         if (
             growth_score == 0 and rs_score == 0 and vol_score == 0 and

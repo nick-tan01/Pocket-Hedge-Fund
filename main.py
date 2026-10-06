@@ -14,7 +14,7 @@ import logging
 import os
 import sys
 import time
-from datetime import datetime, timedelta, timezone
+from datetime import date, datetime, timedelta, timezone
 
 import pytz
 import schedule
@@ -893,6 +893,7 @@ def analyse_symbol(
     regime: str,
     vix_regime: str,
     llm_diag: dict | None = None,
+    debate_ctx: dict | None = None,
 ) -> bool:
     logger.info("── Analysing %s ──", symbol)
 
@@ -1002,6 +1003,7 @@ def analyse_symbol(
         bear_score=bear_r2["conviction"],
         final_conviction=pm["final_conviction"],
         decision=pm["action"],
+        context=debate_ctx,
     )
 
     # ── Execute ───────────────────────────────────────────────────────────────
@@ -1388,6 +1390,95 @@ def _cooled_down_symbols() -> set[str]:
     return cooled
 
 
+def _debate_context(candidate) -> dict:
+    """EXP-016: what the watch cooldown compares against on the NEXT screen of this name."""
+    sig = getattr(candidate, "signals", None) or {}
+    return {
+        "price":         getattr(candidate, "price", None),
+        "top_headline":  sig.get("top_headline") or "",
+        "earnings_date": sig.get("earnings_date"),
+    }
+
+
+def _trading_days_between(start: date, end: date) -> int:
+    """Weekdays elapsed from `start` to `end` (holidays ignored — errs toward a SHORTER
+    cooldown, the safe direction)."""
+    n, d = 0, start
+    while d < end:
+        d += timedelta(days=1)
+        if d.weekday() < 5:
+            n += 1
+    return n
+
+
+def _material_trigger(prev_ctx: dict | None, candidate) -> str:
+    """Name of the material trigger since the last debate, or '' if none.
+    No stored context (pre-EXP-016 debates) => nothing is comparable => ''."""
+    if not isinstance(prev_ctx, dict):
+        return ""
+    sig = getattr(candidate, "signals", None) or {}
+    cur_earn = sig.get("earnings_date")
+    if cur_earn and prev_ctx.get("earnings_date") and cur_earn != prev_ctx["earnings_date"]:
+        return "earnings"
+    try:
+        prev_px, cur_px = float(prev_ctx.get("price")), float(getattr(candidate, "price", None))
+        if prev_px > 0 and abs(cur_px - prev_px) / prev_px >= config.WATCH_COOLDOWN_MOVE_PCT:
+            return "move"
+    except (TypeError, ValueError):
+        pass
+    cur_head = sig.get("top_headline") or ""
+    if cur_head and "top_headline" in prev_ctx and cur_head != prev_ctx["top_headline"]:
+        return "news"
+    return ""
+
+
+def _watch_cooldown_filter(cands: list) -> list:
+    """EXP-016: drop candidates already debated (non-buy) within WATCH_COOLDOWN_DAYS trading
+    days unless a material trigger fired. Fail-open: any error reading the journal keeps
+    every candidate (a missed cooldown costs LLM calls; a crash would cost the run)."""
+    days = getattr(config, "WATCH_COOLDOWN_DAYS", 0)
+    if days <= 0 or not cands:
+        return cands
+    try:
+        import json as _json
+        with open(config.JOURNAL_PATH) as f:
+            logs = _json.load(f).get("debate_logs", [])
+        last: dict[str, tuple[datetime, dict]] = {}
+        for d in logs:
+            ts = _parse_iso_utc(str(d.get("ts", "")))
+            sym = str(d.get("symbol", "")).upper()
+            if ts and sym and (sym not in last or ts > last[sym][0]):
+                last[sym] = (ts, d)
+        today = datetime.now(timezone.utc).date()
+        kept, suppressed = [], []
+        for c in cands:
+            rec = last.get(c.symbol.upper())
+            if not rec or str(rec[1].get("decision", "")).lower() == "buy":
+                kept.append(c)
+                continue
+            elapsed = _trading_days_between(rec[0].date(), today)
+            if elapsed >= days:
+                kept.append(c)
+                continue
+            trigger = _material_trigger(rec[1].get("context"), c)
+            if trigger:
+                logger.info("Watch cooldown bypassed for %s: material trigger '%s'", c.symbol, trigger)
+                kept.append(c)
+            else:
+                suppressed.append((c.symbol, elapsed, rec[1].get("decision")))
+    except Exception as exc:
+        logger.warning("Watch cooldown check failed (%s) — not suppressing any candidate", exc)
+        return cands
+    drop = {s for s, _, _ in suppressed}
+    for sym, elapsed, decision in suppressed:
+        logger.info("Watch cooldown suppressing %s (debated %dtd ago -> %s, no material trigger)",
+                    sym, elapsed, decision)
+        log_risk_decision(symbol=sym, action="gated", conviction=0,
+                          reason=f"watch_cooldown: debated {elapsed} trading day(s) ago "
+                                 f"({decision}), no material trigger")
+    return [c for c in cands if c.symbol not in drop]
+
+
 def _active_watchlist_entries() -> list[dict]:
     latest = get_latest_watchlist("after_close")
     if not latest:
@@ -1520,7 +1611,13 @@ def _select_candidates(
     base_universe = list(dict.fromkeys(list(screener.WATCHLIST) + discovered))
     universe = [s for s in base_universe if s not in cooled] if cooled else base_universe
 
-    candidates = _drop_held(screener.run(max_candidates=dynamic_max, symbols=universe))
+    # EXP-016: cooled names must not consume top-N slots, so when the cooldown is on we
+    # take the full ranked list, filter, then truncate. Off => byte-identical to before.
+    if getattr(config, "WATCH_COOLDOWN_DAYS", 0) > 0:
+        ranked = _drop_held(screener.run(max_candidates=len(universe), symbols=universe))
+        candidates = _watch_cooldown_filter(ranked)[:dynamic_max]
+    else:
+        candidates = _drop_held(screener.run(max_candidates=dynamic_max, symbols=universe))
 
     # Tag discovered candidates so EXP-006 can compare their forward outcomes
     # against core-list candidates in the journal.
@@ -1538,9 +1635,10 @@ def _select_candidates(
 
     watch_by_symbol = {e["symbol"]: e for e in watch_entries if e.get("symbol")}
     watch_symbols = sorted(watch_by_symbol)
-    revalidated = _drop_held(
+    # EXP-016: watchlist-memory names are NOT exempt from the watch cooldown (same class).
+    revalidated = _watch_cooldown_filter(_drop_held(
         screener.run(max_candidates=len(watch_symbols), symbols=watch_symbols)
-    )
+    ))
     if not revalidated:
         logger.info("After-close watchlist had no symbols pass next-run revalidation")
         return candidates
@@ -1864,6 +1962,7 @@ def run_pipeline(
                 regime=regime,
                 vix_regime=vix_regime,
                 llm_diag=llm_diag,
+                debate_ctx=_debate_context(candidate),
             )
         except Exception as exc:
             logger.exception("analyse_symbol failed for %s — skipping: %s",

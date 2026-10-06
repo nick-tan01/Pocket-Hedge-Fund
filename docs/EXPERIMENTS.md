@@ -281,6 +281,31 @@ Status values: `proposed` → `running` → `accepted` / `rejected` / `inconclus
 - **Confound (2026-10-05, WS-D):** the partial-bar volume ratio fed the analyst prompts and the
   conviction rubric throughout this window until the fix; post-fix buy-rate/conviction readings are a different regime.
 
+## EXP-016 — Re-debate cooldown for non-buy ("watch"/"skip") names
+- **Status:** running (started 2026-10-06; sequenced AFTER the WS-A/B/C scheduling
+  reliability fixes so it does not confound EXP-014's tail)
+- **Change:** `WATCH_COOLDOWN_DAYS=5` (+ `WATCH_COOLDOWN_MOVE_PCT=0.05`) — max 1 debate per
+  symbol per 5 trading days unless a material trigger fired since the last debate: earnings
+  date changed, ≥5% price move, or a new top headline. Applies to scheduled runs and
+  after-close watchlist names; sentinel event runs bypass it. A prior `buy` that never
+  executed is not cooled (lost fill ≠ repeat). Suppressions are journaled as `gated`
+  risk_decisions (`watch_cooldown: …`); each debate now stores its trigger `context`.
+- **Hypothesis:** repeated debates of the same names are optional stopping, not information
+  (AMD 29×, SMCI 25×, COP 23×, DDOG 18× in ~24 days). They waste LLM calls and select the
+  day the signal crosses the threshold — likely a momentum-chase day.
+- **Metric / success:** debates per run fall ≥40%; buy rate stays within 4–15%; entries'
+  10d SPY-relative excess ≥ the pre-change cohort.
+- **Failure:** a cooled-down name goes on to >+5% 10d excess *and* would have bought
+  (score the `gated` records), or buys drop below 2% for two weeks → rollback.
+- **Min sample:** 40 debates / 4 weeks. **Rollback:** `WATCH_COOLDOWN_DAYS=0`.
+- **Disproof:** if buys on the 2nd+ debate of a name have the same forward excess as
+  first-debate buys, repetition is harmless and only the process-cost argument stands.
+- **Confounds to log:** (a) the filter runs before top-N truncation, so fresh names fill
+  the slots cooled names used to hold — and the EXP-002 baseline twin sees the filtered
+  list; (b) debates before 2026-10-06 carry no `context`, so for the first 5 trading days
+  only the clock (not a trigger) can lift their cooldown; (c) holidays count as trading
+  days (cooldown errs shorter).
+
 ## Process notes & confound log
 Not experiments — freeze-exempt process/reliability changes that move the *conditions*
 under which running experiments are measured. Check this list before reading any metric.

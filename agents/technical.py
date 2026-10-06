@@ -20,6 +20,7 @@ import pandas as pd
 import config
 from core.journal import log_tech_shadow
 from core.llm_json import complete_json, get_client
+from core.volume import relative_volume
 
 logger = logging.getLogger(__name__)
 
@@ -204,8 +205,10 @@ def analyse(symbol: str, bars: list[dict]) -> dict:
     trend    = _trend(closes)
     adx      = _adx(bars)
     sr       = _support_resistance(bars)
-    avg_vol  = sum(volumes[-21:-1]) / 20 if len(volumes) >= 21 else 0
-    vol_ratio = round(volumes[-1] / avg_vol, 2) if avg_vol > 0 else 1.0
+    # WS-D (2026-10-05): volumes[-1] is TODAY's in-progress bar — core.volume normalises it
+    # by the expected session fraction (raw ratio read ~0.3x intraday on a normal day).
+    rv        = relative_volume(bars)
+    vol_ratio = round(rv, 2) if rv is not None else 1.0
 
     indicators = {
         "rsi":           rsi,

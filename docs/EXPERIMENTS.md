@@ -66,6 +66,8 @@ Status values: `proposed` → `running` → `accepted` / `rejected` / `inconclus
   monotonic conviction→P&L calibration at ≥20 closed trades.
 - **Failure:** funnel stays ~closed (zero-trade rate > 95%) for 3 more weeks, or
   calibration stays flat/inverted → the rubric is relabeling, not discriminating.
+- **Confound (2026-10-05, WS-D):** the "volume ≥ average" rubric test read a raw partial-bar
+  ratio intraday (~0.3× on a normal day) until the session-aware fix — pre-fix conviction is biased down.
 
 ## EXP-005 — TYPE-B skip cooldown, 3 days *(retroactive)*
 - **Status:** running (enabled 2026-06-10, `0f2b260`)
@@ -75,6 +77,8 @@ Status values: `proposed` → `running` → `accepted` / `rejected` / `inconclus
   on the weekly scorecard; no cooled-down name produces a >5% 5-day SPY-relative
   move the pipeline missed (check via `baseline_shadow` + watchlist records).
 - **Failure:** missed-alpha skips rise on the scorecard → shorten cooldown to 1 day.
+- **Confound (2026-10-05, WS-D):** the screener's volume-spike factor under-read intraday
+  before the session-aware fix, so pre-fix skip/candidate mixes are biased toward low-volume names.
 
 ## EXP-006 — Dynamic universe discovery
 - **Status:** rejected (2026-07-06 audit) — failed its own gate (b): in 29 runs it
@@ -209,6 +213,8 @@ Status values: `proposed` → `running` → `accepted` / `rejected` / `inconclus
   through its stop after a lite review said "hold" on visibly broken thesis
   evidence the full path would have surfaced (fundamental deterioration).
 - **Min sample:** 25 reviews / 4 weeks. **Rollback:** `REVIEW_LITE=False`.
+- **Confound (2026-10-05, WS-D):** 8 of 13 LLM thesis exits cited a sub-0.5× "volume tripwire"
+  that was a partial-bar artifact; exits/trim precision before the volume fix are not comparable to after.
 
 ## EXP-012 — Sentinel earnings-only trigger whitelist
 - **Status:** running (started 2026-07-07)
@@ -272,6 +278,8 @@ Status values: `proposed` → `running` → `accepted` / `rejected` / `inconclus
 - **Min sample:** 40 debates / 4 weeks. **Rollback:** `PERFORMANCE_CONTEXT_ENABLED=True`.
 - **Note on confounding:** shipped ALONE, deliberately. The EXP-008 revert that the
   2026-08-12 review flagged is deferred so this measurement stays clean (see EXP-008).
+- **Confound (2026-10-05, WS-D):** the partial-bar volume ratio fed the analyst prompts and the
+  conviction rubric throughout this window until the fix; post-fix buy-rate/conviction readings are a different regime.
 
 ## Process notes & confound log
 Not experiments — freeze-exempt process/reliability changes that move the *conditions*

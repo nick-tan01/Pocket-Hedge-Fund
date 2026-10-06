@@ -22,6 +22,7 @@ from agents.screener import (
 )
 from core.data_fetcher import DataFetcher
 from core.journal import get_open_trades
+from core.volume import relative_volume
 
 logger = logging.getLogger(__name__)
 ET = ZoneInfo("America/New_York")
@@ -220,9 +221,9 @@ def _score_symbol(
         return None
     high = float(latest["high"])
     low = float(latest["low"])
-    volume = float(latest["volume"])
-    avg_volume = sum(float(b["volume"]) for b in bars[-21:-1]) / 20
-    volume_ratio = volume / avg_volume if avg_volume else 0.0
+    # WS-D (2026-10-05): after the close this equals the raw ratio; routed through
+    # core.volume so a pre-close run can't reintroduce the partial-bar understatement.
+    volume_ratio = relative_volume(bars) or 0.0
     day_return = _safe_pct(close, float(prev["close"]))
     ret_5d = _ret(bars, 5)
     ret_20d = _ret(bars, 20)

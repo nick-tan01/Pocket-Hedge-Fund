@@ -14,6 +14,8 @@ import yfinance as yf
 from alpaca.data.historical import StockHistoricalDataClient
 from alpaca.data.requests import StockLatestQuoteRequest
 
+from core.volume import relative_volume
+
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 logger = logging.getLogger(__name__)
 
@@ -184,7 +186,11 @@ def check_volume_spikes(open_trades: list[dict]) -> list[dict]:
                 continue
             avg_vol = hist["Volume"].iloc[-21:-1].mean()
             today_vol = hist["Volume"].iloc[-1]
-            ratio = today_vol / avg_vol if avg_vol else 0
+            # WS-D (2026-10-05): the last bar is in progress while the tick runs, so a raw
+            # ratio under-reads by the unexpired session fraction (see core/volume.py).
+            bars = [{"date": ts.strftime("%Y-%m-%d"), "volume": v}
+                    for ts, v in hist["Volume"].items()]
+            ratio = relative_volume(bars) or 0
             if ratio >= VOLUME_SPIKE_THRESHOLD:
                 logger.info("TRIGGER: %s volume spike %.1fx", symbol, ratio)
                 triggers.append(event(

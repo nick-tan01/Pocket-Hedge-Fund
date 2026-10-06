@@ -15,6 +15,7 @@ from zoneinfo import ZoneInfo
 import yfinance as yf
 
 from core.data_fetcher import DataFetcher
+from core.volume import relative_volume
 import config
 
 ET = ZoneInfo("America/New_York")
@@ -332,10 +333,10 @@ class Screener:
         )
 
     def _score_volume(self, bars):
-        volumes    = [b["volume"] for b in bars]
-        avg_vol    = sum(volumes[-21:-1]) / 20 if len(volumes) >= 21 else 0
-        today_vol  = volumes[-1]
-        spike_ratio = today_vol / avg_vol if avg_vol > 0 else 0
+        # WS-D (2026-10-05): same normalised ratio as agents/technical.py (today's bar is
+        # in progress intraday — see core/volume.py).
+        rv          = relative_volume(bars)
+        spike_ratio = rv if rv is not None else 0
         score = 0.0
         if spike_ratio >= config.VOLUME_SPIKE_MULT:
             score = min(1.0, (spike_ratio - config.VOLUME_SPIKE_MULT) / 2.0 + 0.5)

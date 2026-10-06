@@ -86,7 +86,7 @@ def compute_benchmark(snapshots: list[dict]) -> dict:
     # "blend at MAX_PORTFOLIO_EXPOSURE" (see `blend_exposure`).
     blend_ret = config.MAX_PORTFOLIO_EXPOSURE * spy_ret
 
-    return {
+    out = {
         "start": daily[0]["ts"][:10],
         "end":   daily[-1]["ts"][:10],
         "n_days": len(daily),
@@ -103,6 +103,21 @@ def compute_benchmark(snapshots: list[dict]) -> dict:
         "beta_vs_spy": _beta(fund_rets, spy_rets),
         "note": "daily-close sampling from run-time snapshots; intraday DD not observable",
     }
+    # v2 (EXP-018): QQQ benchmark. Snapshots written by the v2 pipeline carry
+    # qqq_price; older snapshots don't — report QQQ stats only when present.
+    qqq_days = [s for s in daily if s.get("qqq_price")]
+    if len(qqq_days) >= 2:
+        qqq = [float(s["qqq_price"]) for s in qqq_days]
+        qqq_rets = _returns(qqq)
+        f2 = [float(s["portfolio_value"]) for s in qqq_days]
+        fund_ret_q = f2[-1] / f2[0] - 1
+        qqq_ret = qqq[-1] / qqq[0] - 1
+        out["qqq_return_pct"] = round(qqq_ret * 100, 2)
+        out["excess_vs_qqq_pct"] = round((fund_ret_q - qqq_ret) * 100, 2)
+        out["qqq_peak_drawdown_pct"] = round(_peak_drawdown(qqq) * 100, 2)
+        out["qqq_sharpe"] = _sharpe(qqq_rets)
+        out["beta_vs_qqq"] = _beta(_returns(f2), qqq_rets)
+    return out
 
 
 def main():

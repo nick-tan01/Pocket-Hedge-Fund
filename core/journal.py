@@ -95,7 +95,8 @@ def _save(data: dict):
 
 # ── Public API ────────────────────────────────────────────────────────────────
 
-def log_snapshot(portfolio_value: float, cash: float, spy_price: float):
+def log_snapshot(portfolio_value: float, cash: float, spy_price: float,
+                 qqq_price: float = 0.0):
     """Record a portfolio value snapshot for the equity curve.
 
     Guards against degraded broker readings: Alpaca can transiently report
@@ -103,6 +104,9 @@ def log_snapshot(portfolio_value: float, cash: float, spy_price: float):
     hiccup), which plots as a fake cliff on the equity curve — the 2026-07-07 -41% spike.
     A book with 8% stops and <=90% deployment (MAX_PORTFOLIO_EXPOSURE) cannot drop >25% between ticks, so an
     implausible single-step collapse (or a non-positive value) is REJECTED, not recorded.
+
+    qqq_price (v2/EXP-018): optional QQQ benchmark price; stored when positive so
+    core/benchmark.py can report vs-QQQ stats. Older snapshots lack the key.
     """
     data = _load()
     # Keep config-derived display values fresh so the dashboard reflects them with no code
@@ -123,12 +127,15 @@ def log_snapshot(portfolio_value: float, cash: float, spy_price: float):
                 portfolio_value, (1 - portfolio_value / prev) * 100, prev)
             return
 
-    snaps.append({
+    snap = {
         "ts":              datetime.now(timezone.utc).isoformat(),
         "portfolio_value": round(portfolio_value, 2),
         "cash":            round(cash, 2),
         "spy_price":       round(spy_price, 2),
-    })
+    }
+    if qqq_price and qqq_price > 0:
+        snap["qqq_price"] = round(qqq_price, 2)
+    snaps.append(snap)
     # Cap snapshot history so the frequent Market-Tick snapshot (~every 15 min in market
     # hours) can't grow data.json without bound — 20000 keeps well over a year of points.
     if len(snaps) > 20000:

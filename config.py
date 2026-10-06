@@ -148,6 +148,28 @@ PYRAMID_MAX_POSITION_PCT = 0.08    # guardrail 2: total position <= 8% NAV after
 PYRAMID_52W_BLOCK_PCT    = 0.05    # guardrail 3: conservative — block within 5% of the 52w high
 PYRAMID_MIN_STOP_GAP_PCT = 0.01    # breakeven stop must sit >= 1% below price or no add
 
+# ── v2: residual-momentum pipeline (EXP-018) ───────────────────────────────────
+# Master switch. When True, the trade workflow runs the v2 deterministic pipeline
+# (core/signal_v2.py + v2_main.py) INSTEAD of the v1 debate funnel. The dispatcher
+# slot contract, journal, and snapshot are unchanged. Default False until the
+# morning cutover decision with Nick.
+V2_ENABLED          = False
+V2_TOP_K            = 25        # names held; backtest: K=20/25/30 all pass, 25 is the middle
+V2_REBALANCE_DAYS   = 21        # monthly; weekly (5d) tested worse (higher turnover, no edge)
+V2_MAX_GROSS        = 1.00      # gross exposure cap (fraction of NAV)
+V2_MAX_POSITION_PCT = 0.10      # per-name cap; 1/25 = 4% so this never binds in practice
+V2_MIN_DOLLAR_VOL   = 10_000_000  # $10M/day avg 63d liquidity gate (point-in-time)
+V2_DD_BREAKER_PCT   = 0.10      # halt new entries if equity < 90% of trailing peak
+# Sizing is flat equal-weight. The vol-targeted variant was backtested and
+# underperformed by ~8pp/yr (1/vol weighting fights the signal: the highest-alpha
+# names are high-vol). Conviction plays NO role — dead by operator order 2026-10-06.
+# ── v2 sentiment (disabled until it proves incremental value) ─────────────────
+# The LLM layer is repositioned as a daily news/earnings sentiment FEATURE, not a
+# stock picker. agents/sentiment.py implements the interface; it returns neutral
+# until SENTIMENT_ENABLED=True AND the ablation gate passes (sentiment must add
+# Sharpe over the deterministic core alone on the backtest).
+SENTIMENT_ENABLED   = False
+
 # ── Risk / Stop loss ──────────────────────────────────────────────────────────
 # S1 (audit): when True, every filled buy gets a real STOP order resting at Alpaca
 # (gap protection between pipeline runs). The software stop check in

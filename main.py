@@ -1870,6 +1870,13 @@ def run_pipeline(
     event_details: list[dict] | None = None,
     slot: str = "",
 ):
+    # v2 (EXP-018): the deterministic residual-momentum pipeline replaces the
+    # debate funnel when enabled. Deferred import avoids a module-level cycle
+    # (v2_main imports helpers from this module).
+    if config.V2_ENABLED:
+        from v2_main import run_v2_pipeline
+        run_v2_pipeline(dry_run=dry_run, slot=slot, reason=reason)
+        return
     run_start = datetime.now(ET)
     run_type  = "pre_market" if run_start.hour < 12 else "midday"
     if _slot_already_completed(slot):
@@ -2162,7 +2169,8 @@ def run_scheduled(dry_run: bool = False):
 
 
 if __name__ == "__main__":
-    config.validate_required_env()
+    # v2 needs no LLM (sentiment disabled) — don't require the Anthropic key.
+    config.validate_required_env(require_llm=not config.V2_ENABLED)
     parser = argparse.ArgumentParser()
     parser.add_argument("--now",    action="store_true")
     parser.add_argument("--test",   action="store_true")

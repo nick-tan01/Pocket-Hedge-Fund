@@ -350,6 +350,50 @@ Status values: `proposed` → `running` → `accepted` / `rejected` / `inconclus
   closed-trade `stop_ratcheted` now includes pyramid breakeven ratchets
   (`pyramid_breakeven_stop=True` distinguishes them).
 
+## EXP-018 — v2 residual-momentum pipeline (replaces the debate funnel)
+- **Status:** proposed — **NOT YET RUNNING.** Built overnight 2026-10-06 on branch `v2`;
+  cutover to paper requires Nick's morning decision (V2_ENABLED=False until then).
+- **Change:** when `config.V2_ENABLED=True`, `main.run_pipeline` delegates to
+  `v2_main.run_v2_pipeline`: monthly (first run of each calendar month) rebalance into
+  the top-25 names by residual momentum (T×alpha from a market-model regression, 252d
+  formation skip 21d; `core/signal_v2.py`), flat equal-weight, gross ≤ `V2_MAX_GROSS=1.00`,
+  per-name ≤ 10%. Sells drops, buys adds, re-equalizes held names drifting >1.5pp.
+  No per-name stops (backtest-faithful); the −10% account DD breaker is kept and halts
+  new entries. **Conviction plays no role — the conviction→size map is dead by operator
+  order 2026-10-06 and is not consulted.** The LLM sentiment tilt (`agents/sentiment_v2.py`)
+  is wired but DISABLED (`SENTIMENT_ENABLED=False`) until its ablation gate passes.
+  Dispatcher slot contract honored via the `v2-` slot namespace (no collision with v1
+  slots); journal trades tagged `strategy: "v2"`; snapshots carry `qqq_price` so
+  `core/benchmark.py` reports vs-QQQ stats. Cutover from v1 is explicit
+  (`v2_main.py --cutover` liquidates non-v2 positions, journaled) — never automatic.
+- **Hypothesis:** the v1 LLM funnel has no demonstrated alpha (baseline twin beats it;
+  conviction uncalibrated). A deterministic residual-momentum core — the research memo's
+  #2-ranked construction — beats SPY and QQQ net of costs.
+- **Phase-1 backtest (the acceptance test — PASSED 2026-10-06):**
+  `scripts/backtest_v2.py`, 2023-01→2026-09, 112-name large-cap universe, 5bps one-way
+  costs, next-open execution, no lookahead (regression-tested), walk-forward IS/OOS.
+  Residual K=25 eq monthly: **+35.96% CAGR full (+14.0pp vs SPY, +3.6pp vs QQQ)**,
+  maxDD −24.9%, Sharpe 1.35, turnover 5.6x/yr; **OOS 2025-01→2026-09: +37.77%
+  (+20.0pp/+13.4pp)**; IS 2023-24: +34.63% (+8.7pp vs SPY, −5.5pp vs QQQ).
+  Robustness: K=20/30 also pass; survives 4x costs (20bps → +35.78%); weekly
+  rebalance worse; vol-targeted sizing worse (−8pp/yr — 1/vol fights the signal).
+  52-week-high tested and FAILED everywhere (−6 to −8pp vs SPY) — not used.
+- **Known limits (stated up front):** (a) ~6.4pp/yr of the SPY excess is universe
+  (survivorship/curation) bias — equal-weight buy-and-hold of the 112 does +28.34%;
+  the signal's value-add over its own universe is ≈ +7.6pp/yr. (b) Sharpe trails both
+  benchmarks (1.35 vs 1.41/1.50) — higher return via higher vol, not efficiency.
+  (c) WILL suffer −25% drawdowns (two −24% episodes OOS); the live −10% breaker will
+  trigger in real trading and will cut recoveries as well as falls — not modeled.
+  (d) IS lost to QQQ (−5.5pp); QQQ's +40%/yr 2023-24 was an extreme concentration regime.
+- **Metric / success (12 weeks live paper):** fund excess vs SPY > 0 and vs QQQ > 0
+  (benchmark.py `excess_vs_spy_pct`, `excess_vs_qqq_pct`); maxDD < 30%.
+- **Failure → rollback:** DD breaker trips twice, OR 12-week excess vs SPY < −5pp.
+  Rollback: `V2_ENABLED=False` (v1 pipeline resumes; v1 positions were cut over, so
+  rollback starts from the v2 book — document holdings at rollback).
+- **Confounds to log:** v1's EXP-017 (gross 0.90, pyramiding) is the live book until
+  cutover — v2's first weeks run a different book; the cutover liquidation itself
+  realizes v1 P&L on day one; monthly (not 21-trading-day) rebalance ≈ backtest cadence.
+
 ## Process notes & confound log
 Not experiments — freeze-exempt process/reliability changes that move the *conditions*
 under which running experiments are measured. Check this list before reading any metric.

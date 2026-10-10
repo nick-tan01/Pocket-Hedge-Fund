@@ -39,6 +39,9 @@ def harness(tmp_journal, monkeypatch):
     calls = {"review": 0, "screener": 0, "analyse": 0, "baseline": 0}
     state = {"alpaca": FakeAlpaca()}
 
+    # These tests pin v1's late-run policy: force the v1 pipeline path
+    # even though V2_ENABLED=True in production config.
+    monkeypatch.setattr(config, "V2_ENABLED", False)
     monkeypatch.setattr(main, "AlpacaClient", lambda: state["alpaca"])
     monkeypatch.setattr(main, "DataFetcher", FakeFetcher)
     monkeypatch.setattr(main, "check_hard_stops", lambda a, f: (True, "", "bull", "normal"))

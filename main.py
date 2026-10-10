@@ -2182,8 +2182,16 @@ if __name__ == "__main__":
                         help="JSON event metadata from sentinel")
     parser.add_argument("--slot", default="",
                         help="Trade slot label (UTC, YYYY-MM-DDTHH:MM) — idempotency key")
+    parser.add_argument("--cutover", action="store_true",
+                        help="One-time v1 -> v2 cutover: liquidate non-v2 positions. "
+                             "Explicit only — never runs as part of the regular pipeline.")
     args = parser.parse_args()
-    if args.now or args.test:
+    if args.cutover:
+        if not config.V2_ENABLED:
+            raise SystemExit("refusing --cutover with V2_ENABLED=False")
+        from v2_main import run_cutover
+        run_cutover(dry_run=args.test, slot=args.slot.strip())
+    elif args.now or args.test:
         run_pipeline(
             dry_run=args.test,
             slot=args.slot.strip(),

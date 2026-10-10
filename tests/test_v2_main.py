@@ -141,3 +141,43 @@ def test_rebalance_live_executes_diff(tmp_journal, monkeypatch):
     assert {t["symbol"] for t in _v2_positions()} == {"AAA", "BBB"}
     assert all(t.get("strategy") == "v2" for t in _v2_positions())
     assert trades >= 2
+
+
+def _cutover_alpaca():
+    a = _FakeAlpaca()
+    a.get_order = lambda oid: {"status": "filled", "filled_avg_price": 101.0,
+                              "filled_qty": 10}
+    return a
+
+
+def test_cutover_closes_only_non_v2_positions(tmp_journal, monkeypatch):
+    t1 = log_trade_open("AAA", "buy", 10, 100.0, 90.0, 0, "",
+                        portfolio_value=100000)  # v1: no strategy tag
+    t2 = log_trade_open("BBB", "buy", 10, 100.0, 90.0, 0, "",
+                        portfolio_value=100000)
+    update_open_trade(t2, {"strategy": "v2"})
+    alpaca = _cutover_alpaca()
+    monkeypatch.setattr(v2_main, "AlpacaClient", lambda: alpaca)
+    v2_main.run_cutover(slot="2026-10-12T14:05")
+    assert alpaca.closed == ["AAA"]
+    remaining = {t["symbol"] for t in get_open_trades()}
+    assert remaining == {"BBB"}
+
+
+def test_cutover_idempotent_per_slot(tmp_journal, monkeypatch):
+    log_trade_open("AAA", "buy", 10, 100.0, 90.0, 0, "", portfolio_value=100000)
+    alpaca = _cutover_alpaca()
+    monkeypatch.setattr(v2_main, "AlpacaClient", lambda: alpaca)
+    v2_main.run_cutover(slot="2026-10-12T14:05")
+    assert alpaca.closed == ["AAA"]
+    v2_main.run_cutover(slot="2026-10-12T14:05")  # same slot: no-op
+    assert alpaca.closed == ["AAA"]
+
+
+def test_cutover_dry_run_closes_nothing(tmp_journal, monkeypatch):
+    log_trade_open("AAA", "buy", 10, 100.0, 90.0, 0, "", portfolio_value=100000)
+    alpaca = _cutover_alpaca()
+    monkeypatch.setattr(v2_main, "AlpacaClient", lambda: alpaca)
+    v2_main.run_cutover(dry_run=True, slot="2026-10-12T14:05")
+    assert alpaca.closed == []
+    assert {t["symbol"] for t in get_open_trades()} == {"AAA"}

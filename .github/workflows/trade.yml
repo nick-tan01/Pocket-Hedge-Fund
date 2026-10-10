@@ -25,6 +25,11 @@ on:
         description: "Compact JSON event metadata from sentinel"
         required: false
         default: "[]"
+      cutover:
+        description: "One-time v1 -> v2 cutover: liquidate non-v2 positions (explicit only)"
+        required: false
+        default: false
+        type: boolean
 
 permissions:
   contents: write
@@ -109,7 +114,13 @@ jobs:
           RUN_REASON:        ${{ github.event.inputs.reason || 'scheduled' }}
           EVENT_SYMBOLS:     ${{ github.event.inputs.symbols || '' }}
           EVENT_DETAILS:     ${{ github.event.inputs.event_details || '[]' }}
-        run: python main.py --now --reason "$RUN_REASON" --symbols "$EVENT_SYMBOLS" --event-details "$EVENT_DETAILS" --slot "$SLOT"
+          CUTOVER:           ${{ github.event.inputs.cutover || 'false' }}
+        run: |
+          if [ "$CUTOVER" = "true" ]; then
+            python main.py --cutover --slot "$SLOT"
+          else
+            python main.py --now --reason "$RUN_REASON" --symbols "$EVENT_SYMBOLS" --event-details "$EVENT_DETAILS" --slot "$SLOT"
+          fi
 
       - name: Push updated dashboard data
         # Journal salvage (audit 2026-07-06): this step used to run only on success, so

@@ -153,7 +153,7 @@ PYRAMID_MIN_STOP_GAP_PCT = 0.01    # breakeven stop must sit >= 1% below price o
 # (core/signal_v2.py + v2_main.py) INSTEAD of the v1 debate funnel. The dispatcher
 # slot contract, journal, and snapshot are unchanged. Default False until the
 # morning cutover decision with Nick.
-V2_ENABLED          = False
+V2_ENABLED          = True   # cutover 2026-10-09: v2 residual-momentum pipeline is live
 V2_TOP_K            = 25        # names held; backtest: K=20/25/30 all pass, 25 is the middle
 V2_REBALANCE_DAYS   = 21        # monthly; weekly (5d) tested worse (higher turnover, no edge)
 V2_MAX_GROSS        = 1.00      # gross exposure cap (fraction of NAV)

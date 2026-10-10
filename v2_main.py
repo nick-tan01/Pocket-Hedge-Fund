@@ -311,11 +311,16 @@ def run_v2_pipeline(dry_run: bool = False, slot: str = "",
         push_to_github()
 
 
-def run_cutover(dry_run: bool = False) -> None:
+def run_cutover(dry_run: bool = False, slot: str = "") -> None:
     """EXPLICIT one-time v1 -> v2 cutover: liquidate non-v2 positions.
 
     Never runs as part of the regular pipeline. Journaled as v2_cutover.
+    Idempotent per v2 slot namespace: a completed cutover slot exits 0.
     """
+    slot_v2 = v2_slot(slot)
+    if slot_v2 and v1._slot_already_completed(slot_v2):
+        logger.info("v2 cutover: slot %s already completed — exiting", slot_v2)
+        return
     alpaca = AlpacaClient()
     n = 0
     for trade in get_open_trades():
@@ -332,7 +337,7 @@ def run_cutover(dry_run: bool = False) -> None:
         log_trade_close(trade["id"], px, "v2_cutover")
         n += 1
     log_run("v2_cutover", [], n, reason="manual",
-            run_meta=_v2_run_meta("", False, cutover_closed=n))
+            run_meta=_v2_run_meta(slot_v2, False, cutover_closed=n))
     logger.info("v2 cutover complete — closed %d non-v2 positions", n)
 
 

@@ -4000,6 +4000,14 @@
       "spy_price": 777.97,
       "qqq_price": 746.2,
       "mtum_price": 316.31
+    },
+    {
+      "ts": "2026-10-12T17:00:44.573621+00:00",
+      "portfolio_value": 99325.95,
+      "cash": -18.48,
+      "spy_price": 777.65,
+      "qqq_price": 745.87,
+      "mtum_price": 315.7
     }
   ],
   "trades": [
@@ -74118,6 +74126,21 @@
       "started_at": "2026-10-12T14:08:37.517801+00:00",
       "github_run_id": "38260435638",
       "v2_rebalanced": true,
+      "v2_signal": "residual",
+      "v2_top_k": 25
+    },
+    {
+      "ts": "2026-10-12T17:00:49.566867+00:00",
+      "run_type": "v2",
+      "candidates": [],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "external_dispatch",
+      "strategy": "v2",
+      "slot": "v2-2026-10-12T17:00",
+      "started_at": "2026-10-12T17:00:49.525364+00:00",
+      "github_run_id": "38281300030",
+      "v2_rebalanced": false,
       "v2_signal": "residual",
       "v2_top_k": 25
     }
@@ -172832,7 +172855,7 @@
     }
   ],
   "v2_benchmark": {
-    "computed_at": "2026-10-12T14:08:37.287452+00:00",
+    "computed_at": "2026-10-12T17:00:49.282509+00:00",
     "era_start": "2026-10-12T14:07:09.839357+00:00",
     "min_days": 20,
     "rf": 0.0,

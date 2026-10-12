@@ -1,0 +1,40 @@
+name: Pocket Hedge Fund — Trade Clock
+
+# GitHub-only on-time dispatch (see scripts/trade_clock.py). Schedule delivery for this repo
+# runs 1-6 h late, so several early seeds are spread across the night; the first to arrive
+# sleeps until each trade slot (14:05 / 17:00 UTC) and fires trade.yml via workflow_dispatch,
+# which starts in seconds. Odd minute (:43) on purpose — top-of-hour crons are the most delayed.
+# Runner time is free on this PUBLIC repo; if the repo goes private this costs Actions minutes.
+on:
+  schedule:
+    - cron: '43 2,4,6,8,10,12 * * 1-5'
+  workflow_dispatch:
+    inputs:
+      selftest:
+        description: "Off-hours only: dispatch one unslotted trade run to prove the token works"
+        type: boolean
+        default: false
+
+permissions:
+  actions: write     # dispatch trade.yml / chain a fresh clock (GITHUB_TOKEN may fire workflow_dispatch)
+  contents: read
+
+# One clock at a time. Extra seeds queue (GitHub keeps one pending) and exit fast once the
+# day's slots are dispatched; a pending seed also extends coverage if a clock dies.
+concurrency:
+  group: trade-clock
+  cancel-in-progress: false
+
+jobs:
+  clock:
+    runs-on: ubuntu-latest
+    timeout-minutes: 355
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Sleep until each trade slot, then dispatch it
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO:  ${{ github.repository }}
+        run: python3 -m scripts.trade_clock ${{ inputs.selftest && '--selftest' || '' }}

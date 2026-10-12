@@ -353,9 +353,10 @@ Status values: `proposed` → `running` → `accepted` / `rejected` / `inconclus
 ## EXP-018 — v2 residual-momentum pipeline (replaces the debate funnel)
 - **Status:** running — `V2_ENABLED=True` since 2026-10-09 (10b2311). No v2 run had
   executed as of 2026-10-11 (every GH-cron slot 10-06..09 arrived post-gate); first
-  tradable run expected 2026-10-12 14:05 UTC via the local dispatcher. `--cutover`
-  NOT yet executed as of 2026-10-11 — until it is, the rebalance skips names still
-  held by v1 trades (no double-booking), so v2 starts slightly under-filled.
+  tradable run expected 2026-10-12 14:05 UTC via trade_clock.yml. Cutover approved by
+  Nick 2026-10-11: `V2_CUTOVER_DATE=2026-10-12` — the first tradable v2 run on/after that
+  date liquidates the v1 book (AMD, CVX, GOOGL, LLY) BEFORE its first rebalance; one-shot.
+  If it hasn't run, the rebalance skips names still held by v1 (no double-booking).
 - **Change:** when `config.V2_ENABLED=True`, `main.run_pipeline` delegates to
   `v2_main.run_v2_pipeline`: monthly (first run of each calendar month) rebalance into
   the top-25 names by residual momentum (T×alpha from a market-model regression, 252d

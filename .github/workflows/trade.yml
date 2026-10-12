@@ -1,4 +1,6 @@
 name: Pocket Hedge Fund — Trading Pipeline
+# Slot in the title: trade_clock.py reads it to skip slots already dispatched.
+run-name: ${{ inputs.slot && format('Trading Pipeline · slot {0}', inputs.slot) || '' }}
 
 on:
   schedule:

@@ -28,7 +28,18 @@ Design (already in the repo, WS-A):
   and those times exactly**, or the two paths will not dedupe and the day trades twice.
 - `heartbeat.yml` checks the same slots (`--slots 14:05,17:00`) — keep all three in sync.
 
-## Interim: local launchd dispatcher (live since 2026-10-11)
+## Primary (2026-10-12): GitHub-only trade clock — no Cloudflare, no Mac
+
+Measured: schedule delivery for this repo was never on time (median 1h45m–4h10m late by
+month since 2026-05; 9 of 218 trade runs on time). Pre-October it *looked* fine only
+because 13:30 UTC + ~2 h landed inside market hours. `trade_clock.yml` fixes it on GitHub
+alone: seeds at `43 2,4,6,8,10,12 * * 1-5`; the first to arrive sleeps until 14:05 / 17:00
+UTC and fires trade.yml via `workflow_dispatch` with the GITHUB_TOKEN (starts in seconds);
+past its ~5h40m lifetime it chains a fresh clock. Slot shown in the trade run title
+("Trading Pipeline · slot …"). The Cloudflare Worker below is now optional.
+Self-test (off-hours only): `gh workflow run trade_clock.yml -f selftest=true`.
+
+## Backup: local launchd dispatcher (live since 2026-10-11)
 
 Until the Worker is deployed, `scripts/local_dispatch.py` does the same job from Nick's
 Mac: launchd (`~/Library/LaunchAgents/com.nicktan.phf-dispatch.plist`, every 5 min) calls

@@ -154,6 +154,10 @@ PYRAMID_MIN_STOP_GAP_PCT = 0.01    # breakeven stop must sit >= 1% below price o
 # slot contract, journal, and snapshot are unchanged. Default False until the
 # morning cutover decision with Nick.
 V2_ENABLED          = True   # cutover 2026-10-09: v2 residual-momentum pipeline is live
+# One-shot v1 -> v2 cutover (operator-approved 2026-10-11): the first TRADABLE v2 run on
+# or after this UTC date liquidates non-v2 positions before rebalancing. Never repeats
+# (a journaled v2_cutover run disables it). "" = off; manual --cutover still works.
+V2_CUTOVER_DATE     = "2026-10-12"
 V2_TOP_K            = 25        # names held; backtest: K=20/25/30 all pass, 25 is the middle
 V2_REBALANCE_DAYS   = 21        # monthly; weekly (5d) tested worse (higher turnover, no edge)
 V2_MAX_GROSS        = 1.00      # gross exposure cap (fraction of NAV)

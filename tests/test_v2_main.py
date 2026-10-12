@@ -8,7 +8,7 @@ import pytest
 import config
 import v2_main
 from v2_main import v2_slot, _last_v2_rebalance_month, _v2_positions
-from core.journal import (get_open_trades, log_run, log_trade_open,
+from core.journal import (get_open_trades, get_runs, log_run, log_trade_open,
                           update_open_trade)
 
 
@@ -200,3 +200,73 @@ def test_rebalance_never_double_books_a_symbol_held_by_v1(tmp_journal, monkeypat
     v2_main._execute_rebalance(alpaca, _FakeFetcher(), dry_run=False, reason="test")
     assert [s for s, q, d in alpaca.orders if d == "buy"] == ["BBB"]
     assert [t["symbol"] for t in get_open_trades() if t["symbol"] == "AAA"] == ["AAA"]
+
+
+# ── Scheduled one-shot cutover (V2_CUTOVER_DATE) ───────────────────────────────
+# Operator approved 2026-10-11: cut over on the first TRADABLE v2 run on/after the date,
+# inside the regular pipeline (so it needs no extra trigger), BEFORE the rebalance — so the
+# rebalance sees a clean book and buys the full top-K.
+
+def _wire_pipeline(monkeypatch, alpaca, gate=""):
+    calls = []
+    monkeypatch.setattr(v2_main, "AlpacaClient", lambda: alpaca)
+    monkeypatch.setattr(v2_main, "DataFetcher", lambda: _FakeFetcher())
+    monkeypatch.setattr(v2_main.v1, "check_hard_stops",
+                        lambda a, f: (True, "", "neutral", "normal"))
+    monkeypatch.setattr(v2_main.v1, "_entry_gate_skip_reason", lambda a: gate)
+    monkeypatch.setattr(v2_main.v1, "can_execute_trades", lambda a: (True, ""))
+    monkeypatch.setattr(v2_main, "push_to_github", lambda *a, **k: None)
+    monkeypatch.setattr(v2_main, "_snapshot_v2", lambda *a, **k: None)
+    monkeypatch.setattr(v2_main, "_execute_rebalance",
+                        lambda *a, **k: (calls.append(("rebalance", list(alpaca.closed))) or (0, [])))
+    return calls
+
+
+def test_scheduled_cutover_runs_before_rebalance_on_date(tmp_journal, monkeypatch):
+    log_trade_open("AAA", "buy", 10, 100.0, 90.0, 7, "", portfolio_value=100000)  # v1
+    monkeypatch.setattr(config, "V2_CUTOVER_DATE", "2000-01-01")
+    alpaca = _cutover_alpaca()
+    calls = _wire_pipeline(monkeypatch, alpaca)
+    v2_main.run_v2_pipeline(slot="2026-10-12T14:05")
+    assert alpaca.closed == ["AAA"]
+    assert calls == [("rebalance", ["AAA"])]          # rebalance saw the cut-over book
+    assert any(r.get("run_type") == "v2_cutover" for r in get_runs())
+
+
+def test_scheduled_cutover_waits_for_its_date(tmp_journal, monkeypatch):
+    log_trade_open("AAA", "buy", 10, 100.0, 90.0, 7, "", portfolio_value=100000)
+    monkeypatch.setattr(config, "V2_CUTOVER_DATE", "2999-01-01")
+    alpaca = _cutover_alpaca()
+    _wire_pipeline(monkeypatch, alpaca)
+    v2_main.run_v2_pipeline(slot="2026-10-12T14:05")
+    assert alpaca.closed == []
+
+
+def test_scheduled_cutover_never_fires_outside_market_hours(tmp_journal, monkeypatch):
+    log_trade_open("AAA", "buy", 10, 100.0, 90.0, 7, "", portfolio_value=100000)
+    monkeypatch.setattr(config, "V2_CUTOVER_DATE", "2000-01-01")
+    alpaca = _cutover_alpaca()
+    _wire_pipeline(monkeypatch, alpaca, gate="market_closed")
+    v2_main.run_v2_pipeline(slot="2026-10-12T14:05")
+    assert alpaca.closed == []
+
+
+def test_scheduled_cutover_is_one_shot(tmp_journal, monkeypatch):
+    # After the cutover, a stray non-v2 position (e.g. adopted by auto-reconcile) must
+    # NOT be silently liquidated on a later day.
+    monkeypatch.setattr(config, "V2_CUTOVER_DATE", "2000-01-01")
+    log_run("v2_cutover", [], 4, reason="manual")
+    log_trade_open("AAA", "buy", 10, 100.0, 90.0, 6, "", portfolio_value=100000)
+    alpaca = _cutover_alpaca()
+    _wire_pipeline(monkeypatch, alpaca)
+    v2_main.run_v2_pipeline(slot="2026-10-13T14:05")
+    assert alpaca.closed == []
+
+
+def test_scheduled_cutover_disabled_when_unset(tmp_journal, monkeypatch):
+    log_trade_open("AAA", "buy", 10, 100.0, 90.0, 7, "", portfolio_value=100000)
+    monkeypatch.setattr(config, "V2_CUTOVER_DATE", "")
+    alpaca = _cutover_alpaca()
+    _wire_pipeline(monkeypatch, alpaca)
+    v2_main.run_v2_pipeline(slot="2026-10-12T14:05")
+    assert alpaca.closed == []

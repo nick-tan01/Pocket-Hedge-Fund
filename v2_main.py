@@ -71,6 +71,18 @@ def _last_v2_rebalance_month() -> str | None:
     return None
 
 
+def _scheduled_cutover_due(now: datetime) -> bool:
+    """One-shot cutover per config.V2_CUTOVER_DATE: due on/after the date, only while
+    non-v2 positions remain, and never again once any v2_cutover run is journaled (so a
+    stray position adopted by auto-reconcile later is not silently liquidated)."""
+    date = (getattr(config, "V2_CUTOVER_DATE", "") or "").strip()
+    if not date or now.strftime("%Y-%m-%d") < date:
+        return False
+    if any(r.get("run_type") == "v2_cutover" for r in get_runs()):
+        return False
+    return any(t.get("strategy") != "v2" for t in get_open_trades())
+
+
 def _v2_positions() -> list[dict]:
     return [t for t in get_open_trades() if t.get("strategy") == "v2"]
 
@@ -301,6 +313,12 @@ def run_v2_pipeline(dry_run: bool = False, slot: str = "",
     last = _last_v2_rebalance_month()
     trades, picks = 0, []
     rebalanced = False
+    # 3b) scheduled one-shot cutover — inside the entry gate (market open), BEFORE the
+    # rebalance so the rebalance sees a clean book and buys the full top-K.
+    if _scheduled_cutover_due(run_start):
+        logger.info("v2: scheduled cutover due (V2_CUTOVER_DATE=%s)", config.V2_CUTOVER_DATE)
+        run_cutover(dry_run=dry_run)
+        account = alpaca.get_account()   # snapshot must show the post-cutover book
     if last != month:
         can_trade, why = v1.can_execute_trades(alpaca)
         if can_trade:

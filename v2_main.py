@@ -133,6 +133,10 @@ def _execute_rebalance(alpaca: AlpacaClient, fetcher: DataFetcher, dry_run: bool
         logger.warning("v2: DD check failed (%s) — proceeding", e)
 
     current = {t["symbol"]: t for t in _v2_positions()}
+    # Pre-cutover, v1 trades may still hold target names. Buying them again would put a
+    # second open_trade on one broker position, and a later --cutover would liquidate the
+    # v2 shares with it. Skip those names until the cutover frees them.
+    v1_held = {t["symbol"] for t in get_open_trades() if t.get("strategy") != "v2"}
     live = {p["symbol"]: p for p in alpaca.get_positions()}
     trades = 0
 
@@ -158,6 +162,9 @@ def _execute_rebalance(alpaca: AlpacaClient, fetcher: DataFetcher, dry_run: bool
     # 2) BUY adds (in target, not in book) — skipped under DD halt
     for sym, w in weights.items():
         if sym in current or dd_halt:
+            continue
+        if sym in v1_held:
+            logger.warning("v2: %s still held by a v1 trade — skipping buy until cutover", sym)
             continue
         notional = pv * w
         px = alpaca.get_latest_price(sym)

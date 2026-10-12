@@ -102,3 +102,22 @@ def test_age_hours_parses_utc_and_naive():
     assert _age_hours("garbage") is None
     assert _age_hours("2020-01-01T00:00:00") > 1000
     assert pytest.approx(0, abs=0.05) == _age_hours(datetime.now(timezone.utc).isoformat())
+
+
+def test_v2_namespaced_slot_covers_its_slot_2026_10_11():
+    # v2 (EXP-018) journals its slot as "v2-<slot>" so it never collides with v1 labels.
+    # The heartbeat must treat that as covering the slot, or it goes red every trading
+    # day under v2 even when the run was on time.
+    runs = [run("2026-10-12T14:06", slot="v2-2026-10-12T14:05")]
+    assert evaluate_slot_liveness(runs, T("2026-10-12T15:40")) == []
+
+
+def test_v2_slot_of_earlier_slot_does_not_cover_later_slot():
+    runs = [run("2026-10-12T14:06", slot="v2-2026-10-12T14:05")]
+    assert len(evaluate_slot_liveness(runs, T("2026-10-12T18:40"))) == 1
+
+
+def test_v2_cutover_slot_does_not_count_as_a_trade_run():
+    # A cutover run is not the scheduled pipeline; only an exact v2-/v1 slot match covers.
+    runs = [run("2026-10-12T14:06", slot="v2-cutover-2026-10-12T14:05")]
+    assert len(evaluate_slot_liveness(runs, T("2026-10-12T15:40"))) == 1

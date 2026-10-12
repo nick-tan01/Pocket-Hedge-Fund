@@ -28,6 +28,16 @@ Design (already in the repo, WS-A):
   and those times exactly**, or the two paths will not dedupe and the day trades twice.
 - `heartbeat.yml` checks the same slots (`--slots 14:05,17:00`) — keep all three in sync.
 
+## Interim: local launchd dispatcher (live since 2026-10-11)
+
+Until the Worker is deployed, `scripts/local_dispatch.py` does the same job from Nick's
+Mac: launchd (`~/Library/LaunchAgents/com.nicktan.phf-dispatch.plist`, every 5 min) calls
+`gh workflow run trade.yml -f slot=<YYYY-MM-DDTHH:MM> -f reason=external_dispatch` for each
+passed, undispatched weekday slot before 20:00 UTC. Same slot strings → the GH cron dedupes.
+Needs the Mac awake (asleep → dispatches on wake; off → GH cron fallback). Log:
+`~/Library/Logs/phf-dispatch.log`. Remove with
+`launchctl bootout gui/$(id -u)/com.nicktan.phf-dispatch` once the Worker is live.
+
 ## What you need
 
 1. A Cloudflare account (free plan is enough: cron triggers are free, 1 invocation per slot).

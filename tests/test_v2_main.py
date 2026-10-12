@@ -181,3 +181,22 @@ def test_cutover_dry_run_closes_nothing(tmp_journal, monkeypatch):
     v2_main.run_cutover(dry_run=True, slot="2026-10-12T14:05")
     assert alpaca.closed == []
     assert {t["symbol"] for t in get_open_trades()} == {"AAA"}
+
+
+def test_rebalance_never_double_books_a_symbol_held_by_v1(tmp_journal, monkeypatch):
+    # Pre-cutover, v1 still holds names. A v2 BUY of the same symbol would create a
+    # second open_trade for one broker position — and a later --cutover's
+    # close_position() would then liquidate the v2 shares too. Skip, don't double-book.
+    monkeypatch.setattr(v2_main.signal_v2, "compute_scores", _canned_scores)
+    monkeypatch.setattr(v2_main.v1, "_await_fill",
+                        lambda alpaca, oid: (100.0, 500.0))
+    monkeypatch.setattr(config, "V2_TOP_K", 2)  # target: AAA, BBB
+    monkeypatch.setattr(config, "V2_MAX_GROSS", 1.0)
+    log_trade_open("AAA", "buy", 40, 100.0, 90.0, 7, "", portfolio_value=100000)  # v1
+    alpaca = _FakeAlpaca(positions=[
+        {"symbol": "AAA", "qty": 40, "avg_entry": 100.0, "current_price": 100.0,
+         "market_value": 4000.0},
+    ])
+    v2_main._execute_rebalance(alpaca, _FakeFetcher(), dry_run=False, reason="test")
+    assert [s for s, q, d in alpaca.orders if d == "buy"] == ["BBB"]
+    assert [t["symbol"] for t in get_open_trades() if t["symbol"] == "AAA"] == ["AAA"]

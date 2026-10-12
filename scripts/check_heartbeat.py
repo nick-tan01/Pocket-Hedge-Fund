@@ -122,7 +122,8 @@ def evaluate_slot_liveness(runs: list, now: datetime,
     for r in runs or []:
         if not isinstance(r, dict):
             continue
-        if r.get("slot") == label:
+        # v2 (EXP-018) namespaces its slot as "v2-<slot>"; it covers the same slot.
+        if r.get("slot") in (label, f"v2-{label}"):
             return []
         ts = _parse_ts(r.get("ts"))
         if ts is not None and not r.get("slot") and ts >= slot_at:

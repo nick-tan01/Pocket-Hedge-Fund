@@ -20,6 +20,7 @@ from alpaca.trading.enums import OrderSide, TimeInForce, QueryOrderStatus
 from alpaca.data.historical import StockHistoricalDataClient
 from alpaca.data.requests import StockBarsRequest, StockLatestQuoteRequest
 from alpaca.data.timeframe import TimeFrame
+from alpaca.data.enums import Adjustment
 from datetime import datetime, timedelta
 import pytz
 
@@ -443,6 +444,30 @@ class AlpacaClient:
                     "volume": _i(getattr(b, "volume", None)),
                 })
         return sorted(result, key=lambda x: x["date"])[-days:]
+
+    def get_daily_closes(self, symbols: list[str], start_date: str) -> dict:
+        """Split-adjusted daily closes for many symbols in ONE request (paginated by the SDK).
+
+        {symbol: {YYYY-MM-DD (ET): close}} from start_date (YYYY-MM-DD) to now. Used only
+        by the v2 benchmark (equal-weight universe); returns {} on any failure and drops
+        None/non-positive closes, so a degraded payload can never crash a run.
+        """
+        try:
+            start = ET.localize(datetime.strptime(start_date, "%Y-%m-%d"))
+            req = StockBarsRequest(symbol_or_symbols=list(symbols), timeframe=TimeFrame.Day,
+                                   start=start, adjustment=Adjustment.SPLIT)
+            bars = _retry_read(lambda: self.data.get_stock_bars(req), "get_daily_closes")
+            out: dict = {}
+            for sym, rows in (getattr(bars, "data", None) or {}).items():
+                for b in rows or []:
+                    close = _f(getattr(b, "close", None))
+                    ts = getattr(b, "timestamp", None)
+                    if close > 0 and ts is not None:
+                        out.setdefault(sym, {})[ts.astimezone(ET).strftime("%Y-%m-%d")] = close
+            return out
+        except Exception as e:
+            logger.warning("get_daily_closes failed (%d symbols): %s", len(symbols), e)
+            return {}
 
     def get_latest_price(self, symbol: str) -> float | None:
         """Return the latest TRADE price for a symbol.

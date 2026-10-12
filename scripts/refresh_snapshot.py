@@ -66,7 +66,11 @@ def main():
         snaps = get_snapshots()
         spy = snaps[-1].get("spy_price", 0) if snaps else 0
 
-    log_snapshot(pv, cash, float(spy or 0))
+    # QQQ + MTUM too, so the day's LAST snapshot (usually this tick) carries every v2
+    # benchmark — core/benchmark.py pairs fund and benchmark from the same snapshot.
+    qqq = alpaca.get_latest_price("QQQ") or 0.0
+    mtum = alpaca.get_latest_price("MTUM") or 0.0
+    log_snapshot(pv, cash, float(spy or 0), qqq_price=qqq, mtum_price=mtum)
     print(f"refresh_snapshot: pv=${pv:,.2f} cash=${cash:,.2f} spy={spy} "
           f"positions={len(positions)}")
 

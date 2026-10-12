@@ -367,8 +367,13 @@ Status values: `proposed` → `running` → `accepted` / `rejected` / `inconclus
   order 2026-10-06 and is not consulted.** The LLM sentiment tilt (`agents/sentiment_v2.py`)
   is wired but DISABLED (`SENTIMENT_ENABLED=False`) until its ablation gate passes.
   Dispatcher slot contract honored via the `v2-` slot namespace (no collision with v1
-  slots); journal trades tagged `strategy: "v2"`; snapshots carry `qqq_price` so
-  `core/benchmark.py` reports vs-QQQ stats. Cutover from v1 is explicit
+  slots); journal trades tagged `strategy: "v2"`; snapshots carry `qqq_price` and
+  `mtum_price` so `core/benchmark.py` reports vs-QQQ/MTUM stats. **Live measurement
+  (added 2026-10-11, measurement only):** every v2 snapshot refreshes
+  `data.json["v2_benchmark"]` — v2-era-only (anchored at the first v2 trade / rebalance,
+  not the 10-12 04:42Z clock self-tests) daily OLS vs SPY, QQQ, MTUM and an equal-weight
+  buy-and-hold of the universe: beta, annualized alpha with t-stat and 95% CI, IR.
+  Shows "insufficient data (n=…)" below 20 daily returns. Dashboard: "v2 Alpha" panel. Cutover from v1 is explicit
   (`v2_main.py --cutover` liquidates non-v2 positions, journaled) — never automatic.
 - **Hypothesis:** the v1 LLM funnel has no demonstrated alpha (baseline twin beats it;
   conviction uncalibrated). A deterministic residual-momentum core — the research memo's

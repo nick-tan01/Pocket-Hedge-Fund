@@ -96,7 +96,7 @@ def _save(data: dict):
 # ── Public API ────────────────────────────────────────────────────────────────
 
 def log_snapshot(portfolio_value: float, cash: float, spy_price: float,
-                 qqq_price: float = 0.0):
+                 qqq_price: float = 0.0, mtum_price: float = 0.0):
     """Record a portfolio value snapshot for the equity curve.
 
     Guards against degraded broker readings: Alpaca can transiently report
@@ -107,6 +107,8 @@ def log_snapshot(portfolio_value: float, cash: float, spy_price: float,
 
     qqq_price (v2/EXP-018): optional QQQ benchmark price; stored when positive so
     core/benchmark.py can report vs-QQQ stats. Older snapshots lack the key.
+    mtum_price: same, for MTUM (iShares momentum ETF) — the buyable momentum factor
+    v2's alpha is measured against.
     """
     data = _load()
     # Keep config-derived display values fresh so the dashboard reflects them with no code
@@ -135,6 +137,8 @@ def log_snapshot(portfolio_value: float, cash: float, spy_price: float,
     }
     if qqq_price and qqq_price > 0:
         snap["qqq_price"] = round(qqq_price, 2)
+    if mtum_price and mtum_price > 0:
+        snap["mtum_price"] = round(mtum_price, 2)
     snaps.append(snap)
     # Cap snapshot history so the frequent Market-Tick snapshot (~every 15 min in market
     # hours) can't grow data.json without bound — 20000 keeps well over a year of points.
@@ -142,6 +146,15 @@ def log_snapshot(portfolio_value: float, cash: float, spy_price: float,
         data["snapshots"] = snaps[-20000:]
     _save(data)
     logger.debug("Snapshot logged: $%.2f", portfolio_value)
+
+
+def set_v2_benchmark(stats: dict):
+    """Overwrite data["v2_benchmark"] with the latest core.benchmark.compute_v2_alpha
+    block. A single dict replaced each time — bounded by construction, so no
+    _ARRAY_CAPS entry is needed."""
+    data = _load()
+    data["v2_benchmark"] = stats
+    _save(data)
 
 
 def log_trade_open(

@@ -38,7 +38,7 @@ import main as v1
 import config
 from agents import sentiment_v2
 from agents.screener import Screener
-from core import signal_v2
+from core import benchmark, signal_v2
 from core.alpaca_client import AlpacaClient
 from core.data_fetcher import DataFetcher
 from core.journal import (clear_queued_action, get_open_trades, get_runs,
@@ -102,12 +102,18 @@ def _v2_run_meta(slot_v2: str, rebalanced: bool, **extra) -> dict:
 
 
 def _snapshot_v2(alpaca: AlpacaClient, fetcher: DataFetcher, account: dict) -> None:
-    """Snapshot with QQQ price (benchmark.py picks it up when present)."""
+    """Snapshot with QQQ + MTUM prices, then refresh the v2 alpha block (benchmark.py).
+    The alpha refresh is measurement only and can never fail the run."""
     from core.journal import log_snapshot
     spy_px = alpaca.get_latest_price("SPY") or 0.0
     qqq_px = alpaca.get_latest_price("QQQ") or 0.0
+    mtum_px = alpaca.get_latest_price("MTUM") or 0.0
     log_snapshot(account["portfolio_value"], account["cash"], spy_px,
-                 qqq_price=qqq_px)
+                 qqq_price=qqq_px, mtum_price=mtum_px)
+    try:
+        benchmark.publish_v2_benchmark(alpaca)
+    except Exception as e:
+        logger.warning("v2: benchmark refresh failed (non-fatal): %s", e)
 
 
 def _execute_rebalance(alpaca: AlpacaClient, fetcher: DataFetcher, dry_run: bool,

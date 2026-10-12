@@ -577,6 +577,19 @@
 
   .watch-warning { color: var(--amber); }
 
+  /* ── v2 alpha block ── */
+  .alpha-headline { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 18px; margin-bottom: 14px; }
+  .alpha-main { font-family: var(--font-mono); font-size: 22px; font-weight: 500; }
+  .alpha-meta { font-family: var(--font-mono); font-size: 11px; color: var(--muted); }
+  .alpha-scroll { overflow-x: auto; }
+  .alpha-table { width: 100%; border-collapse: collapse; font-family: var(--font-mono); font-size: 11px; }
+  .alpha-table th { text-align: right; font-weight: 400; color: var(--muted); letter-spacing: 0.08em;
+    padding: 6px 8px; border-bottom: 1px solid var(--border); white-space: nowrap; }
+  .alpha-table td { text-align: right; padding: 7px 8px; border-bottom: 1px solid var(--border); white-space: nowrap; }
+  .alpha-table th:first-child, .alpha-table td:first-child { text-align: left; }
+  .alpha-table td.alpha-na { text-align: left; color: var(--muted); }
+  .alpha-note { margin-top: 10px; font-size: 11px; color: var(--muted); }
+
   /* ── Empty state ── */
   .empty {
     text-align: center;
@@ -783,6 +796,17 @@
     </div>
   </div>
 
+  <!-- v2 alpha vs benchmarks (core/benchmark.py → data.v2_benchmark) -->
+  <div class="panel">
+    <div class="panel-header">
+      <div class="panel-title">v2 Alpha · Beta-Adjusted (EXP-018)</div>
+      <div class="panel-badge amber" id="alpha-badge">—</div>
+    </div>
+    <div class="panel-body" id="alpha-body">
+      <div class="empty">No v2 benchmark computed yet</div>
+    </div>
+  </div>
+
   <!-- Equity curve + open positions -->
   <div class="two-col">
     <div class="panel">
@@ -917,6 +941,7 @@ async function loadData() {
 function render() {
   if (!DATA) return;
   renderStats();
+  renderAlpha();
   renderChart();
   renderOpenPositions();
   renderTrades();
@@ -989,6 +1014,65 @@ function renderStats() {
   if (snaps.length) {
     set('hdr-last-run', fmtPacificTime(snaps[snaps.length - 1].ts));
   }
+}
+
+// ── v2 alpha ───────────────────────────────────────────────────────────────
+// Reads data.v2_benchmark (written by core/benchmark.py on every v2 run). Below the
+// minimum sample every row shows "insufficient data (n=…)" — never a number.
+function renderAlpha() {
+  const b = DATA.v2_benchmark;
+  const el = document.getElementById('alpha-body');
+  const badge = document.getElementById('alpha-badge');
+  if (!b || !b.vs) {
+    badge.textContent = 'NOT COMPUTED';
+    el.innerHTML = '<div class="empty">No v2 benchmark computed yet</div>';
+    return;
+  }
+  const minN = b.min_days || 20;
+  const spy = b.vs.SPY || {};
+  const ok = spy.beta !== undefined;
+  const sig = ok && spy.alpha_t !== null && Math.abs(spy.alpha_t) >= 2;
+  badge.textContent = ok ? ('n=' + spy.n + (sig ? ' · SIGNIFICANT' : ' · NOT SIGNIFICANT'))
+                         : ('n=' + (spy.n || 0) + ' / ' + minN + ' NEEDED');
+  badge.className = 'panel-badge ' + (!ok ? 'amber' : sig ? (spy.alpha_ann_pct >= 0 ? 'green' : 'red') : 'blue');
+
+  const num = (v, d) => (v === null || v === undefined) ? '—' : Number(v).toFixed(d);
+  const sgn = (v, d) => (v === null || v === undefined) ? '—' : (v >= 0 ? '+' : '') + Number(v).toFixed(d);
+  const col = v => (v === null || v === undefined) ? '' : (v >= 0 ? 'var(--green)' : 'var(--red)');
+  const era = b.era_start ? fmtPacificTime(b.era_start) : 'v2 book not built yet';
+
+  let head;
+  if (ok) {
+    const [lo, hi] = spy.alpha_ci95_pct;
+    head = `<div class="alpha-headline">
+        <span class="alpha-main" style="color:${col(spy.alpha_ann_pct)}">α ${sgn(spy.alpha_ann_pct, 2)}%/yr</span>
+        <span class="alpha-meta">95% CI [${sgn(lo, 2)}, ${sgn(hi, 2)}] · t = ${num(spy.alpha_t, 2)} · β = ${num(spy.beta, 2)} vs SPY</span>
+      </div>`;
+  } else {
+    head = `<div class="alpha-headline">
+        <span class="alpha-main" style="color:var(--muted)">${escapeHtml(spy.status || b.status || 'insufficient data')}</span>
+        <span class="alpha-meta">alpha is shown after ${minN} daily returns in the v2 era</span>
+      </div>`;
+  }
+
+  const labels = {SPY: 'SPY', QQQ: 'QQQ', MTUM: 'MTUM (momentum)', EW_UNIVERSE: 'EW universe'};
+  const rows = Object.keys(labels).filter(k => b.vs[k]).map(k => {
+    const r = b.vs[k];
+    if (r.beta === undefined) {
+      return `<tr><td>${labels[k]}</td><td>${r.n || 0}</td><td class="alpha-na" colspan="6">${escapeHtml(r.status || '—')}${r.note ? ' · ' + escapeHtml(r.note) : ''}</td></tr>`;
+    }
+    const [lo, hi] = r.alpha_ci95_pct;
+    return `<tr><td>${labels[k]}</td><td>${r.n}</td><td>${num(r.beta, 2)}</td>
+      <td style="color:${col(r.alpha_ann_pct)}">${sgn(r.alpha_ann_pct, 2)}%</td>
+      <td>[${sgn(lo, 1)}, ${sgn(hi, 1)}]</td><td>${num(r.alpha_t, 2)}</td>
+      <td>${num(r.information_ratio, 2)}</td>
+      <td style="color:${col(r.excess_return_pct)}">${sgn(r.excess_return_pct, 2)}%</td></tr>`;
+  }).join('');
+
+  el.innerHTML = head + `<div class="alpha-scroll"><table class="alpha-table">
+      <thead><tr><th>BENCHMARK</th><th>N</th><th>β</th><th>α /YR</th><th>95% CI</th><th>T</th><th>IR</th><th>EXCESS (PERIOD)</th></tr></thead>
+      <tbody>${rows}</tbody></table></div>
+    <div class="alpha-note">v2 era since ${escapeHtml(era)} · daily OLS, rf = 0 · |t| ≥ 2 ≈ significant at 95% · judge on a frozen v2</div>`;
 }
 
 // ── Equity Chart ───────────────────────────────────────────────────────────

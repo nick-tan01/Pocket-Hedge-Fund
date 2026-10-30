@@ -4456,6 +4456,14 @@
       "spy_price": 765.26,
       "qqq_price": 707.35,
       "mtum_price": 298.4
+    },
+    {
+      "ts": "2026-10-30T14:05:53.398060+00:00",
+      "portfolio_value": 97205.33,
+      "cash": -18.76,
+      "spy_price": 760.24,
+      "qqq_price": 697.03,
+      "mtum_price": 288.15
     }
   ],
   "trades": [
@@ -75145,6 +75153,21 @@
       "slot": "v2-2026-10-29T17:00",
       "started_at": "2026-10-29T17:01:36.094447+00:00",
       "github_run_id": "40917205328",
+      "v2_rebalanced": false,
+      "v2_signal": "residual",
+      "v2_top_k": 25
+    },
+    {
+      "ts": "2026-10-30T14:06:06.466374+00:00",
+      "run_type": "v2",
+      "candidates": [],
+      "trades_executed": 0,
+      "skipped_reason": "",
+      "reason": "external_dispatch",
+      "strategy": "v2",
+      "slot": "v2-2026-10-30T14:05",
+      "started_at": "2026-10-30T14:06:06.425743+00:00",
+      "github_run_id": "41068758110",
       "v2_rebalanced": false,
       "v2_signal": "residual",
       "v2_top_k": 25
@@ -174197,50 +174220,50 @@
     }
   ],
   "v2_benchmark": {
-    "computed_at": "2026-10-29T17:01:35.855205+00:00",
+    "computed_at": "2026-10-30T14:06:06.186606+00:00",
     "era_start": "2026-10-12T14:07:09.839357+00:00",
     "min_days": 20,
     "rf": 0.0,
     "method": "OLS on daily returns (last snapshot per ET trading day, v2 era); alpha/excess annualized x252; 95% CI uses Student-t",
-    "status": "insufficient data (n=13)",
-    "n_days": 13,
-    "fund_return_pct": -1.19,
+    "status": "insufficient data (n=14)",
+    "n_days": 14,
+    "fund_return_pct": -2.31,
     "vs": {
       "SPY": {
-        "n": 13,
-        "status": "insufficient data (n=13)",
+        "n": 14,
+        "status": "insufficient data (n=14)",
         "start": "2026-10-12",
-        "end": "2026-10-29",
-        "fund_return_pct": -1.19,
-        "bench_return_pct": -1.11,
-        "excess_return_pct": -0.08
+        "end": "2026-10-30",
+        "fund_return_pct": -2.31,
+        "bench_return_pct": -2.28,
+        "excess_return_pct": -0.03
       },
       "QQQ": {
-        "n": 13,
-        "status": "insufficient data (n=13)",
+        "n": 14,
+        "status": "insufficient data (n=14)",
         "start": "2026-10-12",
-        "end": "2026-10-29",
-        "fund_return_pct": -1.19,
-        "bench_return_pct": -4.02,
-        "excess_return_pct": 2.83
+        "end": "2026-10-30",
+        "fund_return_pct": -2.31,
+        "bench_return_pct": -6.54,
+        "excess_return_pct": 4.23
       },
       "MTUM": {
-        "n": 13,
-        "status": "insufficient data (n=13)",
+        "n": 14,
+        "status": "insufficient data (n=14)",
         "start": "2026-10-12",
-        "end": "2026-10-29",
-        "fund_return_pct": -1.19,
-        "bench_return_pct": -5.02,
-        "excess_return_pct": 3.82
+        "end": "2026-10-30",
+        "fund_return_pct": -2.31,
+        "bench_return_pct": -8.54,
+        "excess_return_pct": 6.23
       },
       "EW_UNIVERSE": {
-        "n": 13,
-        "status": "insufficient data (n=13)",
+        "n": 14,
+        "status": "insufficient data (n=14)",
         "start": "2026-10-12",
-        "end": "2026-10-29",
-        "fund_return_pct": -1.19,
-        "bench_return_pct": 0.42,
-        "excess_return_pct": -1.62
+        "end": "2026-10-30",
+        "fund_return_pct": -2.31,
+        "bench_return_pct": -0.71,
+        "excess_return_pct": -1.6
       }
     }
   }

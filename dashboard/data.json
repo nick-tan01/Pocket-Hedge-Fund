@@ -4640,6 +4640,14 @@
       "spy_price": 736.07,
       "qqq_price": 656.87,
       "mtum_price": 63.71
+    },
+    {
+      "ts": "2026-11-09T14:06:08.090199+00:00",
+      "portfolio_value": 91215.7,
+      "cash": 2037.01,
+      "spy_price": 741.75,
+      "qqq_price": 662.05,
+      "mtum_price": 63.71
     }
   ],
   "trades": [
@@ -75723,6 +75731,21 @@
       "slot": "v2-2026-11-06T17:00",
       "started_at": "2026-11-06T17:01:07.743838+00:00",
       "github_run_id": "42257592434",
+      "v2_rebalanced": false,
+      "v2_signal": "residual",
+      "v2_top_k": 25
+    },
+    {
+      "ts": "2026-11-09T14:06:11.366447+00:00",
+      "run_type": "v2",
+      "candidates": [],
+      "trades_executed": 0,
+      "skipped_reason": "Portfolio drawdown 13.2% from peak $105,138 exceeds limit",
+      "reason": "scheduled",
+      "strategy": "v2",
+      "slot": "v2-2026-11-09T14:05",
+      "started_at": "2026-11-09T14:06:11.334160+00:00",
+      "github_run_id": "42631306732",
       "v2_rebalanced": false,
       "v2_signal": "residual",
       "v2_top_k": 25
@@ -174970,50 +174993,80 @@
     }
   ],
   "v2_benchmark": {
-    "computed_at": "2026-11-06T17:01:07.499738+00:00",
+    "computed_at": "2026-11-09T14:06:11.168339+00:00",
     "era_start": "2026-10-12T14:07:09.839357+00:00",
     "min_days": 20,
     "rf": 0.0,
     "method": "OLS on daily returns (last snapshot per ET trading day, v2 era); alpha/excess annualized x252; 95% CI uses Student-t",
-    "status": "insufficient data (n=19)",
-    "n_days": 19,
-    "fund_return_pct": -9.01,
+    "status": "ok",
+    "n_days": 20,
+    "fund_return_pct": -8.33,
     "vs": {
       "SPY": {
-        "n": 19,
-        "status": "insufficient data (n=19)",
+        "n": 20,
+        "beta": 0.83,
+        "alpha_ann_pct": -59.05,
+        "alpha_t": -1.23,
+        "alpha_ci95_pct": [
+          -160.02,
+          41.91
+        ],
+        "r2": 0.611,
+        "information_ratio": -3.68,
+        "excess_ann_pct": -49.15,
+        "tracking_error_ann_pct": 13.36,
         "start": "2026-10-12",
-        "end": "2026-11-06",
-        "fund_return_pct": -9.01,
-        "bench_return_pct": -4.88,
-        "excess_return_pct": -4.13
+        "end": "2026-11-09",
+        "fund_return_pct": -8.33,
+        "bench_return_pct": -4.65,
+        "excess_return_pct": -3.68
       },
       "QQQ": {
-        "n": 19,
-        "status": "insufficient data (n=19)",
+        "n": 20,
+        "beta": 0.592,
+        "alpha_ann_pct": -21.24,
+        "alpha_t": -0.5,
+        "alpha_ci95_pct": [
+          -111.23,
+          68.74
+        ],
+        "r2": 0.709,
+        "information_ratio": 2.32,
+        "excess_ann_pct": 38.12,
+        "tracking_error_ann_pct": 16.45,
         "start": "2026-10-12",
-        "end": "2026-11-06",
-        "fund_return_pct": -9.01,
-        "bench_return_pct": -11.49,
-        "excess_return_pct": 2.48
+        "end": "2026-11-09",
+        "fund_return_pct": -8.33,
+        "bench_return_pct": -11.23,
+        "excess_return_pct": 2.9
       },
       "MTUM": {
-        "n": 19,
-        "status": "insufficient data (n=19)",
+        "n": 20,
+        "beta": 0.063,
+        "alpha_ann_pct": -35.6,
+        "alpha_t": -0.81,
+        "alpha_ci95_pct": [
+          -128.1,
+          56.9
+        ],
+        "r2": 0.685,
+        "information_ratio": 4.03,
+        "excess_ann_pct": 1028.16,
+        "tracking_error_ann_pct": 255.06,
         "start": "2026-10-12",
-        "end": "2026-11-06",
-        "fund_return_pct": -9.01,
-        "bench_return_pct": -79.68,
-        "excess_return_pct": 70.67
+        "end": "2026-11-09",
+        "fund_return_pct": -8.33,
+        "bench_return_pct": -79.78,
+        "excess_return_pct": 71.45
       },
       "EW_UNIVERSE": {
         "n": 19,
         "status": "insufficient data (n=19)",
         "start": "2026-10-12",
         "end": "2026-11-06",
-        "fund_return_pct": -9.01,
-        "bench_return_pct": -2.47,
-        "excess_return_pct": -6.54
+        "fund_return_pct": -9.17,
+        "bench_return_pct": -2.72,
+        "excess_return_pct": -6.45
       }
     }
   }
